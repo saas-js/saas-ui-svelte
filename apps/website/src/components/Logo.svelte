@@ -49,6 +49,7 @@
 			class="fill-current"
 		></path>
 	</svg>
-	<span class="text-2xs font-medium text-indigo-fg ml-0.5 mb-2.5">Svelte</span
+	<span class="text-2xs antialiased font-medium text-indigo-fg ml-0.5 mb-2.5"
+		>Svelte</span
 	>
 </a>
