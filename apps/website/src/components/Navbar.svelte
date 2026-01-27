@@ -69,7 +69,7 @@
 			>
 		</Navbar.ItemGroup>
 
-		<Navbar.ItemGroup gap={3} justify="end">
+		<Navbar.ItemGroup gap={2} justify="end">
 			<Input.Group class="hidden md:flex w-40" size="sm">
 				<Input.Element placement="left">
 					<MagnifyingGlass class="size-3.5" aria-hidden="true" />
