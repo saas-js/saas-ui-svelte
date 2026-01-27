@@ -1,0 +1,32 @@
+<script lang="ts">
+	import { Progress } from "@ark-ui/svelte/progress";
+	import { getContext, type Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { PROGRESS_CTX, type ProgressContext } from "./progress-root.svelte";
+
+	interface Props {
+		/**
+		 * Content to render inside the value text (overrides default).
+		 */
+		children?: Snippet;
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		[key: string]: any;
+	}
+
+	let { children, class: className, ...restProps }: Props = $props();
+
+	const ctx = getContext<ProgressContext>(PROGRESS_CTX);
+	const styles = $derived(ctx.styles);
+</script>
+
+<Progress.ValueText
+	class={twMerge(styles.valueText(), className)}
+	{...restProps}
+>
+	{#if children}
+		{@render children()}
+	{/if}
+</Progress.ValueText>

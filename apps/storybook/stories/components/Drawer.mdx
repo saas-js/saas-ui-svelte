@@ -1,0 +1,74 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as DrawerStories from "./Drawer.stories.svelte";
+import { Drawer } from "$saas/components/drawer";
+import { drawerRootPattern } from "../utils";
+
+<Meta of={DrawerStories} />
+
+# Drawer
+
+## Used to render content that slides in from the side of the screen.
+
+[Ark UI](https://ark-ui.com/docs/components/dialog) (Drawer is built on top of Dialog)
+
+<Canvas of={DrawerStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Drawer } from "$saas/components/drawer";
+	import { Button } from "$saas/components/button";
+</script>
+
+<Drawer.Root>
+	<Drawer.Trigger>Open Drawer</Drawer.Trigger>
+	<Drawer.Content>
+		<Drawer.Header>
+			<Drawer.Title>Title</Drawer.Title>
+			<Drawer.CloseButton />
+		</Drawer.Header>
+		<Drawer.Body>Content goes here...</Drawer.Body>
+		<Drawer.Footer>
+			<Drawer.ActionTrigger>Cancel</Drawer.ActionTrigger>
+			<Button variant="glass">Save</Button>
+		</Drawer.Footer>
+	</Drawer.Content>
+</Drawer.Root>
+```
+
+## Examples
+
+### Attached
+
+Use the `attached` prop to render the drawer attached to the edge of the viewport without padding or rounded corners.
+
+<Canvas of={DrawerStories.Attached} />
+
+### Sizes
+
+Use the `size` prop to change the size of the drawer component. Options include `xs`, `sm`, `md`, `lg`, `xl`, and `full`.
+
+<Canvas of={DrawerStories.Sizes} />
+
+### Offset
+
+Pass the `offset` prop to the `Drawer.Content` to add spacing around the drawer. You can also use the `rounded` prop to customize the border radius.
+
+<Canvas of={DrawerStories.Offset} />
+
+### Placement
+
+Use the `placement` prop to change the placement of the drawer. Options include `start` (left), `end` (right), `top`, and `bottom`.
+
+<Canvas of={DrawerStories.Placement} />
+
+### Initial Focus
+
+Use the `initialFocusEl` prop to set which element receives focus when the drawer opens. This is useful for directing user attention to a specific input field.
+
+<Canvas of={DrawerStories.InitialFocus} />
+
+## Props
+
+<ArgTypes of={Drawer.Root} exclude={drawerRootPattern} />

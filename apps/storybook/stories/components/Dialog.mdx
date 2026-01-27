@@ -1,0 +1,96 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as DialogStories from "./Dialog.stories.svelte";
+import { Dialog } from "$saas/components/dialog";
+import { dialogRootPattern } from "../utils";
+
+<Meta of={DialogStories} />
+
+# Dialog
+
+## Used to display a dialog prompt or modal.
+
+[Ark UI](https://ark-ui.com/docs/components/dialog)
+
+<Canvas of={DialogStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Dialog } from "$saas/components/dialog";
+	import { Button } from "$saas/components/button";
+</script>
+
+<Dialog.Root>
+	<Dialog.Trigger>
+		<button>Open</button>
+	</Dialog.Trigger>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Title</Dialog.Title>
+			<Dialog.CloseButton />
+		</Dialog.Header>
+		<Dialog.Body> Content goes here... </Dialog.Body>
+		<Dialog.Footer>
+			<Dialog.ActionTrigger>
+				<button variant="ghost">Cancel</button>
+			</Dialog.ActionTrigger>
+			<button variant="glass">Save</button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the dialog component. Options include `xs`, `sm`, `md`, `lg`, `xl`, `cover`, and `full`.
+
+<Canvas of={DialogStories.Sizes} />
+
+### Cover
+
+Use the `size="cover"` prop to make the dialog component cover the entire screen while revealing a small portion of the page behind.
+
+<Canvas of={DialogStories.Cover} />
+
+### Initial Focus
+
+Use the `initialFocusEl` prop to set which element receives focus when the dialog opens. This is useful for directing user attention to a specific input field.
+
+<Canvas of={DialogStories.InitialFocus} />
+
+### Inside Scroll
+
+Use the `scrollBehavior="inside"` prop to change the scroll behavior of the dialog when its content overflows.
+
+<Canvas of={DialogStories.InsideScroll} />
+
+### Outside Scroll
+
+Use the `scrollBehavior="outside"` prop to change the scroll behavior of the dialog when its content overflows.
+
+<Canvas of={DialogStories.OutsideScroll} />
+
+### Motion Preset
+
+Use the `motionPreset` prop to change the animation of the dialog component.
+
+<Canvas of={DialogStories.MotionPreset} />
+
+### Alert Dialog
+
+Set the `role="alertdialog"` prop to change the dialog component to an alert dialog.
+
+<Canvas of={DialogStories.AlertDialog} />
+
+### With Data List
+
+Compose the Dialog component with the DataList component to display structured information.
+
+<Canvas of={DialogStories.WithDataList} />
+
+### Props
+
+<ArgTypes of={Dialog.Root} exclude={dialogRootPattern} />

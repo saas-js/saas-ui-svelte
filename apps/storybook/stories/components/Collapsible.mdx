@@ -1,0 +1,39 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as CollapsibleStories from "./Collapsible.stories.svelte";
+import { Collapsible } from "$saas/components/collapsible";
+import { collapsiblePattern } from "../exclude-patterns";
+
+<Meta of={CollapsibleStories} />
+
+# Collapsible
+
+## Used to expand and collapse additional content.
+
+[Ark UI](https://ark-ui.com/docs/components/collapsible)
+
+<Canvas of={CollapsibleStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Collapsible } from "$saas/components/collapsible";
+</script>
+
+<Collapsible>
+	<Collapsible.Trigger />
+	<Collapsible.Content />
+</Collapsible>
+```
+
+## Examples
+
+### Lazy Mounted
+
+Use the `unmountOnExit` prop to make the content unmount when collapsed.
+
+<Canvas of={CollapsibleStories.LazyMounted} />
+
+## Props
+
+<ArgTypes of={Collapsible} exclude={collapsiblePattern} />

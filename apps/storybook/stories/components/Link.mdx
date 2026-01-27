@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as LinkStories from "./Link.stories.svelte";
+import { Link } from "$saas/components/link";
+import { linkPattern } from "../exclude-patterns";
+
+<Meta of={LinkStories} />
+
+# Link
+
+## Used to provide accessible navigation
+
+<Canvas of={LinkStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Link } from "$saas/components/link";
+</script>
+
+<Link href="...">Click here</Link>
+```
+
+## Examples
+
+### Variants
+
+Use the `variant` prop to change the appearance of the Link component.
+
+<Canvas of={LinkStories.Variants} />
+
+### Within Text
+
+Use Link within a text to create a hyperlink.
+
+<Canvas of={LinkStories.WithinText} />
+
+### External
+
+Add an external link icon to the Link component.
+
+<Canvas of={LinkStories.External} />
+
+## Props
+
+<ArgTypes of={Link} exclude={linkPattern} />

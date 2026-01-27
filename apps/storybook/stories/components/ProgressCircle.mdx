@@ -1,0 +1,84 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgTypes,
+	Source,
+} from "@storybook/addon-docs/blocks";
+import * as ProgressCircleStories from "./ProgressCircle.stories.svelte";
+import { ProgressCircle } from "$saas/components/progress-circle";
+import { progressCirclePattern } from "../utils";
+
+<Meta of={ProgressCircleStories} />
+
+# Progress Circle
+
+## Used to display a task's progress in a circular form.
+
+[Ark UI](https://ark-ui.com/docs/components/progress-circular)
+
+<Canvas of={ProgressCircleStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { ProgressCircle } from "$saas/components/progress-circle";
+</script>
+
+<ProgressCircle value={75} />
+```
+
+## Examples
+
+### Rounded
+
+Use the `rounded` prop on ProgressCircle to make the ends of the progress circle rounded.
+
+<Canvas of={ProgressCircleStories.Rounded} />
+
+### Sizes
+
+Use the `size` prop to change the size of the progress circle component. You can set the value to `xs`, `sm`, `md`, `lg`, or `xl`.
+
+<Canvas of={ProgressCircleStories.Sizes} />
+
+### Colours
+
+Use the `colour` prop to change the colour scheme of the component. It supports all standard Tailwind colours.
+
+<Canvas of={ProgressCircleStories.Colours} />
+
+### Value Text
+
+Use the `showValue` prop to display the progress value as text in the center of the circle.
+
+<Canvas of={ProgressCircleStories.WithValueText} />
+
+### Custom Thickness
+
+Pass the `thickness` prop to change the thickness of the ring.
+
+<Canvas of={ProgressCircleStories.CustomThickness} />
+
+### Indeterminate
+
+Set the `value` prop to `null` to render the indeterminate state. This is useful when the progress is unknown.
+
+<Canvas of={ProgressCircleStories.Indeterminate} />
+
+### Values
+
+Display different progress values to show completion status.
+
+<Canvas of={ProgressCircleStories.Values} />
+
+### Range Colours
+
+Pass different colours to create visual distinction between progress indicators.
+
+<Canvas of={ProgressCircleStories.RangeColors} />
+
+## Props
+
+<ArgTypes of={ProgressCircle} exclude={progressCirclePattern} />

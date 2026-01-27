@@ -1,0 +1,152 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as PopoverStories from "./Popover.stories.svelte";
+import { Popover } from "$saas/components/popover";
+import {
+	popoverRootPattern,
+	popoverTriggerPattern,
+	popoverContentPattern,
+	popoverArrowPattern,
+	popoverHeaderPattern,
+	popoverBodyPattern,
+	popoverFooterPattern,
+	popoverTitlePattern,
+	popoverDescriptionPattern,
+	popoverCloseTriggerPattern,
+} from "../utils";
+
+<Meta of={PopoverStories} />
+
+# Popover
+
+## Used to show detailed information inside a pop-up.
+
+[Ark UI](https://ark-ui.com/docs/components/popover)
+
+<Canvas of={PopoverStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Popover } from "$saas/components/popover";
+</script>
+
+<Popover.Root>
+	<Popover.Trigger>
+		<button>Open</button>
+	</Popover.Trigger>
+	<Popover.Content>
+		<Popover.Arrow />
+		<Popover.Header>
+			<Popover.Title>Title</Popover.Title>
+		</Popover.Header>
+		<Popover.Body>Content goes here...</Popover.Body>
+		<Popover.Footer>Footer content</Popover.Footer>
+		<Popover.CloseTrigger />
+	</Popover.Content>
+</Popover.Root>
+```
+
+## Examples
+
+### Controlled
+
+Use the `open` and `onOpenChange` props to control the visibility of the popover.
+
+<Canvas of={PopoverStories.Controlled} />
+
+### Sizes
+
+Use the `size` prop to change the size of the popover component.
+
+<Canvas of={PopoverStories.Sizes} />
+
+### Lazy Mount
+
+Use the `lazyMount` and/or `unmountOnExit` prop to defer the mounting of the popover content until it's opened.
+
+<Canvas of={PopoverStories.LazyMounted} />
+
+### Placement
+
+Use the `positioning.placement` prop to configure the underlying floating-ui positioning logic.
+
+<Canvas of={PopoverStories.Placement} />
+
+### Offset
+
+Use the `positioning.offset` prop to adjust the position of the popover content.
+
+<Canvas of={PopoverStories.Offset} />
+
+### Same Width
+
+Use the `positioning.sameWidth` prop to make the popover content the same width as the trigger.
+
+<Canvas of={PopoverStories.SameWidth} />
+
+### Nested Popover
+
+When nesting overlay elements like popover, select, menu, inside of the popover, set `portalled={false}` on them.
+
+<Canvas of={PopoverStories.Nested} />
+
+### Initial Focus
+
+Use the `initialFocusEl` prop to set the initial focus of the popover content.
+
+<Canvas of={PopoverStories.InitialFocus} />
+
+### Form
+
+Here's an example of a popover with a form inside.
+
+<Canvas of={PopoverStories.Form} />
+
+### With Header and Footer
+
+Use `Popover.Header` and `Popover.Footer` for structured content with title and actions.
+
+<Canvas of={PopoverStories.WithHeaderFooter} />
+
+## Props
+
+### Popover.Root
+
+<ArgTypes of={Popover.Root} exclude={popoverRootPattern} />
+
+### Popover.Trigger
+
+<ArgTypes of={Popover.Trigger} exclude={popoverTriggerPattern} />
+
+### Popover.Content
+
+<ArgTypes of={Popover.Content} exclude={popoverContentPattern} />
+
+### Popover.Arrow
+
+<ArgTypes of={Popover.Arrow} exclude={popoverArrowPattern} />
+
+### Popover.Header
+
+<ArgTypes of={Popover.Header} exclude={popoverHeaderPattern} />
+
+### Popover.Body
+
+<ArgTypes of={Popover.Body} exclude={popoverBodyPattern} />
+
+### Popover.Footer
+
+<ArgTypes of={Popover.Footer} exclude={popoverFooterPattern} />
+
+### Popover.Title
+
+<ArgTypes of={Popover.Title} exclude={popoverTitlePattern} />
+
+### Popover.Description
+
+<ArgTypes of={Popover.Description} exclude={popoverDescriptionPattern} />
+
+### Popover.CloseTrigger
+
+<ArgTypes of={Popover.CloseTrigger} exclude={popoverCloseTriggerPattern} />

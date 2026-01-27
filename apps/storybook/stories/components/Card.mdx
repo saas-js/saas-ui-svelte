@@ -1,0 +1,102 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as CardStories from "./Card.stories.svelte";
+import { Card } from "$saas/components/card";
+import {
+	cardRootPattern,
+	cardHeaderPattern,
+	cardBodyPattern,
+	cardFooterPattern,
+	cardTitlePattern,
+	cardDescriptionPattern,
+} from "../utils";
+
+<Meta of={CardStories} />
+
+# Card
+
+Used to display content related to a single subject.
+
+<Canvas of={CardStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Card } from "$saas/components/card";
+</script>
+
+<Card.Root>
+	<Card.Header>
+		<Card.Title>Title</Card.Title>
+		<Card.Description>Description</Card.Description>
+	</Card.Header>
+	<Card.Body>Content goes here...</Card.Body>
+	<Card.Footer>
+		<button>Action</button>
+	</Card.Footer>
+</Card.Root>
+```
+
+## Examples
+
+### Variants
+
+Use the `variant` prop to change the visual style of the Card. Options include `subtle`, `outline`, and `elevated`.
+
+<Canvas of={CardStories.Variants} />
+
+### Sizes
+
+Use the `size` prop to change the size of the Card. Options include `sm`, `md`, and `lg`.
+
+<Canvas of={CardStories.Sizes} />
+
+### With Form
+
+Use the Card component within a form to group related fields together.
+
+<Canvas of={CardStories.WithForm} />
+
+### With Image
+
+Use the Card component to display an image with content.
+
+<Canvas of={CardStories.WithImage} />
+
+### Horizontal
+
+Use `class="flex-row"` on Card.Root to display content horizontally.
+
+<Canvas of={CardStories.Horizontal} />
+
+### With Avatar
+
+Compose the Card with Avatar and other components for rich content layouts.
+
+<Canvas of={CardStories.WithAvatar} />
+
+## Props
+
+### Root
+
+<ArgTypes of={Card.Root} exclude={cardRootPattern} />
+
+### Header
+
+<ArgTypes of={Card.Header} exclude={cardHeaderPattern} />
+
+### Body
+
+<ArgTypes of={Card.Body} exclude={cardBodyPattern} />
+
+### Footer
+
+<ArgTypes of={Card.Footer} exclude={cardFooterPattern} />
+
+### Title
+
+<ArgTypes of={Card.Title} exclude={cardTitlePattern} />
+
+### Description
+
+<ArgTypes of={Card.Description} exclude={cardDescriptionPattern} />

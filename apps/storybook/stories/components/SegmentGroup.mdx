@@ -1,0 +1,104 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as SegmentGroupStories from "./SegmentGroup.stories.svelte";
+import {
+	SegmentGroup,
+	SegmentGroupRoot,
+	SegmentGroupItem,
+	SegmentGroupIndicator,
+} from "$saas/components/segment-group";
+import {
+	segmentGroupRootPattern,
+	segmentGroupItemPattern,
+	segmentGroupIndicatorPattern,
+} from "../exclude-patterns";
+
+<Meta of={SegmentGroupStories} />
+
+# Segment Group
+
+## Used to pick one choice from a linear set of options.
+
+[Ark UI](https://ark-ui.com/docs/components/segment-group)
+
+<Canvas of={SegmentGroupStories.Basic} />
+
+## Anatomy
+
+A Segment Group (also known as Segmented Control) allows users to choose one option from a set of mutually exclusive options. It's commonly used for filtering content or switching between views.
+
+```tsx
+<script>
+	import { SegmentGroup } from "$saas/components/segment-group";
+</script>
+
+<SegmentGroup.Root defaultValue="react">
+	<SegmentGroup.Indicator />
+	<SegmentGroup.Item value="react" label="React" />
+	<SegmentGroup.Item value="vue" label="Vue" />
+	<SegmentGroup.Item value="svelte" label="Svelte" />
+</SegmentGroup.Root>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the segment group. Available sizes are `xs`, `sm`, `md`, and `lg`.
+
+<Canvas of={SegmentGroupStories.Sizes} />
+
+### Controlled
+
+Use the `value` and `onValueChange` props to control the selected value.
+
+<Canvas of={SegmentGroupStories.Controlled} />
+
+### Colours
+
+Use the `colour` prop to change the colour theme of the segment group. This affects the checked item text colour and focus ring.
+
+<Canvas of={SegmentGroupStories.Colours} />
+
+### Disabled
+
+Use the `disabled` prop to disable the entire segment group.
+
+<Canvas of={SegmentGroupStories.Disabled} />
+
+### Disabled Item
+
+Use the `disabled` prop on individual items to disable specific options.
+
+<Canvas of={SegmentGroupStories.DisabledItem} />
+
+### With Icon
+
+Render custom content including icons inside segment items using the composition API.
+
+<Canvas of={SegmentGroupStories.WithIcon} />
+
+### Icon Only
+
+Use icons without labels for a compact segment group.
+
+<Canvas of={SegmentGroupStories.IconOnly} />
+
+### Card
+
+Here's an example of how to use the SegmentGroup within a Card.
+
+<Canvas of={SegmentGroupStories.Card} />
+
+## Props
+
+**SegmentGroup.Root**
+
+<ArgTypes of={SegmentGroupRoot} exclude={segmentGroupRootPattern} />
+
+**SegmentGroup.Item**
+
+<ArgTypes of={SegmentGroupItem} exclude={segmentGroupItemPattern} />
+
+**SegmentGroup.Indicator**
+
+<ArgTypes of={SegmentGroupIndicator} exclude={segmentGroupIndicatorPattern} />

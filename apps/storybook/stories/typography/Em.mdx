@@ -1,0 +1,27 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as EmStories from "./Em.stories.svelte";
+import { Em } from "$saas/typography/em";
+import { emPattern } from "../utils";
+
+<Meta of={EmStories} />
+
+# Em
+
+Used to mark text for emphasis.
+
+<Canvas of={EmStories.Basic} />
+
+## Usage
+
+```tsx
+<script>
+	import { Text } from "$saas/typography/text";
+	import { Em } from "$saas/typography/em";
+</script>
+
+<Text> The <Em>design system</Em> is a collection of UI elements </Text>
+```
+
+### Props
+
+<ArgTypes of={Em} exclude={emPattern} />

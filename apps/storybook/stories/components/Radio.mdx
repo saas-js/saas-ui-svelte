@@ -1,0 +1,111 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as RadioStories from "./Radio.stories.svelte";
+import { Radio } from "$saas/components/radio";
+import { radioGroupPattern, radioItemPattern } from "../utils";
+
+<Meta of={RadioStories} />
+
+# Radio
+
+## Used to select one option from several options.
+
+[Ark UI](https://ark-ui.com/docs/components/radio-group)
+
+<Canvas of={RadioStories.Basic} />
+
+## Anatomy
+
+**Simple Usage:**
+
+```tsx
+<script>
+	import { Radio } from "$saas/components/radio";
+</script>
+
+<Radio.Group defaultValue="1">
+	<Radio.Item value="1" label="Option 1" />
+	<Radio.Item value="2" label="Option 2" />
+	<Radio.Item value="3" label="Option 3" />
+</Radio.Group>
+```
+
+**Composition API:**
+
+```tsx
+<script>
+	import { Radio } from "$saas/components/radio";
+</script>
+
+<Radio.Group defaultValue="react">
+	<Radio.Label>Select framework</Radio.Label>
+	<Radio.Item value="react">
+		{#snippet children()}
+			<Radio.ItemControl>
+				<Radio.Indicator />
+			</Radio.ItemControl>
+			<Radio.ItemText>React</Radio.ItemText>
+			<Radio.ItemHiddenInput />
+		{/snippet}
+	</Radio.Item>
+</Radio.Group>
+```
+
+## Examples
+
+### Controlled
+
+Use the `value` and `onValueChange` props to control the selected value.
+
+<Canvas of={RadioStories.Controlled} />
+
+### Colours
+
+Use the `colour` prop to change the colour of the radio buttons.
+
+<Canvas of={RadioStories.Colours} />
+
+### Sizes
+
+Use the `size` prop to change the size of the radio buttons.
+
+<Canvas of={RadioStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the visual style of the radio buttons.
+
+<Canvas of={RadioStories.Variants} />
+
+### Disabled
+
+Use the `disabled` prop to disable a radio item or the entire group.
+
+<Canvas of={RadioStories.Disabled} />
+
+### Orientation
+
+Use the `orientation` prop to change the layout direction of the radio group.
+
+<Canvas of={RadioStories.Orientation} />
+
+### With Label
+
+Use the `Radio.Label` component to add a label to the radio group.
+
+<Canvas of={RadioStories.WithLabel} />
+
+### Composition
+
+Use the composition API for full control over the radio button structure.
+
+<Canvas of={RadioStories.Composition} />
+
+## Props
+
+**Radio.Group**
+
+<ArgTypes of={Radio.Group} exclude={radioGroupPattern} />
+
+**Radio.Item**
+
+<ArgTypes of={Radio.Item} exclude={radioItemPattern} />

@@ -1,0 +1,120 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as EditableStories from "./Editable.stories.svelte";
+import { Editable } from "$saas/components/editable";
+import {
+	editablePattern,
+	editableAreaPattern,
+	editablePreviewPattern,
+	editableInputPattern,
+	editableTextareaPattern,
+	editableControlPattern,
+	editableLabelPattern,
+	editableTriggerPattern,
+} from "../utils";
+
+<Meta of={EditableStories} />
+
+# Editable
+
+## Used for inline renaming of some text.
+
+<Canvas of={EditableStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Editable } from "$saas/components/editable";
+</script>
+
+<Editable.Root defaultValue="Click to edit">
+	<Editable.Area>
+		<Editable.Preview />
+		<Editable.Input />
+	</Editable.Area>
+</Editable.Root>
+```
+
+## Examples
+
+### Controlled
+
+<Canvas of={EditableStories.Controlled} />
+
+### With Double Click
+
+Use the `activationMode` prop to make the content editable when users double click.
+
+<Canvas of={EditableStories.WithDoubleClick} />
+
+### Disabled
+
+Use the `disabled` prop to disable the editable component.
+
+<Canvas of={EditableStories.Disabled} />
+
+### Invalid
+
+Use the `invalid` prop to indicate that the editable component is invalid.
+
+<Canvas of={EditableStories.Invalid} />
+
+### Textarea
+
+You can make a text area editable.
+
+<Canvas of={EditableStories.Textarea} />
+
+### With Controls
+
+Add controls such as "edit", "cancel" and "submit" to Editable for better user experience.
+
+<Canvas of={EditableStories.WithControls} />
+
+### Colours
+
+The `colour` prop sets the focus ring colour for the input.
+
+<Canvas of={EditableStories.Colours} />
+
+## Props
+
+### Editable.Root
+
+<ArgTypes of={Editable.Root} exclude={editablePattern} />
+
+### Editable.Area
+
+<ArgTypes of={Editable.Area} exclude={editableAreaPattern} />
+
+### Editable.Preview
+
+<ArgTypes of={Editable.Preview} exclude={editablePreviewPattern} />
+
+### Editable.Input
+
+<ArgTypes of={Editable.Input} exclude={editableInputPattern} />
+
+### Editable.Textarea
+
+<ArgTypes of={Editable.Textarea} exclude={editableTextareaPattern} />
+
+### Editable.Control
+
+<ArgTypes of={Editable.Control} exclude={editableControlPattern} />
+
+### Editable.EditTrigger
+
+<ArgTypes of={Editable.EditTrigger} exclude={editableTriggerPattern} />
+
+### Editable.CancelTrigger
+
+<ArgTypes of={Editable.CancelTrigger} exclude={editableTriggerPattern} />
+
+### Editable.SubmitTrigger
+
+<ArgTypes of={Editable.SubmitTrigger} exclude={editableTriggerPattern} />
+
+### Editable.Label
+
+<ArgTypes of={Editable.Label} exclude={editableLabelPattern} />

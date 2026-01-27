@@ -1,0 +1,97 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgTypes,
+	Source,
+} from "@storybook/addon-docs/blocks";
+import * as TimelineStories from "./Timeline.stories.svelte";
+import { Timeline } from "$saas/components/timeline";
+import {
+	timelineRootPattern,
+	timelineItemPattern,
+	timelineConnectorPattern,
+	timelineContentPattern,
+	timelineTitlePattern,
+	timelineDescriptionPattern,
+} from "../utils";
+
+<Meta of={TimelineStories} />
+
+# Timeline
+
+## Used to display a list of events in chronological order.
+
+<Canvas of={TimelineStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Timeline } from "$saas/components/timeline";
+</script>
+
+<Timeline.Root>
+	<Timeline.Item>
+		<Timeline.Connector>
+			<!-- Icon or Avatar -->
+		</Timeline.Connector>
+		<Timeline.Content>
+			<Timeline.Title>Event Title</Timeline.Title>
+			<Timeline.Description>Date or description</Timeline.Description>
+		</Timeline.Content>
+	</Timeline.Item>
+</Timeline.Root>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the timeline. Available sizes are `sm`, `md`, `lg`, and `xl`.
+
+<Canvas of={TimelineStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the visual style of the timeline. Available variants are `subtle`, `solid`, `outline`, and `plain`.
+
+<Canvas of={TimelineStories.Variants} />
+
+### Content Before
+
+You can place content before the timeline indicator by adding a `Timeline.Content` component before the `Timeline.Connector`.
+
+<Canvas of={TimelineStories.ContentBefore} />
+
+### Alternating Content
+
+Create an alternating timeline by using the `flex` and `alignItems` props on `Timeline.Content`.
+
+<Canvas of={TimelineStories.Alternating} />
+
+## Props
+
+### Timeline.Root
+
+<ArgTypes of={Timeline.Root} exclude={timelineRootPattern} />
+
+### Timeline.Item
+
+<ArgTypes of={Timeline.Item} exclude={timelineItemPattern} />
+
+### Timeline.Connector
+
+<ArgTypes of={Timeline.Connector} exclude={timelineConnectorPattern} />
+
+### Timeline.Content
+
+<ArgTypes of={Timeline.Content} exclude={timelineContentPattern} />
+
+### Timeline.Title
+
+<ArgTypes of={Timeline.Title} exclude={timelineTitlePattern} />
+
+### Timeline.Description
+
+<ArgTypes of={Timeline.Description} exclude={timelineDescriptionPattern} />

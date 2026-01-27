@@ -1,0 +1,109 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as CheckboxCardStories from "./CheckboxCard.stories.svelte";
+import { CheckboxCard } from "$saas/components/checkbox-card";
+import {
+	checkboxCardRootPattern,
+	checkboxCardControlPattern,
+	checkboxCardContentPattern,
+	checkboxCardLabelPattern,
+	checkboxCardDescriptionPattern,
+	checkboxCardAddonPattern,
+	checkboxCardIndicatorPattern,
+} from "../utils";
+
+<Meta of={CheckboxCardStories} />
+
+# Checkbox Card
+
+## Used to select or deselect options displayed within cards.
+
+<Canvas of={CheckboxCardStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { CheckboxCard } from "$saas/components/checkbox-card";
+</script>
+
+<CheckboxCard.Root>
+	<CheckboxCard.Control>
+		<CheckboxCard.Content>
+			<CheckboxCard.Label>Label</CheckboxCard.Label>
+			<CheckboxCard.Description>Description</CheckboxCard.Description>
+		</CheckboxCard.Content>
+		<CheckboxCard.Indicator />
+	</CheckboxCard.Control>
+</CheckboxCard.Root>
+```
+
+## Examples
+
+### Group
+
+Use multiple CheckboxCard components together to create a group selection. Manage the checked state externally for group behavior.
+
+<Canvas of={CheckboxCardStories.Group} />
+
+### Sizes
+
+Use the `size` prop to change the size of the checkbox card. Options include `sm`, `md`, and `lg`.
+
+<Canvas of={CheckboxCardStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the visual style. Options include `subtle`, `surface`, and `outline`.
+
+<Canvas of={CheckboxCardStories.Variants} />
+
+### Disabled
+
+Use the `disabled` prop to make the checkbox card non-interactive.
+
+<Canvas of={CheckboxCardStories.Disabled} />
+
+### With Addon
+
+Use the `CheckboxCard.Addon` component to add supplementary content below the main control.
+
+<Canvas of={CheckboxCardStories.WithAddon} />
+
+### With Icon
+
+Render custom icons within the checkbox card for visual identification.
+
+<Canvas of={CheckboxCardStories.WithIcon} />
+
+## Props
+
+### Root
+
+<ArgTypes of={CheckboxCard.Root} exclude={checkboxCardRootPattern} />
+
+### Control
+
+<ArgTypes of={CheckboxCard.Control} exclude={checkboxCardControlPattern} />
+
+### Content
+
+<ArgTypes of={CheckboxCard.Content} exclude={checkboxCardContentPattern} />
+
+### Label
+
+<ArgTypes of={CheckboxCard.Label} exclude={checkboxCardLabelPattern} />
+
+### Description
+
+<ArgTypes
+	of={CheckboxCard.Description}
+	exclude={checkboxCardDescriptionPattern}
+/>
+
+### Addon
+
+<ArgTypes of={CheckboxCard.Addon} exclude={checkboxCardAddonPattern} />
+
+### Indicator
+
+<ArgTypes of={CheckboxCard.Indicator} exclude={checkboxCardIndicatorPattern} />

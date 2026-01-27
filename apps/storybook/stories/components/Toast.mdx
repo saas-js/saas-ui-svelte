@@ -1,0 +1,83 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as ToastStories from "./Toast.stories.svelte";
+import { Toast } from "$saas/components/toast";
+import { toastPattern } from "../utils";
+
+<Meta of={ToastStories} />
+
+# Toast
+
+## Toasts display brief, temporary notifications. They are typically used to provide feedback about an action or to display system messages.
+
+<Canvas of={ToastStories.Basic} />
+
+## Setup
+
+To use the Toast component, first create a toaster instance using `createToaster`. This manages the toast state and provides methods to create and dismiss toasts.
+
+```tsx
+<script>
+	import { Toast, Toaster, createToaster } from "$saas/components/toast";
+
+	const toaster = createToaster({
+		duration: 5000, // Default duration in ms
+	});
+</script>
+
+<button onclick={() => toaster.create({ description: "Hello!", type: "info" })}>
+	Show Toast
+</button>
+
+<Toaster {toaster} />
+```
+
+## Examples
+
+### Status
+
+Change the status of the toast by passing the `type` prop when creating. This affects the colour scheme and icon used. Toast supports `info`, `success`, `warning`, `error`, and `loading` statuses.
+
+<Canvas of={ToastStories.Status} />
+
+### With Action
+
+Add an action button to the toast using the `action` prop.
+
+<Canvas of={ToastStories.WithAction} />
+
+### Duration
+
+Control how long a toast stays visible by setting a custom `duration` in milliseconds. Use `Infinity` to keep it visible until manually dismissed.
+
+<Canvas of={ToastStories.Duration} />
+
+### Stacking
+
+Multiple toasts stack vertically. New toasts appear at the bottom and push existing toasts up.
+
+<Canvas of={ToastStories.Stacking} />
+
+## Toaster Methods
+
+The toaster instance provides several methods:
+
+```ts
+// Create a toast
+toaster.create({
+	title: "Title",
+	description: "Description",
+	type: "info",
+	duration: 5000,
+});
+
+// Dismiss a toast by ID
+const id = toaster.create({ description: "Hello!" });
+toaster.dismiss(id);
+
+// Dismiss all toasts
+toaster.dismissAll();
+```
+
+## Props
+
+<ArgTypes of={Toast} exclude={toastPattern} />

@@ -1,0 +1,59 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as DataListStories from "./DataList.stories.svelte";
+import { DataList } from "$saas/components/data-list";
+import { dataListRootPattern } from "../utils";
+
+<Meta of={DataListStories} />
+
+# DataList
+
+Used to display a list of similar data items.
+
+<Canvas of={DataListStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>import {DataList} from "$saas/components/data-list";</script>
+```
+
+```tsx
+<DataList.Root>
+	<DataList.Item>
+		<DataList.ItemLabel>Label</DataList.ItemLabel>
+		<DataList.ItemValue>Value</DataList.ItemValue>
+	</DataList.Item>
+</DataList.Root>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the data list component.
+
+<Canvas of={DataListStories.Sizes} />
+
+### Orientation
+
+Use the `orientation` prop to control how labels and values are arranged within each item. The default `horizontal` orientation displays the label and value side-by-side.
+
+<Canvas of={DataListStories.Orientation} />
+
+### Vertical Orientation
+
+Set `orientation="vertical"` to stack the label above the value within each item.
+
+<Canvas of={DataListStories.Vertical} />
+
+### Divider
+
+Use the `divider` prop to add separators between items.
+
+<Canvas of={DataListStories.WithDivider} />
+
+## Props
+
+### DataList.Root
+
+<ArgTypes of={DataList.Root} exclude={dataListRootPattern} />

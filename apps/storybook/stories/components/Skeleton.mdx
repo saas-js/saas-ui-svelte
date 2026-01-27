@@ -1,0 +1,90 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as SkeletonStories from "./Skeleton.stories.svelte";
+import {
+	Skeleton,
+	SkeletonCircle,
+	SkeletonText,
+} from "$saas/components/skeleton";
+import {
+	skeletonPattern,
+	skeletonCirclePattern,
+	skeletonTextPattern,
+} from "../utils";
+
+<Meta of={SkeletonStories} />
+
+# Skeleton
+
+## Used to render a placeholder while content is loading.
+
+<Canvas of={SkeletonStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Skeleton, SkeletonCircle, SkeletonText } from "$saas/components/skeleton";
+</script>
+
+<SkeletonCircle size="10" />
+<SkeletonText noOfLines={2} />
+<Skeleton height="200px" />
+```
+
+## Examples
+
+### Feed
+
+Use the Skeleton component to create a feed skeleton.
+
+<Canvas of={SkeletonStories.Feed} />
+
+### Text
+
+Use the `SkeletonText` component to create a skeleton for text.
+
+<Canvas of={SkeletonStories.Text} />
+
+### With Children
+
+Use the `loading` prop to show the skeleton while the content is loading.
+
+<Canvas of={SkeletonStories.WithChildren} />
+
+### Variants
+
+Use the `variant` prop to change the visual style of the Skeleton. Options are `pulse`, `shine`, and `none`.
+
+<Canvas of={SkeletonStories.Variants} />
+
+### Content Loading
+
+When `loading` is changed to `false`, the Skeleton component will fade in the content.
+
+<Canvas of={SkeletonStories.ContentLoading} />
+
+### Circle Sizes
+
+Use the `size` prop on `SkeletonCircle` to change the size of the circle.
+
+<Canvas of={SkeletonStories.CircleSizes} />
+
+### Text Lines
+
+Use the `noOfLines` prop on `SkeletonText` to specify the number of text lines.
+
+<Canvas of={SkeletonStories.TextLines} />
+
+## Props
+
+### Skeleton
+
+<ArgTypes of={Skeleton} exclude={skeletonPattern} />
+
+### SkeletonCircle
+
+<ArgTypes of={SkeletonCircle} exclude={skeletonCirclePattern} />
+
+### SkeletonText
+
+<ArgTypes of={SkeletonText} exclude={skeletonTextPattern} />

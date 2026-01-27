@@ -1,0 +1,98 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as HeadingStories from "./Heading.stories.svelte";
+import { Heading } from "$saas/typography/heading";
+import { headingPattern } from "../utils";
+
+<Meta of={HeadingStories} />
+
+# Heading
+
+Used to render semantic HTML heading elements.
+
+<Canvas of={HeadingStories.Basic} />
+
+## Usage
+
+```tsx
+<script>
+	import { Heading } from "$saas/typography/heading";
+</script>
+
+<Heading>I'm a Heading</Heading>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the heading component. You can set the value to `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, or `7xl`.
+
+<Canvas of={HeadingStories.Sizes} />
+
+### Multiline
+
+Headings work well with multi-line content using `<br />` tags.
+
+<Canvas of={HeadingStories.Multiline} />
+
+### Weights
+
+Use the `weight` (or `fontWeight`) prop to change the font weight. You can set the value to `normal`, `medium`, `semibold`, or `bold`.
+
+<Canvas of={HeadingStories.Weights} />
+
+### Polymorphism
+
+Change the underlying HTML element using the `as` prop. The component renders an `<h2>` tag by default.
+
+<Canvas of={HeadingStories.AsElement} />
+
+```tsx
+<Heading as="h1">Level 1</Heading>
+<Heading as="h2">Level 2</Heading>
+<Heading as="h3">Level 3</Heading>
+```
+
+### Highlight
+
+Compose with the `Mark` component to highlight specific words in your headings.
+
+<Canvas of={HeadingStories.Highlight} />
+
+```tsx
+<Stack>
+	<Heading size="3xl">
+		Build modern SaaS applications with{" "}
+		<Mark colour="indigo" variant="text">
+			Saas UI
+		</Mark>
+	</Heading>
+	<Text class="text-fg-muted">
+		Saas UI provides enterprise-ready components and patterns to help you
+		build professional applications faster than ever.
+	</Text>
+</Stack>
+```
+
+### Composition
+
+Combine `Heading` with other typography components like `Text` and action components like `Button` to create complete sections.
+
+<Canvas of={HeadingStories.Composition} />
+
+```tsx
+<Stack align="start">
+	<Heading size="2xl">Modern payments for Stores</Heading>
+	<Text class="text-fg-muted mb-3">
+		PayMe helps startups get paid by anyone, anywhere in the world
+	</Text>
+	<Button>
+		Create account
+		<ArrowRight />
+	</Button>
+</Stack>
+```
+
+### Props
+
+<ArgTypes of={Heading} exclude={headingPattern} />

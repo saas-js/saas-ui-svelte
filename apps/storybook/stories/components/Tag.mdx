@@ -1,0 +1,72 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as TagStories from "./Tag.stories.svelte";
+import { Tag } from "$saas/components/tag";
+import { tagPattern } from "../utils";
+
+<Meta of={TagStories} />
+
+# Tag
+
+## Used for categorizing or labeling content.
+
+<Canvas of={TagStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Tag } from "$saas/components/tag";
+</script>
+
+<Tag>Tag here</Tag>
+```
+
+## Examples
+
+### Variants
+
+Use the `variant` prop to change the appearance of the tag.
+
+<Canvas of={TagStories.Variants} />
+
+### Sizes
+
+Use the `size` prop to change the size of the tag.
+
+<Canvas of={TagStories.Sizes} />
+
+### Colours
+
+Use the `colour` prop to change the colour of the tag.
+
+<Canvas of={TagStories.Colours} />
+
+### Closable
+
+Use the `closable` prop to make the tag closable.
+
+<Canvas of={TagStories.Closable} />
+
+### Overflow
+
+Use the `maxWidth` prop to control the maximum width of the tag. When the content exceeds this width, it will be truncated with an ellipsis.
+
+This is particularly useful when dealing with dynamic or user-generated content where the length might vary.
+
+<Canvas of={TagStories.Overflow} />
+
+### Avatar
+
+Here's an example of a tag with an avatar.
+
+<Canvas of={TagStories.Avatar} />
+
+### As Button
+
+Use a wrapper button to render the tag as a button.
+
+<Canvas of={TagStories.AsButton} />
+
+## Props
+
+<ArgTypes of={Tag} exclude={tagPattern} />

@@ -1,0 +1,127 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgTypes,
+	Controls,
+} from "@storybook/addon-docs/blocks";
+import * as AccordionStories from "./Accordion.stories.svelte";
+import { Accordion } from "$saas/components/accordion";
+import {
+	accordionRootPattern,
+	accordionItemPattern,
+	accordionItemTriggerPattern,
+	accordionItemContentPattern,
+} from "../utils";
+import { getControls } from "../utils";
+
+<Meta of={AccordionStories} />
+
+# Accordion
+
+## Used to show and hide sections of related content on a page
+
+[Ark UI](https://ark-ui.com/docs/components/accordion)
+
+<Canvas of={AccordionStories.Basic} />
+
+## Anatomy
+
+**Note:** The `id` prop is required for accessibility. Each accordion must have a unique ID to ensure they have ARIA relationships. When multiple accordions appear on the same page, each one should have a unique item `title` to comply by with WCAG landmark requirements.
+
+**Simple Usage:**
+
+```tsx
+<script>
+  import { Accordion } from '$saas/accordion';
+
+  const items = [
+    { value: 'a', title: 'First Item', content: 'Some value 1...' },
+    { value: 'b', title: 'Second Item', content: 'Some value 2...' },
+    { value: 'c', title: 'Third Item', content: 'Some value 3...' },
+  ];
+</script>
+
+<Accordion.Root id="faq-accordion" {items} collapsible defaultValue={['b']} />
+```
+
+**Composition API:**
+
+```tsx
+<script>
+  import { Accordion } from '$saas/accordion';
+</script>
+
+<Accordion.Root id="settings-accordion" collapsible defaultValue={['b']}>
+  <Accordion.Item value="a">
+    <Accordion.ItemTrigger>First Item</Accordion.ItemTrigger>
+    <Accordion.ItemContent>Some value 1...</Accordion.ItemContent>
+  </Accordion.Item>
+
+  <Accordion.Item value="b">
+    <Accordion.ItemTrigger>Second Item</Accordion.ItemTrigger>
+    <Accordion.ItemContent>Some value 2...</Accordion.ItemContent>
+  </Accordion.Item>
+
+  <Accordion.Item value="c">
+    <Accordion.ItemTrigger>Third Item</Accordion.ItemTrigger>
+    <Accordion.ItemContent>Some value 3...</Accordion.ItemContent>
+  </Accordion.Item>
+</Accordion.Root>
+```
+
+## Examples
+
+### Controlled
+
+Set the accordion that shows up by default, using the `defaultValue` prop.
+
+<Canvas of={AccordionStories.Controlled} />
+
+### With Icon
+
+Add icons to accordion items by including the `Icon` component as a child of `AccordionItemTrigger`.
+
+<Canvas of={AccordionStories.WithIcon} />
+
+### Expand Multiple Items
+
+Use the `multiple` prop to allow multiple items to be expanded at once.
+
+<Canvas of={AccordionStories.Multiple} />
+
+### Sizes
+
+Use the `size` prop to change the size of the accordion.
+
+<Canvas of={AccordionStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the visual style of the accordion. Values can be `outline`, `subtle`, `enclosed`, or `plain`.
+
+<Canvas of={AccordionStories.Variants} />
+
+### Disabled Item
+
+Pass `disabled` on specific items in your data array to prevent them from being expanded or collapsed.
+
+<Canvas of={AccordionStories.DisabledItem} />
+
+### Props
+
+**Accordion.Root**
+
+<ArgTypes of={Accordion.Root} exclude={accordionRootPattern} />
+
+**Accordion.Item**
+
+<ArgTypes of={Accordion.Item} exclude={accordionItemPattern} />
+
+**Accordion.ItemTrigger**
+
+<ArgTypes of={Accordion.ItemTrigger} exclude={accordionItemTriggerPattern} />
+
+**Accordion.ItemContent**
+
+<ArgTypes of={Accordion.ItemContent} exclude={accordionItemContentPattern} />

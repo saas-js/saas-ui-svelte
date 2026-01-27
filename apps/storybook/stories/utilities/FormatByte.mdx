@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as FormatByteStories from "./FormatByte.stories.svelte";
+import { getControls } from "../utils";
+
+<Meta of={FormatByteStories} />
+
+# Format Byte
+
+## Used to format bytes to a human-readable format.
+
+<Canvas of={FormatByteStories.Basic} />
+
+## Usage
+
+```tsx
+<script>
+	import { FormatByte } from "$saas/utilities/format-byte";
+	import { Text } from "$saas/typography/text";
+</script>
+
+<Text>
+	File size: <FormatByte value={1000} />
+</Text>
+```
+
+## Examples
+
+### Sizes
+
+The format function works for any size of bytes.
+
+<Canvas of={FormatByteStories.Sizes} />
+
+### Format Bits
+
+Use the `unit="bit"` prop to change the byte format to bits.
+
+<Canvas of={FormatByteStories.FormatBits} />
+
+### Locale
+
+Wrap the FormatByte component within the `LocaleProvider` to change the locale.
+
+<Canvas of={FormatByteStories.Locale} />
+
+### Unit Display
+
+Use the `unitDisplay` prop to change the unit display format.
+
+<Canvas of={FormatByteStories.UnitDisplay} />
+
+## Props
+
+<ArgTypes {...getControls(["value", "unit", "unitDisplay", "locale"])} />

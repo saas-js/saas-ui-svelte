@@ -1,0 +1,52 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as TextStories from "./Text.stories.svelte";
+import { Text } from "$saas/typography/text";
+import { textPattern } from "../utils";
+
+<Meta of={TextStories} />
+
+# Text
+
+Used to render text and paragraphs within an interface.
+
+<Canvas of={TextStories.Basic} />
+
+## Usage
+
+```tsx
+<script>
+	import { Text } from "$saas/typography/text";
+</script>
+
+<Text>This is the text component</Text>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` or `textStyle` prop to change the size of the text.
+
+<Canvas of={TextStories.Sizes} />
+
+### Weights
+
+Use the `weight` or `fontWeight` prop to change the weight of the text.
+
+<Canvas of={TextStories.Weights} />
+
+### Truncation
+
+Use the `truncate` prop to truncate the text after a single line.
+
+<Canvas of={TextStories.Truncation} />
+
+### Line Clamp
+
+Use the `lineClamp` prop to truncate the text after a certain number of lines.
+
+<Canvas of={TextStories.LineClamp} />
+
+### Props
+
+<ArgTypes of={Text} exclude={textPattern} />

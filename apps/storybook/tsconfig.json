@@ -1,0 +1,29 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"target": "ESNext",
+		"verbatimModuleSyntax": true,
+		"noEmit": true,
+		"paths": {
+			"$saas": ["../../packages/saas-svelte"],
+			"$saas/*": ["../../packages/saas-svelte/*"]
+		}
+	},
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.svelte",
+		"stories/**/*.ts",
+		"stories/**/*.svelte",
+		".storybook/**/*.ts"
+	],
+	"exclude": ["node_modules", ".svelte-kit", "storybook-static"]
+}

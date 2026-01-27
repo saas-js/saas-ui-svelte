@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.svelte-kit/
+.astro/
+storybook-static/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Editor directories
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Debug logs
+*.log
+debug-*.log
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Test coverage
+coverage/

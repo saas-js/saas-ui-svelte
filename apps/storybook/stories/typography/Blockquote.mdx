@@ -1,0 +1,70 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgTypes,
+	Source,
+} from "@storybook/addon-docs/blocks";
+import * as BlockquoteStories from "./Blockquote.stories.svelte";
+import { Blockquote } from "$saas/typography/blockquote";
+import { blockquotePattern } from "../utils";
+
+<Meta of={BlockquoteStories} />
+
+# Blockquote
+
+Used to quote text content from an external source
+
+<Canvas of={BlockquoteStories.Basic} />
+
+## Usage
+
+```tsx
+<script>
+	import { Blockquote } from "$saas/typography/blockquote";
+</script>
+
+<Blockquote>
+	<p>
+		If anyone thinks he is something when he is nothing, he deceives himself.
+		Each one should test his own actions. Then he can take pride in himself,
+		without comparing himself to anyone else.
+	</p>
+</Blockquote>
+```
+
+## Examples
+
+### With Cite
+
+Use the `cite` prop to provide the source of the blockquote. This will be displayed below the blockquote with a dash prefix when `showDash` is enabled.
+
+<Canvas of={BlockquoteStories.WithCite} />
+
+### Colors
+
+Use the `colour` prop to change the color of the blockquote.
+
+<Canvas of={BlockquoteStories.Colors} />
+
+### Variants
+
+Use the `variant` prop to change the visual style of the blockquote. Values can be `subtle`, `solid`, or `plain`.
+
+<Canvas of={BlockquoteStories.Variants} />
+
+### Icon
+
+Use the `showIcon` prop to show an icon on the blockquote. The default icon is a double quote.
+
+<Canvas of={BlockquoteStories.Icon} />
+
+### Custom Icon
+
+Use the `icon` prop to change the icon of the blockquote.
+
+<Canvas of={BlockquoteStories.CustomIcon} />
+
+## Props
+
+<ArgTypes of={Blockquote} exclude={blockquotePattern} />

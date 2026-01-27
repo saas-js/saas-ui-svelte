@@ -1,0 +1,67 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgTypes,
+	Source,
+} from "@storybook/addon-docs/blocks";
+import * as IconStories from "./Icon.stories.svelte";
+import { Icon } from "$saas/components/icon";
+import { iconPattern } from "../utils";
+
+<Meta of={IconStories} />
+
+# Icon
+
+## Used to display an SVG icon
+
+<Canvas of={IconStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Icon } from "$saas/icon";
+	import Heart from "phosphor-svelte/lib/Heart";
+</script>
+
+<Icon as="{Heart}" weight="regular" />
+```
+
+You can also use raw SVG paths by passing them as children:
+
+```tsx
+<Icon viewBox="0 0 24 24">
+	<path d="..." />
+</Icon>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the icon dimensions. You can set the value to `xs`, `sm`, `md`, `lg`, `xl`, or `2xl`.
+
+<Canvas of={IconStories.Sizes} />
+
+### Colours
+
+Use the `colour` prop to apply theme colours from the palette.
+
+<Canvas of={IconStories.Colours} />
+
+### Weights
+
+Use the `weight` prop to control the style of Phosphor icons. Options include: thin, light, regular, bold, fill, and duotone.
+
+<Canvas of={IconStories.Weights} />
+
+### Custom SVG
+
+Wrap raw SVG paths directly by passing them as children.
+
+<Canvas of={IconStories.CustomSVG} />
+
+### Props
+
+<ArgTypes of={Icon} exclude={iconPattern} />

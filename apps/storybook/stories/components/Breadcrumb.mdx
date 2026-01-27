@@ -1,0 +1,110 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as BreadcrumbStories from "./Breadcrumb.stories.svelte";
+import {
+	BreadcrumbRoot,
+	BreadcrumbLink,
+	BreadcrumbCurrentLink,
+	BreadcrumbEllipsis,
+} from "$saas/components/breadcrumb";
+import {
+	breadcrumbRootPattern,
+	breadcrumbLinkPattern,
+	breadcrumbCurrentLinkPattern,
+	breadcrumbEllipsisPattern,
+} from "../utils";
+
+<Meta of={BreadcrumbStories} />
+
+# Breadcrumb
+
+## Used to display a page's location within a site's hierarchical structure.
+
+<Canvas of={BreadcrumbStories.Basic} />
+
+## Anatomy
+
+The Breadcrumb component uses a compound component pattern with a Root, Link, CurrentLink, and optional Ellipsis.
+
+```tsx
+<script>
+	import { Breadcrumb } from "$saas/components/breadcrumb";
+</script>
+
+<Breadcrumb.Root separator="/">
+	<Breadcrumb.Link href="#">Workspace</Breadcrumb.Link>
+	<Breadcrumb.Link href="#">Projects</Breadcrumb.Link>
+	<Breadcrumb.CurrentLink>Settings</Breadcrumb.CurrentLink>
+</Breadcrumb.Root>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the breadcrumb component.
+
+<Canvas of={BreadcrumbStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the appearance of the breadcrumb links.
+
+<Canvas of={BreadcrumbStories.Variants} />
+
+### With Separator
+
+Use the `separator` prop to customise the separator between items. You can pass a string or a Svelte snippet.
+
+<Canvas of={BreadcrumbStories.WithSeparator} />
+
+### With Icon
+
+Add icons to breadcrumb links for better visual context.
+
+<Canvas of={BreadcrumbStories.WithIcon} />
+
+### With Ellipsis
+
+Use the `Breadcrumb.Ellipsis` component to indicate truncated breadcrumb paths.
+
+<Canvas of={BreadcrumbStories.WithEllipsis} />
+
+### With Menu
+
+Compose the breadcrumb with the Menu component to create a dropdown navigation within the breadcrumb trail.
+
+<Canvas of={BreadcrumbStories.WithMenu} />
+
+## Routing Library
+
+Use the standard `href` prop on `Breadcrumb.Link` for navigation. For SvelteKit, you can use the standard anchor behaviour.
+
+```tsx
+<script>
+	import { Breadcrumb } from "$saas/components/breadcrumb";
+</script>
+
+<Breadcrumb.Root>
+	<Breadcrumb.Link href="/docs">Docs</Breadcrumb.Link>
+	<Breadcrumb.Link href="/docs/components">Components</Breadcrumb.Link>
+	<Breadcrumb.CurrentLink>Breadcrumb</Breadcrumb.CurrentLink>
+</Breadcrumb.Root>
+```
+
+## Props
+
+### Root
+
+<ArgTypes of={BreadcrumbRoot} exclude={breadcrumbRootPattern} />
+
+### Link
+
+<ArgTypes of={BreadcrumbLink} exclude={breadcrumbLinkPattern} />
+
+### CurrentLink
+
+<ArgTypes of={BreadcrumbCurrentLink} exclude={breadcrumbCurrentLinkPattern} />
+
+### Ellipsis
+
+<ArgTypes of={BreadcrumbEllipsis} exclude={breadcrumbEllipsisPattern} />

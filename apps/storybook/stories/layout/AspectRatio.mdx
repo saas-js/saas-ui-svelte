@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as AspectRatioStories from "./AspectRatio.stories.svelte";
+import { AspectRatio } from "$saas/layout/aspect-ratio";
+import { aspectRatioPattern } from "../utils";
+
+<Meta of={AspectRatioStories} />
+
+# Aspect Ratio
+
+Used to embed responsive videos and maps, etc. The AspectRatio component is used to embed responsive content while maintaining a specific aspect ratio.
+
+<Canvas of={AspectRatioStories.Basic} />
+
+## Usage
+
+```tsx
+<script>
+	import { AspectRatio } from "$saas/layout/aspect-ratio";
+</script>
+
+<AspectRatio ratio={16 / 9}>
+	<iframe
+		title="Video"
+		src="https://www.youtube.com/embed/EHfx9LXzxpw"
+		allowFullScreen
+	/>
+</AspectRatio>
+```
+
+## Examples
+
+### Image
+
+Here's how to embed an image that has a 4 by 3 aspect ratio.
+
+<Canvas of={AspectRatioStories.Image} />
+
+### Video
+
+To embed a video with a specific aspect ratio, use an iframe with src pointing to the link of the video.
+
+<Canvas of={AspectRatioStories.Video} />
+
+### Google Map
+
+Here's how to embed a responsive Google map using AspectRatio.
+
+<Canvas of={AspectRatioStories.GoogleMap} />
+
+### Common Ratios
+
+Here's an example showing common aspect ratios side by side.
+
+<Canvas of={AspectRatioStories.CommonRatios} />
+
+### Responsive
+
+Here's an example of applying a responsive aspect ratio to a box.
+
+<Canvas of={AspectRatioStories.Responsive} />
+
+## Props
+
+<ArgTypes of={AspectRatio} exclude={aspectRatioPattern} />

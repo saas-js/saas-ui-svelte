@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as GridListStories from "./GridList.stories.svelte";
+import { GridList } from "$saas/components/grid-list";
+import {
+	gridListRootPattern,
+	gridListHeaderPattern,
+	gridListItemPattern,
+	gridListCellPattern,
+} from "../utils";
+
+<Meta of={GridListStories} />
+
+# Grid List
+
+## Used to display a list of interactive items with a grid-based layout.
+
+<Canvas of={GridListStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { GridList } from "$saas/components/grid-list";
+</script>
+
+<GridList.Root interactive>
+	<GridList.Header>Header</GridList.Header>
+	<GridList.Item>
+		<GridList.Cell>Cell</GridList.Cell>
+	</GridList.Item>
+</GridList.Root>
+```
+
+## Examples
+
+### With Header
+
+Add a header to the grid list using the `GridList.Header` component.
+
+<Canvas of={GridListStories.WithHeader} />
+
+## Props
+
+### Root
+
+<ArgTypes of={GridList.Root} exclude={gridListRootPattern} />
+
+### Header
+
+<ArgTypes of={GridList.Header} exclude={gridListHeaderPattern} />
+
+### Item
+
+<ArgTypes of={GridList.Item} exclude={gridListItemPattern} />
+
+### Cell
+
+<ArgTypes of={GridList.Cell} exclude={gridListCellPattern} />

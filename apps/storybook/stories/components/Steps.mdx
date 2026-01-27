@@ -1,0 +1,130 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgTypes,
+	Source,
+} from "@storybook/addon-docs/blocks";
+import * as StepsStories from "./Steps.stories.svelte";
+import {
+	StepsRoot,
+	StepsItem,
+	StepsContent,
+	StepsCompletedContent,
+	StepsPrevTrigger,
+	StepsNextTrigger,
+} from "$saas/components/steps";
+import {
+	stepsRootPattern,
+	stepsItemPattern,
+	stepsContentPattern,
+	stepsCompletedContentPattern,
+	stepsPrevTriggerPattern,
+	stepsNextTriggerPattern,
+} from "../utils";
+
+<Meta of={StepsStories} />
+
+# Steps
+
+## Used to indicate progress through a multi-step process.
+
+[Ark UI](https://ark-ui.com/docs/components/steps)
+
+<Canvas of={StepsStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Steps } from "$saas/components/steps";
+	import { Button } from "$saas/components/button";
+	import { Group } from "$saas/layout/group";
+</script>
+
+<Steps.Root count={3}>
+	<Steps.List>
+		<Steps.Item index={0} title="Step 1" />
+		<Steps.Item index={1} title="Step 2" />
+		<Steps.Item index={2} title="Step 3" />
+	</Steps.List>
+
+	<Steps.Content index={0}>Step 1 content</Steps.Content>
+	<Steps.Content index={1}>Step 2 content</Steps.Content>
+	<Steps.Content index={2}>Step 3 content</Steps.Content>
+	<Steps.CompletedContent>All steps are complete!</Steps.CompletedContent>
+
+	<Group>
+		<Steps.PrevTrigger>
+			<Button variant="outline" size="sm">Prev</Button>
+		</Steps.PrevTrigger>
+		<Steps.NextTrigger>
+			<Button variant="outline" size="sm">Next</Button>
+		</Steps.NextTrigger>
+	</Group>
+</Steps.Root>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the steps component.
+
+<Canvas of={StepsStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the appearance of the steps component.
+
+<Canvas of={StepsStories.Variants} />
+
+### Colours
+
+Use the `colour` prop to change the colour scheme of the component.
+
+<Canvas of={StepsStories.Colours} />
+
+### Vertical
+
+Use the `orientation` prop to display steps vertically.
+
+<Canvas of={StepsStories.Vertical} />
+
+### Icon
+
+Pass the `icon` prop to the Steps.Item component to display an icon instead of the step number.
+
+<Canvas of={StepsStories.Icon} />
+
+### Description
+
+Pass the `description` prop to the Steps.Item component to display a description.
+
+<Canvas of={StepsStories.Description} />
+
+## Props
+
+### Root
+
+<ArgTypes of={StepsRoot} exclude={stepsRootPattern} />
+
+### Item
+
+<ArgTypes of={StepsItem} exclude={stepsItemPattern} />
+
+### Content
+
+<ArgTypes of={StepsContent} exclude={stepsContentPattern} />
+
+### CompletedContent
+
+<ArgTypes of={StepsCompletedContent} exclude={stepsCompletedContentPattern} />
+
+### PrevTrigger
+
+<ArgTypes of={StepsPrevTrigger} exclude={stepsPrevTriggerPattern} />
+
+### NextTrigger
+
+<ArgTypes of={StepsNextTrigger} exclude={stepsNextTriggerPattern} />

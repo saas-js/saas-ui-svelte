@@ -1,0 +1,74 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as AvatarStories from "./Avatar.stories.svelte";
+import { Avatar, AvatarGroup } from "$saas/components/avatar";
+import { avatarPattern, avatarGroupPattern } from "../utils";
+
+<Meta of={AvatarStories} />
+
+# Avatar
+
+## Used to represent user profile picture or initials.
+
+[Ark UI](https://ark-ui.com/docs/components/avatar)
+
+<Canvas of={AvatarStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Avatar } from "$saas/components/avatar";
+</script>
+
+<Avatar.Group>
+	<Avatar />
+</Avatar.Group>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the avatar.
+
+<Canvas of={AvatarStories.Sizes} />
+
+### Shape
+
+Use the `shape` prop to change the shape of the avatar, from rounded to square.
+
+<Canvas of={AvatarStories.Shape} />
+
+### Fallback
+
+The initials of the name can be used as a fallback when the src prop is not provided or when the image fails to load.
+
+<Canvas of={AvatarStories.Fallback} />
+
+### Ring
+
+Use the `ring` prop to add a ring around the avatar.
+
+<Canvas of={AvatarStories.WithRing} />
+
+### Group
+
+Use the Group component to group multiple avatars together.
+
+<Canvas of={AvatarStories.Group} />
+
+### Stacking
+
+When using the `Avatar.Group` component, you can use the `stacking` prop to change the stacking order of the avatars.
+
+<Canvas of={AvatarStories.Stacking} />
+
+## Props
+
+### Avatar
+
+<ArgTypes of={Avatar} exclude={avatarPattern} />
+
+### Avatar.Group
+
+<ArgTypes of={AvatarGroup} exclude={avatarGroupPattern} />

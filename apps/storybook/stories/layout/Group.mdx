@@ -1,0 +1,47 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as GroupStories from "./Group.stories.svelte";
+import { Group } from "$saas/layout/group";
+import { groupPattern } from "../../stories/utils";
+
+<Meta of={GroupStories} />
+
+# Group
+
+## Used to group and attach elements together.
+
+<Canvas of={GroupStories.Basic} />
+
+## Usage
+
+```tsx
+import { Group } from "$saas/layout/group";
+
+<Group>
+	<div />
+	<div />
+</Group>;
+```
+
+## Examples
+
+### Button
+
+Here's an example of using the Group component to group buttons together.
+
+<Canvas of={GroupStories.WithButtons} />
+
+### Attached
+
+Use the `attached` prop to attach the children together.
+
+<Canvas of={GroupStories.Attached} />
+
+### Grow
+
+Use the `grow` prop to make the children grow to fill the available space.
+
+<Canvas of={GroupStories.Grow} />
+
+## Props
+
+<ArgTypes of={Group} exclude={groupPattern} />

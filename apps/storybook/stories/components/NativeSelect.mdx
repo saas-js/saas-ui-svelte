@@ -1,0 +1,49 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as NativeSelectStories from "./NativeSelect.stories.svelte";
+import { NativeSelect } from "$saas/components/native-select";
+import { nativeSelectPattern } from "../exclude-patterns";
+
+<Meta of={NativeSelectStories} />
+
+# Select (Native)
+
+## Used to pick a value from predefined options.
+
+<Canvas of={NativeSelectStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { NativeSelect } from "$saas/components/native-select";
+</script>
+
+<NativeSelect>
+	<option value="1">Option 1</option>
+	<option value="2">Option 2</option>
+</NativeSelect>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the select component.
+
+<Canvas of={NativeSelectStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the appearance of the select component.
+
+<Canvas of={NativeSelectStories.Variants} />
+
+### With Validation
+
+Here is an example of how to use the NativeSelect component with form validation.
+
+<Canvas of={NativeSelectStories.WithValidation} />
+
+## Props
+
+<ArgTypes of={NativeSelect} exclude={nativeSelectPattern} />

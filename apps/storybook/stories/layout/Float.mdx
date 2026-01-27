@@ -1,0 +1,58 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgTypes,
+	Source,
+} from "@storybook/addon-docs/blocks";
+import * as FloatStories from "./Float.stories.svelte";
+import { Float } from "$saas/layout/float";
+import { floatPattern } from "../utils";
+
+<Meta of={FloatStories} />
+
+# Float
+
+Used to anchor an element to the edge of a container.
+
+<Canvas of={FloatStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Float } from "$saas/layout/float";
+	import { Box } from "$saas/layout/box";
+	import { Circle } from "$saas/layout/circle";
+</script>
+
+<Box class="relative h-20 w-20 bg-bg-subtle">
+	<Float>
+		<Circle size="sm" colour="red">3</Circle>
+	</Float>
+</Box>
+```
+
+## Examples
+
+### Placements
+
+Use the `placement` prop to position the element along the edges of the container.
+
+<Canvas of={FloatStories.Placements} />
+
+### Offsets
+
+Use `offsetX`, `offsetY`, or `offset` props to offset the element.
+
+<Canvas of={FloatStories.Offsets} />
+
+### With Avatar
+
+Here's an example of composing a Float component with an Avatar component.
+
+<Canvas of={FloatStories.WithAvatar} />
+
+## Props
+
+<ArgTypes of={Float} exclude={floatPattern} />

@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as AlertStories from "./Alert.stories.svelte";
+import { Alert } from "$saas/components/alert";
+import { alertPattern } from "../utils";
+
+<Meta of={AlertStories} />
+
+# Alert
+
+## Used to communicate a state that affects a system, feature or page.
+
+<Canvas of={AlertStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Alert } from "$saas/alert";
+</script>
+
+<Alert status="info" title="This is the alert title" />
+```
+
+## Examples
+
+### Description
+
+Use the `children` to provide additional context to the alert. This will be displayed below the alert message.
+
+<Canvas of={AlertStories.Description} />
+
+### Status
+
+Change the status of the alerts by passing the `status` prop. This affects the colour scheme and icon used. Alert supports error, success, warning, and info statuses.
+
+<Canvas of={AlertStories.Status} />
+
+### Variants
+
+Use the `variant` prop to change the visual style of the alert. Values can be `subtle`, `solid`, `surface`, or `outline`.
+
+<Canvas of={AlertStories.Variants} />
+
+### Custom Icon
+
+Use the `icon` prop to pass a custom icon to the alert. This will override the default icon for the alert status.
+
+<Canvas of={AlertStories.CustomIcon} />
+
+## Props
+
+<ArgTypes of={Alert} exclude={alertPattern} />

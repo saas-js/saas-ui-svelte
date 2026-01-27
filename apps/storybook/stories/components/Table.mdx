@@ -1,0 +1,149 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgTypes,
+	Source,
+} from "@storybook/addon-docs/blocks";
+import * as TableStories from "./Table.stories.svelte";
+import { Table } from "$saas/components/table";
+import {
+	tableRootPattern,
+	tableHeaderPattern,
+	tableBodyPattern,
+	tableRowPattern,
+	tableColumnHeaderPattern,
+	tableCellPattern,
+	tableScrollAreaPattern,
+	tableColumnGroupPattern,
+	tableColumnPattern,
+} from "../utils";
+
+<Meta of={TableStories} />
+
+# Table
+
+## Used to display data in a tabular format.
+
+<Canvas of={TableStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Table } from "$saas/components/table";
+</script>
+
+<Table.Root>
+	<Table.Header>
+		<Table.Row>
+			<Table.ColumnHeader />
+		</Table.Row>
+	</Table.Header>
+	<Table.Body>
+		<Table.Row>
+			<Table.Cell />
+		</Table.Row>
+	</Table.Body>
+</Table.Root>
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the table.
+
+<Canvas of={TableStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the appearance of the table.
+
+<Canvas of={TableStories.Variants} />
+
+### Striped
+
+Use the `striped` prop to add zebra-stripes to the table.
+
+<Canvas of={TableStories.Striped} />
+
+### Column Border
+
+Use the `showColumnBorder` prop to add borders between columns.
+
+<Canvas of={TableStories.ColumnBorder} />
+
+### Overflow
+
+Render the `Table.ScrollArea` component to enable horizontal scrolling.
+
+<Canvas of={TableStories.Overflow} />
+
+### Sticky Header
+
+Use the `stickyHeader` prop to make the table header sticky.
+
+<Canvas of={TableStories.StickyHeader} />
+
+### Interactive
+
+Use the `interactive` prop to highlight rows on hover.
+
+<Canvas of={TableStories.Interactive} />
+
+### Pagination
+
+Here's an example of how to compose a table with pagination.
+
+<Canvas of={TableStories.Pagination} />
+
+### Action Bar
+
+Here's an example of how to compose a table with an action bar and checkboxes. This is useful for showing actions for selected table rows.
+
+<Canvas of={TableStories.ActionBar} />
+
+### Column Group
+
+Use the `Table.ColumnGroup` component to distribute the column widths using the HTML colgroup element.
+
+<Canvas of={TableStories.ColumnGroup} />
+
+## Props
+
+### Table.Root
+
+<ArgTypes of={Table.Root} exclude={tableRootPattern} />
+
+### Table.Header
+
+<ArgTypes of={Table.Header} exclude={tableHeaderPattern} />
+
+### Table.Body
+
+<ArgTypes of={Table.Body} exclude={tableBodyPattern} />
+
+### Table.Row
+
+<ArgTypes of={Table.Row} exclude={tableRowPattern} />
+
+### Table.ColumnHeader
+
+<ArgTypes of={Table.ColumnHeader} exclude={tableColumnHeaderPattern} />
+
+### Table.Cell
+
+<ArgTypes of={Table.Cell} exclude={tableCellPattern} />
+
+### Table.ScrollArea
+
+<ArgTypes of={Table.ScrollArea} exclude={tableScrollAreaPattern} />
+
+### Table.ColumnGroup
+
+<ArgTypes of={Table.ColumnGroup} exclude={tableColumnGroupPattern} />
+
+### Table.Column
+
+<ArgTypes of={Table.Column} exclude={tableColumnPattern} />

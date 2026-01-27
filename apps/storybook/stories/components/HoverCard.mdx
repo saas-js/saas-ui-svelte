@@ -1,0 +1,79 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as HoverCardStories from "./HoverCard.stories.svelte";
+import {
+	HoverCardRoot,
+	HoverCardTrigger,
+	HoverCardContent,
+	HoverCardArrow,
+} from "$saas/components/hover-card";
+import {
+	hoverCardRootPattern,
+	hoverCardTriggerPattern,
+	hoverCardContentPattern,
+	hoverCardArrowPattern,
+} from "../utils";
+
+<Meta of={HoverCardStories} />
+
+# Hover Card
+
+## Used to display content when hovering over an element.
+
+[Ark UI](https://ark-ui.com/docs/components/hover-card)
+
+> Hovercards are generally not inherently accessible because they rely on mouse-hover events, which are unusable for keyboard-only users, screen readers, and many mobile users. They should only display supplementary, non-essential information and must be implemented with strict accessibility considerations to be usable.
+
+<Canvas of={HoverCardStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { HoverCard } from "$saas/components/hover-card";
+</script>
+
+<HoverCard.Root>
+	<HoverCard.Trigger />
+	<HoverCard.Content>
+		<HoverCard.Arrow />
+	</HoverCard.Content>
+</HoverCard.Root>
+```
+
+## Examples
+
+### Controlled
+
+Use the `open` and `onOpenChange` props to control the visibility of the hover card.
+
+<Canvas of={HoverCardStories.Controlled} />
+
+### Delays
+
+Control the open and close delays using the `openDelay` and `closeDelay` props.
+
+<Canvas of={HoverCardStories.Delays} />
+
+### Placement
+
+Use the `positioning.placement` prop to configure the underlying floating-ui positioning logic.
+
+<Canvas of={HoverCardStories.Placement} />
+
+## Props
+
+### HoverCardRoot
+
+<ArgTypes of={HoverCardRoot} exclude={hoverCardRootPattern} />
+
+### HoverCardTrigger
+
+<ArgTypes of={HoverCardTrigger} exclude={hoverCardTriggerPattern} />
+
+### HoverCardContent
+
+<ArgTypes of={HoverCardContent} exclude={hoverCardContentPattern} />
+
+### HoverCardArrow
+
+<ArgTypes of={HoverCardArrow} exclude={hoverCardArrowPattern} />

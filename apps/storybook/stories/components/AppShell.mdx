@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as AppShellStories from "./AppShell.stories.svelte";
+import { AppShell } from "$saas/components/app-shell";
+import { appShellPattern } from "../utils";
+
+<Meta of={AppShellStories} />
+
+# App Shell
+
+## The App Shell defines the main structure of your app.
+
+## Navbar layout
+
+AppShell will fit itself into the viewport by default, using `height="100dvh"`.
+
+<Canvas of={AppShellStories.NavbarLayout} />
+
+## Sidebar layout
+
+AppShell with a Sidebar and Page.
+
+<Canvas of={AppShellStories.SidebarLayout} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { AppShell } from "$saas/components/app-shell";
+	import { Navbar } from "$saas/components/navbar";
+	import { Sidebar } from "$saas/components/sidebar";
+</script>
+
+<AppShell>
+	{#snippet header()}
+		<Navbar.Root>
+			<!-- Navbar content -->
+		</Navbar.Root>
+	{/snippet}
+	{#snippet sidebar()}
+		<Sidebar.Root>
+			<!-- Sidebar content -->
+		</Sidebar.Root>
+	{/snippet}
+	<!-- Main content -->
+</AppShell>
+```
+
+## Props
+
+<ArgTypes of={AppShell} exclude={appShellPattern} />

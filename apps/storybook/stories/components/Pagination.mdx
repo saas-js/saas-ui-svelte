@@ -1,0 +1,90 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as PaginationStories from "./Pagination.stories.svelte";
+import { Pagination } from "$saas/components/pagination";
+import { paginationPattern } from "../utils";
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+## Used to navigate through a series of pages.
+
+[Ark UI](https://ark-ui.com/docs/components/pagination)
+
+<Canvas of={PaginationStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Pagination } from "$saas/components/pagination";
+</script>
+
+<Pagination count={100} pageSize={10} />
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the pagination. Available sizes are `xs`, `sm`, `md` (default), and `lg`.
+
+<Canvas of={PaginationStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the visual style of the pagination. Available variants are `ghost` (default), `outline`, and `solid`.
+
+<Canvas of={PaginationStories.Variants} />
+
+### Sibling Count
+
+Use the `siblingCount` prop to control the number of sibling pages to show before and after the current page.
+
+<Canvas of={PaginationStories.SiblingCount} />
+
+### Controlled
+
+Use the `page` and `onPageChange` props to control the current page.
+
+<Canvas of={PaginationStories.Controlled} />
+
+### Compact
+
+Use the `compact` prop to show a compact page text instead of individual page items. This is useful for mobile views.
+
+<Canvas of={PaginationStories.Compact} />
+
+### Attached
+
+Use the `attached` prop to visually attach the pagination items together.
+
+<Canvas of={PaginationStories.Attached} />
+
+### Count Text
+
+Use `pageTextFormat="long"` to show the count text format like "1 - 5 of 50".
+
+<Canvas of={PaginationStories.CountText} />
+
+### As Link
+
+Use `type="link"` and the `getHref` prop to create pagination that navigates via links instead of buttons.
+
+<Canvas of={PaginationStories.AsLink} />
+
+### Data Driven
+
+Here's an example of controlling the pagination state and using the state to slice the data.
+
+<Canvas of={PaginationStories.DataDriven} />
+
+### Colours
+
+Use the `colour` prop to change the colour theme of the pagination. This is most visible with the `solid` variant.
+
+<Canvas of={PaginationStories.Colours} />
+
+## Props
+
+<ArgTypes of={Pagination} exclude={paginationPattern} />

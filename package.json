@@ -1,0 +1,26 @@
+{
+	"name": "saas-ui-svelte",
+	"private": true,
+	"description": "A Svelte implementation of the open-source SaaS Design System",
+	"type": "module",
+	"workspaces": ["packages/*", "apps/*"],
+	"scripts": {
+		"dev": "npm run storybook -w apps/storybook",
+		"storybook": "npm run storybook -w apps/storybook",
+		"build:storybook": "npm run build-storybook -w apps/storybook",
+		"website": "npm run dev -w apps/website",
+		"build:website": "npm run build -w apps/website",
+		"build": "npm run build:storybook && npm run build:website",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
+	},
+	"devDependencies": {
+		"prettier": "^3.8.1",
+		"prettier-plugin-svelte": "^3.4.1",
+		"prettier-plugin-tailwindcss": "^0.7.2",
+		"typescript": "^5.9.3"
+	},
+	"engines": {
+		"node": ">=20"
+	}
+}

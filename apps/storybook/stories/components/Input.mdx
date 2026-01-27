@@ -1,0 +1,107 @@
+import { Meta, Story, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as InputStories from "./Input.stories.svelte";
+import {
+	Input,
+	InputGroup,
+	InputElement,
+	InputAddon,
+} from "$saas/components/input";
+import {
+	getControls,
+	inputPattern,
+	inputGroupPattern,
+	inputElementPattern,
+} from "../utils";
+
+<Meta of={InputStories} />
+
+# Input
+
+## Used to get user input in a text field.
+
+<Canvas of={InputStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { Input } from "$saas/input";
+</script>
+
+<input placeholder="Basic input" />
+
+<Input.Group>
+	<Input.Element placement="left">
+		<Icon />
+	</Input.Element>
+	<input class="pl-10" placeholder="With Icon" />
+</Input.Group>
+```
+
+## Examples
+
+### Variants
+
+Use the variant prop to change the visual style of the input. Values can be outline, subtle, or flushed.
+
+<Canvas of={InputStories.Variants} />
+
+### Sizes
+
+Use the size prop to change the size of the input. Available sizes are xs, sm, md (default), and lg.
+
+<Canvas of={InputStories.Sizes} />
+
+### Left Element
+
+Pair the input with the `Input.Element` component to add an element to the left of the input.
+
+<Canvas of={InputStories.LeftElement} />
+
+### Left and Right Element
+
+Use `Input.Element` with `placement="left"` and `placement="right"` to add elements on both sides.
+
+<Canvas of={InputStories.LeftAndRightElement} />
+
+### With Addons
+
+Use `Input.Addon` with the `Input.Group` component to attach fixed labels to the start or end of an input.
+
+<Canvas of={InputStories.WithAddons} />
+
+### Disabled
+
+Use the `disabled` prop to disable the input.
+
+<Canvas of={InputStories.Disabled} />
+
+### Colours
+
+Use the `colour` prop to change the focus ring color of the input.
+
+<Canvas of={InputStories.Colours} />
+
+### Custom Placeholder
+
+Use the `placeholder` pseudo-element and `text-inherit` to colour the placeholder text.
+
+<Canvas of={InputStories.InputWithPlaceholderStyle} />
+
+## Props
+
+### Input
+
+<ArgTypes of={Input} exclude={inputPattern} />
+
+### Input.Group
+
+<ArgTypes of={InputGroup} exclude={inputGroupPattern} />
+
+### Input.Element
+
+<ArgTypes of={InputElement} exclude={inputElementPattern} />
+
+### Input.Addon
+
+<ArgTypes of={InputAddon} exclude={/^(?!(size|class|children)$).*$/} />

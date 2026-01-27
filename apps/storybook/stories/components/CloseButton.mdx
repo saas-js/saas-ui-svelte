@@ -1,0 +1,46 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as CloseButtonStories from "./CloseButton.stories.svelte";
+import { CloseButton } from "$saas/components/close-button";
+import { closeButtonPattern } from "../exclude-patterns";
+
+<Meta of={CloseButtonStories} />
+
+# CloseButton
+
+## Used to trigger closing of dialogs, panels, and other components.
+
+<Canvas of={CloseButtonStories.Basic} />
+
+## Anatomy
+
+```tsx
+<script>
+	import { CloseButton } from "$saas/components/close-button";
+</script>
+
+<CloseButton />
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the size of the close button.
+
+<Canvas of={CloseButtonStories.Sizes} />
+
+### Variants
+
+Use the `variant` prop to change the appearance of the close button.
+
+<Canvas of={CloseButtonStories.Variants} />
+
+### Custom Icon
+
+Use the `children` prop to change the icon of the close button.
+
+<Canvas of={CloseButtonStories.CustomIcon} />
+
+## Props
+
+<ArgTypes of={CloseButton} exclude={closeButtonPattern} />
