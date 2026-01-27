@@ -40,7 +40,7 @@
 			</Button>
 		</form>
 	</Card.Body>
-	<Card.Footer class="justify-center bg-bg-subtle py-3">
+	<Card.Footer class="justify-center bg-bg-subtle dark:bg-bg-muted py-3">
 		<p class="text-sm text-fg-muted">
 			Don't have an account yet?
 			<Link href="#" onclick={(e: Event) => e.preventDefault()}>Sign up</Link>.
