@@ -8,7 +8,7 @@
 </script>
 
 <Card.Root variant="elevated">
-	<Card.Body class="pt-6">
+	<Card.Body class="pt-6 pb-6">
 		<Centre class="mb-6">
 			<Logo />
 		</Centre>
@@ -22,7 +22,7 @@
 			</Button>
 		</form>
 	</Card.Body>
-	<Card.Footer class="justify-center bg-bg-subtle">
+	<Card.Footer class="justify-center bg-bg-subtle py-3">
 		<p class="text-sm text-fg-muted">
 			Didn't receive a code?
 			<Link href="#">Resend</Link>.
