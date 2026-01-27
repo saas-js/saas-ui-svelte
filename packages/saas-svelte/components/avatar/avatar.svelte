@@ -13,32 +13,25 @@
 		variants: {
 			size: {
 				"2xs": {
-					root: "w-4 h-4 text-[8px]",
-					fallback: "text-[8px]",
+					root: "w-4 h-4 text-[7px]",
 				},
 				xs: {
-					root: "w-5 h-5 text-xs",
-					fallback: "text-xs",
+					root: "w-5 h-5 text-[9px]",
 				},
 				sm: {
-					root: "w-6 h-6 text-xs",
-					fallback: "text-xs",
+					root: "w-6 h-6 text-[10px]",
 				},
 				md: {
 					root: "w-9 h-9 text-lg",
-					fallback: "text-lg",
 				},
 				lg: {
 					root: "w-12 h-12 text-2xl",
-					fallback: "text-2xl",
 				},
 				xl: {
 					root: "w-16 h-16 text-3xl",
-					fallback: "text-3xl",
 				},
 				"2xl": {
 					root: "w-20 h-20 text-4xl",
-					fallback: "text-4xl",
 				},
 				full: {
 					root: "w-full h-full",

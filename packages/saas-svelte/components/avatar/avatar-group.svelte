@@ -18,14 +18,14 @@
 		base: "flex items-center justify-start",
 		variants: {
 			size: {
-				"2xs": "-space-x-1",
-				xs: "-space-x-1.5",
-				sm: "-space-x-2",
-				md: "-space-x-2",
-				lg: "-space-x-3",
-				xl: "-space-x-3",
-				"2xl": "-space-x-4",
-				full: "-space-x-4",
+				"2xs": "-space-x-1.5",
+				xs: "-space-x-2",
+				sm: "-space-x-2.5",
+				md: "-space-x-3",
+				lg: "-space-x-4",
+				xl: "-space-x-5",
+				"2xl": "-space-x-6",
+				full: "-space-x-6",
 			},
 			spaceX: {
 				"1": "space-x-1",

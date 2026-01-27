@@ -33,7 +33,7 @@
 	});
 </script>
 
-<Navbar.Root bordered>
+<Navbar.Root bordered class="fixed top-0 left-0 right-0 z-50 bg-bg-default/80 backdrop-blur-md">
 	<Navbar.Content maxW="max-w-screen-2xl mx-auto">
 		<Navbar.Brand>
 			<Logo />
