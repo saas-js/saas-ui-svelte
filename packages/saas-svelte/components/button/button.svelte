@@ -112,10 +112,11 @@
 </script>
 
 <script lang="ts">
+	import type { HTMLAnchorAttributes } from "svelte/elements";
 	import { getColourStyle } from "$saas/utils/colours";
 	import { Spinner } from "$saas/components/spinner";
 
-	interface Props extends HTMLButtonAttributes {
+	type BaseProps = {
 		/**
 		 * The visual style of the button.
 		 * @default "surface"
@@ -146,9 +147,27 @@
 		 * @default ""
 		 */
 		loadingText?: string;
-	}
+		/**
+		 * Whether the button is disabled.
+		 * @default false
+		 */
+		disabled?: boolean;
+	};
+
+	type ButtonAsButton = BaseProps &
+		HTMLButtonAttributes & {
+			as?: "button";
+		};
+
+	type ButtonAsAnchor = BaseProps &
+		HTMLAnchorAttributes & {
+			as: "a";
+		};
+
+	type Props = ButtonAsButton | ButtonAsAnchor;
 
 	let {
+		as = "button",
 		variant = "surface",
 		size = "md",
 		icon = false,
@@ -192,12 +211,7 @@
 	const spinnerClass = $derived(spinnerClassMap[size]);
 </script>
 
-<button
-	class={finalClass}
-	style={finalStyle}
-	disabled={disabled || loading}
-	{...restProps}
->
+{#snippet buttonContent()}
 	{#if loading && !loadingText}
 		<span class="contents">
 			<div
@@ -218,4 +232,24 @@
 	{:else}
 		{@render children?.()}
 	{/if}
-</button>
+{/snippet}
+
+{#if as === "a"}
+	<a
+		class={finalClass}
+		style={finalStyle}
+		aria-disabled={disabled || loading || undefined}
+		{...restProps as HTMLAnchorAttributes}
+	>
+		{@render buttonContent()}
+	</a>
+{:else}
+	<button
+		class={finalClass}
+		style={finalStyle}
+		disabled={disabled || loading}
+		{...restProps as HTMLButtonAttributes}
+	>
+		{@render buttonContent()}
+	</button>
+{/if}

@@ -6,12 +6,13 @@
 	import { Separator } from "@saas-ui/svelte/components/separator";
 	import { Drawer } from "@saas-ui/svelte/components/drawer";
 	import { Link } from "@saas-ui/svelte/components/link";
-	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
+	import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
 	import GithubLogo from "phosphor-svelte/lib/GithubLogo";
 	import Sun from "phosphor-svelte/lib/Sun";
 	import Moon from "phosphor-svelte/lib/Moon";
 	import List from "phosphor-svelte/lib/List";
 	import Logo from "./Logo.svelte";
+	import { getTheme, toggleTheme } from "../lib/theme";
 
 	const navLinks = [
 		{ href: "/blocks", label: "Blocks" },
@@ -24,11 +25,7 @@
 	let drawerOpen = $state(false);
 
 	$effect(() => {
-		if (typeof window === "undefined") return;
-		const theme = localStorage.getItem("theme");
-		isDark = theme
-			? theme === "dark"
-			: matchMedia("(prefers-color-scheme: dark)").matches;
+		isDark = getTheme() === "dark";
 	});
 
 	$effect(() => {
@@ -41,13 +38,7 @@
 	});
 
 	function toggleColorMode() {
-		const html = document.documentElement;
-		html.classList.add("no-transitions");
-		html.classList.toggle("dark", !isDark);
-		html.classList.toggle("light", isDark);
-		localStorage.setItem("theme", isDark ? "light" : "dark");
-		isDark = !isDark;
-		requestAnimationFrame(() => html.classList.remove("no-transitions"));
+		isDark = toggleTheme() === "dark";
 	}
 </script>
 
@@ -66,11 +57,11 @@
 		</Navbar.ItemGroup>
 
 		<Navbar.ItemGroup gap={2} justify="end">
-			<Input.Group class="hidden lg:flex w-40" size="sm">
+			<Input.Group class="hidden lg:flex w-40">
 				<Input.Element placement="left">
-					<MagnifyingGlass class="size-3.5" aria-hidden="true" />
+					<MagnifyingGlassIcon class="size-3.5" aria-hidden="true" />
 				</Input.Element>
-				<Input placeholder="Search..." class="px-8" />
+				<Input placeholder="Search..." size="sm" class="px-8" />
 				<Input.Element placement="right" class="pointer-events-auto">
 					<Kbd size="sm">⌘K</Kbd>
 				</Input.Element>
@@ -117,7 +108,13 @@
 				Get Pro
 			</Button>
 
-			<Drawer.Root placement="top" size="md" bind:open={drawerOpen} lazyMount unmountOnExit>
+			<Drawer.Root
+				placement="top"
+				size="md"
+				bind:open={drawerOpen}
+				lazyMount
+				unmountOnExit
+			>
 				<Drawer.Trigger
 					variant="ghost"
 					size="sm"
@@ -126,7 +123,9 @@
 				>
 					<List class="size-4" />
 				</Drawer.Trigger>
-				<Drawer.Content class="max-w-screen-sm mx-auto data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out">
+				<Drawer.Content
+					class="max-w-screen-sm mx-auto data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out"
+				>
 					<div class="flex items-center justify-between px-6 py-4">
 						<Logo />
 						<Drawer.CloseButton class="relative right-0 top-0" />
