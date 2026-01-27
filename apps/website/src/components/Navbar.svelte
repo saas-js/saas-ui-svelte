@@ -21,10 +21,6 @@
 		{ href: "/showcase", label: "Showcase" },
 	];
 
-	let isDark = $state(
-		typeof document !== "undefined" &&
-			document.documentElement.classList.contains("dark"),
-	);
 	let drawerOpen = $state(false);
 
 	$effect(() => {
@@ -35,10 +31,6 @@
 		mq.addEventListener("change", close);
 		return () => mq.removeEventListener("change", close);
 	});
-
-	function toggleColorMode() {
-		isDark = toggleTheme() === "dark";
-	}
 </script>
 
 <Navbar.Root bordered>
@@ -83,13 +75,10 @@
 				size="sm"
 				icon
 				aria-label="Toggle color mode"
-				onclick={toggleColorMode}
+				onclick={toggleTheme}
 			>
-				{#if isDark}
-					<Sun class="size-4" />
-				{:else}
-					<Moon class="size-4" />
-				{/if}
+				<Sun class="size-4 hidden dark:block" />
+				<Moon class="size-4 block dark:hidden" />
 			</Button>
 
 			<Separator
