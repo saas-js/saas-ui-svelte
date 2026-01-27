@@ -20,7 +20,7 @@
 			Log in to your account
 		</h2>
 		<div class="flex flex-col gap-2">
-			<Button variant="outline" class="w-full">
+			<Button variant="outline" class="w-full" onclick={(e: Event) => e.preventDefault()}>
 				<Icon as={GoogleLogo} size="sm" weight="bold" />
 				Continue with Google
 			</Button>
@@ -35,7 +35,7 @@
 				<Field.Label>Email</Field.Label>
 				<Input type="email" placeholder="you@example.com" />
 			</Field.Root>
-			<Button variant="glass" colour="indigo" class="w-full">
+			<Button variant="glass" colour="indigo" class="w-full" onclick={(e: Event) => e.preventDefault()}>
 				Log in
 			</Button>
 		</form>
@@ -43,7 +43,7 @@
 	<Card.Footer class="justify-center bg-bg-subtle py-3">
 		<p class="text-sm text-fg-muted">
 			Don't have an account yet?
-			<Link href="#">Sign up</Link>.
+			<Link href="#" onclick={(e: Event) => e.preventDefault()}>Sign up</Link>.
 		</p>
 	</Card.Footer>
 </Card.Root>

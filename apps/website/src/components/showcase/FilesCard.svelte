@@ -45,7 +45,7 @@
 						<Text weight="medium" class="truncate">{file.name}</Text>
 						<Text class="truncate text-fg-muted">{file.size} • {file.date}</Text>
 					</div>
-					<Button variant="ghost" size="md" aria-label="Download">
+					<Button variant="ghost" size="md" aria-label="Download" onclick={(e: Event) => e.preventDefault()}>
 						<Icon as={DownloadSimple} size="md" weight="bold" />
 					</Button>
 				</li>

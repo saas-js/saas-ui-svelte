@@ -14,7 +14,7 @@
 		</p>
 	</Card.Body>
 	<Card.Footer class="justify-end gap-3">
-		<Button variant="outline">Cancel</Button>
-		<Button variant="solid" colour="red">Confirm</Button>
+		<Button variant="outline" onclick={(e: Event) => e.preventDefault()}>Cancel</Button>
+		<Button variant="solid" colour="red" onclick={(e: Event) => e.preventDefault()}>Confirm</Button>
 	</Card.Footer>
 </Card.Root>
