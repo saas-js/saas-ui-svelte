@@ -12,7 +12,7 @@
 	import Moon from "phosphor-svelte/lib/Moon";
 	import List from "phosphor-svelte/lib/List";
 	import Logo from "./Logo.svelte";
-	import { getTheme, toggleTheme } from "../lib/theme";
+	import { toggleTheme } from "../lib/theme";
 
 	const navLinks = [
 		{ href: "/blocks", label: "Blocks" },
@@ -21,12 +21,11 @@
 		{ href: "/showcase", label: "Showcase" },
 	];
 
-	let isDark = $state(false);
+	let isDark = $state(
+		typeof document !== "undefined" &&
+			document.documentElement.classList.contains("dark"),
+	);
 	let drawerOpen = $state(false);
-
-	$effect(() => {
-		isDark = getTheme() === "dark";
-	});
 
 	$effect(() => {
 		if (typeof window === "undefined") return;
