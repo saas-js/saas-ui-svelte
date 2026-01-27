@@ -106,14 +106,17 @@
 				{/if}
 			</Button>
 
-			<Separator orientation="vertical" class="hidden md:block mx-2 self-center" />
+			<Separator
+				orientation="vertical"
+				class="hidden md:block mx-2 self-center"
+			/>
 
 			<Button
 				variant="glass"
 				size="sm"
 				colour="indigo"
 				as="a"
-				href="/pricing"
+				href="https://beta.saas-ui.dev/pricing"
 			>
 				Get Pro
 			</Button>
