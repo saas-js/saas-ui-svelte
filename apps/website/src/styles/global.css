@@ -69,9 +69,6 @@ html.no-transitions * {
 	transition: none !important;
 }
 
-html {
-	scrollbar-gutter: stable;
-}
 
 body {
 	background-color: var(--color-bg-default);

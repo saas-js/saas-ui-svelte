@@ -8,7 +8,7 @@
 
 <a
 	href="/"
-	class="flex items-end gap-0.5 focus:outline-offset-2 focus:outline-1 focus:outline-solid focus:outline-indigo-600 {className}"
+	class="flex items-end gap-0.5 rounded outline-offset-4 focus:outline-1 focus:outline-solid focus:outline-indigo-600 {className}"
 	aria-label="Saas UI Svelte, Back to homepage"
 >
 	<svg

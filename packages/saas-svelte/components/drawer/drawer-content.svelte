@@ -63,10 +63,16 @@
 				bottom: "justify-stretch items-end",
 			},
 			attached: {
-				true: "p-0",
-				false: "p-2",
+				true: "",
+				false: "",
 			},
 		},
+		compoundVariants: [
+			{ placement: "start", attached: false, class: "py-2 pr-2" },
+			{ placement: "end", attached: false, class: "py-2 pl-2" },
+			{ placement: "top", attached: false, class: "px-2 pb-2" },
+			{ placement: "bottom", attached: false, class: "px-2 pt-2" },
+		],
 		defaultVariants: {
 			placement: "end",
 			attached: false,
@@ -159,7 +165,7 @@
 
 <Portal>
 	<Dialog.Backdrop
-		class="fixed inset-0 z-999 transition-opacity duration-moderate bg-bg-backdrop data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out"
+		class="fixed top-0 left-0 bottom-0 w-full z-999 transition-opacity duration-moderate bg-bg-backdrop data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out"
 		data-state-layer
 	/>
 
