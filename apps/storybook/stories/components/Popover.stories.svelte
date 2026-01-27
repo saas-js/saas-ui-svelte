@@ -248,7 +248,7 @@
 {#snippet formStory()}
 	<Popover.Root size="lg">
 		<Popover.Trigger triggerText="Click me" />
-		<Popover.Content class="rounded-xl" style="width: 320px;">
+		<Popover.Content class="w-80 rounded-xl">
 			<Popover.Arrow />
 			<Popover.Body>
 				<VStack gap={4}>

@@ -141,7 +141,7 @@
 {#snippet withLabelStory()}
 	<VStack gap={2} class="items-center">
 		<Spinner colour="teal" />
-		<Text size="sm" style="color: var(--colors-teal-fg)">Loading...</Text>
+		<Text size="sm" class="text-teal-fg">Loading...</Text>
 	</VStack>
 {/snippet}
 
