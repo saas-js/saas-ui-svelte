@@ -40,7 +40,7 @@
 			</Button>
 		</form>
 	</Card.Body>
-	<Card.Footer class="justify-center bg-bg-subtle/50">
+	<Card.Footer class="justify-center bg-bg-subtle">
 		<p class="text-sm text-fg-muted">
 			Don't have an account yet?
 			<Link href="#">Sign up</Link>.
