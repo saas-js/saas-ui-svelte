@@ -89,8 +89,23 @@
 		chartInstance = createChart();
 
 		const observer = new MutationObserver(() => {
-			chartInstance?.destroy();
-			chartInstance = createChart();
+			if (!chartInstance) return;
+			const colors = getChartColors();
+
+			// Update dataset colors
+			chartInstance.data.datasets[0].borderColor = colors.line;
+			chartInstance.data.datasets[0].backgroundColor = colors.fill;
+
+			// Update tooltip colors
+			const tooltip = chartInstance.options.plugins?.tooltip;
+			if (tooltip) {
+				tooltip.backgroundColor = colors.tooltipBg;
+				tooltip.titleColor = colors.tooltipTitle;
+				tooltip.bodyColor = colors.tooltipBody;
+				tooltip.borderColor = colors.tooltipBorder;
+			}
+
+			chartInstance.update("none");
 		});
 		observer.observe(document.documentElement, {
 			attributes: true,
