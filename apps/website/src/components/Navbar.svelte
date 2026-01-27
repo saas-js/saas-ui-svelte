@@ -1,23 +1,15 @@
 <script lang="ts">
 	import { Navbar } from "@saas-ui/svelte/components/navbar";
-	import { Button, button } from "@saas-ui/svelte/components/button";
+	import { Button } from "@saas-ui/svelte/components/button";
 	import { Input } from "@saas-ui/svelte/components/input";
 	import { Kbd } from "@saas-ui/svelte/components/kbd";
-	import { getColourStyle } from "@saas-ui/svelte/utils/colours";
+	import { Separator } from "@saas-ui/svelte/components/separator";
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
 	import GithubLogo from "phosphor-svelte/lib/GithubLogo";
 	import Sun from "phosphor-svelte/lib/Sun";
 	import Moon from "phosphor-svelte/lib/Moon";
 	import List from "phosphor-svelte/lib/List";
 	import Logo from "./Logo.svelte";
-
-	const ghostIconStyles = button({
-		variant: "ghost",
-		size: "sm",
-		icon: true,
-	});
-	const glassStyles = button({ variant: "glass", size: "sm" });
-	const indigoColourStyle = getColourStyle("indigo");
 
 	let isDark = $state(false);
 
@@ -88,14 +80,17 @@
 				</Input.Element>
 			</Input.Group>
 
-			<a
+			<Button
+				variant="ghost"
+				size="sm"
+				icon
+				as="a"
 				href="https://github.com/saas-js/saas-ui-svelte"
 				target="_blank"
-				class={ghostIconStyles}
 				aria-label="GitHub"
 			>
 				<GithubLogo class="size-4" />
-			</a>
+			</Button>
 
 			<Button
 				variant="ghost"
@@ -111,19 +106,17 @@
 				{/if}
 			</Button>
 
-			<span
-				role="separator"
-				aria-orientation="vertical"
-				class="hidden md:block border-l border-solid border-border-default h-4 mx-2"
-			></span>
+			<Separator orientation="vertical" class="hidden md:block mx-2 self-center" />
 
-			<a
+			<Button
+				variant="glass"
+				size="sm"
+				colour="indigo"
+				as="a"
 				href="/pricing"
-				class="{glassStyles} group"
-				style={indigoColourStyle}
 			>
 				Get Pro
-			</a>
+			</Button>
 
 			<Button
 				variant="ghost"
