@@ -92,11 +92,11 @@
 			if (!chartInstance) return;
 			const colors = getChartColors();
 
-			// Update dataset colors
+			// Update dataset colours
 			chartInstance.data.datasets[0].borderColor = colors.line;
 			chartInstance.data.datasets[0].backgroundColor = colors.fill;
 
-			// Update tooltip colors
+			// Update tooltip colours
 			const tooltip = chartInstance.options.plugins?.tooltip;
 			if (tooltip) {
 				tooltip.backgroundColor = colors.tooltipBg;

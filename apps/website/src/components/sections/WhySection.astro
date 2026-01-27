@@ -1,0 +1,57 @@
+---
+import { Container } from "@saas-ui/svelte/layout/container";
+import { Grid } from "@saas-ui/svelte/layout/grid";
+import { Icon } from "@saas-ui/svelte/components/icon";
+import { Text } from "@saas-ui/svelte/typography/text";
+import { Heading } from "@saas-ui/svelte/typography/heading";
+import Check from "phosphor-svelte/lib/Check";
+
+const features = [
+	[
+		"Faster UI development",
+		"Skip the boilerplate, focus on features",
+		"Pre-built patterns for common SaaS interfaces",
+	],
+	[
+		"Battle-tested components used in production",
+		"Built-in accessibility (WCAG compliance)",
+		"Consistent design language across your product",
+	],
+	[
+		"Fully customisable styling",
+		"Composable component architecture",
+		"No vendor lock-in, it's open source",
+	],
+];
+---
+
+<section class="py-16 border-y border-dashed border-border-default">
+	<Container maxW="7xl">
+		<div class="flex flex-col lg:flex-row items-start lg:items-end gap-4 mb-12">
+			<div class="flex-1">
+				<Heading as="h3" size="4xl" weight="semibold" class="-tracking-wide">
+					Why product teams<br />choose Saas UI
+				</Heading>
+			</div>
+			<div class="flex-1">
+				<Text size="md" class="text-fg-muted">
+					Pre-built, production-ready components that maintain design consistency,
+					while accelerating development speed and time to market.
+				</Text>
+			</div>
+		</div>
+
+		<Grid gap={4} class="grid-cols-1 md:grid-cols-3">
+			{features.map((column) => (
+				<ul class="flex flex-col">
+					{column.map((feature) => (
+						<li class="flex items-center font-medium py-2">
+							<Icon as={Check} size="sm" class="mr-2 shrink-0" />
+							{feature}
+						</li>
+					))}
+				</ul>
+			))}
+		</Grid>
+	</Container>
+</section>

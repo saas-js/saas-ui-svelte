@@ -74,7 +74,7 @@
 				variant="ghost"
 				size="sm"
 				icon
-				aria-label="Toggle color mode"
+				aria-label="Toggle colour mode"
 				onclick={toggleTheme}
 			>
 				<Sun class="size-4 hidden dark:block" />

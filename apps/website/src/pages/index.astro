@@ -1,12 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.svelte";
+import Hero from "../components/Hero.astro";
+import ComponentsPreview from "../components/sections/ComponentsPreview.svelte";
+import WhySection from "../components/sections/WhySection.astro";
+import ClosingCTA from "../components/sections/ClosingCTA.astro";
 import Showcase from "../components/Showcase.svelte";
 ---
 
 <Layout title="SaaS UI Svelte">
 	<main>
-		<Hero client:load />
+		<Hero />
 		<Showcase client:load />
+		<ComponentsPreview client:load />
+		<WhySection />
+		<ClosingCTA />
 	</main>
 </Layout>
