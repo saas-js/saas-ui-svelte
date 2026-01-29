@@ -47,25 +47,23 @@
 	{...restProps}
 />
 
-<style>
+<style global>
 	/* Global keyframes for Tailwind arbitrary animation values */
-	:global {
-		@keyframes progress-stripe {
-			from {
-				background-position: 1rem 0;
-			}
-			to {
-				background-position: 0 0;
-			}
+	@keyframes progress-stripe {
+		from {
+			background-position: 1rem 0;
 		}
+		to {
+			background-position: 0 0;
+		}
+	}
 
-		@keyframes progress-indeterminate {
-			0% {
-				left: -50%;
-			}
-			100% {
-				left: 100%;
-			}
+	@keyframes progress-indeterminate {
+		0% {
+			left: -50%;
+		}
+		100% {
+			left: 100%;
 		}
 	}
 </style>

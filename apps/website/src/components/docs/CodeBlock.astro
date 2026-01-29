@@ -1,0 +1,97 @@
+---
+import { codeToHtml } from 'shiki';
+
+interface Props {
+	code: string;
+	lang?: string;
+	class?: string;
+}
+
+const { code, lang = 'svelte', class: className = '' } = Astro.props;
+
+const html = await codeToHtml(code, {
+	lang,
+	themes: {
+		light: 'github-light',
+		dark: 'github-dark',
+	},
+});
+---
+
+<div class:list={["code-block relative group", className]}>
+	<div class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+		<button
+			type="button"
+			class="copy-button p-1.5 rounded-md bg-bg-muted hover:bg-bg-emphasized text-fg-muted hover:text-fg-default transition-colors"
+			data-code={code}
+			aria-label="Copy code to clipboard"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" class="copy-icon">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" class="check-icon hidden">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg>
+		</button>
+	</div>
+	<div class="shiki-wrapper rounded-lg overflow-x-auto text-sm" set:html={html} />
+</div>
+
+<style is:global>
+	.shiki-wrapper pre {
+		padding: 1rem;
+		margin: 0;
+		border-radius: 0.5rem;
+		overflow-x: auto;
+	}
+
+	.shiki-wrapper code {
+		display: block;
+		width: fit-content;
+		min-width: 100%;
+	}
+
+	/*
+	 * Shiki dual theme setup:
+	 * - Light theme colors are applied directly via inline styles
+	 * - Dark theme colors are set as CSS variables (--shiki-dark, --shiki-dark-bg)
+	 * - We override in dark mode to use the CSS variables
+	 */
+	html.dark .shiki,
+	html.dark .shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;
+	}
+</style>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		const copyButtons = document.querySelectorAll('.copy-button');
+
+		copyButtons.forEach(button => {
+			button.addEventListener('click', async () => {
+				const code = button.getAttribute('data-code');
+				if (!code) return;
+
+				try {
+					await navigator.clipboard.writeText(code);
+
+					const copyIcon = button.querySelector('.copy-icon');
+					const checkIcon = button.querySelector('.check-icon');
+
+					if (copyIcon && checkIcon) {
+						copyIcon.classList.add('hidden');
+						checkIcon.classList.remove('hidden');
+
+						setTimeout(() => {
+							copyIcon.classList.remove('hidden');
+							checkIcon.classList.add('hidden');
+						}, 2000);
+					}
+				} catch (err) {
+					console.error('Failed to copy code:', err);
+				}
+			});
+		});
+	});
+</script>

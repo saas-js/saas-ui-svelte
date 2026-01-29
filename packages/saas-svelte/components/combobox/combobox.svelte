@@ -569,30 +569,20 @@
 	</Portal>
 </Combobox.Root>
 
-<style>
-	:global(
-		[data-scope="combobox"][data-part="content"][data-placement^="bottom"]
-	) {
+<style global>
+	[data-scope="combobox"][data-part="content"][data-placement^="bottom"] {
 		animation: var(--animate-submenu-bottom);
 	}
-	:global(
-		[data-scope="combobox"][data-part="content"][data-placement^="top"]
-	) {
+	[data-scope="combobox"][data-part="content"][data-placement^="top"] {
 		animation: var(--animate-submenu-top);
 	}
-	:global(
-		[data-scope="combobox"][data-part="content"][data-placement^="left"]
-	) {
+	[data-scope="combobox"][data-part="content"][data-placement^="left"] {
 		animation: var(--animate-submenu-left);
 	}
-	:global(
-		[data-scope="combobox"][data-part="content"][data-placement^="right"]
-	) {
+	[data-scope="combobox"][data-part="content"][data-placement^="right"] {
 		animation: var(--animate-submenu-right);
 	}
-	:global(
-		[data-scope="combobox"][data-part="content"]:not([data-placement])
-	) {
+	[data-scope="combobox"][data-part="content"]:not([data-placement]) {
 		animation: var(--animate-submenu-bottom);
 	}
 </style>

@@ -59,24 +59,22 @@
 	{@render menuContent()}
 {/if}
 
-<style>
+<style global>
 	/* Apply slide animations based on menu placement */
-	:global([data-scope="menu"][data-part="content"][data-placement^="right"]) {
+	[data-scope="menu"][data-part="content"][data-placement^="right"] {
 		animation: var(--animate-submenu-right);
 	}
-	:global([data-scope="menu"][data-part="content"][data-placement^="left"]) {
+	[data-scope="menu"][data-part="content"][data-placement^="left"] {
 		animation: var(--animate-submenu-left);
 	}
-	:global([data-scope="menu"][data-part="content"][data-placement^="top"]) {
+	[data-scope="menu"][data-part="content"][data-placement^="top"] {
 		animation: var(--animate-submenu-top);
 	}
-	:global(
-		[data-scope="menu"][data-part="content"][data-placement^="bottom"]
-	) {
+	[data-scope="menu"][data-part="content"][data-placement^="bottom"] {
 		animation: var(--animate-submenu-bottom);
 	}
 	/* Fallback for menus without explicit placement */
-	:global([data-scope="menu"][data-part="content"]:not([data-placement])) {
+	[data-scope="menu"][data-part="content"]:not([data-placement]) {
 		animation: var(--animate-menu-in);
 	}
 </style>

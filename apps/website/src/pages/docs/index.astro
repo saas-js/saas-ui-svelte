@@ -1,0 +1,118 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import DocsLayout from "../../components/docs/DocsLayout.svelte";
+
+const tocItems = [
+	{ label: "Features", href: "#features", level: 1 },
+	{ label: "Sponsors", href: "#sponsors", level: 1 },
+	{ label: "Acknowledgements", href: "#acknowledgements", level: 1 },
+];
+---
+
+<Layout title="Introduction">
+	<DocsLayout
+		currentPath="/docs"
+		tocItems={tocItems}
+		githubUrl="https://github.com/saas-js/saas-ui-svelte"
+		client:load
+	>
+		<div class="flex flex-col gap-4 pb-4">
+			<h1 class="text-2xl font-semibold leading-7 tracking-tight">
+				Introduction
+			</h1>
+			<p class="text-fg-muted">
+				SaaS UI Svelte is an open-source design system for building modern web applications with a native, high-quality feel.
+			</p>
+		</div>
+
+		<div class="text-sm">
+			<p class="text-fg-muted leading-relaxed mb-3.5">
+				Inspired by macOS and premium tools like Linear, Attio, and Superhuman, it provides intuitive primitives
+				that empower developers to create beautiful, user-friendly interfaces without sacrificing development velocity.
+			</p>
+			<p class="text-fg-muted leading-relaxed my-3.5">
+				Whether you're building a simple dashboard or a complex enterprise application, SaaS UI Svelte helps you deliver polished experiences that users love.
+			</p>
+
+			<h2 id="features" class="text-lg font-semibold leading-6 tracking-tight mt-7 mb-3.5 scroll-mt-20">
+				<a class="underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="#features">
+					Features
+				</a>
+			</h2>
+			<ul class="mt-3.5 mb-7 pl-5 list-disc">
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<strong class="text-fg-default">Built for Svelte 5</strong> - Leveraging runes and snippets for optimal performance and developer experience.
+				</li>
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<strong class="text-fg-default">Accessible by default</strong> - All components follow WAI-ARIA guidelines using Ark UI primitives.
+				</li>
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<strong class="text-fg-default">Beautiful design</strong> - Carefully crafted components inspired by premium SaaS applications.
+				</li>
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<strong class="text-fg-default">Dark mode ready</strong> - Built-in support for light and dark themes.
+				</li>
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<strong class="text-fg-default">Fully customisable</strong> - Extend and modify components to match your brand.
+				</li>
+			</ul>
+
+			<h2 id="sponsors" class="text-lg font-semibold leading-6 tracking-tight mt-7 mb-3.5 scroll-mt-20">
+				<a class="underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="#sponsors">
+					Sponsors
+				</a>
+			</h2>
+			<ul class="mt-3.5 mb-7 pl-5 list-disc">
+				<li class="my-3 pl-1.5">
+					<a class="underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="https://github.com/ffaubert">Frank Faubert</a>
+				</li>
+				<li class="my-3 pl-1.5">
+					<a class="underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="https://appulse.net/">Appulse Software</a>
+				</li>
+			</ul>
+
+			<h2 id="acknowledgements" class="text-lg font-semibold leading-6 tracking-tight mt-7 mb-3.5 scroll-mt-20">
+				<a class="underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="#acknowledgements">
+					Acknowledgements
+				</a>
+			</h2>
+			<p class="text-fg-muted leading-relaxed">
+				SaaS UI Svelte is built with the help of many amazing libraries and their authors, without them this wouldn't be possible.
+			</p>
+			<ul class="mt-3.5 mb-7 pl-5 list-disc">
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<a class="text-fg-default underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="https://svelte.dev/">Svelte</a> - The reactive framework powering our components.
+				</li>
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<a class="text-fg-default underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="https://ark-ui.com/">Ark UI</a> - Headless UI primitives providing accessibility and behaviour.
+				</li>
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<a class="text-fg-default underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="https://phosphoricons.com/">Phosphor Icons</a> - Beautiful, flexible icon family.
+				</li>
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<a class="text-fg-default underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="https://tailwindcss.com/">Tailwind CSS</a> - Utility-first CSS framework for styling.
+				</li>
+				<li class="my-3 pl-1.5 text-fg-muted">
+					<a class="text-fg-default underline underline-offset-[3px] font-medium decoration-border-default hover:decoration-fg-default" href="https://saas-ui.dev/">SaaS UI</a> - The original React design system that inspired this port.
+				</li>
+			</ul>
+
+			<div class="flex items-center gap-8 mt-20 pb-20">
+				<div class="flex-1"></div>
+				<a class="flex-1 px-3 py-2 rounded-md border border-border-default hover:border-border-emphasized transition-colors" href="/docs/components/button">
+					<div class="text-end flex flex-col gap-1 text-sm leading-5">
+						<p class="text-fg-muted">
+							Next
+						</p>
+						<div class="inline-flex justify-end items-center gap-2 font-medium">
+							Components
+							<svg stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" width="1em" xmlns="http://www.w3.org/2000/svg" class="h-3.5 fill-none stroke-current">
+								<path d="m9 18 6-6-6-6"></path>
+							</svg>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</DocsLayout>
+</Layout>

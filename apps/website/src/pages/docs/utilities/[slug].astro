@@ -1,0 +1,208 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import DocsLayout from "../../../components/docs/DocsLayout.svelte";
+import StoryPreview from "../../../components/docs/StoryPreview.svelte";
+import UtilitiesWrapper from "../../../components/docs/UtilitiesWrapper.svelte";
+import CodeBlock from "../../../components/docs/CodeBlock.astro";
+import DescriptionText from "../../../components/docs/DescriptionText.svelte";
+import { Code } from "@saas-ui/svelte/typography/code";
+import { getStories, storyNameToDisplayName, getComponentName, generateUtilitiesAnatomy } from "../../../lib/stories";
+
+export async function getStaticPaths() {
+	const modules = import.meta.glob("../../../../../storybook/stories/utilities/*.stories.ts", { eager: true });
+
+	// Convert PascalCase to kebab-case
+	function toKebabCase(str: string): string {
+		return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+	}
+
+	const paths = Object.entries(modules).map(([path, module]) => {
+		const match = path.match(/\/([^/]+)\.stories\.ts$/);
+		const componentName = match ? match[1] : "";
+		const slug = toKebabCase(componentName);
+
+		return {
+			params: { slug },
+			props: {
+				componentName,
+				meta: (module as any).default,
+				stories: getStories(module as Record<string, unknown>),
+			},
+		};
+	});
+
+	return paths;
+}
+
+interface Props {
+	componentName: string;
+	meta: any;
+	stories: Record<string, any>;
+}
+
+const { componentName, meta, stories } = Astro.props;
+const { slug } = Astro.params;
+
+const title = meta?.title ? getComponentName(meta.title) : componentName;
+
+// Use custom anatomy from meta if available, otherwise generate a basic one
+const anatomyCode = meta?.parameters?.anatomy || generateUtilitiesAnatomy(title, slug);
+
+function getStoryPropValue(storyName: string): string {
+	// Convert to lowerCamelCase: "WithIcon" -> "withIcon", "MultipleActions" -> "multipleActions"
+	return storyName.charAt(0).toLowerCase() + storyName.slice(1);
+}
+
+// Get sub-components if defined
+const subComponents = meta?.parameters?.subComponents || [];
+const hasProps = (meta?.argTypes && Object.keys(meta.argTypes).length > 0) || subComponents.length > 0;
+
+const tocItems = [
+	{ label: "Anatomy", href: "#anatomy", level: 1 },
+	{
+		label: "Examples",
+		href: "#examples",
+		level: 1,
+		children: Object.keys(stories).map(name => ({
+			label: storyNameToDisplayName(name),
+			href: `#${name.toLowerCase()}`,
+			level: 2
+		}))
+	},
+	...(hasProps ? [{
+		label: "Props",
+		href: "#props",
+		level: 1,
+		children: subComponents.length > 0
+			? subComponents.map((sc: any) => ({
+				label: sc.name,
+				href: `#props-${sc.name.toLowerCase().replace(/\./g, '-')}`,
+				level: 2
+			}))
+			: []
+	}] : []),
+];
+---
+
+<Layout title={title}>
+	<DocsLayout
+		currentPath={`/docs/utilities/${slug}`}
+		tocItems={tocItems}
+		client:load
+	>
+		<div class="pb-20">
+			<h1 class="text-2xl font-semibold mb-4">{title}</h1>
+
+			{meta?.parameters?.docs?.description?.component && (
+				<p class="text-lg text-fg-muted mb-8">
+					{meta.parameters.docs.description.component}
+				</p>
+			)}
+
+			<h2 id="anatomy" class="text-xl font-semibold mt-12 mb-4 scroll-mt-20">Anatomy</h2>
+			<CodeBlock code={anatomyCode} lang="svelte" class="mb-8" />
+
+			<h2 id="examples" class="text-xl font-semibold mt-12 mb-4 scroll-mt-20">Examples</h2>
+
+			{Object.entries(stories).map(([name, story]) => {
+				const storyProp = getStoryPropValue(name);
+				return (
+					<section id={name.toLowerCase()} class="mb-12 scroll-mt-20">
+						<h3 class="text-lg font-medium mb-2">{storyNameToDisplayName(name)}</h3>
+						{story.parameters?.docs?.description?.story && (
+							<p class="text-fg-muted mb-4">
+								<DescriptionText text={story.parameters.docs.description.story} client:load />
+							</p>
+						)}
+						<StoryPreview story={storyProp} client:load>
+							<UtilitiesWrapper component={componentName} story={storyProp} client:load />
+						</StoryPreview>
+					</section>
+				);
+			})}
+
+			{hasProps && (
+				<>
+					<h2 id="props" class="text-xl font-semibold mt-12 mb-4 scroll-mt-20">Props</h2>
+
+					{subComponents.length > 0 ? (
+						subComponents.map((sc: any) => (
+							<div class="mb-8">
+								<h3
+									id={`props-${sc.name.toLowerCase().replace(/\./g, '-')}`}
+									class="text-lg font-medium mb-3 scroll-mt-20"
+								>
+									{sc.name}
+								</h3>
+								{sc.description && (
+									<p class="text-fg-muted mb-4 text-sm">{sc.description}</p>
+								)}
+								<div class="overflow-x-auto">
+									<table class="w-full text-sm">
+										<thead>
+											<tr class="border-b border-border-default">
+												<th class="text-left py-3 px-4 font-medium">Prop</th>
+												<th class="text-left py-3 px-4 font-medium">Type</th>
+												<th class="text-left py-3 px-4 font-medium">Default</th>
+												<th class="text-left py-3 px-4 font-medium">Description</th>
+											</tr>
+										</thead>
+										<tbody>
+											{Object.entries(sc.props || {}).map(([prop, propDef]: [string, any]) => (
+												<tr class="border-b border-border-subtle">
+													<td class="py-3 px-4">
+														<Code size="xs" colour="indigo">{prop}</Code>
+													</td>
+													<td class="py-3 px-4">
+														<Code size="xs" colour="gray">{propDef.type || "any"}</Code>
+													</td>
+													<td class="py-3 px-4">
+														{propDef.default ? <Code size="xs" colour="gray">{propDef.default}</Code> : "-"}
+													</td>
+													<td class="py-3 px-4 text-fg-muted">
+														{propDef.description || "-"}
+													</td>
+												</tr>
+											))}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						))
+					) : meta?.argTypes && Object.keys(meta.argTypes).length > 0 ? (
+						<div class="overflow-x-auto">
+							<table class="w-full text-sm">
+								<thead>
+									<tr class="border-b border-border-default">
+										<th class="text-left py-3 px-4 font-medium">Prop</th>
+										<th class="text-left py-3 px-4 font-medium">Type</th>
+										<th class="text-left py-3 px-4 font-medium">Default</th>
+										<th class="text-left py-3 px-4 font-medium">Description</th>
+									</tr>
+								</thead>
+								<tbody>
+									{Object.entries(meta.argTypes).map(([prop, argType]: [string, any]) => (
+										<tr class="border-b border-border-subtle">
+											<td class="py-3 px-4">
+												<Code size="xs" colour="indigo">{prop}</Code>
+											</td>
+											<td class="py-3 px-4">
+												<Code size="xs" colour="gray">{argType.options ? argType.options.join(" | ") : argType.control || "any"}</Code>
+											</td>
+											<td class="py-3 px-4">
+												{argType.table?.defaultValue?.summary ? <Code size="xs" colour="gray">{argType.table.defaultValue.summary}</Code> : "-"}
+											</td>
+											<td class="py-3 px-4 text-fg-muted">
+												{argType.description || "-"}
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+					) : null}
+				</>
+			)}
+		</div>
+	</DocsLayout>
+</Layout>

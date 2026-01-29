@@ -1,9 +1,14 @@
 import type { Preview } from "@storybook/sveltekit";
 import { themes } from "storybook/theming";
+import { DocsPage } from "./DocsPage";
 import "../app.css";
 
 const preview: Preview = {
+	tags: ["autodocs"],
 	parameters: {
+		docs: {
+			page: DocsPage,
+		},
 		backgrounds: {
 			disabled: true,
 		},

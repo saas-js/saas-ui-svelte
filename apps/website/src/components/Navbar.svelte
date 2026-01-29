@@ -15,10 +15,10 @@
 	import { toggleTheme } from "../lib/theme";
 
 	const navLinks = [
-		{ href: "/blocks", label: "Blocks" },
-		{ href: "/pricing", label: "Pricing" },
+		//{ href: "/blocks", label: "Blocks" },
+		//{ href: "/pricing", label: "Pricing" },
 		{ href: "/docs", label: "Docs" },
-		{ href: "/showcase", label: "Showcase" },
+		//{ href: "/showcase", label: "Showcase" },
 	];
 
 	let drawerOpen = $state(false);
@@ -33,7 +33,10 @@
 	});
 </script>
 
-<Navbar.Root bordered class="fixed top-0 left-0 right-0 z-50 bg-bg-default/80 dark:bg-bg-default/20 backdrop-blur-md">
+<Navbar.Root
+	bordered
+	class="fixed top-0 left-0 right-0 z-50 bg-bg-overlay backdrop-blur-md"
+>
 	<Navbar.Content maxW="max-w-screen-2xl mx-auto">
 		<Navbar.Brand>
 			<Logo />

@@ -1,0 +1,216 @@
+<script lang="ts" module>
+	// Wrapper components for complex Popover stories
+	// These are imported by Popover.stories.ts for stories that need loops/snippets
+</script>
+
+<script lang="ts">
+	import { Popover } from "$saas/components/popover";
+	import { Button } from "$saas/components/button";
+	import { Input } from "$saas/components/input";
+	import { Textarea } from "$saas/components/textarea";
+	import { Field } from "$saas/components/field";
+	import { Text } from "$saas/typography/text";
+	import { VStack, HStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
+
+	const popoverSizes = ["xs", "sm", "md", "lg"] as const;
+
+	interface Props {
+		story:
+			| "basic"
+			| "controlled"
+			| "sizes"
+			| "lazyMounted"
+			| "placement"
+			| "offset"
+			| "sameWidth"
+			| "nested"
+			| "initialFocus"
+			| "form"
+			| "withHeaderFooter";
+	}
+
+	let { story }: Props = $props();
+
+	let controlledOpen = $state(false);
+	let inputRef = $state<HTMLInputElement | null>(null);
+</script>
+
+{#if story === "basic"}
+	<Popover.Root>
+		<Popover.Trigger triggerText="Click me" />
+		<Popover.Content>
+			<Popover.Arrow />
+			<Popover.Body>
+				<Popover.Title>Naruto Form</Popover.Title>
+				<Text size="sm" class="my-4">
+					Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto.
+				</Text>
+				<Input placeholder="Your fav. character" size="sm" />
+			</Popover.Body>
+		</Popover.Content>
+	</Popover.Root>
+{:else if story === "controlled"}
+	<HStack gap={4} align="center">
+		<Popover.Root bind:open={controlledOpen}>
+			<Popover.Trigger triggerText="Click me" />
+			<Popover.Content>
+				<Popover.Arrow />
+				<Popover.Body>
+					This is a controlled popover. Use the button to toggle.
+				</Popover.Body>
+			</Popover.Content>
+		</Popover.Root>
+		<Text size="sm" class="text-fg-muted">Open: {controlledOpen}</Text>
+	</HStack>
+{:else if story === "sizes"}
+	<HStack gap={10} align="center">
+		{#each popoverSizes as size}
+			<Popover.Root {size}>
+				<Popover.Trigger triggerText="Size: {size}" triggerSize={size} />
+				<Popover.Content>
+					<Popover.Arrow />
+					<Popover.Body>
+						<Popover.Title>Naruto Form</Popover.Title>
+						<Text size="sm" class="my-4">
+							Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto.
+						</Text>
+						<Input placeholder="Your fav. character" {size} />
+					</Popover.Body>
+				</Popover.Content>
+			</Popover.Root>
+		{/each}
+	</HStack>
+{:else if story === "lazyMounted"}
+	<Popover.Root lazyMount unmountOnExit>
+		<Popover.Trigger triggerText="Click me" />
+		<Popover.Content>
+			<Popover.Arrow />
+			<Popover.Body>
+				<Popover.Title>Lazy Mounted</Popover.Title>
+				<Text size="sm" class="my-4">
+					This popover content is lazily mounted and unmounts when closed.
+				</Text>
+			</Popover.Body>
+		</Popover.Content>
+	</Popover.Root>
+{:else if story === "placement"}
+	<Popover.Root positioning={{ placement: "bottom-end" }}>
+		<Popover.Trigger triggerText="Bottom End" />
+		<Popover.Content>
+			<Popover.Arrow />
+			<Popover.Body>
+				This popover is positioned at the bottom-end of the trigger.
+			</Popover.Body>
+		</Popover.Content>
+	</Popover.Root>
+{:else if story === "offset"}
+	<Popover.Root positioning={{ offset: { crossAxis: 0, mainAxis: 7 } }}>
+		<Popover.Trigger triggerText="Click me" />
+		<Popover.Content>
+			<Popover.Body>
+				This popover has a custom offset from the trigger.
+			</Popover.Body>
+		</Popover.Content>
+	</Popover.Root>
+{:else if story === "sameWidth"}
+	<Popover.Root positioning={{ sameWidth: true }}>
+		<Popover.Trigger triggerText="Click me" triggerClass="min-w-xs" />
+		<Popover.Content class="w-auto!">
+			<Popover.Arrow />
+			<Popover.Body>
+				This popover has the same width as the trigger button.
+			</Popover.Body>
+		</Popover.Content>
+	</Popover.Root>
+{:else if story === "nested"}
+	<Popover.Root>
+		<Popover.Trigger triggerText="Click me" />
+		<Popover.Content>
+			<Popover.Arrow />
+			<Popover.Body>
+				<Text size="sm" class="mb-4">
+					Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto.
+				</Text>
+
+				<Popover.Root portalled={false} positioning={{ placement: "bottom" }}>
+					<Popover.Trigger triggerText="Open Nested Popover" triggerSize="xs" />
+					<Popover.Content>
+						<Popover.Arrow />
+						<Popover.Body>Some nested popover content</Popover.Body>
+					</Popover.Content>
+				</Popover.Root>
+			</Popover.Body>
+		</Popover.Content>
+	</Popover.Root>
+{:else if story === "initialFocus"}
+	<Popover.Root initialFocusEl={() => inputRef}>
+		<Popover.Trigger triggerText="Click me" />
+		<Popover.Content>
+			<Popover.Header>
+				<Popover.Title>Manage Your Channels</Popover.Title>
+			</Popover.Header>
+			<Popover.Arrow />
+			<Popover.Body>
+				<Text size="sm" class="mb-4">
+					The input below will be focused when the popover opens.
+				</Text>
+				<Input bind:ref={inputRef} placeholder="I get focused" size="sm" />
+			</Popover.Body>
+			<Popover.Footer>
+				<Box class="text-sm flex-1">Step 2 of 4</Box>
+				<HStack gap={2}>
+					<Button size="sm" variant="ghost">Prev</Button>
+					<Button size="sm">Next</Button>
+				</HStack>
+			</Popover.Footer>
+			<Popover.CloseTrigger />
+		</Popover.Content>
+	</Popover.Root>
+{:else if story === "form"}
+	<Popover.Root size="lg">
+		<Popover.Trigger triggerText="Click me" />
+		<Popover.Content class="w-80 rounded-xl">
+			<Popover.Arrow />
+			<Popover.Body>
+				<VStack gap={4}>
+					<Field.Root>
+						<Field.Label>Width</Field.Label>
+						<Input placeholder="40px" size="sm" />
+					</Field.Root>
+					<Field.Root>
+						<Field.Label>Height</Field.Label>
+						<Input placeholder="32px" size="sm" />
+					</Field.Root>
+					<Field.Root>
+						<Field.Label>Comments</Field.Label>
+						<Textarea placeholder="Start typing..." size="sm" />
+					</Field.Root>
+				</VStack>
+			</Popover.Body>
+			<Popover.CloseTrigger />
+		</Popover.Content>
+	</Popover.Root>
+{:else if story === "withHeaderFooter"}
+	<Popover.Root>
+		<Popover.Trigger triggerText="Click me" />
+		<Popover.Content>
+			<Popover.Header>
+				<Popover.Title>Confirmation</Popover.Title>
+			</Popover.Header>
+			<Popover.Arrow />
+			<Popover.Body>
+				<Text size="sm">
+					Are you sure you want to delete this item? This action cannot be undone.
+				</Text>
+			</Popover.Body>
+			<Popover.Footer>
+				<HStack gap={2} class="ml-auto">
+					<Popover.CloseTrigger buttonText="Cancel" />
+					<Button size="sm" colour="red">Delete</Button>
+				</HStack>
+			</Popover.Footer>
+			<Popover.CloseTrigger />
+		</Popover.Content>
+	</Popover.Root>
+{/if}

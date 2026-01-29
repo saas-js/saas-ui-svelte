@@ -14,7 +14,13 @@
 		"jsx": "preserve",
 		"paths": {
 			"$saas": ["../../packages/saas-svelte"],
-			"$saas/*": ["../../packages/saas-svelte/*"]
+			"$saas/*": ["../../packages/saas-svelte/*"],
+			"$wrappers": ["../storybook/stories/wrappers"],
+			"$wrappers/*": ["../storybook/stories/wrappers/*"],
+			"$stories": ["../storybook/stories"],
+			"$stories/*": ["../storybook/stories/*"],
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"]
 		}
 	},
 	"include": ["src/**/*"],

@@ -4,7 +4,7 @@ import { mergeConfig } from "vite";
 const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
 
 const config: StorybookConfig = {
-    stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx|svelte)"],
+    stories: ["../stories/**/*.stories.@(js|jsx|ts|tsx|svelte)"],
 
     addons: ["@storybook/addon-links", {
         name: "@storybook/addon-svelte-csf",

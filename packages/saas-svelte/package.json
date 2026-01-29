@@ -35,6 +35,9 @@
 		"./utils/*": {
 			"types": "./utils/*",
 			"default": "./utils/*"
+		},
+		"./styles/*": {
+			"default": "./styles/*"
 		}
 	},
 	"repository": {

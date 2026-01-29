@@ -12,7 +12,7 @@
 		<span>npm i @saas-ui/svelte</span>
 		<Clipboard.Indicator>
 			{#snippet copied()}
-				<Check class="size-4 text-green-600" />
+				<Check class="size-4 text-fg-success" />
 			{/snippet}
 			<ClipboardText class="size-4" />
 		</Clipboard.Indicator>

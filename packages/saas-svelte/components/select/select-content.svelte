@@ -59,51 +59,35 @@
 	{@render selectContent()}
 {/if}
 
-<style>
+<style global>
 	/* Apply slide + fade animations based on placement and state */
-	:global(
-		[data-scope="select"][data-part="content"][data-state="open"][data-placement^="top"]
-	) {
+	[data-scope="select"][data-part="content"][data-state="open"][data-placement^="top"] {
 		animation:
 			slide-from-bottom var(--durations-fast) ease-out,
 			fade-in var(--durations-fast) ease-out;
 	}
-	:global(
-		[data-scope="select"][data-part="content"][data-state="closed"][data-placement^="top"]
-	) {
+	[data-scope="select"][data-part="content"][data-state="closed"][data-placement^="top"] {
 		animation:
 			slide-to-bottom var(--durations-fast) ease-in,
 			fade-out var(--durations-fast) ease-in;
 	}
-	:global(
-		[data-scope="select"][data-part="content"][data-state="open"][data-placement^="bottom"]
-	) {
+	[data-scope="select"][data-part="content"][data-state="open"][data-placement^="bottom"] {
 		animation:
 			slide-from-top var(--durations-fast) ease-out,
 			fade-in var(--durations-fast) ease-out;
 	}
-	:global(
-		[data-scope="select"][data-part="content"][data-state="closed"][data-placement^="bottom"]
-	) {
+	[data-scope="select"][data-part="content"][data-state="closed"][data-placement^="bottom"] {
 		animation:
 			slide-to-top var(--durations-fast) ease-in,
 			fade-out var(--durations-fast) ease-in;
 	}
 	/* Fallback for content without placement */
-	:global(
-		[data-scope="select"][data-part="content"][data-state="open"]:not(
-				[data-placement]
-			)
-	) {
+	[data-scope="select"][data-part="content"][data-state="open"]:not([data-placement]) {
 		animation:
 			slide-from-top var(--durations-fast) ease-out,
 			fade-in var(--durations-fast) ease-out;
 	}
-	:global(
-		[data-scope="select"][data-part="content"][data-state="closed"]:not(
-				[data-placement]
-			)
-	) {
+	[data-scope="select"][data-part="content"][data-state="closed"]:not([data-placement]) {
 		animation:
 			slide-to-top var(--durations-fast) ease-in,
 			fade-out var(--durations-fast) ease-in;

@@ -13,6 +13,7 @@
 		"target": "ESNext",
 		"verbatimModuleSyntax": true,
 		"noEmit": true,
+		"jsx": "react-jsx",
 		"paths": {
 			"$saas": ["../../packages/saas-svelte"],
 			"$saas/*": ["../../packages/saas-svelte/*"]
@@ -23,7 +24,8 @@
 		"src/**/*.svelte",
 		"stories/**/*.ts",
 		"stories/**/*.svelte",
-		".storybook/**/*.ts"
+		".storybook/**/*.ts",
+		".storybook/**/*.tsx"
 	],
 	"exclude": ["node_modules", ".svelte-kit", "storybook-static"]
 }
