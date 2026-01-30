@@ -64,13 +64,6 @@ const siteUrl = "https://svelte.saas-ui.dev";
 					}
 				}
 			});
-
-			// Register service worker for offline support
-			if ("serviceWorker" in navigator) {
-				navigator.serviceWorker.register("/sw.js").catch(() => {
-					// Service worker registration failed - site works fine without it
-				});
-			}
 		</script>
 	</head>
 	<body class="bg-bg-default text-fg-default pt-14">

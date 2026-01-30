@@ -1,12 +1,32 @@
 import { defineConfig } from "astro/config";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import robotsTxt from "astro-robots-txt";
 import tailwindcss from "@tailwindcss/vite";
+import { VitePWA } from "vite-plugin-pwa";
 import path from "path";
+
+// Strip empty Svelte hydration comments from HTML output
+const stripSvelteComments = () => ({
+	name: "strip-svelte-comments",
+	apply: "build",
+	transformIndexHtml: {
+		order: "post",
+		handler: (html) => html.replace(/<!---->/g, ""),
+	},
+});
 
 export default defineConfig({
 	site: "https://svelte.saas-ui.dev",
-	integrations: [svelte(), mdx()],
+	integrations: [
+		svelte(),
+		mdx(),
+		sitemap(),
+		robotsTxt({
+			policy: [{ userAgent: "*", allow: "/" }],
+		}),
+	],
 	prefetch: true,
 	experimental: {
 		clientPrerender: true,
@@ -16,7 +36,29 @@ export default defineConfig({
 	},
 	compressHTML: true,
 	vite: {
-		plugins: [tailwindcss()],
+		plugins: [
+			tailwindcss(),
+			stripSvelteComments(),
+			VitePWA({
+				registerType: "autoUpdate",
+				workbox: {
+					globPatterns: ["**/*.{js,css,html,ico,svg,woff2}"],
+					runtimeCaching: [
+						{
+							urlPattern: ({ request }) => request.destination === "image",
+							handler: "CacheFirst",
+							options: {
+								cacheName: "images",
+								expiration: {
+									maxEntries: 50,
+									maxAgeSeconds: 60 * 60 * 24 * 30,
+								},
+							},
+						},
+					],
+				},
+			}),
+		],
 		resolve: {
 			alias: {
 				$saas: path.resolve("../../packages/saas-svelte"),
