@@ -3,6 +3,7 @@
 	import { getContext } from "svelte";
 	import { twMerge } from "tailwind-merge";
 	import { PROGRESS_CTX, type ProgressContext } from "./progress-root.svelte";
+	import "./progress-animations.css";
 
 	interface Props {
 		/**
@@ -47,23 +48,3 @@
 	{...restProps}
 />
 
-<style global>
-	/* Global keyframes for Tailwind arbitrary animation values */
-	@keyframes progress-stripe {
-		from {
-			background-position: 1rem 0;
-		}
-		to {
-			background-position: 0 0;
-		}
-	}
-
-	@keyframes progress-indeterminate {
-		0% {
-			left: -50%;
-		}
-		100% {
-			left: 100%;
-		}
-	}
-</style>

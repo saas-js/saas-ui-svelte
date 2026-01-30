@@ -3,6 +3,7 @@
 	import { twMerge } from "tailwind-merge";
 	import { STAT_CTX, type StatContext } from "./stat-root.svelte";
 	import { getColourStyle, type ColourName } from "$saas/utils/colours";
+	import { ArrowDownIcon } from "phosphor-svelte";
 
 	interface Props {
 		/**
@@ -45,19 +46,13 @@
 	);
 </script>
 
-<dd
+<span
 	class={twMerge(styles.trend(), variantClasses, className)}
 	style={colourStyle}
 	{...restProps}
 >
 	<span class={styles.trendIcon()} aria-hidden="true">
-		<svg
-			viewBox="0 0 24 24"
-			class="w-[1em] h-[1em] fill-none stroke-current stroke-[3px] [stroke-linecap:round] [stroke-linejoin:round]"
-		>
-			<path d="M12 5v14"></path>
-			<path d="m19 12-7 7-7-7"></path>
-		</svg>
+		<ArrowDownIcon weight="bold" size="1em" />
 	</span>
 	{@render children()}
-</dd>
+</span>

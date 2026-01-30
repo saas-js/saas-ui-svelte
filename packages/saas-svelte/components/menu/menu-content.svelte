@@ -3,6 +3,7 @@
 	import { Portal } from "@ark-ui/svelte/portal";
 	import { getContext, type Snippet } from "svelte";
 	import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
+	import "./menu-animations.css";
 
 	interface Props {
 		/**
@@ -59,22 +60,3 @@
 	{@render menuContent()}
 {/if}
 
-<style global>
-	/* Apply slide animations based on menu placement */
-	[data-scope="menu"][data-part="content"][data-placement^="right"] {
-		animation: var(--animate-submenu-right);
-	}
-	[data-scope="menu"][data-part="content"][data-placement^="left"] {
-		animation: var(--animate-submenu-left);
-	}
-	[data-scope="menu"][data-part="content"][data-placement^="top"] {
-		animation: var(--animate-submenu-top);
-	}
-	[data-scope="menu"][data-part="content"][data-placement^="bottom"] {
-		animation: var(--animate-submenu-bottom);
-	}
-	/* Fallback for menus without explicit placement */
-	[data-scope="menu"][data-part="content"]:not([data-placement]) {
-		animation: var(--animate-menu-in);
-	}
-</style>

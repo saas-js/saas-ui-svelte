@@ -14,6 +14,7 @@
 <div
 	class={twMerge(
 		"flex",
+		"flex-wrap",
 		"items-center",
 		"justify-end",
 		"gap-y-3",
@@ -23,6 +24,7 @@
 		"ps-6",
 		"pe-6",
 		"antialiased",
+		"*:shrink-0",
 		className,
 	)}
 	{...rest}

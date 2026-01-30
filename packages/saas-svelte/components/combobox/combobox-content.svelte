@@ -3,6 +3,7 @@
 	import { Portal } from "@ark-ui/svelte/portal";
 	import { getContext, type Snippet } from "svelte";
 	import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
+	import "./combobox-animations.css";
 
 	interface Props {
 		/**
@@ -33,22 +34,3 @@
 	</Combobox.Positioner>
 </Portal>
 
-<style global>
-	/* Apply slide animations based on combobox placement */
-	[data-scope="combobox"][data-part="content"][data-placement^="bottom"] {
-		animation: var(--animate-submenu-bottom);
-	}
-	[data-scope="combobox"][data-part="content"][data-placement^="top"] {
-		animation: var(--animate-submenu-top);
-	}
-	[data-scope="combobox"][data-part="content"][data-placement^="left"] {
-		animation: var(--animate-submenu-left);
-	}
-	[data-scope="combobox"][data-part="content"][data-placement^="right"] {
-		animation: var(--animate-submenu-right);
-	}
-	/* Fallback for comboboxes without explicit placement */
-	[data-scope="combobox"][data-part="content"]:not([data-placement]) {
-		animation: var(--animate-submenu-bottom);
-	}
-</style>

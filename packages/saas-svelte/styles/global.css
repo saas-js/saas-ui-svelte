@@ -58,6 +58,25 @@ body {
 	line-height: var(--line-heights-md);
 }
 
+/* Fix scale keyframes (override buggy preset definitions) */
+@keyframes scale-in {
+	from {
+		transform: scale(0.95);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes scale-out {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.95);
+	}
+}
+
 @theme {
 	--text-2xs: var(--font-sizes-2xs);
 	--text-xs: var(--font-sizes-xs);

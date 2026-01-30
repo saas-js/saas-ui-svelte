@@ -1,10 +1,27 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { Chart, registerables } from "chart.js";
+	import {
+		Chart,
+		LineController,
+		LineElement,
+		PointElement,
+		LinearScale,
+		CategoryScale,
+		Tooltip,
+		Filler,
+	} from "chart.js";
 	import { Card } from "@saas-ui/svelte/components/card";
 	import { Stat } from "@saas-ui/svelte/components/stat";
 
-	Chart.register(...registerables);
+	Chart.register(
+		LineController,
+		LineElement,
+		PointElement,
+		LinearScale,
+		CategoryScale,
+		Tooltip,
+		Filler,
+	);
 
 	let chartCanvas: HTMLCanvasElement | undefined = $state();
 	let chartInstance: Chart | null = null;
