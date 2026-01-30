@@ -81,10 +81,14 @@ function mountToast(el: HTMLDivElement, id: string) {
 	const h = el.offsetHeight;
 	heights = { ...heights, [id]: h };
 
-	// Single rAF is sufficient - the browser batches style changes
+	// Double rAF ensures the initial position is painted before transitioning
+	// First rAF: browser commits the entering style (off-screen)
+	// Second rAF: we remove entering flag, enabling the transition to final position
 	requestAnimationFrame(() => {
-		enteringToasts.delete(id);
-		enteringToasts = enteringToasts;
+		requestAnimationFrame(() => {
+			enteringToasts.delete(id);
+			enteringToasts = enteringToasts;
+		});
 	});
 
 	return {

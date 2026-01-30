@@ -55,11 +55,12 @@ const config: StorybookConfig = {
 					output: {
 						manualChunks: (id: string) => {
 							if (id.includes("node_modules")) {
-								// Check @storybook first to avoid circular dependency with svelte-vendor
-								if (id.includes("@storybook")) return "storybook-vendor";
 								if (id.includes("@ark-ui") || id.includes("@zag-js"))
 									return "ark-vendor";
-								if (id.includes("svelte")) return "svelte-vendor";
+								// Combine storybook and svelte to avoid circular dependency
+								// (@storybook/sveltekit imports svelte, svelte adapters import storybook)
+								if (id.includes("@storybook") || id.includes("svelte"))
+									return "svelte-vendor";
 								return "vendor";
 							}
 						},
