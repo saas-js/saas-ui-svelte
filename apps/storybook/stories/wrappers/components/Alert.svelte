@@ -4,11 +4,13 @@
 
 <script lang="ts">
 	import { Alert } from "$saas/components/alert";
-	import { Stack } from "$saas/layout/stack";
+	import { Stack, VStack, HStack } from "$saas/layout/stack";
+	import { Text } from "$saas/typography/text";
 	import Alarm from "phosphor-svelte/lib/Alarm";
+	import { colours } from "../../utils";
 
 	interface Props {
-		story: "basic" | "description" | "status" | "variants" | "customIcon";
+		story: "basic" | "description" | "status" | "variants" | "customIcon" | "colours";
 	}
 
 	let { story }: Props = $props();
@@ -65,4 +67,13 @@
 		title="Submitting this form will delete your account"
 		icon={Alarm}
 	/>
+{:else if story === "colours"}
+	<VStack gap={4} class="w-full">
+		{#each colours as colour}
+			<HStack gap={4} class="w-full items-center">
+				<Text size="xs" class="w-16">{colour}</Text>
+				<Alert {colour} variant="subtle" title="Alert with {colour} colour" class="flex-1" />
+			</HStack>
+		{/each}
+	</VStack>
 {/if}

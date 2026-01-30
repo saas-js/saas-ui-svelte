@@ -7,11 +7,12 @@
 	import { Timeline } from "$saas/components/timeline";
 	import { Avatar } from "$saas/components/avatar";
 	import { Badge } from "$saas/components/badge";
-	import { VStack } from "$saas/layout/stack";
+	import { VStack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
 	import Boat from "phosphor-svelte/lib/Boat";
 	import Check from "phosphor-svelte/lib/Check";
 	import Package from "phosphor-svelte/lib/Package";
+	import { colours } from "../../utils";
 
 	const timelineSizes = ["sm", "md", "lg", "xl"] as const;
 	const timelineVariants = ["subtle", "solid", "outline", "plain"] as const;
@@ -22,7 +23,8 @@
 			| "sizes"
 			| "variants"
 			| "contentBefore"
-			| "alternating";
+			| "alternating"
+			| "colours";
 	}
 
 	let { story }: Props = $props();
@@ -231,4 +233,32 @@
 			</Timeline.Content>
 		</Timeline.Item>
 	</Timeline.Root>
+{:else if story === "colours"}
+	<VStack gap={8}>
+		{#each colours as colour}
+			<HStack gap={4} class="items-start">
+				<Text size="xs" class="w-16 pt-1">{colour}</Text>
+				<Timeline.Root {colour} variant="solid">
+					<Timeline.Item>
+						<Timeline.Connector>
+							<Check />
+						</Timeline.Connector>
+						<Timeline.Content>
+							<Timeline.Title>Task completed</Timeline.Title>
+							<Timeline.Description>Just now</Timeline.Description>
+						</Timeline.Content>
+					</Timeline.Item>
+					<Timeline.Item>
+						<Timeline.Connector>
+							<Package />
+						</Timeline.Connector>
+						<Timeline.Content>
+							<Timeline.Title>Package shipped</Timeline.Title>
+							<Timeline.Description>2 hours ago</Timeline.Description>
+						</Timeline.Content>
+					</Timeline.Item>
+				</Timeline.Root>
+			</HStack>
+		{/each}
+	</VStack>
 {/if}

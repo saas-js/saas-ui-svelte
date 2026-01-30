@@ -300,3 +300,33 @@ export const Stacking: Story = {
 			props: { story: "stacking" },
 		}) as any,
 };
+
+export const Variants: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: "Use the `variant` prop to change the visual style. Available variants: `solid`, `subtle`, `outline`.",
+			},
+		},
+	},
+	render: () =>
+		({
+			Component: AvatarWrapper,
+			props: { story: "variants" },
+		}) as any,
+};
+
+export const Colours: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: "Use the `colour` prop to change the colour scheme. Supports all standard colour palettes.",
+			},
+		},
+	},
+	render: () =>
+		({
+			Component: AvatarWrapper,
+			props: { story: "colours" },
+		}) as any,
+};

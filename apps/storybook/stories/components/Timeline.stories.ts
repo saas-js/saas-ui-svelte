@@ -152,3 +152,18 @@ export const Alternating: Story = {
 			props: { story: "alternating" },
 		}) as any,
 };
+
+export const Colours: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: "Use the `colour` prop to change the colour scheme. Supports all standard colour palettes.",
+			},
+		},
+	},
+	render: () =>
+		({
+			Component: TimelineWrapper,
+			props: { story: "colours" },
+		}) as any,
+};

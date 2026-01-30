@@ -152,3 +152,18 @@ export const CustomIcon: Story = {
 			props: { story: "customIcon" },
 		}) as any,
 };
+
+export const Colours: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: "Use the `colour` prop to change the colour scheme. Supports all standard colour palettes.",
+			},
+		},
+	},
+	render: () =>
+		({
+			Component: AlertWrapper,
+			props: { story: "colours" },
+		}) as any,
+};

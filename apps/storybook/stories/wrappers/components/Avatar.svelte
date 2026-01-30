@@ -3,12 +3,14 @@
 </script>
 
 <script lang="ts">
-	import { Stack, VStack } from "$saas/layout/stack";
+	import { Stack, VStack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
 	import { Avatar } from "$saas/components/avatar";
 	import {
 		avatarSizes,
 		avatarShapes,
+		avatarVariants,
+		colours,
 	} from "../../utils";
 
 	interface Props {
@@ -19,7 +21,9 @@
 			| "fallback"
 			| "withRing"
 			| "group"
-			| "stacking";
+			| "stacking"
+			| "variants"
+			| "colours";
 	}
 
 	let { story }: Props = $props();
@@ -151,4 +155,24 @@
 			<Avatar fallback="+3" />
 		</Avatar.Group>
 	</Stack>
+{:else if story === "variants"}
+	<HStack align="start" gap={4} class="flex-wrap p-4">
+		{#each avatarVariants as variant}
+			<VStack gap={2} class="items-center">
+				<Text size="xs">{variant}</Text>
+				<Avatar {variant} name="David Wilson" size="lg" />
+			</VStack>
+		{/each}
+	</HStack>
+{:else if story === "colours"}
+	<VStack gap={4}>
+		{#each colours as colour}
+			<HStack gap={4}>
+				<Text size="xs" class="w-16">{colour}</Text>
+				<Avatar variant="solid" {colour} name="DW" />
+				<Avatar variant="subtle" {colour} name="DW" />
+				<Avatar variant="outline" {colour} name="DW" />
+			</HStack>
+		{/each}
+	</VStack>
 {/if}
