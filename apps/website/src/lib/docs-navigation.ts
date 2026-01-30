@@ -21,6 +21,12 @@ function createNavItems(category: string, labels: string[]): NavItem[] {
 export function getDocsNavigation(): NavGroup[] {
     return [
         {
+            title: "Resources",
+            items: [
+                { label: "Storybook", href: "/storybook" },
+            ],
+        },
+        {
             title: "Getting Started",
             items: [{ label: "Introduction", href: "/docs" }],
         },

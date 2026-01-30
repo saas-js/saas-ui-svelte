@@ -1,18 +1,15 @@
 <script lang="ts">
 import type { Snippet } from "svelte";
+import { fade } from "svelte/transition";
 import DocsSidebar from "./DocsSidebar.svelte";
 import TableOfContents from "./TableOfContents.svelte";
 import { getDocsNavigation } from "../../lib/docs-navigation";
-import { Button } from "@saas-ui/svelte/components/button";
-import { Icon } from "@saas-ui/svelte/components/icon";
 import { Box } from "@saas-ui/svelte/layout/box";
 import { HStack } from "@saas-ui/svelte/layout/stack";
-import List from "phosphor-svelte/lib/ListIcon";
-import X from "phosphor-svelte/lib/X";
 import {
 	getSideMenuOpen,
 	setSideMenuOpen,
-	closeAllMobileMenus,
+	closeMobileMenu,
 } from "../../lib/mobile-nav.svelte";
 
 interface TocItem {
@@ -37,19 +34,19 @@ let mobileNavOpen = $derived(getSideMenuOpen());
 $effect(() => {
 	if (typeof window === "undefined") return;
 	const mq = matchMedia("(min-width: 1024px)");
-	const close = () => mq.matches && closeAllMobileMenus();
+	const close = () => mq.matches && closeMobileMenu();
 	close();
 	mq.addEventListener("change", close);
 	return () => mq.removeEventListener("change", close);
 });
 </script>
 
-<Box class="max-w-8xl relative mx-auto w-full px-4 md:px-6 lg:px-8">
+<Box class="max-w-8xl relative mx-auto w-full" inert={mobileNavOpen ? true : undefined}>
 	<HStack gap={0} class="items-start">
 		<!-- Desktop Sidebar -->
 		<Box
 			as="aside"
-			class="border-border-default sticky top-14 hidden h-[calc(100vh-3.5rem)] w-40 shrink-0 overflow-y-auto border-r lg:block"
+			class="bg-bg-default border-border-default sticky top-14 hidden h-[calc(100vh-3.5rem)] w-56 shrink-0 overflow-y-auto border-r lg:block"
 		>
 			<DocsSidebar groups={navGroups} currentPath={currentPath} />
 		</Box>
@@ -68,29 +65,22 @@ $effect(() => {
 	</HStack>
 </Box>
 
-<!-- Mobile Navigation Button -->
-<Box class="fixed right-4 bottom-4 z-50 lg:hidden">
-	<Button
-		variant="surface"
-		size="md"
-		icon
-		class="rounded-lg shadow-lg"
-		onclick={() => setSideMenuOpen(!mobileNavOpen)}
-		aria-label={mobileNavOpen ? "Close navigation" : "Open navigation"}
-	>
-		{#if mobileNavOpen}
-			<Icon as={X} size="sm" />
-		{:else}
-			<Icon as={List} size="sm" />
-		{/if}
-	</Button>
-</Box>
-
-<!-- Mobile Navigation Panel -->
+<!-- Mobile Navigation Overlay and Panel -->
 {#if mobileNavOpen}
-	<Box
-		class="bg-bg-default border-border-default animate-fade-in fixed top-14 bottom-0 left-0 z-40 w-40 max-w-40 overflow-y-auto border-r lg:hidden"
+	<!-- Backdrop (z-55 to cover navbar which is z-50) -->
+	<button
+		type="button"
+		class="fixed inset-0 z-55 bg-black/20 lg:hidden"
+		onclick={() => setSideMenuOpen(false)}
+		aria-label="Close navigation"
+		transition:fade={{ duration: 150 }}
+	></button>
+
+	<!-- Panel (z-56 to be above backdrop) -->
+	<div
+		class="bg-bg-default border-border-default fixed top-14 bottom-0 left-0 z-56 w-56 overflow-y-auto border-r lg:hidden"
+		transition:fade={{ duration: 150 }}
 	>
 		<DocsSidebar groups={navGroups} currentPath={currentPath} />
-	</Box>
+	</div>
 {/if}

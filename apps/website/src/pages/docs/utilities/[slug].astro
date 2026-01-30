@@ -49,8 +49,8 @@ for (const [name] of Object.entries(stories)) {
 		const html = await codeToHtml(code, {
 			lang: "svelte",
 			themes: {
-				light: "github-light",
-				dark: "github-dark",
+				light: "github-light-high-contrast",
+				dark: "github-dark-high-contrast",
 			},
 		});
 		storyCodeMap[name] = { code, html };

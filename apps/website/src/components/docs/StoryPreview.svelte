@@ -20,7 +20,7 @@ let { story, code, codeHtml, children }: Props = $props();
 const hasCode = $derived(!!code && !!codeHtml);
 </script>
 
-<Box class="story-preview my-6">
+<Box class="my-6 @container [&_.tab-trigger]:text-fg-muted [&_.tab-trigger]:bg-transparent [&_.tab-trigger]:border-transparent [&_.tab-trigger:hover]:text-fg-default [&_.tab-trigger[data-selected]]:bg-bg-default [&_.tab-trigger[data-selected]]:text-fg-default [&_.tab-trigger[data-selected]]:border-t-border-default [&_.tab-trigger[data-selected]]:border-l-border-default [&_.tab-trigger[data-selected]]:border-r-border-default [&_.tab-trigger[data-selected]]:border-b-transparent [&_.shiki-wrapper_pre]:bg-transparent! [&_.shiki-wrapper_pre.shiki]:bg-transparent! [&_pre[style]]:bg-transparent!">
 	{#if hasCode}
 		<Tabs.Root defaultValue="preview" variant="enclosed" size="sm">
 			<Tabs.List class="tabs-list">
@@ -55,37 +55,3 @@ const hasCode = $derived(!!code && !!codeHtml);
 		</Box>
 	{/if}
 </Box>
-
-<style>
-.story-preview {
-	container-type: inline-size;
-}
-
-.story-preview :global(.tab-trigger) {
-	color: var(--color-fg-muted);
-	background-color: transparent;
-	border-color: transparent;
-}
-
-.story-preview :global(.tab-trigger:hover) {
-	color: var(--color-fg-default);
-}
-
-/* Selected tab - darker in light mode, brighter in dark mode */
-.story-preview :global(.tab-trigger[data-selected]) {
-	background-color: var(--color-bg-default);
-	color: var(--color-fg-default);
-	border-top-color: var(--color-border-default);
-	border-left-color: var(--color-border-default);
-	border-right-color: var(--color-border-default);
-	border-bottom-color: transparent;
-}
-
-/* Override Shiki inline background styles */
-.story-preview :global(.shiki-wrapper pre),
-.story-preview :global(.shiki-wrapper pre.shiki),
-.story-preview :global(pre[style]) {
-	background-color: transparent !important;
-	background: transparent !important;
-}
-</style>

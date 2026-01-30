@@ -46,7 +46,7 @@ function formatLabel(label: string): string {
 
 <Box
 	as="nav"
-	class="flex flex-1 flex-col gap-0 overflow-y-auto px-4 py-8 text-sm"
+	class="flex flex-1 flex-col gap-0 overflow-y-auto px-5 py-8 text-sm"
 >
 	{#each groups as group}
 		<VStack gap={0} class="relative my-3">
@@ -77,7 +77,7 @@ function formatLabel(label: string): string {
 								>
 									{formatLabel(item.label)}
 								</Heading>
-								<Box class="pr-1">
+								<Box class="px-1">
 									<Icon
 										as={CaretRight}
 										size="xs"

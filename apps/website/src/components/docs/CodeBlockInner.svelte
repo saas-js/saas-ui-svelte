@@ -12,7 +12,7 @@ interface Props {
 let { code, html, class: className }: Props = $props();
 </script>
 
-<Box class="code-block group relative {className ?? ''}">
+<Box class="group relative [&_.shiki-wrapper_pre]:bg-transparent! {className ?? ''}">
 	<Box
 		class="absolute top-2 right-2 z-10 opacity-0 transition-opacity group-hover:opacity-100"
 	>
@@ -24,9 +24,3 @@ let { code, html, class: className }: Props = $props();
 		{@html html}
 	</Box>
 </Box>
-
-<style>
-.code-block :global(.shiki-wrapper pre) {
-	background-color: transparent !important;
-}
-</style>

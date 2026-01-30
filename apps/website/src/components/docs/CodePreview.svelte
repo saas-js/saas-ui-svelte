@@ -18,7 +18,7 @@ interface Props {
 let { code, html, children, class: className }: Props = $props();
 </script>
 
-<Box class="code-preview {className ?? ''}">
+<Box class="rounded-lg overflow-hidden [&_.tabs-list]:bg-bg-muted [&_.tabs-list]:pl-2 [&_.tab-trigger]:text-fg-muted [&_.tab-trigger]:bg-transparent [&_.tab-trigger]:border-transparent [&_.tab-trigger:hover]:text-fg-default [&_.tab-trigger[data-selected]]:bg-bg-default [&_.tab-trigger[data-selected]]:text-fg-default [&_.tab-trigger[data-selected]]:border-t-border-default [&_.tab-trigger[data-selected]]:border-l-border-default [&_.tab-trigger[data-selected]]:border-r-border-default [&_.tab-trigger[data-selected]]:border-b-transparent [&_.tab-content]:pt-0 [&_.tab-content]:border [&_.tab-content]:border-border-default [&_.tab-content]:border-t-0 [&_.tab-content]:rounded-b-lg [&_.preview-content]:bg-bg-default [&_.code-content]:bg-bg-subtle {className ?? ''}">
 	<Tabs.Root defaultValue="preview" variant="enclosed" size="sm">
 		<Tabs.List class="tabs-list">
 			<Tabs.Trigger value="preview" class="tab-trigger">Preview</Tabs.Trigger>
@@ -47,51 +47,3 @@ let { code, html, children, class: className }: Props = $props();
 		</Tabs.Content>
 	</Tabs.Root>
 </Box>
-
-<style>
-.code-preview {
-	border-radius: var(--radius-lg);
-	overflow: hidden;
-}
-
-.code-preview :global(.tabs-list) {
-	background-color: var(--color-bg-muted);
-	padding-left: 0.5rem;
-}
-
-.code-preview :global(.tab-trigger) {
-	color: var(--color-fg-muted);
-	background-color: transparent;
-	border-color: transparent;
-}
-
-.code-preview :global(.tab-trigger:hover) {
-	color: var(--color-fg-default);
-}
-
-/* Selected tab - darker in light mode, brighter in dark mode */
-.code-preview :global(.tab-trigger[data-selected]) {
-	background-color: var(--color-bg-default);
-	color: var(--color-fg-default);
-	border-top-color: var(--color-border-default);
-	border-left-color: var(--color-border-default);
-	border-right-color: var(--color-border-default);
-	border-bottom-color: transparent;
-}
-
-.code-preview :global(.tab-content) {
-	padding-top: 0;
-	border: 1px solid var(--color-border-default);
-	border-top: none;
-	border-bottom-left-radius: var(--radius-lg);
-	border-bottom-right-radius: var(--radius-lg);
-}
-
-.code-preview :global(.preview-content) {
-	background-color: var(--color-bg-default);
-}
-
-.code-preview :global(.code-content) {
-	background-color: var(--color-bg-subtle);
-}
-</style>
