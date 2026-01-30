@@ -11,6 +11,10 @@ export default defineConfig({
 	experimental: {
 		clientPrerender: true,
 	},
+	image: {
+		service: { entrypoint: "astro/assets/services/sharp" },
+	},
+	compressHTML: true,
 	vite: {
 		plugins: [tailwindcss()],
 		resolve: {
@@ -39,7 +43,10 @@ export default defineConfig({
 				output: {
 					manualChunks: (id) => {
 						if (id.includes("node_modules")) {
-							if (id.includes("@ark-ui") || id.includes("@zag-js"))
+							if (
+								id.includes("@ark-ui") ||
+								id.includes("@zag-js")
+							)
 								return "ark-vendor";
 							if (id.includes("svelte")) return "svelte-vendor";
 							if (id.includes("phosphor-svelte")) return "icons";

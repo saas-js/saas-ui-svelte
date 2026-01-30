@@ -32,4 +32,4 @@ coverage/
 
 # Accessibility Reports
 apps/website/public/a11y-report.json
-apps/website/public/a11y-report.json
+apps/storybook/a11y-report.json

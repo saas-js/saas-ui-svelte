@@ -7,23 +7,45 @@ import { themeInitScript } from "../lib/theme";
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = "Beautiful Svelte components for building SaaS applications" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const siteUrl = "https://svelte.saas-ui.dev";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="SaaS UI Svelte" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
+
+		<!-- Preconnect to external domains -->
+		<link rel="preconnect" href="https://github.com" />
+		<link rel="dns-prefetch" href="https://github.com" />
+
 		<link
 			rel="icon"
 			type="image/svg+xml"
-			href={`${import.meta.env.BASE_URL}favicon.svg`}
+			href={`${base}favicon.svg`}
 		/>
-		<title>{title}</title>
+		<link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={`${title} | SaaS UI Svelte`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
+		<meta property="og:site_name" content="SaaS UI Svelte" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={`${title} | SaaS UI Svelte`} />
+		<meta name="twitter:description" content={description} />
+
+		<title>{title} | SaaS UI Svelte</title>
 		<script is:inline define:vars={{ themeInitScript }}>
 			eval(themeInitScript);
 		</script>
@@ -42,6 +64,13 @@ const { title } = Astro.props;
 					}
 				}
 			});
+
+			// Register service worker for offline support
+			if ("serviceWorker" in navigator) {
+				navigator.serviceWorker.register("/sw.js").catch(() => {
+					// Service worker registration failed - site works fine without it
+				});
+			}
 		</script>
 	</head>
 	<body class="bg-bg-default text-fg-default pt-14">
