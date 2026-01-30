@@ -32,6 +32,9 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
+            - name: Install Playwright browsers
+              run: npx playwright install --with-deps chromium
+
             - name: Build Storybook
               run: npm run build-storybook -w apps/storybook
 
