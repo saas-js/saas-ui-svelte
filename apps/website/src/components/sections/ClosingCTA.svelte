@@ -16,15 +16,10 @@ import { Heading } from "@saas-ui/svelte/typography/heading";
 				interfaces.
 			</Heading>
 			<HStack gap={2}>
-				<Button
-					as="a"
-					href="/docs/components/overview"
-					variant="glass"
-					colour="indigo"
-				>
+				<Button as="a" href="/docs" variant="glass" colour="indigo">
 					Browse all components
 				</Button>
-				<Button as="a" href="/blocks" variant="outline">
+				<Button disabled as="a" href="/blocks" variant="outline">
 					View blocks
 				</Button>
 			</HStack>
