@@ -59,7 +59,7 @@
 		/**
 		 * The content to render.
 		 */
-		children?: Snippet | unknown[] | unknown;
+		children?: Snippet;
 		/**
 		 * The HTML element to render.
 		 * @default "p"
@@ -126,9 +126,5 @@
 	})}
 	{...rest}
 >
-	{#if children}
-		{@render children()}
-	{:else}
-		<slot />
-	{/if}
+	{@render children?.()}
 </svelte:element>

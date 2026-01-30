@@ -10,7 +10,7 @@
 		/**
 		 * The content to render inside the box.
 		 */
-		children?: Snippet | unknown[] | unknown;
+		children?: Snippet;
 		/**
 		 * Additional CSS classes to apply.
 		 */
@@ -25,9 +25,5 @@
 </script>
 
 <svelte:element this={as} {...restProps}>
-	{#if children}
-		{@render children()}
-	{:else}
-		<slot />
-	{/if}
+	{@render children?.()}
 </svelte:element>

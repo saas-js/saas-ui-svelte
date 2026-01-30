@@ -14,9 +14,5 @@
 </script>
 
 <Stack {direction} {align} class={className} {...restProps}>
-	{#if children}
-		{@render children()}
-	{:else}
-		<slot />
-	{/if}
+	{@render children?.()}
 </Stack>

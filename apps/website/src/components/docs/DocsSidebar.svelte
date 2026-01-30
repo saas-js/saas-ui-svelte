@@ -44,7 +44,10 @@
 	}
 </script>
 
-<Box as="nav" class="flex flex-col flex-1 overflow-y-auto gap-0 px-4 py-8 text-sm">
+<Box
+	as="nav"
+	class="flex flex-col flex-1 overflow-y-auto gap-0 px-4 py-8 text-sm"
+>
 	{#each groups as group}
 		<VStack gap={0} class="relative my-3">
 			<HStack gap={1} class="h-6 text-xs rounded-md">
@@ -78,7 +81,7 @@
 									<Icon
 										as={CaretRight}
 										size="xs"
-										class="transition-transform duration-200 ease-in-out [[data-state=open]_&]:rotate-90"
+										class="transition-transform duration-200 ease-in-out in-data-[state=open]:rotate-90"
 									/>
 								</Box>
 							</Collapsible.Trigger>

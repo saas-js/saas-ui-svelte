@@ -249,11 +249,7 @@
 				<Spinner {colour} class={spinnerClass} />
 			</div>
 			<span class="sr-only">
-				{#if children}
-					{@render children()}
-				{:else}
-					<slot />
-				{/if}
+				{@render children?.()}
 			</span>
 		</span>
 	{:else if loading && loadingText}
@@ -262,11 +258,7 @@
 			{loadingText}
 		</span>
 	{:else}
-		{#if children}
-			{@render children()}
-		{:else}
-			<slot />
-		{/if}
+		{@render children?.()}
 	{/if}
 {/snippet}
 

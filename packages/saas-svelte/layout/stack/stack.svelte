@@ -52,7 +52,7 @@
 		/**
 		 * The content to render.
 		 */
-		children?: Snippet | unknown[] | unknown;
+		children?: Snippet;
 		/**
 		 * The direction of the stack.
 		 * @default "column"
@@ -102,9 +102,5 @@
 	style:gap="{gap * 0.25}rem"
 	{...restProps}
 >
-	{#if children}
-		{@render children()}
-	{:else}
-		<slot />
-	{/if}
+	{@render children?.()}
 </svelte:element>

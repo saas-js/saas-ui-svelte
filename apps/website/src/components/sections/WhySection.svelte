@@ -31,7 +31,7 @@
 	<Container maxW="7xl">
 		<HStack gap={4} class="flex-col lg:flex-row items-start lg:items-end mb-12">
 			<Box class="flex-1">
-				<Heading as="h3" size="4xl" weight="semibold" class="-tracking-wide">
+				<Heading as="h2" size="4xl" weight="semibold" class="-tracking-wide">
 					Why product teams<br />choose Saas UI
 				</Heading>
 			</Box>

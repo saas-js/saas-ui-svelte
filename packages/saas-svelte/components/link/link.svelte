@@ -77,9 +77,5 @@
 </script>
 
 <a class={finalClass} style={finalStyle} {...rest}>
-	{#if children}
-		{@render children()}
-	{:else}
-		<slot />
-	{/if}
+	{@render children?.()}
 </a>

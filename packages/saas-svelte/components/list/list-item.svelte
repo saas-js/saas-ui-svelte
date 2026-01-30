@@ -60,9 +60,5 @@
 </script>
 
 <li class={finalClass} {...restProps}>
-	{#if children}
-		{@render children()}
-	{:else}
-		<slot />
-	{/if}
+	{@render children?.()}
 </li>

@@ -9,7 +9,8 @@
 	import PreviewCard from "./PreviewCard.svelte";
 </script>
 
-<HStack gap={2} class="py-4 overflow-x-auto flex-nowrap">
+<section aria-label="Component previews">
+	<HStack gap={2} class="py-4 overflow-x-auto flex-nowrap">
 	<PreviewCard>
 		<Button variant="solid" colour="indigo">Button</Button>
 	</PreviewCard>
@@ -49,4 +50,5 @@
 	<PreviewCard>
 		<Switch colour="indigo" checked />
 	</PreviewCard>
-</HStack>
+	</HStack>
+</section>

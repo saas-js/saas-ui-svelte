@@ -39,7 +39,7 @@
 		/**
 		 * The content to render inside the grid.
 		 */
-		children?: Snippet | unknown[] | unknown;
+		children?: Snippet;
 		/**
 		 * Additional CSS classes to apply.
 		 */
@@ -82,9 +82,5 @@
 	style:row-gap="{rowGap}rem"
 	{...restProps}
 >
-	{#if children}
-		{@render children()}
-	{:else}
-		<slot />
-	{/if}
+	{@render children?.()}
 </div>

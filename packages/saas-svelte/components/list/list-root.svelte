@@ -107,18 +107,10 @@
 
 {#if as === "ol"}
 	<ol role="list" class={finalClass} {...restProps}>
-		{#if children}
-			{@render children()}
-		{:else}
-			<slot />
-		{/if}
+		{@render children?.()}
 	</ol>
 {:else}
 	<ul role="list" class={finalClass} {...restProps}>
-		{#if children}
-			{@render children()}
-		{:else}
-			<slot />
-		{/if}
+		{@render children?.()}
 	</ul>
 {/if}
