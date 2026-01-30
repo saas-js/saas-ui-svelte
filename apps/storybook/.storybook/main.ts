@@ -41,11 +41,26 @@ const config: StorybookConfig = {
 		};
 
 		return mergeConfig(config, {
-			base: isGitHubPages ? "/saas-ui-svelte/storybook/" : undefined,
+			base: isGitHubPages ? "/storybook/" : undefined,
 			plugins: [fixMdxShimPlugin],
 			server: {
 				fs: {
 					allow: [".."],
+				},
+			},
+			build: {
+				rollupOptions: {
+					output: {
+						manualChunks: (id: string) => {
+							if (id.includes("node_modules")) {
+								if (id.includes("@storybook")) return "storybook-vendor";
+								if (id.includes("svelte")) return "svelte-vendor";
+								if (id.includes("@ark-ui") || id.includes("@zag-js"))
+									return "ark-vendor";
+								return "vendor";
+							}
+						},
+					},
 				},
 			},
 		});

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Alert } from "@saas-ui/svelte/components/alert";
 import { Text } from "@saas-ui/svelte/typography/text";
+import { Spinner } from "@saas-ui/svelte/components/spinner";
 import type { ComponentCategory } from "../../lib/stories";
 
 interface Props {
@@ -11,48 +12,62 @@ interface Props {
 
 let { component, story, category }: Props = $props();
 
-// Dynamically import all wrapper components using import.meta.glob
-const componentWrappers = import.meta.glob("$wrappers/components/*.svelte", {
-	eager: true,
-});
-const layoutWrappers = import.meta.glob("$wrappers/layout/*.svelte", {
-	eager: true,
-});
-const typographyWrappers = import.meta.glob("$wrappers/typography/*.svelte", {
-	eager: true,
-});
-const utilitiesWrappers = import.meta.glob("$wrappers/utilities/*.svelte", {
-	eager: true,
-});
+// Dynamically import wrapper components lazily (not eager) to reduce bundle size
+const componentWrappers = import.meta.glob<{ default: any }>(
+	"$wrappers/components/*.svelte",
+);
+const layoutWrappers = import.meta.glob<{ default: any }>(
+	"$wrappers/layout/*.svelte",
+);
+const typographyWrappers = import.meta.glob<{ default: any }>(
+	"$wrappers/typography/*.svelte",
+);
+const utilitiesWrappers = import.meta.glob<{ default: any }>(
+	"$wrappers/utilities/*.svelte",
+);
 
-const wrappersByCategory: Record<ComponentCategory, Record<string, unknown>> = {
+const wrappersByCategory: Record<
+	ComponentCategory,
+	Record<string, () => Promise<{ default: any }>>
+> = {
 	components: componentWrappers,
 	layout: layoutWrappers,
 	typography: typographyWrappers,
 	utilities: utilitiesWrappers,
 };
 
-function getWrapper(category: ComponentCategory, componentName: string): any {
+async function loadWrapper(
+	category: ComponentCategory,
+	componentName: string,
+): Promise<any> {
 	const wrappers = wrappersByCategory[category];
-	// Match the component name to the wrapper file path
 	const key = Object.keys(wrappers).find((k) =>
 		k.endsWith(`/${componentName}.svelte`),
 	);
 	if (key) {
-		return (wrappers[key] as { default: any }).default;
+		const module = await wrappers[key]();
+		return module.default;
 	}
 	return null;
 }
 
-const WrapperComponent = $derived(getWrapper(category, component));
+const wrapperPromise = $derived(loadWrapper(category, component));
 </script>
 
-{#if WrapperComponent}
-	<WrapperComponent story={story} />
-{:else}
-	<Alert status="error" title="Component wrapper not found">
-		<Text size="sm"
-			>Unable to find wrapper for {category} component: {component}</Text
-		>
+{#await wrapperPromise}
+	<Spinner size="md" />
+{:then WrapperComponent}
+	{#if WrapperComponent}
+		<WrapperComponent {story} />
+	{:else}
+		<Alert status="error" title="Component wrapper not found">
+			<Text size="sm"
+				>Unable to find wrapper for {category} component: {component}</Text
+			>
+		</Alert>
+	{/if}
+{:catch}
+	<Alert status="error" title="Failed to load component">
+		<Text size="sm">Error loading wrapper for {component}</Text>
 	</Alert>
-{/if}
+{/await}
