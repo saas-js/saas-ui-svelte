@@ -2,6 +2,16 @@
 @import "tailwindcss";
 @import "@saas-ui/tailwind-preset/theme.css";
 
+/* Adjusted fallback font to prevent layout shift when Inter loads */
+@font-face {
+	font-family: "Inter Fallback";
+	src: local("Arial");
+	ascent-override: 90%;
+	descent-override: 22.43%;
+	line-gap-override: 0%;
+	size-adjust: 107.64%;
+}
+
 :root {
 	color-scheme: light dark;
 	--scale-factor: 1;
@@ -35,7 +45,7 @@
 }
 
 html {
-	font-family: "Inter Variable", system-ui, sans-serif;
+	font-family: "Inter Variable", "Inter Fallback", system-ui, sans-serif;
 }
 
 html.light {
