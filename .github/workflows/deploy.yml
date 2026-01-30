@@ -44,6 +44,7 @@ jobs:
                   cp -r apps/website/dist/* dist/
                   mkdir -p dist/storybook
                   cp -r apps/storybook/storybook-static/* dist/storybook/
+                  touch dist/.nojekyll
 
             - name: Upload Pages artifact
               uses: actions/upload-pages-artifact@v3
