@@ -88,14 +88,20 @@ export function groupSearchItems(items: SearchItem[]): SearchGroup[] {
         .filter((group) => group.items.length > 0);
 }
 
+function normalizeForSearch(str: string): string {
+    return str.toLowerCase().replace(/\s+/g, "");
+}
+
 export function filterSearchItems(items: SearchItem[], query: string): SearchItem[] {
-    const normalizedQuery = query.toLowerCase().trim();
-    if (!normalizedQuery) return items.slice(0, 50); // Limit initial results
+    const trimmedQuery = query.trim();
+    if (!trimmedQuery) return items.slice(0, 50); // Limit initial results
+
+    const normalizedQuery = normalizeForSearch(trimmedQuery);
 
     return items.filter((item) => {
-        if (item.label.toLowerCase().includes(normalizedQuery)) return true;
-        if (item.description?.toLowerCase().includes(normalizedQuery)) return true;
-        if (item.keywords?.some((k) => k.toLowerCase().includes(normalizedQuery))) return true;
+        if (normalizeForSearch(item.label).includes(normalizedQuery)) return true;
+        if (item.description && normalizeForSearch(item.description).includes(normalizedQuery)) return true;
+        if (item.keywords?.some((k) => normalizeForSearch(k).includes(normalizedQuery))) return true;
         return false;
     });
 }

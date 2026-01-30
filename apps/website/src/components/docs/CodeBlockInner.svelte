@@ -20,7 +20,13 @@ let { code, html, class: className }: Props = $props();
 			<ClipboardIconButton />
 		</Clipboard.Root>
 	</Box>
-	<Box class="shiki-wrapper overflow-x-auto rounded-lg text-sm">
+	<Box class="shiki-wrapper bg-bg-muted overflow-x-auto rounded-lg text-sm border border-border-default p-4">
 		{@html html}
 	</Box>
 </Box>
+
+<style>
+.code-block :global(.shiki-wrapper pre) {
+	background-color: transparent !important;
+}
+</style>

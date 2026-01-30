@@ -1,0 +1,24 @@
+---
+import { codeToHtml } from "shiki";
+import CodePreviewInner from "./CodePreview.svelte";
+
+interface Props {
+	code: string;
+	lang?: string;
+	class?: string;
+}
+
+const { code, lang = "svelte", class: className = "" } = Astro.props;
+
+const html = await codeToHtml(code, {
+	lang,
+	themes: {
+		light: "github-light",
+		dark: "github-dark",
+	},
+});
+---
+
+<CodePreviewInner {code} {html} class={className} client:load>
+	<slot />
+</CodePreviewInner>

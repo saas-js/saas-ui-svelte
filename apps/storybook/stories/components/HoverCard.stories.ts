@@ -44,6 +44,11 @@ const meta: Meta = {
 			"lazyMount",
 			"unmountOnExit",
 		]),
+		notice: {
+			type: "warning",
+			message:
+				"Hovercards are generally not inherently accessible because they rely on mouse-hover events, which are unusable for keyboard-only users, screen readers, and many mobile users. They should only display supplementary, non-essential information and must be implemented with strict accessibility considerations to be usable.",
+		},
 		docs: {
 			description: {
 				component:

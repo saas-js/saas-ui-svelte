@@ -193,3 +193,41 @@ export function createStaticPathsFromModules(
         };
     });
 }
+
+/**
+ * Extracts code for a specific story from a wrapper component source.
+ * Parses the wrapper file to find the {#if story === "storyName"} block.
+ */
+export function extractStoryCode(wrapperSource: string, storyName: string): string {
+    // Normalize the story name to match the wrapper format (lowerCamelCase)
+    const normalizedStoryName = storyName.charAt(0).toLowerCase() + storyName.slice(1);
+
+    // Try to find the exact {#if story === "storyName"} or {:else if story === "storyName"} block
+    const patterns = [
+        new RegExp(`\\{#if\\s+story\\s*===\\s*["']${normalizedStoryName}["']\\}([\\s\\S]*?)(?:\\{:else|\\{/if\\})`, 'i'),
+        new RegExp(`\\{:else\\s+if\\s+story\\s*===\\s*["']${normalizedStoryName}["']\\}([\\s\\S]*?)(?:\\{:else|\\{/if\\})`, 'i'),
+    ];
+
+    for (const pattern of patterns) {
+        const match = wrapperSource.match(pattern);
+        if (match && match[1]) {
+            // Clean up the code - remove leading/trailing whitespace and normalize indentation
+            const code = match[1].trim();
+            // Remove common leading indentation
+            const lines = code.split('\n');
+            const minIndent = lines
+                .filter(line => line.trim().length > 0)
+                .reduce((min, line) => {
+                    const indent = line.match(/^(\s*)/)?.[1].length || 0;
+                    return Math.min(min, indent);
+                }, Infinity);
+
+            if (minIndent > 0 && minIndent !== Infinity) {
+                return lines.map(line => line.slice(minIndent)).join('\n');
+            }
+            return code;
+        }
+    }
+
+    return '';
+}

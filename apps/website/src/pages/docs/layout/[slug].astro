@@ -1,4 +1,8 @@
 ---
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { codeToHtml } from "shiki";
 import Layout from "../../../layouts/Layout.astro";
 import DocsLayout from "../../../components/docs/DocsLayout.svelte";
 import StoryPreview from "../../../components/docs/StoryPreview.svelte";
@@ -6,6 +10,7 @@ import StoryWrapper from "../../../components/docs/StoryWrapper.svelte";
 import PropsTable from "../../../components/docs/PropsTable.svelte";
 import CodeBlock from "../../../components/docs/CodeBlock.astro";
 import DescriptionText from "../../../components/docs/DescriptionText.svelte";
+import { Alert } from "@saas-ui/svelte/components/alert";
 import {
 	storyNameToDisplayName,
 	getComponentName,
@@ -14,6 +19,7 @@ import {
 	getStoryPropValue,
 	buildTocItems,
 	createStaticPathsFromModules,
+	extractStoryCode,
 } from "../../../lib/stories";
 
 export async function getStaticPaths() {
@@ -33,6 +39,36 @@ interface Props {
 const { componentName, meta, stories } = Astro.props;
 const { slug } = Astro.params;
 
+// Read wrapper source file for code extraction
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const wrapperPath = path.resolve(
+	__dirname,
+	"../../../../../storybook/stories/wrappers/layout",
+	`${componentName}.svelte`
+);
+let wrapperSource = "";
+try {
+	wrapperSource = fs.readFileSync(wrapperPath, "utf-8");
+} catch {
+	// Wrapper file not found, code tabs won't be shown
+}
+
+// Pre-highlight code for each story
+const storyCodeMap: Record<string, { code: string; html: string }> = {};
+for (const [name] of Object.entries(stories)) {
+	const code = extractStoryCode(wrapperSource, name);
+	if (code) {
+		const html = await codeToHtml(code, {
+			lang: "svelte",
+			themes: {
+				light: "github-light",
+				dark: "github-dark",
+			},
+		});
+		storyCodeMap[name] = { code, html };
+	}
+}
+
 const title = meta?.title ? getComponentName(meta.title) : componentName;
 
 // Use custom anatomy from meta if available, otherwise generate a basic one
@@ -46,6 +82,9 @@ const hasProps =
 	subComponents.length > 0;
 
 const tocItems = buildTocItems(stories, meta, hasProps);
+
+// Get notice if defined
+const notice = meta?.parameters?.notice;
 ---
 
 <Layout title={title}>
@@ -56,6 +95,14 @@ const tocItems = buildTocItems(stories, meta, hasProps);
 	>
 		<div class="pb-20">
 			<h1 class="mb-4 text-2xl font-semibold">{title}</h1>
+
+			{
+				notice && (
+					<Alert status={notice.type || "warning"} class="mb-6" client:load>
+						{notice.message}
+					</Alert>
+				)
+			}
 
 			{
 				meta?.parameters?.docs?.description?.component && (
@@ -83,6 +130,7 @@ const tocItems = buildTocItems(stories, meta, hasProps);
 			{
 				Object.entries(stories).map(([name, story]) => {
 					const storyProp = getStoryPropValue(name);
+					const storyCode = storyCodeMap[name];
 					return (
 						<section
 							id={toKebabCase(name)}
@@ -102,7 +150,12 @@ const tocItems = buildTocItems(stories, meta, hasProps);
 									/>
 								</p>
 							)}
-							<StoryPreview story={storyProp} client:load>
+							<StoryPreview
+								story={storyProp}
+								code={storyCode?.code}
+								codeHtml={storyCode?.html}
+								client:load
+							>
 								<StoryWrapper
 									component={componentName}
 									story={storyProp}
