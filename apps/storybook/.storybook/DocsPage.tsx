@@ -182,9 +182,9 @@ export function DocsPage() {
 			<Title />
 			<Subtitle />
 			<Description />
-			<Primary />
 			<SubComponentsSection />
 			<Stories />
+			<Primary />
 		</>
 	);
 }
