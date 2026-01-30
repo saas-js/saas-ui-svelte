@@ -36,17 +36,40 @@ const wrappersByCategory: Record<
 	utilities: utilitiesWrappers,
 };
 
+// Module-level cache to prevent re-importing already loaded wrappers
+const wrapperCache = new Map<string, any>();
+const pendingImports = new Map<string, Promise<any>>();
+
 async function loadWrapper(
 	category: ComponentCategory,
 	componentName: string,
 ): Promise<any> {
+	const cacheKey = `${category}/${componentName}`;
+
+	// Return cached component immediately
+	if (wrapperCache.has(cacheKey)) {
+		return wrapperCache.get(cacheKey);
+	}
+
+	// Return pending import if already in flight
+	if (pendingImports.has(cacheKey)) {
+		return pendingImports.get(cacheKey);
+	}
+
 	const wrappers = wrappersByCategory[category];
 	const key = Object.keys(wrappers).find((k) =>
 		k.endsWith(`/${componentName}.svelte`),
 	);
+
 	if (key) {
-		const module = await wrappers[key]();
-		return module.default;
+		const importPromise = wrappers[key]().then((module) => {
+			const component = module.default;
+			wrapperCache.set(cacheKey, component);
+			pendingImports.delete(cacheKey);
+			return component;
+		});
+		pendingImports.set(cacheKey, importPromise);
+		return importPromise;
 	}
 	return null;
 }

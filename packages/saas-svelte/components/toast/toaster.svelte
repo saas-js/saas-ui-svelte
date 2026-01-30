@@ -58,10 +58,12 @@ function startExitAnimation(id: string) {
 	if (exitingToasts.has(id)) return;
 	if (!toaster.toasts.find((t) => t.id === id)) return;
 
-	exitingToasts = new Set([...exitingToasts, id]);
+	exitingToasts.add(id);
+	exitingToasts = exitingToasts;
 
 	setTimeout(() => {
-		exitingToasts = new Set([...exitingToasts].filter((i) => i !== id));
+		exitingToasts.delete(id);
+		exitingToasts = exitingToasts;
 		toaster.remove(id);
 		const newHeights = { ...heights };
 		delete newHeights[id];
@@ -72,19 +74,17 @@ function startExitAnimation(id: string) {
 // Svelte action for mounting toasts
 function mountToast(el: HTMLDivElement, id: string) {
 	// Mark as entering immediately
-	enteringToasts = new Set([...enteringToasts, id]);
+	enteringToasts.add(id);
+	enteringToasts = enteringToasts;
 
 	// Measure height
 	const h = el.offsetHeight;
 	heights = { ...heights, [id]: h };
 
-	// Use requestAnimationFrame to ensure the initial style is applied first
+	// Single rAF is sufficient - the browser batches style changes
 	requestAnimationFrame(() => {
-		requestAnimationFrame(() => {
-			enteringToasts = new Set(
-				[...enteringToasts].filter((i) => i !== id),
-			);
-		});
+		enteringToasts.delete(id);
+		enteringToasts = enteringToasts;
 	});
 
 	return {
@@ -118,19 +118,20 @@ function getToastStyle(t: ToastData, index: number): string {
 	const isExiting = exitingToasts.has(t.id);
 	const bottomOffset = getBottomOffset(toaster.toasts, index);
 
+	// Use transform instead of bottom for GPU-accelerated animations
 	if (isEntering) {
 		// Start below viewport
-		return `bottom: -100px; opacity: 0; transition: none;`;
+		return `bottom: ${baseBottom}px; transform: translateY(100px); opacity: 0; transition: none;`;
 	}
 
 	if (isExiting) {
 		// Fall down half the toast height and fade out
 		const h = heights[t.id] || 56;
-		return `bottom: ${baseBottom + bottomOffset - h / 2}px; opacity: 0; transition: bottom ${animationDuration}ms linear, opacity ${animationDuration}ms linear;`;
+		return `bottom: ${baseBottom}px; transform: translateY(${-bottomOffset + h / 2}px); opacity: 0; transition: transform ${animationDuration}ms ease-out, opacity ${animationDuration}ms ease-out; will-change: transform, opacity;`;
 	}
 
-	// Normal position
-	return `bottom: ${baseBottom + bottomOffset}px; opacity: 1; transition: bottom ${animationDuration}ms linear, opacity ${animationDuration}ms linear;`;
+	// Normal position - use transform for smooth GPU-accelerated movement
+	return `bottom: ${baseBottom}px; transform: translateY(${-bottomOffset}px); opacity: 1; transition: transform ${animationDuration}ms ease-out, opacity ${animationDuration}ms ease-out; will-change: transform, opacity;`;
 }
 </script>
 
