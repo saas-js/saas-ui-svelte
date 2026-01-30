@@ -5,8 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig({
-	site: "https://saas-js.github.io",
-	base: process.env.NODE_ENV === "production" ? "/saas-ui-svelte" : "",
+	site: "https://svelte.saas-ui.dev",
 	integrations: [svelte(), mdx()],
 	prefetch: true,
 	experimental: {

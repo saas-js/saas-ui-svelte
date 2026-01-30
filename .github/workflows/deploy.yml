@@ -45,6 +45,7 @@ jobs:
                   mkdir -p dist/storybook
                   cp -r apps/storybook/storybook-static/* dist/storybook/
                   touch dist/.nojekyll
+                  echo "svelte.saas-ui.dev" > dist/CNAME
 
             - name: Upload Pages artifact
               uses: actions/upload-pages-artifact@v3
