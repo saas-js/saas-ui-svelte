@@ -10,20 +10,7 @@
 	import { Progress } from "$saas/components/progress";
 	import { Icon } from "$saas/components/icon";
 	import CurrencyDollar from "phosphor-svelte/lib/CurrencyDollar";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours } from "../../utils";
 
 	interface Props {
 		story:

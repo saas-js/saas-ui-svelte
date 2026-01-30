@@ -8,23 +8,7 @@
 	import { Stack } from "$saas/layout/stack";
 	import { Group } from "$saas/layout/group";
 	import { Text } from "$saas/typography/text";
-
-	const progressSizes = ["xs", "sm", "md", "lg", "xl"] as const;
-	const progressVariants = ["outline", "subtle"] as const;
-	const progressShapes = ["square", "rounded", "full"] as const;
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours, progressSizes, progressVariants, progressShapes } from "../../utils";
 
 	interface Props {
 		story:

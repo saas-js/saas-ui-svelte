@@ -9,23 +9,7 @@
 	import { Text } from "$saas/typography/text";
 	import Plus from "phosphor-svelte/lib/Plus";
 	import Check from "phosphor-svelte/lib/Check";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const tagVariants = ["subtle", "solid", "outline", "surface"] as const;
-	const tagSizes = ["sm", "md", "lg", "xl"] as const;
+	import { colours, tagVariants, tagSizes } from "../../utils";
 
 	interface Props {
 		story:

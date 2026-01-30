@@ -13,23 +13,7 @@
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
 	import File from "phosphor-svelte/lib/File";
 	import Users from "phosphor-svelte/lib/Users";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const emptyStateSizes = ["sm", "md", "lg"] as const;
-	const emptyStateAlignOptions = ["centre", "start", "end"] as const;
+	import { colours, emptyStateSizes, emptyStateAlignOptions } from "../../utils";
 
 	interface Props {
 		story: "basic" | "withAction" | "withList" | "sizes" | "alignment" | "colours";

@@ -13,22 +13,7 @@
 	import CurrencyDollar from "phosphor-svelte/lib/CurrencyDollar";
 	import TrendUp from "phosphor-svelte/lib/TrendUp";
 	import Clock from "phosphor-svelte/lib/Clock";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const radioCardSizes = ["sm", "md", "lg"] as const;
+	import { colours, radioCardSizes } from "../../utils";
 
 	const frameworks = [
 		{ value: "next", title: "Next.js", description: "Best for apps" },

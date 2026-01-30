@@ -11,22 +11,7 @@
 	import { Kbd } from "$saas/components/kbd";
 	import User from "phosphor-svelte/lib/User";
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
-
-	const inputVariants = ["outline", "subtle", "flushed"] as const;
-	const inputSizes = ["xs", "sm", "md", "lg"] as const;
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours, inputVariants, inputSizes } from "../../utils";
 
 	interface Props {
 		story:

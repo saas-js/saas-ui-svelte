@@ -1,6 +1,6 @@
 <script module lang="ts">
 	import { tv, type VariantProps } from "tailwind-variants";
-	import type { HTMLButtonAttributes } from "svelte/elements";
+	import type { Snippet } from "svelte";
 
 	import type { ColourName } from "$saas/utils/colours";
 
@@ -112,11 +112,15 @@
 </script>
 
 <script lang="ts">
-	import type { HTMLAnchorAttributes } from "svelte/elements";
 	import { getColourStyle } from "$saas/utils/colours";
 	import { Spinner } from "$saas/components/spinner";
 
-	type BaseProps = {
+	type Props = {
+		/**
+		 * The element to render the button as.
+		 * @default "button"
+		 */
+		as?: "button" | "a";
 		/**
 		 * The visual style of the button.
 		 * @default "surface"
@@ -152,19 +156,39 @@
 		 * @default false
 		 */
 		disabled?: boolean;
+		/**
+		 * The href for anchor buttons.
+		 */
+		href?: string;
+		/**
+		 * The target for anchor buttons.
+		 */
+		target?: string;
+		/**
+		 * The rel for anchor buttons.
+		 */
+		rel?: string;
+		/**
+		 * The button type attribute.
+		 */
+		type?: "button" | "submit" | "reset";
+		/**
+		 * Additional CSS classes.
+		 */
+		class?: string;
+		/**
+		 * Inline styles.
+		 */
+		style?: string;
+		/**
+		 * Children content.
+		 */
+		children?: Snippet;
+		/**
+		 * Additional attributes passed to the element.
+		 */
+		[key: string]: unknown;
 	};
-
-	type ButtonAsButton = BaseProps &
-		HTMLButtonAttributes & {
-			as?: "button";
-		};
-
-	type ButtonAsAnchor = BaseProps &
-		HTMLAnchorAttributes & {
-			as: "a";
-		};
-
-	type Props = ButtonAsButton | ButtonAsAnchor;
 
 	let {
 		as = "button",
@@ -178,6 +202,10 @@
 		loading = false,
 		loadingText = "",
 		disabled,
+		href,
+		target,
+		rel,
+		type = "button",
 		...restProps
 	}: Props = $props();
 
@@ -221,7 +249,11 @@
 				<Spinner {colour} class={spinnerClass} />
 			</div>
 			<span class="sr-only">
-				{@render children?.()}
+				{#if children}
+					{@render children()}
+				{:else}
+					<slot />
+				{/if}
 			</span>
 		</span>
 	{:else if loading && loadingText}
@@ -230,7 +262,11 @@
 			{loadingText}
 		</span>
 	{:else}
-		{@render children?.()}
+		{#if children}
+			{@render children()}
+		{:else}
+			<slot />
+		{/if}
 	{/if}
 {/snippet}
 
@@ -239,7 +275,10 @@
 		class={finalClass}
 		style={finalStyle}
 		aria-disabled={disabled || loading || undefined}
-		{...restProps as HTMLAnchorAttributes}
+		{href}
+		{target}
+		{rel}
+		{...restProps}
 	>
 		{@render buttonContent()}
 	</a>
@@ -248,7 +287,8 @@
 		class={finalClass}
 		style={finalStyle}
 		disabled={disabled || loading}
-		{...restProps as HTMLButtonAttributes}
+		{type}
+		{...restProps}
 	>
 		{@render buttonContent()}
 	</button>

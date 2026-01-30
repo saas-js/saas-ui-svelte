@@ -10,20 +10,7 @@
 	import PencilSimple from "phosphor-svelte/lib/PencilSimple";
 	import Check from "phosphor-svelte/lib/Check";
 	import X from "phosphor-svelte/lib/X";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours } from "../../utils";
 
 	interface Props {
 		story:

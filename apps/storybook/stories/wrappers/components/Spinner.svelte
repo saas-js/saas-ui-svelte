@@ -7,22 +7,7 @@
 	import { Spinner } from "$saas/components/spinner";
 	import { VStack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const spinnerSizes = ["xs", "sm", "md", "lg", "xl"] as const;
+	import { colours, spinnerSizes } from "../../utils";
 
 	interface Props {
 		story:

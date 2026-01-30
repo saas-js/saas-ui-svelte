@@ -16,22 +16,7 @@
 	import GridFour from "phosphor-svelte/lib/GridFour";
 	import List from "phosphor-svelte/lib/List";
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const segmentGroupSizes = ["xs", "sm", "md", "lg"] as const;
+	import { colours, segmentGroupSizes } from "../../utils";
 
 	const items = ["React", "Vue", "Svelte"];
 	const views = [

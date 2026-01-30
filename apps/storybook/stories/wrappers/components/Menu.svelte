@@ -16,21 +16,7 @@
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
 	import Translate from "phosphor-svelte/lib/Translate";
 	import ShareNetwork from "phosphor-svelte/lib/ShareNetwork";
-
-	const menuSizes = ["sm", "md"] as const;
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours, menuSizes } from "../../utils";
 
 	interface Props {
 		story:

@@ -13,23 +13,7 @@
 	import Folder from "phosphor-svelte/lib/Folder";
 	import CheckSquare from "phosphor-svelte/lib/CheckSquare";
 	import Plus from "phosphor-svelte/lib/Plus";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const tabsSizes = ["xs", "sm", "md", "lg"] as const;
-	const tabsVariants = ["line", "subtle", "enclosed", "outline", "plain"] as const;
+	import { colours, tabsSizes, tabsVariants } from "../../utils";
 
 	interface Props {
 		story:

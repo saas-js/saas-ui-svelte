@@ -11,7 +11,7 @@
 		/**
 		 * The content to render inside the center container.
 		 */
-		children?: Snippet;
+		children?: Snippet | unknown[] | unknown;
 		/**
 		 * Additional CSS classes to apply.
 		 */
@@ -34,5 +34,9 @@
 	)}
 	{...restProps}
 >
-	{@render children?.()}
+	{#if children}
+		{@render children()}
+	{:else}
+		<slot />
+	{/if}
 </div>

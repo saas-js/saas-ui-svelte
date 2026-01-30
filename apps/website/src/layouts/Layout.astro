@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.svelte";
-import Footer from "../components/Footer.astro";
+import Footer from "../components/Footer.svelte";
 import { themeInitScript } from "../lib/theme";
 
 interface Props {
@@ -26,6 +26,6 @@ const { title } = Astro.props;
 	<body class="bg-bg-default text-fg-default pt-14">
 		<Navbar client:load />
 		<slot />
-		<Footer />
+		<Footer client:load />
 	</body>
 </html>

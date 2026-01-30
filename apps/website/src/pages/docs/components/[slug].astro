@@ -2,38 +2,16 @@
 import Layout from "../../../layouts/Layout.astro";
 import DocsLayout from "../../../components/docs/DocsLayout.svelte";
 import StoryPreview from "../../../components/docs/StoryPreview.svelte";
-import ComponentWrapper from "../../../components/docs/ComponentWrapper.svelte";
+import StoryWrapper from "../../../components/docs/StoryWrapper.svelte";
+import PropsTable from "../../../components/docs/PropsTable.svelte";
 import CodeBlock from "../../../components/docs/CodeBlock.astro";
 import DescriptionText from "../../../components/docs/DescriptionText.svelte";
-import { Code } from "@saas-ui/svelte/typography/code";
-import { getStories, storyNameToDisplayName, getComponentName, generateComponentAnatomy } from "../../../lib/stories";
+import { storyNameToDisplayName, getComponentName, generateComponentAnatomy, toKebabCase, getStoryPropValue, buildTocItems, createStaticPathsFromModules } from "../../../lib/stories";
 
 // Generate static paths for all components
 export async function getStaticPaths() {
 	const modules = import.meta.glob("../../../../../storybook/stories/components/*.stories.ts", { eager: true });
-
-	// Convert PascalCase to kebab-case
-	function toKebabCase(str: string): string {
-		return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-	}
-
-	const paths = Object.entries(modules).map(([path, module]) => {
-		// Extract component name from path
-		const match = path.match(/\/([^/]+)\.stories\.ts$/);
-		const componentName = match ? match[1] : "";
-		const slug = toKebabCase(componentName);
-
-		return {
-			params: { slug },
-			props: {
-				componentName,
-				meta: (module as any).default,
-				stories: getStories(module as Record<string, unknown>),
-			},
-		};
-	});
-
-	return paths;
+	return createStaticPathsFromModules(modules);
 }
 
 interface Props {
@@ -54,42 +32,12 @@ const anatomyCode = meta?.parameters?.anatomy || generateComponentAnatomy(title,
 // Check if component uses portals (needs client:only)
 const usesPortal = meta?.parameters?.usesPortal || false;
 
-// Map story names to lowerCamelCase for wrapper props
-function getStoryPropValue(storyName: string): string {
-	// Convert to lowerCamelCase: "WithIcon" -> "withIcon", "MultipleActions" -> "multipleActions"
-	return storyName.charAt(0).toLowerCase() + storyName.slice(1);
-}
-
 // Get sub-components if defined, otherwise use argTypes for main component
 const subComponents = meta?.parameters?.subComponents || [];
 const hasProps = (meta?.argTypes && Object.keys(meta.argTypes).length > 0) || subComponents.length > 0;
 
 // Build TOC items from stories
-const tocItems = [
-	{ label: "Anatomy", href: "#anatomy", level: 1 },
-	{
-		label: "Examples",
-		href: "#examples",
-		level: 1,
-		children: Object.keys(stories).map(name => ({
-			label: storyNameToDisplayName(name),
-			href: `#${name.toLowerCase()}`,
-			level: 2
-		}))
-	},
-	...(hasProps ? [{
-		label: "Props",
-		href: "#props",
-		level: 1,
-		children: subComponents.length > 0
-			? subComponents.map((sc: any) => ({
-				label: sc.name,
-				href: `#props-${sc.name.toLowerCase().replace(/\./g, '-')}`,
-				level: 2
-			}))
-			: []
-	}] : []),
-];
+const tocItems = buildTocItems(stories, meta, hasProps);
 ---
 
 <Layout title={title}>
@@ -115,7 +63,7 @@ const tocItems = [
 			{Object.entries(stories).map(([name, story]) => {
 				const storyProp = getStoryPropValue(name);
 				return (
-					<section id={name.toLowerCase()} class="mb-12 scroll-mt-20">
+					<section id={toKebabCase(name)} class="mb-12 scroll-mt-20">
 						<h3 class="text-lg font-medium mb-2">{storyNameToDisplayName(name)}</h3>
 						{story.parameters?.docs?.description?.story && (
 							<p class="text-fg-muted mb-4">
@@ -124,9 +72,9 @@ const tocItems = [
 						)}
 						<StoryPreview story={storyProp} client:load>
 							{usesPortal ? (
-								<ComponentWrapper component={componentName} story={storyProp} client:only="svelte" />
+								<StoryWrapper component={componentName} story={storyProp} category="components" client:only="svelte" />
 							) : (
-								<ComponentWrapper component={componentName} story={storyProp} client:load />
+								<StoryWrapper component={componentName} story={storyProp} category="components" client:load />
 							)}
 						</StoryPreview>
 					</section>
@@ -137,7 +85,6 @@ const tocItems = [
 				<>
 					<h2 id="props" class="text-xl font-semibold mt-12 mb-4 scroll-mt-20">Props</h2>
 
-					{/* Show sub-components props if defined */}
 					{subComponents.length > 0 ? (
 						subComponents.map((sc: any) => (
 							<div class="mb-8">
@@ -150,69 +97,11 @@ const tocItems = [
 								{sc.description && (
 									<p class="text-fg-muted mb-4 text-sm">{sc.description}</p>
 								)}
-								<div class="overflow-x-auto">
-									<table class="w-full text-sm">
-										<thead>
-											<tr class="border-b border-border-default">
-												<th class="text-left py-3 px-4 font-medium">Prop</th>
-												<th class="text-left py-3 px-4 font-medium">Type</th>
-												<th class="text-left py-3 px-4 font-medium">Default</th>
-												<th class="text-left py-3 px-4 font-medium">Description</th>
-											</tr>
-										</thead>
-										<tbody>
-											{Object.entries(sc.props || {}).map(([prop, propDef]: [string, any]) => (
-												<tr class="border-b border-border-subtle">
-													<td class="py-3 px-4">
-														<Code size="xs" colour="indigo">{prop}</Code>
-													</td>
-													<td class="py-3 px-4">
-														<Code size="xs" colour="gray">{propDef.type || "any"}</Code>
-													</td>
-													<td class="py-3 px-4">
-														{propDef.default ? <Code size="xs" colour="gray">{propDef.default}</Code> : "-"}
-													</td>
-													<td class="py-3 px-4 text-fg-muted">
-														{propDef.description || "-"}
-													</td>
-												</tr>
-											))}
-										</tbody>
-									</table>
-								</div>
+								<PropsTable props={sc.props || {}} client:load />
 							</div>
 						))
 					) : meta?.argTypes && Object.keys(meta.argTypes).length > 0 ? (
-						<div class="overflow-x-auto">
-							<table class="w-full text-sm">
-								<thead>
-									<tr class="border-b border-border-default">
-										<th class="text-left py-3 px-4 font-medium">Prop</th>
-										<th class="text-left py-3 px-4 font-medium">Type</th>
-										<th class="text-left py-3 px-4 font-medium">Default</th>
-										<th class="text-left py-3 px-4 font-medium">Description</th>
-									</tr>
-								</thead>
-								<tbody>
-									{Object.entries(meta.argTypes).map(([prop, argType]: [string, any]) => (
-										<tr class="border-b border-border-subtle">
-											<td class="py-3 px-4">
-												<Code size="xs" colour="indigo">{prop}</Code>
-											</td>
-											<td class="py-3 px-4">
-												<Code size="xs" colour="gray">{argType.options ? argType.options.join(" | ") : argType.control || "any"}</Code>
-											</td>
-											<td class="py-3 px-4">
-												{argType.table?.defaultValue?.summary ? <Code size="xs" colour="gray">{argType.table.defaultValue.summary}</Code> : "-"}
-											</td>
-											<td class="py-3 px-4 text-fg-muted">
-												{argType.description || "-"}
-											</td>
-										</tr>
-									))}
-								</tbody>
-							</table>
-						</div>
+						<PropsTable props={meta.argTypes} isArgTypes client:load />
 					) : null}
 				</>
 			)}

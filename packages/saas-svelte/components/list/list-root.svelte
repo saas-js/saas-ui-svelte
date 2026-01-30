@@ -46,9 +46,9 @@
 	interface Props
 		extends HTMLAttributes<HTMLUListElement | HTMLOListElement> {
 		/**
-		 * The content to render inside the list.
+		 * The content to render inside the list (Svelte snippet or slot fallback for Astro).
 		 */
-		children: Snippet;
+		children?: Snippet;
 		/**
 		 * The HTML element to render.
 		 * @default "ul"
@@ -107,10 +107,18 @@
 
 {#if as === "ol"}
 	<ol role="list" class={finalClass} {...restProps}>
-		{@render children()}
+		{#if children}
+			{@render children()}
+		{:else}
+			<slot />
+		{/if}
 	</ol>
 {:else}
 	<ul role="list" class={finalClass} {...restProps}>
-		{@render children()}
+		{#if children}
+			{@render children()}
+		{:else}
+			<slot />
+		{/if}
 	</ul>
 {/if}

@@ -7,23 +7,9 @@
 	import { ProgressCircle, type ProgressCircleVariants } from "$saas/components/progress-circle";
 	import { Text } from "$saas/typography/text";
 	import { HStack, VStack } from "$saas/layout/stack";
+	import { colours, sizes } from "../../utils";
 
 	type Size = NonNullable<ProgressCircleVariants["size"]>;
-
-	const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
 
 	interface Props {
 		story:

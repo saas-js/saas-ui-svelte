@@ -7,23 +7,7 @@
 	import { Radio } from "$saas/components/radio";
 	import { Stack, HStack, VStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const radioVariants = ["solid", "outline"] as const;
-	const radioSizes = ["sm", "md", "lg"] as const;
+	import { colours, radioVariants, radioSizes } from "../../utils";
 
 	interface Props {
 		story:

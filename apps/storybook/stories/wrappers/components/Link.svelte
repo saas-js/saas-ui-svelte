@@ -8,20 +8,7 @@
 	import { VStack } from "$saas/layout/stack";
 	import ArrowSquareOut from "phosphor-svelte/lib/ArrowSquareOut";
 	import { Icon } from "$saas/components/icon";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours } from "../../utils";
 
 	interface Props {
 		story: "basic" | "variants" | "withinText" | "external" | "colours";

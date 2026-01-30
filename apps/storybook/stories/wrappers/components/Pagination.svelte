@@ -7,22 +7,7 @@
 	import { Pagination } from "$saas/components/pagination";
 	import { Stack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
-
-	const paginationSizes = ["xs", "sm", "md", "lg"] as const;
-	const paginationVariants = ["ghost", "outline", "solid"] as const;
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours, paginationSizes, paginationVariants } from "../../utils";
 
 	const items = new Array(50)
 		.fill(0)

@@ -29,9 +29,9 @@
 
 	interface Props extends HTMLAttributes<HTMLLIElement> {
 		/**
-		 * The content to render inside the list item.
+		 * The content to render inside the list item (Svelte snippet or slot fallback for Astro).
 		 */
-		children: Snippet;
+		children?: Snippet;
 		/**
 		 * Additional CSS classes to apply.
 		 */
@@ -60,5 +60,9 @@
 </script>
 
 <li class={finalClass} {...restProps}>
-	{@render children()}
+	{#if children}
+		{@render children()}
+	{:else}
+		<slot />
+	{/if}
 </li>

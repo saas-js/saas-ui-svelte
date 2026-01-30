@@ -89,5 +89,9 @@
 	})}
 	{...rest}
 >
-	{@render children?.()}
+	{#if children}
+		{@render children()}
+	{:else}
+		<slot />
+	{/if}
 </svelte:element>

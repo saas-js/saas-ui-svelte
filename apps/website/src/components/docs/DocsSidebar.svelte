@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { Collapsible } from "@saas-ui/svelte/components/collapsible";
 	import { Icon } from "@saas-ui/svelte/components/icon";
-	import { VStack } from "@saas-ui/svelte/layout/stack";
+	import { Link } from "@saas-ui/svelte/components/link";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
 	import CaretRight from "phosphor-svelte/lib/CaretRightIcon";
 
 	interface NavItem {
@@ -41,24 +44,28 @@
 	}
 </script>
 
-<nav class="flex flex-col flex-1 overflow-y-auto gap-0 px-4 py-8 text-sm">
+<Box as="nav" class="flex flex-col flex-1 overflow-y-auto gap-0 px-4 py-8 text-sm">
 	{#each groups as group}
-		<div class="relative my-3">
-			<div class="flex items-center gap-1 h-6 text-xs rounded-md">
-				<h5
+		<VStack gap={0} class="relative my-3">
+			<HStack gap={1} class="h-6 text-xs rounded-md">
+				<Heading
+					as="h5"
+					size="xs"
 					class="flex-1 flex items-center font-medium px-2 text-fg-default"
 				>
 					{group.title}
-				</h5>
-			</div>
-			<div class="flex flex-col pt-1">
+				</Heading>
+			</HStack>
+			<VStack gap={0} class="pt-1">
 				{#each group.items as item}
 					{#if item.children && item.children.length > 0}
 						<Collapsible.Root open={hasActiveChild(item.children)}>
 							<Collapsible.Trigger
 								class="flex items-center gap-1 w-full transition-all duration-150 rounded-md cursor-pointer select-none hover:bg-bg-subtle h-8 text-[.8125rem]"
 							>
-								<h5
+								<Heading
+									as="h5"
+									size="xs"
 									class="flex-1 flex items-center font-medium px-2 {hasActiveChild(
 										item.children,
 									)
@@ -66,23 +73,23 @@
 										: 'text-fg-muted'}"
 								>
 									{formatLabel(item.label)}
-								</h5>
-								<div class="pr-1">
+								</Heading>
+								<Box class="pr-1">
 									<Icon
 										as={CaretRight}
 										size="xs"
 										class="transition-transform duration-200 ease-in-out [[data-state=open]_&]:rotate-90"
 									/>
-								</div>
+								</Box>
 							</Collapsible.Trigger>
 							<Collapsible.Content
 								class="flex flex-col pt-1 overflow-hidden pb-2"
 							>
 								{#each item.children as child}
-									<div
+									<Box
 										class="text-[.8125rem] leading-[1.1375rem] relative py-px pl-4 before:content-[''] before:z-[-1] before:bg-border-subtle before:w-px before:h-full before:absolute before:left-2 before:inset-y-0"
 									>
-										<a
+										<Link
 											href={child.href}
 											class="isolate text-ellipsis whitespace-nowrap cursor-pointer w-full flex items-center gap-2 h-7 transition-all duration-150 overflow-hidden px-2.5 rounded {isActive(
 												child.href,
@@ -91,16 +98,16 @@
 												: 'text-fg-muted hover:bg-bg-subtle hover:text-fg-default'}"
 										>
 											{formatLabel(child.label)}
-										</a>
-									</div>
+										</Link>
+									</Box>
 								{/each}
 							</Collapsible.Content>
 						</Collapsible.Root>
 					{:else if item.href}
-						<div
+						<Box
 							class="text-[.8125rem] leading-[1.1375rem] relative py-px"
 						>
-							<a
+							<Link
 								href={item.href}
 								class="isolate text-ellipsis whitespace-nowrap cursor-pointer w-full flex items-center gap-2 h-7 transition-all duration-150 overflow-hidden rounded font-medium px-2 {isActive(
 									item.href,
@@ -109,11 +116,11 @@
 									: 'text-fg-muted hover:bg-bg-subtle hover:text-fg-default'}"
 							>
 								{formatLabel(item.label)}
-							</a>
-						</div>
+							</Link>
+						</Box>
 					{/if}
 				{/each}
-			</div>
-		</div>
+			</VStack>
+		</VStack>
 	{/each}
-</nav>
+</Box>

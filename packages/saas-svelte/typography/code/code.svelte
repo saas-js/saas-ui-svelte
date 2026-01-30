@@ -99,5 +99,9 @@
 </script>
 
 <code class={finalClass} style={finalStyle} {...restProps}>
-	{@render children?.()}
+	{#if children}
+		{@render children()}
+	{:else}
+		<slot />
+	{/if}
 </code>

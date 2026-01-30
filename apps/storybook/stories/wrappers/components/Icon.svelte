@@ -10,30 +10,7 @@
 	import { DataList } from "$saas/components/data-list";
 	import Star from "phosphor-svelte/lib/Star";
 	import Heart from "phosphor-svelte/lib/Heart";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
-	const iconWeights = [
-		"thin",
-		"light",
-		"regular",
-		"bold",
-		"fill",
-		"duotone",
-	] as const;
+	import { colours, sizes, iconWeights } from "../../utils";
 
 	interface Props {
 		story: "basic" | "colours" | "sizes" | "weights" | "customSvg";

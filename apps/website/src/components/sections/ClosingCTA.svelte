@@ -1,23 +1,24 @@
----
-import { Container } from "@saas-ui/svelte/layout/container";
-import { Button } from "@saas-ui/svelte/components/button";
-import { Heading } from "@saas-ui/svelte/typography/heading";
----
+<script lang="ts">
+	import { Container } from "@saas-ui/svelte/layout/container";
+	import { HStack } from "@saas-ui/svelte/layout/stack";
+	import { Button } from "@saas-ui/svelte/components/button";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
+</script>
 
 <section class="border-y border-dashed border-border-default">
 	<Container maxW="7xl">
-		<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 py-16 border-x border-dashed border-border-default px-8">
+		<HStack gap={6} class="flex-col md:flex-row justify-between items-start md:items-end py-16 border-x border-dashed border-border-default px-8">
 			<Heading as="p" size="3xl" weight="medium" class="tracking-tight">
 				Join hundreds of developers<br />building better SaaS interfaces.
 			</Heading>
-			<div class="flex gap-2">
+			<HStack gap={2}>
 				<Button as="a" href="/docs/components/overview" variant="glass" colour="indigo">
 					Browse all components
 				</Button>
 				<Button as="a" href="/blocks" variant="outline">
 					View blocks
 				</Button>
-			</div>
-		</div>
+			</HStack>
+		</HStack>
 	</Container>
 </section>

@@ -51,10 +51,15 @@
 </script>
 
 <script lang="ts">
+	import type { Snippet } from "svelte";
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { ClassNameValue } from "tailwind-merge";
 
-	interface Props extends Omit<HTMLAttributes<HTMLElement>, "class"> {
+	interface Props extends Omit<HTMLAttributes<HTMLElement>, "class" | "children"> {
+		/**
+		 * The content to render.
+		 */
+		children?: Snippet | unknown[] | unknown;
 		/**
 		 * The HTML element to render.
 		 * @default "p"
@@ -121,5 +126,9 @@
 	})}
 	{...rest}
 >
-	{@render children?.()}
+	{#if children}
+		{@render children()}
+	{:else}
+		<slot />
+	{/if}
 </svelte:element>

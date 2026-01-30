@@ -12,31 +12,7 @@
 	import Envelope from "phosphor-svelte/lib/Envelope";
 	import ArrowRight from "phosphor-svelte/lib/ArrowRight";
 	import CaretDown from "phosphor-svelte/lib/CaretDown";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const buttonSizes = ["xs", "sm", "md", "lg", "xl"] as const;
-	const buttonVariants = [
-		"solid",
-		"subtle",
-		"outline",
-		"ghost",
-		"plain",
-		"surface",
-		"glass",
-	] as const;
+	import { colours, buttonSizes, buttonVariants } from "../../utils";
 
 	interface Props {
 		story:

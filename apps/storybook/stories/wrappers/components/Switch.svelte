@@ -12,23 +12,7 @@
 	import X from "phosphor-svelte/lib/X";
 	import Sun from "phosphor-svelte/lib/Sun";
 	import Moon from "phosphor-svelte/lib/Moon";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const switchSizes = ["xs", "sm", "md", "lg"] as const;
-	const switchVariants = ["solid", "raised"] as const;
+	import { colours, switchSizes, switchVariants } from "../../utils";
 
 	interface Props {
 		story:

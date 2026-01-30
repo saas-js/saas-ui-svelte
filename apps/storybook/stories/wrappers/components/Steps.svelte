@@ -11,22 +11,7 @@
 	import User from "phosphor-svelte/lib/User";
 	import Wallet from "phosphor-svelte/lib/Wallet";
 	import CalendarBlank from "phosphor-svelte/lib/CalendarBlank";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const stepsSizes = ["sm", "md", "lg"] as const;
+	import { colours, stepsSizes } from "../../utils";
 
 	interface Props {
 		story:

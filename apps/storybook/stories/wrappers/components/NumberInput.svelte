@@ -8,21 +8,7 @@
 	import { Field } from "$saas/components/field";
 	import { Stack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
-
-	const numberInputSizes = ["xs", "sm", "md", "lg"] as const;
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours, numberInputSizes } from "../../utils";
 
 	interface Props {
 		story:

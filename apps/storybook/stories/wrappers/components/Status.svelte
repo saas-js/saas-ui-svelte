@@ -7,22 +7,7 @@
 	import { Status } from "$saas/components/status";
 	import { HStack, VStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const statusSizes = ["sm", "md", "lg"] as const;
+	import { colours, statusSizes } from "../../utils";
 
 	interface Props {
 		story:

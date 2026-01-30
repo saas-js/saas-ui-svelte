@@ -3,6 +3,7 @@
 	import { twMerge } from "tailwind-merge";
 	import type { Snippet } from "svelte";
 	import type { HTMLAttributes } from "svelte/elements";
+	import type { SvelteHTMLElements } from "svelte/elements";
 
 	const stack = tv({
 		base: "flex",
@@ -42,11 +43,16 @@
 
 	type StackVariants = VariantProps<typeof stack>;
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
+	interface Props extends HTMLAttributes<HTMLElement> {
+		/**
+		 * The HTML element to render.
+		 * @default "div"
+		 */
+		as?: keyof SvelteHTMLElements;
 		/**
 		 * The content to render.
 		 */
-		children: Snippet;
+		children?: Snippet | unknown[] | unknown;
 		/**
 		 * The direction of the stack.
 		 * @default "column"
@@ -78,6 +84,7 @@
 	}
 
 	let {
+		as = "div",
 		children,
 		direction = "column",
 		align,
@@ -89,10 +96,15 @@
 	}: Props = $props();
 </script>
 
-<div
+<svelte:element
+	this={as}
 	class={twMerge(stack({ direction, align, justify, wrap }), className)}
 	style:gap="{gap * 0.25}rem"
 	{...restProps}
 >
-	{@render children()}
-</div>
+	{#if children}
+		{@render children()}
+	{:else}
+		<slot />
+	{/if}
+</svelte:element>

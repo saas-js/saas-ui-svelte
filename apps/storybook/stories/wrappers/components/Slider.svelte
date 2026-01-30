@@ -8,23 +8,7 @@
 	import { Stack, HStack, VStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
 	import { Code } from "$saas/typography/code";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const sliderSizes = ["sm", "md", "lg"] as const;
-	const sliderVariants = ["outline", "solid"] as const;
+	import { colours, sliderSizes, sliderVariants } from "../../utils";
 
 	interface Props {
 		story:

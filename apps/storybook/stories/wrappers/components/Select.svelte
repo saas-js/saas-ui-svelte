@@ -12,23 +12,7 @@
 	import { Button } from "$saas/components/button";
 	import { Popover } from "$saas/components/popover";
 	import { createListCollection } from "@ark-ui/svelte/select";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const selectSizes = ["xs", "sm", "md", "lg"] as const;
-	const selectVariants = ["outline", "subtle"] as const;
+	import { colours, selectSizes, selectVariants } from "../../utils";
 
 	const frameworks = createListCollection({
 		items: [

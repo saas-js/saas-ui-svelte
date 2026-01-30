@@ -10,21 +10,7 @@
 	import { Input } from "$saas/components/input";
 	import { Stack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
-
-	const passwordInputSizes = ["xs", "sm", "md", "lg"] as const;
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours, passwordInputSizes } from "../../utils";
 
 	interface Props {
 		story:

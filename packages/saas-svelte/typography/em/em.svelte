@@ -17,5 +17,9 @@
 </script>
 
 <em class={em({ class: className })} {...rest}>
-	{@render children?.()}
+	{#if children}
+		{@render children()}
+	{:else}
+		<slot />
+	{/if}
 </em>

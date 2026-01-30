@@ -8,23 +8,7 @@
 	import { Stack } from "$saas/layout/stack";
 	import { Group } from "$saas/layout/group";
 	import { Text } from "$saas/typography/text";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-
-	const separatorSizes = ["xs", "sm", "md", "lg"] as const;
-	const separatorVariants = ["solid", "dashed", "dotted"] as const;
+	import { colours, separatorSizes, separatorVariants } from "../../utils";
 
 	interface Props {
 		story:

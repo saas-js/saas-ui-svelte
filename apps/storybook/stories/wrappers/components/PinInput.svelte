@@ -9,22 +9,7 @@
 	import { Button } from "$saas/components/button";
 	import { Stack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
-
-	const pinInputSizes = ["xs", "sm", "md", "lg"] as const;
-	const inputVariants = ["outline", "subtle", "flushed"] as const;
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
+	import { colours, pinInputSizes, inputVariants } from "../../utils";
 
 	interface Props {
 		story:

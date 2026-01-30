@@ -4,6 +4,9 @@
 	import { PinInput } from "@saas-ui/svelte/components/pin-input";
 	import { Link } from "@saas-ui/svelte/components/link";
 	import { Centre } from "@saas-ui/svelte/layout/centre";
+	import { VStack } from "@saas-ui/svelte/layout/stack";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
+	import { Text } from "@saas-ui/svelte/typography/text";
 	import Logo from "./Logo.svelte";
 </script>
 
@@ -12,20 +15,20 @@
 		<Centre class="mb-6">
 			<Logo />
 		</Centre>
-		<h2 class="mb-4 text-center text-base font-semibold">
+		<Heading as="h2" size="sm" class="mb-4 text-center">
 			Verify your email
-		</h2>
-		<form class="flex flex-col items-center gap-4">
+		</Heading>
+		<VStack as="form" gap={4} class="items-center">
 			<PinInput count={6} placeholder="0" size="md" colour="indigo" />
 			<Button variant="glass" colour="indigo" class="w-full" onclick={(e: Event) => e.preventDefault()}>
 				Confirm
 			</Button>
-		</form>
+		</VStack>
 	</Card.Body>
 	<Card.Footer class="justify-center bg-bg-subtle py-3">
-		<p class="text-sm text-fg-muted">
+		<Text size="sm" class="text-fg-muted">
 			Didn't receive a code?
 			<Link href="#" onclick={(e: Event) => e.preventDefault()}>Resend</Link>.
-		</p>
+		</Text>
 	</Card.Footer>
 </Card.Root>

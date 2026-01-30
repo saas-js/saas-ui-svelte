@@ -5,6 +5,8 @@
 	import { getDocsNavigation } from "../../lib/docs-navigation";
 	import { Button } from "@saas-ui/svelte/components/button";
 	import { Icon } from "@saas-ui/svelte/components/icon";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { HStack } from "@saas-ui/svelte/layout/stack";
 	import List from "phosphor-svelte/lib/ListIcon";
 	import X from "phosphor-svelte/lib/X";
 
@@ -33,31 +35,32 @@
 	let mobileNavOpen = $state(false);
 </script>
 
-<div class="max-w-8xl mx-auto px-4 md:px-6 lg:px-8 w-full relative">
-	<div class="flex items-start">
+<Box class="max-w-8xl mx-auto px-4 md:px-6 lg:px-8 w-full relative">
+	<HStack gap={0} class="items-start">
 		<!-- Desktop Sidebar -->
-		<aside
+		<Box
+			as="aside"
 			class="hidden lg:block shrink-0 w-40 h-[calc(100vh-3.5rem)] sticky top-14 overflow-y-auto border-r border-border-default"
 		>
 			<DocsSidebar groups={navGroups} {currentPath} />
-		</aside>
+		</Box>
 
 		<!-- Main Content -->
-		<main class="flex-1 min-w-0 flex">
-			<div class="flex-1 min-w-0 px-4 md:px-8 lg:px-12 py-10">
+		<Box as="main" class="flex-1 min-w-0 flex">
+			<Box class="flex-1 min-w-0 px-4 md:px-8 lg:px-12 py-10">
 				{@render children()}
-			</div>
+			</Box>
 
 			<!-- Table of Contents -->
 			{#if tocItems.length > 0}
 				<TableOfContents items={tocItems} {githubUrl} />
 			{/if}
-		</main>
-	</div>
-</div>
+		</Box>
+	</HStack>
+</Box>
 
 <!-- Mobile Navigation Button -->
-<div class="lg:hidden fixed bottom-4 right-4 z-50">
+<Box class="lg:hidden fixed bottom-4 right-4 z-50">
 	<Button
 		variant="surface"
 		size="md"
@@ -71,23 +74,24 @@
 			<Icon as={List} size="sm" />
 		{/if}
 	</Button>
-</div>
+</Box>
 
 <!-- Mobile Navigation Panel -->
 {#if mobileNavOpen}
-	<div class="lg:hidden fixed inset-0 z-40 pt-14">
+	<Box class="lg:hidden fixed inset-0 z-40 pt-14">
 		<!-- Backdrop -->
-		<button
-			type="button"
-			class="absolute inset-0 bg-bg-backdrop"
+		<Button
+			variant="ghost"
+			class="absolute inset-0 bg-bg-backdrop w-full h-full rounded-none"
 			onclick={() => (mobileNavOpen = false)}
 			aria-label="Close navigation"
-		></button>
+		/>
 		<!-- Panel -->
-		<aside
+		<Box
+			as="aside"
 			class="absolute left-0 top-14 bottom-0 w-40 max-w-40 bg-bg-default border-r border-border-default overflow-y-auto"
 		>
 			<DocsSidebar groups={navGroups} {currentPath} />
-		</aside>
-	</div>
+		</Box>
+	</Box>
 {/if}

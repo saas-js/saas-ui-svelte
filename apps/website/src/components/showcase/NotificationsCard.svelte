@@ -3,6 +3,7 @@
 	import { Switch } from "@saas-ui/svelte/components/switch";
 	import { Separator } from "@saas-ui/svelte/components/separator";
 	import { Text } from "@saas-ui/svelte/typography/text";
+	import { HStack, VStack } from "@saas-ui/svelte/layout/stack";
 
 	const notifications = [
 		{ title: "Assigned", description: "A conversation is assigned to me.", enabled: false },
@@ -19,13 +20,13 @@
 	<Card.Body class="p-0">
 		{#each notifications as notification, i}
 			{#if i > 0}<Separator />{/if}
-			<div class="flex items-center justify-between px-4 py-3">
-				<div class="min-w-0 flex-1">
+			<HStack class="items-center justify-between px-4 py-3">
+				<VStack gap={0} class="min-w-0 flex-1">
 					<Text weight="medium">{notification.title}</Text>
 					<Text size="xs" class="text-fg-muted">{notification.description}</Text>
-				</div>
+				</VStack>
 				<Switch size="sm" colour="indigo" checked={notification.enabled} />
-			</div>
+			</HStack>
 		{/each}
 	</Card.Body>
 </Card.Root>

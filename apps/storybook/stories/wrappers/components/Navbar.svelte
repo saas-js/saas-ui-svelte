@@ -14,21 +14,7 @@
 	import List from "phosphor-svelte/lib/List";
 	import X from "phosphor-svelte/lib/X";
 	import { createMobileNav } from "$saas/utils/mobile-nav.svelte";
-
-	const colours = [
-		"gray",
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"teal",
-		"blue",
-		"cyan",
-		"purple",
-		"pink",
-		"rose",
-	] as const;
-	const navbarVariants = ["default", "glass", "solid"] as const;
+	import { colours, navbarVariants } from "../../utils";
 
 	interface Props {
 		story:
