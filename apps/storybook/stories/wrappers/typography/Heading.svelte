@@ -79,7 +79,7 @@
 {:else if story === "composition"}
 	<Stack align="start">
 		<Heading size="2xl">Modern payments for Stores</Heading>
-		<Text class="text-fg-muted mb-3">
+		<Text class="mb-3 text-fg-muted">
 			PayMe helps startups get paid by anyone, anywhere in the world
 		</Text>
 		<Button>

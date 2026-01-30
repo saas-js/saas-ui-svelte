@@ -20,7 +20,7 @@
 		<img
 			src="https://picsum.photos/seed/saas/800/600"
 			alt="Sample landscape"
-			class="w-full h-full object-cover"
+			class="object-cover w-full h-full"
 		/>
 	</AspectRatio>
 {:else if story === "video"}

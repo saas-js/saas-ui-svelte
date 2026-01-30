@@ -37,9 +37,9 @@
 	>
 		<ClipboardPrimitive.Control class="relative flex items-center w-full">
 			<ClipboardInput class="pr-10" />
-			<div class="absolute right-1 flex items-center justify-center">
+			<div class="absolute flex items-center justify-center right-1">
 				<ClipboardIconButton
-					class="border-none shadow-none bg-transparent hover:bg-bg-subtle -mr-2"
+					class="-mr-2 bg-transparent border-none shadow-none hover:bg-bg-subtle"
 				/>
 			</div>
 		</ClipboardPrimitive.Control>

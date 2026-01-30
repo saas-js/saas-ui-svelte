@@ -136,7 +136,7 @@
 						{#each ["Home", "About", "Pricing"] as item}
 							<Link
 								href="#"
-								class="w-full justify-start px-4 py-2"
+								class="justify-start w-full px-4 py-2"
 							>
 								{item}
 							</Link>
@@ -193,7 +193,7 @@
 			</Sidebar.Root>
 		{/snippet}
 		<Box class="flex flex-col flex-1">
-			<Box class="shrink-0 border-b border-border-default px-3 py-2">
+			<Box class="px-3 py-2 border-b shrink-0 border-border-default">
 				<Heading size="sm">Users</Heading>
 			</Box>
 			<Box class="flex-1 p-4">

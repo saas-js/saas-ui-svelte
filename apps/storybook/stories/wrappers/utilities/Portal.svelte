@@ -14,11 +14,11 @@
 
 {#if story === "basic"}
 	<div>
-		<p class="text-fg-muted mb-4">
+		<p class="mb-4 text-fg-muted">
 			The content below is rendered at the end of document.body via portal.
 		</p>
 		<Portal>
-			<div class="fixed bottom-4 left-4 p-4 bg-bg-subtle border border-border-default rounded-lg shadow-lg z-50">
+			<div class="fixed z-50 p-4 border rounded-lg shadow-lg bottom-4 left-4 bg-bg-subtle border-border-default">
 				<p class="text-sm">This is portal content (rendered at document.body)</p>
 			</div>
 		</Portal>
@@ -26,13 +26,13 @@
 	</div>
 {:else if story === "disabled"}
 	<div>
-		<p class="text-fg-muted mb-4">
+		<p class="mb-4 text-fg-muted">
 			When disabled, content renders in place instead of via portal.
 		</p>
-		<div class="border border-dashed border-border-default p-4 rounded">
-			<p class="text-sm mb-2">Parent container:</p>
+		<div class="p-4 border border-dashed rounded border-border-default">
+			<p class="mb-2 text-sm">Parent container:</p>
 			<Portal disabled>
-				<div class="p-4 bg-bg-subtle border border-border-default rounded">
+				<div class="p-4 border rounded bg-bg-subtle border-border-default">
 					This content is rendered in place (portal disabled)
 				</div>
 			</Portal>
@@ -40,17 +40,17 @@
 	</div>
 {:else if story === "customContainer"}
 	<div>
-		<p class="text-fg-muted mb-4">
+		<p class="mb-4 text-fg-muted">
 			Portal content rendered into a custom container element.
 		</p>
 		<Portal container={containerRef}>
-			<div class="p-4 bg-bg-emphasized rounded">
+			<div class="p-4 rounded bg-bg-emphasized">
 				This content is rendered into the container below
 			</div>
 		</Portal>
 		<div
 			bind:this={containerRef}
-			class="mt-4 p-4 border-2 border-dashed border-blue-500 rounded min-h-20"
+			class="p-4 mt-4 border-2 border-blue-500 border-dashed rounded min-h-20"
 		>
 			<p class="text-sm text-fg-muted">Custom container (portal target)</p>
 		</div>

@@ -7,7 +7,7 @@
 			"p-4 rounded-md",
 			"border border-dashed border-border-default",
 			"bg-bg-default",
-			"transition-all duration-150 ease-out",
+			"transition-colors duration-150 ease-out",
 			"antialiased",
 			"cursor-pointer",
 			"focus-visible:outline-offset-2 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-fg-muted",

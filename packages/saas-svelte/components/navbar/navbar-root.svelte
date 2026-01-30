@@ -13,7 +13,7 @@
 				"items-center",
 				"w-full",
 				"text-sm",
-				"transition-all",
+				"transition-[transform,background-color]",
 				"duration-200",
 				"ease-in-out",
 				"flex",

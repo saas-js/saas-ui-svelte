@@ -42,16 +42,16 @@
 			<Logo />
 		</Navbar.Brand>
 
-		<Navbar.ItemGroup gap={1} class="hidden lg:flex flex-1 ml-6">
+		<Navbar.ItemGroup gap={1} class="flex-1 hidden ml-6 lg:flex">
 			{#each navLinks as { href, label }}
-				<Navbar.Link {href} class="text-md font-medium py-2 px-3"
+				<Navbar.Link {href} class="px-3 py-2 font-medium text-md"
 					>{label}</Navbar.Link
 				>
 			{/each}
 		</Navbar.ItemGroup>
 
 		<Navbar.ItemGroup gap={2} justify="end">
-			<Input.Group class="hidden lg:flex w-40">
+			<Input.Group class="hidden w-40 lg:flex">
 				<Input.Element placement="left">
 					<MagnifyingGlassIcon class="size-3.5" aria-hidden="true" />
 				</Input.Element>
@@ -80,13 +80,13 @@
 				aria-label="Toggle colour mode"
 				onclick={toggleTheme}
 			>
-				<Sun class="size-4 hidden dark:block" />
-				<Moon class="size-4 block dark:hidden" />
+				<Sun class="hidden size-4 dark:block" />
+				<Moon class="block size-4 dark:hidden" />
 			</Button>
 
 			<Separator
 				orientation="vertical"
-				class="hidden lg:block mx-2 self-center"
+				class="self-center hidden mx-2 lg:block"
 			/>
 
 			<Button
@@ -110,7 +110,7 @@
 					variant="ghost"
 					size="sm"
 					aria-label="Open menu"
-					class="lg:hidden w-7 min-w-7 px-0"
+					class="px-0 lg:hidden w-7 min-w-7"
 				>
 					<List class="size-4" />
 				</Drawer.Trigger>
@@ -119,14 +119,14 @@
 				>
 					<div class="flex items-center justify-between px-6 py-4">
 						<Logo />
-						<Drawer.CloseButton class="relative right-0 top-0" />
+						<Drawer.CloseButton class="relative top-0 right-0" />
 					</div>
-					<nav class="flex flex-col items-center gap-4 py-8">
+					<nav class="flex flex-col items-center py-8 gap-4">
 						{#each navLinks as { href, label }}
 							<Link
 								{href}
 								variant="plain"
-								class="text-lg font-medium py-2 px-4"
+								class="px-4 py-2 text-lg font-medium"
 								>{label}</Link
 							>
 						{/each}

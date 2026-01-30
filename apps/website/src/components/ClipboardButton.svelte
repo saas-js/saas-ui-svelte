@@ -6,7 +6,7 @@
 
 <Clipboard.Root value="npm i @saas-ui/svelte">
 	<Clipboard.Trigger
-		class="inline-flex h-10 cursor-pointer select-none items-center gap-3 whitespace-nowrap rounded-md border border-border-default bg-bg-default px-5 text-sm font-medium text-fg-default transition-colours hover:bg-bg-subtle focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+		class="inline-flex items-center h-10 px-5 text-sm font-medium border cursor-pointer select-none gap-3 whitespace-nowrap rounded-md border-border-default bg-bg-default text-fg-default transition-colours hover:bg-bg-subtle focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 	>
 		<span class="text-fg-muted">$</span>
 		<span>npm i @saas-ui/svelte</span>

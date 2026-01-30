@@ -33,19 +33,19 @@
 	<List.Root variant="plain" align="start">
 		<List.Item>
 			<List.Indicator colour="green">
-				<CheckCircle class="h-full w-full" aria-hidden="true" />
+				<CheckCircle class="w-full h-full" aria-hidden="true" />
 			</List.Indicator>
 			<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. This is a longer text that wraps to multiple lines to demonstrate alignment.</span>
 		</List.Item>
 		<List.Item>
 			<List.Indicator colour="green">
-				<CheckCircle class="h-full w-full" aria-hidden="true" />
+				<CheckCircle class="w-full h-full" aria-hidden="true" />
 			</List.Indicator>
 			<span>Assumenda, quia temporibus eveniet a libero incidunt suscipit. Another multi-line example to show how icons align.</span>
 		</List.Item>
 		<List.Item>
 			<List.Indicator colour="green">
-				<CircleDashed class="h-full w-full" aria-hidden="true" />
+				<CircleDashed class="w-full h-full" aria-hidden="true" />
 			</List.Indicator>
 			<span>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</span>
 		</List.Item>

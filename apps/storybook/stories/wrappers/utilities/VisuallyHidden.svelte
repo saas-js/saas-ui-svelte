@@ -18,7 +18,7 @@
 
 {#if story === "basic"}
 	<Button>
-		<Bell class="h-4 w-4" aria-hidden="true" />
+		<Bell class="w-4 h-4" aria-hidden="true" />
 		3
 		<VisuallyHidden class={className}>Notifications</VisuallyHidden>
 	</Button>

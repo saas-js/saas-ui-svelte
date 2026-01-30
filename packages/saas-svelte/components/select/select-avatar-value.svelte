@@ -70,12 +70,12 @@
 			<img
 				src={avatarSrc}
 				alt=""
-				class="rounded-full object-cover shrink-0"
+				class="object-cover rounded-full shrink-0"
 				style="width: {avatarSize}px; height: {avatarSize}px;"
 			/>
 		{:else}
 			<span
-				class="rounded-full bg-bg-muted text-fg-muted flex items-center justify-center text-xs font-medium shrink-0"
+				class="flex items-center justify-center text-xs font-medium rounded-full bg-bg-muted text-fg-muted shrink-0"
 				style="width: {avatarSize}px; height: {avatarSize}px;"
 			>
 				{getInitials(displayName)}

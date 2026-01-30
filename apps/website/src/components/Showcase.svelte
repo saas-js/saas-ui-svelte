@@ -13,7 +13,7 @@
 	import NotificationsCard from "./showcase/NotificationsCard.svelte";
 </script>
 
-<Container maxW="7xl" class="overflow-hidden pb-20">
+<Container maxW="7xl" class="pb-20 overflow-hidden">
 	<Tabs.Root defaultValue="components">
 		<Tabs.List class="mb-4 border-b border-border-default">
 			<Tabs.Trigger value="components">Components</Tabs.Trigger>

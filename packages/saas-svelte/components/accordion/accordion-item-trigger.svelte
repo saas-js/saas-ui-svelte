@@ -34,7 +34,7 @@
 
 	<Accordion.ItemIndicator class={styles.indicator()}>
 		<CaretRight
-			class="text-current inline-block w-full h-full"
+			class="inline-block w-full h-full text-current"
 			weight="bold"
 		/>
 	</Accordion.ItemIndicator>

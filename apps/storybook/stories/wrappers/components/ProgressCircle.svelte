@@ -46,7 +46,7 @@
 {:else if story === "colours"}
 	<VStack gap={4}>
 		{#each colours as colour}
-			<HStack gap={8} class="px-4 items-center">
+			<HStack gap={8} class="items-center px-4">
 				<Text size="xs" class="w-16">{colour}</Text>
 				<ProgressCircle size="sm" value={30} {colour} rounded />
 				<ProgressCircle size="md" value={30} {colour} rounded />
@@ -73,7 +73,7 @@
 		{/each}
 	</HStack>
 {:else if story === "values"}
-	<HStack gap={6} class="items-center flex-wrap">
+	<HStack gap={6} class="flex-wrap items-center">
 		{#each [0, 25, 50, 75, 100] as value}
 			<VStack gap={2} class="items-center">
 				<ProgressCircle {value} colour="emerald" showValue size="lg" rounded />

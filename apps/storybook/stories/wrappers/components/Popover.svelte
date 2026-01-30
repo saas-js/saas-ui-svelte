@@ -158,7 +158,7 @@
 				<Input bind:ref={inputRef} placeholder="I get focused" size="sm" />
 			</Popover.Body>
 			<Popover.Footer>
-				<Box class="text-sm flex-1">Step 2 of 4</Box>
+				<Box class="flex-1 text-sm">Step 2 of 4</Box>
 				<HStack gap={2}>
 					<Button size="sm" variant="ghost">Prev</Button>
 					<Button size="sm">Next</Button>

@@ -47,26 +47,26 @@ const tocItems = buildTocItems(stories, meta, hasProps);
 		client:load
 	>
 		<div class="pb-20">
-			<h1 class="text-2xl font-semibold mb-4">{title}</h1>
+			<h1 class="mb-4 text-2xl font-semibold">{title}</h1>
 
 			{meta?.parameters?.docs?.description?.component && (
-				<p class="text-lg text-fg-muted mb-8">
+				<p class="mb-8 text-lg text-fg-muted">
 					{meta.parameters.docs.description.component}
 				</p>
 			)}
 
-			<h2 id="anatomy" class="text-xl font-semibold mt-12 mb-4 scroll-mt-20">Anatomy</h2>
+			<h2 id="anatomy" class="mt-12 mb-4 text-xl font-semibold scroll-mt-20">Anatomy</h2>
 			<CodeBlock code={anatomyCode} lang="svelte" class="mb-8" />
 
-			<h2 id="examples" class="text-xl font-semibold mt-12 mb-4 scroll-mt-20">Examples</h2>
+			<h2 id="examples" class="mt-12 mb-4 text-xl font-semibold scroll-mt-20">Examples</h2>
 
 			{Object.entries(stories).map(([name, story]) => {
 				const storyProp = getStoryPropValue(name);
 				return (
 					<section id={toKebabCase(name)} class="mb-12 scroll-mt-20">
-						<h3 class="text-lg font-medium mb-2">{storyNameToDisplayName(name)}</h3>
+						<h3 class="mb-2 text-lg font-medium">{storyNameToDisplayName(name)}</h3>
 						{story.parameters?.docs?.description?.story && (
-							<p class="text-fg-muted mb-4">
+							<p class="mb-4 text-fg-muted">
 								<DescriptionText text={story.parameters.docs.description.story} client:load />
 							</p>
 						)}
@@ -83,19 +83,19 @@ const tocItems = buildTocItems(stories, meta, hasProps);
 
 			{hasProps && (
 				<>
-					<h2 id="props" class="text-xl font-semibold mt-12 mb-4 scroll-mt-20">Props</h2>
+					<h2 id="props" class="mt-12 mb-4 text-xl font-semibold scroll-mt-20">Props</h2>
 
 					{subComponents.length > 0 ? (
 						subComponents.map((sc: any) => (
 							<div class="mb-8">
 								<h3
 									id={`props-${sc.name.toLowerCase().replace(/\./g, '-')}`}
-									class="text-lg font-medium mb-3 scroll-mt-20"
+									class="mb-3 text-lg font-medium scroll-mt-20"
 								>
 									{sc.name}
 								</h3>
 								{sc.description && (
-									<p class="text-fg-muted mb-4 text-sm">{sc.description}</p>
+									<p class="mb-4 text-sm text-fg-muted">{sc.description}</p>
 								)}
 								<PropsTable props={sc.props || {}} client:load />
 							</div>

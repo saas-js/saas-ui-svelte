@@ -10,7 +10,7 @@
 			root: "inline-flex relative",
 			circle: "transform -rotate-90",
 			track: "fill-transparent",
-			range: "fill-transparent transition-all duration-[var(--durations-slow)]",
+			range: "fill-transparent transition-[stroke-dashoffset] duration-[var(--durations-slow)]",
 			valueText: [
 				"absolute inset-0 flex items-center justify-center",
 				"font-medium tabular-nums tracking-tight",

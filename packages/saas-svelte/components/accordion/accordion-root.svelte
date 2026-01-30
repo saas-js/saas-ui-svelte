@@ -17,7 +17,7 @@
 			content: "overflow-hidden rounded-md",
 			contentBody: "",
 			indicator:
-				"flex items-center justify-center text-fg-muted shrink-0 transition-all duration-moderate ml-auto origin-center data-[state=open]:rotate-90",
+				"flex items-center justify-center text-fg-muted shrink-0 transition-transform duration-moderate ml-auto origin-center data-[state=open]:rotate-90",
 			icon: "shrink-0 text-fg-muted",
 		},
 		variants: {
@@ -176,7 +176,7 @@
 					{item.title}
 					<Accordion.ItemIndicator class={classes.indicator()}>
 						<CaretRight
-							class="text-current inline-block w-full h-full"
+							class="inline-block w-full h-full text-current"
 							weight="bold"
 						/>
 					</Accordion.ItemIndicator>

@@ -19,7 +19,7 @@
 	let showCode = $state(false);
 </script>
 
-<Card.Root class="story-preview overflow-hidden my-6">
+<Card.Root class="my-6 overflow-hidden story-preview">
 	<Card.Body class="p-6 bg-bg-default">
 		{@render children?.()}
 	</Card.Body>
@@ -30,13 +30,13 @@
 				variant="ghost"
 				size="sm"
 				onclick={() => (showCode = !showCode)}
-				class="w-full justify-start px-4 py-2 rounded-none"
+				class="justify-start w-full px-4 py-2 rounded-none"
 			>
 				<Text size="sm" class="text-fg-muted">{showCode ? "Hide" : "Show"} code</Text>
 			</Button>
 
 			{#if showCode}
-				<Box class="border-t border-border-default bg-bg-subtle p-4 overflow-x-auto">
+				<Box class="p-4 overflow-x-auto border-t border-border-default bg-bg-subtle">
 					<Code size="sm">{code}</Code>
 				</Box>
 			{/if}

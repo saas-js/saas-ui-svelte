@@ -27,9 +27,9 @@
 	];
 </script>
 
-<section class="py-16 border-y border-dashed border-border-default">
+<section class="py-16 border-dashed border-y border-border-default">
 	<Container maxW="7xl">
-		<HStack gap={4} class="flex-col lg:flex-row items-start lg:items-end mb-12">
+		<HStack gap={4} class="flex-col items-start mb-12 lg:flex-row lg:items-end">
 			<Box class="flex-1">
 				<Heading as="h2" size="4xl" weight="semibold" class="-tracking-wide">
 					Why product teams<br />choose Saas UI
@@ -47,7 +47,7 @@
 			{#each features as column}
 				<VStack gap={0} as="ul">
 					{#each column as feature}
-						<HStack as="li" gap={2} class="font-medium py-2">
+						<HStack as="li" gap={2} class="py-2 font-medium">
 							<Icon as={Check} size="sm" class="shrink-0" />
 							<Text size="sm">{feature}</Text>
 						</HStack>

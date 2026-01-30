@@ -130,7 +130,7 @@
 			</Stat.HelpText>
 		</Stat.Root>
 	</Card.Body>
-	<div class="h-24 w-full">
+	<div class="w-full h-24">
 		<canvas bind:this={chartCanvas}></canvas>
 	</div>
 </Card.Root>

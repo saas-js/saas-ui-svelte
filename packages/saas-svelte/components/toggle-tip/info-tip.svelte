@@ -51,7 +51,7 @@
 		<button
 			type="button"
 			aria-label={ariaLabel}
-			class="inline-flex items-center justify-center align-middle p-0 border-0 bg-transparent h-4 w-4 cursor-pointer rounded outline-0 transition-all duration-moderate hover:bg-bg-subtle focus-visible:outline-offset-2 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-border-emphasized"
+			class="inline-flex items-center justify-center w-4 h-4 p-0 align-middle bg-transparent border-0 rounded cursor-pointer outline-0 transition-colors duration-moderate hover:bg-bg-subtle focus-visible:outline-offset-2 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-border-emphasized"
 			{...props()}
 		>
 			<Icon as={Info} size="sm" aria-hidden="true" />

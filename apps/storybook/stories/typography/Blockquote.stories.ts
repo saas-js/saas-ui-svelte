@@ -123,7 +123,7 @@ export const WithCite: Story = {
 		}) as any,
 };
 
-export const Colors: Story = {
+export const Colours: Story = {
 	parameters: {
 		docs: {
 			description: {

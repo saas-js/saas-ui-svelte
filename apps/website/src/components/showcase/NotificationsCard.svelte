@@ -21,7 +21,7 @@
 		{#each notifications as notification, i}
 			{#if i > 0}<Separator />{/if}
 			<HStack class="items-center justify-between px-4 py-3">
-				<VStack gap={0} class="min-w-0 flex-1">
+				<VStack gap={0} class="flex-1 min-w-0">
 					<Text weight="medium">{notification.title}</Text>
 					<Text size="xs" class="text-fg-muted">{notification.description}</Text>
 				</VStack>

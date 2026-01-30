@@ -18,7 +18,7 @@
 		<Text>This will be centred</Text>
 	</Centre>
 {:else if story === "square"}
-	<Square size={10} class="bg-purple-700 text-white">
+	<Square size={10} class="text-white bg-purple-700">
 		<Icon as={Phone} />
 	</Square>
 {:else if story === "circle"}
@@ -27,7 +27,7 @@
 	</Circle>
 {:else if story === "absoluteCentre"}
 	<div class="relative h-24 bg-bg-emphasized">
-		<AbsoluteCentre class="bg-accent-solid text-white p-4">
+		<AbsoluteCentre class="p-4 text-white bg-accent-solid">
 			<Icon as={Phone} />
 		</AbsoluteCentre>
 	</div>

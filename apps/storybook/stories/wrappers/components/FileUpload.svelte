@@ -62,7 +62,7 @@
 		<FileUpload.List showSize clearable />
 	</FileUpload.Root>
 {:else if story === "dropzone"}
-	<FileUpload.Root maxFiles={10} class="max-w-xl items-stretch">
+	<FileUpload.Root maxFiles={10} class="items-stretch max-w-xl">
 		<FileUpload.Dropzone>
 			<Icon as={UploadSimple} size="xl" class="text-fg-muted" />
 			<Heading size="sm">Drag and drop here to upload</Heading>

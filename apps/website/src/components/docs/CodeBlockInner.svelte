@@ -13,12 +13,12 @@
 </script>
 
 <Box class="code-block relative group {className ?? ''}">
-	<Box class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+	<Box class="absolute z-10 opacity-0 right-2 top-2 group-hover:opacity-100 transition-opacity">
 		<Clipboard.Root value={code}>
 			<ClipboardIconButton />
 		</Clipboard.Root>
 	</Box>
-	<Box class="shiki-wrapper rounded-lg overflow-x-auto text-sm">
+	<Box class="overflow-x-auto text-sm rounded-lg shiki-wrapper">
 		{@html html}
 	</Box>
 </Box>

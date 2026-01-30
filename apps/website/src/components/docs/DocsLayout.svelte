@@ -35,7 +35,7 @@
 	let mobileNavOpen = $state(false);
 </script>
 
-<Box class="max-w-8xl mx-auto px-4 md:px-6 lg:px-8 w-full relative">
+<Box class="relative w-full px-4 mx-auto max-w-8xl md:px-6 lg:px-8">
 	<HStack gap={0} class="items-start">
 		<!-- Desktop Sidebar -->
 		<Box
@@ -46,8 +46,8 @@
 		</Box>
 
 		<!-- Main Content -->
-		<Box as="main" class="flex-1 min-w-0 flex">
-			<Box class="flex-1 min-w-0 px-4 md:px-8 lg:px-12 py-10">
+		<Box as="main" class="flex flex-1 min-w-0">
+			<Box class="flex-1 min-w-0 px-4 py-10 md:px-8 lg:px-12">
 				{@render children()}
 			</Box>
 
@@ -60,7 +60,7 @@
 </Box>
 
 <!-- Mobile Navigation Button -->
-<Box class="lg:hidden fixed bottom-4 right-4 z-50">
+<Box class="fixed z-50 lg:hidden bottom-4 right-4">
 	<Button
 		variant="surface"
 		size="md"
@@ -78,18 +78,18 @@
 
 <!-- Mobile Navigation Panel -->
 {#if mobileNavOpen}
-	<Box class="lg:hidden fixed inset-0 z-40 pt-14">
+	<Box class="fixed inset-0 z-40 lg:hidden pt-14">
 		<!-- Backdrop -->
 		<Button
 			variant="ghost"
-			class="absolute inset-0 bg-bg-backdrop w-full h-full rounded-none"
+			class="absolute inset-0 w-full h-full rounded-none bg-bg-backdrop"
 			onclick={() => (mobileNavOpen = false)}
 			aria-label="Close navigation"
 		/>
 		<!-- Panel -->
 		<Box
 			as="aside"
-			class="absolute left-0 top-14 bottom-0 w-40 max-w-40 bg-bg-default border-r border-border-default overflow-y-auto"
+			class="absolute bottom-0 left-0 w-40 overflow-y-auto border-r top-14 max-w-40 bg-bg-default border-border-default"
 		>
 			<DocsSidebar groups={navGroups} {currentPath} />
 		</Box>

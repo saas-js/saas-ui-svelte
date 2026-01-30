@@ -27,19 +27,19 @@
 		Box with border
 	</Box>
 {:else if story === "asProp"}
-	<Box as="section" class="text-fg-default p-4 bg-bg-subtle rounded-md">
+	<Box as="section" class="p-4 text-fg-default bg-bg-subtle rounded-md">
 		This is a Box rendered as a section
 	</Box>
 {:else if story === "shadow"}
-	<Box class="bg-bg-default shadow-md rounded-md p-4">Box with shadow</Box>
+	<Box class="p-4 shadow-md bg-bg-default rounded-md">Box with shadow</Box>
 {:else if story === "composition"}
 	<Box
-		class="max-w-sm border border-border-default rounded-lg overflow-hidden"
+		class="max-w-sm overflow-hidden border rounded-lg border-border-default"
 	>
 		<img
 			src="https://bit.ly/2Z4KKcF"
 			alt="Rear view of modern home with pool"
-			class="w-full h-48 object-cover"
+			class="object-cover w-full h-48"
 		/>
 		<Box class="p-4 space-y-2">
 			<HStack>
@@ -56,9 +56,9 @@
 		</Box>
 	</Box>
 {:else if story === "nested"}
-	<Box class="p-4 bg-bg-subtle rounded-lg">
+	<Box class="p-4 rounded-lg bg-bg-subtle">
 		<Box class="p-4 bg-bg-default rounded-md shadow-sm">
-			<Box class="p-4 bg-bg-emphasized rounded">Nested boxes</Box>
+			<Box class="p-4 rounded bg-bg-emphasized">Nested boxes</Box>
 		</Box>
 	</Box>
 {/if}

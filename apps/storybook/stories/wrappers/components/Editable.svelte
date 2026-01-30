@@ -70,7 +70,7 @@
 {:else if story === "textarea"}
 	<Editable.Root defaultValue="Click to edit" autoResize class="w-full">
 		<Editable.Area>
-			<Editable.Preview class="min-h-14 items-start" />
+			<Editable.Preview class="items-start min-h-14" />
 			<Editable.Textarea class="min-h-14" />
 		</Editable.Area>
 	</Editable.Root>

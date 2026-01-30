@@ -50,7 +50,7 @@
 		rounded="md"
 	/>
 {:else if story === "fit"}
-	<Stack gap={6} class="flex-row items-start flex-wrap">
+	<Stack gap={6} class="flex-row flex-wrap items-start">
 		{#each imageFitOptions as fit}
 			<VStack gap={2} class="items-center">
 				<Text size="xs">{fit}</Text>
@@ -67,7 +67,7 @@
 		{/each}
 	</Stack>
 {:else if story === "rounded"}
-	<Stack gap={6} class="flex-row items-start flex-wrap">
+	<Stack gap={6} class="flex-row flex-wrap items-start">
 		{#each imageRoundedOptions as rounded}
 			<VStack gap={2} class="items-center">
 				<Text size="xs">{rounded}</Text>

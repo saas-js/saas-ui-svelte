@@ -38,11 +38,11 @@
 		<List.Root class="text-sm">
 			{#each files as file, i}
 				{#if i > 0}<Separator />{/if}
-				<List.Item class="flex items-center justify-between gap-3 px-4 py-3">
-					<Square size={8} class="rounded border border-border-default">
+				<List.Item class="flex items-center justify-between px-4 py-3 gap-3">
+					<Square size={8} class="border rounded border-border-default">
 						<Icon as={file.icon} size="sm" weight="fill" colour={file.colour} />
 					</Square>
-					<VStack gap={0} class="min-w-0 flex-1">
+					<VStack gap={0} class="flex-1 min-w-0">
 						<Text weight="medium" class="truncate">{file.name}</Text>
 						<Text class="truncate text-fg-muted">{file.size} • {file.date}</Text>
 					</VStack>

@@ -28,7 +28,7 @@
 				Continue with Google
 			</Button>
 		</VStack>
-		<HStack gap={2} class="my-4 items-center">
+		<HStack gap={2} class="items-center my-4">
 			<Separator class="flex-1" />
 			<Text size="sm" class="text-fg-muted">or continue with</Text>
 			<Separator class="flex-1" />
@@ -43,7 +43,7 @@
 			</Button>
 		</form>
 	</Card.Body>
-	<Card.Footer class="justify-center bg-bg-subtle py-3">
+	<Card.Footer class="justify-center py-3 bg-bg-subtle">
 		<Text size="sm" class="text-fg-muted">
 			Don't have an account yet?
 			<Link href="#" onclick={(e: Event) => e.preventDefault()}>Sign up</Link>.

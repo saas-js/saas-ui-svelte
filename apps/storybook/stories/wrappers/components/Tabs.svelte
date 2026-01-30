@@ -83,7 +83,7 @@
 	<VStack gap={10} class="w-full">
 		{#each tabsVariants as variant}
 			<VStack gap={2}>
-				<Text size="xs" class="text-fg-muted capitalize">{variant}</Text>
+				<Text size="xs" class="capitalize text-fg-muted">{variant}</Text>
 				<Tabs.Root {variant} defaultValue="members">
 					<Tabs.List>
 						<Tabs.Trigger value="members">
@@ -113,7 +113,7 @@
 	<VStack gap={10} class="w-full">
 		{#each tabsSizes as size}
 			<VStack gap={2}>
-				<Text size="xs" class="text-fg-muted capitalize">{size}</Text>
+				<Text size="xs" class="capitalize text-fg-muted">{size}</Text>
 				<Tabs.Root {size} defaultValue="members">
 					<Tabs.List>
 						<Tabs.Trigger value="members">Members</Tabs.Trigger>
@@ -152,7 +152,7 @@
 	</Tabs.Root>
 {:else if story === "indicator"}
 	<Tabs.Root defaultValue="members" variant="plain">
-		<Tabs.List class="bg-bg-muted rounded-lg p-1">
+		<Tabs.List class="p-1 rounded-lg bg-bg-muted">
 			<Tabs.Trigger value="members">
 				<User class="size-3.5" aria-hidden="true" />
 				Members
@@ -165,7 +165,7 @@
 				<CheckSquare class="size-3.5" aria-hidden="true" />
 				Settings
 			</Tabs.Trigger>
-			<Tabs.Indicator class="bg-bg-default rounded-md shadow" />
+			<Tabs.Indicator class="shadow bg-bg-default rounded-md" />
 		</Tabs.List>
 		<Tabs.Content value="members">Manage your team members</Tabs.Content>
 		<Tabs.Content value="projects">Manage your projects</Tabs.Content>
@@ -279,8 +279,8 @@
 		<Tabs.ContentGroup>
 			{#each dynamicTabs as tab (tab.id)}
 				<Tabs.Content value={tab.id}>
-					<HStack class="justify-between items-start">
-						<Text size="lg" class="font-semibold my-4">
+					<HStack class="items-start justify-between">
+						<Text size="lg" class="my-4 font-semibold">
 							{tab.content}
 							{tab.id}
 						</Text>

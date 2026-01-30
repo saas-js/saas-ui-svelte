@@ -128,7 +128,7 @@
 		<img
 			src="https://picsum.photos/seed/sofa/800/600"
 			alt="Green double couch with wooden legs"
-			class="w-full object-cover rounded-lg"
+			class="object-cover w-full rounded-lg"
 		/>
 		<Card.Body class="gap-2">
 			<Card.Title>Living room Sofa</Card.Title>
@@ -136,7 +136,7 @@
 				This sofa is perfect for modern tropical spaces, baroque
 				inspired spaces.
 			</Card.Description>
-			<Text size="xl" class="font-medium tracking-tight mt-2">$450</Text>
+			<Text size="xl" class="mt-2 font-medium tracking-tight">$450</Text>
 		</Card.Body>
 		<Card.Footer class="gap-2">
 			<Button variant="solid">Buy now</Button>
@@ -144,11 +144,11 @@
 		</Card.Footer>
 	</Card.Root>
 {:else if story === "horizontal"}
-	<Card.Root class="flex-row overflow-hidden max-w-xl">
+	<Card.Root class="flex-row max-w-xl overflow-hidden">
 		<img
 			src="https://picsum.photos/seed/latte/800/600"
 			alt="Caffe Latte"
-			class="object-cover max-w-52 rounded-lg"
+			class="object-cover rounded-lg max-w-52"
 		/>
 		<Box>
 			<Card.Body>
@@ -188,11 +188,11 @@
 		</Card.Body>
 		<Card.Footer>
 			<Button variant="subtle" colour="red" class="flex-1">
-				<X class="h-4 w-4" aria-hidden="true" />
+				<X class="w-4 h-4" aria-hidden="true" />
 				Decline
 			</Button>
 			<Button variant="subtle" colour="blue" class="flex-1">
-				<Check class="h-4 w-4" aria-hidden="true" />
+				<Check class="w-4 h-4" aria-hidden="true" />
 				Approve
 			</Button>
 		</Card.Footer>

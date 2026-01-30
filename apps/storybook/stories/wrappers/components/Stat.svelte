@@ -75,7 +75,7 @@
 		</Progress.Root>
 	</VStack>
 {:else if story === "icon"}
-	<Stat.Root class="max-w-60 border border-border-default p-4 rounded-md">
+	<Stat.Root class="p-4 border max-w-60 border-border-default rounded-md">
 		<Stat.Label class="flex justify-between w-full">
 			Sales
 			<Icon as={CurrencyDollar} size="sm" class="text-fg-muted" aria-hidden="true" />

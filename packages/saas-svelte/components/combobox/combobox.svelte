@@ -389,7 +389,7 @@
 															{/if}
 														</Combobox.ItemText>
 														<ArrowSquareOut
-															class="size-4 ml-auto text-fg-muted"
+															class="ml-auto size-4 text-fg-muted"
 															aria-hidden="true"
 														/>
 													{/if}
@@ -497,7 +497,7 @@
 												{/if}
 											</Combobox.ItemText>
 											<ArrowSquareOut
-												class="size-4 ml-auto text-fg-muted"
+												class="ml-auto size-4 text-fg-muted"
 												aria-hidden="true"
 											/>
 										{/if}

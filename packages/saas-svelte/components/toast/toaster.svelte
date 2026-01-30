@@ -140,14 +140,14 @@
 {#if isActive}
 	<Portal>
 		<div
-			class="fixed inset-0 pointer-events-none z-2147483647 overflow-hidden"
+			class="fixed inset-0 overflow-hidden pointer-events-none z-2147483647"
 			role="region"
 			aria-label="Notifications"
 		>
 			{#each toaster.toasts as t, index (t.id)}
 				<div
 					use:mountToast={t.id}
-					class="absolute right-4 left-4 md:left-auto md:w-96 pointer-events-auto"
+					class="absolute pointer-events-auto right-4 left-4 md:left-auto md:w-96"
 					style={getToastStyle(t, index)}
 				>
 					<Toast

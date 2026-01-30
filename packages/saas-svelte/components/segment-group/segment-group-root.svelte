@@ -64,7 +64,7 @@
 				"h-(--height)",
 				"top-(--top)",
 				"will-change-[left,top,width,height]",
-				"transition-all",
+				"transition-[left,top,width,height]",
 				"duration-moderate",
 			],
 		},

@@ -68,7 +68,7 @@
 	<VStack gap={8}>
 		{#each timelineSizes as size}
 			<VStack gap={2}>
-				<Text size="xs" class="text-fg-muted capitalize">{size}</Text>
+				<Text size="xs" class="capitalize text-fg-muted">{size}</Text>
 				<Timeline.Root {size}>
 					<Timeline.Item>
 						<Timeline.Connector>
@@ -108,7 +108,7 @@
 	<VStack gap={16}>
 		{#each timelineVariants as variant}
 			<VStack gap={2}>
-				<Text size="xs" class="text-fg-muted capitalize">{variant}</Text>
+				<Text size="xs" class="capitalize text-fg-muted">{variant}</Text>
 				<Timeline.Root {variant}>
 					<Timeline.Item>
 						<Timeline.Connector>
@@ -148,7 +148,7 @@
 	<VStack gap={8}>
 		{#each ["sm", "md", "lg"] as size}
 			<VStack gap={2}>
-				<Text size="xs" class="text-fg-muted capitalize">{size}</Text>
+				<Text size="xs" class="capitalize text-fg-muted">{size}</Text>
 				<Timeline.Root {size}>
 					<Timeline.Item>
 						<Timeline.Content width="auto">

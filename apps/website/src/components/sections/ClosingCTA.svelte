@@ -5,11 +5,11 @@
 	import { Heading } from "@saas-ui/svelte/typography/heading";
 </script>
 
-<section class="border-y border-dashed border-border-default">
+<section class="border-dashed border-y border-border-default">
 	<Container maxW="7xl">
 		<HStack
 			gap={6}
-			class="flex-col md:flex-row justify-between items-start md:items-end py-16 border-x border-dashed border-border-default px-8"
+			class="flex-col items-start justify-between px-8 py-16 border-dashed md:flex-row md:items-end border-x border-border-default"
 		>
 			<Heading as="h2" size="3xl" weight="medium" class="tracking-tight">
 				Join hundreds of developers<br />building better SaaS

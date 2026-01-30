@@ -7,10 +7,10 @@
 	import ClipboardButton from "./ClipboardButton.svelte";
 </script>
 
-<section class="relative overflow-hidden pt-32 pb-20">
+<section class="relative pt-32 pb-20 overflow-hidden">
 	<Container maxW="7xl">
 		<VStack gap={8} class="items-center text-center">
-			<VStack gap={5} class="max-w-4xl items-center">
+			<VStack gap={5} class="items-center max-w-4xl">
 				<Heading
 					as="h1"
 					size="6xl"
@@ -26,7 +26,7 @@
 				</Text>
 			</VStack>
 
-			<HStack gap={3} class="flex-col sm:flex-row items-center">
+			<HStack gap={3} class="flex-col items-center sm:flex-row">
 				<Button
 					as="a"
 					href="/docs/components/overview"

@@ -25,7 +25,7 @@
 			</Button>
 		</VStack>
 	</Card.Body>
-	<Card.Footer class="justify-center bg-bg-subtle py-3">
+	<Card.Footer class="justify-center py-3 bg-bg-subtle">
 		<Text size="sm" class="text-fg-muted">
 			Didn't receive a code?
 			<Link href="#" onclick={(e: Event) => e.preventDefault()}>Resend</Link>.

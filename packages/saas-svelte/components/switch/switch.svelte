@@ -10,7 +10,7 @@
 			root: "items-center gap-2.5 inline-flex relative align-middle antialiased",
 			control:
 				"shrink-0 justify-start gap-2 inline-flex relative rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150",
-			thumb: "shrink-0 justify-center items-center flex rounded-[inherit] transition-all duration-150",
+			thumb: "shrink-0 justify-center items-center flex rounded-[inherit] transition-transform duration-150",
 			label: "select-none font-medium leading-none",
 		},
 		variants: {
@@ -248,7 +248,7 @@
 		</Switch.Thumb>
 		{#if trackLabel}
 			<span
-				class="select-none shrink-0 content-center justify-center text-sm font-medium transition-all duration-100 grid absolute"
+				class="select-none shrink-0 content-center justify-center text-sm font-medium transition-[inset-inline-start] duration-100 grid absolute"
 				style="width: {translateDistance}; height: {translateDistance}; inset-inline-start: {checked
 					? '2px'
 					: `calc(${translateDistance} - 2px)`};"

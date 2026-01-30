@@ -65,7 +65,7 @@
 {:else if story === "variants"}
 	<HStack align="start" gap={10}>
 		{#each checkboxVariants as variant}
-			<VStack gap={2} class="flex-1 items-center">
+			<VStack gap={2} class="items-center flex-1">
 				<Text size="xs">
 					{variant}
 				</Text>

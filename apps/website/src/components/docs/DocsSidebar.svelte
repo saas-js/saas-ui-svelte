@@ -46,7 +46,7 @@
 
 <Box
 	as="nav"
-	class="flex flex-col flex-1 overflow-y-auto gap-0 px-4 py-8 text-sm"
+	class="flex flex-col flex-1 px-4 py-8 overflow-y-auto text-sm gap-0"
 >
 	{#each groups as group}
 		<VStack gap={0} class="relative my-3">
@@ -54,7 +54,7 @@
 				<Heading
 					as="h5"
 					size="xs"
-					class="flex-1 flex items-center font-medium px-2 text-fg-default"
+					class="flex items-center flex-1 px-2 font-medium text-fg-default"
 				>
 					{group.title}
 				</Heading>
@@ -64,7 +64,7 @@
 					{#if item.children && item.children.length > 0}
 						<Collapsible.Root open={hasActiveChild(item.children)}>
 							<Collapsible.Trigger
-								class="flex items-center gap-1 w-full transition-all duration-150 rounded-md cursor-pointer select-none hover:bg-bg-subtle h-8 text-[.8125rem]"
+								class="flex items-center gap-1 w-full transition-colors duration-150 rounded-md cursor-pointer select-none hover:bg-bg-subtle h-8 text-[.8125rem]"
 							>
 								<Heading
 									as="h5"
@@ -86,7 +86,7 @@
 								</Box>
 							</Collapsible.Trigger>
 							<Collapsible.Content
-								class="flex flex-col pt-1 overflow-hidden pb-2"
+								class="flex flex-col pt-1 pb-2 overflow-hidden"
 							>
 								{#each item.children as child}
 									<Box
@@ -94,7 +94,7 @@
 									>
 										<Link
 											href={child.href}
-											class="isolate text-ellipsis whitespace-nowrap cursor-pointer w-full flex items-center gap-2 h-7 transition-all duration-150 overflow-hidden px-2.5 rounded {isActive(
+											class="relative isolate text-ellipsis whitespace-nowrap cursor-pointer w-full flex items-center gap-2 h-7 transition-colors duration-150 overflow-hidden px-2.5 rounded outline-none focus-visible:z-10 {isActive(
 												child.href,
 											)
 												? 'text-fg-default font-medium bg-bg-subtle'
@@ -112,7 +112,7 @@
 						>
 							<Link
 								href={item.href}
-								class="isolate text-ellipsis whitespace-nowrap cursor-pointer w-full flex items-center gap-2 h-7 transition-all duration-150 overflow-hidden rounded font-medium px-2 {isActive(
+								class="relative isolate text-ellipsis whitespace-nowrap cursor-pointer w-full flex items-center gap-2 h-7 transition-colors duration-150 overflow-hidden rounded font-medium px-2 outline-none focus-visible:z-10 {isActive(
 									item.href,
 								)
 									? 'text-fg-default bg-bg-subtle'

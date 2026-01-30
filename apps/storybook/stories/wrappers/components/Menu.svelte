@@ -251,15 +251,15 @@
 			<Menu.Button>Open</Menu.Button>
 			<Menu.Content>
 				<div class="flex grow gap-0">
-					<Menu.Item value="cut" class="w-14 gap-1 flex-col justify-center">
+					<Menu.Item value="cut" class="flex-col justify-center w-14 gap-1">
 						<Icon as={Scissors} size="xs" />
 						Cut
 					</Menu.Item>
-					<Menu.Item value="copy" class="w-14 gap-1 flex-col justify-center">
+					<Menu.Item value="copy" class="flex-col justify-center w-14 gap-1">
 						<Icon as={Copy} size="xs" />
 						Copy
 					</Menu.Item>
-					<Menu.Item value="paste" class="w-14 gap-1 flex-col justify-center">
+					<Menu.Item value="paste" class="flex-col justify-center w-14 gap-1">
 						<Icon as={ClipboardText} size="xs" />
 						Paste
 					</Menu.Item>

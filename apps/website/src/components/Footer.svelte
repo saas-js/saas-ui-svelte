@@ -39,9 +39,9 @@
 	];
 </script>
 
-<footer class="border-t border-dashed border-border-default py-12">
+<footer class="py-12 border-t border-dashed border-border-default">
 	<Container maxW="7xl">
-		<HStack gap={8} class="flex-col-reverse md:flex-row justify-between items-start">
+		<HStack gap={8} class="flex-col-reverse items-start justify-between md:flex-row">
 			<VStack gap={4} class="items-start">
 				<Logo />
 				<Text size="sm" class="text-fg-muted">
@@ -49,7 +49,7 @@
 				</Text>
 			</VStack>
 
-			<Grid gap={10} class="grid-cols-1 sm:grid-cols-3 w-full md:max-w-2xl pb-8 md:pb-0">
+			<Grid gap={10} class="w-full pb-8 grid-cols-1 sm:grid-cols-3 md:max-w-2xl md:pb-0">
 				{#each linkGroups as group}
 					<VStack gap={2.5} class="items-start">
 						<Heading as="h5" size="xs" weight="medium" class="text-fg-default">

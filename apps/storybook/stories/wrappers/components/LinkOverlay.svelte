@@ -40,7 +40,7 @@
 		<Heading size="lg" class="my-2">
 			<LinkOverlay href="#">Svelte 5 Workshop</LinkOverlay>
 		</Heading>
-		<Text class="text-fg-muted mb-3">
+		<Text class="mb-3 text-fg-muted">
 			Catch up on what's been cooking at Svelte and explore some of the
 			popular community resources.
 		</Text>
@@ -55,12 +55,12 @@
 	</LinkBox>
 {:else if story === "card"}
 	<LinkBox
-		class="max-w-sm p-6 border border-border-default rounded-lg bg-bg-subtle"
+		class="max-w-sm p-6 border rounded-lg border-border-default bg-bg-subtle"
 	>
 		<VStack gap={3} class="items-start">
 			<Text
 				size="xs"
-				class="text-fg-muted uppercase tracking-wide font-medium"
+				class="font-medium tracking-wide uppercase text-fg-muted"
 			>
 				Tutorial
 			</Text>

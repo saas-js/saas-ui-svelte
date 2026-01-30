@@ -20,7 +20,7 @@
 				true: [
 					"select-none",
 					"cursor-pointer",
-					"transition-all duration-150",
+					"transition-colors duration-150",
 					"hover:bg-bg-subtle",
 					"active:bg-bg-subtle",
 					"disabled:cursor-not-allowed",

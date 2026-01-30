@@ -10,7 +10,7 @@
 </script>
 
 <div
-	class="flex flex-col relative rounded-lg border border-border-default bg-bg-muted w-75 h-75 p-8 shrink-0"
+	class="relative flex flex-col p-8 border rounded-lg border-border-default bg-bg-muted w-75 h-75 shrink-0"
 >
 	<Centre class="w-full h-full">
 		{@render children?.()}

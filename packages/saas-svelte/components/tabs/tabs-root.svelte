@@ -17,7 +17,7 @@
 				"disabled:cursor-not-allowed disabled:opacity-50",
 			],
 			content: "focus-visible:outline-0 w-full pt-4",
-			indicator: "absolute z-0 transition-all duration-moderate",
+			indicator: "absolute z-0 transition-[left,top,width,height] duration-moderate",
 			contentGroup: "",
 		},
 		variants: {

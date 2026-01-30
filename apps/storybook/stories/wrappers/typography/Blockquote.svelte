@@ -9,10 +9,7 @@
 	import { HStack, VStack } from "$saas/layout/stack";
 	import Quotes from "phosphor-svelte/lib/Quotes";
 	import type { ColourName } from "$saas/utils/colours";
-	import { availableColours } from "../../../../../packages/saas-svelte/utils/colours";
-
-	const colours = availableColours;
-	const blockquoteVariants = ["subtle", "solid", "plain"] as const;
+	import { colours, blockquoteVariants } from "../../utils";
 
 	interface Props {
 		story: "basic" | "withCite" | "colours" | "variants" | "icon" | "customIcon";
