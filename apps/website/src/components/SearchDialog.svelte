@@ -3,6 +3,7 @@ import { onMount } from "svelte";
 import { Dialog } from "@saas-ui/svelte/components/dialog";
 import { Kbd } from "@saas-ui/svelte/components/kbd";
 import { Separator } from "@saas-ui/svelte/components/separator";
+import { Highlight } from "@saas-ui/svelte/typography/highlight";
 import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlass";
 import {
 	getSearchDialogOpen,
@@ -111,9 +112,14 @@ $effect(() => {
 									onclick={() => handleSelect(item)}
 									class="hover:bg-bg-subtle focus:bg-bg-subtle flex w-full items-center gap-2 rounded px-2 py-2 text-left text-sm focus:outline-none"
 								>
-									<span class="flex-1 truncate"
-										>{item.label}</span
-									>
+									<span class="flex-1 truncate">
+										<Highlight
+											query={inputValue}
+											text={item.label}
+											ignoreCase
+											variant="text"
+										/>
+									</span>
 									{#if item.description}
 										<span
 											class="text-fg-muted max-w-32 truncate text-xs"

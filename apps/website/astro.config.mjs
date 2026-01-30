@@ -6,19 +6,47 @@ import robotsTxt from "astro-robots-txt";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 import path from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
 
 // Strip empty Svelte hydration comments from HTML output
-const stripSvelteComments = () => ({
-	name: "strip-svelte-comments",
-	apply: "build",
-	generateBundle(_, bundle) {
-		for (const file of Object.values(bundle)) {
-			if (file.type === "asset" && file.fileName.endsWith(".html")) {
-				file.source = file.source.replace(/<!---->/g, "");
-			}
-		}
-	},
-});
+function stripSvelteComments() {
+	return {
+		name: "strip-svelte-comments",
+		hooks: {
+			"astro:build:done": async ({ dir }) => {
+				const outDir = fileURLToPath(dir);
+				const htmlFiles = [];
+
+				// Recursively find all HTML files
+				function findHtmlFiles(directory) {
+					const entries = fs.readdirSync(directory, { withFileTypes: true });
+					for (const entry of entries) {
+						const fullPath = path.join(directory, entry.name);
+						if (entry.isDirectory()) {
+							findHtmlFiles(fullPath);
+						} else if (entry.name.endsWith(".html")) {
+							htmlFiles.push(fullPath);
+						}
+					}
+				}
+
+				findHtmlFiles(outDir);
+
+				// Strip comments from each HTML file
+				for (const file of htmlFiles) {
+					const content = fs.readFileSync(file, "utf-8");
+					const stripped = content.replace(/<!---->/g, "");
+					if (content !== stripped) {
+						fs.writeFileSync(file, stripped);
+					}
+				}
+
+				console.log(`Stripped Svelte comments from ${htmlFiles.length} HTML files`);
+			},
+		},
+	};
+}
 
 export default defineConfig({
 	site: "https://svelte.saas-ui.dev",
@@ -29,6 +57,7 @@ export default defineConfig({
 		robotsTxt({
 			policy: [{ userAgent: "*", allow: "/" }],
 		}),
+		stripSvelteComments(),
 	],
 	prefetch: true,
 	experimental: {
@@ -41,7 +70,6 @@ export default defineConfig({
 	vite: {
 		plugins: [
 			tailwindcss(),
-			stripSvelteComments(),
 			VitePWA({
 				registerType: "autoUpdate",
 				workbox: {
