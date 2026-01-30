@@ -14,63 +14,39 @@
 		 * Additional classes to apply to the control.
 		 */
 		class?: string;
-		/**
-		 * Whether the checkbox is checked.
-		 */
-		checked?: boolean | "indeterminate";
 		[key: string]: any;
 	}
 
-	let {
-		children,
-		class: className,
-		checked = false,
-		...restProps
-	}: Props = $props();
+	let { children, class: className, ...restProps }: Props = $props();
 
 	const ctx = getContext<CheckboxContext>(CHECKBOX_CTX);
 	const styles = $derived(ctx.styles);
 	const variant = $derived(ctx.variant);
 	const colourVars = $derived(getColourStyle(ctx.colour));
 
-	function getControlClasses(isChecked: boolean | "indeterminate") {
+	function getControlClasses() {
 		const base = styles.control();
-		const isActive = isChecked === true || isChecked === "indeterminate";
+		const uncheckedStyles = "text-white border-border-emphasized";
 
+		let checkedStyles = "";
 		if (variant === "solid") {
-			if (isActive) {
-				return twMerge(
-					base,
-					"text-white bg-(--c-solid) border-(--c-solid)",
-				);
-			}
-			return twMerge(base, "text-white border-border-emphasized");
+			checkedStyles =
+				"data-[state=checked]:text-white data-[state=checked]:bg-(--c-solid) data-[state=checked]:border-(--c-solid) data-[state=indeterminate]:text-white data-[state=indeterminate]:bg-(--c-solid) data-[state=indeterminate]:border-(--c-solid)";
+		} else if (variant === "subtle") {
+			checkedStyles =
+				"data-[state=checked]:bg-(--c-subtle) data-[state=checked]:border-(--c-muted) data-[state=checked]:text-(--c-fg) data-[state=indeterminate]:bg-(--c-subtle) data-[state=indeterminate]:border-(--c-muted) data-[state=indeterminate]:text-(--c-fg)";
+		} else if (variant === "outline") {
+			checkedStyles =
+				"data-[state=checked]:border-(--c-solid) data-[state=checked]:text-(--c-fg) data-[state=indeterminate]:border-(--c-solid) data-[state=indeterminate]:text-(--c-fg)";
 		}
 
-		if (variant === "subtle") {
-			if (isActive) {
-				return twMerge(
-					base,
-					"bg-(--c-subtle) border-(--c-muted) text-(--c-fg)",
-				);
-			}
-			return twMerge(base, "text-white border-border-emphasized");
-		}
-
-		if (variant === "outline") {
-			if (isActive) {
-				return twMerge(base, "border-(--c-solid) text-(--c-fg)");
-			}
-			return twMerge(base, "text-white border-border-emphasized");
-		}
-
-		return base;
+		return twMerge(base, uncheckedStyles, checkedStyles);
 	}
 </script>
 
 <Checkbox.Control
 	class={twMerge(
-		getControlClasses(checked),
+		getControlClasses(),
 		"group-has-data-focus:outline-offset-2 group-has-data-focus:outline-1 group-has-data-focus:outline-solid group-has-data-focus:outline-(--c-focus-ring)",
 		className,
 	)}

@@ -9,11 +9,7 @@
 	import { Link } from "$saas/components/link";
 	import Plus from "phosphor-svelte/lib/Plus";
 	import Check from "phosphor-svelte/lib/Check";
-	import {
-		colours,
-		checkboxVariants,
-		checkboxSizes,
-	} from "../../utils";
+	import { colours, checkboxVariants, checkboxSizes } from "../../utils";
 
 	interface Props {
 		story:
@@ -27,7 +23,8 @@
 			| "customIcon"
 			| "indeterminate"
 			| "description"
-			| "link";
+			| "link"
+			| "withLink";
 	}
 
 	let { story }: Props = $props();
@@ -153,7 +150,7 @@
 		</Checkbox.Label>
 		<Checkbox.HiddenInput />
 	</Checkbox.Root>
-{:else if story === "link"}
+{:else if story === "withLink"}
 	<Checkbox.Root>
 		<Checkbox.Control>
 			<Checkbox.Indicator>
@@ -161,7 +158,7 @@
 			</Checkbox.Indicator>
 		</Checkbox.Control>
 		<Checkbox.Label>
-			I agree to the{" "}
+			I agree to the
 			<Link colour="teal" href="https://google.com"
 				>terms and conditions</Link
 			>
