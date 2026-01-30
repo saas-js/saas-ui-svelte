@@ -57,10 +57,10 @@ const { title } = Astro.props;
 			Skip to main content
 		</a>
 		<Navbar client:load />
-		<SearchDialog client:load />
+		<SearchDialog client:idle />
 		<main id="main" class="scroll-mt-20">
 			<slot />
 		</main>
-		<Footer client:load />
+		<Footer client:visible />
 	</body>
 </html>

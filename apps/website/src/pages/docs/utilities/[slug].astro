@@ -90,7 +90,7 @@ const base = import.meta.env.BASE_URL || "";
 			<h1 class="mb-4 text-2xl font-semibold">{title}</h1>
 
 			{notice && (
-				<Alert status={notice.type || "warning"} class="mb-6" client:load>
+				<Alert status={notice.type || "warning"} class="mb-6" client:idle>
 					{notice.message}
 				</Alert>
 			)}
@@ -118,22 +118,22 @@ const base = import.meta.env.BASE_URL || "";
 								<AccessibilityBadge
 									a11y={a11y}
 									generatedAt={a11yReport?.generatedAt}
-									client:load
+									client:idle
 								/>
 							)}
 						</h3>
 						{story.parameters?.docs?.description?.story && (
 							<p class="mb-4 text-fg-muted">
-								<DescriptionText text={story.parameters.docs.description.story} client:load />
+								<DescriptionText text={story.parameters.docs.description.story} client:idle />
 							</p>
 						)}
 						<StoryPreview
 							story={storyProp}
 							code={storyCode?.code}
 							codeHtml={storyCode?.html}
-							client:load
+							client:visible
 						>
-							<StoryWrapper component={componentName} story={storyProp} category="utilities" client:load />
+							<StoryWrapper component={componentName} story={storyProp} category="utilities" client:visible />
 						</StoryPreview>
 					</section>
 				);
@@ -155,11 +155,11 @@ const base = import.meta.env.BASE_URL || "";
 								{sc.description && (
 									<p class="mb-4 text-sm text-fg-muted">{sc.description}</p>
 								)}
-								<PropsTable props={sc.props || {}} client:load />
+								<PropsTable props={sc.props || {}} client:visible />
 							</div>
 						))
 					) : meta?.argTypes && Object.keys(meta.argTypes).length > 0 ? (
-						<PropsTable props={meta.argTypes} isArgTypes client:load />
+						<PropsTable props={meta.argTypes} isArgTypes client:visible />
 					) : null}
 				</>
 			)}

@@ -109,7 +109,7 @@ const base = import.meta.env.BASE_URL || "";
 
 			{
 				notice && (
-					<Alert status={notice.type || "warning"} class="mb-6" client:load>
+					<Alert status={notice.type || "warning"} class="mb-6" client:idle>
 						{notice.message}
 					</Alert>
 				)
@@ -154,7 +154,7 @@ const base = import.meta.env.BASE_URL || "";
 									<AccessibilityBadge
 										a11y={a11y}
 										generatedAt={a11yReport?.generatedAt}
-										client:load
+										client:idle
 									/>
 								)}
 							</h3>
@@ -165,7 +165,7 @@ const base = import.meta.env.BASE_URL || "";
 											story.parameters.docs.description
 												.story
 										}
-										client:load
+										client:idle
 									/>
 								</p>
 							)}
@@ -173,13 +173,13 @@ const base = import.meta.env.BASE_URL || "";
 								story={storyProp}
 								code={storyCode?.code}
 								codeHtml={storyCode?.html}
-								client:load
+								client:visible
 							>
 								<StoryWrapper
 									component={componentName}
 									story={storyProp}
 									category="typography"
-									client:load
+									client:visible
 								/>
 							</StoryPreview>
 						</section>
@@ -213,7 +213,7 @@ const base = import.meta.env.BASE_URL || "";
 									)}
 									<PropsTable
 										props={sc.props || {}}
-										client:load
+										client:visible
 									/>
 								</div>
 							))
@@ -222,7 +222,7 @@ const base = import.meta.env.BASE_URL || "";
 							<PropsTable
 								props={meta.argTypes}
 								isArgTypes
-								client:load
+								client:visible
 							/>
 						) : null}
 					</>
