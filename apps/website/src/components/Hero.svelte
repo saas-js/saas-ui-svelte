@@ -6,7 +6,9 @@ import { Heading } from "@saas-ui/svelte/typography/heading";
 import { Text } from "@saas-ui/svelte/typography/text";
 import ClipboardButton from "./ClipboardButton.svelte";
 
-const base = import.meta.env.BASE_URL || "";
+// Normalize base URL - remove trailing slash to avoid double slashes
+const rawBase = import.meta.env.BASE_URL || "";
+const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 </script>
 
 <section class="relative overflow-hidden pt-32 pb-20">

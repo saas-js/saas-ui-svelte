@@ -3,7 +3,9 @@ interface Props {
 	class?: string;
 }
 
-const base = import.meta.env.BASE_URL || "";
+// Normalize base URL - remove trailing slash, then add it back for root link
+const rawBase = import.meta.env.BASE_URL || "";
+const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 
 let { class: className = "" }: Props = $props();
 </script>

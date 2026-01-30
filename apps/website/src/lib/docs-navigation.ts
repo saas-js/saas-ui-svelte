@@ -1,7 +1,5 @@
 import { toKebabCase } from "./stories";
 
-const base = import.meta.env.BASE_URL || "";
-
 interface NavItem {
     label: string;
     href?: string;
@@ -13,28 +11,35 @@ interface NavGroup {
     items: NavItem[];
 }
 
-function createNavItems(category: string, labels: string[]): NavItem[] {
+// Normalize base URL - remove trailing slash to avoid double slashes
+function normalizeBase(base: string): string {
+    return base.endsWith("/") ? base.slice(0, -1) : base;
+}
+
+function createNavItems(base: string, category: string, labels: string[]): NavItem[] {
+    const b = normalizeBase(base);
     return labels.map((label) => ({
         label,
-        href: `${base}/docs/${category}/${toKebabCase(label)}`,
+        href: `${b}/docs/${category}/${toKebabCase(label)}`,
     }));
 }
 
-export function getDocsNavigation(): NavGroup[] {
+export function getDocsNavigation(base: string = ""): NavGroup[] {
+    const b = normalizeBase(base);
     return [
         {
             title: "Resources",
             items: [
-                { label: "Storybook", href: `${base}/storybook` },
+                { label: "Storybook", href: `${b}/storybook` },
             ],
         },
         {
             title: "Getting Started",
-            items: [{ label: "Introduction", href: `${base}/docs` }],
+            items: [{ label: "Introduction", href: `${b}/docs` }],
         },
         {
             title: "Components",
-            items: createNavItems("components", [
+            items: createNavItems(base, "components", [
                 "Accordion",
                 "ActionBar",
                 "Alert",
@@ -103,7 +108,7 @@ export function getDocsNavigation(): NavGroup[] {
         },
         {
             title: "Layout",
-            items: createNavItems("layout", [
+            items: createNavItems(base, "layout", [
                 "AspectRatio",
                 "Bleed",
                 "Box",
@@ -119,7 +124,7 @@ export function getDocsNavigation(): NavGroup[] {
         },
         {
             title: "Typography",
-            items: createNavItems("typography", [
+            items: createNavItems(base, "typography", [
                 "Blockquote",
                 "Code",
                 "Em",
@@ -131,7 +136,7 @@ export function getDocsNavigation(): NavGroup[] {
         },
         {
             title: "Utilities",
-            items: createNavItems("utilities", [
+            items: createNavItems(base, "utilities", [
                 "FormatByte",
                 "FormatNumber",
                 "LocaleProvider",

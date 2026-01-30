@@ -23,12 +23,13 @@ interface Props {
 	currentPath?: string;
 	tocItems?: TocItem[];
 	githubUrl?: string;
+	base?: string;
 	children: Snippet;
 }
 
-let { currentPath = "", tocItems = [], githubUrl, children }: Props = $props();
+let { currentPath = "", tocItems = [], githubUrl, base = "", children }: Props = $props();
 
-const navGroups = getDocsNavigation();
+const navGroups = getDocsNavigation(base);
 let mobileNavOpen = $derived(getSideMenuOpen());
 
 $effect(() => {

@@ -4,7 +4,9 @@ import { HStack } from "@saas-ui/svelte/layout/stack";
 import { Button } from "@saas-ui/svelte/components/button";
 import { Heading } from "@saas-ui/svelte/typography/heading";
 
-const base = import.meta.env.BASE_URL || "";
+// Normalize base URL - remove trailing slash to avoid double slashes
+const rawBase = import.meta.env.BASE_URL || "";
+const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 </script>
 
 <section class="border-border-default border-y border-dashed">

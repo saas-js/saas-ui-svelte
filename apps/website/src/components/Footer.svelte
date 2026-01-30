@@ -7,7 +7,9 @@ import { Text } from "@saas-ui/svelte/typography/text";
 import { Heading } from "@saas-ui/svelte/typography/heading";
 import Logo from "./Logo.svelte";
 
-const base = import.meta.env.BASE_URL || "";
+// Normalize base URL - remove trailing slash to avoid double slashes
+const rawBase = import.meta.env.BASE_URL || "";
+const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 const currentYear = new Date().getFullYear();
 
 const linkGroups = [

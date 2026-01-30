@@ -13,7 +13,9 @@ import { toggleTheme } from "../lib/theme";
 import { setSideMenuOpen } from "../lib/mobile-nav.svelte";
 import { setSearchDialogOpen } from "../lib/search-dialog.svelte";
 
-const base = import.meta.env.BASE_URL || "";
+// Normalize base URL - remove trailing slash to avoid double slashes
+const rawBase = import.meta.env.BASE_URL || "";
+const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 
 const navLinks = [
 	{ href: `${base}/docs`, label: "Docs" },

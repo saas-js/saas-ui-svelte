@@ -1,12 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import DocsLayout from "../../components/docs/DocsLayout.svelte";
-import { Heading } from "@saas-ui/svelte/typography/heading";
-import { Text } from "@saas-ui/svelte/typography/text";
-import { Link } from "@saas-ui/svelte/components/link";
-import { List } from "@saas-ui/svelte/components/list";
-import { VStack } from "@saas-ui/svelte/layout/stack";
-import CaretRight from "phosphor-svelte/lib/CaretRight";
+import DocsIntroduction from "../../components/docs/DocsIntroduction.svelte";
 
 const base = import.meta.env.BASE_URL || "";
 
@@ -15,67 +10,6 @@ const tocItems = [
 	{ label: "Sponsors", href: "#sponsors", level: 1 },
 	{ label: "Acknowledgements", href: "#acknowledgements", level: 1 },
 ];
-
-const features = [
-	{
-		title: "Built for Svelte 5",
-		description:
-			"Leveraging runes and snippets for optimal performance and developer experience.",
-	},
-	{
-		title: "Accessible by default",
-		description:
-			"All components follow WAI-ARIA guidelines using Ark UI primitives.",
-	},
-	{
-		title: "Beautiful design",
-		description:
-			"Carefully crafted components inspired by premium SaaS applications.",
-	},
-	{
-		title: "Dark mode ready",
-		description: "Built-in support for light and dark themes.",
-	},
-	{
-		title: "Fully customisable",
-		description: "Extend and modify components to match your brand.",
-	},
-];
-
-const sponsors = [
-	{ name: "Frank Faubert", href: "https://github.com/ffaubert" },
-	{ name: "Appulse Software", href: "https://appulse.net/" },
-];
-
-const acknowledgements = [
-	{
-		name: "Svelte",
-		href: "https://svelte.dev/",
-		description: "The reactive framework powering our components.",
-	},
-	{
-		name: "Ark UI",
-		href: "https://ark-ui.com/",
-		description:
-			"Headless UI primitives providing accessibility and behaviour.",
-	},
-	{
-		name: "Phosphor Icons",
-		href: "https://phosphoricons.com/",
-		description: "Beautiful, flexible icon family.",
-	},
-	{
-		name: "Tailwind CSS",
-		href: "https://tailwindcss.com/",
-		description: "Utility-first CSS framework for styling.",
-	},
-	{
-		name: "SaaS UI",
-		href: "https://saas-ui.dev/",
-		description:
-			"The original React design system that inspired this port.",
-	},
-];
 ---
 
 <Layout title="Introduction">
@@ -83,127 +17,9 @@ const acknowledgements = [
 		currentPath={`${base}/docs`}
 		tocItems={tocItems}
 		githubUrl="https://github.com/saas-js/saas-ui-svelte"
+		base={base}
 		client:load
 	>
-		<VStack gap={4} class="pb-4 items-start" client:load>
-			<Heading
-				as="h1"
-				size="2xl"
-				weight="semibold"
-				class="tracking-tight"
-				client:load
-			>
-				Introduction
-			</Heading>
-			<Text class="text-fg-muted" client:load>
-				SaaS UI Svelte is an open-source design system for building
-				modern web applications with a native, high-quality feel.
-			</Text>
-		</VStack>
-
-		<VStack gap={0} class="text-sm items-start" client:load>
-			<Text class="text-fg-muted leading-relaxed mb-3.5" client:load>
-				Inspired by macOS and premium tools like Linear, Attio, and
-				Superhuman, it provides intuitive primitives that empower
-				developers to create beautiful, user-friendly interfaces without
-				sacrificing development velocity.
-			</Text>
-			<Text class="text-fg-muted leading-relaxed my-3.5" client:load>
-				Whether you're building a simple dashboard or a complex
-				enterprise application, SaaS UI Svelte helps you deliver
-				polished experiences that users love.
-			</Text>
-
-			<Heading
-				as="h2"
-				id="features"
-				size="lg"
-				weight="semibold"
-				class="tracking-tight mt-7 mb-3.5 scroll-mt-20"
-				client:load
-			>
-				<Link href="#features" variant="underline" client:load
-					>Features</Link
-				>
-			</Heading>
-			<List.Root class="mt-3.5 mb-7 pl-5 list-disc" client:load>
-				{
-					features.map((feature) => (
-						<List.Item class="my-3 pl-1.5 text-fg-muted">
-							<Text
-								as="strong"
-								class="text-fg-default"
-								client:load
-							>
-								{feature.title}
-							</Text>{" "}
-							- {feature.description}
-						</List.Item>
-					))
-				}
-			</List.Root>
-
-			<Heading
-				as="h2"
-				id="sponsors"
-				size="lg"
-				weight="semibold"
-				class="tracking-tight mt-7 mb-3.5 scroll-mt-20"
-				client:load
-			>
-				<Link href="#sponsors" variant="underline" client:load
-					>Sponsors</Link
-				>
-			</Heading>
-			<List.Root class="mt-3.5 mb-7 pl-5 list-disc" client:load>
-				{
-					sponsors.map((sponsor) => (
-						<List.Item class="my-3 pl-1.5">
-							<Link
-								href={sponsor.href}
-								variant="underline"
-								client:load
-							>
-								{sponsor.name}
-							</Link>
-						</List.Item>
-					))
-				}
-			</List.Root>
-
-			<Heading
-				as="h2"
-				id="acknowledgements"
-				size="lg"
-				weight="semibold"
-				class="tracking-tight mt-7 mb-3.5 scroll-mt-20"
-				client:load
-			>
-				<Link href="#acknowledgements" variant="underline" client:load
-					>Acknowledgements</Link
-				>
-			</Heading>
-			<Text class="leading-relaxed text-fg-muted" client:load>
-				SaaS UI Svelte is built with the help of many amazing libraries
-				and their authors, without them this wouldn't be possible.
-			</Text>
-			<List.Root class="mt-3.5 mb-7 pl-5 list-disc" client:load>
-				{
-					acknowledgements.map((item) => (
-						<List.Item class="my-3 pl-1.5 text-fg-muted">
-							<Link
-								href={item.href}
-								variant="underline"
-								class="text-fg-default"
-								client:load
-							>
-								{item.name}
-							</Link>{" "}
-							- {item.description}
-						</List.Item>
-					))
-				}
-			</List.Root>
-		</VStack>
+		<DocsIntroduction client:load />
 	</DocsLayout>
 </Layout>
