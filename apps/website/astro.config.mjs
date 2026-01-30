@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
+import { fontFamily } from "fontaine";
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
@@ -70,6 +71,14 @@ export default defineConfig({
 	vite: {
 		plugins: [
 			tailwindcss(),
+			fontFamily({
+				fonts: [
+					{
+						family: "Inter Variable",
+						fallbacks: ["Arial", "Helvetica Neue", "Helvetica", "sans-serif"],
+					},
+				],
+			}),
 			VitePWA({
 				registerType: "autoUpdate",
 				workbox: {
