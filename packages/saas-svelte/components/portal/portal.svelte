@@ -33,7 +33,7 @@
 {#if disabled || !isClient}
 	{@render children()}
 {:else}
-	<ArkPortal {container}>
+	<ArkPortal container={container ?? undefined}>
 		{@render children()}
 	</ArkPortal>
 {/if}

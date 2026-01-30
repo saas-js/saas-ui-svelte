@@ -9,6 +9,10 @@ export default defineConfig({
 	site: "https://saas-js.github.io",
 	base: process.env.NODE_ENV === "production" ? "/saas-ui-svelte" : "",
 	integrations: [svelte(), react(), mdx()],
+	prefetch: true,
+	experimental: {
+		clientPrerender: true,
+	},
 	vite: {
 		plugins: [tailwindcss()],
 		resolve: {
@@ -19,6 +23,18 @@ export default defineConfig({
 				$stories: path.resolve("../storybook/stories"),
 				$wrappers: path.resolve("../storybook/stories/wrappers"),
 			},
+		},
+		optimizeDeps: {
+			include: [
+				"@ark-ui/svelte",
+				"tailwind-variants",
+				"tailwind-merge",
+				"phosphor-svelte",
+			],
+		},
+		build: {
+			target: "esnext",
+			minify: "esbuild",
 		},
 	},
 });
