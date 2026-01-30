@@ -33,6 +33,8 @@ export default defineConfig({
 		build: {
 			target: "esnext",
 			minify: "esbuild",
+			// Large component library vendors - expected sizes
+			chunkSizeWarningLimit: 750,
 			rollupOptions: {
 				output: {
 					manualChunks: (id) => {

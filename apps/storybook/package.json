@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "storybook dev -p 6006",
 		"storybook": "storybook dev -p 6006",
-		"build": "STORYBOOK_BUILD=true storybook build",
+		"build": "storybook build",
 		"build-storybook": "storybook build",
 		"a11y-report": "tsx scripts/generate-a11y-report.ts",
 		"a11y-report:dev": "tsx scripts/generate-a11y-report.ts --dev"
