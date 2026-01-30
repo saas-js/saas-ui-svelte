@@ -29,7 +29,7 @@ import ClipboardButton from "./ClipboardButton.svelte";
 			<HStack gap={3} class="flex-col items-center sm:flex-row">
 				<Button
 					as="a"
-					href="/docs/components/overview"
+					href="/docs"
 					variant="glass"
 					colour="indigo"
 					size="lg"
