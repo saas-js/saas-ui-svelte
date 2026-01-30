@@ -11,7 +11,9 @@ import PropsTable from "../../../components/docs/PropsTable.svelte";
 import CodeBlock from "../../../components/docs/CodeBlock.astro";
 import DescriptionText from "../../../components/docs/DescriptionText.svelte";
 import { Alert } from "@saas-ui/svelte/components/alert";
+import AccessibilityBadge from "../../../components/docs/AccessibilityBadge.svelte";
 import { storyNameToDisplayName, getComponentName, generateUtilitiesAnatomy, toKebabCase, getStoryPropValue, buildTocItems, createStaticPathsFromModules, extractStoryCode } from "../../../lib/stories";
+import { loadAccessibilityReport, getStoryAccessibility } from "../../../lib/accessibility";
 
 export async function getStaticPaths() {
 	const modules = import.meta.glob("../../../../../storybook/stories/utilities/*.stories.ts", { eager: true });
@@ -71,6 +73,9 @@ const tocItems = buildTocItems(stories, meta, hasProps);
 // Get notice if defined
 const notice = meta?.parameters?.notice;
 
+// Load accessibility report
+const a11yReport = await loadAccessibilityReport();
+
 const base = import.meta.env.BASE_URL || "";
 ---
 
@@ -104,9 +109,19 @@ const base = import.meta.env.BASE_URL || "";
 			{Object.entries(stories).map(([name, story]) => {
 				const storyProp = getStoryPropValue(name);
 				const storyCode = storyCodeMap[name];
+				const a11y = getStoryAccessibility(a11yReport, "utilities", componentName, name);
 				return (
 					<section id={toKebabCase(name)} class="mb-12 scroll-mt-20">
-						<h3 class="mb-2 text-lg font-medium">{storyNameToDisplayName(name)}</h3>
+						<h3 class="mb-2 text-lg font-medium flex items-center gap-2">
+							{storyNameToDisplayName(name)}
+							{a11y && (
+								<AccessibilityBadge
+									a11y={a11y}
+									generatedAt={a11yReport?.generatedAt}
+									client:load
+								/>
+							)}
+						</h3>
 						{story.parameters?.docs?.description?.story && (
 							<p class="mb-4 text-fg-muted">
 								<DescriptionText text={story.parameters.docs.description.story} client:load />

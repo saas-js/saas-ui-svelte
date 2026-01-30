@@ -5,7 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "astro build",
+		"build": "npm run a11y && astro build",
+		"a11y": "cd ../storybook && npm run build && npm run a11y-report",
 		"preview": "astro preview"
 	},
 	"dependencies": {
