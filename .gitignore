@@ -29,3 +29,7 @@ debug-*.log
 
 # Test coverage
 coverage/
+
+# Accessibility Reports
+apps/website/public/a11y-report.json
+apps/website/public/a11y-report.json
