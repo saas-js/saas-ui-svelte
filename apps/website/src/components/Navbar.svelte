@@ -15,7 +15,7 @@ import { setSearchDialogOpen } from "../lib/search-dialog.svelte";
 
 const navLinks = [
 	{ href: "/docs", label: "Docs" },
-	{ href: "/storybook", label: "Storybook" },
+	{ href: "/saas-ui-svelte/storybook", label: "Storybook" },
 ];
 </script>
 
