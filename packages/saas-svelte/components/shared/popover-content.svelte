@@ -39,9 +39,9 @@ export const popoverContentStyles = tv({
 		variant: {
 			default: {},
 			inverted: {
-				content: ["bg-bg-overlay", "text-fg-default", "shadow-md"],
-				arrow: ["[--arrow-background:var(--color-bg-overlay)]"],
-				arrowTip: ["border-border-subtle"],
+				content: ["bg-bg-panel", "text-fg-default", "shadow-md", "border", "border-border-default"],
+				arrow: ["[--arrow-background:var(--color-bg-panel)]"],
+				arrowTip: ["border-border-default"],
 			},
 		},
 		interactive: {

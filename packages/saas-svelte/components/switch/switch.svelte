@@ -209,8 +209,8 @@ function handleCheckedChange(details: { checked: boolean }) {
 		</Switch.Thumb>
 		{#if trackLabel}
 			<span
-				class="absolute grid size-(--switch-translate) shrink-0 content-center justify-center text-sm font-medium transition-[inset-inline-start] duration-100 select-none"
-				style="inset-inline-start: {checked ? '2px' : 'calc(var(--switch-translate) - 2px)'};"
+				class="absolute grid size-(--switch-translate) shrink-0 content-center justify-center text-sm font-medium transition-transform duration-100 select-none will-change-transform"
+				style="inset-inline-start: 2px; transform: translateX({checked ? '0' : 'calc(var(--switch-translate) - 4px)'});"
 			>
 				{#if checked && trackLabel.on}
 					{@render trackLabel.on()}

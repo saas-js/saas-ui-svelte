@@ -11,9 +11,12 @@ import path from "path";
 const stripSvelteComments = () => ({
 	name: "strip-svelte-comments",
 	apply: "build",
-	transformIndexHtml: {
-		order: "post",
-		handler: (html) => html.replace(/<!---->/g, ""),
+	generateBundle(_, bundle) {
+		for (const file of Object.values(bundle)) {
+			if (file.type === "asset" && file.fileName.endsWith(".html")) {
+				file.source = file.source.replace(/<!---->/g, "");
+			}
+		}
 	},
 });
 

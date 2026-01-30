@@ -30,10 +30,10 @@ const stripeClasses = $derived.by(() => {
 	return `${baseStripe} ${animatedStripe}`;
 });
 
-// Indeterminate animation classes - smooth left position animation
+// Indeterminate animation classes - GPU-accelerated transform animation
 const indeterminateClasses = $derived(
 	isIndeterminate
-		? "animate-[progress-indeterminate_1s_ease_infinite] absolute top-0 min-w-1/2 will-change-[left]"
+		? "animate-[progress-indeterminate_1s_ease_infinite] absolute top-0 left-0 min-w-1/2 will-change-transform"
 		: "",
 );
 </script>
