@@ -47,6 +47,7 @@ export type BreadcrumbVariants = VariantProps<typeof breadcrumb>;
 
 <script lang="ts">
 import { setContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	/**
@@ -117,7 +118,7 @@ setContext<BreadcrumbContext>(BREADCRUMB_CTX, {
 </script>
 
 <nav aria-label={ariaLabel} {...restProps}>
-	<ol class={styles.root({ class: className })} style={separatorGapStyle}>
+	<ol class={twMerge(styles.root(), className as string)} style={separatorGapStyle}>
 		{@render children()}
 	</ol>
 </nav>

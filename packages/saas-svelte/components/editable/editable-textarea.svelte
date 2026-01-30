@@ -43,6 +43,7 @@ export const editableTextarea = tv({
 import { mergeProps } from "@zag-js/svelte";
 import { useEditableContext } from "@ark-ui/svelte/editable";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { EDITABLE_CTX } from "./editable-root.svelte";
 import { getColourStyle } from "$saas/utils/colours";
 
@@ -85,7 +86,7 @@ const inputProps = $derived(editable().getInputProps());
 const mergedProps = $derived(
 	mergeProps(inputProps, {
 		rows,
-		class: editableTextarea({ size, class: className }),
+		class: twMerge(editableTextarea({ size }), className as string),
 		style: finalStyle,
 		...restProps,
 	}),

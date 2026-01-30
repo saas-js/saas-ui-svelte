@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv, type VariantProps } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 import { getColourStyle, type ColourName } from "$saas/utils/colours";
 
 export const pinInputRoot = tv({
@@ -280,7 +281,7 @@ const isRequired = $derived(required || fieldState.required || false);
 const isReadOnly = $derived(readOnly || fieldState.readOnly || false);
 const inputId = $derived(id || fieldState.id);
 
-const rootClasses = $derived(pinInputRoot({ class: className }) as string);
+const rootClasses = $derived(twMerge(pinInputRoot(), className as string));
 
 const controlClasses = $derived(
 	pinInputControl({

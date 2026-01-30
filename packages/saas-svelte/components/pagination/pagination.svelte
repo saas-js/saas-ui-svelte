@@ -194,7 +194,7 @@ export type PaginationVariants = VariantProps<typeof paginationItem>;
 
 <script lang="ts">
 import { Pagination } from "@ark-ui/svelte/pagination";
-import type { ClassNameValue } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 
 interface Props {
 	/**
@@ -350,7 +350,7 @@ const getPageText = (currentPage: number, totalPages: number) => {
 </script>
 
 <Pagination.Root
-	class={paginationRoot({ class: className }) as string}
+	class={twMerge(paginationRoot(), className as string)}
 	style={styles}
 	id={id}
 	count={count}

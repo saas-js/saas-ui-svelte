@@ -1,6 +1,7 @@
 <script lang="ts">
 import { getContext, type Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 import { Avatar, type AvatarVariants } from "$saas/components/avatar";
 import type { ColourName } from "$saas/utils/colours";
 import { persona, PERSONA_CTX, type PersonaContext } from "./persona.svelte";
@@ -62,7 +63,7 @@ const size = $derived(personaContext?.size ?? "md");
 const styles = $derived(persona({ size }));
 </script>
 
-<div class={styles.avatar({ class: className })} {...restProps}>
+<div class={twMerge(styles.avatar(), className as string)} {...restProps}>
 	<Avatar
 		src={src}
 		name={name}

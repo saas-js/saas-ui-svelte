@@ -2,6 +2,7 @@
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { NAVBAR_CTX, type NavbarContext } from "./navbar-root.svelte";
 
 interface Props extends HTMLAnchorAttributes {
@@ -16,7 +17,7 @@ interface Props extends HTMLAnchorAttributes {
 let { active = false, children, class: className, ...rest }: Props = $props();
 
 const ctx = getContext<NavbarContext>(NAVBAR_CTX);
-const finalClass = $derived(ctx?.styles?.link({ class: className }));
+const finalClass = $derived(twMerge(ctx?.styles?.link() ?? "", className));
 </script>
 
 <a

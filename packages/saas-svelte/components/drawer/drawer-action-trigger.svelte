@@ -3,6 +3,7 @@ import { Dialog } from "@ark-ui/svelte";
 import { button, type ButtonVariants } from "../button/button.svelte";
 import type { Snippet } from "svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
 	/**

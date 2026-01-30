@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Tailwind Variants styles for the GridList item component.
@@ -63,7 +64,7 @@ const interactive = $derived(context?.interactive ?? false);
 <div
 	role="row"
 	tabindex={interactive ? 0 : undefined}
-	class={gridListItem({ interactive, class: className })}
+	class={twMerge(gridListItem({ interactive }), className as string)}
 	{...restProps}
 >
 	{@render children()}

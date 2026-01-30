@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Combobox } from "@ark-ui/svelte/combobox";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 
@@ -17,7 +18,7 @@ const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 </script>
 
 <Combobox.ItemIndicator
-	class={ctx?.styles?.itemIndicator({ class: className })}
+	class={twMerge(ctx?.styles?.itemIndicator() ?? "", className as string)}
 >
 	<CheckIcon weight="bold" />
 </Combobox.ItemIndicator>

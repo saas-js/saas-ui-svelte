@@ -1,6 +1,7 @@
 <script lang="ts">
 import { getContext, type Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 import { persona, PERSONA_CTX, type PersonaContext } from "./persona.svelte";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
@@ -22,6 +23,6 @@ const size = $derived(personaContext?.size ?? "md");
 const styles = $derived(persona({ size }));
 </script>
 
-<span class={styles.tertiaryLabel({ class: className })} {...restProps}>
+<span class={twMerge(styles.tertiaryLabel(), className as string)} {...restProps}>
 	{@render children()}
 </span>

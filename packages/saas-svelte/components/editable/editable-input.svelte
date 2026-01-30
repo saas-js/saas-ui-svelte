@@ -41,6 +41,7 @@ export const editableInput = tv({
 <script lang="ts">
 import { Editable } from "@ark-ui/svelte/editable";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { EDITABLE_CTX } from "./editable-root.svelte";
 import { getColourStyle } from "$saas/utils/colours";
 
@@ -76,7 +77,7 @@ const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>
 
 <Editable.Input
-	class={editableInput({ size, class: className })}
+	class={twMerge(editableInput({ size }), className as string)}
 	style={finalStyle}
 	{...restProps}
 />

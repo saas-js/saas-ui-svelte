@@ -18,8 +18,9 @@ export const linkBox = tv({
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props extends HTMLAttributes<HTMLElement> {
 	/**
 	 * The HTML element to render.
 	 * @default "div"
@@ -37,7 +38,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 let { as = "div", children, class: className, ...rest }: Props = $props();
 
-const classes = $derived(linkBox({ class: className }));
+const classes = $derived(twMerge(linkBox(), className as string));
 </script>
 
 {#if as === "article"}

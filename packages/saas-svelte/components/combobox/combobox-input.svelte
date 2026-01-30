@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Combobox } from "@ark-ui/svelte/combobox";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
 
 interface Props {
@@ -22,7 +23,7 @@ const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 
 <Combobox.Input
 	placeholder={placeholder}
-	class={ctx?.styles?.input({ class: className })}
+	class={twMerge(ctx?.styles?.input() ?? "", className as string)}
 	style={ctx?.colourStyle}
 	{...rest}
 />

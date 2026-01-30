@@ -11,6 +11,7 @@ export const editableControl = tv({
 
 <script lang="ts">
 import { Editable } from "@ark-ui/svelte/editable";
+import { twMerge } from "tailwind-merge";
 import type { Snippet } from "svelte";
 
 interface Props {
@@ -31,6 +32,6 @@ interface Props {
 let { children, class: className, ...restProps }: Props = $props();
 </script>
 
-<Editable.Control class={editableControl({ class: className })} {...restProps}>
+<Editable.Control class={twMerge(editableControl(), className as string)} {...restProps}>
 	{@render children?.()}
 </Editable.Control>

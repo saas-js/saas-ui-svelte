@@ -2,6 +2,7 @@
 import { Select, useSelectContext } from "@ark-ui/svelte/select";
 import type { SelectValueTextProps } from "@ark-ui/svelte/select";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 
 interface Props extends SelectValueTextProps {
@@ -59,7 +60,7 @@ function getInitials(name: string): string {
 </script>
 
 <Select.ValueText
-	class={ctx?.styles?.valueText({ class: className })}
+	class={twMerge(ctx?.styles?.valueText() ?? "", className as string)}
 	placeholder={placeholder}
 	{...rest}
 >

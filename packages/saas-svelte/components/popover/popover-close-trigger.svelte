@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Popover } from "@ark-ui/svelte/popover";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { POPOVER_CTX, type PopoverContext } from "./popover-root.svelte";
 import { Button } from "$saas/components/button";
@@ -65,7 +66,7 @@ const ctx = getContext<PopoverContext>(POPOVER_CTX);
 	</Popover.CloseTrigger>
 {:else}
 	<Popover.CloseTrigger
-		class={ctx?.styles?.closeTrigger({ class: className })}
+		class={twMerge(ctx?.styles?.closeTrigger() ?? "", className as string)}
 		aria-label={ariaLabel}
 		{...rest}
 	>

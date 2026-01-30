@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const collapsibleRoot = tv({
 	base: ["antialiased"],
@@ -105,7 +106,7 @@ const uniqueId = $derived(
 	unmountOnExit={unmountOnExit}
 	onOpenChange={onOpenChange}
 	onExitComplete={onExitComplete}
-	class={collapsibleRoot({ class: className })}
+	class={twMerge(collapsibleRoot(), className as string)}
 	{...rest}
 >
 	{@render children?.()}

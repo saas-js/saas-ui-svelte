@@ -15,6 +15,7 @@ import { Popover as ArkPopover } from "@ark-ui/svelte";
 import { Portal } from "@ark-ui/svelte/portal";
 import type { PopoverRootProps } from "@ark-ui/svelte/popover";
 import type { Snippet, Component } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { Button } from "$saas/components/button";
 import { Icon } from "$saas/components/icon";
 
@@ -208,9 +209,7 @@ const sizeClass = $derived(sizeClasses[size || "md"]);
 	<Portal>
 		<ArkPopover.Positioner class={styles.positioner()}>
 			<ArkPopover.Content
-				class={styles.content({
-					class: `${sizeClass} ${className || ""}`,
-				})}
+				class={twMerge(styles.content(), sizeClass, className as string)}
 			>
 				{#if typeof effectiveContent === "string"}
 					{effectiveContent}

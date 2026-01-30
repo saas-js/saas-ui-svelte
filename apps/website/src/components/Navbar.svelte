@@ -8,10 +8,13 @@ import GithubLogo from "phosphor-svelte/lib/GithubLogo";
 import Sun from "phosphor-svelte/lib/Sun";
 import Moon from "phosphor-svelte/lib/Moon";
 import List from "phosphor-svelte/lib/List";
+import X from "phosphor-svelte/lib/X";
 import Logo from "./Logo.svelte";
 import { toggleTheme } from "../lib/theme";
-import { setSideMenuOpen } from "../lib/mobile-nav.svelte";
+import { getSideMenuOpen, setSideMenuOpen } from "../lib/mobile-nav.svelte";
 import { setSearchDialogOpen } from "../lib/search-dialog.svelte";
+
+let mobileNavOpen = $derived(getSideMenuOpen());
 
 // Normalize base URL - remove trailing slash to avoid double slashes
 const rawBase = import.meta.env.BASE_URL || "";
@@ -93,11 +96,15 @@ const navLinks = [
 				variant="ghost"
 				size="sm"
 				icon
-				aria-label="Open menu"
+				aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
 				class="lg:hidden"
-				onclick={() => setSideMenuOpen(true)}
+				onclick={() => setSideMenuOpen(!mobileNavOpen)}
 			>
-				<List class="size-4" />
+				{#if mobileNavOpen}
+					<X class="size-4" />
+				{:else}
+					<List class="size-4" />
+				{/if}
 			</Button>
 		</Navbar.ItemGroup>
 	</Navbar.Content>

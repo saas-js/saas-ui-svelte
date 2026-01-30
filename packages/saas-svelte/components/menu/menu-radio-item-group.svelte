@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Menu } from "@ark-ui/svelte/menu";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 
 interface Props {
@@ -37,7 +38,7 @@ const ctx = getContext<MenuContext>(MENU_CTX);
 <Menu.RadioItemGroup
 	bind:value={value}
 	onValueChange={(e) => onValueChange?.(e)}
-	class={ctx?.styles?.itemGroup({ class: className })}
+	class={twMerge(ctx?.styles?.itemGroup() ?? "", className as string)}
 	{...rest}
 >
 	{@render children()}

@@ -2,6 +2,7 @@
 import { Select } from "@ark-ui/svelte/select";
 import type { SelectTriggerProps } from "@ark-ui/svelte/select";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
@@ -32,9 +33,9 @@ let {
 const ctx = getContext<SelectContext>(SELECT_CTX);
 </script>
 
-<Select.Control class={ctx?.styles?.control()}>
+<Select.Control class={ctx?.styles?.control() ?? ""}>
 	<Select.Trigger
-		class={ctx?.styles?.trigger({ class: className })}
+		class={twMerge(ctx?.styles?.trigger() ?? "", className as string)}
 		style={ctx?.colourStyle}
 		{...rest}
 	>
@@ -42,7 +43,7 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 			{@render children()}
 		{:else}
 			<Select.ValueText
-				class={ctx?.styles?.valueText()}
+				class={ctx?.styles?.valueText() ?? ""}
 				placeholder="Select an option"
 			/>
 		{/if}
@@ -51,11 +52,11 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 		class="pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1 px-2.5"
 	>
 		{#if clearable}
-			<Select.ClearTrigger class={ctx?.styles?.clearTrigger()}>
+			<Select.ClearTrigger class={ctx?.styles?.clearTrigger() ?? ""}>
 				<XIcon class="size-3.5" weight="bold" aria-hidden="true" />
 			</Select.ClearTrigger>
 		{/if}
-		<Select.Indicator class={ctx?.styles?.indicator()}>
+		<Select.Indicator class={ctx?.styles?.indicator() ?? ""}>
 			<CaretDownIcon weight="bold" aria-hidden="true" />
 		</Select.Indicator>
 	</div>

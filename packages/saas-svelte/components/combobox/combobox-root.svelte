@@ -216,6 +216,7 @@ export const COMBOBOX_CTX = Symbol("COMBOBOX_CTX");
 import { Combobox, type ComboboxRootProps } from "@ark-ui/svelte/combobox";
 import type { CollectionItem, ListCollection } from "@ark-ui/svelte/combobox";
 import { setContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 
 interface Props extends Omit<
@@ -269,7 +270,7 @@ setContext(COMBOBOX_CTX, ctx);
 <Combobox.Root
 	id={uniqueId}
 	collection={collection}
-	class={ctx.styles.root({ class: className })}
+	class={twMerge(ctx.styles.root(), className as string)}
 	{...restProps}
 >
 	{@render children?.()}

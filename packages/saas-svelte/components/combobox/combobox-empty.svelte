@@ -1,5 +1,6 @@
 <script lang="ts">
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
 
 interface Props {
@@ -18,6 +19,6 @@ let { children, class: className }: Props = $props();
 const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 </script>
 
-<div class={ctx?.styles?.empty({ class: className })}>
+<div class={twMerge(ctx?.styles?.empty() ?? "", className as string)}>
 	{@render children()}
 </div>

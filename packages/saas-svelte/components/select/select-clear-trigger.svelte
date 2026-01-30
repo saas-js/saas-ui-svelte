@@ -2,6 +2,7 @@
 import { Select } from "@ark-ui/svelte/select";
 import type { SelectClearTriggerProps } from "@ark-ui/svelte/select";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 import XIcon from "phosphor-svelte/lib/XIcon";
 
@@ -22,7 +23,7 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 </script>
 
 <Select.ClearTrigger
-	class={ctx?.styles?.clearTrigger({ class: className })}
+	class={twMerge(ctx?.styles?.clearTrigger() ?? "", className as string)}
 	aria-label="Clear value"
 	{...rest}
 >

@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Collapsible as ArkCollapsible } from "@ark-ui/svelte/collapsible";
+import { twMerge } from "tailwind-merge";
 import { collapsibleIndicator } from "./collapsible.svelte";
 import type { Snippet } from "svelte";
 
@@ -17,6 +18,6 @@ interface Props {
 let { children, class: className }: Props = $props();
 </script>
 
-<ArkCollapsible.Indicator class={collapsibleIndicator({ class: className })}>
+<ArkCollapsible.Indicator class={twMerge(collapsibleIndicator(), className as string)}>
 	{@render children?.()}
 </ArkCollapsible.Indicator>

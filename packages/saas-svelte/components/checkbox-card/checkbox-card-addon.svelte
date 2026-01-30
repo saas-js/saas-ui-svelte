@@ -3,6 +3,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 import {
 	CHECKBOX_CARD_CTX,
 	type CheckboxCardVariants,
@@ -42,7 +43,7 @@ const ctx = getContext<{
 const size = $derived(ctx?.size ?? "md");
 const disabled = $derived(ctx?.disabled ?? false);
 
-const finalClass = $derived(checkboxCardAddon({ size, class: className }));
+const finalClass = $derived(twMerge(checkboxCardAddon({ size }), className as string));
 </script>
 
 <div class={finalClass} class:opacity-50={disabled} {...restProps}>

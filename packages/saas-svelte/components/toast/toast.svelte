@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv, type VariantProps } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const toast = tv({
 	slots: {
@@ -196,7 +197,7 @@ const isSingleLine = $derived(
 const styles = $derived(toast({ status }));
 </script>
 
-<div class={styles.root({ class: className })} role="status" aria-live="polite">
+<div class={twMerge(styles.root(), className as string)} role="status" aria-live="polite">
 	{#if children}
 		{@render children()}
 	{:else if isSingleLine}

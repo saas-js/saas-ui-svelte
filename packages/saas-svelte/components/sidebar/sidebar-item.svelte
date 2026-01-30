@@ -2,6 +2,7 @@
 import { getContext, type Component } from "svelte";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 import {
 	SIDEBAR_CTX,
 	type SidebarContext,
@@ -35,9 +36,7 @@ let {
 
 const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
 const styles = $derived(ctx?.styles ?? sidebar());
-const finalClass = $derived(
-	styles.item({ active, class: className as string }),
-);
+const finalClass = $derived(twMerge(styles.item({ active }), className as string));
 const iconClass = $derived(styles.itemIcon());
 const labelClass = $derived(styles.itemLabel());
 </script>

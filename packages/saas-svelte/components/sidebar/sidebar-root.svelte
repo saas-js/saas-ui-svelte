@@ -1,5 +1,6 @@
 <script lang="ts" module>
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const SIDEBAR_CTX = Symbol("SIDEBAR_CTX");
 
@@ -103,7 +104,7 @@ setContext<SidebarContext>(SIDEBAR_CTX, {
 	},
 });
 
-const finalClass = $derived(styles.root({ class: className as string }));
+const finalClass = $derived(twMerge(styles.root(), className as string));
 </script>
 
 <aside class={finalClass} {...restProps}>

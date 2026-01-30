@@ -125,7 +125,7 @@ export type NumberInputVariants = VariantProps<typeof numberInputInput>;
 
 <script lang="ts">
 import { NumberInput } from "@ark-ui/svelte/number-input";
-import type { ClassNameValue } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 import { getContext } from "svelte";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
 
@@ -284,7 +284,7 @@ const isRequired = $derived(required || fieldState.required || false);
 const isReadOnly = $derived(readOnly || fieldState.readOnly || false);
 const inputId = $derived(id || fieldState.id);
 
-const rootClasses = $derived(numberInputRoot({ class: className }) as string);
+const rootClasses = $derived(twMerge(numberInputRoot(), className as string));
 
 const inputClasses = $derived(
 	numberInputInput({

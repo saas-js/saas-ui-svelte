@@ -2,6 +2,7 @@
 import { getContext } from "svelte";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 import { SIDEBAR_CTX, type SidebarContext } from "./sidebar-root.svelte";
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -14,9 +15,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 let { children, class: className, ...restProps }: Props = $props();
 
 const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
-const finalClass = $derived(
-	ctx?.styles?.footer({ class: className as string }),
-);
+const finalClass = $derived(twMerge(ctx?.styles?.footer() ?? "", className as string));
 </script>
 
 <footer class={finalClass} {...restProps}>

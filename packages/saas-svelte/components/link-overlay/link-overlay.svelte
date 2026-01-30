@@ -63,6 +63,7 @@ export type LinkOverlayVariants = VariantProps<typeof linkOverlay>;
 <script lang="ts">
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { getColourStyle } from "$saas/utils/colours";
 
 interface Props extends HTMLAnchorAttributes {
@@ -103,7 +104,7 @@ const shouldApplyColour = $derived(
 	variant === "underline" || variant === "plain",
 );
 const colourVars = $derived(shouldApplyColour ? getColourStyle(colour) : "");
-const finalClass = $derived(linkOverlay({ variant, class: className }));
+const finalClass = $derived(twMerge(linkOverlay({ variant }), className as string));
 const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>
 

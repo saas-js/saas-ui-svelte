@@ -3,6 +3,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 import {
 	CHECKBOX_CARD_CTX,
 	type CheckboxCardVariants,
@@ -57,7 +58,7 @@ const ctx = getContext<{ size: CheckboxCardVariants["size"] }>(
 const size = $derived(ctx?.size ?? "md");
 
 const finalClass = $derived(
-	checkboxCardControl({ size, align, class: className }),
+	twMerge(checkboxCardControl({ size, align }), className as string),
 );
 </script>
 

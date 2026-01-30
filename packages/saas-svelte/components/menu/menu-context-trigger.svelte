@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Menu } from "@ark-ui/svelte/menu";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 
 interface Props {
@@ -21,7 +22,7 @@ const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
 <Menu.ContextTrigger
-	class={ctx?.styles?.contextTrigger({ class: className })}
+	class={twMerge(ctx?.styles?.contextTrigger() ?? "", className as string)}
 	{...rest}
 >
 	{@render children()}

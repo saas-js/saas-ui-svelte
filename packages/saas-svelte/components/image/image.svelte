@@ -48,6 +48,7 @@ export type ImageVariants = VariantProps<typeof image>;
 
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends Omit<HTMLAttributes<HTMLImageElement>, "style"> {
 	/**
@@ -136,7 +137,7 @@ const computedStyle = $derived.by(() => {
 	return styles.length > 0 ? styles.join("; ") : undefined;
 });
 
-const classes = $derived(image({ rounded, fit, class: className }));
+const classes = $derived(twMerge(image({ rounded, fit }), className as string));
 </script>
 
 <img

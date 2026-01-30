@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Tailwind Variants styles for the GridList header component.
@@ -36,7 +37,7 @@ let { children, class: className, ...restProps }: Props = $props();
 <div role="row">
 	<div
 		role="columnheader"
-		class={gridListHeader({ class: className })}
+		class={twMerge(gridListHeader(), className as string)}
 		{...restProps}
 	>
 		{@render children()}

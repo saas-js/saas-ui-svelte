@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv, type VariantProps } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const closeButton = tv({
 	base: [
@@ -133,11 +134,11 @@ const colourStyle = $derived(getColourStyle(colour));
 const finalStyle = $derived([colourStyle, style].filter(Boolean).join("; "));
 
 const finalClass = $derived(
-	closeButton({
-		variant,
-		size,
-		class: `${className || ""}${variant === "glass" ? " group" : ""}`,
-	}),
+	twMerge(
+		closeButton({ variant, size }),
+		className as string,
+		variant === "glass" ? "group" : ""
+	),
 );
 
 const iconSizeClass = {

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Menu } from "@ark-ui/svelte/menu";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 
@@ -22,7 +23,7 @@ const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
 <Menu.ItemIndicator
-	class={ctx?.styles?.itemIndicator({ class: className })}
+	class={twMerge(ctx?.styles?.itemIndicator() ?? "", className as string)}
 	{...rest}
 >
 	{#if children}

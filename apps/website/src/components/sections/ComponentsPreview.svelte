@@ -28,9 +28,9 @@ import PreviewCard from "./PreviewCard.svelte";
 		</PreviewCard>
 
 		<PreviewCard>
-			<Field.Root class="w-full">
-				<Field.Label>Email</Field.Label>
-				<Input placeholder="john@doe.com" />
+			<Field.Root id="preview-email" class="w-full">
+				<Field.Label for="preview-email">Email</Field.Label>
+				<Input id="preview-email" name="preview-email" placeholder="john@doe.com" />
 			</Field.Root>
 		</PreviewCard>
 
@@ -38,6 +38,7 @@ import PreviewCard from "./PreviewCard.svelte";
 			<Accordion.Root
 				id="preview-accordion"
 				defaultValue={["item-1"]}
+				collapsible
 				class="w-full"
 			>
 				<Accordion.Item value="item-1">

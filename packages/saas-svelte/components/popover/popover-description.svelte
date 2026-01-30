@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Popover } from "@ark-ui/svelte/popover";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { POPOVER_CTX, type PopoverContext } from "./popover-root.svelte";
 
 interface Props {
@@ -21,7 +22,7 @@ const ctx = getContext<PopoverContext>(POPOVER_CTX);
 </script>
 
 <Popover.Description
-	class={ctx?.styles?.description({ class: className })}
+	class={twMerge(ctx?.styles?.description() ?? "", className as string)}
 	{...rest}
 >
 	{@render children()}

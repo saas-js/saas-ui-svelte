@@ -2,6 +2,7 @@
 import { Select } from "@ark-ui/svelte/select";
 import type { SelectItemProps } from "@ark-ui/svelte/select";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 
@@ -32,13 +33,13 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 </script>
 
 <Select.Item
-	class={ctx?.styles?.item({ class: className })}
+	class={twMerge(ctx?.styles?.item() ?? "", className as string)}
 	style={`${ctx?.colourStyle || ""}${rest.style ? `; ${rest.style}` : ""}`}
 	{...rest}
 >
 	{@render children()}
 	{#if showIndicator}
-		<Select.ItemIndicator class={ctx?.styles?.itemIndicator()}>
+		<Select.ItemIndicator class={ctx?.styles?.itemIndicator() ?? ""}>
 			<CheckIcon weight="bold" aria-hidden="true" />
 		</Select.ItemIndicator>
 	{/if}

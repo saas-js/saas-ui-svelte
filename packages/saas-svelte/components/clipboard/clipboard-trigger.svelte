@@ -2,6 +2,7 @@
 import { Clipboard as ArkClipboard } from "@ark-ui/svelte/clipboard";
 import type { ClipboardTriggerProps } from "@ark-ui/svelte/clipboard";
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { clipboardButton } from "./clipboard.svelte";
 
 interface Props extends Omit<ClipboardTriggerProps, "children"> {
@@ -40,7 +41,7 @@ let {
 </script>
 
 <ArkClipboard.Trigger
-	class={clipboardButton({ size, variant, icon, class: className })}
+	class={twMerge(clipboardButton({ size, variant, icon }), className as string)}
 	{...rest}
 >
 	{@render children?.()}

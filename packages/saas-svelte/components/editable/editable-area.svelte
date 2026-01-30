@@ -11,6 +11,7 @@ export const editableArea = tv({
 
 <script lang="ts">
 import { Editable } from "@ark-ui/svelte/editable";
+import { twMerge } from "tailwind-merge";
 import type { Snippet } from "svelte";
 
 interface Props {
@@ -31,6 +32,6 @@ interface Props {
 let { children, class: className, ...restProps }: Props = $props();
 </script>
 
-<Editable.Area class={editableArea({ class: className })} {...restProps}>
+<Editable.Area class={twMerge(editableArea(), className as string)} {...restProps}>
 	{@render children?.()}
 </Editable.Area>

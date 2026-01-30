@@ -1,6 +1,7 @@
 <script lang="ts">
 import { HoverCard } from "@ark-ui/svelte/hover-card";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import {
 	HOVER_CARD_CTX,
 	type HoverCardContext,
@@ -19,6 +20,6 @@ let { class: className, ...rest }: Props = $props();
 const ctx = getContext<HoverCardContext>(HOVER_CARD_CTX);
 </script>
 
-<HoverCard.Arrow class={ctx?.styles?.arrow({ class: className })} {...rest}>
+<HoverCard.Arrow class={twMerge(ctx?.styles?.arrow() ?? "", className as string)} {...rest}>
 	<HoverCard.ArrowTip class={ctx?.styles?.arrowTip()} />
 </HoverCard.Arrow>

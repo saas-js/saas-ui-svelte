@@ -2,6 +2,7 @@
 import { Menu } from "@ark-ui/svelte/menu";
 import type { MenuItemProps } from "@ark-ui/svelte/menu";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 
 interface Props extends MenuItemProps {
@@ -21,7 +22,7 @@ const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
 <Menu.Item
-	class={ctx?.styles?.item({ class: className })}
+	class={twMerge(ctx?.styles?.item() ?? "", className as string)}
 	style={ctx?.colourStyle}
 	{...rest}
 >

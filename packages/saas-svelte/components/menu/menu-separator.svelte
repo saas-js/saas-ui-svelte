@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Menu } from "@ark-ui/svelte/menu";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 
 interface Props {
@@ -17,6 +18,6 @@ const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
 <Menu.Separator
-	class={ctx?.styles?.separator({ class: className })}
+	class={twMerge(ctx?.styles?.separator() ?? "", className as string)}
 	{...rest}
 />

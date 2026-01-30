@@ -1,6 +1,7 @@
 <script lang="ts">
 import { HoverCard } from "@ark-ui/svelte/hover-card";
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
 	/**
@@ -23,7 +24,7 @@ let { children, class: className, style, ...rest }: Props = $props();
 
 <HoverCard.Trigger
 	as="span"
-	class="inline rounded outline-none {className}"
+	class={twMerge("inline rounded outline-none", className as string)}
 	style={style}
 	{...rest}
 >

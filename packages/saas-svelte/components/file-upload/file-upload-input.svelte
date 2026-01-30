@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const fileUploadInput = tv({
 	base: [
@@ -56,7 +57,7 @@ const displayText = $derived(
 );
 </script>
 
-<ArkFileUpload.Trigger class={fileUploadInput({ class: className })} {...rest}>
+<ArkFileUpload.Trigger class={twMerge(fileUploadInput(), className as string)} {...rest}>
 	{#if displayText}
 		<span class="block min-w-0 truncate">{displayText}</span>
 	{:else}

@@ -61,6 +61,7 @@ export type EmptyStateVariants = VariantProps<typeof emptyState>;
 
 <script lang="ts">
 import type { Snippet, Component } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 import { Icon } from "$saas/components/icon";
 
@@ -136,7 +137,7 @@ const {
 } = $derived(emptyState({ size, align }));
 </script>
 
-<div class={root({ class: className })} style={finalStyle} {...restProps}>
+<div class={twMerge(root(), className as string)} style={finalStyle} {...restProps}>
 	<div class={content()}>
 		{#if icon}
 			<div class="{iconWrapper()} text-(--c-solid)">

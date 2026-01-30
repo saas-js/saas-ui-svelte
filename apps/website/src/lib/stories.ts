@@ -240,21 +240,34 @@ export function extractStoryCode(
 	for (const pattern of patterns) {
 		const match = wrapperSource.match(pattern);
 		if (match && match[1]) {
-			// Clean up the code - remove leading/trailing whitespace and normalize indentation
-			const code = match[1].trim();
-			// Remove common leading indentation
-			const lines = code.split("\n");
-			const minIndent = lines
+			// Split into lines first, before any trimming
+			const rawLines = match[1].split("\n");
+
+			// Remove empty lines from start and end
+			while (rawLines.length > 0 && rawLines[0].trim() === "") {
+				rawLines.shift();
+			}
+			while (rawLines.length > 0 && rawLines[rawLines.length - 1].trim() === "") {
+				rawLines.pop();
+			}
+
+			if (rawLines.length === 0) {
+				return "";
+			}
+
+			// Calculate minimum indentation across all non-empty lines
+			const minIndent = rawLines
 				.filter((line) => line.trim().length > 0)
 				.reduce((min, line) => {
-					const indent = line.match(/^(\s*)/)?.[1].length || 0;
+					const indent = line.match(/^(\t*)/)?.[1].length || 0;
 					return Math.min(min, indent);
 				}, Infinity);
 
+			// Remove the common indentation from all lines
 			if (minIndent > 0 && minIndent !== Infinity) {
-				return lines.map((line) => line.slice(minIndent)).join("\n");
+				return rawLines.map((line) => line.slice(minIndent)).join("\n");
 			}
-			return code;
+			return rawLines.join("\n");
 		}
 	}
 

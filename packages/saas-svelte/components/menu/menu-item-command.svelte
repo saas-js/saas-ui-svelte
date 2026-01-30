@@ -1,5 +1,6 @@
 <script lang="ts">
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 
 interface Props {
@@ -18,6 +19,6 @@ let { children, class: className }: Props = $props();
 const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
-<span class={ctx?.styles?.itemCommand({ class: className })}>
+<span class={twMerge(ctx?.styles?.itemCommand() ?? "", className as string)}>
 	{@render children()}
 </span>

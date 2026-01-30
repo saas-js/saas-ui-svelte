@@ -48,7 +48,7 @@ export type NativeSelectVariants = VariantProps<typeof nativeSelect>;
 
 <script lang="ts">
 import type { HTMLSelectAttributes } from "svelte/elements";
-import type { ClassNameValue } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
@@ -117,12 +117,14 @@ const isRequired = $derived(restProps.required || fieldState.required || false);
 const id = $derived(restProps.id || fieldState.id);
 
 const classes = $derived(
-	nativeSelect({
-		variant,
-		size,
-		invalid: isInvalid,
-		class: className,
-	}) as string,
+	twMerge(
+		nativeSelect({
+			variant,
+			size,
+			invalid: isInvalid,
+		}),
+		className as string,
+	),
 );
 
 const styles = $derived([colourVars, style].filter(Boolean).join("; "));

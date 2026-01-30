@@ -77,6 +77,7 @@ export interface PersonaContext {
 <script lang="ts">
 import { setContext, type Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -137,7 +138,7 @@ const styles = $derived(persona({ size }));
 </script>
 
 <div
-	class={styles.root({ class: className })}
+	class={twMerge(styles.root(), className as string)}
 	data-out-of-office={outOfOffice || undefined}
 	data-presence={presence || undefined}
 	{...restProps}

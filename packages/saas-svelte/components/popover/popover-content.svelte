@@ -2,6 +2,7 @@
 import { Popover } from "@ark-ui/svelte/popover";
 import { Portal } from "@ark-ui/svelte/portal";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { POPOVER_CTX, type PopoverContext } from "./popover-root.svelte";
 
 interface Props {
@@ -25,7 +26,7 @@ const ctx = getContext<PopoverContext>(POPOVER_CTX);
 	<Portal>
 		<Popover.Positioner class={ctx?.styles?.positioner()}>
 			<Popover.Content
-				class={ctx?.styles?.content({ class: className })}
+				class={twMerge(ctx?.styles?.content() ?? "", className as string)}
 				{...rest}
 			>
 				{@render children()}
@@ -35,7 +36,7 @@ const ctx = getContext<PopoverContext>(POPOVER_CTX);
 {:else}
 	<Popover.Positioner class={ctx?.styles?.positioner()}>
 		<Popover.Content
-			class={ctx?.styles?.content({ class: className })}
+			class={twMerge(ctx?.styles?.content() ?? "", className as string)}
 			{...rest}
 		>
 			{@render children()}

@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const fileUploadLabel = tv({
 	base: ["text-sm font-medium leading-5 antialiased"],
@@ -25,6 +26,6 @@ interface Props extends Omit<FileUploadLabelProps, "children"> {
 let { children, class: className, ...rest }: Props = $props();
 </script>
 
-<ArkFileUpload.Label class={fileUploadLabel({ class: className })} {...rest}>
+<ArkFileUpload.Label class={twMerge(fileUploadLabel(), className as string)} {...rest}>
 	{@render children?.()}
 </ArkFileUpload.Label>

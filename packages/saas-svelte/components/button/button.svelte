@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv, type VariantProps } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 import type { Snippet } from "svelte";
 
 import type { ColourName } from "$saas/utils/colours";

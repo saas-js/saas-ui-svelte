@@ -3,6 +3,7 @@ import { Clipboard as ArkClipboard } from "@ark-ui/svelte/clipboard";
 import type { Snippet } from "svelte";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import CopySimpleIcon from "phosphor-svelte/lib/CopySimpleIcon";
+import { twMerge } from "tailwind-merge";
 import { clipboardButton } from "./clipboard.svelte";
 
 interface Props {
@@ -35,7 +36,7 @@ let {
 </script>
 
 <ArkClipboard.Trigger
-	class={clipboardButton({ class: className })}
+	class={twMerge(clipboardButton(), className as string)}
 	aria-label="Copy to clipboard"
 >
 	{#if children}

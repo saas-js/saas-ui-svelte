@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Tailwind Variants styles for the GridList cell component.
@@ -66,11 +67,7 @@ const widthClass = $derived(width ? `w-${width}` : "");
 
 <div
 	role="gridcell"
-	class={gridListCell({
-		flex,
-		shrink,
-		class: `${widthClass} ${className ?? ""}`.trim(),
-	})}
+	class={twMerge(gridListCell({ flex, shrink }), widthClass, className as string)}
 	{...restProps}
 >
 	{@render children()}

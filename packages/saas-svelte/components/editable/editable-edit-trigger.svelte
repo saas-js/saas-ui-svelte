@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Editable } from "@ark-ui/svelte/editable";
+import { twMerge } from "tailwind-merge";
 import { button, type ButtonVariants } from "../button/button.svelte";
 import type { Snippet } from "svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
@@ -55,7 +56,7 @@ const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>
 
 <Editable.EditTrigger
-	class={button({ variant, size, icon, className })}
+	class={twMerge(button({ variant, size, icon }), className as string)}
 	style={finalStyle}
 	{...restProps}
 >

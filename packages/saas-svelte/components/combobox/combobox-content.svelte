@@ -2,6 +2,7 @@
 import { Combobox } from "@ark-ui/svelte/combobox";
 import { Portal } from "@ark-ui/svelte/portal";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
 import "./combobox-animations.css";
 
@@ -23,9 +24,9 @@ const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 </script>
 
 <Portal>
-	<Combobox.Positioner class={ctx?.styles?.positioner()}>
+	<Combobox.Positioner class={ctx?.styles?.positioner() ?? ""}>
 		<Combobox.Content
-			class={ctx?.styles?.content({ class: className })}
+			class={twMerge(ctx?.styles?.content() ?? "", className as string)}
 			style={ctx?.colourStyle}
 			{...rest}
 		>

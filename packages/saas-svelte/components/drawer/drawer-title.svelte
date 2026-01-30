@@ -2,6 +2,7 @@
 import { Dialog } from "@ark-ui/svelte";
 import type { Snippet } from "svelte";
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 const drawerTitle = tv({
 	base: ["text-base", "font-semibold", "leading-6", "antialiased"],
@@ -22,6 +23,6 @@ interface Props {
 let { children, class: className, ...rest }: Props = $props();
 </script>
 
-<Dialog.Title class={drawerTitle({ class: className })} {...rest}>
+<Dialog.Title class={twMerge(drawerTitle(), className as string)} {...rest}>
 	{@render children()}
 </Dialog.Title>

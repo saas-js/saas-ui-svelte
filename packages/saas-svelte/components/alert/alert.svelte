@@ -44,6 +44,7 @@ import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
 import WarningIcon from "phosphor-svelte/lib/WarningIcon";
 import XCircleIcon from "phosphor-svelte/lib/XCircleIcon";
 import type { Snippet, Component } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 import { Icon } from "$saas/components/icon";
@@ -139,7 +140,7 @@ const {
 
 <div
 	role="alert"
-	class={root({ class: className })}
+	class={twMerge(root(), className as string)}
 	style={finalStyle}
 	{...restProps}
 >

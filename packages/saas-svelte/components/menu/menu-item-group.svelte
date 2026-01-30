@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Menu } from "@ark-ui/svelte/menu";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 
 interface Props {
@@ -24,7 +25,7 @@ let { children, title, class: className, ...rest }: Props = $props();
 const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
-<Menu.ItemGroup class={ctx?.styles?.itemGroup({ class: className })} {...rest}>
+<Menu.ItemGroup class={twMerge(ctx?.styles?.itemGroup() ?? "", className as string)} {...rest}>
 	{#if title}
 		<Menu.ItemGroupLabel class={ctx?.styles?.itemGroupLabel()}>
 			{title}

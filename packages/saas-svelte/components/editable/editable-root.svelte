@@ -35,6 +35,7 @@ export const EDITABLE_CTX = Symbol("EDITABLE_CTX");
 <script lang="ts">
 import { Editable } from "@ark-ui/svelte/editable";
 import { setContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { getColourStyle } from "$saas/utils/colours";
 
 type ActivationMode = "focus" | "dblclick" | "click" | "none";
@@ -220,7 +221,7 @@ setContext(EDITABLE_CTX, contextState);
 	invalid={invalid}
 	name={name}
 	form={form}
-	class={editableRoot({ size, class: className })}
+	class={twMerge(editableRoot({ size }), className as string)}
 	style={finalStyle}
 	{...restProps}
 >

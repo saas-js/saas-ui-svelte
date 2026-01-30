@@ -2,6 +2,7 @@
 import { Menu, useMenuContext } from "@ark-ui/svelte/menu";
 import { Portal } from "@ark-ui/svelte/portal";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 import "./menu-animations.css";
 
@@ -37,7 +38,7 @@ function handleKeyDown(event: KeyboardEvent) {
 {#snippet menuContent()}
 	<Menu.Positioner class={ctx?.styles?.positioner()}>
 		<Menu.Content
-			class={ctx?.styles?.content({ class: className })}
+			class={twMerge(ctx?.styles?.content() ?? "", className as string)}
 			style={ctx?.colourStyle}
 			onkeydown={handleKeyDown}
 			{...rest}

@@ -46,7 +46,8 @@ const variantClasses = $derived(
 );
 </script>
 
-<dd
+<div
+	role="definition"
 	class={twMerge(styles.trend(), variantClasses, className)}
 	style={colourStyle}
 	{...restProps}
@@ -55,4 +56,4 @@ const variantClasses = $derived(
 		<ArrowDownIcon weight="bold" size="1em" />
 	</span>
 	{@render children()}
-</dd>
+</div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import {
 	BREADCRUMB_CTX,
 	type BreadcrumbContext,
@@ -28,7 +29,7 @@ const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
 const styles = $derived(context?.styles);
 </script>
 
-<li class={styles?.item({ class: className })}>
+<li class={twMerge(styles?.item() ?? "", className as string)}>
 	{@render children()}
 </li>
 

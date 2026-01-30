@@ -94,6 +94,7 @@ export type AvatarVariants = VariantProps<typeof avatar>;
 import { Avatar as ArkAvatar } from "@ark-ui/svelte/avatar";
 import type { AvatarRootProps } from "@ark-ui/svelte/avatar";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { getColourStyle } from "$saas/utils/colours";
 import {
 	AVATAR_GROUP_CTX,
@@ -203,7 +204,7 @@ const {
 </script>
 
 <ArkAvatar.Root
-	class={root({ class: className })}
+	class={twMerge(root(), className as string)}
 	style={finalStyle}
 	onStatusChange={onStatusChange}
 	{...restProps}

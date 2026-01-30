@@ -2,6 +2,7 @@
 import { Select } from "@ark-ui/svelte/select";
 import type { SelectItemGroupProps } from "@ark-ui/svelte/select";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 
 interface Props extends SelectItemGroupProps {
@@ -25,11 +26,11 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 </script>
 
 <Select.ItemGroup
-	class={ctx?.styles?.itemGroup({ class: className })}
+	class={twMerge(ctx?.styles?.itemGroup() ?? "", className as string)}
 	{...rest}
 >
 	{#if label}
-		<Select.ItemGroupLabel class={ctx?.styles?.itemGroupLabel()}>
+		<Select.ItemGroupLabel class={ctx?.styles?.itemGroupLabel() ?? ""}>
 			{label}
 		</Select.ItemGroupLabel>
 	{/if}

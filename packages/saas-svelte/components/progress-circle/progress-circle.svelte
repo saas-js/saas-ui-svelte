@@ -69,6 +69,7 @@ export type ProgressCircleVariants = VariantProps<typeof progressCircle>;
 
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -181,7 +182,7 @@ const ariaLabel = $derived(
 </script>
 
 <div
-	class={styles.root({ class: className })}
+	class={twMerge(styles.root(), className as string)}
 	role="progressbar"
 	aria-valuenow={ariaValueNow}
 	aria-valuemin={min}

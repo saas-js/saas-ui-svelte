@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Combobox } from "@ark-ui/svelte/combobox";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 
@@ -17,6 +18,6 @@ let { class: className, ...rest }: Props = $props();
 const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 </script>
 
-<Combobox.Trigger class={ctx?.styles?.trigger({ class: className })} {...rest}>
+<Combobox.Trigger class={twMerge(ctx?.styles?.trigger() ?? "", className as string)} {...rest}>
 	<CaretDownIcon aria-hidden="true" />
 </Combobox.Trigger>

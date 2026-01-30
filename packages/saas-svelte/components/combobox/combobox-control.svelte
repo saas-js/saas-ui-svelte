@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Combobox } from "@ark-ui/svelte/combobox";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
 
 interface Props {
@@ -19,6 +20,6 @@ let { children, class: className }: Props = $props();
 const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 </script>
 
-<Combobox.Control class={ctx?.styles?.control({ class: className })}>
+<Combobox.Control class={twMerge(ctx?.styles?.control() ?? "", className as string)}>
 	{@render children()}
 </Combobox.Control>

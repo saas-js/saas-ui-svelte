@@ -217,6 +217,7 @@ export const SELECT_CTX = Symbol("SELECT_CTX");
 import { Select } from "@ark-ui/svelte/select";
 import type { SelectRootProps } from "@ark-ui/svelte/select";
 import { getContext, setContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
 
@@ -296,7 +297,7 @@ const ctx: SelectContext = {
 
 setContext(SELECT_CTX, ctx);
 
-const rootClass = $derived(ctx.styles.root({ class: className }));
+const rootClass = $derived(twMerge(ctx.styles.root(), className as string));
 </script>
 
 <Select.Root

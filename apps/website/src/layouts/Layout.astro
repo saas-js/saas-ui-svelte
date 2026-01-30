@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.svelte";
+import MobileMenu from "../components/MobileMenu.svelte";
 import SearchDialog from "../components/SearchDialog.svelte";
 import Footer from "../components/Footer.svelte";
 import { themeInitScript } from "../lib/theme";
@@ -79,6 +80,7 @@ const siteUrl = "https://svelte.saas-ui.dev";
 			Skip to main content
 		</a>
 		<Navbar client:load />
+		<MobileMenu currentPath={Astro.url.pathname} client:load />
 		<SearchDialog client:idle />
 		<main id="main" class="scroll-mt-20">
 			<slot />

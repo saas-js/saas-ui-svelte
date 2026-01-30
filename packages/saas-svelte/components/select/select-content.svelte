@@ -2,6 +2,7 @@
 import { Select, useSelectContext } from "@ark-ui/svelte/select";
 import { Portal } from "@ark-ui/svelte/portal";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 import "./select-animations.css";
 
@@ -35,9 +36,9 @@ function handleKeyDown(event: KeyboardEvent) {
 </script>
 
 {#snippet selectContent()}
-	<Select.Positioner class={ctx?.styles?.positioner()}>
+	<Select.Positioner class={ctx?.styles?.positioner() ?? ""}>
 		<Select.Content
-			class={ctx?.styles?.content({ class: className })}
+			class={twMerge(ctx?.styles?.content() ?? "", className as string)}
 			style={ctx?.colourStyle}
 			onkeydown={handleKeyDown}
 			{...rest}

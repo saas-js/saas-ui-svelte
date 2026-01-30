@@ -3,6 +3,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 import { CARD_CTX, type CardVariants } from "./card-root.svelte";
 
 const cardHeader = tv({
@@ -35,7 +36,7 @@ let { children, class: className, ...restProps }: Props = $props();
 const ctx = getContext<{ size: CardVariants["size"] }>(CARD_CTX);
 const size = $derived(ctx?.size ?? "md");
 
-const finalClass = $derived(cardHeader({ size, class: className }));
+const finalClass = $derived(twMerge(cardHeader({ size }), className as string));
 </script>
 
 <div class={finalClass} {...restProps}>

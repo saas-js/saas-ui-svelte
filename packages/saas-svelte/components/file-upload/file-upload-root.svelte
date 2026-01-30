@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const fileUploadRoot = tv({
 	base: ["flex flex-col items-start gap-4 w-full antialiased"],
@@ -120,7 +121,7 @@ let {
 	onFileAccept={onFileAccept}
 	onFileChange={onFileChange}
 	onFileReject={onFileReject}
-	class={fileUploadRoot({ class: className })}
+	class={twMerge(fileUploadRoot(), className as string)}
 	{...rest}
 >
 	<ArkFileUpload.HiddenInput aria-label="Upload file" />

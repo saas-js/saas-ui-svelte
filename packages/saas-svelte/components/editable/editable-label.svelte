@@ -28,6 +28,7 @@ export const editableLabel = tv({
 <script lang="ts">
 import { Editable } from "@ark-ui/svelte/editable";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { EDITABLE_CTX } from "./editable-root.svelte";
 
 interface Props {
@@ -59,7 +60,7 @@ const size = $derived(ctx?.size ?? "md");
 </script>
 
 <Editable.Label
-	class={editableLabel({ size, class: className })}
+	class={twMerge(editableLabel({ size }), className as string)}
 	{...restProps}
 >
 	{@render children?.()}

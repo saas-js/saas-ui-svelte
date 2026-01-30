@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Tailwind Variants styles for the GridList root component.
@@ -55,7 +56,7 @@ setContext<GridListContext>(GRID_LIST_CTX, contextState);
 <div
 	role="grid"
 	aria-readonly="true"
-	class={gridListRoot({ class: className })}
+	class={twMerge(gridListRoot(), className as string)}
 	{...restProps}
 >
 	{@render children()}

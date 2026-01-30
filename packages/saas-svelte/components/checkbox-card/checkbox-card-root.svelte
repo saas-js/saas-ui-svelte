@@ -82,6 +82,7 @@ export type CheckboxCardVariants = VariantProps<typeof checkboxCardRoot>;
 import type { HTMLLabelAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { setContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 
 interface Props extends Omit<HTMLLabelAttributes, "class"> {
@@ -187,13 +188,15 @@ function handleChange(e: Event) {
 }
 
 const finalClass = $derived(
-	checkboxCardRoot({
-		variant,
-		size,
-		checked,
-		disabled,
-		class: className,
-	}),
+	twMerge(
+		checkboxCardRoot({
+			variant,
+			size,
+			checked,
+			disabled,
+		}),
+		className as string,
+	),
 );
 </script>
 

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Combobox } from "@ark-ui/svelte/combobox";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
 import XIcon from "phosphor-svelte/lib/XIcon";
 
@@ -18,7 +19,7 @@ const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 </script>
 
 <Combobox.ClearTrigger
-	class={ctx?.styles?.clearTrigger({ class: className })}
+	class={twMerge(ctx?.styles?.clearTrigger() ?? "", className as string)}
 	{...rest}
 >
 	<XIcon />

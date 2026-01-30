@@ -2,6 +2,7 @@
 import { Select } from "@ark-ui/svelte/select";
 import type { SelectIndicatorProps } from "@ark-ui/svelte/select";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 
@@ -22,7 +23,7 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 </script>
 
 <Select.Indicator
-	class={ctx?.styles?.indicator({ class: className })}
+	class={twMerge(ctx?.styles?.indicator() ?? "", className as string)}
 	{...rest}
 >
 	{#if children}

@@ -106,6 +106,7 @@ export interface NavbarContext {
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { setContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -199,7 +200,7 @@ $effect(() => {
 
 <nav
 	bind:this={navElement}
-	class={styles.root({ class: className })}
+	class={twMerge(styles.root(), className as string)}
 	style={finalStyle}
 	aria-label={ariaLabel}
 	{...rest}

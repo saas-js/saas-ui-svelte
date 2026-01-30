@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Clipboard as ArkClipboard } from "@ark-ui/svelte/clipboard";
+import { twMerge } from "tailwind-merge";
 import { clipboardInput } from "./clipboard.svelte";
 
 interface Props {
@@ -19,6 +20,6 @@ let { "aria-label": ariaLabel = "Clipboard value", class: className }: Props =
 </script>
 
 <ArkClipboard.Input
-	class={clipboardInput({ class: className })}
+	class={twMerge(clipboardInput(), className as string)}
 	aria-label={ariaLabel}
 />

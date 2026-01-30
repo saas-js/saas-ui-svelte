@@ -37,6 +37,7 @@ export type CardVariants = VariantProps<typeof cardRoot>;
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { setContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -72,7 +73,7 @@ let {
 	...restProps
 }: Props = $props();
 
-const finalClass = $derived(cardRoot({ variant, size, class: className }));
+const finalClass = $derived(twMerge(cardRoot({ variant, size }), className as string));
 
 // Set context for child components using getter pattern for reactivity
 setContext(CARD_CTX, {

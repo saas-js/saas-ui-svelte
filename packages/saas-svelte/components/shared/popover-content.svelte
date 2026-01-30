@@ -105,6 +105,7 @@ export type PopoverContentVariants = VariantProps<typeof popoverContentStyles>;
 
 <script lang="ts">
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
 	/**
@@ -178,8 +179,8 @@ const styles = $derived(
 );
 </script>
 
-<div class={styles.positioner({ class: positionerClass })}>
-	<div class={styles.content({ class: className })}>
+<div class={twMerge(styles.positioner(), positionerClass as string)}>
+	<div class={twMerge(styles.content(), className as string)}>
 		{#if arrow}
 			{@render arrow()}
 		{/if}

@@ -34,9 +34,9 @@
 			<Separator class="flex-1" />
 		</HStack>
 		<form class="flex flex-col gap-4">
-			<Field.Root>
-				<Field.Label>Email</Field.Label>
-				<Input type="email" placeholder="you@example.com" />
+			<Field.Root id="login-email">
+				<Field.Label for="login-email">Email</Field.Label>
+				<Input id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
 			</Field.Root>
 			<Button variant="glass" colour="indigo" class="w-full" onclick={(e: Event) => e.preventDefault()}>
 				Log in

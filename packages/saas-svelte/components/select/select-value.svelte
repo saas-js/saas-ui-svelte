@@ -2,6 +2,7 @@
 import { Select, useSelectContext } from "@ark-ui/svelte/select";
 import type { SelectValueTextProps } from "@ark-ui/svelte/select";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 import { HStack } from "$saas/layout/stack";
 
@@ -53,7 +54,7 @@ const displayValue = $derived(
 
 {#if outerChildren}
 	<Select.ValueText
-		class={ctx?.styles?.valueText({ class: className })}
+		class={twMerge(ctx?.styles?.valueText() ?? "", className as string)}
 		placeholder={placeholder}
 		{...rest}
 	>
@@ -61,7 +62,7 @@ const displayValue = $derived(
 	</Select.ValueText>
 {:else if prefix || displayValue}
 	<Select.ValueText
-		class={ctx?.styles?.valueText({ class: className })}
+		class={twMerge(ctx?.styles?.valueText() ?? "", className as string)}
 		placeholder={placeholder}
 		{...rest}
 	>
@@ -76,7 +77,7 @@ const displayValue = $derived(
 	</Select.ValueText>
 {:else}
 	<Select.ValueText
-		class={ctx?.styles?.valueText({ class: className })}
+		class={twMerge(ctx?.styles?.valueText() ?? "", className as string)}
 		placeholder={placeholder}
 		{...rest}
 	/>

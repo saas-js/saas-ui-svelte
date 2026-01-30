@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const fileUploadDropzone = tv({
 	base: [
@@ -36,7 +37,7 @@ let { children, class: className, ...rest }: Props = $props();
 </script>
 
 <ArkFileUpload.Dropzone
-	class={fileUploadDropzone({ class: className })}
+	class={twMerge(fileUploadDropzone(), className as string)}
 	{...rest}
 >
 	{@render children?.()}

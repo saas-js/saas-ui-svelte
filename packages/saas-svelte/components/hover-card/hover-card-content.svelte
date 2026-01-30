@@ -2,6 +2,7 @@
 import { HoverCard } from "@ark-ui/svelte/hover-card";
 import { Portal } from "@ark-ui/svelte/portal";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import {
 	HOVER_CARD_CTX,
 	type HoverCardContext,
@@ -28,7 +29,7 @@ const ctx = getContext<HoverCardContext>(HOVER_CARD_CTX);
 	<Portal>
 		<HoverCard.Positioner class={ctx?.styles?.positioner()}>
 			<HoverCard.Content
-				class={ctx?.styles?.content({ class: className })}
+				class={twMerge(ctx?.styles?.content() ?? "", className as string)}
 				role="tooltip"
 				{...rest}
 			>
@@ -39,7 +40,7 @@ const ctx = getContext<HoverCardContext>(HOVER_CARD_CTX);
 {:else}
 	<HoverCard.Positioner class={ctx?.styles?.positioner()}>
 		<HoverCard.Content
-			class={ctx?.styles?.content({ class: className })}
+			class={twMerge(ctx?.styles?.content() ?? "", className as string)}
 			role="tooltip"
 			{...rest}
 		>

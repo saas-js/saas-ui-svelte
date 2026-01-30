@@ -16,6 +16,7 @@ export const appShell = tv({
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -68,7 +69,7 @@ const finalStyle = $derived(
 </script>
 
 <div
-	class={styles.root({ class: className })}
+	class={twMerge(styles.root(), className as string)}
 	style={finalStyle}
 	{...restProps}
 >

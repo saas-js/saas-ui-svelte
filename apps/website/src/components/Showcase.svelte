@@ -11,6 +11,7 @@ import LoginCard from "./showcase/LoginCard.svelte";
 import VerifyCard from "./showcase/VerifyCard.svelte";
 import FilesCard from "./showcase/FilesCard.svelte";
 import NotificationsCard from "./showcase/NotificationsCard.svelte";
+import CRMDashboard from "./showcase/crm/CRMDashboard.svelte";
 </script>
 
 <Container maxW="7xl" class="overflow-hidden pb-20">
@@ -44,11 +45,7 @@ import NotificationsCard from "./showcase/NotificationsCard.svelte";
 			</Tabs.Content>
 
 			<Tabs.Content value="crm">
-				<div
-					class="text-fg-muted flex items-center justify-center py-20"
-				>
-					CRM dashboard coming soon...
-				</div>
+				<CRMDashboard />
 			</Tabs.Content>
 
 			<Tabs.Content value="email">

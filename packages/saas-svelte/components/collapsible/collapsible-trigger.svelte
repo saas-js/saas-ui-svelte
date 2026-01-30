@@ -2,6 +2,7 @@
 import { Collapsible as ArkCollapsible } from "@ark-ui/svelte/collapsible";
 import type { Snippet } from "svelte";
 import type { CollapsibleTriggerProps } from "@ark-ui/svelte/collapsible";
+import { twMerge } from "tailwind-merge";
 import { button } from "../button/button.svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 
@@ -26,10 +27,7 @@ const colourVars = $derived(getColourStyle(colour));
 	{#snippet asChild(props)}
 		<button
 			type="button"
-			class={button({
-				variant: "ghost",
-				className: `mb-2 ${className || ""}`,
-			})}
+			class={twMerge(button({ variant: "ghost" }), "mb-2", className as string)}
 			style={colourVars}
 			{...props()}
 		>

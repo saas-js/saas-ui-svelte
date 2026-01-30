@@ -2,6 +2,7 @@
 import { Clipboard as ArkClipboard } from "@ark-ui/svelte/clipboard";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import CopySimpleIcon from "phosphor-svelte/lib/CopySimpleIcon";
+import { twMerge } from "tailwind-merge";
 import { clipboardButton } from "./clipboard.svelte";
 
 interface Props {
@@ -21,7 +22,7 @@ let { "aria-label": ariaLabel = "Copy to clipboard", class: className }: Props =
 </script>
 
 <ArkClipboard.Trigger
-	class={clipboardButton({ icon: true, class: className })}
+	class={twMerge(clipboardButton({ icon: true }), className as string)}
 	aria-label={ariaLabel}
 >
 	<ArkClipboard.Indicator>

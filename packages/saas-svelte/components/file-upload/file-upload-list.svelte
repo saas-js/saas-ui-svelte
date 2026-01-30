@@ -1,5 +1,6 @@
 <script module lang="ts">
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export const fileUploadList = tv({
 	slots: {
@@ -54,23 +55,22 @@ let { showSize = false, clearable = false, class: className }: Props = $props();
 const fileUpload = useFileUploadContext();
 const acceptedFiles = $derived(fileUpload().acceptedFiles);
 
-const { root, item, itemInfo, itemName, itemSize, itemDelete } =
-	fileUploadList();
+const styles = fileUploadList();
 </script>
 
 {#if acceptedFiles.length > 0}
-	<ArkFileUpload.ItemGroup class={root({ class: className })}>
+	<ArkFileUpload.ItemGroup class={twMerge(styles.root(), className as string)}>
 		{#each acceptedFiles as file}
-			<ArkFileUpload.Item file={file} class={item()}>
+			<ArkFileUpload.Item file={file} class={styles.item()}>
 				<Icon as={FileIcon} size="lg" class="text-fg-muted shrink-0" />
-				<div class={itemInfo()}>
-					<ArkFileUpload.ItemName class={itemName()} />
+				<div class={styles.itemInfo()}>
+					<ArkFileUpload.ItemName class={styles.itemName()} />
 					{#if showSize}
-						<ArkFileUpload.ItemSizeText class={itemSize()} />
+						<ArkFileUpload.ItemSizeText class={styles.itemSize()} />
 					{/if}
 				</div>
 				{#if clearable}
-					<ArkFileUpload.ItemDeleteTrigger class={itemDelete()}>
+					<ArkFileUpload.ItemDeleteTrigger class={styles.itemDelete()}>
 						<Icon as={XIcon} size="sm" />
 					</ArkFileUpload.ItemDeleteTrigger>
 				{/if}

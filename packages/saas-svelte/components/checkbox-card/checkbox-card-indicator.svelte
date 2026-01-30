@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from "svelte/elements";
 import { getContext } from "svelte";
 import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import {
 	CHECKBOX_CARD_CTX,
@@ -96,13 +97,15 @@ const iconSize = {
 } as const;
 
 const finalClass = $derived(
-	checkboxCardIndicator({
-		size,
-		variant,
-		checked,
-		disabled,
-		class: className,
-	}),
+	twMerge(
+		checkboxCardIndicator({
+			size,
+			variant,
+			checked,
+			disabled,
+		}),
+		className as string,
+	),
 );
 </script>
 

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Popover } from "@ark-ui/svelte/popover";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { POPOVER_CTX, type PopoverContext } from "./popover-root.svelte";
 
 interface Props {
@@ -20,6 +21,6 @@ let { children, class: className, ...rest }: Props = $props();
 const ctx = getContext<PopoverContext>(POPOVER_CTX);
 </script>
 
-<Popover.Title class={ctx?.styles?.title({ class: className })} {...rest}>
+<Popover.Title class={twMerge(ctx?.styles?.title() ?? "", className as string)} {...rest}>
 	{@render children()}
 </Popover.Title>

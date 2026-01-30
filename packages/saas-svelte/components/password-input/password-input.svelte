@@ -125,6 +125,7 @@ export type PasswordInputVariants = VariantProps<typeof passwordInput>;
 <script lang="ts">
 import type { HTMLInputAttributes } from "svelte/elements";
 import type { ClassNameValue } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 import { getContext } from "svelte";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
@@ -244,7 +245,7 @@ const styles = $derived(
 const inputStyles = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>
 
-<div class={styles.root({ class: rootClass as string })}>
+<div class={twMerge(styles.root(), rootClass as string)}>
 	<input
 		bind:this={ref}
 		id={id}
@@ -252,7 +253,7 @@ const inputStyles = $derived([colourVars, style].filter(Boolean).join("; "));
 		disabled={isDisabled}
 		required={isRequired}
 		readonly={isReadOnly}
-		class={styles.input({ class: className as string })}
+		class={twMerge(styles.input(), className as string)}
 		style={inputStyles}
 		bind:value={value}
 		{...restProps}

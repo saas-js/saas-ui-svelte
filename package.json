@@ -14,6 +14,7 @@
         "website": "npm run dev -w apps/website",
         "build:website": "npm run build -w apps/website",
         "build": "npm run build:storybook && npm run build:website",
+        "check": "svelte-check --tsconfig ./apps/storybook/tsconfig.json",
         "format": "prettier --write .",
         "format:check": "prettier --check ."
     },
@@ -22,6 +23,7 @@
         "prettier": "^3.8.1",
         "prettier-plugin-svelte": "^3.4.1",
         "prettier-plugin-tailwindcss": "^0.7.2",
+        "svelte-check": "^4.2.1",
         "typescript": "^5.9.3"
     },
     "engines": {

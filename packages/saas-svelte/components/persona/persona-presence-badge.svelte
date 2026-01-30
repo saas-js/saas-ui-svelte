@@ -110,6 +110,7 @@ export type PresenceStatus = NonNullable<PresenceBadgeVariants["presence"]>;
 
 <script lang="ts">
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { PERSONA_CTX, type PersonaContext } from "./persona.svelte";
 
 interface Props {
@@ -132,9 +133,7 @@ const variant = $derived(personaContext?.variant ?? "badge");
 const outOfOffice = $derived(personaContext?.outOfOffice ?? false);
 const presence = $derived(propPresence ?? personaContext?.presence ?? "online");
 
-const baseStyles = $derived(
-	presenceBadge({ variant, size, presence, class: className }),
-);
+const baseStyles = $derived(presenceBadge({ variant, size, presence }));
 
 const outOfOfficeStyles = $derived(
 	outOfOffice && variant === "badge"
@@ -142,7 +141,9 @@ const outOfOfficeStyles = $derived(
 		: "",
 );
 
-const styles = $derived(`${baseStyles} ${outOfOfficeStyles}`.trim());
+const styles = $derived(
+	twMerge(baseStyles, outOfOfficeStyles, className as string),
+);
 </script>
 
 <span class={styles} role="img" aria-label={`Status: ${presence}`}></span>

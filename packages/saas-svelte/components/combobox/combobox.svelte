@@ -4,6 +4,7 @@ import type { CollectionItem } from "@ark-ui/svelte/combobox";
 import { Portal } from "@ark-ui/svelte/portal";
 import { setContext, type Snippet, type Component } from "svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
+import { twMerge } from "tailwind-merge";
 import {
 	combobox,
 	COMBOBOX_CTX,
@@ -336,7 +337,7 @@ function getItemProps(item: CollectionItem) {
 	onValueChange={handleValueChange}
 	onOpenChange={handleOpenChange}
 	openOnChange={shouldOpen}
-	class={ctx.styles.root({ class: className })}
+	class={twMerge(ctx.styles.root(), className as string)}
 >
 	{#if label}
 		<Combobox.Label class={ctx.styles.label()}>{label}</Combobox.Label>

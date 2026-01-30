@@ -2,6 +2,7 @@
 import { Menu } from "@ark-ui/svelte/menu";
 import type { MenuTriggerItemProps } from "@ark-ui/svelte/menu";
 import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 
@@ -27,7 +28,7 @@ const ctx = getContext<MenuContext>(MENU_CTX);
 
 <Menu.TriggerItem
 	data-value={value}
-	class={ctx?.styles?.triggerItem({ class: className })}
+	class={twMerge(ctx?.styles?.triggerItem() ?? "", className as string)}
 	style={ctx?.colourStyle}
 	{...rest}
 >

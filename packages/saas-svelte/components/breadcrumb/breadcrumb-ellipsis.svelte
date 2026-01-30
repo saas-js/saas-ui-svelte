@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
-import type { Snippet } from "svelte";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import {
 	BREADCRUMB_CTX,
 	type BreadcrumbContext,
@@ -29,7 +29,7 @@ const styles = $derived(context?.styles);
 <li
 	role="presentation"
 	aria-hidden="true"
-	class={styles?.ellipsis({ class: className })}
+	class={twMerge(styles?.ellipsis() ?? "", className as string)}
 	{...restProps}
 >
 	<DotsThreeIcon class="size-3.5" weight="bold" aria-hidden="true" />
