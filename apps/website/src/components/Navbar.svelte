@@ -15,10 +15,8 @@
 	import { toggleTheme } from "../lib/theme";
 
 	const navLinks = [
-		//{ href: "/blocks", label: "Blocks" },
-		//{ href: "/pricing", label: "Pricing" },
 		{ href: "/docs", label: "Docs" },
-		//{ href: "/showcase", label: "Showcase" },
+		{ href: "/storybook", label: "Storybook" },
 	];
 
 	let drawerOpen = $state(false);
