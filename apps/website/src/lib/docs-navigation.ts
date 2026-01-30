@@ -1,5 +1,7 @@
 import { toKebabCase } from "./stories";
 
+const base = import.meta.env.BASE_URL || "";
+
 interface NavItem {
     label: string;
     href?: string;
@@ -14,7 +16,7 @@ interface NavGroup {
 function createNavItems(category: string, labels: string[]): NavItem[] {
     return labels.map((label) => ({
         label,
-        href: `/docs/${category}/${toKebabCase(label)}`,
+        href: `${base}/docs/${category}/${toKebabCase(label)}`,
     }));
 }
 
@@ -23,12 +25,12 @@ export function getDocsNavigation(): NavGroup[] {
         {
             title: "Resources",
             items: [
-                { label: "Storybook", href: "/storybook" },
+                { label: "Storybook", href: `${base}/storybook` },
             ],
         },
         {
             title: "Getting Started",
-            items: [{ label: "Introduction", href: "/docs" }],
+            items: [{ label: "Introduction", href: `${base}/docs` }],
         },
         {
             title: "Components",

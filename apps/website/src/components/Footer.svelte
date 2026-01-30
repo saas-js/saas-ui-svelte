@@ -7,33 +7,34 @@ import { Text } from "@saas-ui/svelte/typography/text";
 import { Heading } from "@saas-ui/svelte/typography/heading";
 import Logo from "./Logo.svelte";
 
+const base = import.meta.env.BASE_URL || "";
 const currentYear = new Date().getFullYear();
 
 const linkGroups = [
 	{
 		title: "Resources",
 		links: [
-			{ label: "Documentation", href: "/docs" },
-			{ label: "Blog", href: "/blog" },
+			{ label: "Documentation", href: `${base}/docs` },
+			{ label: "Blog", href: `${base}/blog` },
 			{ label: "Roadmap", href: "https://roadmap.saas-ui.dev" },
-			{ label: "Changelog", href: "/changelog" },
+			{ label: "Changelog", href: `${base}/changelog` },
 		],
 	},
 	{
 		title: "Products",
 		links: [
-			{ label: "Svelte components", href: "/docs/components/overview" },
-			{ label: "Blocks", href: "/pro/blocks" },
-			{ label: "Figma UI kit", href: "/pro/figma" },
+			{ label: "Svelte components", href: `${base}/docs/components/overview` },
+			{ label: "Blocks", href: `${base}/pro/blocks` },
+			{ label: "Figma UI kit", href: `${base}/pro/figma` },
 			{ label: "Next.js starter kit", href: "https://saas-js.com" },
 		],
 	},
 	{
 		title: "Company",
 		links: [
-			{ label: "Licence", href: "/licence" },
-			{ label: "Privacy", href: "/privacy" },
-			{ label: "Terms", href: "/terms" },
+			{ label: "Licence", href: `${base}/licence` },
+			{ label: "Privacy", href: `${base}/privacy` },
+			{ label: "Terms", href: `${base}/terms` },
 		],
 	},
 ];

@@ -3,11 +3,13 @@ interface Props {
 	class?: string;
 }
 
+const base = import.meta.env.BASE_URL || "";
+
 let { class: className = "" }: Props = $props();
 </script>
 
 <a
-	href="/"
+	href="{base}/"
 	class="flex items-end gap-0.5 rounded outline-none focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-indigo-600 focus-visible:outline-solid {className}"
 	aria-label="Saas UI Svelte, Back to homepage"
 >

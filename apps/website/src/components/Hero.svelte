@@ -5,6 +5,8 @@ import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
 import { Heading } from "@saas-ui/svelte/typography/heading";
 import { Text } from "@saas-ui/svelte/typography/text";
 import ClipboardButton from "./ClipboardButton.svelte";
+
+const base = import.meta.env.BASE_URL || "";
 </script>
 
 <section class="relative overflow-hidden pt-32 pb-20">
@@ -29,7 +31,7 @@ import ClipboardButton from "./ClipboardButton.svelte";
 			<HStack gap={3} class="flex-col items-center sm:flex-row">
 				<Button
 					as="a"
-					href="/docs"
+					href="{base}/docs"
 					variant="glass"
 					colour="indigo"
 					size="lg"

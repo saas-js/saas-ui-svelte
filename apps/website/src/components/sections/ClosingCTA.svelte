@@ -3,6 +3,8 @@ import { Container } from "@saas-ui/svelte/layout/container";
 import { HStack } from "@saas-ui/svelte/layout/stack";
 import { Button } from "@saas-ui/svelte/components/button";
 import { Heading } from "@saas-ui/svelte/typography/heading";
+
+const base = import.meta.env.BASE_URL || "";
 </script>
 
 <section class="border-border-default border-y border-dashed">
@@ -16,10 +18,10 @@ import { Heading } from "@saas-ui/svelte/typography/heading";
 				interfaces.
 			</Heading>
 			<HStack gap={2}>
-				<Button as="a" href="/docs" variant="glass" colour="indigo">
+				<Button as="a" href="{base}/docs" variant="glass" colour="indigo">
 					Browse all components
 				</Button>
-				<Button disabled as="a" href="/blocks" variant="outline">
+				<Button disabled as="a" href="{base}/blocks" variant="outline">
 					View blocks
 				</Button>
 			</HStack>

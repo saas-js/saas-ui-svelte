@@ -13,9 +13,11 @@ import { toggleTheme } from "../lib/theme";
 import { setSideMenuOpen } from "../lib/mobile-nav.svelte";
 import { setSearchDialogOpen } from "../lib/search-dialog.svelte";
 
+const base = import.meta.env.BASE_URL || "";
+
 const navLinks = [
-	{ href: "/docs", label: "Docs" },
-	{ href: "/saas-ui-svelte/storybook", label: "Storybook" },
+	{ href: `${base}/docs`, label: "Docs" },
+	{ href: `${base}/storybook`, label: "Storybook" },
 ];
 </script>
 
