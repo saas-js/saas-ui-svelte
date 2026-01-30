@@ -3,32 +3,32 @@ let navbarMenuOpen = $state(false);
 let sideMenuOpen = $state(false);
 
 export function getNavbarMenuOpen() {
-	return navbarMenuOpen;
+    return navbarMenuOpen;
 }
 
 export function setNavbarMenuOpen(open: boolean) {
-	navbarMenuOpen = open;
-	if (open) {
-		sideMenuOpen = false;
-	}
+    navbarMenuOpen = open;
+    if (open) {
+        sideMenuOpen = false;
+    }
 }
 
 export function getSideMenuOpen() {
-	return sideMenuOpen;
+    return sideMenuOpen;
 }
 
 export function setSideMenuOpen(open: boolean) {
-	sideMenuOpen = open;
-	if (open) {
-		navbarMenuOpen = false;
-	}
+    sideMenuOpen = open;
+    if (open) {
+        navbarMenuOpen = false;
+    }
 }
 
 export function getAnyMenuOpen() {
-	return navbarMenuOpen || sideMenuOpen;
+    return navbarMenuOpen || sideMenuOpen;
 }
 
 export function closeAllMobileMenus() {
-	navbarMenuOpen = false;
-	sideMenuOpen = false;
+    navbarMenuOpen = false;
+    sideMenuOpen = false;
 }

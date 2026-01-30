@@ -1,20 +1,20 @@
 <script lang="ts">
-	interface Props {
-		class?: string;
-	}
+interface Props {
+	class?: string;
+}
 
-	let { class: className = "" }: Props = $props();
+let { class: className = "" }: Props = $props();
 </script>
 
 <a
 	href="/"
-	class="flex items-end gap-0.5 rounded outline-none focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-indigo-600 focus-visible:outline-offset-4 {className}"
+	class="flex items-end gap-0.5 rounded outline-none focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-indigo-600 focus-visible:outline-solid {className}"
 	aria-label="Saas UI Svelte, Back to homepage"
 >
 	<svg
 		viewBox="0 0 774 166"
 		xmlns="http://www.w3.org/2000/svg"
-		class="h-5 fill-none text-fg-default"
+		class="text-fg-default h-5 fill-none"
 	>
 		<path
 			d="M771.476 20.8061L754.815 16.2246L754.604 0.225952L771.203 0.00788868L771.476 20.8061ZM755.027 32.4232L763.227 32.3155C768.626 32.2445 772.273 35.7969 772.344 41.1965L773.479 127.589L756.281 127.815L755.027 32.4232Z"
@@ -49,7 +49,7 @@
 			class="fill-current"
 		></path>
 	</svg>
-	<span class="text-2xs antialiased font-medium text-indigo-fg ml-0.5 mb-2.5"
+	<span class="text-2xs text-indigo-fg mb-2.5 ml-0.5 font-medium antialiased"
 		>Svelte</span
 	>
 </a>

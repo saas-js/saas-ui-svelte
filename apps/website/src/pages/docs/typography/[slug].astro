@@ -6,10 +6,21 @@ import StoryWrapper from "../../../components/docs/StoryWrapper.svelte";
 import PropsTable from "../../../components/docs/PropsTable.svelte";
 import CodeBlock from "../../../components/docs/CodeBlock.astro";
 import DescriptionText from "../../../components/docs/DescriptionText.svelte";
-import { storyNameToDisplayName, getComponentName, generateTypographyAnatomy, toKebabCase, getStoryPropValue, buildTocItems, createStaticPathsFromModules } from "../../../lib/stories";
+import {
+	storyNameToDisplayName,
+	getComponentName,
+	generateTypographyAnatomy,
+	toKebabCase,
+	getStoryPropValue,
+	buildTocItems,
+	createStaticPathsFromModules,
+} from "../../../lib/stories";
 
 export async function getStaticPaths() {
-	const modules = import.meta.glob("../../../../../storybook/stories/typography/*.stories.ts", { eager: true });
+	const modules = import.meta.glob(
+		"../../../../../storybook/stories/typography/*.stories.ts",
+		{ eager: true },
+	);
 	return createStaticPathsFromModules(modules);
 }
 
@@ -25,11 +36,14 @@ const { slug } = Astro.params;
 const title = meta?.title ? getComponentName(meta.title) : componentName;
 
 // Use custom anatomy from meta if available, otherwise generate a basic one
-const anatomyCode = meta?.parameters?.anatomy || generateTypographyAnatomy(title, slug);
+const anatomyCode =
+	meta?.parameters?.anatomy || generateTypographyAnatomy(title, slug);
 
 // Get sub-components if defined
 const subComponents = meta?.parameters?.subComponents || [];
-const hasProps = (meta?.argTypes && Object.keys(meta.argTypes).length > 0) || subComponents.length > 0;
+const hasProps =
+	(meta?.argTypes && Object.keys(meta.argTypes).length > 0) ||
+	subComponents.length > 0;
 
 const tocItems = buildTocItems(stories, meta, hasProps);
 ---
@@ -43,58 +57,105 @@ const tocItems = buildTocItems(stories, meta, hasProps);
 		<div class="pb-20">
 			<h1 class="mb-4 text-2xl font-semibold">{title}</h1>
 
-			{meta?.parameters?.docs?.description?.component && (
-				<p class="mb-8 text-lg text-fg-muted">
-					{meta.parameters.docs.description.component}
-				</p>
-			)}
+			{
+				meta?.parameters?.docs?.description?.component && (
+					<p class="mb-8 text-lg text-fg-muted">
+						{meta.parameters.docs.description.component}
+					</p>
+				)
+			}
 
-			<h2 id="anatomy" class="mt-12 mb-4 text-xl font-semibold scroll-mt-20">Anatomy</h2>
+			<h2
+				id="anatomy"
+				class="mt-12 mb-4 text-xl font-semibold scroll-mt-20"
+			>
+				Anatomy
+			</h2>
 			<CodeBlock code={anatomyCode} lang="svelte" class="mb-8" />
 
-			<h2 id="examples" class="mt-12 mb-4 text-xl font-semibold scroll-mt-20">Examples</h2>
+			<h2
+				id="examples"
+				class="mt-12 mb-4 text-xl font-semibold scroll-mt-20"
+			>
+				Examples
+			</h2>
 
-			{Object.entries(stories).map(([name, story]) => {
-				const storyProp = getStoryPropValue(name);
-				return (
-					<section id={toKebabCase(name)} class="mb-12 scroll-mt-20">
-						<h3 class="mb-2 text-lg font-medium">{storyNameToDisplayName(name)}</h3>
-						{story.parameters?.docs?.description?.story && (
-							<p class="mb-4 text-fg-muted">
-								<DescriptionText text={story.parameters.docs.description.story} client:load />
-							</p>
-						)}
-						<StoryPreview story={storyProp} client:load>
-							<StoryWrapper component={componentName} story={storyProp} category="typography" client:load />
-						</StoryPreview>
-					</section>
-				);
-			})}
+			{
+				Object.entries(stories).map(([name, story]) => {
+					const storyProp = getStoryPropValue(name);
+					return (
+						<section
+							id={toKebabCase(name)}
+							class="mb-12 scroll-mt-20"
+						>
+							<h3 class="mb-2 text-lg font-medium">
+								{storyNameToDisplayName(name)}
+							</h3>
+							{story.parameters?.docs?.description?.story && (
+								<p class="mb-4 text-fg-muted">
+									<DescriptionText
+										text={
+											story.parameters.docs.description
+												.story
+										}
+										client:load
+									/>
+								</p>
+							)}
+							<StoryPreview story={storyProp} client:load>
+								<StoryWrapper
+									component={componentName}
+									story={storyProp}
+									category="typography"
+									client:load
+								/>
+							</StoryPreview>
+						</section>
+					);
+				})
+			}
 
-			{hasProps && (
-				<>
-					<h2 id="props" class="mt-12 mb-4 text-xl font-semibold scroll-mt-20">Props</h2>
+			{
+				hasProps && (
+					<>
+						<h2
+							id="props"
+							class="mt-12 mb-4 text-xl font-semibold scroll-mt-20"
+						>
+							Props
+						</h2>
 
-					{subComponents.length > 0 ? (
-						subComponents.map((sc: any) => (
-							<div class="mb-8">
-								<h3
-									id={`props-${sc.name.toLowerCase().replace(/\./g, '-')}`}
-									class="mb-3 text-lg font-medium scroll-mt-20"
-								>
-									{sc.name}
-								</h3>
-								{sc.description && (
-									<p class="mb-4 text-sm text-fg-muted">{sc.description}</p>
-								)}
-								<PropsTable props={sc.props || {}} client:load />
-							</div>
-						))
-					) : meta?.argTypes && Object.keys(meta.argTypes).length > 0 ? (
-						<PropsTable props={meta.argTypes} isArgTypes client:load />
-					) : null}
-				</>
-			)}
+						{subComponents.length > 0 ? (
+							subComponents.map((sc: any) => (
+								<div class="mb-8">
+									<h3
+										id={`props-${sc.name.toLowerCase().replace(/\./g, "-")}`}
+										class="mb-3 text-lg font-medium scroll-mt-20"
+									>
+										{sc.name}
+									</h3>
+									{sc.description && (
+										<p class="mb-4 text-sm text-fg-muted">
+											{sc.description}
+										</p>
+									)}
+									<PropsTable
+										props={sc.props || {}}
+										client:load
+									/>
+								</div>
+							))
+						) : meta?.argTypes &&
+						  Object.keys(meta.argTypes).length > 0 ? (
+							<PropsTable
+								props={meta.argTypes}
+								isArgTypes
+								client:load
+							/>
+						) : null}
+					</>
+				)
+			}
 		</div>
 	</DocsLayout>
 </Layout>

@@ -1,21 +1,21 @@
 <script lang="ts">
-	import { Tabs } from "@saas-ui/svelte/components/tabs";
-	import { Container } from "@saas-ui/svelte/layout/container";
-	import { Grid } from "@saas-ui/svelte/layout/grid";
-	import { VStack } from "@saas-ui/svelte/layout/stack";
+import { Tabs } from "@saas-ui/svelte/components/tabs";
+import { Container } from "@saas-ui/svelte/layout/container";
+import { Grid } from "@saas-ui/svelte/layout/grid";
+import { VStack } from "@saas-ui/svelte/layout/stack";
 
-	import ConfirmCard from "./showcase/ConfirmCard.svelte";
-	import StatsCard from "./showcase/StatsCard.svelte";
-	import DetailsCard from "./showcase/DetailsCard.svelte";
-	import LoginCard from "./showcase/LoginCard.svelte";
-	import VerifyCard from "./showcase/VerifyCard.svelte";
-	import FilesCard from "./showcase/FilesCard.svelte";
-	import NotificationsCard from "./showcase/NotificationsCard.svelte";
+import ConfirmCard from "./showcase/ConfirmCard.svelte";
+import StatsCard from "./showcase/StatsCard.svelte";
+import DetailsCard from "./showcase/DetailsCard.svelte";
+import LoginCard from "./showcase/LoginCard.svelte";
+import VerifyCard from "./showcase/VerifyCard.svelte";
+import FilesCard from "./showcase/FilesCard.svelte";
+import NotificationsCard from "./showcase/NotificationsCard.svelte";
 </script>
 
-<Container maxW="7xl" class="pb-20 overflow-hidden">
+<Container maxW="7xl" class="overflow-hidden pb-20">
 	<Tabs.Root defaultValue="components">
-		<Tabs.List class="mb-4 border-b border-border-default">
+		<Tabs.List class="border-border-default mb-4 border-b">
 			<Tabs.Trigger value="components">Components</Tabs.Trigger>
 			<Tabs.Trigger value="crm">CRM</Tabs.Trigger>
 			<Tabs.Trigger value="email">Email</Tabs.Trigger>
@@ -45,7 +45,7 @@
 
 			<Tabs.Content value="crm">
 				<div
-					class="flex items-center justify-center py-20 text-fg-muted"
+					class="text-fg-muted flex items-center justify-center py-20"
 				>
 					CRM dashboard coming soon...
 				</div>
@@ -53,7 +53,7 @@
 
 			<Tabs.Content value="email">
 				<div
-					class="flex items-center justify-center py-20 text-fg-muted"
+					class="text-fg-muted flex items-center justify-center py-20"
 				>
 					Email client coming soon...
 				</div>

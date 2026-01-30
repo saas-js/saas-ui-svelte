@@ -2,13 +2,13 @@
 let searchDialogOpen = $state(false);
 
 export function getSearchDialogOpen() {
-	return searchDialogOpen;
+    return searchDialogOpen;
 }
 
 export function setSearchDialogOpen(open: boolean) {
-	searchDialogOpen = open;
+    searchDialogOpen = open;
 }
 
 export function toggleSearchDialog() {
-	searchDialogOpen = !searchDialogOpen;
+    searchDialogOpen = !searchDialogOpen;
 }

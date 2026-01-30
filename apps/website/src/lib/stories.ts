@@ -8,31 +8,31 @@
  * e.g., "WithIcon" -> "with-icon", "MultipleActions" -> "multiple-actions"
  */
 export function toKebabCase(str: string): string {
-	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+    return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
 export interface StoryMeta {
-	title: string;
-	component?: unknown;
-	argTypes?: Record<string, ArgType>;
-	args?: Record<string, unknown>;
-	parameters?: Record<string, unknown>;
+    title: string;
+    component?: unknown;
+    argTypes?: Record<string, ArgType>;
+    args?: Record<string, unknown>;
+    parameters?: Record<string, unknown>;
 }
 
 export interface ArgType {
-	control?: string | { type: string };
-	options?: readonly string[];
-	description?: string;
-	table?: {
-		defaultValue?: { summary: string };
-		type?: { summary: string };
-	};
+    control?: string | { type: string };
+    options?: readonly string[];
+    description?: string;
+    table?: {
+        defaultValue?: { summary: string };
+        type?: { summary: string };
+    };
 }
 
 export interface Story {
-	name?: string;
-	args?: Record<string, unknown>;
-	render?: () => unknown;
+    name?: string;
+    args?: Record<string, unknown>;
+    render?: () => unknown;
 }
 
 /**
@@ -40,8 +40,8 @@ export interface Story {
  * e.g., "components/Button" -> "Button"
  */
 export function getComponentName(title: string): string {
-	const parts = title.split("/");
-	return parts[parts.length - 1];
+    const parts = title.split("/");
+    return parts[parts.length - 1];
 }
 
 /**
@@ -49,8 +49,8 @@ export function getComponentName(title: string): string {
  * e.g., "components/Button" -> "components"
  */
 export function getCategory(title: string): string {
-	const parts = title.split("/");
-	return parts[0];
+    const parts = title.split("/");
+    return parts[0];
 }
 
 /**
@@ -58,31 +58,31 @@ export function getCategory(title: string): string {
  * e.g., "WithIcon" -> "With Icon"
  */
 export function storyNameToDisplayName(name: string): string {
-	return name.replace(/([A-Z])/g, " $1").trim();
+    return name.replace(/([A-Z])/g, " $1").trim();
 }
 
 /**
  * Gets all exported stories from a story module (excludes default export).
  */
 export function getStories(
-	module: Record<string, unknown>
+    module: Record<string, unknown>
 ): Record<string, Story> {
-	const stories: Record<string, Story> = {};
-	for (const [key, value] of Object.entries(module)) {
-		if (key !== "default" && typeof value === "object" && value !== null) {
-			stories[key] = value as Story;
-		}
-	}
-	return stories;
+    const stories: Record<string, Story> = {};
+    for (const [key, value] of Object.entries(module)) {
+        if (key !== "default" && typeof value === "object" && value !== null) {
+            stories[key] = value as Story;
+        }
+    }
+    return stories;
 }
 
 /**
  * Gets JSDoc description from a story if available.
  */
 export function getStoryDescription(story: Story): string | undefined {
-	// CSF3 stories can have descriptions in parameters
-	const params = story as { parameters?: { docs?: { description?: { story?: string } } } };
-	return params.parameters?.docs?.description?.story;
+    // CSF3 stories can have descriptions in parameters
+    const params = story as { parameters?: { docs?: { description?: { story?: string } } } };
+    return params.parameters?.docs?.description?.story;
 }
 
 /**
@@ -91,18 +91,18 @@ export function getStoryDescription(story: Story): string | undefined {
 export type ComponentCategory = "components" | "layout" | "typography" | "utilities";
 
 export function generateAnatomy(
-	componentTitle: string,
-	componentSlug: string,
-	category: ComponentCategory = "components"
+    componentTitle: string,
+    componentSlug: string,
+    category: ComponentCategory = "components"
 ): string {
-	const lines = [
-		"<script>",
-		`  import { ${componentTitle} } from "@saas-ui/svelte/${category}/${componentSlug}";`,
-		"</script>",
-		"",
-		`<${componentTitle}>...</${componentTitle}>`
-	];
-	return lines.join("\n");
+    const lines = [
+        "<script>",
+        `  import { ${componentTitle} } from "@saas-ui/svelte/${category}/${componentSlug}";`,
+        "</script>",
+        "",
+        `<${componentTitle}>...</${componentTitle}>`
+    ];
+    return lines.join("\n");
 }
 
 // Backwards-compatible aliases
@@ -116,80 +116,80 @@ export const generateUtilitiesAnatomy = (title: string, slug: string) => generat
  * e.g., "WithIcon" -> "withIcon", "MultipleActions" -> "multipleActions"
  */
 export function getStoryPropValue(storyName: string): string {
-	return storyName.charAt(0).toLowerCase() + storyName.slice(1);
+    return storyName.charAt(0).toLowerCase() + storyName.slice(1);
 }
 
 /**
  * Builds table of contents items for a doc page.
  */
 export interface TocItem {
-	label: string;
-	href: string;
-	level: number;
-	children?: TocItem[];
+    label: string;
+    href: string;
+    level: number;
+    children?: TocItem[];
 }
 
 export interface SubComponent {
-	name: string;
-	description?: string;
-	props?: Record<string, unknown>;
+    name: string;
+    description?: string;
+    props?: Record<string, unknown>;
 }
 
 export function buildTocItems(
-	stories: Record<string, Story>,
-	meta: StoryMeta & { parameters?: { subComponents?: SubComponent[] } },
-	hasProps: boolean
+    stories: Record<string, Story>,
+    meta: StoryMeta & { parameters?: { subComponents?: SubComponent[] } },
+    hasProps: boolean
 ): TocItem[] {
-	const subComponents = meta?.parameters?.subComponents || [];
+    const subComponents = meta?.parameters?.subComponents || [];
 
-	return [
-		{ label: "Anatomy", href: "#anatomy", level: 1 },
-		{
-			label: "Examples",
-			href: "#examples",
-			level: 1,
-			children: Object.keys(stories).map(name => ({
-				label: storyNameToDisplayName(name),
-				href: `#${toKebabCase(name)}`,
-				level: 2
-			}))
-		},
-		...(hasProps ? [{
-			label: "Props",
-			href: "#props",
-			level: 1,
-			children: subComponents.length > 0
-				? subComponents.map((sc: SubComponent) => ({
-					label: sc.name,
-					href: `#props-${sc.name.toLowerCase().replace(/\./g, '-')}`,
-					level: 2
-				}))
-				: []
-		}] : []),
-	];
+    return [
+        { label: "Anatomy", href: "#anatomy", level: 1 },
+        {
+            label: "Examples",
+            href: "#examples",
+            level: 1,
+            children: Object.keys(stories).map(name => ({
+                label: storyNameToDisplayName(name),
+                href: `#${toKebabCase(name)}`,
+                level: 2
+            }))
+        },
+        ...(hasProps ? [{
+            label: "Props",
+            href: "#props",
+            level: 1,
+            children: subComponents.length > 0
+                ? subComponents.map((sc: SubComponent) => ({
+                    label: sc.name,
+                    href: `#props-${sc.name.toLowerCase().replace(/\./g, '-')}`,
+                    level: 2
+                }))
+                : []
+        }] : []),
+    ];
 }
 
 /**
  * Creates static paths from story modules for Astro's getStaticPaths.
  */
 export function createStaticPathsFromModules(
-	modules: Record<string, unknown>
+    modules: Record<string, unknown>
 ): Array<{
-	params: { slug: string };
-	props: { componentName: string; meta: unknown; stories: Record<string, Story> };
+    params: { slug: string };
+    props: { componentName: string; meta: unknown; stories: Record<string, Story> };
 }> {
-	return Object.entries(modules).map(([path, module]) => {
-		const match = path.match(/\/([^/]+)\.stories\.ts$/);
-		const componentName = match ? match[1] : "";
-		const slug = toKebabCase(componentName);
+    return Object.entries(modules).map(([path, module]) => {
+        const match = path.match(/\/([^/]+)\.stories\.ts$/);
+        const componentName = match ? match[1] : "";
+        const slug = toKebabCase(componentName);
 
-		return {
-			params: { slug },
-			props: {
-				componentName,
-				meta: (module as Record<string, unknown>).default,
-				stories: getStories(module as Record<string, unknown>),
-			},
-		};
-	});
+        return {
+            params: { slug },
+            props: {
+                componentName,
+                meta: (module as Record<string, unknown>).default,
+                stories: getStories(module as Record<string, unknown>),
+            },
+        };
+    });
 }

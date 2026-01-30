@@ -1,60 +1,60 @@
 <script lang="ts">
-	import { Collapsible } from "@saas-ui/svelte/components/collapsible";
-	import { Icon } from "@saas-ui/svelte/components/icon";
-	import { Link } from "@saas-ui/svelte/components/link";
-	import { Box } from "@saas-ui/svelte/layout/box";
-	import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
-	import { Heading } from "@saas-ui/svelte/typography/heading";
-	import CaretRight from "phosphor-svelte/lib/CaretRightIcon";
+import { Collapsible } from "@saas-ui/svelte/components/collapsible";
+import { Icon } from "@saas-ui/svelte/components/icon";
+import { Link } from "@saas-ui/svelte/components/link";
+import { Box } from "@saas-ui/svelte/layout/box";
+import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
+import { Heading } from "@saas-ui/svelte/typography/heading";
+import CaretRight from "phosphor-svelte/lib/CaretRightIcon";
 
-	interface NavItem {
-		label: string;
-		href?: string;
-		children?: NavItem[];
-	}
+interface NavItem {
+	label: string;
+	href?: string;
+	children?: NavItem[];
+}
 
-	interface NavGroup {
-		title: string;
-		items: NavItem[];
-	}
+interface NavGroup {
+	title: string;
+	items: NavItem[];
+}
 
-	interface Props {
-		groups: NavGroup[];
-		currentPath?: string;
-	}
+interface Props {
+	groups: NavGroup[];
+	currentPath?: string;
+}
 
-	let { groups, currentPath = "" }: Props = $props();
+let { groups, currentPath = "" }: Props = $props();
 
-	function isActive(href: string | undefined): boolean {
-		if (!href) return false;
-		return currentPath === href;
-	}
+function isActive(href: string | undefined): boolean {
+	if (!href) return false;
+	return currentPath === href;
+}
 
-	function hasActiveChild(items: NavItem[]): boolean {
-		return items.some(
-			(item) =>
-				isActive(item.href) ||
-				(item.children && hasActiveChild(item.children)),
-		);
-	}
+function hasActiveChild(items: NavItem[]): boolean {
+	return items.some(
+		(item) =>
+			isActive(item.href) ||
+			(item.children && hasActiveChild(item.children)),
+	);
+}
 
-	// Helper to insert spaces before capital letters (e.g. "ActionLabel" -> "Action Label")
-	function formatLabel(label: string): string {
-		return label.replace(/([a-z])([A-Z])/g, "$1 $2");
-	}
+// Helper to insert spaces before capital letters (e.g. "ActionLabel" -> "Action Label")
+function formatLabel(label: string): string {
+	return label.replace(/([a-z])([A-Z])/g, "$1 $2");
+}
 </script>
 
 <Box
 	as="nav"
-	class="flex flex-col flex-1 px-4 py-8 overflow-y-auto text-sm gap-0"
+	class="flex flex-1 flex-col gap-0 overflow-y-auto px-4 py-8 text-sm"
 >
 	{#each groups as group}
 		<VStack gap={0} class="relative my-3">
-			<HStack gap={1} class="h-6 text-xs rounded-md">
+			<HStack gap={1} class="h-6 rounded-md text-xs">
 				<Heading
 					as="h5"
 					size="xs"
-					class="flex items-center flex-1 px-2 font-medium text-fg-default"
+					class="text-fg-default flex flex-1 items-center px-2 font-medium"
 				>
 					{group.title}
 				</Heading>
@@ -64,12 +64,12 @@
 					{#if item.children && item.children.length > 0}
 						<Collapsible.Root open={hasActiveChild(item.children)}>
 							<Collapsible.Trigger
-								class="flex items-center gap-1 w-full transition-colors duration-150 rounded-md cursor-pointer select-none hover:bg-bg-subtle h-8 text-[.8125rem]"
+								class="hover:bg-bg-subtle flex h-8 w-full cursor-pointer items-center gap-1 rounded-md text-[.8125rem] transition-colors duration-150 select-none"
 							>
 								<Heading
 									as="h5"
 									size="xs"
-									class="flex-1 flex items-center font-medium px-2 {hasActiveChild(
+									class="flex flex-1 items-center px-2 font-medium {hasActiveChild(
 										item.children,
 									)
 										? 'text-fg-default'
@@ -86,18 +86,18 @@
 								</Box>
 							</Collapsible.Trigger>
 							<Collapsible.Content
-								class="flex flex-col pt-1 pb-2 overflow-hidden"
+								class="flex flex-col overflow-hidden pt-1 pb-2"
 							>
 								{#each item.children as child}
 									<Box
-										class="text-[.8125rem] leading-[1.1375rem] relative py-px pl-4 before:content-[''] before:z-[-1] before:bg-border-subtle before:w-px before:h-full before:absolute before:left-2 before:inset-y-0"
+										class="before:bg-border-subtle relative py-px pl-4 text-[.8125rem] leading-[1.1375rem] before:absolute before:inset-y-0 before:left-2 before:z-[-1] before:h-full before:w-px before:content-['']"
 									>
 										<Link
 											href={child.href}
-											class="relative isolate text-ellipsis whitespace-nowrap cursor-pointer w-full flex items-center gap-2 h-7 transition-colors duration-150 overflow-hidden px-2.5 rounded outline-none focus-visible:z-10 {isActive(
+											class="relative isolate flex h-7 w-full cursor-pointer items-center gap-2 overflow-hidden rounded px-2.5 text-ellipsis whitespace-nowrap transition-colors duration-150 outline-none focus-visible:z-10 {isActive(
 												child.href,
 											)
-												? 'text-fg-default font-medium bg-bg-subtle'
+												? 'text-fg-default bg-bg-subtle font-medium'
 												: 'text-fg-muted hover:bg-bg-subtle hover:text-fg-default'}"
 										>
 											{formatLabel(child.label)}
@@ -108,11 +108,11 @@
 						</Collapsible.Root>
 					{:else if item.href}
 						<Box
-							class="text-[.8125rem] leading-[1.1375rem] relative py-px"
+							class="relative py-px text-[.8125rem] leading-[1.1375rem]"
 						>
 							<Link
 								href={item.href}
-								class="relative isolate text-ellipsis whitespace-nowrap cursor-pointer w-full flex items-center gap-2 h-7 transition-colors duration-150 overflow-hidden rounded font-medium px-2 outline-none focus-visible:z-10 {isActive(
+								class="relative isolate flex h-7 w-full cursor-pointer items-center gap-2 overflow-hidden rounded px-2 font-medium text-ellipsis whitespace-nowrap transition-colors duration-150 outline-none focus-visible:z-10 {isActive(
 									item.href,
 								)
 									? 'text-fg-default bg-bg-subtle'
