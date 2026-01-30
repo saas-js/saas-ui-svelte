@@ -35,10 +35,7 @@ jobs:
             - name: Install Playwright browsers
               run: npx playwright install --with-deps chromium
 
-            - name: Build Storybook
-              run: npm run build-storybook -w apps/storybook
-
-            - name: Build Astro website
+            - name: Build site
               run: npm run build -w apps/website
 
             - name: Combine outputs
