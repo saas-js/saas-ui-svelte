@@ -65,7 +65,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the sidebar.",
+						description:
+							"The content to render inside the sidebar.",
 					},
 					class: {
 						type: "string",
@@ -81,7 +82,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the sidebar header.",
+						description:
+							"The content to render inside the sidebar header.",
 					},
 					class: {
 						type: "string",
@@ -97,7 +99,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the sidebar body.",
+						description:
+							"The content to render inside the sidebar body.",
 					},
 					class: {
 						type: "string",
@@ -113,7 +116,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the sidebar footer.",
+						description:
+							"The content to render inside the sidebar footer.",
 					},
 					class: {
 						type: "string",
@@ -129,7 +133,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the sidebar group.",
+						description:
+							"The content to render inside the sidebar group.",
 					},
 					class: {
 						type: "string",
@@ -145,7 +150,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the group header.",
+						description:
+							"The content to render inside the group header.",
 					},
 					class: {
 						type: "string",
@@ -193,7 +199,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the group content area.",
+						description:
+							"The content to render inside the group content area.",
 					},
 					class: {
 						type: "string",
@@ -209,7 +216,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the nav item.",
+						description:
+							"The content to render inside the nav item.",
 					},
 					class: {
 						type: "string",
@@ -230,7 +238,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the nav button (icon + label).",
+						description:
+							"The content to render inside the nav button (icon + label).",
 					},
 					class: {
 						type: "string",
@@ -251,7 +260,8 @@ const meta: Meta = {
 					icon: {
 						type: "Component",
 						default: "-",
-						description: "Icon component to display before the label. Auto-sized to fit.",
+						description:
+							"Icon component to display before the label. Auto-sized to fit.",
 					},
 					children: {
 						type: "Snippet",
@@ -277,7 +287,8 @@ const meta: Meta = {
 					icon: {
 						type: "Component",
 						default: "-",
-						description: "Icon component to display before the label. Auto-sized to fit.",
+						description:
+							"Icon component to display before the label. Auto-sized to fit.",
 					},
 					href: {
 						type: "string",
@@ -308,7 +319,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The icon or content to display in the toggle.",
+						description:
+							"The icon or content to display in the toggle.",
 					},
 					class: {
 						type: "string",

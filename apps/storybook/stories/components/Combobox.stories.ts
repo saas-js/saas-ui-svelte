@@ -46,7 +46,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "An autocomplete input that combines a text input with a dropdown list of suggestions.",
+				component:
+					"An autocomplete input that combines a text input with a dropdown list of suggestions.",
 			},
 		},
 		anatomy: `<script>
@@ -115,17 +116,20 @@ const meta: Meta = {
 					variant: {
 						type: '"outline" | "subtle" | "flushed"',
 						default: '"outline"',
-						description: "The visual variant of the combobox input.",
+						description:
+							"The visual variant of the combobox input.",
 					},
 					invalid: {
 						type: "boolean",
 						default: "false",
-						description: "Whether the combobox is in an invalid state.",
+						description:
+							"Whether the combobox is in an invalid state.",
 					},
 					colour: {
 						type: "ColourName",
 						default: '"gray"',
-						description: "The colour palette for highlighted items.",
+						description:
+							"The colour palette for highlighted items.",
 					},
 					class: {
 						type: "string",
@@ -227,7 +231,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Combobox.Content",
-				description: "The dropdown content container for combobox items.",
+				description:
+					"The dropdown content container for combobox items.",
 				props: {
 					children: {
 						type: "Snippet",

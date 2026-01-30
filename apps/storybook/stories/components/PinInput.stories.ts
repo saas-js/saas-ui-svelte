@@ -58,7 +58,8 @@ const meta: Meta = {
 					invalid: {
 						type: "boolean",
 						default: "false",
-						description: "Whether the pin input is in an invalid state.",
+						description:
+							"Whether the pin input is in an invalid state.",
 					},
 					disabled: {
 						type: "boolean",
@@ -73,7 +74,8 @@ const meta: Meta = {
 					value: {
 						type: "string[]",
 						default: "-",
-						description: "The current value of the pin input (bindable).",
+						description:
+							"The current value of the pin input (bindable).",
 					},
 					defaultValue: {
 						type: "string[]",
@@ -88,12 +90,14 @@ const meta: Meta = {
 					onValueComplete: {
 						type: "(details: { value: string[]; valueAsString: string }) => void",
 						default: "-",
-						description: "Callback when all inputs have valid values.",
+						description:
+							"Callback when all inputs have valid values.",
 					},
 					onValueInvalid: {
 						type: "(details: { value: string; index: number }) => void",
 						default: "-",
-						description: "Callback when an invalid value is entered.",
+						description:
+							"Callback when an invalid value is entered.",
 					},
 					count: {
 						type: "number",
@@ -103,7 +107,8 @@ const meta: Meta = {
 					type: {
 						type: '"numeric" | "alphabetic" | "alphanumeric"',
 						default: '"numeric"',
-						description: "The type of value the pin input should allow.",
+						description:
+							"The type of value the pin input should allow.",
 					},
 					otp: {
 						type: "boolean",
@@ -114,7 +119,8 @@ const meta: Meta = {
 					mask: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to mask the input value (like password).",
+						description:
+							"Whether to mask the input value (like password).",
 					},
 					attached: {
 						type: "boolean",
@@ -170,7 +176,8 @@ const meta: Meta = {
 					"aria-label": {
 						type: "string",
 						default: "-",
-						description: "Accessible label for the pin input group.",
+						description:
+							"Accessible label for the pin input group.",
 					},
 				},
 			},

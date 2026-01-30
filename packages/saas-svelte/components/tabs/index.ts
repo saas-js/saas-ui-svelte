@@ -6,10 +6,10 @@ import Indicator from "./tabs-indicator.svelte";
 import ContentGroup from "./tabs-content-group.svelte";
 
 export {
-    TABS_CTX,
-    tabs,
-    type TabsVariants,
-    type TabsContext,
+	TABS_CTX,
+	tabs,
+	type TabsVariants,
+	type TabsContext,
 } from "./tabs-root.svelte";
 
 export const TabsRoot = Root;
@@ -20,10 +20,10 @@ export const TabsIndicator = Indicator;
 export const TabsContentGroup = ContentGroup;
 
 export const Tabs = {
-    Root,
-    List,
-    Trigger,
-    Content,
-    Indicator,
-    ContentGroup,
+	Root,
+	List,
+	Trigger,
+	Content,
+	Indicator,
+	ContentGroup,
 };

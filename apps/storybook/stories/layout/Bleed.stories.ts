@@ -35,7 +35,16 @@ const meta: Meta = {
 		class: commonArgTypes.class,
 	},
 	parameters: {
-		controls: getControls(["inline", "block", "inlineStart", "inlineEnd", "blockStart", "blockEnd", "children", "class"]),
+		controls: getControls([
+			"inline",
+			"block",
+			"inlineStart",
+			"inlineEnd",
+			"blockStart",
+			"blockEnd",
+			"children",
+			"class",
+		]),
 		docs: {
 			description: {
 				component:
@@ -66,7 +75,8 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: BleedWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: BleedWrapper, props: { story: "basic", args } }) as any,
 };
 
 export const Direction: Story = {
@@ -77,5 +87,6 @@ export const Direction: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: BleedWrapper, props: { story: "direction" } }) as any,
+	render: () =>
+		({ Component: BleedWrapper, props: { story: "direction" } }) as any,
 };

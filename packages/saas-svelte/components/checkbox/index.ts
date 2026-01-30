@@ -6,15 +6,15 @@ import HiddenInput from "./checkbox-hidden-input.svelte";
 import Group from "./checkbox-group.svelte";
 
 export {
-    CHECKBOX_CTX,
-    checkbox,
-    type CheckboxVariants,
-    type CheckboxContext,
+	CHECKBOX_CTX,
+	checkbox,
+	type CheckboxVariants,
+	type CheckboxContext,
 } from "./checkbox-root.svelte";
 
 export {
-    checkboxGroup,
-    type CheckboxGroupVariants,
+	checkboxGroup,
+	type CheckboxGroupVariants,
 } from "./checkbox-group.svelte";
 
 export const CheckboxRoot = Root;
@@ -25,10 +25,10 @@ export const CheckboxHiddenInput = HiddenInput;
 export const CheckboxGroup = Group;
 
 export const Checkbox = {
-    Root,
-    Control,
-    Label,
-    Indicator,
-    HiddenInput,
-    Group,
+	Root,
+	Control,
+	Label,
+	Indicator,
+	HiddenInput,
+	Group,
 };

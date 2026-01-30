@@ -49,7 +49,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A component for displaying tabular data with rows and columns.",
+				component:
+					"A component for displaying tabular data with rows and columns.",
 			},
 		},
 		anatomy: `<script>
@@ -108,7 +109,8 @@ const meta: Meta = {
 					showOuterBorder: {
 						type: "boolean",
 						default: "true",
-						description: "Whether to show the outer border. Set to false when embedded in ScrollArea.",
+						description:
+							"Whether to show the outer border. Set to false when embedded in ScrollArea.",
 					},
 					class: {
 						type: "string",
@@ -297,7 +299,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Table.ColumnGroup",
-				description: "A column group element (colgroup) for defining column widths.",
+				description:
+					"A column group element (colgroup) for defining column widths.",
 				props: {
 					class: {
 						type: "string",
@@ -313,12 +316,14 @@ const meta: Meta = {
 			},
 			{
 				name: "Table.Column",
-				description: "A column element (col) for defining individual column properties.",
+				description:
+					"A column element (col) for defining individual column properties.",
 				props: {
 					htmlWidth: {
 						type: "string",
 						default: "undefined",
-						description: "Width of the column (use htmlWidth for HTML table columns).",
+						description:
+							"Width of the column (use htmlWidth for HTML table columns).",
 					},
 					class: {
 						type: "string",

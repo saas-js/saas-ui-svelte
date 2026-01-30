@@ -36,7 +36,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "A button specifically designed for closing or dismissing elements.",
+				component:
+					"A button specifically designed for closing or dismissing elements.",
 			},
 		},
 		anatomy: `<script>

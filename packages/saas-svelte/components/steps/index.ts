@@ -10,10 +10,10 @@ import PrevTrigger from "./steps-prev-trigger.svelte";
 import NextTrigger from "./steps-next-trigger.svelte";
 
 export {
-    STEPS_CTX,
-    steps,
-    type StepsVariants,
-    type StepsContext,
+	STEPS_CTX,
+	steps,
+	type StepsVariants,
+	type StepsContext,
 } from "./steps-root.svelte";
 
 export const StepsRoot = Root;
@@ -28,14 +28,14 @@ export const StepsPrevTrigger = PrevTrigger;
 export const StepsNextTrigger = NextTrigger;
 
 export const Steps = {
-    Root,
-    List,
-    Item,
-    Trigger,
-    Indicator,
-    Separator,
-    Content,
-    CompletedContent,
-    PrevTrigger,
-    NextTrigger,
+	Root,
+	List,
+	Item,
+	Trigger,
+	Indicator,
+	Separator,
+	Content,
+	CompletedContent,
+	PrevTrigger,
+	NextTrigger,
 };

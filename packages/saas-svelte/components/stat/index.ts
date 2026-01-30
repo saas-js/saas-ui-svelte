@@ -7,13 +7,13 @@ import UpTrend from "./stat-up-trend.svelte";
 import DownTrend from "./stat-down-trend.svelte";
 
 export const Stat = {
-    Root,
-    Label,
-    ValueText,
-    ValueUnit,
-    HelpText,
-    UpTrend,
-    DownTrend,
+	Root,
+	Label,
+	ValueText,
+	ValueUnit,
+	HelpText,
+	UpTrend,
+	DownTrend,
 };
 
 export { Root, Label, ValueText, ValueUnit, HelpText, UpTrend, DownTrend };

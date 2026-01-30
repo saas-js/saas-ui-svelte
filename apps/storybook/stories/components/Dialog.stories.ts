@@ -58,7 +58,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "A modal dialog that overlays the page content to display important information or require user interaction.",
+				component:
+					"A modal dialog that overlays the page content to display important information or require user interaction.",
 			},
 		},
 		anatomy: `<script>
@@ -95,7 +96,8 @@ const meta: Meta = {
 		subComponents: [
 			{
 				name: "Dialog.Root",
-				description: "The root container component that manages dialog state and context.",
+				description:
+					"The root container component that manages dialog state and context.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -110,7 +112,8 @@ const meta: Meta = {
 					onOpenChange: {
 						type: "(details: { open: boolean }) => void",
 						default: "-",
-						description: "Handler called when the open state changes.",
+						description:
+							"Handler called when the open state changes.",
 					},
 					size: {
 						type: '"xs" | "sm" | "md" | "lg" | "xl" | "cover" | "full"',
@@ -140,22 +143,26 @@ const meta: Meta = {
 					initialFocusEl: {
 						type: "() => HTMLElement | null",
 						default: "-",
-						description: "Element to receive focus when the dialog is opened.",
+						description:
+							"Element to receive focus when the dialog is opened.",
 					},
 					finalFocusEl: {
 						type: "() => HTMLElement | null",
 						default: "-",
-						description: "Element to receive focus when the dialog is closed.",
+						description:
+							"Element to receive focus when the dialog is closed.",
 					},
 					restoreFocus: {
 						type: "boolean",
 						default: "true",
-						description: "Whether to restore focus to the element that had focus before the dialog was opened.",
+						description:
+							"Whether to restore focus to the element that had focus before the dialog was opened.",
 					},
 					lazyMount: {
 						type: "boolean",
 						default: "-",
-						description: "Whether to lazily mount the dialog content.",
+						description:
+							"Whether to lazily mount the dialog content.",
 					},
 					unmountOnExit: {
 						type: "boolean",
@@ -171,7 +178,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "Content to render inside the trigger button.",
+						description:
+							"Content to render inside the trigger button.",
 					},
 					class: {
 						type: "string",
@@ -181,12 +189,14 @@ const meta: Meta = {
 					asChild: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to render as a child element instead of a button.",
+						description:
+							"Whether to render as a child element instead of a button.",
 					},
 					variant: {
 						type: '"solid" | "outline" | "ghost" | "subtle" | "surface" | "plain"',
 						default: '"outline"',
-						description: "The visual variant of the trigger button.",
+						description:
+							"The visual variant of the trigger button.",
 					},
 					size: {
 						type: '"2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl"',
@@ -207,7 +217,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Dialog.Content",
-				description: "The container for the dialog content, rendered in a portal.",
+				description:
+					"The container for the dialog content, rendered in a portal.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -223,7 +234,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Dialog.Header",
-				description: "The header section of the dialog, typically containing the title and close button.",
+				description:
+					"The header section of the dialog, typically containing the title and close button.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -271,7 +283,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Dialog.Footer",
-				description: "The footer section of the dialog, typically containing action buttons.",
+				description:
+					"The footer section of the dialog, typically containing action buttons.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -287,7 +300,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Dialog.CloseButton",
-				description: "A close button (X icon) positioned in the top-right corner of the dialog.",
+				description:
+					"A close button (X icon) positioned in the top-right corner of the dialog.",
 				props: {
 					class: {
 						type: "string",
@@ -298,7 +312,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Dialog.ActionTrigger",
-				description: "A button that closes the dialog when clicked, typically used for cancel or secondary actions.",
+				description:
+					"A button that closes the dialog when clicked, typically used for cancel or secondary actions.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -313,7 +328,8 @@ const meta: Meta = {
 					asChild: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to render as a child element instead of a button.",
+						description:
+							"Whether to render as a child element instead of a button.",
 					},
 					variant: {
 						type: '"solid" | "outline" | "ghost" | "subtle" | "surface" | "plain"',
@@ -385,7 +401,7 @@ export const Cover: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `size=\"cover\"` to make the dialog cover the entire screen while revealing a small portion of the page behind.",
+				story: 'Use `size="cover"` to make the dialog cover the entire screen while revealing a small portion of the page behind.',
 			},
 		},
 	},
@@ -415,7 +431,7 @@ export const InsideScroll: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `scrollBehavior=\"inside\"` prop to change the scroll behavior of the dialog when its content overflows.",
+				story: 'Use the `scrollBehavior="inside"` prop to change the scroll behavior of the dialog when its content overflows.',
 			},
 		},
 	},
@@ -430,7 +446,7 @@ export const OutsideScroll: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `scrollBehavior=\"outside\"` prop to change the scroll behavior of the dialog when its content overflows.",
+				story: 'Use the `scrollBehavior="outside"` prop to change the scroll behavior of the dialog when its content overflows.',
 			},
 		},
 	},
@@ -460,7 +476,7 @@ export const AlertDialog: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Set `role=\"alertdialog\"` to change the dialog to an alert dialog.",
+				story: 'Set `role="alertdialog"` to change the dialog to an alert dialog.',
 			},
 		},
 	},

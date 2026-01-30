@@ -42,7 +42,8 @@ const meta: Meta = {
 		subComponents: [
 			{
 				name: "Pagination",
-				description: "A navigation component for paginating through data.",
+				description:
+					"A navigation component for paginating through data.",
 				props: {
 					count: {
 						type: "number",
@@ -61,12 +62,14 @@ const meta: Meta = {
 					defaultPage: {
 						type: "number",
 						default: "1",
-						description: "The initial active page when uncontrolled.",
+						description:
+							"The initial active page when uncontrolled.",
 					},
 					siblingCount: {
 						type: "number",
 						default: "1",
-						description: "Number of pages to show beside active page.",
+						description:
+							"Number of pages to show beside active page.",
 					},
 					size: {
 						type: '"xs" | "sm" | "md" | "lg"',
@@ -76,7 +79,8 @@ const meta: Meta = {
 					variant: {
 						type: '"ghost" | "outline" | "solid"',
 						default: '"ghost"',
-						description: "The visual style variant of the pagination.",
+						description:
+							"The visual style variant of the pagination.",
 					},
 					colour: {
 						type: "ColourName",
@@ -86,17 +90,20 @@ const meta: Meta = {
 					compact: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to show compact page text instead of page items.",
+						description:
+							"Whether to show compact page text instead of page items.",
 					},
 					pageTextFormat: {
 						type: '"short" | "long"',
 						default: '"short"',
-						description: 'The format of the page text when compact is true. "short" shows "1 of 7", "long" shows "1 - 5 of 50".',
+						description:
+							'The format of the page text when compact is true. "short" shows "1 of 7", "long" shows "1 - 5 of 50".',
 					},
 					attached: {
 						type: "boolean",
 						default: "false",
-						description: "Whether items should be visually attached.",
+						description:
+							"Whether items should be visually attached.",
 					},
 					type: {
 						type: '"button" | "link"',
@@ -105,7 +112,8 @@ const meta: Meta = {
 					},
 					getHref: {
 						type: "(page: number) => string",
-						description: "Function to generate href attributes for pagination links. Only used when type is 'link'.",
+						description:
+							"Function to generate href attributes for pagination links. Only used when type is 'link'.",
 					},
 					onPageChange: {
 						type: "(details: { page: number }) => void",
@@ -126,7 +134,8 @@ const meta: Meta = {
 					"aria-label": {
 						type: "string",
 						default: '"pagination"',
-						description: "Accessible label for the pagination navigation. Required when multiple paginations exist on a page.",
+						description:
+							"Accessible label for the pagination navigation. Required when multiple paginations exist on a page.",
 					},
 				},
 			},
@@ -172,13 +181,15 @@ const meta: Meta = {
 		},
 		compact: {
 			control: "boolean",
-			description: "Whether to show compact page text instead of page items.",
+			description:
+				"Whether to show compact page text instead of page items.",
 			table: { defaultValue: { summary: "false" } },
 		},
 		pageTextFormat: {
 			control: "select",
 			options: paginationLabelVariants,
-			description: 'The format of the page text. "short" shows "1 of 7", "long" shows "1 - 5 of 50".',
+			description:
+				'The format of the page text. "short" shows "1 of 7", "long" shows "1 - 5 of 50".',
 			table: { defaultValue: { summary: "short" } },
 		},
 		attached: {
@@ -339,7 +350,7 @@ export const AsLink: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Pagination as links for SEO-friendly navigation using `type=\"link\"`.",
+				story: 'Pagination as links for SEO-friendly navigation using `type="link"`.',
 			},
 		},
 	},

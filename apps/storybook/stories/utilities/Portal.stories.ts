@@ -8,7 +8,8 @@ const meta: Meta = {
 	argTypes: {
 		disabled: {
 			control: "boolean",
-			description: "Whether to disable the portal and render children in place.",
+			description:
+				"Whether to disable the portal and render children in place.",
 			table: { defaultValue: { summary: "false" } },
 		},
 		container: {
@@ -19,7 +20,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "Used to render an element outside the DOM hierarchy.",
+				component:
+					"Used to render an element outside the DOM hierarchy.",
 			},
 		},
 		anatomy: `<script>

@@ -58,7 +58,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A compact label element for categorizing or labelling items.",
+				component:
+					"A compact label element for categorizing or labelling items.",
 			},
 		},
 		anatomy: `<script>

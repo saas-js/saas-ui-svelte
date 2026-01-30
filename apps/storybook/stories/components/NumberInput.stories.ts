@@ -110,7 +110,8 @@ const meta: Meta = {
 					invalid: {
 						type: "boolean",
 						default: "false",
-						description: "Whether the number input is in an invalid state.",
+						description:
+							"Whether the number input is in an invalid state.",
 					},
 					disabled: {
 						type: "boolean",
@@ -155,7 +156,8 @@ const meta: Meta = {
 					allowMouseWheel: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to allow mouse wheel to change the value.",
+						description:
+							"Whether to allow mouse wheel to change the value.",
 					},
 					clampValueOnBlur: {
 						type: "boolean",
@@ -208,7 +210,8 @@ const meta: Meta = {
 					"aria-label": {
 						type: "string",
 						default: "-",
-						description: "Accessible label for the input (for screen readers).",
+						description:
+							"Accessible label for the input (for screen readers).",
 					},
 					class: {
 						type: "string",

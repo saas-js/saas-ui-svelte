@@ -1,7 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/sveltekit";
 import { Flex } from "$saas/layout/flex";
 import FlexWrapper from "../wrappers/layout/Flex.svelte";
-import { commonArgTypes, getControls, flexDirections, flexAlignOptions, flexJustifyOptions, flexWrapOptions } from "../utils";
+import {
+	commonArgTypes,
+	getControls,
+	flexDirections,
+	flexAlignOptions,
+	flexJustifyOptions,
+	flexWrapOptions,
+} from "../utils";
 
 const meta: Meta = {
 	title: "layout/Flex",
@@ -36,7 +43,15 @@ const meta: Meta = {
 		class: commonArgTypes.class,
 	},
 	parameters: {
-		controls: getControls(["direction", "align", "justify", "wrap", "gap", "children", "class"]),
+		controls: getControls([
+			"direction",
+			"align",
+			"justify",
+			"wrap",
+			"gap",
+			"children",
+			"class",
+		]),
 		docs: {
 			description: {
 				component:
@@ -69,7 +84,8 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: FlexWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: FlexWrapper, props: { story: "basic", args } }) as any,
 };
 
 export const Direction: Story = {
@@ -80,7 +96,8 @@ export const Direction: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: FlexWrapper, props: { story: "direction" } }) as any,
+	render: () =>
+		({ Component: FlexWrapper, props: { story: "direction" } }) as any,
 };
 
 export const Justify: Story = {
@@ -91,5 +108,6 @@ export const Justify: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: FlexWrapper, props: { story: "justify" } }) as any,
+	render: () =>
+		({ Component: FlexWrapper, props: { story: "justify" } }) as any,
 };

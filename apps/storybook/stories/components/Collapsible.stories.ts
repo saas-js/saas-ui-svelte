@@ -37,7 +37,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "An interactive component that expands and collapses content sections.",
+				component:
+					"An interactive component that expands and collapses content sections.",
 			},
 		},
 		anatomy: `<script>

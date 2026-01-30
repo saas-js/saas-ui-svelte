@@ -50,13 +50,7 @@ const meta: Meta = {
 
 <!-- As different element -->
 <Heading as="h1" size="4xl">Main Title</Heading>`,
-		controls: getControls([
-			"as",
-			"size",
-			"weight",
-			"class",
-			"children",
-		]),
+		controls: getControls(["as", "size", "weight", "class", "children"]),
 	},
 	args: {
 		size: "xl",

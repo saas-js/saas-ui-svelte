@@ -85,7 +85,8 @@ const meta: Meta = {
 					id: {
 						type: "string",
 						default: "auto-generated",
-						description: "The unique identifier for the hover card.",
+						description:
+							"The unique identifier for the hover card.",
 					},
 					size: {
 						type: '"xs" | "sm" | "md" | "lg"',
@@ -100,7 +101,8 @@ const meta: Meta = {
 					onOpenChange: {
 						type: "(details: { open: boolean }) => void",
 						default: "-",
-						description: "Handler called when the open state changes.",
+						description:
+							"Handler called when the open state changes.",
 					},
 					openDelay: {
 						type: "number",
@@ -132,13 +134,15 @@ const meta: Meta = {
 					positioning: {
 						type: "HoverCardRootProps['positioning']",
 						default: '{ placement: "bottom", gutter: 12 }',
-						description: "The positioning options for the hover card.",
+						description:
+							"The positioning options for the hover card.",
 					},
 				},
 			},
 			{
 				name: "HoverCard.Trigger",
-				description: "The element that triggers the hover card on hover.",
+				description:
+					"The element that triggers the hover card on hover.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -164,7 +168,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to display in the hover card.",
+						description:
+							"The content to display in the hover card.",
 					},
 					class: {
 						type: "string",

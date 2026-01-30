@@ -2,13 +2,13 @@
 let sideMenuOpen = $state(false);
 
 export function getSideMenuOpen() {
-    return sideMenuOpen;
+	return sideMenuOpen;
 }
 
 export function setSideMenuOpen(open: boolean) {
-    sideMenuOpen = open;
+	sideMenuOpen = open;
 }
 
 export function closeMobileMenu() {
-    sideMenuOpen = false;
+	sideMenuOpen = false;
 }

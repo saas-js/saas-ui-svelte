@@ -1,1 +1,5 @@
-export { default as Blockquote, blockquote, type BlockquoteVariants } from "./blockquote.svelte";
+export {
+	default as Blockquote,
+	blockquote,
+	type BlockquoteVariants,
+} from "./blockquote.svelte";

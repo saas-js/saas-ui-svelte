@@ -23,7 +23,8 @@ const meta: Meta = {
 	argTypes: {
 		value: {
 			control: { type: "range", min: 0, max: 100, step: 1 },
-			description: "The current value of the progress (0-100). Set to null for indeterminate state.",
+			description:
+				"The current value of the progress (0-100). Set to null for indeterminate state.",
 			table: { defaultValue: { summary: "0" } },
 		},
 		min: {
@@ -55,7 +56,8 @@ const meta: Meta = {
 		},
 		thickness: {
 			control: "text",
-			description: "Custom thickness for the stroke (overrides size default).",
+			description:
+				"Custom thickness for the stroke (overrides size default).",
 		},
 		rounded: {
 			control: "boolean",

@@ -10,8 +10,8 @@ export { default as InputGroup } from "./input-group.svelte";
 export { default as InputElement } from "./input-element.svelte";
 
 export const Input = Object.assign(Root, {
-    Root,
-    Addon,
-    Group,
-    Element,
+	Root,
+	Addon,
+	Group,
+	Element,
 });

@@ -17,7 +17,13 @@ const colours = [
 ] as const;
 
 const tabsSizes = ["xs", "sm", "md", "lg"] as const;
-const tabsVariants = ["line", "subtle", "enclosed", "outline", "plain"] as const;
+const tabsVariants = [
+	"line",
+	"subtle",
+	"enclosed",
+	"outline",
+	"plain",
+] as const;
 const alignOptions = ["start", "center", "end"] as const;
 const orientations = ["horizontal", "vertical"] as const;
 
@@ -83,7 +89,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A tabbed interface for organizing content into separate views.",
+				component:
+					"A tabbed interface for organizing content into separate views.",
 			},
 		},
 		anatomy: `<script>
@@ -123,7 +130,8 @@ const meta: Meta = {
 					value: {
 						type: "string",
 						default: "-",
-						description: "The controlled value of the selected tab.",
+						description:
+							"The controlled value of the selected tab.",
 					},
 					activationMode: {
 						type: '"automatic" | "manual"',
@@ -138,7 +146,8 @@ const meta: Meta = {
 					unmountOnExit: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to unmount tab content when not active.",
+						description:
+							"Whether to unmount tab content when not active.",
 					},
 					orientation: {
 						type: '"horizontal" | "vertical"',
@@ -148,7 +157,8 @@ const meta: Meta = {
 					loopFocus: {
 						type: "boolean",
 						default: "true",
-						description: "Whether the keyboard navigation will loop.",
+						description:
+							"Whether the keyboard navigation will loop.",
 					},
 					size: {
 						type: '"xs" | "sm" | "md" | "lg"',
@@ -163,7 +173,8 @@ const meta: Meta = {
 					fitted: {
 						type: "boolean",
 						default: "false",
-						description: "Whether tabs should stretch to fill the container.",
+						description:
+							"Whether tabs should stretch to fill the container.",
 					},
 					justify: {
 						type: '"start" | "center" | "end"',
@@ -200,7 +211,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Tabs.Trigger",
-				description: "The clickable tab trigger that activates the corresponding content.",
+				description:
+					"The clickable tab trigger that activates the corresponding content.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -236,7 +248,8 @@ const meta: Meta = {
 					value: {
 						type: "string",
 						default: "-",
-						description: "The unique value of the tab this content belongs to.",
+						description:
+							"The unique value of the tab this content belongs to.",
 					},
 					class: {
 						type: "string",
@@ -263,7 +276,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Tabs.Indicator",
-				description: "An animated indicator that highlights the active tab.",
+				description:
+					"An animated indicator that highlights the active tab.",
 				props: {
 					class: {
 						type: "string",
@@ -410,7 +424,7 @@ export const ManualActivation: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `activationMode=\"manual\"` to require Enter/click to activate.",
+				story: 'Use `activationMode="manual"` to require Enter/click to activate.',
 			},
 		},
 	},

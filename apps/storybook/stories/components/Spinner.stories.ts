@@ -61,7 +61,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A loading indicator that displays a circular spinning animation.",
+				component:
+					"A loading indicator that displays a circular spinning animation.",
 			},
 		},
 		anatomy: `<script>

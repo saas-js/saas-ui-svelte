@@ -84,7 +84,7 @@ export const Ordered: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Ordered list with numbered markers using the `as=\"ol\"` prop.",
+				story: 'Ordered list with numbered markers using the `as="ol"` prop.',
 			},
 		},
 	},

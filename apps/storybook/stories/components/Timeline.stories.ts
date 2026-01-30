@@ -49,7 +49,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A vertical list of events or activities displayed in chronological order.",
+				component:
+					"A vertical list of events or activities displayed in chronological order.",
 			},
 		},
 		anatomy: `<script>

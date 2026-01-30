@@ -1,1 +1,5 @@
-export { default as NativeSelect, nativeSelect, type NativeSelectVariants } from "./native-select.svelte";
+export {
+	default as NativeSelect,
+	nativeSelect,
+	type NativeSelectVariants,
+} from "./native-select.svelte";

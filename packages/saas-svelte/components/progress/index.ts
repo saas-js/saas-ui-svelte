@@ -5,10 +5,10 @@ import Label from "./progress-label.svelte";
 import ValueText from "./progress-value-text.svelte";
 
 export {
-    PROGRESS_CTX,
-    progress,
-    type ProgressVariants,
-    type ProgressContext,
+	PROGRESS_CTX,
+	progress,
+	type ProgressVariants,
+	type ProgressContext,
 } from "./progress-root.svelte";
 
 export const ProgressRoot = Root;
@@ -18,9 +18,9 @@ export const ProgressLabel = Label;
 export const ProgressValueText = ValueText;
 
 export const Progress = {
-    Root,
-    Track,
-    Range,
-    Label,
-    ValueText,
+	Root,
+	Track,
+	Range,
+	Label,
+	ValueText,
 };

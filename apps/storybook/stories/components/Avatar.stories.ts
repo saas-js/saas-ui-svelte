@@ -40,8 +40,7 @@ const meta: Meta = {
 		},
 		name: {
 			control: "text",
-			description:
-				"The name to use for alt text and fallback initials.",
+			description: "The name to use for alt text and fallback initials.",
 			table: { defaultValue: { summary: "" } },
 		},
 		children: commonArgTypes.children,
@@ -133,7 +132,8 @@ const meta: Meta = {
 					},
 					style: {
 						type: "string",
-						description: "Inline styles to apply via the style attribute.",
+						description:
+							"Inline styles to apply via the style attribute.",
 					},
 					children: {
 						type: "Snippet",
@@ -164,7 +164,8 @@ const meta: Meta = {
 					borderless: {
 						type: "boolean",
 						default: "false",
-						description: "Whether the avatars should have a border.",
+						description:
+							"Whether the avatars should have a border.",
 					},
 					class: {
 						type: "string",

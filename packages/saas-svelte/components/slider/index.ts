@@ -9,10 +9,10 @@ import MarkerGroup from "./slider-marker-group.svelte";
 import Marker from "./slider-marker.svelte";
 
 export {
-    SLIDER_CTX,
-    slider,
-    type SliderVariants,
-    type SliderContext,
+	SLIDER_CTX,
+	slider,
+	type SliderVariants,
+	type SliderContext,
 } from "./slider-root.svelte";
 
 export const SliderRoot = Root;
@@ -26,13 +26,13 @@ export const SliderMarkerGroup = MarkerGroup;
 export const SliderMarker = Marker;
 
 export const Slider = {
-    Root,
-    Control,
-    Track,
-    Range,
-    Thumb,
-    Label,
-    ValueText,
-    MarkerGroup,
-    Marker,
+	Root,
+	Control,
+	Track,
+	Range,
+	Thumb,
+	Label,
+	ValueText,
+	MarkerGroup,
+	Marker,
 };

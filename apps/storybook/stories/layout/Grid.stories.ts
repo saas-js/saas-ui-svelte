@@ -32,7 +32,15 @@ const meta: Meta = {
 		class: commonArgTypes.class,
 	},
 	parameters: {
-		controls: getControls(["columns", "rows", "gap", "gapX", "gapY", "children", "class"]),
+		controls: getControls([
+			"columns",
+			"rows",
+			"gap",
+			"gapX",
+			"gapY",
+			"children",
+			"class",
+		]),
 		docs: {
 			description: {
 				component:
@@ -66,7 +74,8 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: GridWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: GridWrapper, props: { story: "basic", args } }) as any,
 };
 
 export const Spanning: Story = {
@@ -77,7 +86,8 @@ export const Spanning: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: GridWrapper, props: { story: "spanning" } }) as any,
+	render: () =>
+		({ Component: GridWrapper, props: { story: "spanning" } }) as any,
 };
 
 export const CustomGap: Story = {
@@ -88,5 +98,6 @@ export const CustomGap: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: GridWrapper, props: { story: "customGap" } }) as any,
+	render: () =>
+		({ Component: GridWrapper, props: { story: "customGap" } }) as any,
 };

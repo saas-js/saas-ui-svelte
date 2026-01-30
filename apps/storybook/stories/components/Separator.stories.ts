@@ -139,7 +139,7 @@ export const Vertical: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `orientation=\"vertical\"` for vertical separators.",
+				story: 'Use `orientation="vertical"` for vertical separators.',
 			},
 		},
 	},

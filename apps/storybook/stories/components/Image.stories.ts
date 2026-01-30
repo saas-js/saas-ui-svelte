@@ -32,8 +32,7 @@ const meta: Meta = {
 		},
 		aspectRatio: {
 			control: "text",
-			description:
-				"The aspect ratio of the image (e.g., 16/9, 4/3, 1).",
+			description: "The aspect ratio of the image (e.g., 16/9, 4/3, 1).",
 		},
 		rounded: {
 			control: "select",
@@ -125,7 +124,7 @@ export const Circular: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Circular image using `rounded=\"full\"`.",
+				story: 'Circular image using `rounded="full"`.',
 			},
 		},
 	},

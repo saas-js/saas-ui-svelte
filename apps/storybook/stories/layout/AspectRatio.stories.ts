@@ -48,7 +48,11 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: AspectRatioWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({
+			Component: AspectRatioWrapper,
+			props: { story: "basic", args },
+		}) as any,
 };
 
 export const Image: Story = {
@@ -59,7 +63,8 @@ export const Image: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: AspectRatioWrapper, props: { story: "image" } }) as any,
+	render: () =>
+		({ Component: AspectRatioWrapper, props: { story: "image" } }) as any,
 };
 
 export const Video: Story = {
@@ -70,7 +75,8 @@ export const Video: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: AspectRatioWrapper, props: { story: "video" } }) as any,
+	render: () =>
+		({ Component: AspectRatioWrapper, props: { story: "video" } }) as any,
 };
 
 export const GoogleMap: Story = {
@@ -81,7 +87,11 @@ export const GoogleMap: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: AspectRatioWrapper, props: { story: "googleMap" } }) as any,
+	render: () =>
+		({
+			Component: AspectRatioWrapper,
+			props: { story: "googleMap" },
+		}) as any,
 };
 
 export const Responsive: Story = {
@@ -92,7 +102,11 @@ export const Responsive: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: AspectRatioWrapper, props: { story: "responsive" } }) as any,
+	render: () =>
+		({
+			Component: AspectRatioWrapper,
+			props: { story: "responsive" },
+		}) as any,
 };
 
 export const CommonRatios: Story = {
@@ -103,5 +117,9 @@ export const CommonRatios: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: AspectRatioWrapper, props: { story: "commonRatios" } }) as any,
+	render: () =>
+		({
+			Component: AspectRatioWrapper,
+			props: { story: "commonRatios" },
+		}) as any,
 };

@@ -19,15 +19,15 @@ export const DrawerCloseButton = CloseButton;
 export const DrawerActionTrigger = ActionTrigger;
 
 export const Drawer = {
-    Root,
-    Trigger,
-    Content,
-    Header,
-    Title,
-    Body,
-    Footer,
-    CloseButton,
-    ActionTrigger,
+	Root,
+	Trigger,
+	Content,
+	Header,
+	Title,
+	Body,
+	Footer,
+	CloseButton,
+	ActionTrigger,
 };
 
 export { DRAWER_CTX } from "./drawer-root.svelte";

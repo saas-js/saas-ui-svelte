@@ -177,7 +177,7 @@ export const Sticky: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Sticky navbar that stays at the top when scrolling using `position=\"sticky\"`.",
+				story: 'Sticky navbar that stays at the top when scrolling using `position="sticky"`.',
 			},
 		},
 	},

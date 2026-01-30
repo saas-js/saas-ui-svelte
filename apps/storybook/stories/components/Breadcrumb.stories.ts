@@ -83,7 +83,8 @@ const meta: Meta = {
 					variant: {
 						type: '"plain" | "underline"',
 						default: '"plain"',
-						description: "The visual style of the breadcrumb links.",
+						description:
+							"The visual style of the breadcrumb links.",
 					},
 					separator: {
 						type: "Component | string",
@@ -94,12 +95,14 @@ const meta: Meta = {
 					separatorGap: {
 						type: "string | number",
 						default: "-",
-						description: "The gap around separators (in spacing units).",
+						description:
+							"The gap around separators (in spacing units).",
 					},
 					ariaLabel: {
 						type: "string",
 						default: '"Breadcrumb"',
-						description: "Accessible label for the breadcrumb navigation.",
+						description:
+							"Accessible label for the breadcrumb navigation.",
 					},
 					class: {
 						type: "string",
@@ -120,7 +123,8 @@ const meta: Meta = {
 					showSeparator: {
 						type: "boolean",
 						default: "true",
-						description: "Whether to show the separator after this item.",
+						description:
+							"Whether to show the separator after this item.",
 					},
 					class: {
 						type: "string",
@@ -141,7 +145,8 @@ const meta: Meta = {
 					showSeparator: {
 						type: "boolean",
 						default: "true",
-						description: "Whether to show the separator after this link.",
+						description:
+							"Whether to show the separator after this link.",
 					},
 					as: {
 						type: '"a" | "button"',
@@ -185,7 +190,8 @@ const meta: Meta = {
 					showSeparator: {
 						type: "boolean",
 						default: "true",
-						description: "Whether to show the separator after the ellipsis.",
+						description:
+							"Whether to show the separator after the ellipsis.",
 					},
 					class: {
 						type: "string",
@@ -208,7 +214,8 @@ const meta: Meta = {
 					showSeparator: {
 						type: "boolean",
 						default: "true",
-						description: "Whether to show the separator after this menu.",
+						description:
+							"Whether to show the separator after this menu.",
 					},
 					class: {
 						type: "string",

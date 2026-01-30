@@ -15,10 +15,10 @@ export const CardTitle = Title;
 export const CardDescription = Description;
 
 export const Card = {
-    Root,
-    Header,
-    Body,
-    Footer,
-    Title,
-    Description,
+	Root,
+	Header,
+	Body,
+	Footer,
+	Title,
+	Description,
 };

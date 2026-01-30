@@ -66,5 +66,6 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: CircleWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: CircleWrapper, props: { story: "basic", args } }) as any,
 };

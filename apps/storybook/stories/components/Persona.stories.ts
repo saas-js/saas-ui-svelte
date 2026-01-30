@@ -144,7 +144,7 @@ export const PresenceRing: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Persona with ring-style presence indicator using `variant=\"ring\"`.",
+				story: 'Persona with ring-style presence indicator using `variant="ring"`.',
 			},
 		},
 	},

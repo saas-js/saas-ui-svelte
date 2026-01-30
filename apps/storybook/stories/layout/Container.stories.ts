@@ -27,7 +27,13 @@ const meta: Meta = {
 		class: commonArgTypes.class,
 	},
 	parameters: {
-		controls: getControls(["maxW", "fluid", "centerContent", "children", "class"]),
+		controls: getControls([
+			"maxW",
+			"fluid",
+			"centerContent",
+			"children",
+			"class",
+		]),
 		docs: {
 			description: {
 				component:
@@ -58,7 +64,11 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: ContainerWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({
+			Component: ContainerWrapper,
+			props: { story: "basic", args },
+		}) as any,
 };
 
 export const Sizes: Story = {
@@ -69,7 +79,8 @@ export const Sizes: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: ContainerWrapper, props: { story: "sizes" } }) as any,
+	render: () =>
+		({ Component: ContainerWrapper, props: { story: "sizes" } }) as any,
 };
 
 export const Fluid: Story = {
@@ -80,5 +91,6 @@ export const Fluid: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: ContainerWrapper, props: { story: "fluid" } }) as any,
+	render: () =>
+		({ Component: ContainerWrapper, props: { story: "fluid" } }) as any,
 };

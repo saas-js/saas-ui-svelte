@@ -47,7 +47,8 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: BoxWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: BoxWrapper, props: { story: "basic", args } }) as any,
 };
 
 export const Shorthand: Story = {
@@ -58,7 +59,8 @@ export const Shorthand: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: BoxWrapper, props: { story: "shorthand" } }) as any,
+	render: () =>
+		({ Component: BoxWrapper, props: { story: "shorthand" } }) as any,
 };
 
 export const Border: Story = {
@@ -69,7 +71,8 @@ export const Border: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: BoxWrapper, props: { story: "border" } }) as any,
+	render: () =>
+		({ Component: BoxWrapper, props: { story: "border" } }) as any,
 };
 
 export const AsProp: Story = {
@@ -80,7 +83,8 @@ export const AsProp: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: BoxWrapper, props: { story: "asProp" } }) as any,
+	render: () =>
+		({ Component: BoxWrapper, props: { story: "asProp" } }) as any,
 };
 
 export const Shadow: Story = {
@@ -91,7 +95,8 @@ export const Shadow: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: BoxWrapper, props: { story: "shadow" } }) as any,
+	render: () =>
+		({ Component: BoxWrapper, props: { story: "shadow" } }) as any,
 };
 
 export const Composition: Story = {
@@ -102,7 +107,8 @@ export const Composition: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: BoxWrapper, props: { story: "composition" } }) as any,
+	render: () =>
+		({ Component: BoxWrapper, props: { story: "composition" } }) as any,
 };
 
 export const Nested: Story = {
@@ -113,5 +119,6 @@ export const Nested: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: BoxWrapper, props: { story: "nested" } }) as any,
+	render: () =>
+		({ Component: BoxWrapper, props: { story: "nested" } }) as any,
 };

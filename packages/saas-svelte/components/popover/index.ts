@@ -10,9 +10,9 @@ import Description from "./popover-description.svelte";
 import CloseTrigger from "./popover-close-trigger.svelte";
 
 export {
-    popover,
-    type PopoverVariants,
-    type PopoverContext,
+	popover,
+	type PopoverVariants,
+	type PopoverContext,
 } from "./popover-root.svelte";
 
 export const PopoverRoot = Root;
@@ -27,14 +27,14 @@ export const PopoverDescription = Description;
 export const PopoverCloseTrigger = CloseTrigger;
 
 export const Popover = {
-    Root,
-    Trigger,
-    Content,
-    Arrow,
-    Header,
-    Body,
-    Footer,
-    Title,
-    Description,
-    CloseTrigger,
+	Root,
+	Trigger,
+	Content,
+	Arrow,
+	Header,
+	Body,
+	Footer,
+	Title,
+	Description,
+	CloseTrigger,
 };

@@ -25,7 +25,8 @@ const meta: Meta = {
 	argTypes: {
 		value: {
 			control: { type: "number", min: 0, max: 100 },
-			description: "The current value of the progress (0-100). Set to null for indeterminate.",
+			description:
+				"The current value of the progress (0-100). Set to null for indeterminate.",
 			table: { defaultValue: { summary: "50" } },
 		},
 		min: {

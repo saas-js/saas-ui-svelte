@@ -2,7 +2,13 @@ import type { Meta, StoryObj } from "@storybook/sveltekit";
 import { Toast } from "$saas/components/toast";
 import ToastWrapper from "../wrappers/components/Toast.svelte";
 
-const toastStatuses = ["info", "success", "warning", "error", "loading"] as const;
+const toastStatuses = [
+	"info",
+	"success",
+	"warning",
+	"error",
+	"loading",
+] as const;
 
 const meta: Meta = {
 	title: "components/Toast",
@@ -35,7 +41,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A brief notification that appears temporarily to inform users of an action or event.",
+				component:
+					"A brief notification that appears temporarily to inform users of an action or event.",
 			},
 		},
 		anatomy: `<script>
@@ -59,7 +66,8 @@ const meta: Meta = {
 		subComponents: [
 			{
 				name: "Toast",
-				description: "The toast notification component that displays a message.",
+				description:
+					"The toast notification component that displays a message.",
 				props: {
 					class: {
 						type: "string",
@@ -68,7 +76,8 @@ const meta: Meta = {
 					status: {
 						type: '"info" | "success" | "warning" | "error" | "loading"',
 						default: '"info"',
-						description: "The status/type of the toast notification.",
+						description:
+							"The status/type of the toast notification.",
 					},
 					icon: {
 						type: "boolean | Component",
@@ -85,7 +94,8 @@ const meta: Meta = {
 					},
 					action: {
 						type: "{ label: string; onClick?: () => void }",
-						description: "An action button to display in the toast.",
+						description:
+							"An action button to display in the toast.",
 					},
 					closable: {
 						type: "boolean",
@@ -94,11 +104,13 @@ const meta: Meta = {
 					},
 					onclose: {
 						type: "() => void",
-						description: "Callback invoked when the toast is closed.",
+						description:
+							"Callback invoked when the toast is closed.",
 					},
 					children: {
 						type: "Snippet",
-						description: "Custom content to render inside the toast.",
+						description:
+							"Custom content to render inside the toast.",
 					},
 				},
 			},
@@ -127,7 +139,8 @@ const meta: Meta = {
 					placement: {
 						type: '"top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end"',
 						default: '"bottom-end"',
-						description: "The placement of the toast notifications.",
+						description:
+							"The placement of the toast notifications.",
 					},
 					duration: {
 						type: "number",

@@ -176,7 +176,7 @@ export const Centered: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `align=\"center\"` prop to center content within cards.",
+				story: 'Use the `align="center"` prop to center content within cards.',
 			},
 		},
 	},
@@ -206,7 +206,7 @@ export const VerticalLayout: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `orientation=\"vertical\"` prop to stack cards vertically.",
+				story: 'Use the `orientation="vertical"` prop to stack cards vertically.',
 			},
 		},
 	},

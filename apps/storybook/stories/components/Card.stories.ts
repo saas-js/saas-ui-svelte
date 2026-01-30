@@ -1,12 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/sveltekit";
 import { Card } from "$saas/components/card";
 import CardWrapper from "../wrappers/components/Card.svelte";
-import {
-	commonArgTypes,
-	getControls,
-	cardVariants,
-	cardSizes,
-} from "../utils";
+import { commonArgTypes, getControls, cardVariants, cardSizes } from "../utils";
 
 const meta: Meta = {
 	title: "components/Card",

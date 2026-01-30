@@ -112,11 +112,13 @@ const meta: Meta = {
 		subComponents: [
 			{
 				name: "Slider.Root",
-				description: "The slider container that provides context to all child components.",
+				description:
+					"The slider container that provides context to all child components.",
 				props: {
 					children: {
 						type: "Snippet",
-						description: "Content to render inside the slider (composition API).",
+						description:
+							"Content to render inside the slider (composition API).",
 					},
 					class: {
 						type: "string",
@@ -180,17 +182,20 @@ const meta: Meta = {
 					},
 					onValueChangeEnd: {
 						type: "(details: { value: number[] }) => void",
-						description: "Function invoked when the value change ends.",
+						description:
+							"Function invoked when the value change ends.",
 					},
 				},
 			},
 			{
 				name: "Slider.Control",
-				description: "The control container that holds the track and thumb.",
+				description:
+					"The control container that holds the track and thumb.",
 				props: {
 					children: {
 						type: "Snippet",
-						description: "Content to render inside the control (typically Track and Thumb).",
+						description:
+							"Content to render inside the control (typically Track and Thumb).",
 					},
 					class: {
 						type: "string",
@@ -204,7 +209,8 @@ const meta: Meta = {
 				props: {
 					children: {
 						type: "Snippet",
-						description: "Content to render inside the track (typically Range).",
+						description:
+							"Content to render inside the track (typically Range).",
 					},
 					class: {
 						type: "string",
@@ -229,7 +235,8 @@ const meta: Meta = {
 					index: {
 						type: "number",
 						required: true,
-						description: "The index of the thumb (for range sliders, 0 for first thumb, 1 for second, etc).",
+						description:
+							"The index of the thumb (for range sliders, 0 for first thumb, 1 for second, etc).",
 					},
 					children: {
 						type: "Snippet",
@@ -279,7 +286,8 @@ const meta: Meta = {
 				props: {
 					children: {
 						type: "Snippet",
-						description: "Content to render inside the marker group (typically Marker components).",
+						description:
+							"Content to render inside the marker group (typically Marker components).",
 					},
 					class: {
 						type: "string",
@@ -289,7 +297,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Slider.Marker",
-				description: "Individual marker for indicating specific values on the slider.",
+				description:
+					"Individual marker for indicating specific values on the slider.",
 				props: {
 					value: {
 						type: "number",
@@ -442,7 +451,7 @@ export const Vertical: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `orientation=\"vertical\"` for vertical sliders.",
+				story: 'Use `orientation="vertical"` for vertical sliders.',
 			},
 		},
 	},

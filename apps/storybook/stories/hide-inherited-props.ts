@@ -12,6 +12,6 @@
  * <ArgTypes exclude={exclude} />
  */
 export const generateExcludePattern = (allowedProps: string[]): RegExp => {
-    const propsPattern = allowedProps.join('|');
-    return new RegExp(`^(?!(${propsPattern})$).*$`);
+	const propsPattern = allowedProps.join("|");
+	return new RegExp(`^(?!(${propsPattern})$).*$`);
 };

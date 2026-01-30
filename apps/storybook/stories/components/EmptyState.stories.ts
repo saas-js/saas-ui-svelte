@@ -49,7 +49,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "A placeholder component displayed when there is no data or content to show.",
+				component:
+					"A placeholder component displayed when there is no data or content to show.",
 			},
 		},
 		anatomy: `<script>

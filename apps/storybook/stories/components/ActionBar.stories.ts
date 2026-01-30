@@ -18,7 +18,8 @@ const meta: Meta = {
 		controls: getControls(["closeOnInteractOutside", "class"]),
 		docs: {
 			description: {
-				component: "A floating bar that appears when items are selected, providing contextual actions.",
+				component:
+					"A floating bar that appears when items are selected, providing contextual actions.",
 			},
 		},
 		// Custom field for anatomy code
@@ -43,7 +44,8 @@ const meta: Meta = {
 		subComponents: [
 			{
 				name: "ActionBar",
-				description: "The root container component that renders a floating bar at the bottom of the screen.",
+				description:
+					"The root container component that renders a floating bar at the bottom of the screen.",
 				props: {
 					open: {
 						type: "boolean",
@@ -53,12 +55,14 @@ const meta: Meta = {
 					onOpenChange: {
 						type: "(details: { open: boolean }) => void",
 						default: "-",
-						description: "Callback fired when the open state changes.",
+						description:
+							"Callback fired when the open state changes.",
 					},
 					closeOnInteractOutside: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to close the action bar when clicking outside.",
+						description:
+							"Whether to close the action bar when clicking outside.",
 					},
 					children: {
 						type: "Snippet",
@@ -74,12 +78,14 @@ const meta: Meta = {
 			},
 			{
 				name: "ActionBarSelectionTrigger",
-				description: "A button that displays the selection count or status.",
+				description:
+					"A button that displays the selection count or status.",
 				props: {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "Content to render inside the trigger (typically 'X selected').",
+						description:
+							"Content to render inside the trigger (typically 'X selected').",
 					},
 					class: {
 						type: "string",

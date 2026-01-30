@@ -6,10 +6,10 @@ import Ellipsis from "./breadcrumb-ellipsis.svelte";
 import Menu from "./breadcrumb-menu.svelte";
 
 export {
-    BREADCRUMB_CTX,
-    breadcrumb,
-    type BreadcrumbVariants,
-    type BreadcrumbContext,
+	BREADCRUMB_CTX,
+	breadcrumb,
+	type BreadcrumbVariants,
+	type BreadcrumbContext,
 } from "./breadcrumb-root.svelte";
 
 export const BreadcrumbRoot = Root;
@@ -20,10 +20,10 @@ export const BreadcrumbEllipsis = Ellipsis;
 export const BreadcrumbMenu = Menu;
 
 export const Breadcrumb = {
-    Root,
-    Item,
-    Link,
-    CurrentLink,
-    Ellipsis,
-    Menu,
+	Root,
+	Item,
+	Link,
+	CurrentLink,
+	Ellipsis,
+	Menu,
 };

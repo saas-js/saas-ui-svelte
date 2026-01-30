@@ -33,7 +33,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A popover-style tip that toggles on click, used for providing additional context.",
+				component:
+					"A popover-style tip that toggles on click, used for providing additional context.",
 			},
 		},
 		anatomy: `<script>

@@ -39,7 +39,8 @@ const meta: Meta = {
 		},
 		closeOnSelect: {
 			control: "boolean",
-			description: "Whether to close the menu when an option is selected.",
+			description:
+				"Whether to close the menu when an option is selected.",
 			table: { defaultValue: { summary: "true" } },
 		},
 		loopFocus: {
@@ -86,7 +87,8 @@ const meta: Meta = {
 		subComponents: [
 			{
 				name: "Menu.Root",
-				description: "The root container component that provides context for the menu.",
+				description:
+					"The root container component that provides context for the menu.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -95,7 +97,8 @@ const meta: Meta = {
 					},
 					id: {
 						type: "string",
-						description: "The unique identifier for the menu. If not provided, a unique ID will be auto-generated.",
+						description:
+							"The unique identifier for the menu. If not provided, a unique ID will be auto-generated.",
 					},
 					size: {
 						type: '"sm" | "md"',
@@ -105,7 +108,8 @@ const meta: Meta = {
 					colour: {
 						type: "ColourName",
 						default: '"indigo"',
-						description: "The colour palette for highlighted items.",
+						description:
+							"The colour palette for highlighted items.",
 					},
 					open: {
 						type: "boolean",
@@ -114,7 +118,8 @@ const meta: Meta = {
 					closeOnSelect: {
 						type: "boolean",
 						default: "true",
-						description: "Whether to close the menu when an option is selected.",
+						description:
+							"Whether to close the menu when an option is selected.",
 					},
 					loopFocus: {
 						type: "boolean",
@@ -168,7 +173,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.Content",
-				description: "The container for menu items that appears when the menu is open.",
+				description:
+					"The container for menu items that appears when the menu is open.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -245,7 +251,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.ItemCommand",
-				description: "Displays a keyboard shortcut alongside a menu item.",
+				description:
+					"Displays a keyboard shortcut alongside a menu item.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -260,7 +267,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.ItemGroup",
-				description: "Groups related menu items together with an optional label.",
+				description:
+					"Groups related menu items together with an optional label.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -289,7 +297,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.TriggerItem",
-				description: "A menu item that opens a submenu when hovered or selected.",
+				description:
+					"A menu item that opens a submenu when hovered or selected.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -309,7 +318,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.ContextTrigger",
-				description: "A trigger that opens the menu on right-click (context menu).",
+				description:
+					"A trigger that opens the menu on right-click (context menu).",
 				props: {
 					children: {
 						type: "Snippet",
@@ -324,7 +334,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.CheckboxItem",
-				description: "A menu item with a checkbox for multi-selection options.",
+				description:
+					"A menu item with a checkbox for multi-selection options.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -351,7 +362,8 @@ const meta: Meta = {
 					},
 					startElement: {
 						type: "Snippet",
-						description: "Element to render at the start of the item (for custom content, overrides showIndicator).",
+						description:
+							"Element to render at the start of the item (for custom content, overrides showIndicator).",
 					},
 					disabled: {
 						type: "boolean",
@@ -361,7 +373,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.RadioItemGroup",
-				description: "Groups radio items together for single-selection options.",
+				description:
+					"Groups radio items together for single-selection options.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -384,7 +397,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.RadioItem",
-				description: "A menu item with a radio button for single-selection within a group.",
+				description:
+					"A menu item with a radio button for single-selection within a group.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -407,7 +421,8 @@ const meta: Meta = {
 					},
 					startElement: {
 						type: "Snippet",
-						description: "Element to render at the start of the item (for custom content, overrides showIndicator).",
+						description:
+							"Element to render at the start of the item (for custom content, overrides showIndicator).",
 					},
 					disabled: {
 						type: "boolean",
@@ -417,7 +432,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Menu.ItemIndicator",
-				description: "The indicator element shown for checked checkbox or radio items.",
+				description:
+					"The indicator element shown for checked checkbox or radio items.",
 				props: {
 					children: {
 						type: "Snippet",

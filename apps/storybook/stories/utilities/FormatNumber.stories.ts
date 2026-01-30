@@ -116,7 +116,7 @@ export const Percentage: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `style=\"percent\"` to format decimal values as percentages (`0.75` becomes `75%`).",
+				story: 'Use `style="percent"` to format decimal values as percentages (`0.75` becomes `75%`).',
 			},
 		},
 	},
@@ -131,7 +131,7 @@ export const Currency: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `style=\"currency\"` with the `currency` prop to format values as monetary amounts.",
+				story: 'Use `style="currency"` with the `currency` prop to format values as monetary amounts.',
 			},
 		},
 	},
@@ -161,7 +161,7 @@ export const Unit: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `style=\"unit\"` with the `unit` prop to display numbers with measurement units (e.g., kilometers, liters).",
+				story: 'Use `style="unit"` with the `unit` prop to display numbers with measurement units (e.g., kilometers, liters).',
 			},
 		},
 	},
@@ -177,7 +177,7 @@ export const CompactNotation: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `notation=\"compact\"` to display large numbers in shortened form (e.g., `1M`, `1K`).",
+				story: 'Use `notation="compact"` to display large numbers in shortened form (e.g., `1M`, `1K`).',
 			},
 		},
 	},

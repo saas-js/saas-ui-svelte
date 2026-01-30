@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/sveltekit";
 import { Mark } from "$saas/typography/mark";
 import MarkWrapper from "../wrappers/typography/Mark.svelte";
-import {
-	commonArgTypes,
-	getControls,
-	markVariants,
-} from "../utils";
+import { commonArgTypes, getControls, markVariants } from "../utils";
 
 const meta: Meta = {
 	title: "typography/Mark",

@@ -9,8 +9,7 @@ const meta: Meta = {
 	argTypes: {
 		attached: {
 			control: "boolean",
-			description:
-				"If `true`, the elements will be attached together.",
+			description: "If `true`, the elements will be attached together.",
 			table: { defaultValue: { summary: "false" } },
 		},
 		grow: {
@@ -71,7 +70,8 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: GroupWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: GroupWrapper, props: { story: "basic", args } }) as any,
 };
 
 export const WithButtons: Story = {
@@ -82,7 +82,8 @@ export const WithButtons: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: GroupWrapper, props: { story: "withButtons" } }) as any,
+	render: () =>
+		({ Component: GroupWrapper, props: { story: "withButtons" } }) as any,
 };
 
 export const Attached: Story = {
@@ -93,7 +94,8 @@ export const Attached: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: GroupWrapper, props: { story: "attached" } }) as any,
+	render: () =>
+		({ Component: GroupWrapper, props: { story: "attached" } }) as any,
 };
 
 export const Grow: Story = {
@@ -104,5 +106,6 @@ export const Grow: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: GroupWrapper, props: { story: "grow" } }) as any,
+	render: () =>
+		({ Component: GroupWrapper, props: { story: "grow" } }) as any,
 };

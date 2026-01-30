@@ -2,7 +2,13 @@ import type { Meta, StoryObj } from "@storybook/sveltekit";
 import { LinkBox } from "$saas/components/link-overlay";
 import LinkOverlayWrapper from "../wrappers/components/LinkOverlay.svelte";
 
-const linkBoxAsOptions = ["div", "article", "section", "aside", "figure"] as const;
+const linkBoxAsOptions = [
+	"div",
+	"article",
+	"section",
+	"aside",
+	"figure",
+] as const;
 
 const meta: Meta = {
 	title: "components/Link Overlay",

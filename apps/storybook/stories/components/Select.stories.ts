@@ -53,7 +53,8 @@ const meta: Meta = {
 		},
 		closeOnSelect: {
 			control: "boolean",
-			description: "Whether to close the select when an item is selected.",
+			description:
+				"Whether to close the select when an item is selected.",
 			table: { defaultValue: { summary: "true" } },
 		},
 		loopFocus: {
@@ -129,12 +130,14 @@ const meta: Meta = {
 					variant: {
 						type: '"outline" | "subtle"',
 						default: '"outline"',
-						description: "The visual variant of the select trigger.",
+						description:
+							"The visual variant of the select trigger.",
 					},
 					colour: {
 						type: "ColourName",
 						default: '"indigo"',
-						description: "The colour palette for highlighted items.",
+						description:
+							"The colour palette for highlighted items.",
 					},
 					class: {
 						type: "string",
@@ -274,7 +277,8 @@ const meta: Meta = {
 					placeholder: {
 						type: "string",
 						default: '"Select an option"',
-						description: "Placeholder text when no value is selected.",
+						description:
+							"Placeholder text when no value is selected.",
 					},
 					valueKey: {
 						type: "string",
@@ -308,7 +312,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "Custom icon or content for the clear trigger.",
+						description:
+							"Custom icon or content for the clear trigger.",
 					},
 					class: {
 						type: "string",
@@ -330,7 +335,8 @@ const meta: Meta = {
 					placeholder: {
 						type: "string",
 						default: '"Select an option"',
-						description: "Placeholder text when no value is selected.",
+						description:
+							"Placeholder text when no value is selected.",
 					},
 					avatarKey: {
 						type: "string",

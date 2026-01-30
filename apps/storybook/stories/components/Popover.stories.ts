@@ -114,7 +114,8 @@ const meta: Meta = {
 					onOpenChange: {
 						type: "(details: { open: boolean }) => void",
 						default: "-",
-						description: "Handler called when the open state changes.",
+						description:
+							"Handler called when the open state changes.",
 					},
 					autoFocus: {
 						type: "boolean",
@@ -125,7 +126,8 @@ const meta: Meta = {
 					closeOnEscape: {
 						type: "boolean",
 						default: "true",
-						description: "Whether to close when the escape key is pressed.",
+						description:
+							"Whether to close when the escape key is pressed.",
 					},
 					closeOnInteractOutside: {
 						type: "boolean",
@@ -160,7 +162,8 @@ const meta: Meta = {
 					initialFocusEl: {
 						type: "() => HTMLElement | null",
 						default: "-",
-						description: "Element to receive focus when the popover is opened.",
+						description:
+							"Element to receive focus when the popover is opened.",
 					},
 				},
 			},
@@ -177,22 +180,26 @@ const meta: Meta = {
 					triggerText: {
 						type: "string",
 						default: "-",
-						description: "Simple text to display on the trigger button.",
+						description:
+							"Simple text to display on the trigger button.",
 					},
 					triggerIcon: {
 						type: "Component",
 						default: "-",
-						description: "Icon component to display on the trigger button.",
+						description:
+							"Icon component to display on the trigger button.",
 					},
 					triggerVariant: {
 						type: '"ghost" | "outline" | "solid" | "subtle" | "plain"',
 						default: '"outline"',
-						description: "Variant for the auto-generated trigger button.",
+						description:
+							"Variant for the auto-generated trigger button.",
 					},
 					triggerSize: {
 						type: '"xs" | "sm" | "md" | "lg"',
 						default: '"sm"',
-						description: "Size for the auto-generated trigger button.",
+						description:
+							"Size for the auto-generated trigger button.",
 					},
 					triggerClass: {
 						type: "string",

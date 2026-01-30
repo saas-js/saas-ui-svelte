@@ -39,7 +39,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A multi-line text input field for longer form content.",
+				component:
+					"A multi-line text input field for longer form content.",
 			},
 		},
 		anatomy: `<script>

@@ -31,7 +31,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "A wrapper component that provides consistent structure and accessibility for form inputs with labels, helper text, and error messages.",
+				component:
+					"A wrapper component that provides consistent structure and accessibility for form inputs with labels, helper text, and error messages.",
 			},
 		},
 		anatomy: `<script>

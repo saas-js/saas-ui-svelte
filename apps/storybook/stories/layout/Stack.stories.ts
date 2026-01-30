@@ -80,18 +80,20 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: StackWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: StackWrapper, props: { story: "basic", args } }) as any,
 };
 
 export const Horizontal: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `direction=\"row\"` to arrange items horizontally instead of vertically.",
+				story: 'Use `direction="row"` to arrange items horizontally instead of vertically.',
 			},
 		},
 	},
-	render: () => ({ Component: StackWrapper, props: { story: "horizontal" } }) as any,
+	render: () =>
+		({ Component: StackWrapper, props: { story: "horizontal" } }) as any,
 };
 
 export const WithHStack: Story = {
@@ -102,7 +104,8 @@ export const WithHStack: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: StackWrapper, props: { story: "hStack" } }) as any,
+	render: () =>
+		({ Component: StackWrapper, props: { story: "hStack" } }) as any,
 };
 
 export const WithVStack: Story = {
@@ -113,7 +116,8 @@ export const WithVStack: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: StackWrapper, props: { story: "vStack" } }) as any,
+	render: () =>
+		({ Component: StackWrapper, props: { story: "vStack" } }) as any,
 };
 
 export const WithSeparator: Story = {
@@ -124,7 +128,8 @@ export const WithSeparator: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: StackWrapper, props: { story: "separator" } }) as any,
+	render: () =>
+		({ Component: StackWrapper, props: { story: "separator" } }) as any,
 };
 
 export const Responsive: Story = {
@@ -135,5 +140,6 @@ export const Responsive: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: StackWrapper, props: { story: "responsive" } }) as any,
+	render: () =>
+		({ Component: StackWrapper, props: { story: "responsive" } }) as any,
 };

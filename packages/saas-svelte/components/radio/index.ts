@@ -7,10 +7,10 @@ import ItemHiddenInput from "./radio-item-hidden-input.svelte";
 import Label from "./radio-label.svelte";
 
 export {
-    RADIO_GROUP_CTX,
-    radioGroup,
-    type RadioGroupVariants,
-    type RadioGroupContext,
+	RADIO_GROUP_CTX,
+	radioGroup,
+	type RadioGroupVariants,
+	type RadioGroupContext,
 } from "./radio-group.svelte";
 
 export const RadioGroup = Group;
@@ -22,11 +22,11 @@ export const RadioItemHiddenInput = ItemHiddenInput;
 export const RadioLabel = Label;
 
 export const Radio = {
-    Group,
-    Item,
-    ItemControl,
-    ItemText,
-    Indicator,
-    ItemHiddenInput,
-    Label,
+	Group,
+	Item,
+	ItemControl,
+	ItemText,
+	Indicator,
+	ItemHiddenInput,
+	Label,
 };

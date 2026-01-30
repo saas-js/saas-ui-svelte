@@ -19,13 +19,13 @@ export const DialogCloseButton = CloseButton;
 export const DialogActionTrigger = ActionTrigger;
 
 export const Dialog = {
-    Root,
-    Trigger,
-    Content,
-    Header,
-    Title,
-    Body,
-    Footer,
-    CloseButton,
-    ActionTrigger,
+	Root,
+	Trigger,
+	Content,
+	Header,
+	Title,
+	Body,
+	Footer,
+	CloseButton,
+	ActionTrigger,
 };

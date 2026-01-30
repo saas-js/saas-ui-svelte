@@ -66,12 +66,14 @@ const meta: Meta = {
 					openDelay: {
 						type: "number",
 						default: "0",
-						description: "The delay before the tooltip opens (in ms).",
+						description:
+							"The delay before the tooltip opens (in ms).",
 					},
 					closeDelay: {
 						type: "number",
 						default: "100",
-						description: "The delay before the tooltip closes (in ms).",
+						description:
+							"The delay before the tooltip closes (in ms).",
 					},
 					positioning: {
 						type: "TooltipRootProps['positioning']",
@@ -193,7 +195,7 @@ export const Inverted: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `variant=\"inverted\"` for inverted colours.",
+				story: 'Use `variant="inverted"` for inverted colours.',
 			},
 		},
 	},

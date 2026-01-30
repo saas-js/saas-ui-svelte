@@ -23,14 +23,14 @@ export const SelectClearTrigger = ClearTrigger;
 export const SelectIndicator = Indicator;
 
 export const Select = {
-    Root,
-    Trigger,
-    Value,
-    AvatarValue,
-    Content,
-    Item,
-    ItemGroup,
-    Label,
-    ClearTrigger,
-    Indicator,
+	Root,
+	Trigger,
+	Value,
+	AvatarValue,
+	Content,
+	Item,
+	ItemGroup,
+	Label,
+	ClearTrigger,
+	Indicator,
 };

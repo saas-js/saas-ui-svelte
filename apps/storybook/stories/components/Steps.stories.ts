@@ -71,7 +71,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A multi-step progress indicator for guiding users through a sequence of steps.",
+				component:
+					"A multi-step progress indicator for guiding users through a sequence of steps.",
 			},
 		},
 		anatomy: `<script>
@@ -114,7 +115,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "Content to render inside the steps (composition API).",
+						description:
+							"Content to render inside the steps (composition API).",
 					},
 					count: {
 						type: "number",
@@ -154,7 +156,8 @@ const meta: Meta = {
 					linear: {
 						type: "boolean",
 						default: "false",
-						description: "Whether the steps must be completed in order.",
+						description:
+							"Whether the steps must be completed in order.",
 					},
 					onStepChange: {
 						type: "(details: { step: number }) => void",
@@ -191,7 +194,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Steps.Item",
-				description: "A single step item containing a trigger and separator.",
+				description:
+					"A single step item containing a trigger and separator.",
 				props: {
 					index: {
 						type: "number",
@@ -211,7 +215,8 @@ const meta: Meta = {
 					icon: {
 						type: "Component<any>",
 						default: "-",
-						description: "Custom icon component to display instead of number.",
+						description:
+							"Custom icon component to display instead of number.",
 					},
 					children: {
 						type: "Snippet",
@@ -248,7 +253,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Steps.Indicator",
-				description: "The visual indicator for a step (shows number or icon).",
+				description:
+					"The visual indicator for a step (shows number or icon).",
 				props: {
 					index: {
 						type: "number",
@@ -268,7 +274,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "Content to render inside the indicator (defaults to step number).",
+						description:
+							"Content to render inside the indicator (defaults to step number).",
 					},
 					class: {
 						type: "string",
@@ -284,17 +291,20 @@ const meta: Meta = {
 					index: {
 						type: "number",
 						default: "-",
-						description: "The index of the step this separator follows.",
+						description:
+							"The index of the step this separator follows.",
 					},
 					last: {
 						type: "boolean",
 						default: "false",
-						description: "Whether this is the last separator (should be hidden).",
+						description:
+							"Whether this is the last separator (should be hidden).",
 					},
 					completed: {
 						type: "boolean",
 						default: "false",
-						description: "Whether the step this separator follows is completed.",
+						description:
+							"Whether the step this separator follows is completed.",
 					},
 					class: {
 						type: "string",
@@ -310,7 +320,8 @@ const meta: Meta = {
 					index: {
 						type: "number",
 						default: "-",
-						description: "The index of the step this content belongs to.",
+						description:
+							"The index of the step this content belongs to.",
 					},
 					children: {
 						type: "Snippet",
@@ -331,7 +342,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render when all steps are complete.",
+						description:
+							"The content to render when all steps are complete.",
 					},
 					class: {
 						type: "string",
@@ -482,7 +494,7 @@ export const Vertical: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `orientation=\"vertical\"` for vertical steps.",
+				story: 'Use `orientation="vertical"` for vertical steps.',
 			},
 		},
 	},

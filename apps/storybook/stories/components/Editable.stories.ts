@@ -40,7 +40,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "An inline text component that switches between display and edit modes for in-place editing.",
+				component:
+					"An inline text component that switches between display and edit modes for in-place editing.",
 			},
 		},
 		anatomy: `<script>
@@ -78,17 +79,20 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the editable.",
+						description:
+							"The content to render inside the editable.",
 					},
 					activationMode: {
 						type: '"focus" | "dblclick" | "click" | "none"',
 						default: '"focus"',
-						description: "The activation mode for entering edit mode.",
+						description:
+							"The activation mode for entering edit mode.",
 					},
 					autoResize: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to auto-resize the input to fit content.",
+						description:
+							"Whether to auto-resize the input to fit content.",
 					},
 					defaultValue: {
 						type: "string",
@@ -108,12 +112,14 @@ const meta: Meta = {
 					onValueCommit: {
 						type: "(details: { value: string }) => void",
 						default: "-",
-						description: "Called when the value is committed (submitted).",
+						description:
+							"Called when the value is committed (submitted).",
 					},
 					onValueRevert: {
 						type: "(details: { value: string }) => void",
 						default: "-",
-						description: "Called when the value is reverted (cancelled).",
+						description:
+							"Called when the value is reverted (cancelled).",
 					},
 					onEditChange: {
 						type: "(details: { edit: boolean }) => void",
@@ -210,7 +216,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Editable.Preview",
-				description: "Displays the current value when not in edit mode.",
+				description:
+					"Displays the current value when not in edit mode.",
 				props: {
 					class: {
 						type: "string",
@@ -274,12 +281,14 @@ const meta: Meta = {
 			},
 			{
 				name: "Editable.Control",
-				description: "Container for edit, cancel, and submit trigger buttons.",
+				description:
+					"Container for edit, cancel, and submit trigger buttons.",
 				props: {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the control.",
+						description:
+							"The content to render inside the control.",
 					},
 					class: {
 						type: "string",
@@ -295,7 +304,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the trigger.",
+						description:
+							"The content to render inside the trigger.",
 					},
 					class: {
 						type: "string",
@@ -336,7 +346,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the trigger.",
+						description:
+							"The content to render inside the trigger.",
 					},
 					class: {
 						type: "string",
@@ -377,7 +388,8 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						default: "-",
-						description: "The content to render inside the trigger.",
+						description:
+							"The content to render inside the trigger.",
 					},
 					class: {
 						type: "string",
@@ -457,7 +469,7 @@ export const WithDoubleClick: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use `activationMode=\"dblclick\"` to require a double-click to enter edit mode.",
+				story: 'Use `activationMode="dblclick"` to require a double-click to enter edit mode.',
 			},
 		},
 	},

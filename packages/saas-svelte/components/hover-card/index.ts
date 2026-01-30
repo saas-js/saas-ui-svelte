@@ -4,9 +4,9 @@ import Content from "./hover-card-content.svelte";
 import Arrow from "./hover-card-arrow.svelte";
 
 export {
-    hoverCard,
-    type HoverCardVariants,
-    type HoverCardContext,
+	hoverCard,
+	type HoverCardVariants,
+	type HoverCardContext,
 } from "./hover-card-root.svelte";
 
 export const HoverCardRoot = Root;
@@ -15,8 +15,8 @@ export const HoverCardContent = Content;
 export const HoverCardArrow = Arrow;
 
 export const HoverCard = {
-    Root,
-    Trigger,
-    Content,
-    Arrow,
+	Root,
+	Trigger,
+	Content,
+	Arrow,
 };

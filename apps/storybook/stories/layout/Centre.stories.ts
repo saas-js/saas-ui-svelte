@@ -57,7 +57,8 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: CentreWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: CentreWrapper, props: { story: "basic", args } }) as any,
 };
 
 export const Square: Story = {
@@ -68,7 +69,8 @@ export const Square: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: CentreWrapper, props: { story: "square" } }) as any,
+	render: () =>
+		({ Component: CentreWrapper, props: { story: "square" } }) as any,
 };
 
 export const Circle: Story = {
@@ -79,7 +81,8 @@ export const Circle: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: CentreWrapper, props: { story: "circle" } }) as any,
+	render: () =>
+		({ Component: CentreWrapper, props: { story: "circle" } }) as any,
 };
 
 export const AbsoluteCentre: Story = {
@@ -90,5 +93,9 @@ export const AbsoluteCentre: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: CentreWrapper, props: { story: "absoluteCentre" } }) as any,
+	render: () =>
+		({
+			Component: CentreWrapper,
+			props: { story: "absoluteCentre" },
+		}) as any,
 };

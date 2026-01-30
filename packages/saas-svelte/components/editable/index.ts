@@ -21,19 +21,22 @@ export const EditableCancelTrigger = CancelTrigger;
 export const EditableLabel = Label;
 
 export const Editable = {
-    Root,
-    Area,
-    Preview,
-    Input,
-    Textarea,
-    Control,
-    EditTrigger,
-    SubmitTrigger,
-    CancelTrigger,
-    Label,
+	Root,
+	Area,
+	Preview,
+	Input,
+	Textarea,
+	Control,
+	EditTrigger,
+	SubmitTrigger,
+	CancelTrigger,
+	Label,
 };
 
-export { editableRoot, type EditableRootVariants } from "./editable-root.svelte";
+export {
+	editableRoot,
+	type EditableRootVariants,
+} from "./editable-root.svelte";
 export { editableArea } from "./editable-area.svelte";
 export { editablePreview } from "./editable-preview.svelte";
 export { editableInput } from "./editable-input.svelte";

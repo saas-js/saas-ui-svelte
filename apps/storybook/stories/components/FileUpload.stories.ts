@@ -170,7 +170,8 @@ const meta: Meta = {
 					colour: {
 						type: "ColourName",
 						default: '"gray"',
-						description: "The colour palette of the trigger button.",
+						description:
+							"The colour palette of the trigger button.",
 					},
 					children: {
 						type: "Snippet",
@@ -223,7 +224,8 @@ const meta: Meta = {
 					placeholder: {
 						type: "string",
 						default: '"Select file(s)"',
-						description: "Placeholder text when no file is selected.",
+						description:
+							"Placeholder text when no file is selected.",
 					},
 					class: {
 						type: "string",
@@ -244,7 +246,8 @@ const meta: Meta = {
 					clearable: {
 						type: "boolean",
 						default: "false",
-						description: "Whether to show a delete button for each file.",
+						description:
+							"Whether to show a delete button for each file.",
 					},
 					class: {
 						type: "string",

@@ -4,10 +4,10 @@ import RadioCardItem from "./radio-card-item.svelte";
 import RadioCardItemAddon from "./radio-card-item-addon.svelte";
 
 export const RadioCard = {
-    Root: RadioCardRoot,
-    Label: RadioCardLabel,
-    Item: RadioCardItem,
-    ItemAddon: RadioCardItemAddon,
+	Root: RadioCardRoot,
+	Label: RadioCardLabel,
+	Item: RadioCardItem,
+	ItemAddon: RadioCardItemAddon,
 };
 
 export { RadioCardRoot, RadioCardLabel, RadioCardItem, RadioCardItemAddon };

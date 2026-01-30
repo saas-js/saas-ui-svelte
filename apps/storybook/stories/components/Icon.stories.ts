@@ -30,8 +30,7 @@ const meta: Meta = {
 		},
 		weight: {
 			control: "select",
-			description:
-				"The weight/style of the icon (for Phosphor icons).",
+			description: "The weight/style of the icon (for Phosphor icons).",
 			options: iconWeights,
 			table: {
 				type: {

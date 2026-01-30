@@ -11,8 +11,8 @@ export const FieldHelperText = HelperText;
 export const FieldErrorText = ErrorText;
 
 export const Field = {
-    Root,
-    Label,
-    HelperText,
-    ErrorText,
+	Root,
+	Label,
+	HelperText,
+	ErrorText,
 };

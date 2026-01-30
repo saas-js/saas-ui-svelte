@@ -15,16 +15,16 @@ import ItemGroupLabel from "./combobox-item-group-label.svelte";
 import Empty from "./combobox-empty.svelte";
 
 export {
-    combobox,
-    type ComboboxVariants,
-    type ComboboxContext,
+	combobox,
+	type ComboboxVariants,
+	type ComboboxContext,
 } from "./combobox-root.svelte";
 
 export {
-    Combobox as ComboboxPrimitive,
-    createListCollection,
-    type CollectionItem,
-    type ListCollection,
+	Combobox as ComboboxPrimitive,
+	createListCollection,
+	type CollectionItem,
+	type ListCollection,
 } from "@ark-ui/svelte/combobox";
 
 export const ComboboxRoot = Root;
@@ -43,18 +43,18 @@ export const ComboboxItemGroupLabel = ItemGroupLabel;
 export const ComboboxEmpty = Empty;
 
 export const Combobox = Object.assign(PreComposed, {
-    Root,
-    Label,
-    Control,
-    Input,
-    IndicatorGroup,
-    Trigger,
-    ClearTrigger,
-    Content,
-    Item,
-    ItemText,
-    ItemIndicator,
-    ItemGroup,
-    ItemGroupLabel,
-    Empty,
+	Root,
+	Label,
+	Control,
+	Input,
+	IndicatorGroup,
+	Trigger,
+	ClearTrigger,
+	Content,
+	Item,
+	ItemText,
+	ItemIndicator,
+	ItemGroup,
+	ItemGroupLabel,
+	Empty,
 });

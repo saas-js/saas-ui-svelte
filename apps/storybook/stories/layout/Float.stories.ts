@@ -70,7 +70,8 @@ export const Basic: Story = {
 			},
 		},
 	},
-	render: (args) => ({ Component: FloatWrapper, props: { story: "basic", args } }) as any,
+	render: (args) =>
+		({ Component: FloatWrapper, props: { story: "basic", args } }) as any,
 };
 
 export const Placements: Story = {
@@ -81,7 +82,8 @@ export const Placements: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: FloatWrapper, props: { story: "placements" } }) as any,
+	render: () =>
+		({ Component: FloatWrapper, props: { story: "placements" } }) as any,
 };
 
 export const Offsets: Story = {
@@ -92,7 +94,8 @@ export const Offsets: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: FloatWrapper, props: { story: "offsets" } }) as any,
+	render: () =>
+		({ Component: FloatWrapper, props: { story: "offsets" } }) as any,
 };
 
 export const WithAvatar: Story = {
@@ -103,5 +106,6 @@ export const WithAvatar: Story = {
 			},
 		},
 	},
-	render: () => ({ Component: FloatWrapper, props: { story: "withAvatar" } }) as any,
+	render: () =>
+		({ Component: FloatWrapper, props: { story: "withAvatar" } }) as any,
 };

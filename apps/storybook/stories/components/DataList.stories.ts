@@ -40,7 +40,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "A component for displaying key-value pairs in a structured list format.",
+				component:
+					"A component for displaying key-value pairs in a structured list format.",
 			},
 		},
 		anatomy: `<script>

@@ -51,7 +51,8 @@ const meta: Meta = {
 		]),
 		docs: {
 			description: {
-				component: "A panel that slides in from the edge of the screen, typically used for navigation or additional content.",
+				component:
+					"A panel that slides in from the edge of the screen, typically used for navigation or additional content.",
 			},
 		},
 		anatomy: `<script>
@@ -103,7 +104,8 @@ const meta: Meta = {
 					onOpenChange: {
 						type: "(details: { open: boolean }) => void",
 						default: "-",
-						description: "Handler called when the open state changes.",
+						description:
+							"Handler called when the open state changes.",
 					},
 					size: {
 						type: '"xs" | "sm" | "md" | "lg" | "xl" | "full"',
@@ -129,12 +131,14 @@ const meta: Meta = {
 					initialFocusEl: {
 						type: "() => HTMLElement | null",
 						default: "-",
-						description: "Element to receive focus when the drawer is opened.",
+						description:
+							"Element to receive focus when the drawer is opened.",
 					},
 					finalFocusEl: {
 						type: "() => HTMLElement | null",
 						default: "-",
-						description: "Element to receive focus when the drawer is closed.",
+						description:
+							"Element to receive focus when the drawer is closed.",
 					},
 					restoreFocus: {
 						type: "boolean",
@@ -145,7 +149,8 @@ const meta: Meta = {
 					lazyMount: {
 						type: "boolean",
 						default: "-",
-						description: "Whether to lazily mount the drawer content.",
+						description:
+							"Whether to lazily mount the drawer content.",
 					},
 					unmountOnExit: {
 						type: "boolean",
@@ -217,7 +222,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Drawer.Body",
-				description: "The main body content area with scrolling support.",
+				description:
+					"The main body content area with scrolling support.",
 				props: {
 					children: {
 						type: "Snippet",
@@ -301,7 +307,8 @@ const meta: Meta = {
 			},
 			{
 				name: "Drawer.ActionTrigger",
-				description: "Action button that closes the drawer when clicked.",
+				description:
+					"Action button that closes the drawer when clicked.",
 				props: {
 					children: {
 						type: "Snippet",

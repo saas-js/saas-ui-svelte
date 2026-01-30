@@ -10,7 +10,10 @@ export { fileUploadRoot } from "./file-upload-root.svelte";
 export { fileUploadDropzone } from "./file-upload-dropzone.svelte";
 export { fileUploadList } from "./file-upload-list.svelte";
 export { fileUploadLabel } from "./file-upload-label.svelte";
-export { fileUploadInput, fileUploadInputPlaceholder } from "./file-upload-input.svelte";
+export {
+	fileUploadInput,
+	fileUploadInputPlaceholder,
+} from "./file-upload-input.svelte";
 
 export const FileUploadRoot = Root;
 export const FileUploadTrigger = Trigger;
@@ -21,11 +24,11 @@ export const FileUploadInput = Input;
 export const FileUploadClearTrigger = ClearTrigger;
 
 export const FileUpload = {
-    Root,
-    Trigger,
-    Dropzone,
-    List,
-    Label,
-    Input,
-    ClearTrigger,
+	Root,
+	Trigger,
+	Dropzone,
+	List,
+	Label,
+	Input,
+	ClearTrigger,
 };

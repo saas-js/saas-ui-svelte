@@ -102,11 +102,13 @@ const meta: Meta = {
 		subComponents: [
 			{
 				name: "Radio.Group",
-				description: "The radio group container that manages state and context.",
+				description:
+					"The radio group container that manages state and context.",
 				props: {
 					children: {
 						type: "Snippet",
-						description: "Content to render inside the radio group.",
+						description:
+							"Content to render inside the radio group.",
 					},
 					class: {
 						type: "string",
@@ -153,7 +155,8 @@ const meta: Meta = {
 					invalid: {
 						type: "boolean",
 						default: "false",
-						description: "Whether the radio group is in an invalid state.",
+						description:
+							"Whether the radio group is in an invalid state.",
 					},
 					readOnly: {
 						type: "boolean",
@@ -177,7 +180,8 @@ const meta: Meta = {
 					},
 					label: {
 						type: "string",
-						description: "The label text displayed next to the radio.",
+						description:
+							"The label text displayed next to the radio.",
 					},
 					class: {
 						type: "string",
@@ -207,11 +211,13 @@ const meta: Meta = {
 				props: {
 					children: {
 						type: "Snippet",
-						description: "The content of the control (usually indicators).",
+						description:
+							"The content of the control (usually indicators).",
 					},
 					class: {
 						type: "string",
-						description: "Additional classes to apply to the control.",
+						description:
+							"Additional classes to apply to the control.",
 					},
 				},
 			},
@@ -222,11 +228,13 @@ const meta: Meta = {
 				props: {
 					children: {
 						type: "Snippet",
-						description: "Optional custom content for the indicator.",
+						description:
+							"Optional custom content for the indicator.",
 					},
 					class: {
 						type: "string",
-						description: "Additional classes to apply to the indicator.",
+						description:
+							"Additional classes to apply to the indicator.",
 					},
 				},
 			},
@@ -241,7 +249,8 @@ const meta: Meta = {
 					},
 					class: {
 						type: "string",
-						description: "Additional classes to apply to the label.",
+						description:
+							"Additional classes to apply to the label.",
 					},
 				},
 			},
@@ -262,7 +271,8 @@ const meta: Meta = {
 					},
 					class: {
 						type: "string",
-						description: "Additional classes to apply to the label.",
+						description:
+							"Additional classes to apply to the label.",
 					},
 				},
 			},

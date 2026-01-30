@@ -14,7 +14,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A component for displaying statistics with labels, values, and trend indicators.",
+				component:
+					"A component for displaying statistics with labels, values, and trend indicators.",
 			},
 		},
 		anatomy: `<script>

@@ -48,7 +48,8 @@ const meta: Meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: "A visual indicator that displays the current status of an item or process.",
+				component:
+					"A visual indicator that displays the current status of an item or process.",
 			},
 		},
 		anatomy: `<script>

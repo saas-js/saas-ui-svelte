@@ -93,7 +93,8 @@ const meta: Meta = {
 					},
 					label: {
 						type: "string",
-						description: "The label text displayed next to the checkbox.",
+						description:
+							"The label text displayed next to the checkbox.",
 					},
 					class: {
 						type: "string",
@@ -117,15 +118,18 @@ const meta: Meta = {
 					checked: {
 						type: 'boolean | "indeterminate"',
 						default: "false",
-						description: "The controlled checked state of the checkbox.",
+						description:
+							"The controlled checked state of the checkbox.",
 					},
 					defaultChecked: {
 						type: "boolean",
-						description: "The default checked state when uncontrolled.",
+						description:
+							"The default checked state when uncontrolled.",
 					},
 					value: {
 						type: "string",
-						description: "The value of the checkbox (used in groups).",
+						description:
+							"The value of the checkbox (used in groups).",
 					},
 					name: {
 						type: "string",
@@ -139,7 +143,8 @@ const meta: Meta = {
 					invalid: {
 						type: "boolean",
 						default: "false",
-						description: "Whether the checkbox is in an invalid state.",
+						description:
+							"Whether the checkbox is in an invalid state.",
 					},
 					required: {
 						type: "boolean",
@@ -153,7 +158,8 @@ const meta: Meta = {
 					},
 					onCheckedChange: {
 						type: '(details: { checked: boolean | "indeterminate" }) => void',
-						description: "Callback invoked when the checked state changes.",
+						description:
+							"Callback invoked when the checked state changes.",
 					},
 				},
 			},
@@ -165,11 +171,13 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						required: true,
-						description: "The content of the control (usually indicators).",
+						description:
+							"The content of the control (usually indicators).",
 					},
 					class: {
 						type: "string",
-						description: "Additional classes to apply to the control.",
+						description:
+							"Additional classes to apply to the control.",
 					},
 					checked: {
 						type: 'boolean | "indeterminate"',
@@ -186,16 +194,19 @@ const meta: Meta = {
 					children: {
 						type: "Snippet",
 						required: true,
-						description: "The content of the indicator (usually an icon).",
+						description:
+							"The content of the indicator (usually an icon).",
 					},
 					indeterminate: {
 						type: "boolean",
 						default: "false",
-						description: "Whether this indicator is for the indeterminate state.",
+						description:
+							"Whether this indicator is for the indeterminate state.",
 					},
 					class: {
 						type: "string",
-						description: "Additional classes to apply to the indicator.",
+						description:
+							"Additional classes to apply to the indicator.",
 					},
 				},
 			},
@@ -210,7 +221,8 @@ const meta: Meta = {
 					},
 					class: {
 						type: "string",
-						description: "Additional classes to apply to the label.",
+						description:
+							"Additional classes to apply to the label.",
 					},
 				},
 			},
@@ -234,7 +246,8 @@ const meta: Meta = {
 					},
 					value: {
 						type: "string[]",
-						description: "The controlled value of the checkbox group.",
+						description:
+							"The controlled value of the checkbox group.",
 					},
 					defaultValue: {
 						type: "string[]",

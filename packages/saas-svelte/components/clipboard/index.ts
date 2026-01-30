@@ -11,21 +11,21 @@ export { clipboardButton, clipboardInput } from "./clipboard.svelte";
 
 // Re-export Ark UI primitives for advanced usage
 export {
-    Clipboard as ClipboardPrimitive,
-    type ClipboardRootProps,
-    type ClipboardControlProps,
-    type ClipboardIndicatorProps,
-    type ClipboardInputProps,
-    type ClipboardLabelProps,
-    type ClipboardTriggerProps,
+	Clipboard as ClipboardPrimitive,
+	type ClipboardRootProps,
+	type ClipboardControlProps,
+	type ClipboardIndicatorProps,
+	type ClipboardInputProps,
+	type ClipboardLabelProps,
+	type ClipboardTriggerProps,
 } from "@ark-ui/svelte/clipboard";
 
 // Compound component pattern (like Tabs and Card)
 export const Clipboard = {
-    Root: ArkClipboard.Root,
-    Trigger,
-    Indicator: ArkClipboard.Indicator,
-    Input: ArkClipboard.Input,
-    Label: ArkClipboard.Label,
-    Control: ArkClipboard.Control,
+	Root: ArkClipboard.Root,
+	Trigger,
+	Indicator: ArkClipboard.Indicator,
+	Input: ArkClipboard.Input,
+	Label: ArkClipboard.Label,
+	Control: ArkClipboard.Control,
 };

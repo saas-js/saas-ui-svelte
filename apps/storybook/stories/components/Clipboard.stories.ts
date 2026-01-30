@@ -13,8 +13,7 @@ const meta: Meta = {
 		},
 		timeout: {
 			control: "number",
-			description:
-				"The timeout for showing the 'copied' state (in ms).",
+			description: "The timeout for showing the 'copied' state (in ms).",
 			table: { defaultValue: { summary: "3000" } },
 		},
 		class: commonArgTypes.class,
@@ -23,7 +22,8 @@ const meta: Meta = {
 		controls: getControls(["value", "timeout", "class"]),
 		docs: {
 			description: {
-				component: "A component for copying text to the clipboard with visual feedback.",
+				component:
+					"A component for copying text to the clipboard with visual feedback.",
 			},
 		},
 		anatomy: `<script>

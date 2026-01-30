@@ -14,8 +14,8 @@ export const GridListItem = Item;
 export const GridListCell = Cell;
 
 export const GridList = {
-    Root,
-    Header,
-    Item,
-    Cell,
+	Root,
+	Header,
+	Item,
+	Cell,
 };
