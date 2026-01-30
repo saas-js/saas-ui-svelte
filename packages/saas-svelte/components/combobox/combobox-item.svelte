@@ -1,23 +1,23 @@
 <script lang="ts">
-	import { Combobox } from "@ark-ui/svelte/combobox";
-	import type { CollectionItem } from "@ark-ui/svelte/combobox";
-	import { getContext, type Snippet } from "svelte";
-	import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
+import { Combobox } from "@ark-ui/svelte/combobox";
+import type { CollectionItem } from "@ark-ui/svelte/combobox";
+import { getContext, type Snippet } from "svelte";
+import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
 
-	interface Props {
-		item: CollectionItem;
-		children: Snippet;
-		class?: string;
-		[key: string]: unknown;
-	}
+interface Props {
+	item: CollectionItem;
+	children: Snippet;
+	class?: string;
+	[key: string]: unknown;
+}
 
-	let { item, children, class: className, ...rest }: Props = $props();
+let { item, children, class: className, ...rest }: Props = $props();
 
-	const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
+const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 </script>
 
 <Combobox.Item
-	{item}
+	item={item}
 	class={ctx?.styles?.item({ class: className })}
 	style={ctx?.colourStyle}
 	{...rest}

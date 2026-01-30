@@ -1,19 +1,19 @@
 <script lang="ts">
-	import type { HTMLAttributes } from "svelte/elements";
-	import { getContext } from "svelte";
-	import { FIELD_CTX, type FieldContext } from "./types";
+import type { HTMLAttributes } from "svelte/elements";
+import { getContext } from "svelte";
+import { FIELD_CTX, type FieldContext } from "./types";
 
-	interface Props extends HTMLAttributes<HTMLSpanElement> {
-		/**
-		 * Additional CSS classes to apply to the error text.
-		 */
-		class?: string;
-	}
+interface Props extends HTMLAttributes<HTMLSpanElement> {
+	/**
+	 * Additional CSS classes to apply to the error text.
+	 */
+	class?: string;
+}
 
-	let { class: className, children, ...restProps }: Props = $props();
+let { class: className, children, ...restProps }: Props = $props();
 
-	const fieldContext = getContext<FieldContext>(FIELD_CTX);
-	const errorId = $derived(`${$fieldContext.id}-error-text`);
+const fieldContext = getContext<FieldContext>(FIELD_CTX);
+const errorId = $derived(`${$fieldContext.id}-error-text`);
 </script>
 
 <span
@@ -22,8 +22,7 @@
 	class={[
 		"inline-flex",
 		"items-center",
-		"gap-y-1",
-		"gap-x-1",
+		"gap-1",
 		"text-fg-error",
 		"text-xs",
 		"leading-4",

@@ -1,71 +1,71 @@
 <script lang="ts">
-	import { SegmentGroup } from "@ark-ui/svelte/segment-group";
-	import { getContext, type Snippet, type Component } from "svelte";
-	import { twMerge } from "tailwind-merge";
-	import {
-		SEGMENT_GROUP_CTX,
-		type SegmentGroupContext,
-	} from "./segment-group-root.svelte";
-	import { getColourStyle } from "$saas/utils/colours";
-	import { Icon } from "$saas/components/icon";
+import { SegmentGroup } from "@ark-ui/svelte/segment-group";
+import { getContext, type Snippet, type Component } from "svelte";
+import { twMerge } from "tailwind-merge";
+import {
+	SEGMENT_GROUP_CTX,
+	type SegmentGroupContext,
+} from "./segment-group-root.svelte";
+import { getColourStyle } from "$saas/utils/colours";
+import { Icon } from "$saas/components/icon";
 
-	interface Props {
-		/**
-		 * Content to render inside the segment item (composition API).
-		 */
-		children?: Snippet;
-		/**
-		 * The label text displayed in the segment.
-		 */
-		label?: string;
-		/**
-		 * Icon component to display before the label.
-		 */
-		icon?: Component<any>;
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-		/**
-		 * The value of this segment item.
-		 */
-		value: string;
-		/**
-		 * Whether this segment item is disabled.
-		 * @default false
-		 */
-		disabled?: boolean;
-		[key: string]: any;
-	}
+interface Props {
+	/**
+	 * Content to render inside the segment item (composition API).
+	 */
+	children?: Snippet;
+	/**
+	 * The label text displayed in the segment.
+	 */
+	label?: string;
+	/**
+	 * Icon component to display before the label.
+	 */
+	icon?: Component<any>;
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+	/**
+	 * The value of this segment item.
+	 */
+	value: string;
+	/**
+	 * Whether this segment item is disabled.
+	 * @default false
+	 */
+	disabled?: boolean;
+	[key: string]: any;
+}
 
-	let {
-		children,
-		label,
-		icon,
-		class: className,
-		value,
-		disabled = false,
-		...restProps
-	}: Props = $props();
+let {
+	children,
+	label,
+	icon,
+	class: className,
+	value,
+	disabled = false,
+	...restProps
+}: Props = $props();
 
-	const ctx = getContext<SegmentGroupContext>(SEGMENT_GROUP_CTX);
-	const styles = $derived(ctx.styles);
-	const colourVars = $derived(getColourStyle(ctx.colour));
+const ctx = getContext<SegmentGroupContext>(SEGMENT_GROUP_CTX);
+const styles = $derived(ctx.styles);
+const colourVars = $derived(getColourStyle(ctx.colour));
 
-	const isDisabled = $derived(disabled || ctx.disabled);
+const isDisabled = $derived(disabled || ctx.disabled);
 
-	// Map segment size to icon size
-	const iconSizeMap = {
-		xs: "xs",
-		sm: "sm",
-		md: "sm",
-		lg: "md",
-	} as const;
-	const iconSize = $derived(iconSizeMap[ctx.size ?? "md"]);
+// Map segment size to icon size
+const iconSizeMap = {
+	xs: "xs",
+	sm: "sm",
+	md: "sm",
+	lg: "md",
+} as const;
+const iconSize = $derived(iconSizeMap[ctx.size ?? "md"]);
 </script>
 
 <SegmentGroup.Item
-	{value}
+	value={value}
 	disabled={isDisabled}
 	class={twMerge(
 		styles.item(),

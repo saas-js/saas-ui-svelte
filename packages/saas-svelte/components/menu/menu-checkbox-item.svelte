@@ -1,38 +1,38 @@
 <script lang="ts">
-	import { Menu } from "@ark-ui/svelte/menu";
-	import type { MenuCheckboxItemProps } from "@ark-ui/svelte/menu";
-	import { getContext, type Snippet } from "svelte";
-	import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
-	import Check from "phosphor-svelte/lib/Check";
+import { Menu } from "@ark-ui/svelte/menu";
+import type { MenuCheckboxItemProps } from "@ark-ui/svelte/menu";
+import { getContext, type Snippet } from "svelte";
+import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
+import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 
-	interface Props extends MenuCheckboxItemProps {
-		/**
-		 * The checkbox item content.
-		 */
-		children: Snippet;
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-		/**
-		 * Whether to show the checkbox indicator. @default true
-		 */
-		showIndicator?: boolean;
-		/**
-		 * Element to render at the start of the item (for custom content, overrides showIndicator).
-		 */
-		startElement?: Snippet;
-	}
+interface Props extends MenuCheckboxItemProps {
+	/**
+	 * The checkbox item content.
+	 */
+	children: Snippet;
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+	/**
+	 * Whether to show the checkbox indicator. @default true
+	 */
+	showIndicator?: boolean;
+	/**
+	 * Element to render at the start of the item (for custom content, overrides showIndicator).
+	 */
+	startElement?: Snippet;
+}
 
-	let {
-		children,
-		class: className,
-		showIndicator = true,
-		startElement,
-		...rest
-	}: Props = $props();
+let {
+	children,
+	class: className,
+	showIndicator = true,
+	startElement,
+	...rest
+}: Props = $props();
 
-	const ctx = getContext<MenuContext>(MENU_CTX);
+const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
 <Menu.CheckboxItem
@@ -41,13 +41,13 @@
 	{...rest}
 >
 	{#if startElement}
-		<span class="flex items-center justify-center w-4 shrink-0">
+		<span class="flex size-4 shrink-0 items-center justify-center">
 			{@render startElement()}
 		</span>
 	{:else if showIndicator}
-		<span class="flex items-center justify-center w-4 shrink-0">
+		<span class="flex size-4 shrink-0 items-center justify-center">
 			<Menu.ItemIndicator class={ctx?.styles?.itemIndicator()}>
-				<Check class="w-3.5 h-3.5" weight="bold" aria-hidden="true" />
+				<CheckIcon class="size-3.5" weight="bold" aria-hidden="true" />
 			</Menu.ItemIndicator>
 		</span>
 	{/if}

@@ -20,12 +20,16 @@
 		fade-out var(--durations-fast) ease-in;
 }
 /* Fallback for content without placement */
-[data-scope="select"][data-part="content"][data-state="open"]:not([data-placement]) {
+[data-scope="select"][data-part="content"][data-state="open"]:not(
+		[data-placement]
+	) {
 	animation:
 		slide-from-top var(--durations-fast) ease-out,
 		fade-in var(--durations-fast) ease-out;
 }
-[data-scope="select"][data-part="content"][data-state="closed"]:not([data-placement]) {
+[data-scope="select"][data-part="content"][data-state="closed"]:not(
+		[data-placement]
+	) {
 	animation:
 		slide-to-top var(--durations-fast) ease-in,
 		fade-out var(--durations-fast) ease-in;

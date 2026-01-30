@@ -1,85 +1,90 @@
-<script lang="ts">
-	import type {
-		HTMLAnchorAttributes,
-		HTMLButtonAttributes,
-	} from "svelte/elements";
-	import type { Snippet } from "svelte";
-	import { getContext } from "svelte";
-	import {
-		BREADCRUMB_CTX,
-		type BreadcrumbContext,
-	} from "./breadcrumb-root.svelte";
+<script module lang="ts">
+import { tv, type VariantProps } from "tailwind-variants";
 
-	type BaseProps = {
-		/**
-		 * The link content.
-		 */
-		children: Snippet;
-		/**
-		 * Whether to show the separator after this link.
-		 * @default true
-		 */
-		showSeparator?: boolean;
-		/**
-		 * Render as a button instead of an anchor.
-		 * @default "a"
-		 */
-		as?: "a" | "button";
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-	};
-
-	type Props = BaseProps & HTMLAnchorAttributes & HTMLButtonAttributes;
-
-	let {
-		children,
-		showSeparator = true,
-		as = "a",
-		class: className,
-		...restProps
-	}: Props = $props();
-
-	const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
-	const styles = $derived(context?.styles);
-	const variant = $derived(context?.variant ?? "plain");
-
-	const linkClasses = $derived.by(() => {
-		const baseClasses = [
-			"outline-0",
-			"items-center",
-			"gap-y-2 gap-x-2",
-			"inline-flex",
-			"rounded",
-			"font-normal",
-			"transition-none",
-			"focus:outline-offset-2",
-			"focus:outline-1",
-			"focus:outline-solid",
-			"focus:outline-fg-muted",
-		];
-
-		if (variant === "plain") {
+export const breadcrumbLink = tv({
+	base: [
+		"outline-0",
+		"items-center",
+		"gap-2",
+		"inline-flex",
+		"rounded",
+		"font-normal",
+		"transition-none",
+		"focus:outline-offset-2",
+		"focus:outline-1",
+		"focus:outline-solid",
+		"focus:outline-fg-muted",
+	],
+	variants: {
+		variant: {
 			// Plain variant: muted (gray-500) text, no underline, hover to default
-			baseClasses.push(
-				"text-fg-muted",
-				"no-underline",
-				"hover:text-fg-default",
-			);
-		} else {
+			plain: ["text-fg-muted", "no-underline", "hover:text-fg-default"],
 			// Underline variant: default text with underline, hover increases contrast
-			baseClasses.push(
+			underline: [
 				"underline",
 				"text-fg-default",
 				"underline-offset-[0.2em]",
 				"decoration-fg-default/20",
 				"hover:decoration-fg-default",
-			);
-		}
+			],
+		},
+	},
+	defaultVariants: {
+		variant: "plain",
+	},
+});
 
-		return [...baseClasses, className].filter(Boolean).join(" ");
-	});
+export type BreadcrumbLinkVariants = VariantProps<typeof breadcrumbLink>;
+</script>
+
+<script lang="ts">
+import type {
+	HTMLAnchorAttributes,
+	HTMLButtonAttributes,
+} from "svelte/elements";
+import type { Snippet } from "svelte";
+import { getContext } from "svelte";
+import {
+	BREADCRUMB_CTX,
+	type BreadcrumbContext,
+} from "./breadcrumb-root.svelte";
+
+type BaseProps = {
+	/**
+	 * The link content.
+	 */
+	children: Snippet;
+	/**
+	 * Whether to show the separator after this link.
+	 * @default true
+	 */
+	showSeparator?: boolean;
+	/**
+	 * Render as a button instead of an anchor.
+	 * @default "a"
+	 */
+	as?: "a" | "button";
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+};
+
+type Props = BaseProps & HTMLAnchorAttributes & HTMLButtonAttributes;
+
+let {
+	children,
+	showSeparator = true,
+	as = "a",
+	class: className,
+	...restProps
+}: Props = $props();
+
+const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
+const styles = $derived(context?.styles);
+const variant = $derived(context?.variant ?? "plain");
+
+const linkClasses = $derived(breadcrumbLink({ variant, class: className }));
 </script>
 
 <li class={styles?.item()}>
@@ -100,7 +105,7 @@
 			{context.separator}
 		{:else if context?.separator}
 			{@const Separator = context.separator}
-			<Separator class="fill-current stroke-current w-3.5 h-3.5" />
+			<Separator class="h-3.5 w-3.5 fill-current stroke-current" />
 		{:else}
 			/
 		{/if}

@@ -1,86 +1,91 @@
 <script lang="ts">
-	import type { Snippet } from "svelte";
-	import { getContext } from "svelte";
-	import {
-		FieldRoot,
-		FieldLabel,
-		FieldHelperText,
-		FieldErrorText,
-	} from "../field";
-	import { Input } from "../input";
-	import { Textarea } from "../textarea";
-	import { NativeSelect } from "../native-select";
-	import { Checkbox } from "../checkbox";
-	import { Radio } from "../radio";
-	import { NumberInput } from "../number-input";
-	import { PasswordInput } from "../password-input";
-	import { Switch } from "../switch";
-	import { Slider } from "../slider";
-	import { PinInput } from "../pin-input";
-	import type { FormApi } from "./use-form.svelte";
-	import type { FieldType, FieldOption } from "./types";
-	import { FORM_CTX } from "./types";
+import type { Snippet } from "svelte";
+import { getContext } from "svelte";
+import {
+	FieldRoot,
+	FieldLabel,
+	FieldHelperText,
+	FieldErrorText,
+} from "../field";
+import { Input } from "../input";
+import { Textarea } from "../textarea";
+import { NativeSelect } from "../native-select";
+import { Checkbox } from "../checkbox";
+import { Radio } from "../radio";
+import { NumberInput } from "../number-input";
+import { PasswordInput } from "../password-input";
+import { Switch } from "../switch";
+import { Slider } from "../slider";
+import { PinInput } from "../pin-input";
+import type { FormApi } from "./use-form.svelte";
+import type { FieldType, FieldOption } from "./types";
+import { FORM_CTX } from "./types";
 
-	interface Props {
-		name: string;
-		type?: FieldType;
-		label?: string;
-		placeholder?: string;
-		helperText?: string;
-		required?: boolean;
-		disabled?: boolean;
-		options?: FieldOption[];
-		min?: number;
-		max?: number;
-		step?: number;
-		/** Number of inputs for pin-input type @default 4 */
-		count?: number;
-		class?: string;
-		children?: Snippet<
-			[
-				{
-					value: unknown;
-					error: string | undefined;
-					onChange: (value: unknown) => void;
-					onBlur: () => void;
-				},
-			]
-		>;
-	}
+interface Props {
+	name: string;
+	type?: FieldType;
+	label?: string;
+	placeholder?: string;
+	helperText?: string;
+	required?: boolean;
+	disabled?: boolean;
+	options?: FieldOption[];
+	min?: number;
+	max?: number;
+	step?: number;
+	/** Number of inputs for pin-input type @default 4 */
+	count?: number;
+	class?: string;
+	children?: Snippet<
+		[
+			{
+				value: unknown;
+				error: string | undefined;
+				onChange: (value: unknown) => void;
+				onBlur: () => void;
+			},
+		]
+	>;
+}
 
-	let {
-		name,
-		type = "text",
-		label,
-		placeholder,
-		helperText,
-		required = false,
-		disabled = false,
-		options = [],
-		min,
-		max,
-		step,
-		count = 4,
-		class: className,
-		children,
-	}: Props = $props();
+let {
+	name,
+	type = "text",
+	label,
+	placeholder,
+	helperText,
+	required = false,
+	disabled = false,
+	options = [],
+	min,
+	max,
+	step,
+	count = 4,
+	class: className,
+	children,
+}: Props = $props();
 
-	const formContext = getContext<{ api: FormApi }>(FORM_CTX);
-	const form = $derived(formContext.api);
-	const value = $derived(form.getValue(name));
-	const error = $derived(form.getError(name));
+const formContext = getContext<{ api: FormApi }>(FORM_CTX);
+const form = $derived(formContext.api);
+const value = $derived(form.getValue(name));
+const error = $derived(form.getError(name));
 
-	const onChange = (v: unknown) => form.setValue(name, v);
-	const onBlur = () => form.setTouched(name);
-	const onInput = (e: Event) =>
-		onChange(
-			type === "number"
-				? Number((e.target as HTMLInputElement).value)
-				: (e.target as HTMLInputElement).value,
-		);
+const onChange = (v: unknown) => form.setValue(name, v);
+const onBlur = () => form.setTouched(name);
+const onInput = (e: Event) =>
+	onChange(
+		type === "number"
+			? Number((e.target as HTMLInputElement).value)
+			: (e.target as HTMLInputElement).value,
+	);
 </script>
 
-<FieldRoot invalid={!!error} {required} {disabled} class={className}>
+<FieldRoot
+	invalid={!!error}
+	required={required}
+	disabled={disabled}
+	class={className}
+>
 	{#if label && type !== "checkbox" && type !== "radio" && type !== "switch"}
 		<FieldLabel
 			>{label}{#if required}<span class="text-fg-error">*</span
@@ -93,9 +98,9 @@
 	{:else if type === "textarea"}
 		<Textarea
 			value={value as string}
-			{placeholder}
-			{disabled}
-			{required}
+			placeholder={placeholder}
+			disabled={disabled}
+			required={required}
 			invalid={!!error}
 			oninput={onInput}
 			onblur={onBlur}
@@ -103,8 +108,8 @@
 	{:else if type === "select"}
 		<NativeSelect
 			value={value as string}
-			{disabled}
-			{required}
+			disabled={disabled}
+			required={required}
 			invalid={!!error}
 			onchange={(e) => onChange((e.target as HTMLSelectElement).value)}
 			onblur={onBlur}
@@ -120,16 +125,16 @@
 	{:else if type === "checkbox"}
 		<Checkbox.Root
 			checked={value as boolean}
-			{disabled}
-			{required}
+			disabled={disabled}
+			required={required}
 			invalid={!!error}
 			onCheckedChange={(details) => onChange(details.checked)}
-			{label}
+			label={label}
 		/>
 	{:else if type === "radio"}
 		<Radio.Group
 			value={value as string}
-			{disabled}
+			disabled={disabled}
 			invalid={!!error}
 			onValueChange={(details) => onChange(details.value)}
 		>
@@ -150,12 +155,12 @@
 	{:else if type === "number-input"}
 		<NumberInput
 			value={value != null ? String(value) : undefined}
-			{placeholder}
-			{disabled}
-			{required}
-			{min}
-			{max}
-			{step}
+			placeholder={placeholder}
+			disabled={disabled}
+			required={required}
+			min={min}
+			max={max}
+			step={step}
 			invalid={!!error}
 			aria-label={label}
 			onValueChange={(details) => onChange(details.valueAsNumber)}
@@ -163,8 +168,8 @@
 	{:else if type === "password"}
 		<PasswordInput
 			value={value as string}
-			{placeholder}
-			{disabled}
+			placeholder={placeholder}
+			disabled={disabled}
 			invalid={!!error}
 			oninput={onInput}
 			onblur={onBlur}
@@ -172,19 +177,20 @@
 	{:else if type === "switch"}
 		<Switch
 			checked={value as boolean}
-			{disabled}
+			disabled={disabled}
 			invalid={!!error}
 			onCheckedChange={(details) => onChange(details.checked)}
 		>
-			{#if label}{label}{#if required}<span class="text-fg-error">*</span>{/if}{/if}
+			{#if label}{label}{#if required}<span class="text-fg-error">*</span
+					>{/if}{/if}
 		</Switch>
 	{:else if type === "slider"}
 		<Slider.Root
 			value={Array.isArray(value) ? (value as number[]) : [value as number]}
-			{disabled}
-			{min}
-			{max}
-			{step}
+			disabled={disabled}
+			min={min}
+			max={max}
+			step={step}
 			aria-label={label}
 			onValueChange={(details) => onChange(details.value.length === 1 ? details.value[0] : details.value)}
 		>
@@ -198,19 +204,19 @@
 	{:else if type === "pin-input"}
 		<PinInput
 			value={value as string[]}
-			{disabled}
-			{count}
+			disabled={disabled}
+			count={count}
 			invalid={!!error}
 			aria-label={label}
 			onValueChange={(details) => onChange(details.value)}
 		/>
 	{:else}
 		<Input
-			{type}
+			type={type}
 			value={value as string}
-			{placeholder}
-			{disabled}
-			{required}
+			placeholder={placeholder}
+			disabled={disabled}
+			required={required}
 			invalid={!!error}
 			oninput={onInput}
 			onblur={onBlur}

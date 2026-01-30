@@ -1,114 +1,114 @@
 <script lang="ts">
-	import type { HTMLAttributes } from "svelte/elements";
-	import { getContext } from "svelte";
-	import { tv } from "tailwind-variants";
-	import Check from "phosphor-svelte/lib/Check";
-	import {
-		CHECKBOX_CARD_CTX,
-		type CheckboxCardVariants,
-	} from "./checkbox-card-root.svelte";
+import type { HTMLAttributes } from "svelte/elements";
+import { getContext } from "svelte";
+import { tv } from "tailwind-variants";
+import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+import {
+	CHECKBOX_CARD_CTX,
+	type CheckboxCardVariants,
+} from "./checkbox-card-root.svelte";
 
-	const checkboxCardIndicator = tv({
-		base: [
-			"shrink-0",
-			"justify-center",
-			"items-center",
-			"inline-flex",
-			"rounded",
-			"border",
-			"focus-visible:outline-offset-2",
-			"focus-visible:outline-1",
-			"focus-visible:outline-solid",
-			"focus-visible:outline-(--c-solid)",
-			"disabled:opacity-50",
-			"fill-none",
-			"stroke-current",
-			"stroke-[3px]",
-			"[stroke-linecap:round]",
-			"[stroke-linejoin:round]",
-			"text-white",
-		],
-		variants: {
-			size: {
-				sm: "w-3.5 h-3.5",
-				md: "w-4 h-4 p-0.5",
-				lg: "w-5 h-5 p-0.5",
-			},
-			variant: {
-				subtle: "",
-				surface: "",
-				outline: "",
-			},
-			checked: {
-				true: "",
-				false: "",
-			},
-			disabled: {
-				true: "opacity-50",
-				false: "",
-			},
+const checkboxCardIndicator = tv({
+	base: [
+		"shrink-0",
+		"justify-center",
+		"items-center",
+		"inline-flex",
+		"rounded",
+		"border",
+		"focus-visible:outline-offset-2",
+		"focus-visible:outline-1",
+		"focus-visible:outline-solid",
+		"focus-visible:outline-(--c-solid)",
+		"disabled:opacity-50",
+		"fill-none",
+		"stroke-current",
+		"stroke-[3px]",
+		"[stroke-linecap:round]",
+		"[stroke-linejoin:round]",
+		"text-white",
+	],
+	variants: {
+		size: {
+			sm: "size-3.5",
+			md: "size-4 p-0.5",
+			lg: "size-5 p-0.5",
 		},
-		compoundVariants: [
-			// Unchecked - gray border for all variants
-			{
-				checked: false,
-				class: "border-border-emphasized",
-			},
-			// Checked - solid background for all variants
-			{
-				checked: true,
-				class: "bg-(--c-solid) border-(--c-solid)",
-			},
-		],
-		defaultVariants: {
-			size: "md",
-			variant: "outline",
+		variant: {
+			subtle: "",
+			surface: "",
+			outline: "",
+		},
+		checked: {
+			true: "",
+			false: "",
+		},
+		disabled: {
+			true: "opacity-50",
+			false: "",
+		},
+	},
+	compoundVariants: [
+		// Unchecked - gray border for all variants
+		{
 			checked: false,
-			disabled: false,
+			class: "border-border-emphasized",
 		},
-	});
+		// Checked - solid background for all variants
+		{
+			checked: true,
+			class: "bg-(--c-solid) border-(--c-solid)",
+		},
+	],
+	defaultVariants: {
+		size: "md",
+		variant: "outline",
+		checked: false,
+		disabled: false,
+	},
+});
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-	}
+interface Props extends HTMLAttributes<HTMLDivElement> {
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+}
 
-	let { class: className, ...restProps }: Props = $props();
+let { class: className, ...restProps }: Props = $props();
 
-	const ctx = getContext<{
-		size: CheckboxCardVariants["size"];
-		variant: CheckboxCardVariants["variant"];
-		checked: boolean;
-		disabled: boolean;
-	}>(CHECKBOX_CARD_CTX);
+const ctx = getContext<{
+	size: CheckboxCardVariants["size"];
+	variant: CheckboxCardVariants["variant"];
+	checked: boolean;
+	disabled: boolean;
+}>(CHECKBOX_CARD_CTX);
 
-	const size = $derived(ctx?.size ?? "md");
-	const variant = $derived(ctx?.variant ?? "outline");
-	const checked = $derived(ctx?.checked ?? false);
-	const disabled = $derived(ctx?.disabled ?? false);
+const size = $derived(ctx?.size ?? "md");
+const variant = $derived(ctx?.variant ?? "outline");
+const checked = $derived(ctx?.checked ?? false);
+const disabled = $derived(ctx?.disabled ?? false);
 
-	const iconSize = {
-		sm: "size-2.5",
-		md: "size-3",
-		lg: "size-3.5",
-	} as const;
+const iconSize = {
+	sm: "size-2.5",
+	md: "size-3",
+	lg: "size-3.5",
+} as const;
 
-	const finalClass = $derived(
-		checkboxCardIndicator({
-			size,
-			variant,
-			checked,
-			disabled,
-			class: className,
-		}),
-	);
+const finalClass = $derived(
+	checkboxCardIndicator({
+		size,
+		variant,
+		checked,
+		disabled,
+		class: className,
+	}),
+);
 </script>
 
 <div class={finalClass} {...restProps}>
 	{#if checked}
-		<Check
+		<CheckIcon
 			class={iconSize[size ?? "md"]}
 			weight="bold"
 			aria-hidden="true"

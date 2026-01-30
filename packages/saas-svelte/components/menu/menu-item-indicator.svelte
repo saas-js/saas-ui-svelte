@@ -1,24 +1,24 @@
 <script lang="ts">
-	import { Menu } from "@ark-ui/svelte/menu";
-	import { getContext, type Snippet } from "svelte";
-	import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
-	import Check from "phosphor-svelte/lib/Check";
+import { Menu } from "@ark-ui/svelte/menu";
+import { getContext, type Snippet } from "svelte";
+import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
+import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 
-	interface Props {
-		/**
-		 * Custom indicator content.
-		 */
-		children?: Snippet;
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-		[key: string]: any;
-	}
+interface Props {
+	/**
+	 * Custom indicator content.
+	 */
+	children?: Snippet;
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+	[key: string]: any;
+}
 
-	let { children, class: className, ...rest }: Props = $props();
+let { children, class: className, ...rest }: Props = $props();
 
-	const ctx = getContext<MenuContext>(MENU_CTX);
+const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
 <Menu.ItemIndicator
@@ -28,6 +28,6 @@
 	{#if children}
 		{@render children()}
 	{:else}
-		<Check class="w-3.5 h-3.5" weight="bold" aria-hidden="true" />
+		<CheckIcon class="size-3.5" weight="bold" aria-hidden="true" />
 	{/if}
 </Menu.ItemIndicator>

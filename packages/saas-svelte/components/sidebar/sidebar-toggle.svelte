@@ -1,26 +1,26 @@
 <script lang="ts">
-	import { getContext } from "svelte";
-	import type { Snippet } from "svelte";
-	import type { HTMLAttributes } from "svelte/elements";
-	import { SIDEBAR_CTX, type SidebarContext } from "./sidebar-root.svelte";
+import { getContext } from "svelte";
+import type { Snippet } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
+import { SIDEBAR_CTX, type SidebarContext } from "./sidebar-root.svelte";
 
-	interface Props extends Omit<HTMLAttributes<HTMLButtonElement>, "onclick"> {
-		/**
-		 * Callback when the toggle is clicked
-		 */
-		onclick?: (collapsed: boolean) => void;
-		/**
-		 * The icon or content to display in the toggle
-		 */
-		children?: Snippet;
-	}
+interface Props extends Omit<HTMLAttributes<HTMLButtonElement>, "onclick"> {
+	/**
+	 * Callback when the toggle is clicked
+	 */
+	onclick?: (collapsed: boolean) => void;
+	/**
+	 * The icon or content to display in the toggle
+	 */
+	children?: Snippet;
+}
 
-	let { onclick, children, class: className, ...restProps }: Props = $props();
+let { onclick, children, class: className, ...restProps }: Props = $props();
 
-	const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
-	const finalClass = $derived(
-		ctx?.styles?.toggle({ class: className as string }),
-	);
+const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
+const finalClass = $derived(
+	ctx?.styles?.toggle({ class: className as string }),
+);
 </script>
 
 <button

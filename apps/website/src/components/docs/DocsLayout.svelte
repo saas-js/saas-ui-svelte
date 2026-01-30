@@ -9,6 +9,11 @@
 	import { HStack } from "@saas-ui/svelte/layout/stack";
 	import List from "phosphor-svelte/lib/ListIcon";
 	import X from "phosphor-svelte/lib/X";
+	import {
+		getSideMenuOpen,
+		setSideMenuOpen,
+		closeAllMobileMenus,
+	} from "../../lib/mobile-nav.svelte";
 
 	interface TocItem {
 		label: string;
@@ -32,7 +37,16 @@
 	}: Props = $props();
 
 	const navGroups = getDocsNavigation();
-	let mobileNavOpen = $state(false);
+	let mobileNavOpen = $derived(getSideMenuOpen());
+
+	$effect(() => {
+		if (typeof window === "undefined") return;
+		const mq = matchMedia("(min-width: 1024px)");
+		const close = () => mq.matches && closeAllMobileMenus();
+		close();
+		mq.addEventListener("change", close);
+		return () => mq.removeEventListener("change", close);
+	});
 </script>
 
 <Box class="relative w-full px-4 mx-auto max-w-8xl md:px-6 lg:px-8">
@@ -64,8 +78,9 @@
 	<Button
 		variant="surface"
 		size="md"
+		icon
 		class="rounded-lg shadow-lg"
-		onclick={() => (mobileNavOpen = !mobileNavOpen)}
+		onclick={() => setSideMenuOpen(!mobileNavOpen)}
 		aria-label={mobileNavOpen ? "Close navigation" : "Open navigation"}
 	>
 		{#if mobileNavOpen}
@@ -78,20 +93,9 @@
 
 <!-- Mobile Navigation Panel -->
 {#if mobileNavOpen}
-	<Box class="fixed inset-0 z-40 lg:hidden pt-14">
-		<!-- Backdrop -->
-		<Button
-			variant="ghost"
-			class="absolute inset-0 w-full h-full rounded-none bg-bg-backdrop"
-			onclick={() => (mobileNavOpen = false)}
-			aria-label="Close navigation"
-		/>
-		<!-- Panel -->
-		<Box
-			as="aside"
-			class="absolute bottom-0 left-0 w-40 overflow-y-auto border-r top-14 max-w-40 bg-bg-default border-border-default"
-		>
-			<DocsSidebar groups={navGroups} {currentPath} />
-		</Box>
+	<Box
+		class="fixed left-0 z-40 lg:hidden top-14 bottom-0 w-40 max-w-40 overflow-y-auto border-r bg-bg-default border-border-default animate-fade-in"
+	>
+		<DocsSidebar groups={navGroups} {currentPath} />
 	</Box>
 {/if}

@@ -1,26 +1,24 @@
 <script lang="ts">
-	import type { Snippet } from "svelte";
-	import { twMerge } from "tailwind-merge";
-	import { getTableContext } from "./table.svelte";
+import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
+import { getTableContext } from "./table.svelte";
 
-	interface Props {
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-		/**
-		 * Footer content.
-		 */
-		children?: Snippet;
-	}
+interface Props {
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+	/**
+	 * Footer content.
+	 */
+	children?: Snippet;
+}
 
-	let { class: className, children }: Props = $props();
+let { class: className, children }: Props = $props();
 
-	const ctx = getTableContext();
+const ctx = getTableContext();
 </script>
 
 <tfoot class={twMerge(ctx?.styles.footer(), className)}>
-	{#if children}
-		{@render children()}
-	{/if}
+	{@render children?.()}
 </tfoot>

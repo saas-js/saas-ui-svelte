@@ -1,30 +1,30 @@
 <script lang="ts">
-	import { HoverCard } from "@ark-ui/svelte/hover-card";
-	import type { Snippet } from "svelte";
+import { HoverCard } from "@ark-ui/svelte/hover-card";
+import type { Snippet } from "svelte";
 
-	interface Props {
-		/**
-		 * The trigger element content.
-		 */
-		children: Snippet;
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-		/**
-		 * Additional inline styles to apply.
-		 */
-		style?: string;
-		[key: string]: unknown;
-	}
+interface Props {
+	/**
+	 * The trigger element content.
+	 */
+	children: Snippet;
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+	/**
+	 * Additional inline styles to apply.
+	 */
+	style?: string;
+	[key: string]: unknown;
+}
 
-	let { children, class: className, style, ...rest }: Props = $props();
+let { children, class: className, style, ...rest }: Props = $props();
 </script>
 
 <HoverCard.Trigger
 	as="span"
 	class="inline rounded outline-none {className}"
-	{style}
+	style={style}
 	{...rest}
 >
 	{@render children()}

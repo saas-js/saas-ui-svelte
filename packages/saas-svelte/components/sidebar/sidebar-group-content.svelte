@@ -1,22 +1,22 @@
 <script lang="ts">
-	import { getContext } from "svelte";
-	import type { Snippet } from "svelte";
-	import type { HTMLAttributes } from "svelte/elements";
-	import { SIDEBAR_CTX, type SidebarContext } from "./sidebar-root.svelte";
+import { getContext } from "svelte";
+import type { Snippet } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
+import { SIDEBAR_CTX, type SidebarContext } from "./sidebar-root.svelte";
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
-		/**
-		 * The content to render inside the group content area
-		 */
-		children?: Snippet;
-	}
+interface Props extends HTMLAttributes<HTMLDivElement> {
+	/**
+	 * The content to render inside the group content area
+	 */
+	children?: Snippet;
+}
 
-	let { children, class: className, ...restProps }: Props = $props();
+let { children, class: className, ...restProps }: Props = $props();
 
-	const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
-	const finalClass = $derived(
-		ctx?.styles?.groupContent({ class: className as string }),
-	);
+const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
+const finalClass = $derived(
+	ctx?.styles?.groupContent({ class: className as string }),
+);
 </script>
 
 <div class={finalClass} {...restProps}>

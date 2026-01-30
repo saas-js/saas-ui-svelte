@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { Dialog } from "@ark-ui/svelte";
-	import X from "phosphor-svelte/lib/X";
-	import { twMerge } from "tailwind-merge";
+import { Dialog } from "@ark-ui/svelte";
+import XIcon from "phosphor-svelte/lib/XIcon";
+import { twMerge } from "tailwind-merge";
 
-	interface Props {
-		class?: string;
-		[key: string]: any;
-	}
+interface Props {
+	class?: string;
+	[key: string]: any;
+}
 
-	let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: Props = $props();
 </script>
 
 <Dialog.CloseTrigger
@@ -48,6 +48,6 @@
 	)}
 	{...rest}
 >
-	<X class="w-4 h-4 shrink-0" weight="bold" />
+	<XIcon class="size-4 shrink-0" weight="bold" />
 	<span class="sr-only">Close</span>
 </Dialog.CloseTrigger>

@@ -27,7 +27,7 @@
 
 	function isActive(href: string | undefined): boolean {
 		if (!href) return false;
-		return currentPath === href || currentPath.startsWith(href + "/");
+		return currentPath === href;
 	}
 
 	function hasActiveChild(items: NavItem[]): boolean {

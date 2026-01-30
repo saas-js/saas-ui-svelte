@@ -1,59 +1,57 @@
 <script lang="ts">
-	import { Steps } from "@ark-ui/svelte/steps";
-	import { getContext, type Snippet, type Component } from "svelte";
-	import { twMerge } from "tailwind-merge";
-	import { STEPS_CTX, type StepsContext } from "./steps-root.svelte";
-	import StepsTrigger from "./steps-trigger.svelte";
-	import StepsSeparator from "./steps-separator.svelte";
-	import Check from "phosphor-svelte/lib/Check";
-	import { Icon } from "$saas/components/icon";
+import { Steps } from "@ark-ui/svelte/steps";
+import { getContext, type Snippet, type Component } from "svelte";
+import { twMerge } from "tailwind-merge";
+import { STEPS_CTX, type StepsContext } from "./steps-root.svelte";
+import StepsTrigger from "./steps-trigger.svelte";
+import StepsSeparator from "./steps-separator.svelte";
+import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+import { Icon } from "$saas/components/icon";
 
-	interface Props {
-		/**
-		 * The index of this step (0-indexed).
-		 */
-		index: number;
-		/**
-		 * The title of this step.
-		 */
-		title?: string;
-		/**
-		 * The description of this step.
-		 */
-		description?: string;
-		/**
-		 * Custom icon component to display instead of number.
-		 */
-		icon?: Component<any>;
-		/**
-		 * Custom content for the step item.
-		 */
-		children?: Snippet;
-		/**
-		 * Additional CSS classes.
-		 */
-		class?: string;
-		[key: string]: any;
-	}
+interface Props {
+	/**
+	 * The index of this step (0-indexed).
+	 */
+	index: number;
+	/**
+	 * The title of this step.
+	 */
+	title?: string;
+	/**
+	 * The description of this step.
+	 */
+	description?: string;
+	/**
+	 * Custom icon component to display instead of number.
+	 */
+	icon?: Component<any>;
+	/**
+	 * Custom content for the step item.
+	 */
+	children?: Snippet;
+	/**
+	 * Additional CSS classes.
+	 */
+	class?: string;
+	[key: string]: any;
+}
 
-	let {
-		index,
-		title,
-		description,
-		icon,
-		children,
-		class: className,
-		"aria-label": ariaLabel,
-		...restProps
-	}: Props = $props();
+let {
+	index,
+	title,
+	description,
+	icon,
+	children,
+	class: className,
+	"aria-label": ariaLabel,
+	...restProps
+}: Props = $props();
 
-	const ctx = getContext<StepsContext>(STEPS_CTX);
-	const finalClass = $derived(
-		twMerge(ctx?.styles?.item(), className as string),
-	);
+const ctx = getContext<StepsContext>(STEPS_CTX);
+const finalClass = $derived(twMerge(ctx?.styles?.item(), className as string));
 </script>
 
-<Steps.Item {index} class={finalClass} {...restProps}>
+<Steps.Item index={index} class={finalClass} {...restProps}>
 	{#if children}
 		{@render children()}
 	{:else}
@@ -61,29 +59,29 @@
 			{#snippet render(itemCtx)}
 				{@const state = itemCtx()}
 				{@const isSubtle = ctx?.variant === "subtle"}
-				<StepsTrigger {index} aria-label={ariaLabel ?? title}>
+				<StepsTrigger index={index} aria-label={ariaLabel ?? title}>
 					<Steps.Indicator
 						class={twMerge(
 							ctx?.styles?.indicator(),
 							// Subtle variant base: no border, muted bg
-							isSubtle && "border-0 bg-bg-muted text-fg-muted",
+							isSubtle && "bg-bg-muted text-fg-muted border-0",
 							isSubtle && state.current && "text-fg-default",
 							isSubtle &&
 								state.completed &&
 								"bg-bg-emphasized text-fg-default",
 							// Solid variant base: has border
 							!isSubtle &&
-								"border-2 border-border-default bg-bg-default text-fg-muted",
+								"border-border-default bg-bg-default text-fg-muted border-2",
 							!isSubtle &&
 								state.current &&
-								"border-(--c-solid) bg-bg-muted text-fg-default",
+								"bg-bg-muted text-fg-default border-(--c-solid)",
 							!isSubtle &&
 								state.completed &&
-								"bg-(--c-solid) border-0 text-(--c-contrast)",
+								"border-0 bg-(--c-solid) text-(--c-contrast)",
 						)}
 					>
 						{#if state.completed}
-							<Icon as={Check} size="sm" />
+							<Icon as={CheckIcon} size="sm" />
 						{:else if icon}
 							<Icon as={icon} size="sm" />
 						{:else}
@@ -104,7 +102,7 @@
 					{/if}
 				</StepsTrigger>
 				<StepsSeparator
-					{index}
+					index={index}
 					last={state.last}
 					completed={state.completed}
 				/>

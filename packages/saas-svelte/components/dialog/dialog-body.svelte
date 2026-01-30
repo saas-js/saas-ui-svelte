@@ -1,19 +1,19 @@
 <script lang="ts">
-	import { getContext, type Snippet } from "svelte";
-	import type { HTMLAttributes } from "svelte/elements";
-	import { twMerge } from "tailwind-merge";
-	import { DIALOG_CTX } from "./dialog-root.svelte";
+import { getContext, type Snippet } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
+import { DIALOG_CTX } from "./dialog-root.svelte";
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
-		children: Snippet;
-		class?: string;
-	}
+interface Props extends HTMLAttributes<HTMLDivElement> {
+	children: Snippet;
+	class?: string;
+}
 
-	let { children, class: className, ...rest }: Props = $props();
+let { children, class: className, ...rest }: Props = $props();
 
-	const ctx = getContext(DIALOG_CTX) as {
-		scrollBehavior: "inside" | "outside";
-	};
+const ctx = getContext(DIALOG_CTX) as {
+	scrollBehavior: "inside" | "outside";
+};
 </script>
 
 <div

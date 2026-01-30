@@ -1,103 +1,103 @@
 <script module lang="ts">
-	import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
-	/**
-	 * Skeleton styles using tailwind-variants.
-	 * Used to render a placeholder while content is loading.
-	 */
-	export const skeleton = tv({
-		base: ["rounded-md", "shrink-0", "before:invisible", "after:invisible"],
-		variants: {
-			/**
-			 * The animation variant.
-			 * @default "pulse"
-			 */
-			variant: {
-				pulse: [
-					"bg-bg-emphasized",
-					"animate-[pulse_1.2s_cubic-bezier(0.4,0,0.6,1)_infinite]",
-				],
-				shine: [
-					"bg-clip-padding",
-					"animate-[skeleton-shine_5s_ease-in-out_infinite]",
-				],
-				none: "bg-bg-emphasized",
-			},
-			/**
-			 * Whether the skeleton is in loading state.
-			 * @default true
-			 */
-			loading: {
-				true: ["cursor-default", "pointer-events-none", "select-none"],
-				false: "",
-			},
-		},
-		defaultVariants: {
-			variant: "pulse",
-			loading: true,
-		},
-	});
-
-	export type SkeletonVariants = VariantProps<typeof skeleton>;
-</script>
-
-<script lang="ts">
-	import type { HTMLAttributes } from "svelte/elements";
-	import type { Snippet } from "svelte";
-	import { twMerge } from "tailwind-merge";
-
-	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
-		/**
-		 * The content to render when not loading.
-		 */
-		children?: Snippet;
-		/**
-		 * Whether to show the skeleton loading state.
-		 * @default true
-		 */
-		loading?: boolean;
+/**
+ * Skeleton styles using tailwind-variants.
+ * Used to render a placeholder while content is loading.
+ */
+export const skeleton = tv({
+	base: ["rounded-md", "shrink-0", "before:invisible", "after:invisible"],
+	variants: {
 		/**
 		 * The animation variant.
 		 * @default "pulse"
 		 */
-		variant?: SkeletonVariants["variant"];
+		variant: {
+			pulse: [
+				"bg-bg-emphasized",
+				"animate-[pulse_1.2s_cubic-bezier(0.4,0,0.6,1)_infinite]",
+			],
+			shine: [
+				"bg-clip-padding",
+				"animate-[skeleton-shine_5s_ease-in-out_infinite]",
+			],
+			none: "bg-bg-emphasized",
+		},
 		/**
-		 * The height of the skeleton.
+		 * Whether the skeleton is in loading state.
+		 * @default true
 		 */
-		height?: string;
-		/**
-		 * The width of the skeleton.
-		 */
-		width?: string;
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-	}
+		loading: {
+			true: ["cursor-default", "pointer-events-none", "select-none"],
+			false: "",
+		},
+	},
+	defaultVariants: {
+		variant: "pulse",
+		loading: true,
+	},
+});
 
-	let {
-		children,
-		loading = true,
-		variant = "pulse",
-		height,
-		width,
-		class: className,
-		...restProps
-	}: Props = $props();
+export type SkeletonVariants = VariantProps<typeof skeleton>;
+</script>
 
-	// Only apply skeleton styles when loading, otherwise just the fade-in
-	const classes = $derived(
-		loading
-			? twMerge(skeleton({ variant, loading: true }), className)
-			: twMerge("animate-[fade-in_0.2s_ease-out]", className),
-	);
+<script lang="ts">
+import type { HTMLAttributes } from "svelte/elements";
+import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
-	// Shine gradient needs inline style as tailwind-merge strips the gradient class
-	const shineStyle = $derived(
-		loading && variant === "shine"
-			? "background-image: linear-gradient(270deg, var(--color-bg-muted), var(--color-bg-emphasized), var(--color-bg-emphasized), var(--color-bg-muted)); background-size: 400% 100%;"
-			: "",
-	);
+interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
+	/**
+	 * The content to render when not loading.
+	 */
+	children?: Snippet;
+	/**
+	 * Whether to show the skeleton loading state.
+	 * @default true
+	 */
+	loading?: boolean;
+	/**
+	 * The animation variant.
+	 * @default "pulse"
+	 */
+	variant?: SkeletonVariants["variant"];
+	/**
+	 * The height of the skeleton.
+	 */
+	height?: string;
+	/**
+	 * The width of the skeleton.
+	 */
+	width?: string;
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+}
+
+let {
+	children,
+	loading = true,
+	variant = "pulse",
+	height,
+	width,
+	class: className,
+	...restProps
+}: Props = $props();
+
+// Only apply skeleton styles when loading, otherwise just the fade-in
+const classes = $derived(
+	loading
+		? twMerge(skeleton({ variant, loading: true }), className)
+		: twMerge("animate-[fade-in_0.2s_ease-out]", className),
+);
+
+// Shine gradient needs inline style as tailwind-merge strips the gradient class
+const shineStyle = $derived(
+	loading && variant === "shine"
+		? "background-image: linear-gradient(270deg, var(--color-bg-muted), var(--color-bg-emphasized), var(--color-bg-emphasized), var(--color-bg-muted)); background-size: 400% 100%;"
+		: "",
+);
 </script>
 
 <div

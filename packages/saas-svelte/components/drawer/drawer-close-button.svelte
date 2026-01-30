@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { Dialog } from "@ark-ui/svelte";
-	import X from "phosphor-svelte/lib/X";
-	import { twMerge } from "tailwind-merge";
+import { Dialog } from "@ark-ui/svelte";
+import XIcon from "phosphor-svelte/lib/XIcon";
+import { twMerge } from "tailwind-merge";
 
-	interface Props {
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-		[key: string]: any;
-	}
+interface Props {
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+	[key: string]: any;
+}
 
-	let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: Props = $props();
 </script>
 
 <Dialog.CloseTrigger
@@ -26,8 +26,7 @@
 		"items-center",
 		"justify-center",
 		"shrink-0",
-		"gap-y-2",
-		"gap-x-2",
+		"gap-2",
 		"cursor-pointer",
 		"text-fg-muted",
 		"text-sm",
@@ -51,6 +50,6 @@
 	)}
 	{...rest}
 >
-	<X class="w-4 h-4 shrink-0" weight="bold" />
+	<XIcon class="size-4 shrink-0" weight="bold" />
 	<span class="sr-only">Close</span>
 </Dialog.CloseTrigger>

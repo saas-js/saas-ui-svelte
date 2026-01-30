@@ -1,31 +1,31 @@
 <script lang="ts">
-	import { Steps } from "@ark-ui/svelte/steps";
-	import { getContext, type Snippet } from "svelte";
-	import { twMerge } from "tailwind-merge";
-	import { STEPS_CTX, type StepsContext } from "./steps-root.svelte";
+import { Steps } from "@ark-ui/svelte/steps";
+import { getContext, type Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
+import { STEPS_CTX, type StepsContext } from "./steps-root.svelte";
 
-	interface Props {
-		/**
-		 * The index of this step.
-		 */
-		index: number;
-		/**
-		 * The content of the trigger.
-		 */
-		children?: Snippet;
-		/**
-		 * Additional CSS classes.
-		 */
-		class?: string;
-		[key: string]: any;
-	}
+interface Props {
+	/**
+	 * The index of this step.
+	 */
+	index: number;
+	/**
+	 * The content of the trigger.
+	 */
+	children?: Snippet;
+	/**
+	 * Additional CSS classes.
+	 */
+	class?: string;
+	[key: string]: any;
+}
 
-	let { index, children, class: className, ...restProps }: Props = $props();
+let { index, children, class: className, ...restProps }: Props = $props();
 
-	const ctx = getContext<StepsContext>(STEPS_CTX);
-	const finalClass = $derived(
-		twMerge(ctx?.styles?.trigger(), className as string),
-	);
+const ctx = getContext<StepsContext>(STEPS_CTX);
+const finalClass = $derived(
+	twMerge(ctx?.styles?.trigger(), className as string),
+);
 </script>
 
 {#snippet customTrigger(getProps: () => Record<string, any>)}
@@ -43,9 +43,7 @@
 		type="button"
 		{...restProps}
 	>
-		{#if children}
-			{@render children()}
-		{/if}
+		{@render children?.()}
 	</button>
 {/snippet}
 

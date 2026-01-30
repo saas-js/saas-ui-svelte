@@ -1,40 +1,37 @@
 <script lang="ts">
-	import { getContext } from "svelte";
-	import type { Snippet } from "svelte";
-	import type { HTMLAttributes } from "svelte/elements";
-	import {
-		SIDEBAR_CTX,
-		type SidebarContext,
-		sidebar,
-	} from "./sidebar-root.svelte";
+import { getContext } from "svelte";
+import type { Snippet } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
+import {
+	SIDEBAR_CTX,
+	type SidebarContext,
+	sidebar,
+} from "./sidebar-root.svelte";
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
-		/**
-		 * Whether this button is currently active
-		 * @default false
-		 */
-		active?: boolean;
-		/**
-		 * The content to render inside the nav button (icon + label)
-		 */
-		children?: Snippet;
-	}
+interface Props extends HTMLAttributes<HTMLDivElement> {
+	/**
+	 * Whether this button is currently active
+	 * @default false
+	 */
+	active?: boolean;
+	/**
+	 * The content to render inside the nav button (icon + label)
+	 */
+	children?: Snippet;
+}
 
-	let {
-		active = false,
-		children,
-		class: className,
-		...restProps
-	}: Props = $props();
+let {
+	active = false,
+	children,
+	class: className,
+	...restProps
+}: Props = $props();
 
-	const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
-	const styles = $derived(ctx?.styles ?? sidebar());
-	const activeClass = "bg-bg-subtle text-fg-default";
-	const finalClass = $derived(
-		[styles.item(), active && activeClass, className]
-			.filter(Boolean)
-			.join(" "),
-	);
+const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
+const styles = $derived(ctx?.styles ?? sidebar());
+const finalClass = $derived(
+	styles.item({ active, class: className as string }),
+);
 </script>
 
 <div

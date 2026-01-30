@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 import svelte from "@astrojs/svelte";
-import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
@@ -8,7 +7,7 @@ import path from "path";
 export default defineConfig({
 	site: "https://saas-js.github.io",
 	base: process.env.NODE_ENV === "production" ? "/saas-ui-svelte" : "",
-	integrations: [svelte(), react(), mdx()],
+	integrations: [svelte(), mdx()],
 	prefetch: true,
 	experimental: {
 		clientPrerender: true,

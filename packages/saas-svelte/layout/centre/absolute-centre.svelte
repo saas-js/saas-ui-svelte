@@ -1,53 +1,57 @@
-<script lang="ts">
-	import type { Snippet } from "svelte";
-	import { twMerge } from "tailwind-merge";
+<script module lang="ts">
+import { tv, type VariantProps } from "tailwind-variants";
 
-	interface Props {
-		/**
-		 * The axis to center on.
-		 * - "horizontal": Centers horizontally only
-		 * - "vertical": Centers vertically only
-		 * - "both": Centers both horizontally and vertically
-		 * @default "both"
-		 */
-		axis?: "horizontal" | "vertical" | "both";
-		/**
-		 * The content to render inside the absolute center container.
-		 */
-		children?: Snippet;
-		/**
-		 * Additional CSS classes to apply.
-		 */
-		class?: string;
-		/**
-		 * Additional HTML attributes to spread onto the element.
-		 */
-		[key: string]: unknown;
-	}
+export const absoluteCentre = tv({
+	base: "absolute flex items-center justify-center",
+	variants: {
+		axis: {
+			horizontal: "left-1/2 -translate-x-1/2",
+			vertical: "top-1/2 -translate-y-1/2",
+			both: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
+		},
+	},
+	defaultVariants: {
+		axis: "both",
+	},
+});
 
-	let {
-		axis = "both",
-		children,
-		class: className,
-		...restProps
-	}: Props = $props();
-
-	const positionClasses = $derived.by(() => {
-		switch (axis) {
-			case "horizontal":
-				return "absolute left-1/2 -translate-x-1/2";
-			case "vertical":
-				return "absolute top-1/2 -translate-y-1/2";
-			case "both":
-			default:
-				return "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2";
-		}
-	});
+export type AbsoluteCentreVariants = VariantProps<typeof absoluteCentre>;
 </script>
 
-<div
-	class={twMerge(positionClasses, "flex items-center justify-center", className)}
-	{...restProps}
->
+<script lang="ts">
+import type { Snippet } from "svelte";
+
+interface Props {
+	/**
+	 * The axis to center on.
+	 * - "horizontal": Centers horizontally only
+	 * - "vertical": Centers vertically only
+	 * - "both": Centers both horizontally and vertically
+	 * @default "both"
+	 */
+	axis?: AbsoluteCentreVariants["axis"];
+	/**
+	 * The content to render inside the absolute center container.
+	 */
+	children?: Snippet;
+	/**
+	 * Additional CSS classes to apply.
+	 */
+	class?: string;
+	/**
+	 * Additional HTML attributes to spread onto the element.
+	 */
+	[key: string]: unknown;
+}
+
+let {
+	axis = "both",
+	children,
+	class: className,
+	...restProps
+}: Props = $props();
+</script>
+
+<div class={absoluteCentre({ axis, class: className })} {...restProps}>
 	{@render children?.()}
 </div>

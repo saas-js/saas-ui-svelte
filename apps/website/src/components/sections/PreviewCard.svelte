@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
+	import { Card } from "@saas-ui/svelte/components/card";
 	import { Centre } from "@saas-ui/svelte/layout/centre";
 
 	interface Props {
@@ -9,10 +10,8 @@
 	let { children }: Props = $props();
 </script>
 
-<div
-	class="relative flex flex-col p-8 border rounded-lg border-border-default bg-bg-muted w-75 h-75 shrink-0"
->
+<Card.Root variant="outline" class="p-8 bg-bg-muted w-75 h-75 shrink-0">
 	<Centre class="w-full h-full">
 		{@render children?.()}
 	</Centre>
-</div>
+</Card.Root>
