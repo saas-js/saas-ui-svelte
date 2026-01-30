@@ -173,7 +173,7 @@ const groupContext = getContext<AvatarGroupContext>(AVATAR_GROUP_CTX);
 
 const size = $derived(groupContext?.size ?? propSize ?? "md");
 const borderless = $derived(groupContext?.borderless ?? true);
-const variant = propVariant ?? "solid";
+const variant = $derived(propVariant ?? "solid");
 
 const initials = $derived(
 	name
