@@ -20,7 +20,7 @@ let { story, code, codeHtml, children }: Props = $props();
 const hasCode = $derived(!!code && !!codeHtml);
 </script>
 
-<Box class="my-6 @container [&_.tab-trigger]:text-fg-muted [&_.tab-trigger]:bg-transparent [&_.tab-trigger]:border-transparent [&_.tab-trigger:hover]:text-fg-default [&_.tab-trigger[data-selected]]:bg-bg-default [&_.tab-trigger[data-selected]]:text-fg-default [&_.tab-trigger[data-selected]]:border-t-border-default [&_.tab-trigger[data-selected]]:border-l-border-default [&_.tab-trigger[data-selected]]:border-r-border-default [&_.tab-trigger[data-selected]]:border-b-transparent [&_.shiki-wrapper_pre]:bg-transparent! [&_.shiki-wrapper_pre.shiki]:bg-transparent! [&_pre[style]]:bg-transparent!">
+<Box class="my-6 @container [content-visibility:auto] [contain-intrinsic-size:auto_300px] [&_.tab-trigger]:text-fg-muted [&_.tab-trigger]:bg-transparent [&_.tab-trigger]:border-transparent [&_.tab-trigger:hover]:text-fg-default [&_.tab-trigger[data-selected]]:bg-bg-default [&_.tab-trigger[data-selected]]:text-fg-default [&_.tab-trigger[data-selected]]:border-t-border-default [&_.tab-trigger[data-selected]]:border-l-border-default [&_.tab-trigger[data-selected]]:border-r-border-default [&_.tab-trigger[data-selected]]:border-b-transparent [&_.shiki-wrapper_pre]:bg-transparent! [&_.shiki-wrapper_pre.shiki]:bg-transparent! [&_pre[style]]:bg-transparent!">
 	{#if hasCode}
 		<Tabs.Root defaultValue="preview" variant="enclosed" size="sm">
 			<Tabs.List class="tabs-list">

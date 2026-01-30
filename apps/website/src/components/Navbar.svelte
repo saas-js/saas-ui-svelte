@@ -25,7 +25,7 @@ const navLinks = [
 
 <Navbar.Root
 	bordered
-	class="bg-bg-overlay fixed top-0 right-0 left-0 z-50 backdrop-blur-md"
+	class="bg-bg-default/95 fixed top-0 right-0 left-0 z-50"
 >
 	<Navbar.Content maxW="max-w-screen-2xl mx-auto">
 		<Navbar.Brand>

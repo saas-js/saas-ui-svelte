@@ -3,6 +3,15 @@
 @source "../../../../packages/saas-svelte";
 @source "../../../storybook/stories/wrappers";
 
+/* Scroll performance optimizations */
+html {
+	scroll-behavior: auto;
+}
+
+main {
+	contain: layout style;
+}
+
 /* Shiki code block styles */
 .shiki-wrapper pre {
 	padding: 0;
