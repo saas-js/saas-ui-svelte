@@ -2,3 +2,23 @@
 
 @source "../../../../packages/saas-svelte";
 @source "../../../storybook/stories/wrappers";
+
+/* Shiki code block styles */
+.shiki-wrapper pre {
+	padding: 1rem;
+	margin: 0;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+}
+
+.shiki-wrapper code {
+	display: block;
+	width: fit-content;
+	min-width: 100%;
+}
+
+html.dark .shiki,
+html.dark .shiki span {
+	color: var(--shiki-dark) !important;
+	background-color: var(--shiki-dark-bg) !important;
+}
