@@ -79,19 +79,15 @@ export default defineConfig({
 		build: {
 			target: "esnext",
 			minify: "esbuild",
-			// Large component library vendors - expected sizes
-			chunkSizeWarningLimit: 750,
 			rollupOptions: {
 				output: {
 					manualChunks: (id) => {
 						if (id.includes("node_modules")) {
-							if (
-								id.includes("@ark-ui") ||
-								id.includes("@zag-js")
-							)
+							// Check specific packages before general matches
+							if (id.includes("phosphor-svelte")) return "icons";
+							if (id.includes("@ark-ui") || id.includes("@zag-js"))
 								return "ark-vendor";
 							if (id.includes("svelte")) return "svelte-vendor";
-							if (id.includes("phosphor-svelte")) return "icons";
 						}
 					},
 				},
