@@ -35,6 +35,12 @@ const meta: Meta = {
 			description: "Whether to unmount on exit.",
 			table: { defaultValue: { summary: "false" } },
 		},
+		onPrefetch: {
+			action: "prefetch",
+			description:
+				"Callback invoked when hovering over the trigger. Similar to Astro's link prefetching, this allows preloading data before opening.",
+			table: { category: "Events" },
+		},
 	},
 	parameters: {
 		controls: getControls([
@@ -136,6 +142,12 @@ const meta: Meta = {
 						default: '{ placement: "bottom", gutter: 12 }',
 						description:
 							"The positioning options for the hover card.",
+					},
+					onPrefetch: {
+						type: "() => void",
+						default: "-",
+						description:
+							"Callback invoked when hovering over the trigger (for prefetching content). Similar to Astro's link prefetching, this allows preloading data before opening.",
 					},
 				},
 			},

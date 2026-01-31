@@ -1,5 +1,12 @@
-<script module>
+<script module lang="ts">
 export const DRAWER_CTX = Symbol("DRAWER_CTX");
+
+export interface DrawerContext {
+	size: "xs" | "sm" | "md" | "lg" | "xl" | "full";
+	placement: "start" | "end" | "top" | "bottom";
+	attached: boolean;
+	onPrefetch?: () => void;
+}
 </script>
 
 <script lang="ts">
@@ -61,6 +68,11 @@ interface Props {
 	 * Whether to unmount the drawer on exit.
 	 */
 	unmountOnExit?: boolean;
+	/**
+	 * Callback invoked when hovering over the trigger (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before opening.
+	 */
+	onPrefetch?: () => void;
 	[key: string]: any;
 }
 
@@ -77,27 +89,26 @@ let {
 	restoreFocus,
 	lazyMount,
 	unmountOnExit,
+	onPrefetch,
 	...restProps
 }: Props = $props();
 
 // Reactive context state
-let contextState = $state<{
-	size: "xs" | "sm" | "md" | "lg" | "xl" | "full";
-	placement: "start" | "end" | "top" | "bottom";
-	attached: boolean;
-}>({
+let contextState = $state<DrawerContext>({
 	size: "sm",
 	placement: "end",
 	attached: false,
+	onPrefetch: undefined,
 });
 
 $effect(() => {
 	contextState.size = size;
 	contextState.placement = placement;
 	contextState.attached = attached;
+	contextState.onPrefetch = onPrefetch;
 });
 
-setContext(DRAWER_CTX, contextState);
+setContext<DrawerContext>(DRAWER_CTX, contextState);
 </script>
 
 <Dialog.Root

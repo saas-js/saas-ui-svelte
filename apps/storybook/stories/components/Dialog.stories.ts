@@ -42,6 +42,12 @@ const meta: Meta = {
 			options: dialogRoles,
 			table: { defaultValue: { summary: "dialog" } },
 		},
+		onPrefetch: {
+			action: "prefetch",
+			description:
+				"Callback invoked when hovering over the trigger. Similar to Astro's link prefetching, this allows preloading data before opening.",
+			table: { category: "Events" },
+		},
 		children: commonArgTypes.children,
 		class: commonArgTypes.class,
 	},
@@ -168,6 +174,12 @@ const meta: Meta = {
 						type: "boolean",
 						default: "-",
 						description: "Whether to unmount the dialog on exit.",
+					},
+					onPrefetch: {
+						type: "() => void",
+						default: "-",
+						description:
+							"Callback invoked when hovering over the trigger (for prefetching content). Similar to Astro's link prefetching, this allows preloading data before opening.",
 					},
 				},
 			},

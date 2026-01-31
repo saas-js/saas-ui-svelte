@@ -1,9 +1,10 @@
 <script lang="ts">
 import { Dialog } from "@ark-ui/svelte";
 import { button, type ButtonVariants } from "../button/button.svelte";
-import type { Snippet } from "svelte";
+import { getContext, type Snippet } from "svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 import { twMerge } from "tailwind-merge";
+import { DRAWER_CTX, type DrawerContext } from "./drawer-root.svelte";
 
 interface Props {
 	/**
@@ -57,14 +58,20 @@ let {
 	...rest
 }: Props = $props();
 
+const ctx = getContext<DrawerContext>(DRAWER_CTX);
 const colourVars = $derived(getColourStyle(colour));
 const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
+
+function handleMouseEnter() {
+	ctx?.onPrefetch?.();
+}
 </script>
 
 <Dialog.Trigger
 	class={button({ variant, size, icon, className })}
 	style={finalStyle}
 	asChild={asChild ? children : undefined}
+	onmouseenter={handleMouseEnter}
 	{...rest}
 >
 	{#if !asChild}

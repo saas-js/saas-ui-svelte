@@ -71,6 +71,7 @@ export interface HoverCardContext {
 	portalled: boolean;
 	open: boolean;
 	setOpen: (open: boolean) => void;
+	onPrefetch?: () => void;
 }
 </script>
 
@@ -130,6 +131,11 @@ interface Props extends Omit<HoverCardRootProps, "id"> {
 	 * The positioning options for the hover card.
 	 */
 	positioning?: HoverCardRootProps["positioning"];
+	/**
+	 * Callback invoked when hovering over the trigger (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before the hover card opens.
+	 */
+	onPrefetch?: () => void;
 }
 
 let {
@@ -144,6 +150,7 @@ let {
 	lazyMount = false,
 	unmountOnExit = false,
 	positioning = { placement: "bottom", gutter: 12 },
+	onPrefetch,
 	...rest
 }: Props = $props();
 
@@ -172,6 +179,9 @@ const ctx: HoverCardContext = {
 		return open ?? false;
 	},
 	setOpen,
+	get onPrefetch() {
+		return onPrefetch;
+	},
 };
 
 setContext(HOVER_CARD_CTX, ctx);

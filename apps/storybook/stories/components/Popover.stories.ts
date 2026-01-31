@@ -48,6 +48,12 @@ const meta: Meta = {
 			description: "Whether to unmount on exit.",
 			table: { defaultValue: { summary: "false" } },
 		},
+		onPrefetch: {
+			action: "prefetch",
+			description:
+				"Callback invoked when hovering over the trigger. Similar to Astro's link prefetching, this allows preloading data before opening.",
+			table: { category: "Events" },
+		},
 	},
 	parameters: {
 		docs: {
@@ -164,6 +170,12 @@ const meta: Meta = {
 						default: "-",
 						description:
 							"Element to receive focus when the popover is opened.",
+					},
+					onPrefetch: {
+						type: "() => void",
+						default: "-",
+						description:
+							"Callback invoked when hovering over the trigger (for prefetching content). Similar to Astro's link prefetching, this allows preloading data before opening.",
 					},
 				},
 			},

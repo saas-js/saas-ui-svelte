@@ -16,14 +16,22 @@ interface Props extends MenuItemProps {
 	class?: string;
 }
 
-let { children, class: className, ...rest }: Props = $props();
+let { children, class: className, value, ...rest }: Props = $props();
 
 const ctx = getContext<MenuContext>(MENU_CTX);
+
+function handleMouseEnter() {
+	if (value && !rest.disabled) {
+		ctx?.onPrefetch?.(value);
+	}
+}
 </script>
 
 <Menu.Item
 	class={twMerge(ctx?.styles?.item() ?? "", className as string)}
 	style={ctx?.colourStyle}
+	value={value}
+	onmouseenter={handleMouseEnter}
 	{...rest}
 >
 	{@render children()}

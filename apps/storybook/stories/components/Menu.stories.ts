@@ -53,6 +53,12 @@ const meta: Meta = {
 			description: "The content to be rendered inside the component.",
 			table: { type: { summary: "Snippet" } },
 		},
+		onPrefetch: {
+			action: "prefetch",
+			description:
+				"Callback invoked when hovering over an item. Similar to Astro's link prefetching, this allows preloading data before selection.",
+			table: { category: "Events" },
+		},
 	},
 	parameters: {
 		docs: {
@@ -125,6 +131,12 @@ const meta: Meta = {
 						type: "boolean",
 						default: "false",
 						description: "Whether to loop the keyboard navigation.",
+					},
+					onPrefetch: {
+						type: "(value: string) => void",
+						default: "-",
+						description:
+							"Callback invoked when hovering over an item (for prefetching content). Similar to Astro's link prefetching, this allows preloading data before selection.",
 					},
 				},
 			},

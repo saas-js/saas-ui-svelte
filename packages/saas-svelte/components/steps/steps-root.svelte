@@ -119,6 +119,7 @@ export interface StepsContext {
 	colour: string;
 	orientation: "horizontal" | "vertical";
 	variant: "subtle" | "solid";
+	onPrefetch?: (index: number) => void;
 }
 </script>
 
@@ -183,6 +184,11 @@ interface Props {
 	 * Callback when all steps are completed.
 	 */
 	onStepComplete?: () => void;
+	/**
+	 * Callback invoked when hovering over a step (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before selection.
+	 */
+	onPrefetch?: (index: number) => void;
 	[key: string]: any;
 }
 
@@ -199,6 +205,7 @@ let {
 	linear = false,
 	onStepChange,
 	onStepComplete,
+	onPrefetch,
 	...restProps
 }: Props = $props();
 
@@ -217,6 +224,9 @@ setContext<StepsContext>(STEPS_CTX, {
 	},
 	get variant() {
 		return variant;
+	},
+	get onPrefetch() {
+		return onPrefetch;
 	},
 });
 </script>

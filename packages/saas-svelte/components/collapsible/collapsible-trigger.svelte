@@ -1,10 +1,11 @@
 <script lang="ts">
 import { Collapsible as ArkCollapsible } from "@ark-ui/svelte/collapsible";
-import type { Snippet } from "svelte";
+import { getContext, type Snippet } from "svelte";
 import type { CollapsibleTriggerProps } from "@ark-ui/svelte/collapsible";
 import { twMerge } from "tailwind-merge";
 import { button } from "../button/button.svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
+import { COLLAPSIBLE_CTX, type CollapsibleContext } from "./collapsible.svelte";
 
 interface Props extends Omit<CollapsibleTriggerProps, "asChild"> {
 	/**
@@ -20,7 +21,14 @@ interface Props extends Omit<CollapsibleTriggerProps, "asChild"> {
 
 let { children, class: className, colour = "gray", ...rest }: Props = $props();
 
+const ctx = getContext<CollapsibleContext>(COLLAPSIBLE_CTX);
 const colourVars = $derived(getColourStyle(colour));
+
+function handleMouseEnter() {
+	if (!ctx?.disabled) {
+		ctx?.onPrefetch?.();
+	}
+}
 </script>
 
 <ArkCollapsible.Trigger {...rest}>
@@ -29,6 +37,7 @@ const colourVars = $derived(getColourStyle(colour));
 			type="button"
 			class={twMerge(button({ variant: "ghost" }), "mb-2", className as string)}
 			style={colourVars}
+			onmouseenter={handleMouseEnter}
 			{...props()}
 		>
 			{@render children?.()}

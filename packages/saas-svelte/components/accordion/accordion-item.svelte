@@ -24,11 +24,16 @@ let { children, class: className, value, ...restProps }: Props = $props();
 
 const ctx = getContext<AccordionContext>(ACCORDION_CTX);
 const styles = $derived(ctx.styles);
+
+function handleMouseEnter() {
+	ctx.onPrefetch?.(value);
+}
 </script>
 
 <Accordion.Item
 	class={twMerge(styles.item(), className)}
 	value={value}
+	onmouseenter={handleMouseEnter}
 	{...restProps}
 >
 	{@render children()}

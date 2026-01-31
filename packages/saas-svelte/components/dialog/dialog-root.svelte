@@ -1,5 +1,13 @@
-<script module>
+<script module lang="ts">
 export const DIALOG_CTX = Symbol("DIALOG_CTX");
+
+export interface DialogContext {
+	size: "xs" | "sm" | "md" | "lg" | "xl" | "cover" | "full";
+	placement: "center" | "top" | "bottom";
+	scrollBehavior: "inside" | "outside";
+	motionPreset: "scale" | "slide-in-bottom" | "none";
+	onPrefetch?: () => void;
+}
 </script>
 
 <script lang="ts">
@@ -66,6 +74,11 @@ interface Props {
 	 * Whether to unmount the dialog on exit.
 	 */
 	unmountOnExit?: boolean;
+	/**
+	 * Callback invoked when hovering over the trigger (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before opening.
+	 */
+	onPrefetch?: () => void;
 	[key: string]: any;
 }
 
@@ -83,20 +96,17 @@ let {
 	restoreFocus,
 	lazyMount,
 	unmountOnExit,
+	onPrefetch,
 	...restProps
 }: Props = $props();
 
 // Reactive context state
-let contextState = $state<{
-	size: "xs" | "sm" | "md" | "lg" | "xl" | "cover" | "full";
-	placement: "center" | "top" | "bottom";
-	scrollBehavior: "inside" | "outside";
-	motionPreset: "scale" | "slide-in-bottom" | "none";
-}>({
+let contextState = $state<DialogContext>({
 	size: "md",
 	placement: "center",
 	scrollBehavior: "outside",
 	motionPreset: "scale",
+	onPrefetch: undefined,
 });
 
 $effect(() => {
@@ -104,9 +114,10 @@ $effect(() => {
 	contextState.placement = placement;
 	contextState.scrollBehavior = scrollBehavior;
 	contextState.motionPreset = motionPreset;
+	contextState.onPrefetch = onPrefetch;
 });
 
-setContext(DIALOG_CTX, contextState);
+setContext<DialogContext>(DIALOG_CTX, contextState);
 </script>
 
 <Dialog.Root

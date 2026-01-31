@@ -49,9 +49,13 @@ let {
 
 const ctx = getContext<StepsContext>(STEPS_CTX);
 const finalClass = $derived(twMerge(ctx?.styles?.item(), className as string));
+
+function handleMouseEnter() {
+	ctx?.onPrefetch?.(index);
+}
 </script>
 
-<Steps.Item index={index} class={finalClass} {...restProps}>
+<Steps.Item index={index} class={finalClass} onmouseenter={handleMouseEnter} {...restProps}>
 	{#if children}
 		{@render children()}
 	{:else}

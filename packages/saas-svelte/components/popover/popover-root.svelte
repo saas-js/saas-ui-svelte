@@ -117,6 +117,7 @@ export interface PopoverContext {
 	size: PopoverVariants["size"];
 	styles: ReturnType<typeof popover>;
 	portalled: boolean;
+	onPrefetch?: () => void;
 }
 </script>
 
@@ -190,6 +191,11 @@ interface Props extends Omit<PopoverRootProps, "id"> {
 	 * Element to receive focus when the popover is opened.
 	 */
 	initialFocusEl?: () => HTMLElement | null;
+	/**
+	 * Callback invoked when hovering over the trigger (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before opening.
+	 */
+	onPrefetch?: () => void;
 }
 
 let {
@@ -207,6 +213,7 @@ let {
 	unmountOnExit = false,
 	positioning = { placement: "bottom", gutter: 12 },
 	initialFocusEl,
+	onPrefetch,
 	...rest
 }: Props = $props();
 
@@ -225,6 +232,9 @@ const ctx: PopoverContext = {
 	},
 	get portalled() {
 		return portalled;
+	},
+	get onPrefetch() {
+		return onPrefetch;
 	},
 };
 

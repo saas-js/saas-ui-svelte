@@ -2,6 +2,13 @@
 import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
 
+export const COLLAPSIBLE_CTX = Symbol("COLLAPSIBLE_CTX");
+
+export interface CollapsibleContext {
+	disabled: boolean;
+	onPrefetch?: () => void;
+}
+
 export const collapsibleRoot = tv({
 	base: ["antialiased"],
 });
@@ -29,7 +36,7 @@ export const collapsibleIndicator = tv({
 <script lang="ts">
 import { Collapsible as ArkCollapsible } from "@ark-ui/svelte/collapsible";
 import type { CollapsibleRootProps } from "@ark-ui/svelte/collapsible";
-import type { Snippet } from "svelte";
+import { setContext, type Snippet } from "svelte";
 
 interface Props extends Omit<CollapsibleRootProps, "id"> {
 	/**
@@ -76,6 +83,11 @@ interface Props extends Omit<CollapsibleRootProps, "id"> {
 	 * Additional CSS classes to apply to the root.
 	 */
 	class?: string;
+	/**
+	 * Callback invoked when hovering over the trigger (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before expanding.
+	 */
+	onPrefetch?: () => void;
 }
 
 let {
@@ -89,12 +101,22 @@ let {
 	onExitComplete,
 	children,
 	class: className,
+	onPrefetch,
 	...rest
 }: Props = $props();
 
 const uniqueId = $derived(
 	id || `collapsible-${Math.random().toString(36).substring(2, 9)}`,
 );
+
+setContext<CollapsibleContext>(COLLAPSIBLE_CTX, {
+	get disabled() {
+		return disabled ?? false;
+	},
+	get onPrefetch() {
+		return onPrefetch;
+	},
+});
 </script>
 
 <ArkCollapsible.Root

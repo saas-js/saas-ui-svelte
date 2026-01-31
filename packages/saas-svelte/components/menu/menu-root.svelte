@@ -5,6 +5,7 @@ export type MenuContext = {
 	size: "sm" | "md";
 	styles: ReturnType<typeof menu>;
 	colourStyle: string;
+	onPrefetch?: (value: string) => void;
 };
 
 export const menu = tv({
@@ -143,6 +144,11 @@ interface Props extends Omit<MenuRootProps, "id"> {
 	 * @default "indigo"
 	 */
 	colour?: ColourName;
+	/**
+	 * Callback invoked when hovering over an item (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before selection.
+	 */
+	onPrefetch?: (value: string) => void;
 }
 
 let {
@@ -150,6 +156,7 @@ let {
 	id,
 	size = "md",
 	colour = "indigo",
+	onPrefetch,
 	...restProps
 }: Props = $props();
 
@@ -166,6 +173,9 @@ const ctx: MenuContext = {
 	},
 	get colourStyle() {
 		return getColourStyle(colour);
+	},
+	get onPrefetch() {
+		return onPrefetch;
 	},
 };
 

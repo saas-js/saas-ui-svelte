@@ -33,6 +33,12 @@ const meta: Meta = {
         defaultValue: {
             control: "object",
         },
+        onPrefetch: {
+            action: "prefetch",
+            description:
+                "Callback invoked when hovering over an item. Similar to Astro's link prefetching, this allows preloading data before selection.",
+            table: { category: "Events" },
+        },
         class: commonArgTypes.class,
         children: commonArgTypes.children,
     },
@@ -120,6 +126,12 @@ const meta: Meta = {
                         type: '"outline" | "subtle" | "enclosed" | "plain"',
                         default: '"outline"',
                         description: "The visual style of the accordion.",
+                    },
+                    onPrefetch: {
+                        type: "(value: string) => void",
+                        default: "-",
+                        description:
+                            "Callback invoked when hovering over an item (for prefetching content). Similar to Astro's link prefetching, this allows preloading data before selection.",
                     },
                     class: {
                         type: "string",

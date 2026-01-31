@@ -67,6 +67,12 @@ const meta: Meta = {
 			control: "text",
 			description: "CSS class to apply to the component.",
 		},
+		onPrefetch: {
+			action: "prefetch",
+			description:
+				"Callback invoked when hovering over a step. Receives the step index. Similar to Astro's link prefetching, this allows preloading data before selection.",
+			table: { category: "Events" },
+		},
 	},
 	parameters: {
 		docs: {
@@ -173,6 +179,12 @@ const meta: Meta = {
 						type: "string",
 						default: "-",
 						description: "Additional CSS classes to apply.",
+					},
+					onPrefetch: {
+						type: "(index: number) => void",
+						default: "-",
+						description:
+							"Callback invoked when hovering over a step (for prefetching content). Receives the step index. Similar to Astro's link prefetching, this allows preloading data before selection.",
 					},
 				},
 			},

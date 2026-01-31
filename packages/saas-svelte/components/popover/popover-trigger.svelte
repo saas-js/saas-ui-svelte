@@ -1,8 +1,9 @@
 <script lang="ts">
 import { Popover } from "@ark-ui/svelte/popover";
-import type { Snippet, Component } from "svelte";
+import { getContext, type Snippet, type Component } from "svelte";
 import { Button } from "$saas/components/button";
 import { Icon } from "$saas/components/icon";
+import { POPOVER_CTX, type PopoverContext } from "./popover-root.svelte";
 
 interface Props {
 	/**
@@ -50,10 +51,15 @@ let {
 	...rest
 }: Props = $props();
 
+const ctx = getContext<PopoverContext>(POPOVER_CTX);
 const hasSimpleTrigger = $derived(triggerText || triggerIcon);
+
+function handleMouseEnter() {
+	ctx?.onPrefetch?.();
+}
 </script>
 
-<Popover.Trigger class={className} {...rest}>
+<Popover.Trigger class={className} onmouseenter={handleMouseEnter} {...rest}>
 	{#snippet asChild(props)}
 		{#if children}
 			{@render children({ props })}

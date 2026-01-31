@@ -74,6 +74,7 @@ export type AccordionVariants = VariantProps<typeof accordion>;
 
 export interface AccordionContext {
 	styles: ReturnType<typeof accordion>;
+	onPrefetch?: (value: string) => void;
 }
 </script>
 
@@ -128,6 +129,11 @@ interface Props {
 	 * @default "outline"
 	 */
 	variant?: AccordionVariants["variant"];
+	/**
+	 * Callback invoked when hovering over an item (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before selection.
+	 */
+	onPrefetch?: (value: string) => void;
 	[key: string]: any;
 }
 
@@ -141,6 +147,7 @@ let {
 	multiple = false,
 	size = "md",
 	variant = "outline",
+	onPrefetch,
 	...restProps
 }: Props = $props();
 
@@ -149,6 +156,9 @@ const classes = $derived(accordion({ size, variant }));
 setContext<AccordionContext>(ACCORDION_CTX, {
 	get styles() {
 		return classes;
+	},
+	get onPrefetch() {
+		return onPrefetch;
 	},
 });
 </script>
@@ -171,6 +181,7 @@ setContext<AccordionContext>(ACCORDION_CTX, {
 				class={classes.item()}
 				value={item.value}
 				disabled={item.disabled}
+				onmouseenter={() => onPrefetch?.(item.value)}
 			>
 				<Accordion.ItemTrigger class={classes.trigger()}>
 					{item.title}
