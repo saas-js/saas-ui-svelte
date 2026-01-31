@@ -140,10 +140,14 @@ async function main() {
 				const jsErrors: string[] = [];
 				let pageError: string | undefined;
 
-				// Listen for console errors
+				// Listen for console errors (ignore resource loading errors)
 				page.on("console", (msg) => {
 					if (msg.type() === "error") {
-						jsErrors.push(msg.text());
+						const text = msg.text();
+						// Skip resource loading errors (fonts, images, etc.)
+						if (!text.includes("Failed to load resource")) {
+							jsErrors.push(text);
+						}
 					}
 				});
 
@@ -183,7 +187,7 @@ async function main() {
 						failedStories.push({
 							id: story.id,
 							errors: [
-								...(hasPageError ? [pageError] : []),
+								...(pageError ? [pageError] : []),
 								...jsErrors,
 								...(hasA11yViolations
 									? [`${results.violations.length} a11y violations`]
