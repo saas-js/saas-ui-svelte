@@ -347,18 +347,20 @@ const styles = $derived([colourVars, style].filter(Boolean).join("; "));
 		/>
 	</NumberInput.Control>
 	<div class={triggerGroupClasses} role="group" aria-disabled={isDisabled}>
-		<NumberInput.IncrementTrigger class={incrementClasses}>
+		<NumberInput.IncrementTrigger class={incrementClasses} aria-label="Increment">
 			<svg
 				viewBox="0 0 24 24"
 				class="fill-none stroke-current stroke-2 [stroke-linecap:round] [stroke-linejoin:round]"
+				aria-hidden="true"
 			>
 				<path d="m18 15-6-6-6 6"></path>
 			</svg>
 		</NumberInput.IncrementTrigger>
-		<NumberInput.DecrementTrigger class={decrementClasses}>
+		<NumberInput.DecrementTrigger class={decrementClasses} aria-label="Decrement">
 			<svg
 				viewBox="0 0 24 24"
 				class="fill-none stroke-current stroke-2 [stroke-linecap:round] [stroke-linejoin:round]"
+				aria-hidden="true"
 			>
 				<path d="m6 9 6 6 6-6"></path>
 			</svg>

@@ -7,9 +7,7 @@
 	import { Kbd } from "$saas/components/kbd";
 	import { Text } from "$saas/typography/text";
 	import { HStack, VStack } from "$saas/layout/stack";
-
-	const kbdVariants = ["raised", "outline", "subtle", "plain"] as const;
-	const kbdSizes = ["sm", "md", "lg"] as const;
+	import { colours, kbdVariants, kbdSizes } from "../../utils";
 
 	interface Props {
 		story:
@@ -18,7 +16,9 @@
 			| "functionKeys"
 			| "variants"
 			| "sizes"
-			| "withinText";
+			| "withinText"
+			| "colours"
+			| "modifierKeys";
 	}
 
 	let { story }: Props = $props();
@@ -59,4 +59,42 @@
 	<Text>
 		Press <Kbd>F12</Kbd> to open DevTools
 	</Text>
+{:else if story === "colours"}
+	<VStack gap={2}>
+		{#each colours as colour}
+			<HStack gap={4} align="center">
+				<Text size="xs" class="w-16">{colour}</Text>
+				<Kbd {colour} variant="outline">Outline</Kbd>
+				<Kbd {colour} variant="subtle">Subtle</Kbd>
+				<Kbd {colour} variant="raised">Raised</Kbd>
+				<Kbd {colour} variant="plain">Plain</Kbd>
+			</HStack>
+		{/each}
+	</VStack>
+{:else if story === "modifierKeys"}
+	<VStack gap={4}>
+		<HStack gap={2}>
+			<Text size="sm" class="w-32">Command + K:</Text>
+			<Kbd keys={["command"]}>K</Kbd>
+		</HStack>
+		<HStack gap={2}>
+			<Text size="sm" class="w-32">Ctrl + Shift + P:</Text>
+			<Kbd keys={["control", "shift"]}>P</Kbd>
+		</HStack>
+		<HStack gap={2}>
+			<Text size="sm" class="w-32">Option + Enter:</Text>
+			<Kbd keys={["option", "enter"]} />
+		</HStack>
+		<HStack gap={2}>
+			<Text size="sm" class="w-32">Shift + Tab:</Text>
+			<Kbd keys={["shift", "tab"]} />
+		</HStack>
+		<HStack gap={2}>
+			<Text size="sm" class="w-32">Arrow keys:</Text>
+			<Kbd keys={["up"]} />
+			<Kbd keys={["down"]} />
+			<Kbd keys={["left"]} />
+			<Kbd keys={["right"]} />
+		</HStack>
+	</VStack>
 {/if}

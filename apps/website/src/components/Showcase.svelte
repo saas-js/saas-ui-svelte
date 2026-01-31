@@ -20,6 +20,11 @@ let crmLoading = $state(false);
 let CRMDashboard: typeof import("./showcase/crm/CRMDashboard.svelte").default | null =
 	$state(null);
 
+// Lazy load Email dashboard only when tab is hovered/focused
+let emailLoading = $state(false);
+let EmailDashboard: typeof import("./showcase/email/EmailDashboard.svelte").default | null =
+	$state(null);
+
 onMount(() => {
 	mounted = true;
 });
@@ -30,6 +35,11 @@ async function handlePrefetch(value: string) {
 		crmLoading = true;
 		const module = await import("./showcase/crm/CRMDashboard.svelte");
 		CRMDashboard = module.default;
+	}
+	if (mounted && value === "email" && !emailLoading && !EmailDashboard) {
+		emailLoading = true;
+		const module = await import("./showcase/email/EmailDashboard.svelte");
+		EmailDashboard = module.default;
 	}
 }
 </script>
@@ -68,16 +78,20 @@ async function handlePrefetch(value: string) {
 				{#if CRMDashboard}
 					<CRMDashboard />
 				{:else}
-					<div class="flex items-center justify-center py-20">
+					<div class="flex items-center justify-center py-20" aria-busy="true" aria-label="Loading CRM dashboard">
 						<Spinner size="lg" />
 					</div>
 				{/if}
 			</Tabs.Content>
 
 			<Tabs.Content value="email">
-				<div class="text-fg-muted flex items-center justify-center py-20">
-					Email client coming soon...
-				</div>
+				{#if EmailDashboard}
+					<EmailDashboard />
+				{:else}
+					<div class="flex items-center justify-center py-20" aria-busy="true" aria-label="Loading email dashboard">
+						<Spinner size="lg" />
+					</div>
+				{/if}
 			</Tabs.Content>
 		</Tabs.ContentGroup>
 	</Tabs.Root>

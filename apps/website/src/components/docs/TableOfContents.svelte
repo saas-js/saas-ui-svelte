@@ -84,10 +84,11 @@ function getIndentClass(level: number = 1): string {
 
 <Box
 	as="aside"
+	aria-label="Table of contents"
 	class="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 overflow-y-auto overscroll-contain px-2 py-8 xl:block"
 >
 	<VStack gap={4} class="items-start">
-		<Box as="nav" class="w-full text-sm">
+		<Box as="nav" aria-label="Page sections" class="w-full text-sm">
 			<Text size="sm" weight="semibold" class="text-fg-default mb-3"
 				>On this page</Text
 			>

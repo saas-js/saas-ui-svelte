@@ -16,7 +16,9 @@ export const editablePreview = tv({
 		"transition-colors",
 		"duration-200",
 		"hover:bg-bg-muted",
-		"focus-visible:outline-none",
+		"focus-visible:ring-2",
+		"focus-visible:ring-ring-focus",
+		"focus-visible:ring-offset-1",
 		"data-disabled:cursor-not-allowed",
 		"data-disabled:opacity-50",
 		"data-disabled:select-none",
@@ -70,5 +72,6 @@ const size = $derived(ctx?.size ?? "md");
 <Editable.Preview
 	class={twMerge(editablePreview({ size }), className as string)}
 	role="button"
+	tabindex={0}
 	{...restProps}
 />

@@ -109,7 +109,7 @@ const styles = $derived(
 </script>
 
 <ArkTooltip.Root
-	id={id}
+	{...id ? { id } : {}}
 	openDelay={openDelay}
 	closeDelay={closeDelay}
 	positioning={positioning}

@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/sveltekit";
 import { Kbd } from "$saas/components/kbd";
 import KbdWrapper from "../wrappers/components/Kbd.svelte";
-
-const kbdVariants = ["raised", "outline", "subtle", "plain"] as const;
-const kbdSizes = ["sm", "md", "lg"] as const;
+import { commonArgTypes, getControls, kbdVariants, kbdSizes } from "../utils";
 
 const meta: Meta = {
 	title: "components/Kbd",
@@ -21,6 +19,13 @@ const meta: Meta = {
 			description: "The size of the component.",
 			table: { defaultValue: { summary: "md" } },
 		},
+		colour: commonArgTypes.colour,
+		keys: {
+			control: "object",
+			description:
+				"Modifier keys to display (e.g., ['command', 'shift']). Supported: command, option, shift, control, enter, backspace, delete, escape, tab, arrow keys.",
+			table: { type: { summary: "string[]" } },
+		},
 		children: {
 			control: false,
 			description: "The content to be rendered inside the component.",
@@ -32,6 +37,14 @@ const meta: Meta = {
 		},
 	},
 	parameters: {
+		controls: getControls([
+			"variant",
+			"size",
+			"colour",
+			"keys",
+			"children",
+			"class",
+		]),
 		docs: {
 			description: {
 				component:
@@ -44,12 +57,19 @@ const meta: Meta = {
 
 <Kbd>Ctrl</Kbd> + <Kbd>C</Kbd>
 
+<!-- With modifier keys -->
+<Kbd keys={["command"]}>K</Kbd>
+
+<!-- With colour -->
+<Kbd colour="indigo" keys={["command"]}>K</Kbd>
+
 <!-- With variants and sizes -->
 <Kbd variant="raised" size="lg">Enter</Kbd>`,
 	},
 	args: {
 		variant: "subtle",
 		size: "md",
+		colour: "gray",
 	},
 };
 
@@ -143,5 +163,37 @@ export const WithinText: Story = {
 		({
 			Component: KbdWrapper,
 			props: { story: "withinText" },
+		}) as any,
+};
+
+export const Colours: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Use the `colour` prop to change the colour of the `Kbd` component. Supports all standard colour palettes.",
+			},
+		},
+	},
+	render: () =>
+		({
+			Component: KbdWrapper,
+			props: { story: "colours" },
+		}) as any,
+};
+
+export const ModifierKeys: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Use the `keys` prop to display modifier key symbols. Supports command (⌘), option (⌥), shift (⇧), control (⌃), and more.",
+			},
+		},
+	},
+	render: () =>
+		({
+			Component: KbdWrapper,
+			props: { story: "modifierKeys" },
 		}) as any,
 };

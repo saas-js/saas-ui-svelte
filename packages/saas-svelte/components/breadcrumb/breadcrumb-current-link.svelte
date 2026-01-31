@@ -30,7 +30,7 @@ const currentClasses = $derived(
 </script>
 
 <li class={styles?.item()}>
-	<span role="link" aria-current="page" class={currentClasses} {...restProps}>
+	<span aria-current="page" class={currentClasses} {...restProps}>
 		{@render children()}
 	</span>
 </li>

@@ -8,6 +8,7 @@ import Check from "phosphor-svelte/lib/Check";
 	<Clipboard.Trigger
 		class="border-border-default bg-bg-default text-fg-default transition-colours hover:bg-bg-subtle hover:border-border-emphasized inline-flex h-10 cursor-pointer items-center gap-3 rounded-md border px-5 text-sm font-medium whitespace-nowrap select-none outline-0 focus-visible:outline-solid focus-visible:outline-(--c-focus-ring) focus-visible:border-(--c-focus-ring)"
 		style="--c-focus-ring: var(--colors-gray-focus-ring)"
+		aria-label="Copy npm install command to clipboard"
 	>
 		<span class="text-fg-muted">$</span>
 		<span>npm i @saas-ui/svelte</span>

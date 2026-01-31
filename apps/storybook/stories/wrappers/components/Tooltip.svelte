@@ -41,7 +41,7 @@
 	</div>
 {:else if story === "inverted"}
 	<div class="flex items-center justify-center p-8">
-		<Tooltip content="Inverted tooltip" variant="inverted" showArrow>
+		<Tooltip content="Dark tooltip (inverted)" variant="inverted" showArrow>
 			<Button variant="outline">Hover me</Button>
 		</Tooltip>
 	</div>

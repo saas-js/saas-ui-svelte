@@ -16,32 +16,33 @@ export const popoverContentStyles = tv({
 			"data-[side=left]:origin-right",
 			"data-[side=right]:origin-left",
 			"data-[side=top]:origin-bottom",
-			// Default: inverted (dark) appearance
-			"bg-bg-inverted",
-			"text-fg-inverted",
+			// Default: panel (light in light mode, dark in dark mode)
+			"bg-bg-panel",
+			"text-fg-default",
 			"text-xs",
 			"font-normal",
 			"leading-xs",
 			"antialiased",
 			"max-w-80",
-			"border-0",
+			"border",
+			"border-border-default",
 			// Shadow
-			"shadow-[0_4px_8px_rgba(24,24,27,0.1),0_0_1px_rgba(24,24,27,0.3)]",
+			"shadow-md",
 			"outline-none",
 		],
 		arrow: [
 			"[--arrow-size:var(--spacing-2)]",
-			"[--arrow-background:var(--color-bg-inverted)]",
+			"[--arrow-background:var(--color-bg-panel)]",
 		],
-		arrowTip: ["border-l", "border-t", "border-bg-inverted"],
+		arrowTip: ["border-l", "border-t", "border-border-default"],
 	},
 	variants: {
 		variant: {
 			default: {},
 			inverted: {
-				content: ["bg-bg-panel", "text-fg-default", "shadow-md", "border", "border-border-default"],
-				arrow: ["[--arrow-background:var(--color-bg-panel)]"],
-				arrowTip: ["border-border-default"],
+				content: ["bg-bg-inverted", "text-fg-inverted", "border-0", "shadow-[0_4px_8px_rgba(24,24,27,0.1),0_0_1px_rgba(24,24,27,0.3)]"],
+				arrow: ["[--arrow-background:var(--color-bg-inverted)]"],
+				arrowTip: ["border-bg-inverted"],
 			},
 		},
 		interactive: {

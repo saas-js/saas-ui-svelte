@@ -7,7 +7,6 @@ export const kbd = tv({
 		"whitespace-nowrap",
 		"[word-spacing:-0.5em]",
 		"select-none",
-		"text-fg-default",
 		"shrink-0",
 		"items-center",
 		"inline-flex",
@@ -15,19 +14,21 @@ export const kbd = tv({
 		"rounded",
 		"font-medium",
 		"antialiased",
+		"gap-0.5",
 	],
 	variants: {
 		variant: {
 			raised: [
-				"bg-bg-subtle",
+				"bg-(--c-subtle)",
+				"text-(--c-fg)",
 				"border-t",
 				"border-b-2",
 				"border-x",
-				"border-bg-muted",
+				"border-(--c-muted)",
 			],
-			outline: ["border", "border-border-default"],
-			subtle: ["bg-bg-subtle"],
-			plain: [],
+			outline: ["border", "border-(--c-border)", "text-(--c-fg)"],
+			subtle: ["bg-(--c-subtle)", "text-(--c-fg)"],
+			plain: ["text-(--c-fg)"],
 		},
 		size: {
 			sm: "h-4 text-2xs leading-3",
@@ -42,10 +43,37 @@ export const kbd = tv({
 });
 
 export type KbdVariants = VariantProps<typeof kbd>;
+
+/** Map of key names to their symbols */
+export const keySymbols: Record<string, string> = {
+	command: "⌘",
+	cmd: "⌘",
+	meta: "⌘",
+	option: "⌥",
+	alt: "⌥",
+	shift: "⇧",
+	control: "⌃",
+	ctrl: "⌃",
+	enter: "↵",
+	return: "↵",
+	backspace: "⌫",
+	delete: "⌦",
+	escape: "⎋",
+	esc: "⎋",
+	tab: "⇥",
+	capslock: "⇪",
+	up: "↑",
+	down: "↓",
+	left: "←",
+	right: "→",
+	space: "␣",
+};
 </script>
 
 <script lang="ts">
 import type { Snippet } from "svelte";
+import type { ColourName } from "$saas/utils/colours";
+import { getColourStyle } from "$saas/utils/colours";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	/**
@@ -59,6 +87,18 @@ interface Props extends HTMLAttributes<HTMLElement> {
 	 */
 	size?: KbdVariants["size"];
 	/**
+	 * The colour palette of the component.
+	 * @default "gray"
+	 */
+	colour?: ColourName;
+	/**
+	 * Modifier keys to display before children (e.g., ["command", "shift"]).
+	 * Supported keys: command, cmd, meta, option, alt, shift, control, ctrl,
+	 * enter, return, backspace, delete, escape, esc, tab, capslock,
+	 * up, down, left, right, space
+	 */
+	keys?: string[];
+	/**
 	 * Content to render inside the kbd.
 	 */
 	children?: Snippet;
@@ -66,15 +106,25 @@ interface Props extends HTMLAttributes<HTMLElement> {
 	 * Additional CSS classes to apply.
 	 */
 	class?: string;
+	/**
+	 * Inline styles to apply via the style attribute.
+	 */
+	style?: string;
 }
 
 let {
 	variant = "subtle",
 	size = "md",
+	colour = "gray",
+	keys = [],
 	class: className,
+	style,
 	children,
 	...restProps
 }: Props = $props();
+
+const colourStyle = $derived(getColourStyle(colour));
+const finalStyle = $derived([colourStyle, style].filter(Boolean).join("; "));
 
 const finalClass = $derived(
 	kbd({
@@ -83,8 +133,15 @@ const finalClass = $derived(
 		class: className,
 	}),
 );
+
+const keyElements = $derived(
+	keys.map((key) => keySymbols[key.toLowerCase()] || key),
+);
 </script>
 
-<kbd class={finalClass} {...restProps}>
+<kbd class={finalClass} style={finalStyle} {...restProps}>
+	{#each keyElements as symbol}
+		<span>{symbol}</span>
+	{/each}
 	{@render children?.()}
 </kbd>

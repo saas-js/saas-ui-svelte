@@ -195,7 +195,7 @@ export const Inverted: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Use `variant="inverted"` for inverted colours.',
+				story: 'Use `variant="inverted"` for a dark tooltip (inverted from the default light panel style).',
 			},
 		},
 	},

@@ -46,6 +46,12 @@ const labelClass = $derived(styles.itemLabel());
 	tabindex="0"
 	class={finalClass}
 	data-active={active || undefined}
+	onkeydown={(e) => {
+		if (e.key === "Enter" || e.key === " ") {
+			e.preventDefault();
+			e.currentTarget.click();
+		}
+	}}
 	{...restProps}
 >
 	{#if icon}

@@ -121,7 +121,14 @@ function handleClickOutside(event: MouseEvent) {
 }
 </script>
 
-<svelte:window onclick={handleClickOutside} />
+<svelte:window
+	onclick={handleClickOutside}
+	onkeydown={(e) => {
+		if (e.key === "Escape" && open) {
+			onOpenChange?.({ open: false });
+		}
+	}}
+/>
 
 {#if visible}
 	<Portal>

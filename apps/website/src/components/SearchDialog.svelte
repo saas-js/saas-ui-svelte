@@ -46,8 +46,8 @@ $effect(() => {
 async function scrollSelectedIntoView() {
 	await tick();
 	if (resultsRef && selectedIndex >= 0) {
-		const selectedButton = resultsRef.querySelectorAll("button")[selectedIndex];
-		selectedButton?.scrollIntoView({ block: "nearest" });
+		const selectedOption = resultsRef.querySelectorAll('[role="option"]')[selectedIndex];
+		selectedOption?.scrollIntoView({ block: "nearest" });
 	}
 }
 
@@ -151,10 +151,11 @@ $effect(() => {
 			<Separator class="border-border-subtle" />
 
 			<!-- Results -->
-			<div bind:this={resultsRef} class="max-h-80 overflow-y-auto">
+			<div bind:this={resultsRef} class="max-h-80 overflow-y-auto" role="listbox" aria-label="Search results">
 				{#if filteredItems.length === 0}
 					<div
 						class="text-fg-muted flex min-h-32 items-center justify-center text-sm"
+						role="status"
 					>
 						No results found for "{inputValue}"
 					</div>
@@ -163,19 +164,27 @@ $effect(() => {
 					{#each groupedItems as group}
 						{@const groupStartIndex = indexOffset.value}
 						{@const _ = (indexOffset.value += Math.min(group.items.length, 10))}
-						<div class="py-2">
+						<div class="py-2" role="group" aria-label={group.label}>
 							<div
 								class="text-fg-muted px-2 py-1 text-xs font-medium tracking-wide uppercase"
+								aria-hidden="true"
 							>
 								{group.label}
 							</div>
 							{#each group.items.slice(0, 10) as item, i}
 								{@const itemIndex = groupStartIndex + i}
-								<button
-									type="button"
+								<div
+									role="option"
+									tabindex="-1"
+									aria-selected={itemIndex === selectedIndex}
 									onclick={() => handleSelect(item)}
-									class="hover:bg-bg-subtle focus:bg-bg-subtle flex w-full items-center gap-2 rounded px-2 py-2 text-left text-sm focus:outline-none {itemIndex === selectedIndex ? 'bg-bg-subtle' : ''}"
-									data-selected={itemIndex === selectedIndex || undefined}
+									onkeydown={(e) => {
+										if (e.key === "Enter" || e.key === " ") {
+											e.preventDefault();
+											handleSelect(item);
+										}
+									}}
+									class="hover:bg-bg-subtle focus:bg-bg-subtle flex w-full cursor-pointer items-center gap-2 rounded px-2 py-2 text-left text-sm focus:outline-none {itemIndex === selectedIndex ? 'bg-bg-subtle' : ''}"
 								>
 									<span class="flex-1 truncate">
 										<Highlight
@@ -192,7 +201,7 @@ $effect(() => {
 											{item.description}
 										</span>
 									{/if}
-								</button>
+								</div>
 							{/each}
 						</div>
 					{/each}

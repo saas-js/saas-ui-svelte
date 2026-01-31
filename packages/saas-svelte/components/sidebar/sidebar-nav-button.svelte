@@ -38,6 +38,12 @@ const finalClass = $derived(twMerge(styles.item({ active }), className as string
 	tabindex="0"
 	class={finalClass}
 	data-active={active || undefined}
+	onkeydown={(e) => {
+		if (e.key === "Enter" || e.key === " ") {
+			e.preventDefault();
+			e.currentTarget.click();
+		}
+	}}
 	{...restProps}
 >
 	{@render children?.()}

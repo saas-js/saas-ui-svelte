@@ -12,18 +12,16 @@
 
 	const statusLabel = "Accessibility";
 
-	const formattedDate = $derived(
-		generatedAt
-			? new Date(generatedAt).toLocaleDateString("en-US", {
-					month: "short",
-					day: "numeric",
-					year: "numeric",
-				})
-			: null
-	);
+	// Format date in a deterministic way to avoid SSR/client mismatch
+	function formatDate(dateStr: string): string {
+		const date = new Date(dateStr);
+		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+	}
+	const formattedDate = $derived(generatedAt ? formatDate(generatedAt) : null);
 </script>
 
-<Tooltip interactive openDelay={200} closeDelay={300} variant="inverted">
+<Tooltip interactive openDelay={200} closeDelay={300}>
 	{#snippet trigger()}
 		<span class="inline-flex items-center cursor-help">
 			<Status value={a11y.status} size="sm">

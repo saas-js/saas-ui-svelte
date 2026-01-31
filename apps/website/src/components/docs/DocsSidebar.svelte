@@ -46,6 +46,7 @@ function formatLabel(label: string): string {
 
 <Box
 	as="nav"
+	aria-label="Documentation sections"
 	class="flex flex-1 flex-col gap-0 overflow-y-auto px-5 py-8 text-sm"
 >
 	{#each groups as group}
