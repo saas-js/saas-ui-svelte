@@ -47,7 +47,8 @@ const navLinks = [
 			<button
 				type="button"
 				onclick={() => setSearchDialogOpen(true)}
-				class="border-border-default text-fg-muted hover:bg-bg-subtle hidden h-7 w-40 cursor-pointer items-center gap-2 rounded border bg-transparent px-3 text-sm transition-colors lg:flex"
+				class="border-border-default text-fg-muted hover:bg-bg-subtle hover:border-border-emphasized hidden h-7 w-40 cursor-pointer items-center gap-2 rounded border bg-transparent px-3 text-sm transition-colors lg:flex outline-0 focus-visible:outline-solid focus-visible:outline-(--c-focus-ring) focus-visible:border-(--c-focus-ring)"
+				style="--c-focus-ring: var(--colors-gray-focus-ring)"
 			>
 				<MagnifyingGlassIcon class="size-3.5" aria-hidden="true" />
 				<span class="flex-1 text-left text-xs">Search...</span>

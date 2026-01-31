@@ -9,11 +9,12 @@ export const tabs = tv({
 		root: "relative antialiased text-fg-default",
 		list: "isolate relative flex",
 		trigger: [
-			"appearance-auto cursor-pointer outline-0",
+			"appearance-auto cursor-pointer outline-none",
 			"flex items-center gap-2",
 			"font-medium",
 			"relative",
 			"focus-visible:z-1",
+			"focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-(--c-focus-ring)",
 			"disabled:cursor-not-allowed disabled:opacity-50",
 		],
 		content: "focus-visible:outline-0 w-full pt-4",

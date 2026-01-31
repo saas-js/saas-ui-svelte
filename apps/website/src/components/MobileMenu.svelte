@@ -50,6 +50,7 @@ $effect(() => {
 	<!-- Backdrop -->
 	<button
 		type="button"
+		tabindex="-1"
 		class="fixed inset-0 top-14.25 z-60 bg-black/20 lg:hidden"
 		onclick={() => setSideMenuOpen(false)}
 		aria-label="Close navigation"

@@ -20,7 +20,7 @@
 	{#if !sidebarOpen}
 		<button
 			type="button"
-			class="hover:bg-bg-emphasized inline-flex h-8 min-w-8 shrink-0 cursor-pointer items-center justify-center rounded transition-colors duration-150 [grid-area:nav]"
+			class="hover:bg-bg-emphasized inline-flex h-8 min-w-8 shrink-0 cursor-pointer items-center justify-center rounded transition-colors duration-150 [grid-area:nav] focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
 			aria-label="Open sidebar"
 			onclick={onToggleSidebar}
 		>

@@ -16,7 +16,7 @@ import CRMDashboard from "./showcase/crm/CRMDashboard.svelte";
 
 <Container maxW="7xl" class="overflow-hidden pb-20">
 	<Tabs.Root defaultValue="components">
-		<Tabs.List class="border-border-default mb-4 border-b">
+		<Tabs.List class="border-border-default mb-4 border-b pt-1">
 			<Tabs.Trigger value="components">Components</Tabs.Trigger>
 			<Tabs.Trigger value="crm">CRM</Tabs.Trigger>
 			<Tabs.Trigger value="email">Email</Tabs.Trigger>

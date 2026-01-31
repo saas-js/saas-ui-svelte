@@ -48,7 +48,7 @@
 		</Button>
 		<button
 			type="button"
-			class="hover:bg-sidebar-accent-bg inline-flex h-8 w-8 min-w-8 shrink-0 cursor-pointer items-center justify-center rounded transition-colors duration-150"
+			class="hover:bg-sidebar-accent-bg inline-flex h-8 w-8 min-w-8 shrink-0 cursor-pointer items-center justify-center rounded transition-colors duration-150 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
 			aria-label="Close sidebar"
 			onclick={onToggle}
 		>
@@ -109,7 +109,7 @@
 				<div class="pr-1">
 					<button
 						type="button"
-						class="inline-flex h-6 w-6 min-w-6 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium opacity-0 transition-all duration-200 group-hover/fav:opacity-60 group-hover/fav:hover:opacity-100"
+						class="inline-flex h-6 w-6 min-w-6 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium opacity-0 transition-all duration-200 group-hover/fav:opacity-60 group-hover/fav:hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
 						aria-label="Add to favourites"
 					>
 						<PlusIcon size={14} />
@@ -128,7 +128,7 @@
 							>
 								<button
 									type="button"
-									class="inline-flex h-6 w-6 min-w-6 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium"
+									class="inline-flex h-6 w-6 min-w-6 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
 									aria-label="Remove from favourites"
 									title="Remove from favourites"
 								>
@@ -147,7 +147,7 @@
 							>
 								<button
 									type="button"
-									class="inline-flex h-6 w-6 min-w-6 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium"
+									class="inline-flex h-6 w-6 min-w-6 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
 									aria-label="Remove from favourites"
 								>
 									<XIcon size={14} />
