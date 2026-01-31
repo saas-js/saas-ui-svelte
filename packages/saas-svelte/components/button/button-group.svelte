@@ -1,19 +1,17 @@
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
-import { Group } from "$saas/layout/group";
+import { twMerge } from "tailwind-merge";
+import { group } from "$saas/layout/group";
 
 let {
 	class: className,
 	children,
 	...rest
 }: HTMLAttributes<HTMLDivElement> = $props();
+
+const classes = $derived(twMerge(group({ attached: true }), className as string));
 </script>
 
-<Group
-	role="group"
-	attached={true}
-	class={className}
-	{...rest}
->
+<div role="group" class={classes} {...rest}>
 	{@render children?.()}
-</Group>
+</div>

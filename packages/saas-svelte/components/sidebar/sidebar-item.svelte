@@ -9,8 +9,6 @@ import {
 	sidebar,
 } from "./sidebar-root.svelte";
 import { Icon } from "$saas/components/icon";
-import { Box } from "$saas/layout/box";
-import { Text } from "$saas/typography/text";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -43,12 +41,12 @@ const iconClass = $derived(styles.itemIcon());
 const labelClass = $derived(styles.itemLabel());
 </script>
 
-<Box
+<div
 	role="button"
 	tabindex="0"
 	class={finalClass}
 	data-active={active || undefined}
-	onkeydown={(e) => {
+	onkeydown={(e: KeyboardEvent & { currentTarget: HTMLDivElement }) => {
 		if (e.key === "Enter" || e.key === " ") {
 			e.preventDefault();
 			e.currentTarget.click();
@@ -57,11 +55,11 @@ const labelClass = $derived(styles.itemLabel());
 	{...restProps}
 >
 	{#if icon}
-		<Box as="span" class={iconClass}>
+		<span class={iconClass}>
 			<Icon as={icon} size="sm" />
-		</Box>
+		</span>
 	{/if}
-	<Text as="span" class={twMerge(labelClass)}>
+	<span class={labelClass}>
 		{@render children?.()}
-	</Text>
-</Box>
+	</span>
+</div>

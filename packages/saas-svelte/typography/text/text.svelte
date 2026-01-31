@@ -52,13 +52,9 @@ export type TextVariants = VariantProps<typeof text>;
 
 <script lang="ts">
 import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
 import type { ClassNameValue } from "tailwind-merge";
 
-interface Props extends Omit<
-	HTMLAttributes<HTMLElement>,
-	"class" | "children"
-> {
+interface Props {
 	/**
 	 * The content to render.
 	 */
@@ -98,6 +94,10 @@ interface Props extends Omit<
 	 * Additional CSS classes to apply.
 	 */
 	class?: ClassNameValue;
+	/**
+	 * Additional HTML attributes.
+	 */
+	[key: string]: unknown;
 }
 
 let {

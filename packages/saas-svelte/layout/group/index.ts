@@ -1,1 +1,1 @@
-export { default as Group } from "./group.svelte";
+export { default as Group, group } from "./group.svelte";

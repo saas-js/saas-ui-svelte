@@ -384,11 +384,11 @@ function getItemProps(item: CollectionItem) {
 				{:else if collection.items.length === 0 && !showCreateOption}
 					<Flex class={ctx.styles.empty()}>{emptyText}</Flex>
 				{:else if virtualised}
-					<Box
+					<div
 						bind:this={scrollElement}
 						class="max-h-xs overflow-y-auto"
 					>
-						<Box
+						<div
 							style="height: {totalSize}px; width: 100%; position: relative;"
 						>
 							{#each virtualItems as virtualItem (virtualItem.index)}
@@ -398,8 +398,8 @@ function getItemProps(item: CollectionItem) {
 									{@render renderItem(item, virtualStyle)}
 								{/if}
 							{/each}
-						</Box>
-					</Box>
+						</div>
+					</div>
 				{:else}
 					{#each collection.items as item (typeof item === "string" ? item : item.value)}
 						{@render renderItem(item, ctx.colourStyle)}

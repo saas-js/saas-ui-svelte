@@ -8,7 +8,6 @@ import {
 	type SidebarContext,
 	sidebar,
 } from "./sidebar-root.svelte";
-import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -34,12 +33,12 @@ const styles = $derived(ctx?.styles ?? sidebar());
 const finalClass = $derived(twMerge(styles.item({ active }), className as string));
 </script>
 
-<Box
+<div
 	role="button"
 	tabindex="0"
 	class={finalClass}
 	data-active={active || undefined}
-	onkeydown={(e) => {
+	onkeydown={(e: KeyboardEvent & { currentTarget: HTMLDivElement }) => {
 		if (e.key === "Enter" || e.key === " ") {
 			e.preventDefault();
 			e.currentTarget.click();
@@ -48,4 +47,4 @@ const finalClass = $derived(twMerge(styles.item({ active }), className as string
 	{...restProps}
 >
 	{@render children?.()}
-</Box>
+</div>

@@ -12,7 +12,6 @@ import { Tooltip as ArkTooltip } from "@ark-ui/svelte";
 import { Portal } from "$saas/components/portal";
 import type { TooltipRootProps } from "@ark-ui/svelte/tooltip";
 import type { Snippet } from "svelte";
-import { Box } from "$saas/layout/box";
 
 // Omit 'id' from the strict type so we can make it optional in our interface
 interface Props extends Omit<TooltipRootProps, "id"> {
@@ -119,9 +118,9 @@ const styles = $derived(
 >
 	<ArkTooltip.Trigger>
 		{#snippet asChild(props)}
-			<Box as="span" class="inline-block" {...props()}>
+			<span class="inline-block" {...props()}>
 				{@render effectiveTrigger?.()}
-			</Box>
+			</span>
 		{/snippet}
 	</ArkTooltip.Trigger>
 	<Portal>

@@ -2,7 +2,6 @@
 import { getContext, type Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
-import { VStack } from "$saas/layout/stack";
 import { persona, PERSONA_CTX, type PersonaContext } from "./persona.svelte";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -24,6 +23,6 @@ const size = $derived(personaContext?.size ?? "md");
 const styles = $derived(persona({ size }));
 </script>
 
-<VStack gap={0} justify="center" class={twMerge(styles.details(), className as string)} {...restProps}>
+<div class={twMerge("flex flex-col justify-center", styles.details(), className)} {...restProps}>
 	{@render children()}
-</VStack>
+</div>

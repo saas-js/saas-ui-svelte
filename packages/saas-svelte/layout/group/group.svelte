@@ -52,11 +52,10 @@ export type GroupVariants = VariantProps<typeof group>;
 </script>
 
 <script lang="ts">
-import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 
-interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
+interface Props {
 	/**
 	 * The content to render inside the group.
 	 */
@@ -85,6 +84,10 @@ interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
 	 * Only applies when `attached` is false.
 	 */
 	gap?: number;
+	/**
+	 * Additional HTML attributes.
+	 */
+	[key: string]: unknown;
 }
 
 let {

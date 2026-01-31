@@ -4,7 +4,6 @@ import type { Snippet } from "svelte";
 import { getContext } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { NAVBAR_CTX, type NavbarContext } from "./navbar-root.svelte";
-import { flex } from "$saas/layout/flex";
 
 interface Props extends HTMLAttributes<HTMLUListElement> {
 	/** Gap between items using Tailwind gap classes. */
@@ -27,10 +26,17 @@ let {
 
 const ctx = getContext<NavbarContext>(NAVBAR_CTX);
 const gapClass = $derived(gap !== undefined ? `gap-${gap}` : undefined);
+const justifyClass = $derived({
+	start: "justify-start",
+	end: "justify-end",
+	center: "justify-center",
+	between: "justify-between",
+}[justify]);
 const finalClass = $derived(
 	twMerge(
 		ctx?.styles?.itemGroup() ?? "",
-		flex({ align: "center", justify }),
+		"flex items-center",
+		justifyClass,
 		gapClass,
 		className,
 	),

@@ -3,7 +3,6 @@ import { HoverCard } from "@ark-ui/svelte/hover-card";
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { HOVER_CARD_CTX, type HoverCardContext } from "./hover-card-root.svelte";
-import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -32,15 +31,14 @@ function handlePrefetch() {
 
 <HoverCard.Trigger {...rest}>
 	{#snippet asChild(props)}
-		<Box
-			as="span"
-			class={twMerge("inline rounded outline-none", className as string)}
+		<span
+			class={twMerge("inline rounded outline-none", className)}
 			{style}
 			onmouseenter={handlePrefetch}
 			onfocus={handlePrefetch}
 			{...props()}
 		>
 			{@render children()}
-		</Box>
+		</span>
 	{/snippet}
 </HoverCard.Trigger>

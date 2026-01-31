@@ -2,7 +2,6 @@
 import { type VariantProps, tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
 import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
 import type { SvelteHTMLElements } from "svelte/elements";
 
 const stack = tv({
@@ -43,7 +42,7 @@ const stack = tv({
 
 type StackVariants = VariantProps<typeof stack>;
 
-interface Props extends HTMLAttributes<HTMLElement> {
+interface Props {
 	/**
 	 * The HTML element to render.
 	 * @default "div"
@@ -81,6 +80,10 @@ interface Props extends HTMLAttributes<HTMLElement> {
 	 * Additional CSS classes to apply.
 	 */
 	class?: string;
+	/**
+	 * Additional HTML attributes.
+	 */
+	[key: string]: unknown;
 }
 
 let {

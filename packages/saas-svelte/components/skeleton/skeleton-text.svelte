@@ -103,9 +103,9 @@ const shineStyle = $derived(
 
 <VStack
 	class={rootClasses}
-	style:gap="{gap * 0.25}rem"
+	gap={gap}
 	aria-hidden="true"
-	{...restProps}
+	{...(restProps as Record<string, unknown>)}
 >
 	{#each lines as _, index}
 		<Box

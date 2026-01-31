@@ -4,7 +4,6 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
 import { SIDEBAR_CTX, type SidebarContext } from "./sidebar-root.svelte";
-import { VStack } from "$saas/layout/stack";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -16,9 +15,9 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 let { children, class: className, ...restProps }: Props = $props();
 
 const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
-const finalClass = $derived(twMerge(ctx?.styles?.groupContent() ?? "", className as string));
+const finalClass = $derived(twMerge("flex flex-col", ctx?.styles?.groupContent() ?? "", className as string));
 </script>
 
-<VStack class={finalClass} {...restProps}>
+<div class={finalClass} {...restProps}>
 	{@render children?.()}
-</VStack>
+</div>
