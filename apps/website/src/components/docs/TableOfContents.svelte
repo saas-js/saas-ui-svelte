@@ -39,36 +39,38 @@ function flattenItems(items: TocItem[]): TocItem[] {
 $effect(() => {
 	if (typeof window === "undefined") return;
 
-	const flatItems = flattenItems(items);
-	const ids = flatItems.map((item) => item.href.replace("#", ""));
+	const ids = flattenItems(items).map((item) => item.href.replace("#", ""));
+	const visibleSections = new Set<string>();
 
 	const observer = new IntersectionObserver(
 		(entries) => {
-			// Find the first visible section
 			for (const entry of entries) {
 				if (entry.isIntersecting) {
-					activeId = entry.target.id;
-					break;
+					visibleSections.add(entry.target.id);
+				} else {
+					visibleSections.delete(entry.target.id);
 				}
 			}
+
+			// Use first visible section, or first section above viewport
+			activeId =
+				ids.find((id) => visibleSections.has(id)) ||
+				ids.findLast((id) => {
+					const el = document.getElementById(id);
+					return el && el.getBoundingClientRect().top < 100;
+				}) ||
+				ids[0] ||
+				"";
 		},
-		{
-			rootMargin: "-80px 0px -80% 0px",
-			threshold: 0,
-		},
+		{ rootMargin: "-80px 0px -70% 0px" },
 	);
 
-	// Observe all sections
 	for (const id of ids) {
-		const element = document.getElementById(id);
-		if (element) {
-			observer.observe(element);
-		}
+		const el = document.getElementById(id);
+		if (el) observer.observe(el);
 	}
 
-	return () => {
-		observer.disconnect();
-	};
+	return () => observer.disconnect();
 });
 
 function scrollToTop() {
