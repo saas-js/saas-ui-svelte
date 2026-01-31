@@ -8,9 +8,9 @@ import Showcase from "../components/Showcase.svelte";
 ---
 
 <Layout title="SaaS UI Svelte">
-	<Hero client:only="svelte" />
-	<Showcase client:only="svelte" />
-	<ComponentsPreview client:only="svelte" />
+	<Hero client:load />
+	<Showcase client:load />
+	<ComponentsPreview client:load />
 	<WhySection client:visible />
 	<ClosingCTA client:visible />
 </Layout>
