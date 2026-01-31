@@ -124,22 +124,20 @@ const styles = $derived(
 			</span>
 		{/snippet}
 	</ArkTooltip.Trigger>
-	{#if mounted}
-		<Portal>
-			<ArkTooltip.Positioner class={styles.positioner()}>
-				<ArkTooltip.Content class={styles.content()}>
-					{#if showArrow}
-						<ArkTooltip.Arrow class={styles.arrow()}>
-							<ArkTooltip.ArrowTip class={styles.arrowTip()} />
-						</ArkTooltip.Arrow>
-					{/if}
-					{#if typeof effectiveContent === "string"}
-						{effectiveContent}
-					{:else if effectiveContent}
-						{@render effectiveContent()}
-					{/if}
-				</ArkTooltip.Content>
-			</ArkTooltip.Positioner>
-		</Portal>
-	{/if}
+	<Portal>
+		<ArkTooltip.Positioner class={styles.positioner()}>
+			<ArkTooltip.Content class={styles.content()}>
+				{#if showArrow}
+					<ArkTooltip.Arrow class={styles.arrow()}>
+						<ArkTooltip.ArrowTip class={styles.arrowTip()} />
+					</ArkTooltip.Arrow>
+				{/if}
+				{#if typeof effectiveContent === "string"}
+					{effectiveContent}
+				{:else if effectiveContent}
+					{@render effectiveContent()}
+				{/if}
+			</ArkTooltip.Content>
+		</ArkTooltip.Positioner>
+	</Portal>
 </ArkTooltip.Root>
