@@ -110,6 +110,7 @@ export interface SegmentGroupContext {
 	colour: string;
 	size: SegmentGroupVariants["size"];
 	disabled: boolean;
+	onPrefetch?: (value: string) => void;
 }
 </script>
 
@@ -169,6 +170,11 @@ interface Props {
 	 * Callback invoked when the value changes.
 	 */
 	onValueChange?: (details: { value: string | null }) => void;
+	/**
+	 * Callback invoked when hovering over an item (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before selection.
+	 */
+	onPrefetch?: (value: string) => void;
 	[key: string]: any;
 }
 
@@ -184,6 +190,7 @@ let {
 	disabled = false,
 	readOnly = false,
 	onValueChange,
+	onPrefetch,
 	...restProps
 }: Props = $props();
 
@@ -202,6 +209,9 @@ setContext<SegmentGroupContext>(SEGMENT_GROUP_CTX, {
 	},
 	get disabled() {
 		return disabled;
+	},
+	get onPrefetch() {
+		return onPrefetch;
 	},
 });
 

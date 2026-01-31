@@ -126,6 +126,7 @@ export type { ColourName };
 
 export interface TabsContext {
 	styles: ReturnType<typeof tabs>;
+	onPrefetch?: (value: string) => void;
 }
 </script>
 
@@ -205,6 +206,11 @@ interface Props {
 	 * Callback when the selected tab changes.
 	 */
 	onValueChange?: (details: { value: string }) => void;
+	/**
+	 * Callback invoked when hovering over a tab trigger (for prefetching content).
+	 * Similar to Astro's link prefetching, this allows preloading data before selection.
+	 */
+	onPrefetch?: (value: string) => void;
 	[key: string]: any;
 }
 
@@ -224,6 +230,7 @@ let {
 	justify,
 	colour = "gray",
 	onValueChange,
+	onPrefetch,
 	style,
 	...restProps
 }: Props = $props();
@@ -235,6 +242,9 @@ const finalStyle = $derived([colourStyle, style].filter(Boolean).join("; "));
 setContext<TabsContext>(TABS_CTX, {
 	get styles() {
 		return classes;
+	},
+	get onPrefetch() {
+		return onPrefetch;
 	},
 });
 </script>

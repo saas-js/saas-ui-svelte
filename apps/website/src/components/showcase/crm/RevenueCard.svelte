@@ -29,6 +29,28 @@
 	let totalRevenue = $state("$12,500.00");
 	let prevTimeRange = $state("");
 
+	// Data cache for prefetching
+	const dataCache = new Map<string, { labels: string[]; data: number[] }>();
+
+	/**
+	 * Prefetch and cache data for a time range.
+	 * Called on hover to make subsequent switches instant.
+	 */
+	export function prefetch(range: string) {
+		if (!dataCache.has(range)) {
+			dataCache.set(range, generateData(range));
+		}
+	}
+
+	function getOrGenerateData(range: string): { labels: string[]; data: number[] } {
+		if (dataCache.has(range)) {
+			return dataCache.get(range)!;
+		}
+		const data = generateData(range);
+		dataCache.set(range, data);
+		return data;
+	}
+
 	function generateData(range: string): { labels: string[]; data: number[] } {
 		const seed = range === "year" ? 1 : range === "month" ? 2 : 3;
 		const random = (min: number, max: number, i: number) => {
@@ -86,7 +108,7 @@
 		const prev = untrack(() => prevTimeRange);
 
 		if (currentChart && prev !== "" && prev !== currentRange) {
-			const { labels, data } = generateData(currentRange);
+			const { labels, data } = getOrGenerateData(currentRange);
 			currentChart.data.labels = labels;
 			currentChart.data.datasets[0].data = data;
 			currentChart.options.animation = {
@@ -105,7 +127,7 @@
 			const ctx = canvas.getContext("2d");
 			if (ctx) {
 				const colors = getChartColors();
-				const { labels, data } = generateData(timeRange);
+				const { labels, data } = getOrGenerateData(timeRange);
 				totalRevenue = `$${data[data.length - 1].toLocaleString()}.00`;
 				prevTimeRange = timeRange;
 

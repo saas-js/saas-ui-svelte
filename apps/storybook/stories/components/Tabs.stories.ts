@@ -81,6 +81,12 @@ const meta: Meta = {
 			description: "The colour theme.",
 			table: { defaultValue: { summary: "gray" } },
 		},
+		onPrefetch: {
+			action: "prefetch",
+			description:
+				"Callback invoked when hovering over a tab trigger. Similar to Astro's link prefetching, this allows preloading data before selection.",
+			table: { category: "Events" },
+		},
 		class: {
 			control: "text",
 			description: "CSS class to apply to the component.",
@@ -190,6 +196,12 @@ const meta: Meta = {
 						type: "(details: { value: string }) => void",
 						default: "-",
 						description: "Callback when the selected tab changes.",
+					},
+					onPrefetch: {
+						type: "(value: string) => void",
+						default: "-",
+						description:
+							"Callback invoked when hovering over a tab trigger. Similar to Astro's link prefetching, this allows preloading data before selection.",
 					},
 				},
 			},

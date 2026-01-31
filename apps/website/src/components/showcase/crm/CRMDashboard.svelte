@@ -6,6 +6,15 @@ import CustomerMetricsCard from "./CustomerMetricsCard.svelte";
 
 let timeRange = $state("year");
 let sidebarOpen = $state(true);
+
+// Refs to chart components for prefetching
+let revenueCard: ReturnType<typeof RevenueCard>;
+let customerMetricsCard: ReturnType<typeof CustomerMetricsCard>;
+
+function handlePrefetch(value: string) {
+	revenueCard?.prefetch?.(value);
+	customerMetricsCard?.prefetch?.(value);
+}
 </script>
 
 <div
@@ -22,14 +31,15 @@ let sidebarOpen = $state(true);
 			onTimeRangeChange={(value) => (timeRange = value)}
 			sidebarOpen={sidebarOpen}
 			onToggleSidebar={() => (sidebarOpen = !sidebarOpen)}
+			onPrefetch={handlePrefetch}
 		/>
 
 		<main
 			class="flex-1 overflow-auto bg-gray-50/50 p-4 dark:bg-gray-900/50"
 		>
 			<div class="grid gap-4 xl:grid-cols-3">
-				<RevenueCard timeRange={timeRange} />
-				<CustomerMetricsCard timeRange={timeRange} />
+				<RevenueCard bind:this={revenueCard} timeRange={timeRange} />
+				<CustomerMetricsCard bind:this={customerMetricsCard} timeRange={timeRange} />
 			</div>
 		</main>
 	</div>

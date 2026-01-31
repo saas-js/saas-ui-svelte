@@ -50,6 +50,12 @@ const meta: Meta = {
 			description: "Whether the component is disabled.",
 			table: { defaultValue: { summary: "false" } },
 		},
+		onPrefetch: {
+			action: "prefetch",
+			description:
+				"Callback invoked when hovering over an item. Similar to Astro's link prefetching, this allows preloading data before selection.",
+			table: { category: "Events" },
+		},
 		class: {
 			control: "text",
 			description: "CSS class to apply to the component.",

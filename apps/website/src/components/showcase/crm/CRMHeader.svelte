@@ -7,9 +7,10 @@
 		onTimeRangeChange: (value: string) => void;
 		sidebarOpen: boolean;
 		onToggleSidebar: () => void;
+		onPrefetch?: (value: string) => void;
 	}
 
-	let { timeRange, onTimeRangeChange, sidebarOpen, onToggleSidebar }: Props =
+	let { timeRange, onTimeRangeChange, sidebarOpen, onToggleSidebar, onPrefetch }: Props =
 		$props();
 </script>
 
@@ -49,6 +50,7 @@
 		<SegmentGroup.Root
 			value={timeRange}
 			onValueChange={(e) => onTimeRangeChange(e.value ?? "year")}
+			onPrefetch={onPrefetch}
 			size="xs"
 		>
 			<SegmentGroup.Item value="year">Last year</SegmentGroup.Item>

@@ -54,6 +54,12 @@ const colourVars = $derived(getColourStyle(ctx.colour));
 
 const isDisabled = $derived(disabled || ctx.disabled);
 
+function handleMouseEnter() {
+	if (!isDisabled) {
+		ctx.onPrefetch?.(value);
+	}
+}
+
 // Map segment size to icon size
 const iconSizeMap = {
 	xs: "xs",
@@ -75,6 +81,7 @@ const iconSize = $derived(iconSizeMap[ctx.size ?? "md"]);
 		className,
 	)}
 	style={colourVars}
+	onmouseenter={handleMouseEnter}
 	{...restProps}
 >
 	{#if children}

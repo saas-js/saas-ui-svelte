@@ -35,12 +35,19 @@ let {
 
 const ctx = getContext<TabsContext>(TABS_CTX);
 const styles = $derived(ctx.styles);
+
+function handleMouseEnter() {
+	if (!disabled) {
+		ctx.onPrefetch?.(value);
+	}
+}
 </script>
 
 <Tabs.Trigger
 	value={value}
 	disabled={disabled}
 	class={twMerge(styles.trigger(), className)}
+	onmouseenter={handleMouseEnter}
 	{...restProps}
 >
 	{@render children()}

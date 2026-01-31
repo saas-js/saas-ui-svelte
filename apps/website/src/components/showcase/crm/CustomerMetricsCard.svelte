@@ -30,7 +30,31 @@
 		pieData: [70, 40, 25],
 	});
 
-	function generateData(range: string) {
+	type MetricsData = typeof metrics;
+
+	// Data cache for prefetching
+	const dataCache = new Map<string, MetricsData>();
+
+	/**
+	 * Prefetch and cache data for a time range.
+	 * Called on hover to make subsequent switches instant.
+	 */
+	export function prefetch(range: string) {
+		if (!dataCache.has(range)) {
+			dataCache.set(range, generateData(range));
+		}
+	}
+
+	function getOrGenerateData(range: string): MetricsData {
+		if (dataCache.has(range)) {
+			return dataCache.get(range)!;
+		}
+		const data = generateData(range);
+		dataCache.set(range, data);
+		return data;
+	}
+
+	function generateData(range: string): MetricsData {
 		const seed = range === "year" ? 1 : range === "month" ? 2 : 3;
 		const random = (min: number, max: number, i: number) => {
 			const x = Math.sin(seed * 100 + i * 50) * 10000;
@@ -87,7 +111,7 @@
 		const prev = untrack(() => prevTimeRange);
 
 		if (currentChart && prev !== "" && prev !== currentRange) {
-			const data = generateData(currentRange);
+			const data = getOrGenerateData(currentRange);
 			metrics = data;
 			currentChart.data.datasets[0].data = data.pieData;
 
@@ -114,7 +138,7 @@
 			const ctx = canvas.getContext("2d");
 			if (ctx) {
 				const colors = getChartColors();
-				const data = generateData(timeRange);
+				const data = getOrGenerateData(timeRange);
 				metrics = data;
 				prevTimeRange = timeRange;
 
