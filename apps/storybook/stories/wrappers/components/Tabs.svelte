@@ -9,6 +9,7 @@
 	import { Text } from "$saas/typography/text";
 	import { Button } from "$saas/components/button";
 	import { CloseButton } from "$saas/components/close-button";
+	import { Icon } from "$saas/components/icon";
 	import User from "phosphor-svelte/lib/User";
 	import Folder from "phosphor-svelte/lib/Folder";
 	import CheckSquare from "phosphor-svelte/lib/CheckSquare";
@@ -82,15 +83,15 @@
 	<Tabs.Root defaultValue="members">
 		<Tabs.List>
 			<Tabs.Trigger value="members">
-				<User class="size-3.5" aria-hidden="true" />
+				<Icon as={User} size="xs" />
 				Members
 			</Tabs.Trigger>
 			<Tabs.Trigger value="projects">
-				<Folder class="size-3.5" aria-hidden="true" />
+				<Icon as={Folder} size="xs" />
 				Projects
 			</Tabs.Trigger>
 			<Tabs.Trigger value="settings">
-				<CheckSquare class="size-3.5" aria-hidden="true" />
+				<Icon as={CheckSquare} size="xs" />
 				Settings
 			</Tabs.Trigger>
 		</Tabs.List>
@@ -106,15 +107,15 @@
 				<Tabs.Root {variant} defaultValue="members">
 					<Tabs.List>
 						<Tabs.Trigger value="members">
-							<User class="size-3.5" aria-hidden="true" />
+							<Icon as={User} size="xs" />
 							Members
 						</Tabs.Trigger>
 						<Tabs.Trigger value="projects">
-							<Folder class="size-3.5" aria-hidden="true" />
+							<Icon as={Folder} size="xs" />
 							Projects
 						</Tabs.Trigger>
 						<Tabs.Trigger value="settings">
-							<CheckSquare class="size-3.5" aria-hidden="true" />
+							<Icon as={CheckSquare} size="xs" />
 							Settings
 						</Tabs.Trigger>
 						{#if variant === "outline"}
@@ -173,15 +174,15 @@
 	<Tabs.Root defaultValue="members" variant="plain">
 		<Tabs.List class="p-1 rounded-lg bg-bg-muted">
 			<Tabs.Trigger value="members">
-				<User class="size-3.5" aria-hidden="true" />
+				<Icon as={User} size="xs" />
 				Members
 			</Tabs.Trigger>
 			<Tabs.Trigger value="projects">
-				<Folder class="size-3.5" aria-hidden="true" />
+				<Icon as={Folder} size="xs" />
 				Projects
 			</Tabs.Trigger>
 			<Tabs.Trigger value="settings">
-				<CheckSquare class="size-3.5" aria-hidden="true" />
+				<Icon as={CheckSquare} size="xs" />
 				Settings
 			</Tabs.Trigger>
 			<Tabs.Indicator class="shadow bg-bg-default rounded-md" />
@@ -242,15 +243,15 @@
 	<Tabs.Root defaultValue="members">
 		<Tabs.List>
 			<Tabs.Trigger value="members">
-				<User class="size-3.5" aria-hidden="true" />
+				<Icon as={User} size="xs" />
 				Members
 			</Tabs.Trigger>
 			<Tabs.Trigger value="projects" disabled>
-				<Folder class="size-3.5" aria-hidden="true" />
+				<Icon as={Folder} size="xs" />
 				Projects
 			</Tabs.Trigger>
 			<Tabs.Trigger value="settings">
-				<CheckSquare class="size-3.5" aria-hidden="true" />
+				<Icon as={CheckSquare} size="xs" />
 				Settings
 			</Tabs.Trigger>
 		</Tabs.List>
@@ -291,7 +292,7 @@
 				{/each}
 			</Tabs.List>
 			<Button size="2xs" variant="ghost" onclick={addTab}>
-				<Plus class="size-3.5" aria-hidden="true" />
+				<Icon as={Plus} size="xs" />
 				Add Tab
 			</Button>
 		</HStack>

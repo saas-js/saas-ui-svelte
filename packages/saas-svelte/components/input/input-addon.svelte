@@ -2,11 +2,11 @@
 import { tv, type VariantProps } from "tailwind-variants";
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
+import { Flex } from "$saas/layout/flex";
 
 const addon = tv({
 	base: [
-		"flex",
-		"items-center",
 		"flex-none",
 		"whitespace-nowrap",
 		"border",
@@ -48,9 +48,10 @@ interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
 
 let { children, class: className, size = "md", ...restProps }: Props = $props();
 
-const classes = $derived(addon({ size, class: className }) as string);
+const baseClasses = $derived(addon({ size }));
+const classes = $derived(twMerge(baseClasses, className));
 </script>
 
-<div class={classes} {...restProps}>
+<Flex align="center" class={classes} {...restProps}>
 	{@render children?.()}
-</div>
+</Flex>

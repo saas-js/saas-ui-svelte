@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
 import type { Snippet } from "svelte";
+import { Centre } from "$saas/layout/centre";
 
 interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
 	/**
@@ -32,15 +33,12 @@ const placementStyles = {
 };
 </script>
 
-<div
+<Centre
 	class={twMerge(
 		"absolute",
 		"top-0",
 		"z-2",
-		"flex",
 		"h-full",
-		"items-center",
-		"justify-center",
 		"text-fg-muted",
 		"text-sm",
 		"pointer-events-none",
@@ -51,4 +49,4 @@ const placementStyles = {
 	{...restProps}
 >
 	{@render children?.()}
-</div>
+</Centre>

@@ -8,6 +8,7 @@
 	import { Box } from "$saas/layout/box";
 	import { Menu } from "$saas/components/menu";
 	import { Avatar } from "$saas/components/avatar";
+	import { Icon } from "$saas/components/icon";
 	import House from "phosphor-svelte/lib/House";
 	import Users from "phosphor-svelte/lib/Users";
 
@@ -37,7 +38,7 @@
 {/snippet}
 
 {#if story === "basic"}
-	<Box class="h-[400px]">
+	<Box class="h-100">
 		<Sidebar.Root>
 			<Sidebar.Header>
 				{@render logoSvg()}
@@ -60,20 +61,12 @@
 					<Sidebar.GroupContent>
 						<Sidebar.NavItem>
 							<Sidebar.NavButton active>
-								<House
-									weight="regular"
-									class="w-4 h-4"
-									aria-hidden="true"
-								/> Home
+								<Icon as={House} size="sm" weight="regular" /> Home
 							</Sidebar.NavButton>
 						</Sidebar.NavItem>
 						<Sidebar.NavItem>
 							<Sidebar.NavButton>
-								<Users
-									weight="regular"
-									class="w-4 h-4"
-									aria-hidden="true"
-								/> Contacts
+								<Icon as={Users} size="sm" weight="regular" /> Contacts
 							</Sidebar.NavButton>
 						</Sidebar.NavItem>
 					</Sidebar.GroupContent>

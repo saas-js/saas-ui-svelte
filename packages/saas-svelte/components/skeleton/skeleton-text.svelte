@@ -53,6 +53,8 @@ export type SkeletonTextVariants = VariantProps<typeof skeletonText>;
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
+import { VStack } from "$saas/layout/stack";
+import { Box } from "$saas/layout/box";
 
 interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
 	/**
@@ -99,19 +101,19 @@ const shineStyle = $derived(
 );
 </script>
 
-<div
+<VStack
 	class={rootClasses}
 	style:gap="{gap * 0.25}rem"
 	aria-hidden="true"
 	{...restProps}
 >
 	{#each lines as _, index}
-		<div
+		<Box
 			class={twMerge(
 				lineClasses,
 				index === noOfLines - 1 && "max-w-[80%]",
 			)}
 			style={shineStyle}
-		></div>
+		></Box>
 	{/each}
-</div>
+</VStack>

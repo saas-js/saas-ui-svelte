@@ -7,6 +7,7 @@
 	import { Select } from "$saas/components/select";
 	import { Field } from "$saas/components/field";
 	import { VStack, HStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
 	import { Text } from "$saas/typography/text";
 	import { Avatar } from "$saas/components/avatar";
 	import { Button } from "$saas/components/button";
@@ -117,7 +118,7 @@
 </script>
 
 {#if story === "basic"}
-	<div class="w-80">
+	<Box class="w-80">
 		<Select.Root collection={frameworks} size="sm">
 			<Select.Label>Select framework</Select.Label>
 			<Select.Trigger>
@@ -131,7 +132,7 @@
 				{/each}
 			</Select.Content>
 		</Select.Root>
-	</div>
+	</Box>
 {:else if story === "sizes"}
 	<VStack gap={5} class="w-80">
 		{#each selectSizes as size}
@@ -169,7 +170,7 @@
 		{/each}
 	</VStack>
 {:else if story === "optionGroup"}
-	<div class="w-80">
+	<Box class="w-80">
 		<Select.Root collection={groupedItems} size="sm">
 			<Select.Label>Select framework</Select.Label>
 			<Select.Trigger>
@@ -187,9 +188,9 @@
 				{/each}
 			</Select.Content>
 		</Select.Root>
-	</div>
+	</Box>
 {:else if story === "disabled"}
-	<div class="w-80">
+	<Box class="w-80">
 		<Select.Root collection={frameworks} disabled size="sm">
 			<Select.Label>Select framework</Select.Label>
 			<Select.Trigger>
@@ -203,9 +204,9 @@
 				{/each}
 			</Select.Content>
 		</Select.Root>
-	</div>
+	</Box>
 {:else if story === "invalid"}
-	<div class="w-80">
+	<Box class="w-80">
 		<Field.Root invalid>
 			<Select.Root collection={frameworks} size="sm">
 				<Select.Label>Select framework</Select.Label>
@@ -222,9 +223,9 @@
 			</Select.Root>
 			<Field.ErrorText>This is an error</Field.ErrorText>
 		</Field.Root>
-	</div>
+	</Box>
 {:else if story === "avatarSelect"}
-	<div class="w-60">
+	<Box class="w-60">
 		<Select.Root
 			collection={members}
 			defaultValue={["jessica_jones"]}
@@ -244,9 +245,9 @@
 				{/each}
 			</Select.Content>
 		</Select.Root>
-	</div>
+	</Box>
 {:else if story === "clearTrigger"}
-	<div class="w-80">
+	<Box class="w-80">
 		<Select.Root
 			collection={animeMovies}
 			defaultValue={["spirited_away"]}
@@ -264,9 +265,9 @@
 				{/each}
 			</Select.Content>
 		</Select.Root>
-	</div>
+	</Box>
 {:else if story === "overflow"}
-	<div class="w-60">
+	<Box class="w-60">
 		<Select.Root collection={animeMovies} size="sm">
 			<Select.Label>Select anime</Select.Label>
 			<Select.Trigger>
@@ -280,9 +281,9 @@
 				{/each}
 			</Select.Content>
 		</Select.Root>
-	</div>
+	</Box>
 {:else if story === "positioning"}
-	<div class="w-80">
+	<Box class="w-80">
 		<Select.Root
 			collection={frameworks}
 			size="sm"
@@ -300,7 +301,7 @@
 				{/each}
 			</Select.Content>
 		</Select.Root>
-	</div>
+	</Box>
 {:else if story === "inPopover"}
 	<Popover.Root size="xs">
 		<Popover.Trigger>

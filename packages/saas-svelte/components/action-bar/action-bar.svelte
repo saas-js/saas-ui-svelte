@@ -58,7 +58,13 @@ export type ActionBarVariants = VariantProps<typeof actionBar>;
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
-import { Portal } from "@ark-ui/svelte/portal";
+import { Portal } from "$saas/components/portal";
+import {
+	registerOverlay,
+	unregisterOverlay,
+} from "$saas/utils/overlay-singleton.svelte.js";
+import { Flex } from "$saas/layout/flex";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -98,10 +104,21 @@ const styles = actionBar();
 
 // Track visibility separately to allow exit animation to complete
 let visible = $state(false);
+let instanceId: symbol | null = $state(null);
 
 $effect(() => {
 	if (open) {
 		visible = true;
+		// Only register if we haven't already (prevents re-registration on effect re-run)
+		if (!instanceId) {
+			instanceId = registerOverlay("actionBar", () => {
+				onOpenChange?.({ open: false });
+			});
+		}
+	} else if (instanceId) {
+		// Unregister when closing
+		unregisterOverlay("actionBar", instanceId);
+		instanceId = null;
 	}
 });
 
@@ -132,7 +149,8 @@ function handleClickOutside(event: MouseEvent) {
 
 {#if visible}
 	<Portal>
-		<div
+		<Flex
+			justify="center"
 			class={twMerge(styles.root() as string, className as string)}
 			data-part="action-bar-root"
 			data-state={open ? "open" : "closed"}
@@ -140,14 +158,16 @@ function handleClickOutside(event: MouseEvent) {
 			aria-label="Bulk actions"
 			{...restProps}
 		>
-			<div
+			<Flex
+				inline
+				align="center"
 				class={twMerge(styles.content() as string)}
 				data-part="action-bar-content"
 				data-state={open ? "open" : "closed"}
 				onanimationend={handleAnimationEnd}
 			>
 				{@render children?.()}
-			</div>
-		</div>
+			</Flex>
+		</Flex>
 	</Portal>
 {/if}

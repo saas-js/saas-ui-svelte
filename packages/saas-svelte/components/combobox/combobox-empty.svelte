@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { COMBOBOX_CTX, type ComboboxContext } from "./combobox-root.svelte";
+import { Flex } from "$saas/layout/flex";
 
 interface Props {
 	/**
@@ -19,6 +20,6 @@ let { children, class: className }: Props = $props();
 const ctx = getContext<ComboboxContext>(COMBOBOX_CTX);
 </script>
 
-<div class={twMerge(ctx?.styles?.empty() ?? "", className as string)}>
+<Flex class={twMerge(ctx?.styles?.empty() ?? "", className as string)}>
 	{@render children()}
-</div>
+</Flex>

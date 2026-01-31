@@ -4,6 +4,7 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
 import { SIDEBAR_CTX, type SidebarContext } from "./sidebar-root.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -18,6 +19,6 @@ const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
 const finalClass = $derived(twMerge(ctx?.styles?.group() ?? "", className as string));
 </script>
 
-<div role="group" class={finalClass} {...restProps}>
+<Box role="group" class={finalClass} {...restProps}>
 	{@render children?.()}
-</div>
+</Box>

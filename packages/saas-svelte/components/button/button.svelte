@@ -112,6 +112,8 @@ export type ButtonVariants = VariantProps<typeof button>;
 <script lang="ts">
 import { getColourStyle } from "$saas/utils/colours";
 import { Spinner } from "$saas/components/spinner";
+import { Box } from "$saas/layout/box";
+import { Centre } from "$saas/layout/centre";
 
 type Props = {
 	/**
@@ -234,22 +236,19 @@ const spinnerClass = $derived(spinnerClassMap[size]);
 
 {#snippet buttonContent()}
 	{#if loading && !loadingText}
-		<span class="contents">
-			<div
-				class="absolute inset-0 flex items-center justify-center"
-				aria-hidden="true"
-			>
+		<Box as="span" class="contents">
+			<Centre class="absolute inset-0" aria-hidden="true">
 				<Spinner colour={colour} class={spinnerClass} />
-			</div>
-			<span class="sr-only">
+			</Centre>
+			<Box as="span" class="sr-only">
 				{@render children?.()}
-			</span>
-		</span>
+			</Box>
+		</Box>
 	{:else if loading && loadingText}
-		<span class="contents">
+		<Box as="span" class="contents">
 			<Spinner colour={colour} class={spinnerClass} />
 			{loadingText}
-		</span>
+		</Box>
 	{:else}
 		{@render children?.()}
 	{/if}

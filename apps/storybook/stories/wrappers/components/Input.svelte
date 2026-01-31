@@ -9,6 +9,7 @@
 	import { Stack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
 	import { Kbd } from "$saas/components/kbd";
+	import { Icon } from "$saas/components/icon";
 	import User from "phosphor-svelte/lib/User";
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
 	import { colours, inputVariants, inputSizes } from "../../utils";
@@ -53,7 +54,7 @@
 	<HStack gap={4} class="w-full">
 		<Input.Group class="flex-1">
 			<Input.Element placement="left">
-				<User class="size-3.5" aria-hidden="true" />
+				<Icon as={User} size="xs" />
 			</Input.Element>
 			<Input placeholder="Username" class="pl-8" />
 		</Input.Group>
@@ -67,7 +68,7 @@
 	<HStack gap={4} class="w-full">
 		<Input.Group class="flex-1">
 			<Input.Element placement="left">
-				<MagnifyingGlass class="size-3.5" aria-hidden="true" />
+				<Icon as={MagnifyingGlass} size="xs" />
 			</Input.Element>
 			<Input placeholder="Search contacts" class="px-8" />
 			<Input.Element placement="right" class="pointer-events-auto">

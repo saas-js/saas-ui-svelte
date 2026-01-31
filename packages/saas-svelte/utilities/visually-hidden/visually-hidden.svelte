@@ -1,4 +1,5 @@
 <script lang="ts">
+import { Box } from "$saas/layout/box";
 import type { Snippet } from "svelte";
 
 interface Props {
@@ -15,6 +16,6 @@ interface Props {
 let { children, class: className }: Props = $props();
 </script>
 
-<span class={className ? `sr-only ${className}` : "sr-only"}>
+<Box as="span" class={className ? `sr-only ${className}` : "sr-only"}>
 	{@render children?.()}
-</span>
+</Box>

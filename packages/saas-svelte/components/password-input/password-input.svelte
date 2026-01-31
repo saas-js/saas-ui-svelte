@@ -130,6 +130,7 @@ import { getContext } from "svelte";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
 import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends Omit<HTMLInputAttributes, "size" | "class" | "type"> {
 	/**
@@ -245,7 +246,7 @@ const styles = $derived(
 const inputStyles = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>
 
-<div class={twMerge(styles.root(), rootClass as string)}>
+<Flex inline align="center" justify="start" class={twMerge(styles.root(), rootClass as string)}>
 	<input
 		bind:this={ref}
 		id={id}
@@ -258,7 +259,7 @@ const inputStyles = $derived([colourVars, style].filter(Boolean).join("; "));
 		bind:value={value}
 		{...restProps}
 	/>
-	<div class={styles.element()}>
+	<Flex align="center" justify="center" class={styles.element()}>
 		<button
 			type="button"
 			tabindex={-1}
@@ -273,5 +274,5 @@ const inputStyles = $derived([colourVars, style].filter(Boolean).join("; "));
 				<EyeIcon class={styles.icon()} aria-hidden="true" />
 			{/if}
 		</button>
-	</div>
-</div>
+	</Flex>
+</Flex>

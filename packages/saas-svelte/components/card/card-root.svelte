@@ -8,7 +8,7 @@ export const cardRoot = tv({
 		"wrap-break-word",
 		"text-fg-default",
 		"bg-bg-panel",
-		"flex-col flex relative",
+		"relative",
 		"rounded-lg",
 		"antialiased",
 	],
@@ -38,6 +38,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { setContext } from "svelte";
 import { twMerge } from "tailwind-merge";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -86,6 +87,6 @@ setContext(CARD_CTX, {
 });
 </script>
 
-<div class={finalClass} style={style} {...restProps}>
+<Flex direction="column" class={finalClass} style={style} {...restProps}>
 	{@render children()}
-</div>
+</Flex>

@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { TIMELINE_CTX, type TimelineContext } from "./timeline-root.svelte";
+import { Centre } from "$saas/layout/centre";
 
 interface Props {
 	/**
@@ -20,10 +21,10 @@ let { children, class: className, ...restProps }: Props = $props();
 const ctx = getContext<TimelineContext>(TIMELINE_CTX);
 </script>
 
-<div
+<Centre
 	class={twMerge(ctx?.styles.connector(), className)}
 	aria-hidden="true"
 	{...restProps}
 >
 	{@render children?.()}
-</div>
+</Centre>

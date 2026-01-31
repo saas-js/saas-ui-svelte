@@ -8,13 +8,11 @@ import {
 	CHECKBOX_CARD_CTX,
 	type CheckboxCardVariants,
 } from "./checkbox-card-root.svelte";
+import { Flex } from "$saas/layout/flex";
 
 const checkboxCardIndicator = tv({
 	base: [
 		"shrink-0",
-		"justify-center",
-		"items-center",
-		"inline-flex",
 		"rounded",
 		"border",
 		"focus-visible:outline-offset-2",
@@ -109,7 +107,7 @@ const finalClass = $derived(
 );
 </script>
 
-<div class={finalClass} {...restProps}>
+<Flex inline align="center" justify="center" class={finalClass} {...restProps}>
 	{#if checked}
 		<CheckIcon
 			class={iconSize[size ?? "md"]}
@@ -117,4 +115,4 @@ const finalClass = $derived(
 			aria-hidden="true"
 		/>
 	{/if}
-</div>
+</Flex>

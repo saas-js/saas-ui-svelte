@@ -8,6 +8,7 @@ import { Portal } from "@ark-ui/svelte/portal";
 import { onMount } from "svelte";
 import Toast from "./toast.svelte";
 import { type ToasterStore, type ToastData } from "./create-toaster.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	toaster: ToasterStore;
@@ -136,7 +137,7 @@ function getToastStyle(t: ToastData, index: number): string {
 
 {#if isActive}
 	<Portal>
-		<div
+		<Box
 			class="pointer-events-none fixed inset-0 z-2147483647 overflow-hidden"
 			role="region"
 			aria-label="Notifications"
@@ -156,6 +157,6 @@ function getToastStyle(t: ToastData, index: number): string {
 					/>
 				</div>
 			{/each}
-		</div>
+		</Box>
 	</Portal>
 {/if}

@@ -8,6 +8,7 @@ import {
 	type SidebarContext,
 	sidebar,
 } from "./sidebar-root.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -33,7 +34,7 @@ const styles = $derived(ctx?.styles ?? sidebar());
 const finalClass = $derived(twMerge(styles.item({ active }), className as string));
 </script>
 
-<div
+<Box
 	role="button"
 	tabindex="0"
 	class={finalClass}
@@ -47,4 +48,4 @@ const finalClass = $derived(twMerge(styles.item({ active }), className as string
 	{...restProps}
 >
 	{@render children?.()}
-</div>
+</Box>

@@ -139,10 +139,12 @@ export type TagVariants = VariantProps<typeof tag>;
 
 <script lang="ts">
 import type { Snippet, Component } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { getColourStyle } from "$saas/utils/colours";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { Icon } from "$saas/components/icon";
 import { Avatar } from "$saas/components/avatar";
+import { Box } from "$saas/layout/box";
 
 interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
 	/**
@@ -239,39 +241,39 @@ function handleClose(event: MouseEvent) {
 }
 </script>
 
-<span class={finalClass} style={finalStyle} {...restProps}>
+<Box as="span" class={twMerge(finalClass)} style={finalStyle} {...restProps}>
 	{#if startAvatar}
-		<span class={avatarClass}>
+		<Box as="span" class={twMerge(avatarClass)}>
 			<Avatar src={startAvatar.src} name={startAvatar.name} size="full" />
-		</span>
+		</Box>
 	{:else if startIcon}
-		<span class={elementClass}>
+		<Box as="span" class={twMerge(elementClass)}>
 			<Icon as={startIcon} class="size-4/5" aria-hidden="true" />
-		</span>
+		</Box>
 	{:else if startElement}
-		<span class={elementClass}>
+		<Box as="span" class={twMerge(elementClass)}>
 			{@render startElement()}
-		</span>
+		</Box>
 	{/if}
-	<span class={labelClass}>
+	<Box as="span" class={twMerge(labelClass)}>
 		{@render children()}
-	</span>
+	</Box>
 	{#if endIcon}
-		<span class={elementClass}>
+		<Box as="span" class={twMerge(elementClass)}>
 			<Icon
 				as={endIcon}
 				class="size-full"
 				weight="bold"
 				aria-hidden="true"
 			/>
-		</span>
+		</Box>
 	{:else if endElement}
-		<span class={elementClass}>
+		<Box as="span" class={twMerge(elementClass)}>
 			{@render endElement()}
-		</span>
+		</Box>
 	{/if}
 	{#if closable}
-		<span class={tagCloseTrigger({ size })}>
+		<Box as="span" class={twMerge(tagCloseTrigger({ size }))}>
 			<button
 				type="button"
 				class={tagCloseButton()}
@@ -280,6 +282,6 @@ function handleClose(event: MouseEvent) {
 			>
 				<XIcon class="size-full fill-current" aria-hidden="true" />
 			</button>
-		</span>
+		</Box>
 	{/if}
-</span>
+</Box>

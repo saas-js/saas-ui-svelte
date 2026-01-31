@@ -195,6 +195,8 @@ export type PaginationVariants = VariantProps<typeof paginationItem>;
 <script lang="ts">
 import { Pagination } from "@ark-ui/svelte/pagination";
 import { twMerge, type ClassNameValue } from "tailwind-merge";
+import { Flex } from "$saas/layout/flex";
+import { Text } from "$saas/typography/text";
 
 interface Props {
 	/**
@@ -367,13 +369,13 @@ const getPageText = (currentPage: number, totalPages: number) => {
 		{#snippet render(api)}
 			{@const ctx = api()}
 			{@const pages = ctx.pages}
-			<div class={controlClasses}>
+			<Flex align="center" class={controlClasses}>
 				<Pagination.PrevTrigger class={triggerClasses} />
 
 				{#if compact || pageTextFormat === "long"}
-					<p class={pageTextClasses}>
+					<Text as="span" class={pageTextClasses}>
 						{getPageText(ctx.page, ctx.totalPages)}
-					</p>
+					</Text>
 				{:else}
 					{#each pages as pageItem, idx}
 						{#if pageItem.type === "page"}
@@ -408,7 +410,7 @@ const getPageText = (currentPage: number, totalPages: number) => {
 				{/if}
 
 				<Pagination.NextTrigger class={triggerClasses} />
-			</div>
+			</Flex>
 		{/snippet}
 	</Pagination.Context>
 </Pagination.Root>

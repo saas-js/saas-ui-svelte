@@ -3,6 +3,7 @@ import { Accordion } from "@ark-ui/svelte";
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { ACCORDION_CTX, type AccordionContext } from "./accordion-root.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -30,7 +31,7 @@ const styles = $derived(ctx.styles);
 	)}
 	{...restProps}
 >
-	<div class={styles.contentBody()}>
+	<Box class={styles.contentBody()}>
 		{@render children()}
-	</div>
+	</Box>
 </Accordion.ItemContent>

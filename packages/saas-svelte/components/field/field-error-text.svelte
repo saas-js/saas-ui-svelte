@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from "svelte/elements";
 import { getContext } from "svelte";
 import { twMerge } from "tailwind-merge";
+import { Text } from "$saas/typography/text";
 import { FIELD_CTX, type FieldContext } from "./types";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
@@ -16,14 +17,16 @@ let { class: className, children, ...restProps }: Props = $props();
 const fieldContext = getContext<FieldContext>(FIELD_CTX);
 const errorId = $derived(`${$fieldContext.id}-error-text`);
 
-const baseStyles = "inline-flex items-center gap-1 text-fg-error text-xs leading-4 antialiased";
+const baseStyles = "inline-flex items-center gap-1 text-fg-error";
 </script>
 
-<span
+<Text
+	as="span"
+	size="xs"
 	id={errorId}
 	aria-live="polite"
-	class={twMerge(baseStyles, className as string)}
+	class={twMerge(baseStyles, className)}
 	{...restProps}
 >
 	{@render children?.()}
-</span>
+</Text>

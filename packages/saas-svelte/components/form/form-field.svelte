@@ -17,6 +17,7 @@ import { PasswordInput } from "../password-input";
 import { Switch } from "../switch";
 import { Slider } from "../slider";
 import { PinInput } from "../pin-input";
+import { Text } from "$saas/typography/text";
 import type { FormApi } from "./use-form.svelte";
 import type { FieldType, FieldOption } from "./types";
 import { FORM_CTX } from "./types";
@@ -88,7 +89,7 @@ const onInput = (e: Event) =>
 >
 	{#if label && type !== "checkbox" && type !== "radio" && type !== "switch"}
 		<FieldLabel
-			>{label}{#if required}<span class="text-fg-error">*</span
+			>{label}{#if required}<Text as="span" class="text-fg-error">*</Text
 				>{/if}</FieldLabel
 		>
 	{/if}
@@ -140,7 +141,7 @@ const onInput = (e: Event) =>
 		>
 			{#if label}
 				<Radio.Label
-					>{label}{#if required}<span class="text-fg-error">*</span
+					>{label}{#if required}<Text as="span" class="text-fg-error">*</Text
 						>{/if}</Radio.Label
 				>
 			{/if}
@@ -181,7 +182,7 @@ const onInput = (e: Event) =>
 			invalid={!!error}
 			onCheckedChange={(details) => onChange(details.checked)}
 		>
-			{#if label}{label}{#if required}<span class="text-fg-error">*</span
+			{#if label}{label}{#if required}<Text as="span" class="text-fg-error">*</Text
 					>{/if}{/if}
 		</Switch>
 	{:else if type === "slider"}

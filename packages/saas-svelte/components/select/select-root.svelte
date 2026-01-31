@@ -215,11 +215,18 @@ export const SELECT_CTX = Symbol("SELECT_CTX");
 
 <script lang="ts">
 import { Select } from "@ark-ui/svelte/select";
-import type { SelectRootProps } from "@ark-ui/svelte/select";
+import type {
+	SelectRootProps,
+	SelectOpenChangeDetails,
+} from "@ark-ui/svelte/select";
 import { getContext, setContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
+import {
+	registerOverlay,
+	unregisterOverlay,
+} from "$saas/utils/overlay-singleton.svelte.js";
 
 interface Props extends Omit<SelectRootProps<any>, "id" | "collection"> {
 	/**
@@ -265,8 +272,27 @@ let {
 	colour = "indigo",
 	class: className,
 	positioning,
+	onOpenChange,
 	...restProps
 }: Props = $props();
+
+let instanceId: symbol | null = $state(null);
+let lastValue: string[] = $state([]);
+
+function handleOpenChange(details: SelectOpenChangeDetails) {
+	if (details.open) {
+		lastValue = details.value;
+		if (!instanceId) {
+			instanceId = registerOverlay("select", () => {
+				onOpenChange?.({ open: false, value: lastValue });
+			});
+		}
+	} else if (instanceId) {
+		unregisterOverlay("select", instanceId);
+		instanceId = null;
+	}
+	onOpenChange?.(details);
+}
 
 const fieldContext = getContext<FieldContext>(FIELD_CTX);
 const fieldState = $derived($fieldContext ?? {});
@@ -302,6 +328,7 @@ const rootClass = $derived(twMerge(ctx.styles.root(), className as string));
 	invalid={isInvalid}
 	positioning={mergedPositioning}
 	class={rootClass}
+	onOpenChange={handleOpenChange}
 	{...restProps}
 >
 	{@render children?.()}

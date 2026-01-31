@@ -42,6 +42,7 @@ export type BadgeVariants = VariantProps<typeof badge>;
 <script lang="ts">
 import type { Snippet } from "svelte";
 import { getColourStyle } from "$saas/utils/colours";
+import { Box } from "$saas/layout/box";
 
 interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
 	/**
@@ -85,6 +86,6 @@ const finalStyle = $derived([colourStyle, style].filter(Boolean).join("; "));
 const finalClass = $derived(badge({ variant, size, class: className }));
 </script>
 
-<span class={finalClass} style={finalStyle} {...restProps}>
+<Box as="span" class={finalClass} style={finalStyle} {...restProps}>
 	{@render children()}
-</span>
+</Box>

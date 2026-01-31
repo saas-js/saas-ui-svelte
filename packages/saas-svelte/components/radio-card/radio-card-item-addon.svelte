@@ -5,6 +5,7 @@ import {
 	RADIO_CARD_CTX,
 	type RadioCardContext,
 } from "./radio-card-root.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -24,6 +25,6 @@ const ctx = getContext<RadioCardContext>(RADIO_CARD_CTX);
 const styles = $derived(ctx.styles);
 </script>
 
-<div class={twMerge(styles.addon(), className)} {...restProps}>
+<Box class={twMerge(styles.addon(), className)} {...restProps}>
 	{@render children()}
-</div>
+</Box>

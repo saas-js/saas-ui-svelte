@@ -5,6 +5,7 @@ import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+import { Centre } from "$saas/layout/centre";
 
 interface Props extends MenuRadioItemProps {
 	/**
@@ -42,15 +43,15 @@ const ctx = getContext<MenuContext>(MENU_CTX);
 	{...rest}
 >
 	{#if startElement}
-		<span class="flex size-4 shrink-0 items-center justify-center">
+		<Centre class="size-4 shrink-0">
 			{@render startElement()}
-		</span>
+		</Centre>
 	{:else if showIndicator}
-		<span class="flex size-4 shrink-0 items-center justify-center">
+		<Centre class="size-4 shrink-0">
 			<Menu.ItemIndicator class={ctx?.styles?.itemIndicator()}>
 				<CheckIcon class="size-3.5" weight="bold" aria-hidden="true" />
 			</Menu.ItemIndicator>
-		</span>
+		</Centre>
 	{/if}
 	<Menu.ItemText class="flex-1">
 		{@render children()}

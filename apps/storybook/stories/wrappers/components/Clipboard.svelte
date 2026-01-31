@@ -10,6 +10,7 @@
 		ClipboardInput,
 		ClipboardPrimitive,
 	} from "$saas/components/clipboard";
+	import { Centre } from "$saas/layout/centre";
 
 	interface Props {
 		story: "basic" | "button" | "customLabels" | "input" | "timeout";
@@ -37,11 +38,11 @@
 	>
 		<ClipboardPrimitive.Control class="relative flex items-center w-full">
 			<ClipboardInput class="pr-10" />
-			<div class="absolute flex items-center justify-center right-1">
+			<Centre class="absolute right-1">
 				<ClipboardIconButton
 					class="-mr-2 bg-transparent border-none shadow-none hover:bg-bg-subtle"
 				/>
-			</div>
+			</Centre>
 		</ClipboardPrimitive.Control>
 	</Clipboard>
 {:else if story === "timeout"}

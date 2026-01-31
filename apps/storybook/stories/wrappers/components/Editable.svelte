@@ -7,6 +7,7 @@
 	import { Editable } from "$saas/components/editable";
 	import { HStack, VStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
+	import { Icon } from "$saas/components/icon";
 	import PencilSimple from "phosphor-svelte/lib/PencilSimple";
 	import Check from "phosphor-svelte/lib/Check";
 	import X from "phosphor-svelte/lib/X";
@@ -82,13 +83,13 @@
 		</Editable.Area>
 		<Editable.Control>
 			<Editable.EditTrigger icon aria-label="Edit">
-				<PencilSimple class="size-3.5" weight="bold" aria-hidden="true" />
+				<Icon as={PencilSimple} size="xs" weight="bold" />
 			</Editable.EditTrigger>
 			<Editable.CancelTrigger icon aria-label="Cancel">
-				<X class="size-3.5" weight="bold" aria-hidden="true" />
+				<Icon as={X} size="xs" weight="bold" />
 			</Editable.CancelTrigger>
 			<Editable.SubmitTrigger icon aria-label="Submit">
-				<Check class="size-3.5" weight="bold" aria-hidden="true" />
+				<Icon as={Check} size="xs" weight="bold" />
 			</Editable.SubmitTrigger>
 		</Editable.Control>
 	</Editable.Root>

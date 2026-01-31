@@ -3,6 +3,7 @@ import { Heading } from "@saas-ui/svelte/typography/heading";
 import { Text } from "@saas-ui/svelte/typography/text";
 import { Link } from "@saas-ui/svelte/components/link";
 import { List } from "@saas-ui/svelte/components/list";
+import { VStack } from "@saas-ui/svelte/layout/stack";
 
 const features = [
 	{
@@ -66,7 +67,7 @@ const acknowledgements = [
 ];
 </script>
 
-<div class="flex flex-col gap-4 items-start pb-4">
+<VStack gap={4} class="items-start pb-4">
 	<Heading as="h1" size="2xl" weight="semibold" class="tracking-tight">
 		Introduction
 	</Heading>
@@ -74,9 +75,9 @@ const acknowledgements = [
 		SaaS UI Svelte is an open-source design system for building modern web
 		applications with a native, high-quality feel.
 	</Text>
-</div>
+</VStack>
 
-<div class="flex flex-col gap-0 text-sm items-start">
+<VStack gap={0} class="text-sm items-start">
 	<Text class="text-fg-muted leading-relaxed mb-3.5">
 		Inspired by macOS and premium tools like Linear, Attio, and Superhuman, it
 		provides intuitive primitives that empower developers to create beautiful,
@@ -146,4 +147,4 @@ const acknowledgements = [
 			</List.Item>
 		{/each}
 	</List.Root>
-</div>
+</VStack>

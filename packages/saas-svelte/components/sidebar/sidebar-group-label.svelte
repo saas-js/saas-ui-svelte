@@ -4,6 +4,7 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
 import { SIDEBAR_CTX, type SidebarContext } from "./sidebar-root.svelte";
+import { Text } from "$saas/typography/text";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -18,6 +19,6 @@ const ctx = getContext<SidebarContext>(SIDEBAR_CTX);
 const finalClass = $derived(twMerge(ctx?.styles?.groupLabel() ?? "", className as string));
 </script>
 
-<div class={finalClass} {...restProps}>
+<Text as="div" class={finalClass} {...restProps}>
 	{@render children?.()}
-</div>
+</Text>

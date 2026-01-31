@@ -9,6 +9,7 @@
 		Tooltip,
 	} from "chart.js";
 	import { Card } from "@saas-ui/svelte/components/card";
+	import { Text } from "@saas-ui/svelte/typography/text";
 
 	Chart.register(
 		BarController,
@@ -237,7 +238,7 @@
 		<Card.Title as="h2" class="text-fg-muted text-sm font-medium leading-4"
 			>Revenue</Card.Title
 		>
-		<p class="text-base font-medium">{totalRevenue}</p>
+		<Text weight="medium" class="text-base">{totalRevenue}</Text>
 	</Card.Header>
 	<Card.Body class="h-60 min-w-0 p-0 pt-2">
 		<canvas bind:this={canvas} class="min-w-0"></canvas>

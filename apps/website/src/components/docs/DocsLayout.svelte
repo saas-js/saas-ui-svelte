@@ -24,7 +24,7 @@ interface Props {
 
 let { currentPath = "", tocItems = [], githubUrl, base = "", children }: Props = $props();
 
-const navGroups = getDocsNavigation(base);
+const navGroups = $derived(getDocsNavigation(base));
 let mobileNavOpen = $derived(getSideMenuOpen());
 </script>
 

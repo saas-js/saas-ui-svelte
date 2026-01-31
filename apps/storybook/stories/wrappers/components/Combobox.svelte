@@ -10,6 +10,7 @@
 	import { Field } from "$saas/components/field";
 	import { Popover } from "$saas/components/popover";
 	import { VStack, HStack } from "$saas/layout/stack";
+	import { Text } from "$saas/typography/text";
 	import Code from "phosphor-svelte/lib/Code";
 	import {
 		comboboxSizes,
@@ -339,13 +340,13 @@
 {:else if story === "controlledValue"}
 	<VStack gap={4} class="w-80">
 		<HStack gap={2} class="text-sm">
-			<span>Selected:</span>
+			<Text as="span">Selected:</Text>
 			{#if controlledValue.length > 0}
 				<HStack gap={1}>
 					{#each controlledValue as v}<Badge>{v}</Badge>{/each}
 				</HStack>
 			{:else}
-				<span class="text-fg-muted">N/A</span>
+				<Text as="span" class="text-fg-muted">N/A</Text>
 			{/if}
 		</HStack>
 		<Combobox
@@ -361,7 +362,7 @@
 			<Button size="sm" onclick={() => (isOpen = !isOpen)}
 				>{isOpen ? "Close" : "Open"} Combobox</Button
 			>
-			<span class="text-sm text-fg-muted">Open: {isOpen}</span>
+			<Text as="span" size="sm" class="text-fg-muted">Open: {isOpen}</Text>
 		</HStack>
 		<Combobox
 			items={frameworks}
@@ -373,13 +374,13 @@
 {:else if story === "allowCustomValue"}
 	<VStack gap={4} class="w-80">
 		<HStack gap={2} class="text-sm">
-			<span>Value:</span>
+			<Text as="span">Value:</Text>
 			{#if customValue.length > 0}
 				<HStack gap={1}>
 					{#each customValue as v}<Badge>{v}</Badge>{/each}
 				</HStack>
 			{:else}
-				<span class="text-fg-muted">N/A</span>
+				<Text as="span" class="text-fg-muted">N/A</Text>
 			{/if}
 		</HStack>
 		<Combobox

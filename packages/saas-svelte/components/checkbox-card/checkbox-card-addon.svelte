@@ -8,6 +8,7 @@ import {
 	CHECKBOX_CARD_CTX,
 	type CheckboxCardVariants,
 } from "./checkbox-card-root.svelte";
+import { Box } from "$saas/layout/box";
 
 const checkboxCardAddon = tv({
 	base: ["border-t border-border-default peer-disabled:opacity-50"],
@@ -43,9 +44,9 @@ const ctx = getContext<{
 const size = $derived(ctx?.size ?? "md");
 const disabled = $derived(ctx?.disabled ?? false);
 
-const finalClass = $derived(twMerge(checkboxCardAddon({ size }), className as string));
+const finalClass = $derived(twMerge(checkboxCardAddon({ size }), disabled && "opacity-50", className as string));
 </script>
 
-<div class={finalClass} class:opacity-50={disabled} {...restProps}>
+<Box class={finalClass} {...restProps}>
 	{@render children()}
-</div>
+</Box>

@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
 import type { Snippet } from "svelte";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
 	/**
@@ -17,19 +18,19 @@ interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
 let { children, class: className, ...restProps }: Props = $props();
 </script>
 
-<div
+<Flex
+	inline
+	align="center"
+	justify="start"
+	gap={2}
 	class={twMerge(
 		"relative",
-		"inline-flex",
 		"w-full",
 		"isolate",
-		"gap-2",
-		"items-center",
-		"justify-start",
 		"antialiased",
 		className,
 	)}
 	{...restProps}
 >
 	{@render children?.()}
-</div>
+</Flex>

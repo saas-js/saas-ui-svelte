@@ -6,6 +6,7 @@
 <script lang="ts">
 	import { RadioCard } from "$saas/components/radio-card";
 	import { Stack, HStack, VStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
 	import { Text } from "$saas/typography/text";
 	import ArrowRight from "phosphor-svelte/lib/ArrowRight";
 	import Prohibit from "phosphor-svelte/lib/Prohibit";
@@ -44,7 +45,7 @@
 </script>
 
 {#if story === "basic"}
-	<div class="max-w-3xl">
+	<Box class="max-w-3xl">
 		<RadioCard.Root defaultValue="next">
 			<RadioCard.Label>Select framework</RadioCard.Label>
 			<HStack align="stretch">
@@ -57,9 +58,9 @@
 				{/each}
 			</HStack>
 		</RadioCard.Root>
-	</div>
+	</Box>
 {:else if story === "controlled"}
-	<div class="max-w-3xl">
+	<Box class="max-w-3xl">
 		<VStack gap={4} align="start">
 			<Text size="sm" class="text-fg-muted">
 				Selected: {controlledValue}
@@ -80,9 +81,9 @@
 				</HStack>
 			</RadioCard.Root>
 		</VStack>
-	</div>
+	</Box>
 {:else if story === "sizes"}
-	<div class="w-64">
+	<Box class="w-64">
 		<VStack gap={8}>
 			{#each radioCardSizes as size}
 				<RadioCard.Root {size} defaultValue="next">
@@ -93,9 +94,9 @@
 				</RadioCard.Root>
 			{/each}
 		</VStack>
-	</div>
+	</Box>
 {:else if story === "colours"}
-	<div class="w-64">
+	<Box class="w-64">
 		<VStack gap={6}>
 			{#each colours as colour}
 				<RadioCard.Root {colour} defaultValue="next">
@@ -106,9 +107,9 @@
 				</RadioCard.Root>
 			{/each}
 		</VStack>
-	</div>
+	</Box>
 {:else if story === "withIcon"}
-	<div class="max-w-3xl">
+	<Box class="max-w-3xl">
 		<RadioCard.Root defaultValue="allow">
 			<RadioCard.Label>Select permission</RadioCard.Label>
 			<HStack align="stretch">
@@ -132,9 +133,9 @@
 				/>
 			</HStack>
 		</RadioCard.Root>
-	</div>
+	</Box>
 {:else if story === "centered"}
-	<div class="max-w-3xl">
+	<Box class="max-w-3xl">
 		<RadioCard.Root align="center" defaultValue="fixed">
 			<RadioCard.Label>Select contract type</RadioCard.Label>
 			<HStack align="stretch">
@@ -151,9 +152,9 @@
 				<RadioCard.Item label="Hourly" value="hourly" icon={Clock} />
 			</HStack>
 		</RadioCard.Root>
-	</div>
+	</Box>
 {:else if story === "withAddon"}
-	<div class="max-w-3xl">
+	<Box class="max-w-3xl">
 		<RadioCard.Root defaultValue="next">
 			<RadioCard.Label>Select framework</RadioCard.Label>
 			<HStack align="stretch">
@@ -167,9 +168,9 @@
 				{/each}
 			</HStack>
 		</RadioCard.Root>
-	</div>
+	</Box>
 {:else if story === "vertical"}
-	<div class="w-64">
+	<Box class="w-64">
 		<RadioCard.Root orientation="vertical" defaultValue="next">
 			<RadioCard.Label>Select framework</RadioCard.Label>
 			<VStack align="stretch">
@@ -182,9 +183,9 @@
 				{/each}
 			</VStack>
 		</RadioCard.Root>
-	</div>
+	</Box>
 {:else if story === "disabled"}
-	<div class="max-w-3xl">
+	<Box class="max-w-3xl">
 		<RadioCard.Root defaultValue="next" disabled>
 			<RadioCard.Label>Select framework (disabled)</RadioCard.Label>
 			<HStack align="stretch">
@@ -197,5 +198,5 @@
 				{/each}
 			</HStack>
 		</RadioCard.Root>
-	</div>
+	</Box>
 {/if}

@@ -1,12 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
-import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
-
-const cardDescription = tv({
-	base: ["wrap-break-word", "text-fg-muted", "text-sm"],
-});
+import { Text } from "$saas/typography/text";
 
 interface Props extends HTMLAttributes<HTMLParagraphElement> {
 	/**
@@ -21,9 +17,9 @@ interface Props extends HTMLAttributes<HTMLParagraphElement> {
 
 let { children, class: className, ...restProps }: Props = $props();
 
-const finalClass = $derived(twMerge(cardDescription(), className));
+const finalClass = $derived(twMerge("wrap-break-word text-fg-muted", className));
 </script>
 
-<p class={finalClass} {...restProps}>
+<Text size="sm" class={finalClass} {...(restProps as Record<string, unknown>)}>
 	{@render children()}
-</p>
+</Text>

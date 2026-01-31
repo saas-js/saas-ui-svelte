@@ -5,9 +5,10 @@ import { getContext } from "svelte";
 import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
 import { CARD_CTX, type CardVariants } from "./card-root.svelte";
+import { VStack } from "$saas/layout/stack";
 
 const cardHeader = tv({
-	base: ["flex flex-col gap-1"],
+	base: [],
 	variants: {
 		size: {
 			sm: "px-2.5 pt-2.5 pb-1.5",
@@ -39,6 +40,6 @@ const size = $derived(ctx?.size ?? "md");
 const finalClass = $derived(twMerge(cardHeader({ size }), className as string));
 </script>
 
-<div class={finalClass} {...restProps}>
+<VStack gap={1} class={finalClass} {...(restProps as Record<string, unknown>)}>
 	{@render children()}
-</div>
+</VStack>

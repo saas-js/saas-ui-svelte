@@ -1,8 +1,10 @@
 <script lang="ts">
 import { Navbar } from "@saas-ui/svelte/components/navbar";
 import { Button } from "@saas-ui/svelte/components/button";
+import { Icon } from "@saas-ui/svelte/components/icon";
 import { Kbd } from "@saas-ui/svelte/components/kbd";
 import { Separator } from "@saas-ui/svelte/components/separator";
+import { Text } from "@saas-ui/svelte/typography/text";
 import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
 import GithubLogo from "phosphor-svelte/lib/GithubLogo";
 import Sun from "phosphor-svelte/lib/Sun";
@@ -50,8 +52,8 @@ const navLinks = [
 				class="border-border-default text-fg-muted hover:bg-bg-subtle hover:border-border-emphasized hidden h-7 w-40 cursor-pointer items-center gap-2 rounded border bg-transparent px-3 text-sm transition-colors lg:flex outline-0 focus-visible:outline-solid focus-visible:outline-(--c-focus-ring) focus-visible:border-(--c-focus-ring)"
 				style="--c-focus-ring: var(--colors-gray-focus-ring)"
 			>
-				<MagnifyingGlassIcon class="size-3.5" aria-hidden="true" />
-				<span class="flex-1 text-left text-xs">Search...</span>
+				<Icon as={MagnifyingGlassIcon} size="xs" />
+				<Text as="span" size="xs" class="flex-1 text-left">Search...</Text>
 				<Kbd size="sm">⌘K</Kbd>
 			</button>
 
@@ -64,7 +66,7 @@ const navLinks = [
 				target="_blank"
 				aria-label="GitHub"
 			>
-				<GithubLogo class="size-4" />
+				<Icon as={GithubLogo} size="sm" />
 			</Button>
 
 			<Button
@@ -74,8 +76,8 @@ const navLinks = [
 				aria-label="Toggle colour mode"
 				onclick={toggleTheme}
 			>
-				<Sun class="hidden size-4 dark:block" />
-				<Moon class="block size-4 dark:hidden" />
+				<Icon as={Sun} size="sm" class="hidden dark:block" />
+				<Icon as={Moon} size="sm" class="block dark:hidden" />
 			</Button>
 
 			<Separator
@@ -102,9 +104,9 @@ const navLinks = [
 				onclick={() => setSideMenuOpen(!mobileNavOpen)}
 			>
 				{#if mobileNavOpen}
-					<X class="size-4" />
+					<Icon as={X} size="sm" />
 				{:else}
-					<List class="size-4" />
+					<Icon as={List} size="sm" />
 				{/if}
 			</Button>
 		</Navbar.ItemGroup>

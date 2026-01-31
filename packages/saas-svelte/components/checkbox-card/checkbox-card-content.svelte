@@ -8,23 +8,18 @@ import {
 	CHECKBOX_CARD_CTX,
 	type CheckboxCardVariants,
 } from "./checkbox-card-root.svelte";
+import { VStack } from "$saas/layout/stack";
 
 const checkboxCardContent = tv({
-	base: ["gap-1 flex-col flex-1 items-start flex"],
+	base: ["flex-1"],
 	variants: {
-		size: {
-			sm: "",
-			md: "",
-			lg: "",
-		},
 		align: {
-			start: "items-start text-start",
-			center: "items-center text-center",
-			end: "items-end text-end",
+			start: "text-start",
+			center: "text-center",
+			end: "text-end",
 		},
 	},
 	defaultVariants: {
-		size: "md",
 		align: "start",
 	},
 });
@@ -52,16 +47,11 @@ let {
 	...restProps
 }: Props = $props();
 
-const ctx = getContext<{ size: CheckboxCardVariants["size"] }>(
-	CHECKBOX_CARD_CTX,
-);
-const size = $derived(ctx?.size ?? "md");
-
 const finalClass = $derived(
-	twMerge(checkboxCardContent({ size, align }), className as string),
+	twMerge(checkboxCardContent({ align }), className as string),
 );
 </script>
 
-<div class={finalClass} {...restProps}>
+<VStack gap={1} align={align} class={finalClass} {...(restProps as Record<string, unknown>)}>
 	{@render children()}
-</div>
+</VStack>

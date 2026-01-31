@@ -7,6 +7,8 @@
 	import { Menu } from "$saas/components/menu";
 	import { Text } from "$saas/typography/text";
 	import { VStack, HStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
+	import { Icon } from "$saas/components/icon";
 	import House from "phosphor-svelte/lib/House";
 	import TShirt from "phosphor-svelte/lib/TShirt";
 	import CaretRight from "phosphor-svelte/lib/CaretRight";
@@ -70,11 +72,11 @@
 {:else if story === "withIcon"}
 	<Breadcrumb.Root ariaLabel="Breadcrumb with icons">
 		<Breadcrumb.Link href="#">
-			<House class="h-3.5" weight="regular" aria-hidden="true" />
+			<Icon as={House} size="xs" weight="regular" />
 			Home
 		</Breadcrumb.Link>
 		<Breadcrumb.Link href="#">
-			<TShirt class="h-3.5" weight="regular" aria-hidden="true" />
+			<Icon as={TShirt} size="xs" weight="regular" />
 			Men Wear
 		</Breadcrumb.Link>
 		<Breadcrumb.CurrentLink>Trousers</Breadcrumb.CurrentLink>
@@ -87,7 +89,7 @@
 		<Breadcrumb.CurrentLink>Props</Breadcrumb.CurrentLink>
 	</Breadcrumb.Root>
 {:else if story === "withMenu"}
-	<div class="p-1">
+	<Box class="p-1">
 		<Breadcrumb.Root separatorGap={4} ariaLabel="Breadcrumb with menu">
 			<Breadcrumb.Link href="#">Docs</Breadcrumb.Link>
 			<Breadcrumb.Menu>
@@ -102,5 +104,5 @@
 			</Breadcrumb.Menu>
 			<Breadcrumb.CurrentLink>Props</Breadcrumb.CurrentLink>
 		</Breadcrumb.Root>
-	</div>
+	</Box>
 {/if}

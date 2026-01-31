@@ -5,6 +5,7 @@ import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+import { Text } from "$saas/typography/text";
 
 interface Props extends MenuTriggerItemProps {
 	/**
@@ -32,6 +33,6 @@ const ctx = getContext<MenuContext>(MENU_CTX);
 	style={ctx?.colourStyle}
 	{...rest}
 >
-	<span class="pointer-events-none flex-1">{@render children()}</span>
+	<Text as="span" class="pointer-events-none flex-1">{@render children()}</Text>
 	<CaretRightIcon class="pointer-events-none size-3.5" />
 </Menu.TriggerItem>

@@ -30,6 +30,7 @@ export type BlockquoteVariants = VariantProps<typeof blockquote>;
 <script lang="ts">
 import type { Snippet, Component } from "svelte";
 import { Icon } from "$saas/components/icon";
+import { Centre } from "$saas/layout/centre";
 
 interface Props extends Omit<HTMLAttributes<HTMLElement>, "class"> {
 	/**
@@ -98,8 +99,9 @@ const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 
 <figure class={finalClass} style={finalStyle} {...restProps}>
 	{#if icon}
-		<div
-			class="absolute inset-x-[0_auto] inset-y-[0.5rem_auto] inline-flex [translate:-50%_-50%] items-center justify-center"
+		<Centre
+			inline
+			class="absolute inset-x-[0_auto] inset-y-[0.5rem_auto] [translate:-50%_-50%]"
 		>
 			<Icon
 				as={icon}
@@ -107,10 +109,11 @@ const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 				class="scale-[-1] fill-current text-(--c-solid)"
 				weight="fill"
 			/>
-		</div>
+		</Centre>
 	{:else if showIcon}
-		<div
-			class="absolute inset-x-[0_auto] inset-y-[0.5rem_auto] inline-flex [translate:-50%_-50%] items-center justify-center"
+		<Centre
+			inline
+			class="absolute inset-x-[0_auto] inset-y-[0.5rem_auto] [translate:-50%_-50%]"
 		>
 			<QuotesIcon
 				class="size-5 scale-[-1] fill-current text-(--c-solid)"
@@ -118,7 +121,7 @@ const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 				weight="fill"
 				aria-hidden="true"
 			/>
-		</div>
+		</Centre>
 	{/if}
 
 	<blockquote>

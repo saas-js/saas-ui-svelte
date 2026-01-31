@@ -16,6 +16,7 @@
 		SubmitButton,
 		useForm,
 	} from "$saas/components/form";
+	import { Icon } from "$saas/components/icon";
 	import X from "phosphor-svelte/lib/X";
 	import Check from "phosphor-svelte/lib/Check";
 	import { cardVariants, cardSizes } from "../../utils";
@@ -188,11 +189,11 @@
 		</Card.Body>
 		<Card.Footer>
 			<Button variant="subtle" colour="red" class="flex-1">
-				<X class="w-4 h-4" aria-hidden="true" />
+				<Icon as={X} size="sm" />
 				Decline
 			</Button>
 			<Button variant="subtle" colour="blue" class="flex-1">
-				<Check class="w-4 h-4" aria-hidden="true" />
+				<Icon as={Check} size="sm" />
 				Approve
 			</Button>
 		</Card.Footer>

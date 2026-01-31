@@ -5,6 +5,8 @@
 
 <script lang="ts">
 	import { List } from "$saas/components/list";
+	import { Icon } from "$saas/components/icon";
+	import { Text } from "$saas/typography/text";
 	import CheckCircle from "phosphor-svelte/lib/CheckCircle";
 	import CircleDashed from "phosphor-svelte/lib/CircleDashed";
 
@@ -33,21 +35,21 @@
 	<List.Root variant="plain" align="start">
 		<List.Item>
 			<List.Indicator colour="green">
-				<CheckCircle class="w-full h-full" aria-hidden="true" />
+				<Icon as={CheckCircle} class="w-full h-full" />
 			</List.Indicator>
-			<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. This is a longer text that wraps to multiple lines to demonstrate alignment.</span>
+			<Text as="span">Lorem ipsum dolor sit amet, consectetur adipisicing elit. This is a longer text that wraps to multiple lines to demonstrate alignment.</Text>
 		</List.Item>
 		<List.Item>
 			<List.Indicator colour="green">
-				<CheckCircle class="w-full h-full" aria-hidden="true" />
+				<Icon as={CheckCircle} class="w-full h-full" />
 			</List.Indicator>
-			<span>Assumenda, quia temporibus eveniet a libero incidunt suscipit. Another multi-line example to show how icons align.</span>
+			<Text as="span">Assumenda, quia temporibus eveniet a libero incidunt suscipit. Another multi-line example to show how icons align.</Text>
 		</List.Item>
 		<List.Item>
 			<List.Indicator colour="green">
-				<CircleDashed class="w-full h-full" aria-hidden="true" />
+				<Icon as={CircleDashed} class="w-full h-full" />
 			</List.Indicator>
-			<span>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</span>
+			<Text as="span">Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</Text>
 		</List.Item>
 	</List.Root>
 {:else if story === "nested"}

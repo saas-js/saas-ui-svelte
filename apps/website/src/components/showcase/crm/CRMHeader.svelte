@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { SegmentGroup } from "@saas-ui/svelte/components/segment-group";
 	import { Button } from "@saas-ui/svelte/components/button";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { Flex } from "@saas-ui/svelte/layout/flex";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
 
 	interface Props {
 		timeRange: string;
@@ -39,13 +42,16 @@
 			</svg>
 		</button>
 	{/if}
-	<div class="[grid-area:heading]">
-		<h2 class="mr-4 text-[.8125rem] font-medium leading-[1.1375rem]">
+	<Box class="[grid-area:heading]">
+		<Heading as="h2" size="xs" weight="medium" class="mr-4">
 			Reports
-		</h2>
-	</div>
-	<div
-		class="isolate relative inline-flex items-center gap-x-2 gap-y-2 [grid-area:actions] [justify-content:end]"
+		</Heading>
+	</Box>
+	<Flex
+		inline
+		align="center"
+		gap={2}
+		class="isolate relative [grid-area:actions] [justify-content:end]"
 	>
 		<SegmentGroup.Root
 			value={timeRange}
@@ -58,5 +64,5 @@
 			<SegmentGroup.Item value="week">Last 7 days</SegmentGroup.Item>
 			<SegmentGroup.Indicator />
 		</SegmentGroup.Root>
-	</div>
+	</Flex>
 </header>

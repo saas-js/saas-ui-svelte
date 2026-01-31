@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge";
 import { STAT_CTX, type StatContext } from "./stat-root.svelte";
 import { getColourStyle, type ColourName } from "$saas/utils/colours";
 import { ArrowDownIcon } from "phosphor-svelte";
+import { Text } from "$saas/typography/text";
 
 interface Props {
 	/**
@@ -52,8 +53,8 @@ const variantClasses = $derived(
 	style={colourStyle}
 	{...restProps}
 >
-	<span class={styles.trendIcon()} aria-hidden="true">
+	<Text as="span" class={twMerge(styles.trendIcon())} aria-hidden="true">
 		<ArrowDownIcon weight="bold" size="1em" />
-	</span>
+	</Text>
 	{@render children()}
 </div>

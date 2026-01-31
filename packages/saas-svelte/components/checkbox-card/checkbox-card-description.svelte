@@ -1,12 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
-import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
-
-const checkboxCardDescription = tv({
-	base: ["opacity-[0.64]", "text-sm", "leading-sm"],
-});
+import { Text } from "$saas/typography/text";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -21,9 +17,9 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 let { children, class: className, ...restProps }: Props = $props();
 
-const finalClass = $derived(twMerge(checkboxCardDescription(), className));
+const finalClass = $derived(twMerge("opacity-[0.64]", className));
 </script>
 
-<div class={finalClass} {...restProps}>
+<Text as="div" size="sm" class={finalClass} {...(restProps as Record<string, unknown>)}>
 	{@render children()}
-</div>
+</Text>

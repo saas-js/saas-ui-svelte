@@ -21,6 +21,7 @@ export type CheckboxGroupVariants = VariantProps<typeof checkboxGroup>;
 import { Checkbox } from "@ark-ui/svelte/checkbox";
 import { twMerge } from "tailwind-merge";
 import type { Snippet } from "svelte";
+import { Text } from "$saas/typography/text";
 
 interface Props {
 	/**
@@ -106,9 +107,9 @@ function handleValueChange(newValue: string[]) {
 	{...restProps}
 >
 	{#if label}
-		<span class="mb-2 text-sm leading-5 font-medium">
+		<Text as="span" size="sm" weight="medium" class="mb-2">
 			{label}
-		</span>
+		</Text>
 	{/if}
 	{@render children?.()}
 </Checkbox.Group>

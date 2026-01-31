@@ -1,13 +1,5 @@
 <script module lang="ts">
-import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
-
-/**
- * Tailwind Variants styles for the GridList root component.
- */
-export const gridListRoot = tv({
-	base: ["text-sm leading-5", "relative py-1", "antialiased"],
-});
 
 export const GRID_LIST_CTX = Symbol("GRID_LIST_CTX");
 
@@ -20,6 +12,7 @@ export interface GridListContext {
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setContext } from "svelte";
+import { Text } from "$saas/typography/text";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -41,7 +34,6 @@ let {
 	children,
 	interactive = false,
 	class: className,
-	...restProps
 }: Props = $props();
 
 let contextState = $state<GridListContext>({ interactive: false });
@@ -51,13 +43,16 @@ $effect(() => {
 });
 
 setContext<GridListContext>(GRID_LIST_CTX, contextState);
+
+const baseStyles = "relative py-1";
 </script>
 
-<div
+<Text
+	as="div"
+	size="sm"
 	role="grid"
 	aria-readonly="true"
-	class={twMerge(gridListRoot(), className as string)}
-	{...restProps}
+	class={twMerge(baseStyles, className)}
 >
 	{@render children()}
-</div>
+</Text>

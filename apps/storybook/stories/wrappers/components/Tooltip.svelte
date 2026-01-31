@@ -7,9 +7,11 @@
 	import { Tooltip } from "$saas/components/tooltip";
 	import { Button } from "$saas/components/button";
 	import { Icon } from "$saas/components/icon";
+	import { Text } from "$saas/typography/text";
 	import Info from "phosphor-svelte/lib/Info";
 	import Question from "phosphor-svelte/lib/Question";
 	import { HStack, VStack } from "$saas/layout/stack";
+	import { Centre } from "$saas/layout/centre";
 
 	interface Props {
 		story:
@@ -28,23 +30,23 @@
 </script>
 
 {#if story === "basic"}
-	<div class="flex items-center justify-center p-8">
+	<Centre class="p-8">
 		<Tooltip content="This is a tooltip">
 			<Button variant="outline">Hover me</Button>
 		</Tooltip>
-	</div>
+	</Centre>
 {:else if story === "arrow"}
-	<div class="flex items-center justify-center p-8">
+	<Centre class="p-8">
 		<Tooltip content="I have an arrow!" showArrow>
 			<Button variant="outline">Hover me</Button>
 		</Tooltip>
-	</div>
+	</Centre>
 {:else if story === "inverted"}
-	<div class="flex items-center justify-center p-8">
+	<Centre class="p-8">
 		<Tooltip content="Dark tooltip (inverted)" variant="inverted" showArrow>
 			<Button variant="outline">Hover me</Button>
 		</Tooltip>
-	</div>
+	</Centre>
 {:else if story === "placements"}
 	<VStack align="center" gap={4} class="p-8">
 		<HStack gap={4}>
@@ -79,50 +81,56 @@
 		</HStack>
 	</VStack>
 {:else if story === "offset"}
-	<HStack align="center" justify="center" gap={4} class="p-8">
-		<Tooltip content="Default offset" showArrow>
-			<Button variant="outline" size="sm">Default</Button>
-		</Tooltip>
-		<Tooltip
-			content="Custom offset (16px)"
-			positioning={{ offset: { mainAxis: 16, crossAxis: 4 } }}
-			showArrow
-		>
-			<Button variant="outline" size="sm">Custom offset</Button>
-		</Tooltip>
-	</HStack>
+	<Centre class="p-8">
+		<HStack align="center" justify="center" gap={4}>
+			<Tooltip content="Default offset" showArrow>
+				<Button variant="outline" size="sm">Default</Button>
+			</Tooltip>
+			<Tooltip
+				content="Custom offset (16px)"
+				positioning={{ offset: { mainAxis: 16, crossAxis: 4 } }}
+				showArrow
+			>
+				<Button variant="outline" size="sm">Custom offset</Button>
+			</Tooltip>
+		</HStack>
+	</Centre>
 {:else if story === "delays"}
-	<HStack align="center" justify="center" gap={4} class="p-8">
-		<Tooltip content="Instant tooltip" openDelay={0} showArrow>
-			<Button variant="ghost">Instant</Button>
-		</Tooltip>
-		<Tooltip content="Delayed tooltip (700ms)" openDelay={700} showArrow>
-			<Button variant="ghost">Delayed</Button>
-		</Tooltip>
-	</HStack>
+	<Centre class="p-8">
+		<HStack align="center" justify="center" gap={4}>
+			<Tooltip content="Instant tooltip" openDelay={0} showArrow>
+				<Button variant="ghost">Instant</Button>
+			</Tooltip>
+			<Tooltip content="Delayed tooltip (700ms)" openDelay={700} showArrow>
+				<Button variant="ghost">Delayed</Button>
+			</Tooltip>
+		</HStack>
+	</Centre>
 {:else if story === "interactive"}
-	<HStack align="center" justify="center" class="p-8">
+	<Centre class="p-8">
 		<Tooltip interactive showArrow>
 			{#snippet trigger()}
 				<Button variant="outline">Hover me</Button>
 			{/snippet}
 			<VStack gap={1}>
-				<span class="font-semibold">Interactive tooltip</span>
-				<span class="text-xs opacity-80">You can hover over me!</span>
+				<Text as="span" class="font-semibold">Interactive tooltip</Text>
+				<Text as="span" size="xs" class="opacity-80">You can hover over me!</Text>
 			</VStack>
 		</Tooltip>
-	</HStack>
+	</Centre>
 {:else if story === "disabled"}
-	<HStack align="center" justify="center" gap={4} class="p-8">
-		<Tooltip content="This tooltip is disabled" disabled showArrow>
-			<Button variant="outline">Hover me (disabled)</Button>
-		</Tooltip>
-		<Tooltip content="This tooltip works" showArrow>
-			<Button variant="outline">Hover me (enabled)</Button>
-		</Tooltip>
-	</HStack>
+	<Centre class="p-8">
+		<HStack align="center" justify="center" gap={4}>
+			<Tooltip content="This tooltip is disabled" disabled showArrow>
+				<Button variant="outline">Hover me (disabled)</Button>
+			</Tooltip>
+			<Tooltip content="This tooltip works" showArrow>
+				<Button variant="outline">Hover me (enabled)</Button>
+			</Tooltip>
+		</HStack>
+	</Centre>
 {:else if story === "customContent"}
-	<HStack align="center" justify="center" class="p-8">
+	<Centre class="p-8">
 		<Tooltip>
 			{#snippet trigger()}
 				<Button
@@ -135,9 +143,9 @@
 				</Button>
 			{/snippet}
 			<HStack align="center" gap={2}>
-				<Icon as={Info} class="size-3.5" />
-				<span>Search query info</span>
+				<Icon as={Info} size="xs" />
+				<Text as="span">Search query info</Text>
 			</HStack>
 		</Tooltip>
-	</HStack>
+	</Centre>
 {/if}

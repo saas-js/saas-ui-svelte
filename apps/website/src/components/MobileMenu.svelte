@@ -1,7 +1,9 @@
 <script lang="ts">
 import { fade } from "svelte/transition";
+import { Box } from "@saas-ui/svelte/layout/box";
 import { VStack } from "@saas-ui/svelte/layout/stack";
 import { Button } from "@saas-ui/svelte/components/button";
+import { Heading } from "@saas-ui/svelte/typography/heading";
 import DocsSidebar from "./docs/DocsSidebar.svelte";
 import { getDocsNavigation } from "../lib/docs-navigation";
 import {
@@ -66,8 +68,8 @@ $effect(() => {
 			<DocsSidebar groups={navGroups} {currentPath} />
 		{:else}
 			<nav class="flex flex-col gap-6 p-8">
-				<div>
-					<h5 class="mb-2 px-2 text-xs font-medium text-fg-default">Resources</h5>
+				<Box>
+					<Heading as="h5" size="xs" class="mb-2 px-2 text-fg-default">Resources</Heading>
 					<VStack gap={1} class="w-full">
 						{#each navLinks as { href, label }}
 							<Button
@@ -81,9 +83,9 @@ $effect(() => {
 							</Button>
 						{/each}
 					</VStack>
-				</div>
-				<div>
-					<h5 class="mb-2 px-2 text-xs font-medium text-fg-default">Legal</h5>
+				</Box>
+				<Box>
+					<Heading as="h5" size="xs" class="mb-2 px-2 text-fg-default">Legal</Heading>
 					<VStack gap={1} class="w-full">
 						<Button
 							as="a"
@@ -113,7 +115,7 @@ $effect(() => {
 							Terms
 						</Button>
 					</VStack>
-				</div>
+				</Box>
 			</nav>
 		{/if}
 	</div>

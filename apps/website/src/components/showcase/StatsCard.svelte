@@ -12,6 +12,7 @@
 	} from "chart.js";
 	import { Card } from "@saas-ui/svelte/components/card";
 	import { Stat } from "@saas-ui/svelte/components/stat";
+	import { Box } from "@saas-ui/svelte/layout/box";
 
 	Chart.register(
 		LineController,
@@ -147,7 +148,7 @@
 			</Stat.HelpText>
 		</Stat.Root>
 	</Card.Body>
-	<div class="w-full h-24">
+	<Box class="w-full h-24">
 		<canvas bind:this={chartCanvas}></canvas>
-	</div>
+	</Box>
 </Card.Root>

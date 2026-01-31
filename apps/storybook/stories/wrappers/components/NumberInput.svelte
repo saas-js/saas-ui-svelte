@@ -7,6 +7,7 @@
 	import { NumberInput } from "$saas/components/number-input";
 	import { Field } from "$saas/components/field";
 	import { Stack, HStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
 	import { Text } from "$saas/typography/text";
 	import { colours, numberInputSizes } from "../../utils";
 
@@ -30,9 +31,9 @@
 </script>
 
 {#if story === "basic"}
-	<div class="w-52">
+	<Box class="w-52">
 		<NumberInput aria-label="Number" defaultValue="10" />
-	</div>
+	</Box>
 {:else if story === "sizes"}
 	<Stack gap={4} class="max-w-52">
 		{#each numberInputSizes as size}
@@ -43,21 +44,21 @@
 		{/each}
 	</Stack>
 {:else if story === "minMax"}
-	<div class="w-52">
+	<Box class="w-52">
 		<NumberInput defaultValue="10" min={5} max={50} aria-label="Number" />
-	</div>
+	</Box>
 {:else if story === "step"}
-	<div class="w-52">
+	<Box class="w-52">
 		<NumberInput defaultValue="2" step={3} aria-label="Number" />
-	</div>
+	</Box>
 {:else if story === "mouseWheel"}
-	<div class="w-52">
+	<Box class="w-52">
 		<NumberInput defaultValue="10" allowMouseWheel aria-label="Number" />
-	</div>
+	</Box>
 {:else if story === "disabled"}
-	<div class="w-52">
+	<Box class="w-52">
 		<NumberInput defaultValue="10" disabled aria-label="Number" />
-	</div>
+	</Box>
 {:else if story === "invalid"}
 	<Field.Root invalid class="w-52">
 		<Field.Label>Enter Number</Field.Label>

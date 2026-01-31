@@ -51,13 +51,13 @@
 {:else if story === "icons"}
 	<HStack gap={4} class="flex-wrap">
 		<Button colour="teal" variant="solid">
-			<Icon as={Envelope} class="size-4" aria-hidden="true" />
+			<Icon as={Envelope} size="sm" />
 			Mail
 		</Button>
 
 		<Button colour="teal" variant="outline">
 			Call us
-			<Icon as={ArrowRight} class="size-4" aria-hidden="true" />
+			<Icon as={ArrowRight} size="sm" />
 		</Button>
 	</HStack>
 
@@ -66,7 +66,7 @@
 	<VStack align="start" gap={4}>
 		{#each buttonSizes as size}
 			<Button colour="rose" variant="solid" {size} icon aria-label="Like">
-				<Icon as={Heart} aria-hidden="true" />
+				<Icon as={Heart} />
 			</Button>
 		{/each}
 	</VStack>
@@ -92,7 +92,7 @@
 	<Button.Group>
 		<Button variant="outline" size="sm">Button</Button>
 		<Button variant="outline" size="sm" icon aria-label="More options">
-			<Icon as={CaretDown} aria-hidden="true" />
+			<Icon as={CaretDown} />
 		</Button>
 	</Button.Group>
 {/if}

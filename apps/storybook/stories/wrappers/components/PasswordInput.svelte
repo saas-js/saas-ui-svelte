@@ -9,6 +9,7 @@
 	import { Button } from "$saas/components/button";
 	import { Input } from "$saas/components/input";
 	import { Stack, HStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
 	import { Text } from "$saas/typography/text";
 	import { colours, passwordInputSizes } from "../../utils";
 
@@ -31,9 +32,9 @@
 </script>
 
 {#if story === "basic"}
-	<div class="w-72">
+	<Box class="w-72">
 		<PasswordInput aria-label="Password" />
-	</div>
+	</Box>
 {:else if story === "sizes"}
 	<Stack gap={4} class="max-w-72">
 		{#each passwordInputSizes as size}
@@ -81,9 +82,9 @@
 		</Stack>
 	</form>
 {:else if story === "disabled"}
-	<div class="w-72">
+	<Box class="w-72">
 		<PasswordInput disabled placeholder="Disabled password" aria-label="Password" />
-	</div>
+	</Box>
 {:else if story === "invalid"}
 	<Field.Root invalid class="w-72">
 		<Field.Label>Password</Field.Label>

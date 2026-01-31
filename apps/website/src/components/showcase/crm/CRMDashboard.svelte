@@ -3,6 +3,9 @@ import CRMSidebar from "./CRMSidebar.svelte";
 import CRMHeader from "./CRMHeader.svelte";
 import RevenueCard from "./RevenueCard.svelte";
 import CustomerMetricsCard from "./CustomerMetricsCard.svelte";
+import { Flex } from "@saas-ui/svelte/layout/flex";
+import { Box } from "@saas-ui/svelte/layout/box";
+import { Grid } from "@saas-ui/svelte/layout/grid";
 
 let timeRange = $state("year");
 let sidebarOpen = $state(true);
@@ -17,15 +20,15 @@ function handlePrefetch(value: string) {
 }
 </script>
 
-<div
-	class="border-border-default bg-bg-muted flex w-full max-w-360 overflow-hidden rounded-md border xl:max-w-400"
+<Flex
+	class="border-border-default bg-bg-muted w-full max-w-360 overflow-hidden rounded-md border xl:max-w-400"
 >
 	<CRMSidebar
 		open={sidebarOpen}
 		onToggle={() => (sidebarOpen = !sidebarOpen)}
 	/>
 
-	<div class="flex flex-1 flex-col overflow-hidden">
+	<Flex direction="column" class="flex-1 overflow-hidden">
 		<CRMHeader
 			timeRange={timeRange}
 			onTimeRangeChange={(value) => (timeRange = value)}
@@ -34,13 +37,14 @@ function handlePrefetch(value: string) {
 			onPrefetch={handlePrefetch}
 		/>
 
-		<main
+		<Box
+			as="main"
 			class="flex-1 overflow-auto bg-gray-50/50 p-4 dark:bg-gray-900/50"
 		>
-			<div class="grid gap-4 xl:grid-cols-3">
+			<Grid gap={4} class="xl:grid-cols-3">
 				<RevenueCard bind:this={revenueCard} timeRange={timeRange} />
 				<CustomerMetricsCard bind:this={customerMetricsCard} timeRange={timeRange} />
-			</div>
-		</main>
-	</div>
-</div>
+			</Grid>
+		</Box>
+	</Flex>
+</Flex>

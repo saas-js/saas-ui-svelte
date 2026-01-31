@@ -1,5 +1,7 @@
 <script lang="ts">
 import { getLocaleContext } from "$saas/utilities/locale-provider";
+import { VStack } from "$saas/layout/stack";
+import { Box } from "$saas/layout/box";
 import type { Snippet } from "svelte";
 
 interface Props {
@@ -18,12 +20,9 @@ const displayData = $derived({
 });
 </script>
 
-<div class="flex flex-col gap-2">
-	<pre
-		class="bg-bg-subtle leading-sm rounded p-4 font-mono text-sm">{JSON.stringify(
-			displayData,
-			null,
-			2,
-		)}</pre>
+<VStack gap={2}>
+	<Box as="pre" class="bg-bg-subtle leading-sm rounded p-4 font-mono text-sm"
+		>{JSON.stringify(displayData, null, 2)}</Box
+	>
 	{@render children?.()}
-</div>
+</VStack>

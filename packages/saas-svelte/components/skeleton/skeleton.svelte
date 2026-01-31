@@ -45,6 +45,8 @@ export type SkeletonVariants = VariantProps<typeof skeleton>;
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
+import { Box } from "$saas/layout/box";
+import { Text } from "$saas/typography/text";
 
 interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
 	/**
@@ -100,7 +102,7 @@ const shineStyle = $derived(
 );
 </script>
 
-<div
+<Box
 	class={classes}
 	style="{shineStyle}{loading && height
 		? `height: ${height};`
@@ -109,8 +111,8 @@ const shineStyle = $derived(
 	{...restProps}
 >
 	{#if children}
-		<span class={loading ? "invisible" : undefined}>
+		<Text as="span" class={twMerge(loading ? "invisible" : undefined)}>
 			{@render children()}
-		</span>
+		</Text>
 	{/if}
-</div>
+</Box>

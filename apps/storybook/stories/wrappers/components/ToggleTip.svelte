@@ -6,6 +6,7 @@
 <script lang="ts">
 	import { ToggleTip, InfoTip } from "$saas/components/toggle-tip";
 	import { HStack, VStack } from "$saas/layout/stack";
+	import { Centre } from "$saas/layout/centre";
 	import { Text } from "$saas/typography/text";
 	import Info from "phosphor-svelte/lib/Info";
 
@@ -22,23 +23,23 @@
 </script>
 
 {#if story === "basic"}
-	<div class="flex items-center justify-center p-8">
+	<Centre class="p-8">
 		<ToggleTip
 			content="This is some additional information."
 			triggerIcon={Info}
 			triggerSize="xs"
 			triggerAriaLabel="More information"
 		/>
-	</div>
+	</Centre>
 {:else if story === "infoTip"}
-	<div class="flex items-center justify-center p-8">
+	<Centre class="p-8">
 		<HStack justify="center">
 			<Text size="lg">File size: 1.45kb</Text>
 			<InfoTip>The file size for content.tsx is 1.45kb</InfoTip>
 		</HStack>
-	</div>
+	</Centre>
 {:else if story === "sizes"}
-	<div class="flex items-center justify-center p-8">
+	<Centre class="p-8">
 		<HStack gap={4}>
 			<ToggleTip
 				content="Extra small toggle tip"
@@ -65,9 +66,9 @@
 				triggerSize="lg"
 			/>
 		</HStack>
-	</div>
+	</Centre>
 {:else if story === "positioning"}
-	<div class="flex items-center justify-center p-8">
+	<Centre class="p-8">
 		<HStack gap={4}>
 			<ToggleTip
 				content="Top placement"
@@ -94,9 +95,9 @@
 				triggerVariant="outline"
 			/>
 		</HStack>
-	</div>
+	</Centre>
 {:else if story === "customContent"}
-	<HStack align="center" justify="center" class="p-8">
+	<Centre class="p-8">
 		<ToggleTip triggerText="Custom Content" triggerVariant="outline">
 			<VStack gap={1}>
 				<Text size="xs" weight="semibold">Custom Content</Text>
@@ -105,5 +106,5 @@
 				</Text>
 			</VStack>
 		</ToggleTip>
-	</HStack>
+	</Centre>
 {/if}

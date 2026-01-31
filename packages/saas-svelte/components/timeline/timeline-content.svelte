@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { TIMELINE_CTX, type TimelineContext } from "./timeline-root.svelte";
+import { VStack } from "$saas/layout/stack";
 
 interface Props {
 	/**
@@ -56,9 +57,10 @@ const alignClass = $derived(
 );
 </script>
 
-<div
+<VStack
+	gap={2}
 	class={twMerge(baseClass, flexClass, alignClass, className)}
 	{...restProps}
 >
 	{@render children?.()}
-</div>
+</VStack>

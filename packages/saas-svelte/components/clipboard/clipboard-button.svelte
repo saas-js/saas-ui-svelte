@@ -5,6 +5,7 @@ import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import CopySimpleIcon from "phosphor-svelte/lib/CopySimpleIcon";
 import { twMerge } from "tailwind-merge";
 import { clipboardButton } from "./clipboard.svelte";
+import { Text } from "$saas/typography/text";
 
 interface Props {
 	/**
@@ -49,9 +50,9 @@ let {
 			{/snippet}
 		</ArkClipboard.Indicator>
 		<ArkClipboard.Indicator>
-			<span>{label}</span>
+			<Text as="span">{label}</Text>
 			{#snippet copied()}
-				<span>{copiedLabel}</span>
+				<Text as="span">{copiedLabel}</Text>
 			{/snippet}
 		</ArkClipboard.Indicator>
 	{/if}

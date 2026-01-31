@@ -27,6 +27,7 @@ export const gridListCell = tv({
 <script lang="ts">
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -59,16 +60,14 @@ let {
 	shrink = false,
 	width,
 	class: className,
-	...restProps
 }: Props = $props();
 
 const widthClass = $derived(width ? `w-${width}` : "");
 </script>
 
-<div
+<Box
 	role="gridcell"
-	class={twMerge(gridListCell({ flex, shrink }), widthClass, className as string)}
-	{...restProps}
+	class={twMerge(gridListCell({ flex, shrink }), widthClass, className)}
 >
 	{@render children()}
-</div>
+</Box>

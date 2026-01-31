@@ -144,13 +144,13 @@
 						<Radio.Indicator />
 					</Radio.ItemControl>
 					<Radio.ItemText>
-						<div class="flex flex-col">
-							<span class="text-fg-default">React</span>
-							<span class="text-xs font-normal text-fg-muted">
+						<VStack gap={0}>
+							<Text as="span" class="text-fg-default">React</Text>
+							<Text as="span" size="xs" class="font-normal text-fg-muted">
 								A JavaScript library for building user
 								interfaces
-							</span>
-						</div>
+							</Text>
+						</VStack>
 					</Radio.ItemText>
 					<Radio.ItemHiddenInput />
 				{/snippet}
@@ -161,12 +161,12 @@
 						<Radio.Indicator />
 					</Radio.ItemControl>
 					<Radio.ItemText>
-						<div class="flex flex-col">
-							<span class="text-fg-default">Svelte</span>
-							<span class="text-xs font-normal text-fg-muted">
+						<VStack gap={0}>
+							<Text as="span" class="text-fg-default">Svelte</Text>
+							<Text as="span" size="xs" class="font-normal text-fg-muted">
 								Cybernetically enhanced web apps
-							</span>
-						</div>
+							</Text>
+						</VStack>
 					</Radio.ItemText>
 					<Radio.ItemHiddenInput />
 				{/snippet}

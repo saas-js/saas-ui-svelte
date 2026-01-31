@@ -1,24 +1,13 @@
 <script module lang="ts">
-import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
-
-/**
- * Tailwind Variants styles for the GridList header component.
- */
-export const gridListHeader = tv({
-	base: [
-		"font-medium",
-		"flex sticky",
-		"px-3 py-1",
-		"text-fg-muted",
-		"antialiased",
-	],
-});
 </script>
 
 <script lang="ts">
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { Text } from "$saas/typography/text";
+import { Flex } from "$saas/layout/flex";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -31,15 +20,21 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 	class?: string;
 }
 
-let { children, class: className, ...restProps }: Props = $props();
+let { children, class: className }: Props = $props();
+
+const baseStyles = "sticky px-3 py-1 text-fg-muted";
 </script>
 
-<div role="row">
-	<div
+<Box as="div" role="row">
+	<Text
+		as="div"
 		role="columnheader"
-		class={twMerge(gridListHeader(), className as string)}
-		{...restProps}
+		size="sm"
+		weight="medium"
+		class={twMerge(baseStyles, className)}
 	>
-		{@render children()}
-	</div>
-</div>
+		<Flex>
+			{@render children()}
+		</Flex>
+	</Text>
+</Box>

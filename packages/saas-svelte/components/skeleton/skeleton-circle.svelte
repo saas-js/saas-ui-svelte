@@ -59,6 +59,7 @@ export type SkeletonCircleVariants = VariantProps<typeof skeletonCircle>;
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
+import { Box } from "$saas/layout/box";
 
 interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
 	/**
@@ -94,4 +95,4 @@ const shineStyle = $derived(
 );
 </script>
 
-<div class={classes} style={shineStyle} aria-hidden="true" {...restProps}></div>
+<Box class={classes} style={shineStyle} aria-hidden="true" {...restProps}></Box>

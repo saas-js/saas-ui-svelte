@@ -64,6 +64,9 @@ import type { Snippet, Component } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 import { Icon } from "$saas/components/icon";
+import { Flex } from "$saas/layout/flex";
+import { Heading } from "$saas/typography/heading";
+import { Text } from "$saas/typography/text";
 
 interface Props {
 	/**
@@ -137,30 +140,30 @@ const {
 } = $derived(emptyState({ size, align }));
 </script>
 
-<div class={twMerge(root(), className as string)} style={finalStyle} {...restProps}>
-	<div class={content()}>
+<Flex class={twMerge(root(), className)} style={finalStyle} {...restProps}>
+	<Flex direction="column" class={content()}>
 		{#if icon}
-			<div class="{iconWrapper()} text-(--c-solid)">
+			<Flex align="center" justify="center" class={twMerge(iconWrapper(), "text-(--c-solid)")}>
 				<Icon as={icon} size="2xl" />
-			</div>
+			</Flex>
 		{/if}
 
 		{#if title}
-			<h3 class={titleClass()}>
+			<Heading as="h3" class={titleClass()}>
 				{title}
-			</h3>
+			</Heading>
 		{/if}
 
 		{#if description}
-			<p class={descriptionClass()}>
+			<Text class={descriptionClass()}>
 				{description}
-			</p>
+			</Text>
 		{/if}
 
 		{#if children}
-			<div class={actions()}>
+			<Flex class={actions()}>
 				{@render children()}
-			</div>
+			</Flex>
 		{/if}
-	</div>
-</div>
+	</Flex>
+</Flex>

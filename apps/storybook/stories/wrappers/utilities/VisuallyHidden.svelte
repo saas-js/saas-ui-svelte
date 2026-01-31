@@ -6,6 +6,7 @@
 <script lang="ts">
 	import { VisuallyHidden } from "$saas/utilities/visually-hidden";
 	import { Button } from "$saas/components/button";
+	import { Icon } from "$saas/components/icon";
 	import Bell from "phosphor-svelte/lib/Bell";
 
 	interface Props {
@@ -18,7 +19,7 @@
 
 {#if story === "basic"}
 	<Button>
-		<Bell class="w-4 h-4" aria-hidden="true" />
+		<Icon as={Bell} size="sm" />
 		3
 		<VisuallyHidden class={className}>Notifications</VisuallyHidden>
 	</Button>

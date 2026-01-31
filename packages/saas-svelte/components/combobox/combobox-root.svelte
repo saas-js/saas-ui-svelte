@@ -213,11 +213,19 @@ export const COMBOBOX_CTX = Symbol("COMBOBOX_CTX");
 </script>
 
 <script lang="ts">
-import { Combobox, type ComboboxRootProps } from "@ark-ui/svelte/combobox";
+import {
+	Combobox,
+	type ComboboxRootProps,
+	type ComboboxOpenChangeDetails,
+} from "@ark-ui/svelte/combobox";
 import type { CollectionItem, ListCollection } from "@ark-ui/svelte/combobox";
 import { setContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
+import {
+	registerOverlay,
+	unregisterOverlay,
+} from "$saas/utils/overlay-singleton.svelte.js";
 
 interface Props extends Omit<
 	ComboboxRootProps<CollectionItem>,
@@ -242,8 +250,27 @@ let {
 	invalid = false,
 	colour = "gray",
 	class: className,
+	onOpenChange,
 	...restProps
 }: Props = $props();
+
+let instanceId: symbol | null = $state(null);
+let lastValue: string[] = $state([]);
+
+function handleOpenChange(details: ComboboxOpenChangeDetails) {
+	if (details.open) {
+		lastValue = details.value;
+		if (!instanceId) {
+			instanceId = registerOverlay("combobox", () => {
+				onOpenChange?.({ open: false, value: lastValue });
+			});
+		}
+	} else if (instanceId) {
+		unregisterOverlay("combobox", instanceId);
+		instanceId = null;
+	}
+	onOpenChange?.(details);
+}
 
 const ctx: ComboboxContext = {
 	get size() {
@@ -267,6 +294,7 @@ setContext(COMBOBOX_CTX, ctx);
 	id={id}
 	collection={collection}
 	class={twMerge(ctx.styles.root(), className as string)}
+	onOpenChange={handleOpenChange}
 	{...restProps}
 >
 	{@render children?.()}

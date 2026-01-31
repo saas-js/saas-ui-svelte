@@ -17,6 +17,7 @@ export const appShell = tv({
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -68,7 +69,8 @@ const finalStyle = $derived(
 );
 </script>
 
-<div
+<Flex
+	direction="column"
 	class={twMerge(styles.root(), className as string)}
 	style={finalStyle}
 	{...restProps}
@@ -77,21 +79,21 @@ const finalStyle = $derived(
 		{@render header()}
 	{/if}
 
-	<div class={styles.main()}>
+	<Flex class={styles.main()}>
 		{#if sidebar}
 			{@render sidebar()}
 		{/if}
 
-		<div class={styles.content()}>
+		<Flex direction="column" class={styles.content()}>
 			{@render children?.()}
-		</div>
+		</Flex>
 
 		{#if aside}
 			{@render aside()}
 		{/if}
-	</div>
+	</Flex>
 
 	{#if footer}
 		{@render footer()}
 	{/if}
-</div>
+</Flex>

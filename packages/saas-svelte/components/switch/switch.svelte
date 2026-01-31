@@ -4,6 +4,7 @@ import { Switch } from "@ark-ui/svelte/switch";
 import { tv, type VariantProps } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
 import { getColourStyle, type ColourName } from "$saas/utils/colours";
+import { Box } from "$saas/layout/box";
 
 const switchRecipe = tv({
 	slots: {
@@ -214,16 +215,21 @@ function handleCheckedChange(details: { checked: boolean }) {
 			{/if}
 		</Switch.Thumb>
 		{#if trackLabel}
-			<span
-				class="absolute grid size-(--switch-translate) shrink-0 content-center justify-center text-sm font-medium transition-transform duration-100 select-none will-change-transform"
-				style="inset-inline-start: 2px; transform: translateX({checked ? '0' : 'calc(var(--switch-translate) - 4px)'});"
+			<Box
+				as="span"
+				class={twMerge(
+					"absolute grid size-(--switch-translate) shrink-0 content-center justify-center text-sm font-medium transition-transform duration-100 select-none will-change-transform",
+				)}
+				style="inset-inline-start: 2px; transform: translateX({checked
+					? '0'
+					: 'calc(var(--switch-translate) - 4px)'});"
 			>
 				{#if checked && trackLabel.on}
 					{@render trackLabel.on()}
 				{:else if !checked && trackLabel.off}
 					{@render trackLabel.off()}
 				{/if}
-			</span>
+			</Box>
 		{/if}
 	</Switch.Control>
 	{#if children}

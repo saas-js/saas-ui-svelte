@@ -78,6 +78,7 @@ export interface PersonaContext {
 import { setContext, type Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -137,11 +138,13 @@ setContext<PersonaContext>(PERSONA_CTX, {
 const styles = $derived(persona({ size }));
 </script>
 
-<div
+<Flex
+	inline
+	align="center"
 	class={twMerge(styles.root(), className as string)}
 	data-out-of-office={outOfOffice || undefined}
 	data-presence={presence || undefined}
 	{...restProps}
 >
 	{@render children()}
-</div>
+</Flex>

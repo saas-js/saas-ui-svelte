@@ -9,9 +9,6 @@ export const gridListItem = tv({
 	base: [
 		"outline-0",
 		"flex-1",
-		"justify-between items-center",
-		"gap-2",
-		"flex",
 		"px-3 py-2",
 		"rounded-[inherit]",
 		"antialiased",
@@ -42,6 +39,7 @@ export const gridListItem = tv({
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { getContext } from "svelte";
+import { Flex } from "$saas/layout/flex";
 import { GRID_LIST_CTX, type GridListContext } from "./grid-list-root.svelte";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -55,17 +53,19 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 	class?: string;
 }
 
-let { children, class: className, ...restProps }: Props = $props();
+let { children, class: className }: Props = $props();
 
 const context = getContext<GridListContext>(GRID_LIST_CTX);
 const interactive = $derived(context?.interactive ?? false);
 </script>
 
-<div
+<Flex
 	role="row"
 	tabindex={interactive ? 0 : undefined}
-	class={twMerge(gridListItem({ interactive }), className as string)}
-	{...restProps}
+	align="center"
+	justify="between"
+	gap={2}
+	class={twMerge(gridListItem({ interactive }), className)}
 >
 	{@render children()}
-</div>
+</Flex>

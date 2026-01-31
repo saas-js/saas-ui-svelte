@@ -4,6 +4,7 @@ import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { RADIO_GROUP_CTX, type RadioGroupContext } from "./radio-group.svelte";
 import { getColourStyle } from "$saas/utils/colours";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -112,10 +113,15 @@ function getIndicatorScale() {
 		<RadioGroup.ItemControl
 			class="group/control {getControlClasses()} focus:outline-1 focus:outline-offset-2 focus:outline-(--c-focus-ring) focus:outline-solid"
 		>
-			<span
-				class="{styles.indicator()} {getIndicatorScale()} hidden group-data-[state=checked]/control:block"
+			<Box
+				as="span"
+				class={twMerge(
+					styles.indicator(),
+					getIndicatorScale(),
+					"hidden group-data-[state=checked]/control:block",
+				)}
 				aria-hidden="true"
-			></span>
+			></Box>
 		</RadioGroup.ItemControl>
 		{#if label}
 			<RadioGroup.ItemText class={styles.label()}>

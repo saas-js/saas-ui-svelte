@@ -8,6 +8,8 @@ import {
 } from "./radio-card-root.svelte";
 import { getColourStyle } from "$saas/utils/colours";
 import { Icon } from "$saas/components/icon";
+import { Box } from "$saas/layout/box";
+import { Stack } from "$saas/layout/stack";
 
 interface Props {
 	/**
@@ -102,12 +104,12 @@ function getControlClasses() {
 	{#if children}
 		{@render children()}
 	{:else}
-		<div class={styles.itemContent()}>
-			<div class={styles.itemBody()}>
+		<Box class={twMerge(styles.itemContent())}>
+			<Stack gap={1} class={twMerge(styles.itemBody())}>
 				{#if icon}
-					<div class={styles.itemIcon()}>
+					<Box class={twMerge(styles.itemIcon())}>
 						<Icon as={icon} size={iconSize} />
-					</div>
+					</Box>
 				{/if}
 				{#if label}
 					<RadioGroup.ItemText class={styles.itemLabel()}>
@@ -115,28 +117,32 @@ function getControlClasses() {
 					</RadioGroup.ItemText>
 				{/if}
 				{#if description}
-					<div class={styles.itemDescription()}>
+					<Box class={twMerge(styles.itemDescription())}>
 						{description}
-					</div>
+					</Box>
 				{/if}
-			</div>
+			</Stack>
 			<RadioGroup.ItemControl
 				class={twMerge("group/control", getControlClasses())}
 			>
-				<span
-					class="{styles.indicator()} hidden group-data-[state=checked]/control:block"
+				<Box
+					as="span"
+					class={twMerge(
+						styles.indicator(),
+						"hidden group-data-[state=checked]/control:block",
+					)}
 					aria-hidden="true"
-				></span>
+				></Box>
 			</RadioGroup.ItemControl>
-		</div>
+		</Box>
 		{#if addon}
-			<div class={styles.addon()}>
+			<Box class={twMerge(styles.addon())}>
 				{#if typeof addon === "string"}
 					{addon}
 				{:else}
 					{@render addon()}
 				{/if}
-			</div>
+			</Box>
 		{/if}
 		<RadioGroup.ItemHiddenInput />
 	{/if}

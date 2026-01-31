@@ -16,6 +16,7 @@
 	import { Drawer } from "$saas/components/drawer";
 	import { Link } from "$saas/components/link";
 	import { Input } from "$saas/components/input";
+	import { Icon } from "$saas/components/icon";
 	import House from "phosphor-svelte/lib/House";
 	import Users from "phosphor-svelte/lib/Users";
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
@@ -91,10 +92,7 @@
 						<Navbar.Item class="hidden md:flex">
 							<Input.Group class="w-40">
 								<Input.Element placement="left">
-									<MagnifyingGlass
-										class="w-3.5 h-3.5"
-										aria-hidden="true"
-									/>
+									<Icon as={MagnifyingGlass} size="xs" />
 								</Input.Element>
 								<Input
 									size="sm"
@@ -113,9 +111,9 @@
 								onclick={() => mobileNav.toggle()}
 							>
 								{#if mobileNav.open}
-									<X weight="bold" aria-hidden="true" />
+									<Icon as={X} size="sm" weight="bold" />
 								{:else}
-									<List weight="bold" aria-hidden="true" />
+									<Icon as={List} size="sm" weight="bold" />
 								{/if}
 							</Button>
 						</Navbar.Item>
@@ -171,20 +169,12 @@
 						<Sidebar.GroupContent>
 							<Sidebar.NavItem>
 								<Sidebar.NavButton active>
-									<House
-										weight="regular"
-										class="w-4 h-4"
-										aria-hidden="true"
-									/> Home
+									<Icon as={House} size="sm" weight="regular" /> Home
 								</Sidebar.NavButton>
 							</Sidebar.NavItem>
 							<Sidebar.NavItem>
 								<Sidebar.NavButton>
-									<Users
-										weight="regular"
-										class="w-4 h-4"
-										aria-hidden="true"
-									/> Contacts
+									<Icon as={Users} size="sm" weight="regular" /> Contacts
 								</Sidebar.NavButton>
 							</Sidebar.NavItem>
 						</Sidebar.GroupContent>

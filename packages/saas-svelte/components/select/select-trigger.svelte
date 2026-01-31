@@ -6,6 +6,7 @@ import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends SelectTriggerProps {
 	/**
@@ -48,8 +49,12 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 			/>
 		{/if}
 	</Select.Trigger>
-	<div
-		class="pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1 px-2.5"
+	<Flex
+		align="center"
+		gap={1}
+		class={twMerge(
+			"pointer-events-none absolute inset-y-0 right-0 px-2.5",
+		)}
 	>
 		{#if clearable}
 			<Select.ClearTrigger class={ctx?.styles?.clearTrigger() ?? ""}>
@@ -59,5 +64,5 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 		<Select.Indicator class={ctx?.styles?.indicator() ?? ""}>
 			<CaretDownIcon weight="bold" aria-hidden="true" />
 		</Select.Indicator>
-	</div>
+	</Flex>
 </Select.Control>

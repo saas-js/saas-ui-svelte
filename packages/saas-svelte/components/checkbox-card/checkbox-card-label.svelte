@@ -2,32 +2,12 @@
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
-import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
 import {
 	CHECKBOX_CARD_CTX,
 	type CheckboxCardVariants,
 } from "./checkbox-card-root.svelte";
-
-const checkboxCardLabel = tv({
-	base: [
-		"items-center",
-		"gap-2",
-		"font-medium",
-		"flex",
-		"disabled:opacity-50",
-	],
-	variants: {
-		size: {
-			sm: "",
-			md: "",
-			lg: "",
-		},
-	},
-	defaultVariants: {
-		size: "md",
-	},
-});
+import { HStack } from "$saas/layout/stack";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
 	/**
@@ -46,12 +26,11 @@ const ctx = getContext<{
 	size: CheckboxCardVariants["size"];
 	disabled: boolean;
 }>(CHECKBOX_CARD_CTX);
-const size = $derived(ctx?.size ?? "md");
 const disabled = $derived(ctx?.disabled ?? false);
 
-const finalClass = $derived(twMerge(checkboxCardLabel({ size }), className as string));
+const finalClass = $derived(twMerge("font-medium disabled:opacity-50", disabled && "opacity-50", className as string));
 </script>
 
-<span class={finalClass} class:opacity-50={disabled} {...restProps}>
+<HStack as="span" gap={2} class={finalClass} {...restProps}>
 	{@render children()}
-</span>
+</HStack>

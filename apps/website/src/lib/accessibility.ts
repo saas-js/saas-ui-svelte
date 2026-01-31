@@ -34,7 +34,7 @@ export async function loadAccessibilityReport(): Promise<AccessibilityReport | n
 	try {
 		// In Astro, we can import JSON files directly at build time
 		const report = await import("../../public/a11y-report.json");
-		cachedReport = report.default as AccessibilityReport;
+		cachedReport = report.default as unknown as AccessibilityReport;
 		return cachedReport;
 	} catch {
 		// Report doesn't exist yet

@@ -7,6 +7,8 @@ import StepsTrigger from "./steps-trigger.svelte";
 import StepsSeparator from "./steps-separator.svelte";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import { Icon } from "$saas/components/icon";
+import { Stack } from "$saas/layout/stack";
+import { Text } from "$saas/typography/text";
 
 interface Props {
 	/**
@@ -93,16 +95,16 @@ function handlePrefetch() {
 						{/if}
 					</Steps.Indicator>
 					{#if title || description}
-						<div class="flex flex-col">
+						<Stack gap={0}>
 							{#if title}
-								<div class={ctx?.styles?.title()}>{title}</div>
+								<Text as="span" class={twMerge(ctx?.styles?.title())}>{title}</Text>
 							{/if}
 							{#if description}
-								<div class={ctx?.styles?.description()}>
+								<Text as="span" class={twMerge(ctx?.styles?.description())}>
 									{description}
-								</div>
+								</Text>
 							{/if}
-						</div>
+						</Stack>
 					{/if}
 				</StepsTrigger>
 				<StepsSeparator

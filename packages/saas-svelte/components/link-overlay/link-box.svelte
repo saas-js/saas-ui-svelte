@@ -19,6 +19,7 @@ export const linkBox = tv({
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	/**
@@ -41,24 +42,6 @@ let { as = "div", children, class: className, ...rest }: Props = $props();
 const classes = $derived(twMerge(linkBox(), className as string));
 </script>
 
-{#if as === "article"}
-	<article class={classes} {...rest}>
-		{@render children?.()}
-	</article>
-{:else if as === "section"}
-	<section class={classes} {...rest}>
-		{@render children?.()}
-	</section>
-{:else if as === "aside"}
-	<aside class={classes} {...rest}>
-		{@render children?.()}
-	</aside>
-{:else if as === "figure"}
-	<figure class={classes} {...rest}>
-		{@render children?.()}
-	</figure>
-{:else}
-	<div class={classes} {...rest}>
-		{@render children?.()}
-	</div>
-{/if}
+<Box {as} class={classes} {...rest}>
+	{@render children?.()}
+</Box>

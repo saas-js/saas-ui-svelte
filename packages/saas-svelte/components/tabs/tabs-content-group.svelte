@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { TABS_CTX, type TabsContext } from "./tabs-root.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -21,6 +22,6 @@ const ctx = getContext<TabsContext>(TABS_CTX);
 const styles = $derived(ctx.styles);
 </script>
 
-<div class={twMerge(styles.contentGroup(), className)} {...restProps}>
+<Box class={twMerge(styles.contentGroup(), className)} {...restProps}>
 	{@render children()}
-</div>
+</Box>

@@ -79,6 +79,7 @@ export interface TimelineContext {
 import { setContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { getColourStyle } from "$saas/utils/colours";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -138,11 +139,11 @@ setContext<TimelineContext>(TIMELINE_CTX, {
 });
 </script>
 
-<div
+<Box
 	role="list"
 	class={twMerge(classes.root(), className)}
 	style={finalStyle}
 	{...restProps}
 >
 	{@render children?.()}
-</div>
+</Box>

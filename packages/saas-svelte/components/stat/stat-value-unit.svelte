@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { STAT_CTX, type StatContext } from "./stat-root.svelte";
+import { Text } from "$saas/typography/text";
 
 interface Props {
 	/**
@@ -21,6 +22,6 @@ const ctx = getContext<StatContext>(STAT_CTX);
 const styles = $derived(ctx.styles);
 </script>
 
-<span class={twMerge(styles.valueUnit(), className)} {...restProps}>
+<Text as="span" class={twMerge(styles.valueUnit(), className)} {...restProps}>
 	{@render children()}
-</span>
+</Text>

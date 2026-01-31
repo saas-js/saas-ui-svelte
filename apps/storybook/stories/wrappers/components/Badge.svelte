@@ -4,6 +4,7 @@
 
 <script lang="ts">
 	import { Text } from "$saas/typography/text";
+	import { Icon } from "$saas/components/icon";
 	import Star from "phosphor-svelte/lib/Star";
 	import CheckCircle from "phosphor-svelte/lib/CheckCircle";
 	import { VStack, HStack } from "$saas/layout/stack";
@@ -26,12 +27,12 @@
 {:else if story === "withIcon"}
 	<VStack align="start" gap={2}>
 		<Badge variant="solid" colour="blue">
-			<Star class="h-3" aria-hidden="true" />
+			<Icon as={Star} size="xs" />
 			New
 		</Badge>
 		<Badge variant="solid" colour="green">
 			New
-			<CheckCircle class="h-3" aria-hidden="true" />
+			<Icon as={CheckCircle} size="xs" />
 		</Badge>
 	</VStack>
 {:else if story === "variants"}

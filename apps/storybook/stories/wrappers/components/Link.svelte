@@ -5,7 +5,8 @@
 
 <script lang="ts">
 	import { Link } from "$saas/components/link";
-	import { VStack } from "$saas/layout/stack";
+	import { VStack, HStack } from "$saas/layout/stack";
+	import { Text } from "$saas/typography/text";
 	import ArrowSquareOut from "phosphor-svelte/lib/ArrowSquareOut";
 	import { Icon } from "$saas/components/icon";
 	import { colours } from "../../utils";
@@ -25,24 +26,24 @@
 		<Link href="#" variant="plain">Link (Plain)</Link>
 	</VStack>
 {:else if story === "withinText"}
-	<p>
+	<Text>
 		Visit the <Link href="https://chakra-ui.com" colour="teal" variant="underline"
 			>Chakra UI</Link
 		> website
-	</p>
+	</Text>
 {:else if story === "external"}
 	<Link href="#" variant="plain">
 		Visit Chakra UI
-		<Icon as={ArrowSquareOut} class="size-3.5" />
+		<Icon as={ArrowSquareOut} size="xs" />
 	</Link>
 {:else if story === "colours"}
 	<VStack gap={4}>
 		{#each colours as colour}
-			<div class="flex items-center gap-4">
-				<span class="w-16 text-xs text-fg-muted">{colour}</span>
+			<HStack align="center" gap={4}>
+				<Text as="span" size="xs" class="w-16 text-fg-muted">{colour}</Text>
 				<Link href="#" variant="underline" {colour}>Link ({colour})</Link>
 				<Link href="#" variant="plain" {colour}>Plain</Link>
-			</div>
+			</HStack>
 		{/each}
 	</VStack>
 {/if}

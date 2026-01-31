@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
+import { Box } from "$saas/layout/box";
 import { DIALOG_CTX } from "./dialog-root.svelte";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -16,17 +17,13 @@ const ctx = getContext(DIALOG_CTX) as {
 };
 </script>
 
-<div
+<Box
 	class={twMerge(
-		"flex-1",
-		"ps-6",
-		"pe-6",
-		"py-2",
-		"antialiased",
+		"flex-1 ps-6 pe-6 py-2 antialiased",
 		ctx.scrollBehavior === "inside" && "overflow-y-auto",
 		className,
 	)}
 	{...rest}
 >
 	{@render children()}
-</div>
+</Box>

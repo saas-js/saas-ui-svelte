@@ -8,6 +8,7 @@
 	import { Button } from "$saas/components/button";
 	import { List } from "$saas/components/list";
 	import { Stack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
 	import ShoppingCart from "phosphor-svelte/lib/ShoppingCart";
 	import PaintBrush from "phosphor-svelte/lib/PaintBrush";
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
@@ -54,7 +55,7 @@
 {:else if story === "sizes"}
 	<Stack gap={8} class="w-full">
 		{#each emptyStateSizes as size}
-			<div class="border border-border-default rounded-md">
+			<Box class="border border-border-default rounded-md">
 				<EmptyState
 					icon={File}
 					title="No documents"
@@ -62,13 +63,13 @@
 					colour="blue"
 					{size}
 				/>
-			</div>
+			</Box>
 		{/each}
 	</Stack>
 {:else if story === "alignment"}
 	<Stack gap={4} class="w-full">
 		{#each emptyStateAlignOptions as align}
-			<div class="border border-border-default rounded-md">
+			<Box class="border border-border-default rounded-md">
 				<EmptyState
 					icon={Users}
 					title="No team members"
@@ -78,13 +79,13 @@
 				>
 					<Button variant="solid">Invite members</Button>
 				</EmptyState>
-			</div>
+			</Box>
 		{/each}
 	</Stack>
 {:else if story === "colours"}
 	<Stack gap={4} class="w-full">
 		{#each colours as colour}
-			<div class="border border-border-default rounded-md">
+			<Box class="border border-border-default rounded-md">
 				<EmptyState
 					icon={ShoppingCart}
 					title="Empty state with {colour}"
@@ -92,7 +93,7 @@
 					{colour}
 					size="sm"
 				/>
-			</div>
+			</Box>
 		{/each}
 	</Stack>
 {/if}

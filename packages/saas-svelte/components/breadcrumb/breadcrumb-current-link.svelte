@@ -6,6 +6,7 @@ import {
 	BREADCRUMB_CTX,
 	type BreadcrumbContext,
 } from "./breadcrumb-root.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
 	/**
@@ -30,7 +31,7 @@ const currentClasses = $derived(
 </script>
 
 <li class={styles?.item()}>
-	<span aria-current="page" class={currentClasses} {...restProps}>
+	<Box as="span" aria-current="page" class={currentClasses} {...restProps}>
 		{@render children()}
-	</span>
+	</Box>
 </li>

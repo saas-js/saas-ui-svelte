@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "npm run a11y && astro build",
+		"build:analyze": "npm run a11y && astro build && npx vite-bundle-visualizer",
 		"a11y": "cd ../storybook && npm run build && npm run a11y-report",
 		"preview": "astro preview"
 	},

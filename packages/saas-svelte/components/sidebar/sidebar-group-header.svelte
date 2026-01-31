@@ -8,6 +8,7 @@ import {
 	type SidebarContext,
 	sidebar,
 } from "./sidebar-root.svelte";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -23,6 +24,6 @@ const styles = $derived(ctx?.styles ?? sidebar());
 const finalClass = $derived(twMerge(styles.groupHeader(), className as string));
 </script>
 
-<div class={finalClass} {...restProps}>
+<Flex align="center" class={finalClass} {...restProps}>
 	{@render children?.()}
-</div>
+</Flex>

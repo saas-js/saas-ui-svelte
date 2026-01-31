@@ -9,6 +9,7 @@
 	import { Mark } from "$saas/typography/mark";
 	import { Button } from "$saas/components/button";
 	import { Stack } from "$saas/layout/stack";
+	import { Icon } from "$saas/components/icon";
 	import ArrowRight from "phosphor-svelte/lib/ArrowRight";
 
 	const textSizes = [
@@ -84,7 +85,7 @@
 		</Text>
 		<Button>
 			Create account
-			<ArrowRight aria-hidden="true" />
+			<Icon as={ArrowRight} size="sm" />
 		</Button>
 	</Stack>
 {/if}

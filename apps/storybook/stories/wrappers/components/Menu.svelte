@@ -6,6 +6,9 @@
 <script lang="ts">
 	import { Menu } from "$saas/components/menu";
 	import { VStack, HStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
+	import { Centre } from "$saas/layout/centre";
+	import { Flex } from "$saas/layout/flex";
 	import { Text } from "$saas/typography/text";
 	import { Icon } from "$saas/components/icon";
 	import Scissors from "phosphor-svelte/lib/Scissors";
@@ -39,7 +42,7 @@
 </script>
 
 {#if story === "basic"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.Button>Open</Menu.Button>
 			<Menu.Content>
@@ -50,9 +53,9 @@
 				<Menu.Item value="export">Export</Menu.Item>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "sizes"}
-	<div>
+	<Box>
 		<HStack align="start" gap={8}>
 			{#each menuSizes as size}
 				<VStack gap={2} class="items-center">
@@ -70,9 +73,9 @@
 				</VStack>
 			{/each}
 		</HStack>
-	</div>
+	</Box>
 {:else if story === "command"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.Button>Open</Menu.Button>
 			<Menu.Content>
@@ -93,16 +96,16 @@
 				</Menu.Item>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "contextMenu"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.ContextTrigger>
-				<div
-					class="flex items-center justify-center w-64 h-32 border-2 border-dashed border-border-default rounded-(--radii-l2) text-fg-muted select-none"
+				<Centre
+					class="w-64 h-32 border-2 border-dashed border-border-default rounded-(--radii-l2) text-fg-muted select-none"
 				>
 					Right click here
-				</div>
+				</Centre>
 			</Menu.ContextTrigger>
 			<Menu.Content>
 				<Menu.Item value="new-txt">New Text File</Menu.Item>
@@ -112,9 +115,9 @@
 				<Menu.Item value="export">Export</Menu.Item>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "group"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.Button>Edit</Menu.Button>
 			<Menu.Content>
@@ -130,9 +133,9 @@
 				</Menu.ItemGroup>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "submenu"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.Button>Open</Menu.Button>
 			<Menu.Content>
@@ -150,9 +153,9 @@
 				<Menu.Item value="export">Export</Menu.Item>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "links"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.Button>Select Anime</Menu.Button>
 			<Menu.Content>
@@ -182,9 +185,9 @@
 				</Menu.ItemLink>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "radio"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.Button>
 				<Icon as={SortAscending} size="sm" /> Sort
@@ -196,9 +199,9 @@
 				</Menu.RadioItemGroup>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "checkbox"}
-	<div>
+	<Box>
 		<Menu.Root closeOnSelect={false}>
 			<Menu.Button>
 				<Icon as={Funnel} size="sm" /> Status
@@ -208,32 +211,32 @@
 				<Menu.CheckboxItem checked={true} value="closed">Closed</Menu.CheckboxItem>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "iconAndCommand"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.Button>Edit</Menu.Button>
 			<Menu.Content>
 				<Menu.Item value="cut" valueText="cut">
 					<Icon as={Scissors} size="xs" />
-					<span class="flex-1">Cut</span>
+					<Text as="span" class="flex-1">Cut</Text>
 					<Menu.ItemCommand>&#8984;X</Menu.ItemCommand>
 				</Menu.Item>
 				<Menu.Item value="copy" valueText="copy">
 					<Icon as={Copy} size="xs" />
-					<span class="flex-1">Copy</span>
+					<Text as="span" class="flex-1">Copy</Text>
 					<Menu.ItemCommand>&#8984;C</Menu.ItemCommand>
 				</Menu.Item>
 				<Menu.Item value="paste" valueText="paste">
 					<Icon as={ClipboardText} size="xs" />
-					<span class="flex-1">Paste</span>
+					<Text as="span" class="flex-1">Paste</Text>
 					<Menu.ItemCommand>&#8984;V</Menu.ItemCommand>
 				</Menu.Item>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "placement"}
-	<div>
+	<Box>
 		<Menu.Root positioning={{ placement: "right-start" }}>
 			<Menu.Button>Open</Menu.Button>
 			<Menu.Content>
@@ -244,13 +247,13 @@
 				<Menu.Item value="export">Export</Menu.Item>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "mixedLayout"}
-	<div>
+	<Box>
 		<Menu.Root>
 			<Menu.Button>Open</Menu.Button>
 			<Menu.Content>
-				<div class="flex grow gap-0">
+				<Flex class="grow gap-0">
 					<Menu.Item value="cut" class="flex-col justify-center w-14 gap-1">
 						<Icon as={Scissors} size="xs" />
 						Cut
@@ -263,22 +266,22 @@
 						<Icon as={ClipboardText} size="xs" />
 						Paste
 					</Menu.Item>
-				</div>
+				</Flex>
 				<Menu.Item value="look-up">
-					<span class="flex-1">Look Up</span>
+					<Text as="span" class="flex-1">Look Up</Text>
 					<Icon as={MagnifyingGlass} size="xs" />
 				</Menu.Item>
 				<Menu.Item value="translate">
-					<span class="flex-1">Translate</span>
+					<Text as="span" class="flex-1">Translate</Text>
 					<Icon as={Translate} size="xs" />
 				</Menu.Item>
 				<Menu.Item value="share">
-					<span class="flex-1">Share</span>
+					<Text as="span" class="flex-1">Share</Text>
 					<Icon as={ShareNetwork} size="xs" />
 				</Menu.Item>
 			</Menu.Content>
 		</Menu.Root>
-	</div>
+	</Box>
 {:else if story === "colours"}
 	<HStack align="start" gap={4} class="flex-wrap">
 		{#each colours as colour}

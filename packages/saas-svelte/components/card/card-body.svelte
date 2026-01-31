@@ -5,9 +5,10 @@ import { getContext } from "svelte";
 import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
 import { CARD_CTX, type CardVariants } from "./card-root.svelte";
+import { Flex } from "$saas/layout/flex";
 
 const cardBody = tv({
-	base: ["flex-col flex-1 flex"],
+	base: ["flex-1"],
 	variants: {
 		size: {
 			sm: "pt-2.5 px-2.5 pb-1.5",
@@ -39,6 +40,6 @@ const size = $derived(ctx?.size ?? "md");
 const finalClass = $derived(twMerge(cardBody({ size }), className as string));
 </script>
 
-<div class={finalClass} {...restProps}>
+<Flex direction="column" class={finalClass} {...restProps}>
 	{@render children()}
-</div>
+</Flex>

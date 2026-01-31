@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { TIMELINE_CTX, type TimelineContext } from "./timeline-root.svelte";
+import { Flex } from "$saas/layout/flex";
 
 interface Props {
 	/**
@@ -28,9 +29,12 @@ const whiteSpaceClass = $derived(
 );
 </script>
 
-<div
+<Flex
+	wrap="wrap"
+	align="center"
+	gap={1.5}
 	class={twMerge(ctx?.styles.title(), whiteSpaceClass, className)}
 	{...restProps}
 >
 	{@render children?.()}
-</div>
+</Flex>

@@ -74,6 +74,7 @@ export const keySymbols: Record<string, string> = {
 import type { Snippet } from "svelte";
 import type { ColourName } from "$saas/utils/colours";
 import { getColourStyle } from "$saas/utils/colours";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	/**
@@ -141,7 +142,7 @@ const keyElements = $derived(
 
 <kbd class={finalClass} style={finalStyle} {...restProps}>
 	{#each keyElements as symbol}
-		<span>{symbol}</span>
+		<Box as="span">{symbol}</Box>
 	{/each}
 	{@render children?.()}
 </kbd>

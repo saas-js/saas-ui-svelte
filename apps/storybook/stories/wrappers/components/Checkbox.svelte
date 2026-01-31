@@ -7,6 +7,7 @@
 	import { Stack, HStack, VStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
 	import { Link } from "$saas/components/link";
+	import { Icon } from "$saas/components/icon";
 	import Plus from "phosphor-svelte/lib/Plus";
 	import Check from "phosphor-svelte/lib/Check";
 	import { colours, checkboxVariants, checkboxSizes } from "../../utils";
@@ -135,18 +136,18 @@
 	<Checkbox.Root class="items-start">
 		<Checkbox.Control>
 			<Checkbox.Indicator>
-				<Check class="w-full h-full" weight="bold" />
+				<Icon as={Check} class="w-full h-full" weight="bold" />
 			</Checkbox.Indicator>
 		</Checkbox.Control>
 		<Checkbox.Label>
-			<div class="flex flex-col">
-				<span class="text-fg-default">
+			<VStack gap={0}>
+				<Text as="span" class="text-fg-default">
 					I agree to the terms and conditions
-				</span>
-				<span class="mt-1 font-normal text-fg-muted">
+				</Text>
+				<Text as="span" class="mt-1 font-normal text-fg-muted">
 					By clicking this, you agree to our Terms and Privacy Policy.
-				</span>
-			</div>
+				</Text>
+			</VStack>
 		</Checkbox.Label>
 		<Checkbox.HiddenInput />
 	</Checkbox.Root>
@@ -154,7 +155,7 @@
 	<Checkbox.Root>
 		<Checkbox.Control>
 			<Checkbox.Indicator>
-				<Check class="w-full h-full" weight="bold" />
+				<Icon as={Check} class="w-full h-full" weight="bold" />
 			</Checkbox.Indicator>
 		</Checkbox.Control>
 		<Checkbox.Label>

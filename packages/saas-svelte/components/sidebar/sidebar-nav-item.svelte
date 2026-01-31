@@ -8,6 +8,7 @@ import {
 	type SidebarContext,
 	sidebar,
 } from "./sidebar-root.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -23,6 +24,6 @@ const styles = $derived(ctx?.styles ?? sidebar());
 const finalClass = $derived(twMerge(styles.navItem(), className as string));
 </script>
 
-<div class={finalClass} {...restProps}>
+<Box class={finalClass} {...restProps}>
 	{@render children?.()}
-</div>
+</Box>

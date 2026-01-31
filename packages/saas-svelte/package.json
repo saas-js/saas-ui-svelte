@@ -4,6 +4,7 @@
 	"description": "A Svelte implementation of the open-source SaaS Design System",
 	"license": "MIT",
 	"type": "module",
+	"sideEffects": false,
 	"svelte": "./index.ts",
 	"main": "./index.ts",
 	"exports": {

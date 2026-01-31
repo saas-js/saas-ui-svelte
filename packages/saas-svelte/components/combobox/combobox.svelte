@@ -18,6 +18,8 @@ import XIcon from "phosphor-svelte/lib/XIcon";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
 import { createVirtualizer } from "@tanstack/svelte-virtual";
+import { Flex } from "$saas/layout/flex";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/** The items to display in the combobox. */
@@ -344,27 +346,27 @@ function getItemProps(item: CollectionItem) {
 
 	<Combobox.Control class={ctx.styles.control()}>
 		{#if startIcon}
-			<div class={ctx.styles.startElement()}>
+			<Box class={ctx.styles.startElement()}>
 				<Icon as={startIcon} aria-hidden="true" />
-			</div>
+			</Box>
 		{:else if startElement}
-			<div class={ctx.styles.startElement()}>
+			<Box class={ctx.styles.startElement()}>
 				{@render startElement()}
-			</div>
+			</Box>
 		{/if}
 		<Combobox.Input
 			placeholder={placeholder}
 			class="{ctx.styles.input()} {startIcon || startElement ? 'pl-8' : ''}"
 			style={ctx.colourStyle}
 		/>
-		<div class={ctx.styles.indicatorGroup()}>
+		<Flex class={ctx.styles.indicatorGroup()}>
 			<Combobox.ClearTrigger class={ctx.styles.clearTrigger()}>
 				<XIcon aria-hidden="true" />
 			</Combobox.ClearTrigger>
 			<Combobox.Trigger class={ctx.styles.trigger()}>
 				<CaretDownIcon aria-hidden="true" />
 			</Combobox.Trigger>
-		</div>
+		</Flex>
 	</Combobox.Control>
 
 	<Portal>
@@ -377,16 +379,16 @@ function getItemProps(item: CollectionItem) {
 					{#if loadingContent}
 						{@render loadingContent()}
 					{:else}
-						<div class={ctx.styles.empty()}>{loadingText}</div>
+						<Flex class={ctx.styles.empty()}>{loadingText}</Flex>
 					{/if}
 				{:else if collection.items.length === 0 && !showCreateOption}
-					<div class={ctx.styles.empty()}>{emptyText}</div>
+					<Flex class={ctx.styles.empty()}>{emptyText}</Flex>
 				{:else if virtualised}
-					<div
+					<Box
 						bind:this={scrollElement}
 						class="max-h-xs overflow-y-auto"
 					>
-						<div
+						<Box
 							style="height: {totalSize}px; width: 100%; position: relative;"
 						>
 							{#each virtualItems as virtualItem (virtualItem.index)}
@@ -396,8 +398,8 @@ function getItemProps(item: CollectionItem) {
 									{@render renderItem(item, virtualStyle)}
 								{/if}
 							{/each}
-						</div>
-					</div>
+						</Box>
+					</Box>
 				{:else}
 					{#each collection.items as item (typeof item === "string" ? item : item.value)}
 						{@render renderItem(item, ctx.colourStyle)}

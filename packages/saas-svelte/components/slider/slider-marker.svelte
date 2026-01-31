@@ -3,6 +3,7 @@ import { Slider } from "@ark-ui/svelte/slider";
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { SLIDER_CTX, type SliderContext } from "./slider-root.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -43,7 +44,7 @@ const styles = $derived(ctx.styles);
 	{...restProps}
 >
 	{#if showDot}
-		<div class={twMerge(styles.markerDot(), "bg-(--c-contrast)")}></div>
+		<Box class={twMerge(styles.markerDot(), "bg-(--c-contrast)")} />
 	{/if}
 	{@render children?.()}
 </Slider.Marker>

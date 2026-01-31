@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { Status } from "@saas-ui/svelte/components/status";
 	import { Tooltip } from "@saas-ui/svelte/components/tooltip";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { Flex } from "@saas-ui/svelte/layout/flex";
+	import { VStack } from "@saas-ui/svelte/layout/stack";
+	import { Text } from "@saas-ui/svelte/typography/text";
 	import type { StoryAccessibility } from "../../lib/accessibility";
 
 	interface Props {
@@ -23,38 +27,38 @@
 
 <Tooltip interactive openDelay={200} closeDelay={300}>
 	{#snippet trigger()}
-		<span class="inline-flex items-center cursor-help">
+		<Text as="span" class="inline-flex items-center cursor-help">
 			<Status value={a11y.status} size="sm">
 				{statusLabel}
 			</Status>
-		</span>
+		</Text>
 	{/snippet}
-	<div class="text-sm min-w-52 p-1">
-		<div class="font-semibold text-fg-default mb-3">
+	<Box class="text-sm min-w-52 p-1">
+		<Text weight="semibold" class="text-fg-default mb-3">
 			{a11y.status === "success"
 				? "Accessibility test passed"
 				: a11y.status === "error"
 					? "Accessibility issues found"
 					: "Test could not run"}
-		</div>
-		<div class="space-y-1.5 text-fg-muted">
-			<div class="flex justify-between gap-6">
-				<span>Violations:</span>
-				<span class={a11y.violations > 0 ? "text-red-fg font-medium" : "text-green-fg font-medium"}>
+		</Text>
+		<VStack gap={1.5} class="text-fg-muted">
+			<Flex justify="between" gap={6}>
+				<Text as="span">Violations:</Text>
+				<Text as="span" weight="medium" class={a11y.violations > 0 ? "text-red-fg" : "text-green-fg"}>
 					{a11y.violations >= 0 ? a11y.violations : "N/A"}
-				</span>
-			</div>
-			<div class="flex justify-between gap-6">
-				<span>Rules passed:</span>
-				<span class="text-green-fg font-medium">{a11y.passes ?? "N/A"}</span>
-			</div>
-		</div>
-		<div class="pt-3 mt-3 border-t border-border-default text-fg-subtle text-xs space-y-0.5">
-			<div>Tested with Playwright + axe-core</div>
-			<div>WCAG 2.1 Level AA</div>
+				</Text>
+			</Flex>
+			<Flex justify="between" gap={6}>
+				<Text as="span">Rules passed:</Text>
+				<Text as="span" weight="medium" class="text-green-fg">{a11y.passes ?? "N/A"}</Text>
+			</Flex>
+		</VStack>
+		<VStack gap={0.5} class="pt-3 mt-3 border-t border-border-default text-fg-subtle text-xs">
+			<Text size="xs">Tested with Playwright + axe-core</Text>
+			<Text size="xs">WCAG 2.1 Level AA</Text>
 			{#if formattedDate}
-				<div>Last run: {formattedDate}</div>
+				<Text size="xs">Last run: {formattedDate}</Text>
 			{/if}
-		</div>
-	</div>
+		</VStack>
+	</Box>
 </Tooltip>

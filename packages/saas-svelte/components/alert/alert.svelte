@@ -48,6 +48,9 @@ import { twMerge } from "tailwind-merge";
 
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 import { Icon } from "$saas/components/icon";
+import { Flex } from "$saas/layout/flex";
+import { Box } from "$saas/layout/box";
+import { Stack } from "$saas/layout/stack";
 
 type Status = "info" | "success" | "warning" | "error" | "neutral";
 
@@ -138,29 +141,30 @@ const {
 } = $derived(alert({ variant }));
 </script>
 
-<div
+<Flex
 	role="alert"
+	align="start"
 	class={twMerge(root(), className as string)}
 	style={finalStyle}
 	{...restProps}
 >
 	{#if IconToRender}
-		<span class={iconWrapper()}>
+		<Box as="span" class={iconWrapper()}>
 			<Icon as={IconToRender} size="md" />
-		</span>
+		</Box>
 	{/if}
 
-	<div class={content()}>
+	<Stack gap={1} class={content()}>
 		{#if title}
-			<div class={titleClass()}>
+			<Box class={titleClass()}>
 				{title}
-			</div>
+			</Box>
 		{/if}
 
 		{#if children}
-			<div class={description()}>
+			<Box class={description()}>
 				{@render children?.()}
-			</div>
+			</Box>
 		{/if}
-	</div>
-</div>
+	</Stack>
+</Flex>

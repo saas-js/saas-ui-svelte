@@ -9,6 +9,7 @@
 	import { Badge } from "$saas/components/badge";
 	import { VStack, HStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
+	import { Icon } from "$saas/components/icon";
 	import Boat from "phosphor-svelte/lib/Boat";
 	import Check from "phosphor-svelte/lib/Check";
 	import Package from "phosphor-svelte/lib/Package";
@@ -35,7 +36,7 @@
 	<Timeline.Root class="max-w-100">
 		<Timeline.Item>
 			<Timeline.Connector>
-				<Boat />
+				<Icon as={Boat} />
 			</Timeline.Connector>
 			<Timeline.Content>
 				<Timeline.Title>Product Shipped</Timeline.Title>
@@ -49,7 +50,7 @@
 
 		<Timeline.Item>
 			<Timeline.Connector>
-				<Check />
+				<Icon as={Check} />
 			</Timeline.Connector>
 			<Timeline.Content>
 				<Timeline.Title>Order Confirmed</Timeline.Title>
@@ -59,7 +60,7 @@
 
 		<Timeline.Item>
 			<Timeline.Connector>
-				<Package />
+				<Icon as={Package} />
 			</Timeline.Connector>
 			<Timeline.Content>
 				<Timeline.Title>Order Delivered</Timeline.Title>
@@ -93,7 +94,7 @@
 
 					<Timeline.Item>
 						<Timeline.Connector>
-							<Check />
+							<Icon as={Check} />
 						</Timeline.Connector>
 						<Timeline.Content>
 							<Timeline.Title>
@@ -138,7 +139,7 @@
 
 					<Timeline.Item>
 						<Timeline.Connector>
-							<Check />
+							<Icon as={Check} />
 						</Timeline.Connector>
 						<Timeline.Content>
 							<Timeline.Title>
@@ -204,7 +205,7 @@
 				<Timeline.Description>Jan 2020</Timeline.Description>
 			</Timeline.Content>
 			<Timeline.Connector>
-				<Check />
+				<Icon as={Check} />
 			</Timeline.Connector>
 			<Timeline.Content flex={1}>
 				<Timeline.Title>Founded Company</Timeline.Title>
@@ -222,7 +223,7 @@
 				>
 			</Timeline.Content>
 			<Timeline.Connector>
-				<Check />
+				<Icon as={Check} />
 			</Timeline.Connector>
 			<Timeline.Content flex={1}>
 				<Timeline.Description>Jun 2021</Timeline.Description>
@@ -234,7 +235,7 @@
 				<Timeline.Description>Mar 2023</Timeline.Description>
 			</Timeline.Content>
 			<Timeline.Connector>
-				<Check />
+				<Icon as={Check} />
 			</Timeline.Connector>
 			<Timeline.Content flex={1}>
 				<Timeline.Title>100k Users</Timeline.Title>
@@ -252,7 +253,7 @@
 				>
 			</Timeline.Content>
 			<Timeline.Connector>
-				<Package />
+				<Icon as={Package} />
 			</Timeline.Connector>
 			<Timeline.Content flex={1}>
 				<Timeline.Description>Dec 2024</Timeline.Description>
@@ -267,7 +268,7 @@
 				<Timeline.Root {colour} variant="solid">
 					<Timeline.Item>
 						<Timeline.Connector>
-							<Check />
+							<Icon as={Check} />
 						</Timeline.Connector>
 						<Timeline.Content>
 							<Timeline.Title>Task completed</Timeline.Title>
@@ -277,7 +278,7 @@
 					</Timeline.Item>
 					<Timeline.Item>
 						<Timeline.Connector>
-							<Package />
+							<Icon as={Package} />
 						</Timeline.Connector>
 						<Timeline.Content>
 							<Timeline.Title>Package shipped</Timeline.Title>

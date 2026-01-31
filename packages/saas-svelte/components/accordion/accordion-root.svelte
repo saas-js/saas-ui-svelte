@@ -83,6 +83,7 @@ import { Accordion } from "@ark-ui/svelte";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import { setContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
+import { Box } from "$saas/layout/box";
 
 export interface AccordionItem {
 	value: string;
@@ -198,9 +199,9 @@ setContext<AccordionContext>(ACCORDION_CTX, {
 						"data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up",
 					)}
 				>
-					<div class={classes.contentBody()}>
+					<Box class={classes.contentBody()}>
 						{item.content}
-					</div>
+					</Box>
 				</Accordion.ItemContent>
 			</Accordion.Item>
 		{/each}

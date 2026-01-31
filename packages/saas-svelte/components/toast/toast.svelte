@@ -119,6 +119,9 @@ import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { Icon } from "$saas/components/icon";
 import { Spinner } from "$saas/components/spinner";
+import { Flex } from "$saas/layout/flex";
+import { VStack } from "$saas/layout/stack";
+import { Text } from "$saas/typography/text";
 
 interface Props {
 	/**
@@ -197,7 +200,7 @@ const isSingleLine = $derived(
 const styles = $derived(toast({ status }));
 </script>
 
-<div class={twMerge(styles.root(), className as string)} role="status" aria-live="polite">
+<Flex align="start" gap={2} class={twMerge(styles.root(), className as string)} role="status" aria-live="polite">
 	{#if children}
 		{@render children()}
 	{:else if isSingleLine}
@@ -206,7 +209,7 @@ const styles = $derived(toast({ status }));
 		{:else if resolvedIcon}
 			<Icon as={resolvedIcon} class={styles.icon()} />
 		{/if}
-		<p class={styles.descriptionOnly()}>{description}</p>
+		<Text as="p" class={twMerge(styles.descriptionOnly())}>{description}</Text>
 	{:else}
 		{#if status === "loading"}
 			<Spinner size="sm" colour="indigo" class="mt-0.5 shrink-0" />
@@ -214,12 +217,12 @@ const styles = $derived(toast({ status }));
 			<Icon as={resolvedIcon} class={styles.icon()} />
 		{/if}
 
-		<div class={styles.content()}>
+		<VStack gap={0} class={twMerge(styles.content())}>
 			{#if title}
-				<p class={styles.title()}>{title}</p>
+				<Text as="p" class={twMerge(styles.title())}>{title}</Text>
 			{/if}
 			{#if description}
-				<p class={styles.description()}>{description}</p>
+				<Text as="p" class={twMerge(styles.description())}>{description}</Text>
 			{/if}
 			{#if action}
 				<button
@@ -230,7 +233,7 @@ const styles = $derived(toast({ status }));
 					{action.label}
 				</button>
 			{/if}
-		</div>
+		</VStack>
 	{/if}
 
 	{#if closable}
@@ -243,4 +246,4 @@ const styles = $derived(toast({ status }));
 			<Icon as={XIcon} size="xs" />
 		</button>
 	{/if}
-</div>
+</Flex>

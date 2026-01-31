@@ -17,10 +17,6 @@ export const fileUploadInput = tv({
 		"cursor-pointer",
 	],
 });
-
-export const fileUploadInputPlaceholder = tv({
-	base: ["text-fg-muted"],
-});
 </script>
 
 <script lang="ts">
@@ -29,6 +25,7 @@ import {
 	useFileUploadContext,
 } from "@ark-ui/svelte/file-upload";
 import type { FileUploadTriggerProps } from "@ark-ui/svelte/file-upload";
+import { Text } from "$saas/typography/text";
 
 interface Props extends Omit<FileUploadTriggerProps, "children"> {
 	/**
@@ -59,8 +56,8 @@ const displayText = $derived(
 
 <ArkFileUpload.Trigger class={twMerge(fileUploadInput(), className as string)} {...rest}>
 	{#if displayText}
-		<span class="block min-w-0 truncate">{displayText}</span>
+		<Text as="span" size="sm" truncate class="block min-w-0">{displayText}</Text>
 	{:else}
-		<span class={fileUploadInputPlaceholder()}>{placeholder}</span>
+		<Text as="span" size="sm" class="text-fg-muted">{placeholder}</Text>
 	{/if}
 </ArkFileUpload.Trigger>

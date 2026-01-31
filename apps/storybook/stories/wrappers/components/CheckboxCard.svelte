@@ -7,6 +7,7 @@
 	import { Badge } from "$saas/components/badge";
 	import { Text } from "$saas/typography/text";
 	import { VStack, HStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
 	import { Icon } from "$saas/components/icon";
 	import ShieldCheck from "phosphor-svelte/lib/ShieldCheck";
 	import User from "phosphor-svelte/lib/User";
@@ -96,7 +97,7 @@
 		</HStack>
 	</VStack>
 {:else if story === "sizes"}
-	<div class="w-64">
+	<Box class="w-64">
 		<VStack gap={2}>
 			{#each checkboxCardSizes as size}
 				<CheckboxCard.Root aria-label="Checkbox {size}" {size}>
@@ -111,9 +112,9 @@
 				</CheckboxCard.Root>
 			{/each}
 		</VStack>
-	</div>
+	</Box>
 {:else if story === "variants"}
-	<div class="w-64">
+	<Box class="w-64">
 		<VStack gap={2}>
 			{#each checkboxCardVariants as variant}
 				<CheckboxCard.Root
@@ -133,7 +134,7 @@
 				</CheckboxCard.Root>
 			{/each}
 		</VStack>
-	</div>
+	</Box>
 {:else if story === "disabled"}
 	<CheckboxCard.Root aria-label="Disabled" disabled class="max-w-xs">
 		<CheckboxCard.Control>
@@ -169,7 +170,7 @@
 		{#each roleItems as item}
 			<CheckboxCard.Root
 				aria-label={item.label}
-				class="w-[200px] flex-none"
+				class="w-50 flex-none"
 				checked={roleValue.includes(item.label)}
 				onCheckedChange={({ checked }) => {
 					if (checked) {

@@ -9,6 +9,8 @@ import {
 	sidebar,
 } from "./sidebar-root.svelte";
 import { Icon } from "$saas/components/icon";
+import { Box } from "$saas/layout/box";
+import { Text } from "$saas/typography/text";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -41,7 +43,7 @@ const iconClass = $derived(styles.itemIcon());
 const labelClass = $derived(styles.itemLabel());
 </script>
 
-<div
+<Box
 	role="button"
 	tabindex="0"
 	class={finalClass}
@@ -55,11 +57,11 @@ const labelClass = $derived(styles.itemLabel());
 	{...restProps}
 >
 	{#if icon}
-		<span class={iconClass}>
+		<Box as="span" class={iconClass}>
 			<Icon as={icon} size="sm" />
-		</span>
+		</Box>
 	{/if}
-	<span class={labelClass}>
+	<Text as="span" class={twMerge(labelClass)}>
 		{@render children?.()}
-	</span>
-</div>
+	</Text>
+</Box>

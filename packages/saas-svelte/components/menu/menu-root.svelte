@@ -123,6 +123,10 @@ import { Menu } from "@ark-ui/svelte/menu";
 import type { MenuRootProps } from "@ark-ui/svelte/menu";
 import { setContext, type Snippet } from "svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
+import {
+	registerOverlay,
+	unregisterOverlay,
+} from "$saas/utils/overlay-singleton.svelte.js";
 
 interface Props extends Omit<MenuRootProps, "id"> {
 	/**
@@ -157,8 +161,25 @@ let {
 	size = "md",
 	colour = "indigo",
 	onPrefetch,
+	onOpenChange,
 	...restProps
 }: Props = $props();
+
+let instanceId: symbol | null = $state(null);
+
+function handleOpenChange(details: { open: boolean }) {
+	if (details.open) {
+		if (!instanceId) {
+			instanceId = registerOverlay("menu", () => {
+				onOpenChange?.({ open: false });
+			});
+		}
+	} else if (instanceId) {
+		unregisterOverlay("menu", instanceId);
+		instanceId = null;
+	}
+	onOpenChange?.(details);
+}
 
 const ctx: MenuContext = {
 	get size() {
@@ -178,6 +199,6 @@ const ctx: MenuContext = {
 setContext(MENU_CTX, ctx);
 </script>
 
-<Menu.Root id={id} {...restProps}>
+<Menu.Root id={id} onOpenChange={handleOpenChange} {...restProps}>
 	{@render children?.()}
 </Menu.Root>

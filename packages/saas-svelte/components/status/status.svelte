@@ -3,6 +3,7 @@ import type { Snippet } from "svelte";
 import { tv, type VariantProps } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";
 import { getColourStyle, type ColourName } from "$saas/utils/colours";
+import { Box } from "$saas/layout/box";
 
 const status = tv({
 	slots: {
@@ -94,11 +95,12 @@ const styles = $derived(status({ size, value: colour ? undefined : value }));
 const colourStyle = $derived(colour ? getColourStyle(colour) : undefined);
 </script>
 
-<span class={twMerge(styles.root(), className)} {...restProps}>
-	<span
+<Box as="span" class={twMerge(styles.root(), className)} {...restProps}>
+	<Box
+		as="span"
 		class={twMerge(styles.indicator(), colour && "bg-(--c-solid)")}
 		style={colourStyle}
 		aria-hidden="true"
-	></span>
+	/>
 	{@render children?.()}
-</span>
+</Box>

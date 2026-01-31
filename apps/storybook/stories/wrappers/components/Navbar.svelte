@@ -11,6 +11,7 @@
 	import { Text } from "$saas/typography/text";
 	import { Drawer } from "$saas/components/drawer";
 	import { Link } from "$saas/components/link";
+	import { Icon } from "$saas/components/icon";
 	import List from "phosphor-svelte/lib/List";
 	import X from "phosphor-svelte/lib/X";
 	import { createMobileNav } from "$saas/utils/mobile-nav.svelte";
@@ -372,9 +373,9 @@
 							onclick={() => mobileNav.toggle()}
 						>
 							{#if mobileNav.open}
-								<X weight="bold" />
+								<Icon as={X} size="sm" weight="bold" />
 							{:else}
-								<List weight="bold" />
+								<Icon as={List} size="sm" weight="bold" />
 							{/if}
 						</Button>
 					</Navbar.Item>

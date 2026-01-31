@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -50,7 +51,7 @@ const style = $derived(
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-<div
+<Box
 	class={twMerge(
 		"focus-visible:ring-ring-focus block overflow-x-auto overflow-y-auto whitespace-nowrap focus:outline-none focus-visible:ring-2",
 		borderWidth && "border-border-default border",
@@ -63,4 +64,4 @@ const style = $derived(
 	aria-label="Scrollable table"
 >
 	{@render children?.()}
-</div>
+</Box>

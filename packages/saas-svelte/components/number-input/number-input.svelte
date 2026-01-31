@@ -128,6 +128,7 @@ import { NumberInput } from "@ark-ui/svelte/number-input";
 import { twMerge, type ClassNameValue } from "tailwind-merge";
 import { getContext } from "svelte";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
+import { Flex } from "$saas/layout/flex";
 
 interface Props {
 	/**
@@ -346,7 +347,7 @@ const styles = $derived([colourVars, style].filter(Boolean).join("; "));
 			aria-label={ariaLabel}
 		/>
 	</NumberInput.Control>
-	<div class={triggerGroupClasses} role="group" aria-disabled={isDisabled}>
+	<Flex direction="column" class={triggerGroupClasses} role="group" aria-disabled={isDisabled}>
 		<NumberInput.IncrementTrigger class={incrementClasses} aria-label="Increment">
 			<svg
 				viewBox="0 0 24 24"
@@ -365,5 +366,5 @@ const styles = $derived([colourVars, style].filter(Boolean).join("; "));
 				<path d="m6 9 6 6 6-6"></path>
 			</svg>
 		</NumberInput.DecrementTrigger>
-	</div>
+	</Flex>
 </NumberInput.Root>

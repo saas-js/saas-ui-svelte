@@ -8,6 +8,11 @@
 	} from "chart.js";
 	import { Card } from "@saas-ui/svelte/components/card";
 	import { DataList } from "@saas-ui/svelte/components/data-list";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { Flex } from "@saas-ui/svelte/layout/flex";
+	import { VStack } from "@saas-ui/svelte/layout/stack";
+	import { Text } from "@saas-ui/svelte/typography/text";
+	import { List } from "@saas-ui/svelte/components/list";
 
 	Chart.register(ArcElement, DoughnutController, Tooltip);
 
@@ -250,29 +255,32 @@
 			<DataList.Item class="col-span-2 gap-1 text-xs leading-[1.1375rem]">
 				<DataList.ItemLabel>Churn by tier</DataList.ItemLabel>
 				<DataList.ItemValue class="flex min-w-0 items-center gap-4 overflow-hidden">
-					<div class="h-25 w-25 shrink-0">
+					<Box class="h-25 w-25 shrink-0">
 						<canvas bind:this={canvas}></canvas>
-					</div>
-					<ul class="flex min-w-0 flex-col overflow-hidden text-xs">
-						<li class="flex items-center gap-2 whitespace-nowrap">
-							<span
+					</Box>
+					<List.Root class="flex min-w-0 flex-col overflow-hidden text-xs">
+						<List.Item class="flex items-center gap-2 whitespace-nowrap">
+							<Text
+								as="span"
 								class="inline-block h-2 w-2 shrink-0 rounded-full bg-indigo-600"
-							></span>
+							></Text>
 							Starter: {metrics.churnByTier.starter}%
-						</li>
-						<li class="flex items-center gap-2 whitespace-nowrap">
-							<span
+						</List.Item>
+						<List.Item class="flex items-center gap-2 whitespace-nowrap">
+							<Text
+								as="span"
 								class="inline-block h-2 w-2 shrink-0 rounded-full bg-pink-600"
-							></span>
+							></Text>
 							Pro: {metrics.churnByTier.pro}%
-						</li>
-						<li class="flex items-center gap-2 whitespace-nowrap">
-							<span
+						</List.Item>
+						<List.Item class="flex items-center gap-2 whitespace-nowrap">
+							<Text
+								as="span"
 								class="inline-block h-2 w-2 shrink-0 rounded-full bg-gray-900 dark:bg-gray-100"
-							></span>
+							></Text>
 							Enterprise: {metrics.churnByTier.enterprise}%
-						</li>
-					</ul>
+						</List.Item>
+					</List.Root>
 				</DataList.ItemValue>
 			</DataList.Item>
 		</DataList.Root>

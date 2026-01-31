@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { RADIO_GROUP_CTX, type RadioGroupContext } from "./radio-group.svelte";
+import { Box } from "$saas/layout/box";
 
 interface Props {
 	/**
@@ -30,7 +31,8 @@ function getIndicatorScale() {
 }
 </script>
 
-<span
+<Box
+	as="span"
 	class={twMerge(
 		styles.indicator(),
 		getIndicatorScale(),
@@ -41,4 +43,4 @@ function getIndicatorScale() {
 	{...restProps}
 >
 	{@render children?.()}
-</span>
+</Box>

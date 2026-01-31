@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { HTMLLabelAttributes } from "svelte/elements";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { FIELD_CTX, type FieldContext } from "./types";
 
 interface Props extends HTMLLabelAttributes {
@@ -24,24 +25,14 @@ let {
 const fieldContext = getContext<FieldContext>(FIELD_CTX);
 const fieldId = $derived(htmlFor || $fieldContext.id);
 const isDisabled = $derived($fieldContext.disabled);
+
+const baseStyles = "select-none inline-flex items-center gap-1 text-sm font-medium leading-sm antialiased";
+const disabledStyles = $derived(isDisabled ? "text-fg-muted" : "");
 </script>
 
 <label
 	for={fieldId}
-	class={[
-		"select-none",
-		"items-center",
-		"gap-1",
-		"text-sm",
-		"font-medium",
-		"leading-sm",
-		"flex",
-		"antialiased",
-		isDisabled && "text-fg-muted",
-		className,
-	]
-		.filter(Boolean)
-		.join(" ")}
+	class={twMerge(baseStyles, disabledStyles, className)}
 	{...restProps}
 >
 	{@render children?.()}

@@ -2,6 +2,7 @@
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	children: Snippet;
@@ -11,18 +12,6 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 let { children, class: className, ...rest }: Props = $props();
 </script>
 
-<div
-	class={twMerge(
-		"flex",
-		"flex-0",
-		"ps-6",
-		"pe-6",
-		"pt-4",
-		"pb-2",
-		"antialiased",
-		className,
-	)}
-	{...rest}
->
+<Flex class={twMerge("flex-0 ps-6 pe-6 pt-4 pb-2 antialiased", className)} {...rest}>
 	{@render children()}
-</div>
+</Flex>

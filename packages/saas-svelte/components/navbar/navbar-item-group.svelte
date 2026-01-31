@@ -2,9 +2,11 @@
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { NAVBAR_CTX, type NavbarContext } from "./navbar-root.svelte";
+import { flex } from "$saas/layout/flex";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props extends HTMLAttributes<HTMLUListElement> {
 	/** Gap between items using Tailwind gap classes. */
 	gap?: number | string;
 	/** Justify content alignment. @default "start" */
@@ -24,25 +26,17 @@ let {
 }: Props = $props();
 
 const ctx = getContext<NavbarContext>(NAVBAR_CTX);
-const justifyMap = {
-	start: "justify-start",
-	end: "justify-end",
-	center: "justify-center",
-	between: "justify-between",
-} as const;
+const gapClass = $derived(gap !== undefined ? `gap-${gap}` : undefined);
 const finalClass = $derived(
-	ctx?.styles?.itemGroup({
-		class: [
-			justifyMap[justify],
-			gap !== undefined ? `gap-${gap}` : "",
-			className,
-		]
-			.filter(Boolean)
-			.join(" "),
-	}),
+	twMerge(
+		ctx?.styles?.itemGroup() ?? "",
+		flex({ align: "center", justify }),
+		gapClass,
+		className,
+	),
 );
 </script>
 
-<div class={finalClass} {...rest}>
+<ul class={finalClass} {...rest}>
 	{@render children?.()}
-</div>
+</ul>

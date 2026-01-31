@@ -13,6 +13,7 @@ export interface AvatarGroupContext {
 
 <script lang="ts">
 import { setContext, type Snippet } from "svelte";
+import { Flex } from "$saas/layout/flex";
 
 const avatarGroup = tv({
 	base: "flex items-center justify-start",
@@ -105,6 +106,6 @@ const finalClass = $derived(
 );
 </script>
 
-<div class={finalClass} style={style} {...restProps}>
+<Flex align="center" justify="start" class={finalClass} style={style} {...restProps}>
 	{@render children()}
-</div>
+</Flex>

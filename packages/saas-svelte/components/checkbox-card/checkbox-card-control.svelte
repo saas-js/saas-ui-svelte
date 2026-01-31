@@ -8,24 +8,19 @@ import {
 	CHECKBOX_CARD_CTX,
 	type CheckboxCardVariants,
 } from "./checkbox-card-root.svelte";
+import { Flex } from "$saas/layout/flex";
 
 const checkboxCardControl = tv({
-	base: ["flex-1 items-start inline-flex relative rounded-md"],
+	base: ["flex-1 relative rounded-md"],
 	variants: {
 		size: {
 			sm: "gap-1.5 p-3",
 			md: "gap-2.5 p-4",
 			lg: "gap-3.5 p-4",
 		},
-		align: {
-			start: "items-start",
-			center: "items-center",
-			end: "items-end",
-		},
 	},
 	defaultVariants: {
 		size: "md",
-		align: "start",
 	},
 });
 
@@ -58,10 +53,10 @@ const ctx = getContext<{ size: CheckboxCardVariants["size"] }>(
 const size = $derived(ctx?.size ?? "md");
 
 const finalClass = $derived(
-	twMerge(checkboxCardControl({ size, align }), className as string),
+	twMerge(checkboxCardControl({ size }), className as string),
 );
 </script>
 
-<div class={finalClass} aria-hidden="true" {...restProps}>
+<Flex inline align={align} class={finalClass} aria-hidden="true" {...restProps}>
 	{@render children()}
-</div>
+</Flex>

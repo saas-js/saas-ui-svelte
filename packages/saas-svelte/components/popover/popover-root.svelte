@@ -125,6 +125,10 @@ export interface PopoverContext {
 import { Popover } from "@ark-ui/svelte/popover";
 import type { PopoverRootProps } from "@ark-ui/svelte/popover";
 import { setContext, type Snippet } from "svelte";
+import {
+	registerOverlay,
+	unregisterOverlay,
+} from "$saas/utils/overlay-singleton.svelte.js";
 
 interface Props extends Omit<PopoverRootProps, "id"> {
 	/**
@@ -219,6 +223,22 @@ let {
 
 const styles = $derived(popover({ size }));
 
+let instanceId: symbol | null = $state(null);
+
+function handleOpenChange(details: { open: boolean }) {
+	if (details.open) {
+		if (!instanceId) {
+			instanceId = registerOverlay("popover", () => {
+				onOpenChange?.({ open: false });
+			});
+		}
+	} else if (instanceId) {
+		unregisterOverlay("popover", instanceId);
+		instanceId = null;
+	}
+	onOpenChange?.(details);
+}
+
 const ctx: PopoverContext = {
 	get size() {
 		return size ?? "md";
@@ -240,7 +260,7 @@ setContext(POPOVER_CTX, ctx);
 <Popover.Root
 	id={id}
 	bind:open={open}
-	onOpenChange={(e) => onOpenChange?.(e)}
+	onOpenChange={handleOpenChange}
 	autoFocus={autoFocus}
 	closeOnEscape={closeOnEscape}
 	closeOnInteractOutside={closeOnInteractOutside}

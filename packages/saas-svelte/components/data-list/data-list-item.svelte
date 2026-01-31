@@ -2,6 +2,7 @@
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { DATA_LIST_CTX, type DataListContext } from "./data-list-root.svelte";
+import { Flex } from "$saas/layout/flex";
 
 interface Props {
 	/**
@@ -21,6 +22,6 @@ const ctx = getContext<DataListContext>(DATA_LIST_CTX);
 const styles = $derived(ctx.styles);
 </script>
 
-<div class={twMerge(styles.item(), className)} {...restProps}>
+<Flex class={twMerge(styles.item(), className)} {...restProps}>
 	{@render children()}
-</div>
+</Flex>

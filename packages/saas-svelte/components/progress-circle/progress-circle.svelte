@@ -71,6 +71,7 @@ export type ProgressCircleVariants = VariantProps<typeof progressCircle>;
 import type { HTMLAttributes } from "svelte/elements";
 import { twMerge } from "tailwind-merge";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
+import { Box } from "$saas/layout/box";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	/**
@@ -224,8 +225,8 @@ const ariaLabel = $derived(
 		/>
 	</svg>
 	{#if showValue && !isIndeterminate}
-		<span class={styles.valueText()} aria-live="polite">
+		<Box as="span" class={twMerge(styles.valueText())} aria-live="polite">
 			{displayValue}
-		</span>
+		</Box>
 	{/if}
 </div>

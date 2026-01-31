@@ -4,6 +4,9 @@ import type { SelectValueTextProps } from "@ark-ui/svelte/select";
 import { getContext } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
+import { Text } from "$saas/typography/text";
+import { Box } from "$saas/layout/box";
+import { Flex } from "$saas/layout/flex";
 
 interface Props extends SelectValueTextProps {
 	/**
@@ -73,13 +76,17 @@ function getInitials(name: string): string {
 				style="width: {avatarSize}px; height: {avatarSize}px;"
 			/>
 		{:else}
-			<span
-				class="bg-bg-muted text-fg-muted flex shrink-0 items-center justify-center rounded-full text-xs font-medium"
+			<Flex
+				align="center"
+				justify="center"
+				class={twMerge(
+					"bg-bg-muted text-fg-muted shrink-0 rounded-full text-xs font-medium",
+				)}
 				style="width: {avatarSize}px; height: {avatarSize}px;"
 			>
 				{getInitials(displayName)}
-			</span>
+			</Flex>
 		{/if}
-		<span class="truncate">{displayName}</span>
+		<Text as="span" class="truncate">{displayName}</Text>
 	{/if}
 </Select.ValueText>

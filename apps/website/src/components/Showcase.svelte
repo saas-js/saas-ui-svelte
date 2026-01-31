@@ -3,6 +3,7 @@ import { Tabs } from "@saas-ui/svelte/components/tabs";
 import { Container } from "@saas-ui/svelte/layout/container";
 import { Grid } from "@saas-ui/svelte/layout/grid";
 import { VStack } from "@saas-ui/svelte/layout/stack";
+import { Centre } from "@saas-ui/svelte/layout/centre";
 import { Spinner } from "@saas-ui/svelte/components/spinner";
 import { onMount } from "svelte";
 
@@ -78,9 +79,9 @@ async function handlePrefetch(value: string) {
 				{#if CRMDashboard}
 					<CRMDashboard />
 				{:else}
-					<div class="flex items-center justify-center py-20" aria-busy="true" aria-label="Loading CRM dashboard">
+					<Centre class="py-20" aria-busy="true" aria-label="Loading CRM dashboard">
 						<Spinner size="lg" />
-					</div>
+					</Centre>
 				{/if}
 			</Tabs.Content>
 
@@ -88,9 +89,9 @@ async function handlePrefetch(value: string) {
 				{#if EmailDashboard}
 					<EmailDashboard />
 				{:else}
-					<div class="flex items-center justify-center py-20" aria-busy="true" aria-label="Loading email dashboard">
+					<Centre class="py-20" aria-busy="true" aria-label="Loading email dashboard">
 						<Spinner size="lg" />
-					</div>
+					</Centre>
 				{/if}
 			</Tabs.Content>
 		</Tabs.ContentGroup>

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
-import { twMerge } from "tailwind-merge";
+import { Group } from "$saas/layout/group";
 
 let {
 	class: className,
@@ -9,13 +9,11 @@ let {
 }: HTMLAttributes<HTMLDivElement> = $props();
 </script>
 
-<div
+<Group
 	role="group"
-	class={twMerge(
-		"inline-flex items-center *:not-first:-ml-px *:not-first:rounded-l-none *:not-last:rounded-r-none",
-		className as string,
-	)}
+	attached={true}
+	class={className}
 	{...rest}
 >
 	{@render children?.()}
-</div>
+</Group>

@@ -113,6 +113,10 @@ export default defineConfig({
 				"@ark-ui/svelte",
 				"tailwind-variants",
 				"tailwind-merge",
+				"chart.js",
+				"phosphor-svelte",
+				"@tanstack/svelte-virtual",
+				"clsx",
 			],
 		},
 		build: {

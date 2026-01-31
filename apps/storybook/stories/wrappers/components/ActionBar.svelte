@@ -12,6 +12,7 @@
 	import { Button } from "$saas/components/button";
 	import { Checkbox } from "$saas/components/checkbox";
 	import { HStack, VStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
 	import { Text } from "$saas/typography/text";
 	import Trash from "phosphor-svelte/lib/Trash";
 	import ShareNetwork from "phosphor-svelte/lib/ShareNetwork";
@@ -31,7 +32,7 @@
 </script>
 
 {#if story === "basic"}
-	<div>
+	<Box>
 		<Checkbox.Root
 			label="Show Action Bar"
 			checked={basicOpen}
@@ -50,9 +51,9 @@
 				Share
 			</Button>
 		</ActionBar>
-	</div>
+	</Box>
 {:else if story === "closable"}
-	<div>
+	<Box>
 		<Checkbox.Root
 			label="Show Action Bar"
 			checked={closableOpen}
@@ -75,9 +76,9 @@
 			</Button>
 			<ActionBarCloseButton onclick={() => (closableOpen = false)} />
 		</ActionBar>
-	</div>
+	</Box>
 {:else if story === "multipleActions"}
-	<div>
+	<Box>
 		<Checkbox.Root
 			label="Show Action Bar"
 			checked={multipleActionsOpen}
@@ -96,9 +97,9 @@
 				Delete projects
 			</Button>
 		</ActionBar>
-	</div>
+	</Box>
 {:else if story === "interactive"}
-	<div>
+	<Box>
 		<VStack gap={3}>
 			<Text size="sm" class="text-fg-muted"
 				>Selected: {selectedCount} items</Text
@@ -133,5 +134,5 @@
 			</Button>
 			<ActionBarCloseButton onclick={() => (selectedCount = 0)} />
 		</ActionBar>
-	</div>
+	</Box>
 {/if}

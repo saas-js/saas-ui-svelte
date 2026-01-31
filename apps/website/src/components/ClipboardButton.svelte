@@ -1,5 +1,7 @@
 <script lang="ts">
 import { Clipboard } from "@ark-ui/svelte/clipboard";
+import { Icon } from "@saas-ui/svelte/components/icon";
+import { Text } from "@saas-ui/svelte/typography/text";
 import ClipboardText from "phosphor-svelte/lib/ClipboardText";
 import Check from "phosphor-svelte/lib/Check";
 </script>
@@ -10,13 +12,13 @@ import Check from "phosphor-svelte/lib/Check";
 		style="--c-focus-ring: var(--colors-gray-focus-ring)"
 		aria-label="Copy npm install command to clipboard"
 	>
-		<span class="text-fg-muted">$</span>
-		<span>npm i @saas-ui/svelte</span>
+		<Text as="span" class="text-fg-muted">$</Text>
+		<Text as="span">npm i @saas-ui/svelte</Text>
 		<Clipboard.Indicator>
 			{#snippet copied()}
-				<Check class="text-fg-success size-4" />
+				<Icon as={Check} size="sm" class="text-fg-success" />
 			{/snippet}
-			<ClipboardText class="size-4" />
+			<Icon as={ClipboardText} size="sm" />
 		</Clipboard.Indicator>
 	</Clipboard.Trigger>
 </Clipboard.Root>
