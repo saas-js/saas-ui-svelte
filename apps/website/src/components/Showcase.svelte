@@ -14,14 +14,14 @@ import FilesCard from "./showcase/FilesCard.svelte";
 import NotificationsCard from "./showcase/NotificationsCard.svelte";
 
 // Lazy load CRM dashboard (includes Chart.js) only when tab is hovered
-let crmLoaded = $state(false);
+let crmLoading = $state(false);
 let CRMDashboard: typeof import("./showcase/crm/CRMDashboard.svelte").default | null = $state(null);
 
 async function handlePrefetch(value: string) {
-	if (value === "crm" && !crmLoaded) {
+	if (value === "crm" && !crmLoading && !CRMDashboard) {
+		crmLoading = true;
 		const module = await import("./showcase/crm/CRMDashboard.svelte");
 		CRMDashboard = module.default;
-		crmLoaded = true;
 	}
 }
 </script>
