@@ -47,7 +47,7 @@ const siteUrl = "https://svelte.saas-ui.dev";
 			eval(themeInitScript);
 		</script>
 	</head>
-	<body class="bg-bg-default text-fg-default pt-14">
+	<body class="bg-bg-default text-fg-default pt-14.25">
 		<a
 			id="skip-link"
 			href="#main"
@@ -55,8 +55,8 @@ const siteUrl = "https://svelte.saas-ui.dev";
 		>
 			Skip to main content
 		</a>
-		<Navbar client:load />
-		<MobileMenu currentPath={Astro.url.pathname} client:load />
+		<Navbar client:idle />
+		<MobileMenu currentPath={Astro.url.pathname} client:idle />
 		<SearchDialog client:only="svelte" />
 		<main id="main" class="scroll-mt-20">
 			<slot />
