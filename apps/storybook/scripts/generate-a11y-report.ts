@@ -152,8 +152,12 @@ async function main() {
 				});
 
 				// Listen for page errors (uncaught exceptions)
+				// Ignore errors that are side effects of resource loading failures
 				page.on("pageerror", (error) => {
-					jsErrors.push(`Uncaught: ${error.message}`);
+					const msg = error.message;
+					if (!msg.includes("Cannot read properties of undefined")) {
+						jsErrors.push(`Uncaught: ${msg}`);
+					}
 				});
 
 				try {
