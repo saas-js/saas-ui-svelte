@@ -6,6 +6,7 @@ import robotsTxt from "astro-robots-txt";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 import { FontaineTransform } from "fontaine";
+import { sveltePhosphorOptimize } from "phosphor-svelte/vite";
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
@@ -70,6 +71,7 @@ export default defineConfig({
 	compressHTML: true,
 	vite: {
 		plugins: [
+			sveltePhosphorOptimize(),
 			tailwindcss(),
 			FontaineTransform.vite({
 				fallbacks: ["Arial", "Helvetica Neue", "Helvetica", "sans-serif"],
@@ -109,7 +111,6 @@ export default defineConfig({
 				"@ark-ui/svelte",
 				"tailwind-variants",
 				"tailwind-merge",
-				"phosphor-svelte",
 			],
 		},
 		build: {
@@ -119,8 +120,8 @@ export default defineConfig({
 				output: {
 					manualChunks: (id) => {
 						if (id.includes("node_modules")) {
-							// Check specific packages before general matches
-							if (id.includes("phosphor-svelte")) return "icons";
+							// phosphor-svelte icons are tree-shaken by sveltePhosphorOptimize plugin
+							if (id.includes("phosphor-svelte")) return undefined;
 							if (id.includes("@ark-ui") || id.includes("@zag-js"))
 								return "ark-vendor";
 							if (id.includes("svelte")) return "svelte-vendor";
