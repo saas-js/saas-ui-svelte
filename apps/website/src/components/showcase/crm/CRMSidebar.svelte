@@ -27,9 +27,9 @@
 </script>
 
 <Sidebar.Root
-	class="group/sidebar bg-bg-muted relative hidden h-auto w-72 min-w-56 border-r-0 py-2 transition-all duration-300 ease-(--easings-bounce-out) md:flex {open
+	class="group/sidebar bg-bg-muted relative hidden h-auto w-72 min-w-56 border-r border-border-default py-2 transition-all duration-300 ease-(--easings-bounce-out) md:flex {open
 		? 'translate-x-0'
-		: '-translate-x-full w-0 min-w-0 overflow-hidden'}"
+		: '-translate-x-full w-0 min-w-0 overflow-hidden border-r-0'}"
 >
 	<Sidebar.Header class="flex shrink-0 items-center px-3 py-2">
 		<Sidebar.NavItem>
