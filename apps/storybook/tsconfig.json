@@ -14,11 +14,7 @@
 		"target": "ESNext",
 		"verbatimModuleSyntax": true,
 		"noEmit": true,
-		"jsx": "react-jsx",
-		"paths": {
-			"$saas": ["../../packages/saas-svelte"],
-			"$saas/*": ["../../packages/saas-svelte/*"]
-		}
+		"jsx": "react-jsx"
 	},
 	"include": [
 		"src/**/*.ts",
