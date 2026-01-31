@@ -8,13 +8,57 @@ import { AxeBuilder } from "@axe-core/playwright";
 import pLimit from "p-limit";
 import fs from "node:fs";
 import path from "node:path";
+import http from "node:http";
 
 const IS_DEV = process.argv.includes("--dev");
-const BASE_URL = IS_DEV
-	? "http://localhost:6006"
-	: `file://${path.resolve("storybook-static")}`;
+const STATIC_PORT = 6007;
+const BASE_URL = IS_DEV ? "http://localhost:6006" : `http://localhost:${STATIC_PORT}`;
 const IFRAME_URL = `${BASE_URL}/iframe.html`;
 const CONCURRENCY = 4;
+
+// Simple static file server for testing the build
+function createStaticServer(dir: string, port: number): Promise<http.Server> {
+	return new Promise((resolve, reject) => {
+		const mimeTypes: Record<string, string> = {
+			".html": "text/html",
+			".js": "application/javascript",
+			".css": "text/css",
+			".json": "application/json",
+			".png": "image/png",
+			".jpg": "image/jpeg",
+			".svg": "image/svg+xml",
+			".woff": "font/woff",
+			".woff2": "font/woff2",
+		};
+
+		const server = http.createServer((req, res) => {
+			let filePath = path.join(dir, req.url === "/" ? "index.html" : req.url || "");
+			// Remove query string
+			filePath = filePath.split("?")[0];
+
+			const ext = path.extname(filePath);
+			const contentType = mimeTypes[ext] || "application/octet-stream";
+
+			fs.readFile(filePath, (err, content) => {
+				if (err) {
+					if (err.code === "ENOENT") {
+						res.writeHead(404);
+						res.end("Not found");
+					} else {
+						res.writeHead(500);
+						res.end("Server error");
+					}
+				} else {
+					res.writeHead(200, { "Content-Type": contentType });
+					res.end(content);
+				}
+			});
+		});
+
+		server.on("error", reject);
+		server.listen(port, () => resolve(server));
+	});
+}
 
 interface Story {
 	id: string;
@@ -36,6 +80,18 @@ interface StoryResult {
 }
 
 async function main() {
+	let server: http.Server | null = null;
+
+	// Start static server if not using dev mode
+	if (!IS_DEV) {
+		const staticDir = path.resolve("storybook-static");
+		if (!fs.existsSync(staticDir)) {
+			console.error("storybook-static directory not found. Run build first.");
+			process.exit(1);
+		}
+		server = await createStaticServer(staticDir, STATIC_PORT);
+	}
+
 	console.log(
 		`Testing ${IS_DEV ? "dev server" : "static build"} at ${BASE_URL}`
 	);
@@ -43,10 +99,7 @@ async function main() {
 	// Load stories
 	let stories: Story[];
 	try {
-		const indexPath = path.resolve("storybook-static/index.json");
-		const content = IS_DEV
-			? await fetch(`${BASE_URL}/index.json`).then((r) => r.json())
-			: JSON.parse(fs.readFileSync(indexPath, "utf-8"));
+		const content = await fetch(`${BASE_URL}/index.json`).then((r) => r.json());
 		stories = Object.values(
 			content.entries as Record<string, Story>
 		).filter((s) => s.type === "story");
@@ -54,6 +107,7 @@ async function main() {
 		console.error(
 			"Could not load index.json. Ensure Storybook is built or running."
 		);
+		server?.close();
 		process.exit(1);
 	}
 
@@ -213,10 +267,16 @@ async function main() {
 		}
 	}
 
+	// Clean up server
+	server?.close();
+
 	// Exit with error code if any failures
 	if (failed > 0 || warnings > 0) {
 		process.exit(1);
 	}
 }
 
-main().catch(console.error);
+main().catch((err) => {
+	console.error(err);
+	process.exit(1);
+});

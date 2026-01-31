@@ -13,8 +13,11 @@
         "build:storybook": "npm run build-storybook -w apps/storybook",
         "website": "npm run dev -w apps/website",
         "build:website": "npm run build -w apps/website",
+        "build:website:ci": "npm run build:ci -w apps/website",
         "build": "npm run build:storybook && npm run build:website",
+        "build:ci": "npm run build:storybook && npm run build:website:ci",
         "check": "svelte-check --tsconfig ./apps/storybook/tsconfig.json",
+        "preview": "npm run preview -w apps/website",
         "format": "prettier --write .",
         "format:check": "prettier --check ."
     },

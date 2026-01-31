@@ -35,8 +35,8 @@ jobs:
             - name: Install Playwright browsers
               run: npx playwright install --with-deps chromium
 
-            - name: Build site
-              run: npm run build -w apps/website
+            - name: Build storybook and site with a11y report
+              run: npm run build:ci
 
             - name: Combine outputs
               run: |
