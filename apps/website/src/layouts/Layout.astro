@@ -26,15 +26,6 @@ const siteUrl = "https://svelte.saas-ui.dev";
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 
-		<!-- Preload critical font for faster rendering -->
-		<link
-			rel="preload"
-			href="/@fs/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin="anonymous"
-		/>
-
 		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
 		<link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
 
