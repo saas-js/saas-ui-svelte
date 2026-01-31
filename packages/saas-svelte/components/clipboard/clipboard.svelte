@@ -126,13 +126,10 @@ let {
 	...rest
 }: Props = $props();
 
-const uniqueId = $derived(
-	id || `clipboard-${Math.random().toString(36).substring(2, 9)}`,
-);
 </script>
 
 <ArkClipboard.Root
-	id={uniqueId}
+	id={id}
 	value={value}
 	timeout={timeout}
 	class={className}

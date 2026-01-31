@@ -217,10 +217,6 @@ let {
 	...rest
 }: Props = $props();
 
-const uniqueId = $derived(
-	id || `popover-${Math.random().toString(36).substring(2, 9)}`,
-);
-
 const styles = $derived(popover({ size }));
 
 const ctx: PopoverContext = {
@@ -242,7 +238,7 @@ setContext(POPOVER_CTX, ctx);
 </script>
 
 <Popover.Root
-	id={uniqueId}
+	id={id}
 	bind:open={open}
 	onOpenChange={(e) => onOpenChange?.(e)}
 	autoFocus={autoFocus}

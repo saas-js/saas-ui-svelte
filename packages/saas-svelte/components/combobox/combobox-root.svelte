@@ -245,10 +245,6 @@ let {
 	...restProps
 }: Props = $props();
 
-const uniqueId = $derived(
-	id || `combobox-${Math.random().toString(36).substring(2, 9)}`,
-);
-
 const ctx: ComboboxContext = {
 	get size() {
 		return size ?? "md";
@@ -268,7 +264,7 @@ setContext(COMBOBOX_CTX, ctx);
 </script>
 
 <Combobox.Root
-	id={uniqueId}
+	id={id}
 	collection={collection}
 	class={twMerge(ctx.styles.root(), className as string)}
 	{...restProps}

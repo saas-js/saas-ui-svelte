@@ -323,7 +323,6 @@ function getItemProps(item: CollectionItem) {
 {/snippet}
 
 <Combobox.Root
-	id={`combobox-${Math.random().toString(36).substring(2, 9)}`}
 	collection={collection}
 	disabled={disabled}
 	multiple={multiple}

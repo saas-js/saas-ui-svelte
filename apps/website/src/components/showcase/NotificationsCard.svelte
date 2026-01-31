@@ -15,7 +15,7 @@
 
 <Card.Root variant="elevated">
 	<Card.Header>
-		<Card.Title>Notifications</Card.Title>
+		<Card.Title as="h2">Notifications</Card.Title>
 	</Card.Header>
 	<Card.Body class="p-0">
 		{#each notifications as notification, i}
@@ -25,7 +25,7 @@
 					<Text weight="medium">{notification.title}</Text>
 					<Text size="xs" class="text-fg-muted">{notification.description}</Text>
 				</VStack>
-				<Switch size="sm" colour="indigo" checked={notification.enabled} />
+				<Switch size="sm" colour="indigo" checked={notification.enabled} aria-label={`Toggle ${notification.title} notification`} />
 			</HStack>
 		{/each}
 	</Card.Body>

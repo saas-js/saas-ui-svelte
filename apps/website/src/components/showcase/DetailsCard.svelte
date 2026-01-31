@@ -8,7 +8,7 @@
 
 <Card.Root variant="elevated">
 	<Card.Header>
-		<Card.Title>Details</Card.Title>
+		<Card.Title as="h2">Details</Card.Title>
 	</Card.Header>
 	<Card.Body class="pb-4">
 		<DataList.Root>

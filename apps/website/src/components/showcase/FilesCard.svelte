@@ -2,7 +2,6 @@
 	import type { Component } from "svelte";
 	import { Card } from "@saas-ui/svelte/components/card";
 	import { Button } from "@saas-ui/svelte/components/button";
-	import { Separator } from "@saas-ui/svelte/components/separator";
 	import { Badge } from "@saas-ui/svelte/components/badge";
 	import { List } from "@saas-ui/svelte/components/list";
 	import { Text } from "@saas-ui/svelte/typography/text";
@@ -29,15 +28,14 @@
 
 <Card.Root variant="elevated">
 	<Card.Header>
-		<Card.Title class="flex items-center gap-2">
+		<Card.Title as="h2" class="flex items-center gap-2">
 			Files
 			<Badge size="sm" variant="subtle">{files.length}</Badge>
 		</Card.Title>
 	</Card.Header>
 	<Card.Body class="p-0">
-		<List.Root class="text-sm">
+		<List.Root class="text-sm divide-y divide-border-default">
 			{#each files as file, i}
-				{#if i > 0}<Separator />{/if}
 				<List.Item class="flex items-center justify-between px-4 py-3 gap-3">
 					<Square size={8} class="border rounded border-border-default">
 						<Icon as={file.icon} size="sm" weight="fill" colour={file.colour} />

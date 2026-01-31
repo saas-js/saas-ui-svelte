@@ -44,7 +44,7 @@ let {
 	invalid = false,
 	required = false,
 	readOnly = false,
-	id = `field-${Math.random().toString(36).substring(2, 9)}`,
+	id,
 	class: className,
 	children,
 	...restProps

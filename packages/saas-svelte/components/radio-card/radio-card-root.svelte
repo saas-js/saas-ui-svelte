@@ -213,9 +213,11 @@ setContext<RadioCardContext>(RADIO_CARD_CTX, {
 	},
 });
 
-function handleValueChange(details: { value: string }) {
-	value = details.value;
-	onValueChange?.(details);
+function handleValueChange(details: { value: string | null }) {
+	if (details.value !== null) {
+		value = details.value;
+		onValueChange?.({ value: details.value });
+	}
 }
 </script>
 

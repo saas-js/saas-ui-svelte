@@ -57,7 +57,7 @@ import PreviewCard from "./PreviewCard.svelte";
 		</PreviewCard>
 
 		<PreviewCard>
-			<Switch colour="indigo" checked />
+			<Switch colour="indigo" checked aria-label="Toggle switch" />
 		</PreviewCard>
 	</HStack>
 </section>

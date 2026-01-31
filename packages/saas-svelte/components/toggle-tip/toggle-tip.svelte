@@ -147,10 +147,6 @@ const finalPositioning = $derived(
 	positioning ?? { placement, gutter: 8, strategy: "absolute" as const },
 );
 
-const uniqueId = $derived(
-	id || `toggle-tip-${Math.random().toString(36).substring(2, 9)}`,
-);
-
 const styles = $derived(
 	popoverContentStyles({
 		interactive: true,
@@ -172,7 +168,7 @@ const sizeClass = $derived(sizeClasses[size || "md"]);
 </script>
 
 <ArkPopover.Root
-	id={uniqueId}
+	id={id}
 	autoFocus={autoFocus}
 	closeOnEscape={closeOnEscape}
 	closeOnInteractOutside={closeOnInteractOutside}

@@ -4,7 +4,7 @@ import type { Snippet } from "svelte";
 import { getContext } from "svelte";
 import { NAVBAR_CTX, type NavbarContext } from "./navbar-root.svelte";
 
-interface Props extends HTMLAttributes<HTMLUListElement> {
+interface Props extends HTMLAttributes<HTMLDivElement> {
 	/** Gap between items using Tailwind gap classes. */
 	gap?: number | string;
 	/** Justify content alignment. @default "start" */
@@ -43,6 +43,6 @@ const finalClass = $derived(
 );
 </script>
 
-<ul class={finalClass} {...rest}>
+<div class={finalClass} {...rest}>
 	{@render children?.()}
-</ul>
+</div>

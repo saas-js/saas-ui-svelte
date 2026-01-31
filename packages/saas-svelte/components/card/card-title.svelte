@@ -8,6 +8,8 @@ const cardTitle = tv({
 	base: ["wrap-break-word", "text-sm", "font-semibold"],
 });
 
+type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "div";
+
 interface Props extends HTMLAttributes<HTMLHeadingElement> {
 	/**
 	 * The title content.
@@ -17,13 +19,18 @@ interface Props extends HTMLAttributes<HTMLHeadingElement> {
 	 * Additional CSS classes to apply.
 	 */
 	class?: string;
+	/**
+	 * The HTML element to render.
+	 * @default "h3"
+	 */
+	as?: HeadingLevel;
 }
 
-let { children, class: className, ...restProps }: Props = $props();
+let { children, class: className, as: Element = "h3", ...restProps }: Props = $props();
 
 const finalClass = $derived(twMerge(cardTitle(), className));
 </script>
 
-<h3 class={finalClass} {...restProps}>
+<svelte:element this={Element} class={finalClass} {...restProps}>
 	{@render children()}
-</h3>
+</svelte:element>

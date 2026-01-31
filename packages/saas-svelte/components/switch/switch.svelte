@@ -153,6 +153,10 @@ interface Props {
 	 * Labels to display on the track based on state.
 	 */
 	trackLabel?: TrackLabel;
+	/**
+	 * Accessible label for the switch when no visible label is provided.
+	 */
+	"aria-label"?: string;
 	[key: string]: any;
 }
 
@@ -170,6 +174,7 @@ let {
 	onCheckedChange,
 	thumbLabel,
 	trackLabel,
+	"aria-label": ariaLabel,
 	...restProps
 }: Props = $props();
 
@@ -190,6 +195,7 @@ function handleCheckedChange(details: { checked: boolean }) {
 	invalid={invalid}
 	name={name}
 	value={value}
+	aria-label={ariaLabel}
 	onCheckedChange={handleCheckedChange}
 	{...restProps}
 >

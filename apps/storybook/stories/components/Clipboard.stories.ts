@@ -5,7 +5,7 @@ import { commonArgTypes, getControls } from "../utils";
 
 const meta: Meta = {
 	title: "components/Clipboard",
-	component: Clipboard,
+	component: Clipboard.Root,
 	argTypes: {
 		value: {
 			control: "text",

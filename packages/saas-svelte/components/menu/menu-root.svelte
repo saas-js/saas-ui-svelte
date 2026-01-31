@@ -160,10 +160,6 @@ let {
 	...restProps
 }: Props = $props();
 
-const uniqueId = $derived(
-	id || `menu-${Math.random().toString(36).substring(2, 9)}`,
-);
-
 const ctx: MenuContext = {
 	get size() {
 		return size;
@@ -182,6 +178,6 @@ const ctx: MenuContext = {
 setContext(MENU_CTX, ctx);
 </script>
 
-<Menu.Root id={uniqueId} {...restProps}>
+<Menu.Root id={id} {...restProps}>
 	{@render children?.()}
 </Menu.Root>

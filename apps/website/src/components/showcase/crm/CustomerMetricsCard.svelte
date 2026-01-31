@@ -212,7 +212,7 @@
 
 <Card.Root class="bg-bg-default min-w-0 overflow-hidden p-4 xl:col-span-1">
 	<Card.Header class="gap-0 p-0 pb-2">
-		<Card.Title class="text-fg-muted text-[.8125rem] font-medium leading-4"
+		<Card.Title as="h2" class="text-fg-muted text-[.8125rem] font-medium leading-4"
 			>Customer metrics</Card.Title
 		>
 	</Card.Header>

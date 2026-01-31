@@ -6,7 +6,7 @@
 
 <Card.Root variant="elevated">
 	<Card.Header>
-		<Card.Title>Confirm</Card.Title>
+		<Card.Title as="h2">Confirm</Card.Title>
 	</Card.Header>
 	<Card.Body>
 		<Text class="text-fg-muted">

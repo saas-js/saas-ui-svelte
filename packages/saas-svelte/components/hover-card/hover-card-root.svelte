@@ -154,9 +154,6 @@ let {
 	...rest
 }: Props = $props();
 
-const uniqueId = $derived(
-	id || `hover-card-${Math.random().toString(36).substring(2, 9)}`,
-);
 
 const styles = $derived(hoverCard({ size }));
 
@@ -188,7 +185,7 @@ setContext(HOVER_CARD_CTX, ctx);
 </script>
 
 <HoverCard.Root
-	id={uniqueId}
+	id={id}
 	bind:open={open}
 	onOpenChange={(e) => onOpenChange?.(e)}
 	openDelay={openDelay}

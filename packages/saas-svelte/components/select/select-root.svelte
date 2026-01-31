@@ -272,11 +272,7 @@ const fieldContext = getContext<FieldContext>(FIELD_CTX);
 const fieldState = $derived($fieldContext ?? {});
 const isInvalid = $derived(fieldState.invalid || false);
 
-const uniqueId = $derived(
-	id ||
-		fieldState.id ||
-		`select-${Math.random().toString(36).substring(2, 9)}`,
-);
+const uniqueId = $derived(id || fieldState.id);
 
 const mergedPositioning = $derived({ sameWidth: true, ...positioning });
 

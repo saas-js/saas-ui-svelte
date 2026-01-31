@@ -91,10 +91,6 @@ let {
 	...rest
 }: Props = $props();
 
-// Generate a robust fallback ID to satisfy the 'string' requirement
-const uniqueId = $derived(
-	id || `tooltip-${Math.random().toString(36).substring(2, 9)}`,
-);
 
 // When trigger is provided, children become the content
 const effectiveTrigger = $derived(trigger ?? children);
@@ -113,7 +109,7 @@ const styles = $derived(
 </script>
 
 <ArkTooltip.Root
-	id={uniqueId}
+	id={id}
 	openDelay={openDelay}
 	closeDelay={closeDelay}
 	positioning={positioning}

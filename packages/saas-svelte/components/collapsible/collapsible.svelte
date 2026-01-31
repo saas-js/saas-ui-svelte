@@ -105,10 +105,6 @@ let {
 	...rest
 }: Props = $props();
 
-const uniqueId = $derived(
-	id || `collapsible-${Math.random().toString(36).substring(2, 9)}`,
-);
-
 setContext<CollapsibleContext>(COLLAPSIBLE_CTX, {
 	get disabled() {
 		return disabled ?? false;
@@ -120,7 +116,7 @@ setContext<CollapsibleContext>(COLLAPSIBLE_CTX, {
 </script>
 
 <ArkCollapsible.Root
-	id={uniqueId}
+	id={id}
 	defaultOpen={defaultOpen}
 	open={open}
 	disabled={disabled}

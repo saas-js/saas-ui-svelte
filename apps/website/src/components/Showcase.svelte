@@ -4,6 +4,7 @@ import { Container } from "@saas-ui/svelte/layout/container";
 import { Grid } from "@saas-ui/svelte/layout/grid";
 import { VStack } from "@saas-ui/svelte/layout/stack";
 import { Spinner } from "@saas-ui/svelte/components/spinner";
+import { onMount } from "svelte";
 
 import ConfirmCard from "./showcase/ConfirmCard.svelte";
 import StatsCard from "./showcase/StatsCard.svelte";
@@ -13,12 +14,19 @@ import VerifyCard from "./showcase/VerifyCard.svelte";
 import FilesCard from "./showcase/FilesCard.svelte";
 import NotificationsCard from "./showcase/NotificationsCard.svelte";
 
-// Lazy load CRM dashboard (includes Chart.js) only when tab is hovered
+// Lazy load CRM dashboard (includes Chart.js) only when tab is hovered/focused
+let mounted = $state(false);
 let crmLoading = $state(false);
-let CRMDashboard: typeof import("./showcase/crm/CRMDashboard.svelte").default | null = $state(null);
+let CRMDashboard: typeof import("./showcase/crm/CRMDashboard.svelte").default | null =
+	$state(null);
+
+onMount(() => {
+	mounted = true;
+});
 
 async function handlePrefetch(value: string) {
-	if (value === "crm" && !crmLoading && !CRMDashboard) {
+	// Only prefetch after component has mounted (avoids hydration issues)
+	if (mounted && value === "crm" && !crmLoading && !CRMDashboard) {
 		crmLoading = true;
 		const module = await import("./showcase/crm/CRMDashboard.svelte");
 		CRMDashboard = module.default;
@@ -67,9 +75,7 @@ async function handlePrefetch(value: string) {
 			</Tabs.Content>
 
 			<Tabs.Content value="email">
-				<div
-					class="text-fg-muted flex items-center justify-center py-20"
-				>
+				<div class="text-fg-muted flex items-center justify-center py-20">
 					Email client coming soon...
 				</div>
 			</Tabs.Content>

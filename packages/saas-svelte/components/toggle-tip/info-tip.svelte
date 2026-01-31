@@ -13,8 +13,13 @@ interface Props extends Omit<PopoverRootProps, "id" | "children"> {
 	id?: string;
 	/**
 	 * The content to display in the info tip.
+	 * Can be provided as a prop or as children.
 	 */
-	content: string | Snippet;
+	content?: string | Snippet;
+	/**
+	 * Content to display in the info tip (alternative to content prop).
+	 */
+	children?: Snippet;
 	/**
 	 * Additional CSS classes to apply.
 	 */
@@ -38,16 +43,20 @@ interface Props extends Omit<PopoverRootProps, "id" | "children"> {
 let {
 	id,
 	content,
+	children,
 	class: className,
 	size = "xs",
 	positioning = { placement: "top", gutter: 8 },
 	"aria-label": ariaLabel = "More information",
 	...rest
 }: Props = $props();
+
+// Use content prop if provided, otherwise fall back to children
+const effectiveContent = $derived(content ?? children);
 </script>
 
 <ToggleTip
-	content={content}
+	content={effectiveContent}
 	size={size}
 	id={id}
 	positioning={positioning}

@@ -43,7 +43,7 @@
 		</Text>
 		<Radio.Group
 			bind:value={controlledValue}
-			onValueChange={({ value }) => (controlledValue = value)}
+			onValueChange={({ value }) => (controlledValue = value ?? "1")}
 		>
 			<HStack gap={6}>
 				<Radio.Item value="1" label="Option 1" />

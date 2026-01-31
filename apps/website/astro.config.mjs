@@ -69,6 +69,8 @@ export default defineConfig({
 		service: { entrypoint: "astro/assets/services/sharp" },
 	},
 	compressHTML: true,
+	// Inline small stylesheets to reduce blocking requests
+	inlineStylesheets: "auto",
 	vite: {
 		plugins: [
 			sveltePhosphorOptimize(),
@@ -116,15 +118,35 @@ export default defineConfig({
 		build: {
 			target: "esnext",
 			minify: "esbuild",
+			cssMinify: "esbuild",
+			cssCodeSplit: true,
 			rollupOptions: {
 				output: {
 					manualChunks: (id) => {
+						// Vendor chunks
 						if (id.includes("node_modules")) {
 							// phosphor-svelte icons are tree-shaken by sveltePhosphorOptimize plugin
 							if (id.includes("phosphor-svelte")) return undefined;
 							if (id.includes("@ark-ui") || id.includes("@zag-js"))
 								return "ark-vendor";
 							if (id.includes("svelte")) return "svelte-vendor";
+							// Group other common dependencies
+							if (
+								id.includes("tailwind-merge") ||
+								id.includes("tailwind-variants") ||
+								id.includes("clsx")
+							)
+								return "tw-utils";
+						}
+
+						// Consolidate saas-svelte into fewer chunks
+						if (
+							id.includes("saas-svelte/components") ||
+							id.includes("saas-svelte/typography") ||
+							id.includes("saas-svelte/layout") ||
+							id.includes("saas-svelte/utils")
+						) {
+							return "ui";
 						}
 					},
 				},
