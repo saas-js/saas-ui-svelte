@@ -54,12 +54,17 @@ let {
 const ctx = getContext<PopoverContext>(POPOVER_CTX);
 const hasSimpleTrigger = $derived(triggerText || triggerIcon);
 
-function handleMouseEnter() {
+function handlePrefetch() {
 	ctx?.onPrefetch?.();
 }
 </script>
 
-<Popover.Trigger class={className} onmouseenter={handleMouseEnter} {...rest}>
+<Popover.Trigger
+	class={className as string | undefined}
+	onmouseenter={handlePrefetch}
+	onfocus={handlePrefetch}
+	{...rest}
+>
 	{#snippet asChild(props)}
 		{#if children}
 			{@render children({ props })}
@@ -68,8 +73,8 @@ function handleMouseEnter() {
 				variant={triggerVariant}
 				size={triggerSize}
 				icon={triggerIcon && !triggerText}
-				class={triggerClass}
-				{...props()}
+				class={triggerClass as string | undefined}
+				{...(props() as Record<string, unknown>)}
 			>
 				{#if triggerIcon}
 					<Icon as={triggerIcon} aria-hidden="true" />

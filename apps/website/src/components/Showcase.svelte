@@ -3,6 +3,7 @@ import { Tabs } from "@saas-ui/svelte/components/tabs";
 import { Container } from "@saas-ui/svelte/layout/container";
 import { Grid } from "@saas-ui/svelte/layout/grid";
 import { VStack } from "@saas-ui/svelte/layout/stack";
+import { Spinner } from "@saas-ui/svelte/components/spinner";
 
 import ConfirmCard from "./showcase/ConfirmCard.svelte";
 import StatsCard from "./showcase/StatsCard.svelte";
@@ -11,11 +12,22 @@ import LoginCard from "./showcase/LoginCard.svelte";
 import VerifyCard from "./showcase/VerifyCard.svelte";
 import FilesCard from "./showcase/FilesCard.svelte";
 import NotificationsCard from "./showcase/NotificationsCard.svelte";
-import CRMDashboard from "./showcase/crm/CRMDashboard.svelte";
+
+// Lazy load CRM dashboard (includes Chart.js) only when tab is hovered
+let crmLoaded = $state(false);
+let CRMDashboard: typeof import("./showcase/crm/CRMDashboard.svelte").default | null = $state(null);
+
+async function handlePrefetch(value: string) {
+	if (value === "crm" && !crmLoaded) {
+		const module = await import("./showcase/crm/CRMDashboard.svelte");
+		CRMDashboard = module.default;
+		crmLoaded = true;
+	}
+}
 </script>
 
 <Container maxW="7xl" class="overflow-hidden pb-20">
-	<Tabs.Root defaultValue="components">
+	<Tabs.Root defaultValue="components" onPrefetch={handlePrefetch}>
 		<Tabs.List class="border-border-default mb-4 border-b pt-1">
 			<Tabs.Trigger value="components">Components</Tabs.Trigger>
 			<Tabs.Trigger value="crm">CRM</Tabs.Trigger>
@@ -45,7 +57,13 @@ import CRMDashboard from "./showcase/crm/CRMDashboard.svelte";
 			</Tabs.Content>
 
 			<Tabs.Content value="crm">
-				<CRMDashboard />
+				{#if CRMDashboard}
+					<CRMDashboard />
+				{:else}
+					<div class="flex items-center justify-center py-20">
+						<Spinner size="lg" />
+					</div>
+				{/if}
 			</Tabs.Content>
 
 			<Tabs.Content value="email">

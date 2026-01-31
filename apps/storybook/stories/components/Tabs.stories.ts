@@ -461,3 +461,19 @@ export const Dynamic: Story = {
 			props: { story: "dynamic" },
 		}) as any,
 };
+
+export const Prefetch: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Use `onPrefetch` to lazy-load components when hovering over tabs. This is useful for deferring heavy dependencies (like charts) until the user shows intent to view that tab.",
+			},
+		},
+	},
+	render: () =>
+		({
+			Component: TabsWrapper,
+			props: { story: "prefetch" },
+		}) as any,
+};

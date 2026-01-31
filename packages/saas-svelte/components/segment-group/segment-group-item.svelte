@@ -54,7 +54,7 @@ const colourVars = $derived(getColourStyle(ctx.colour));
 
 const isDisabled = $derived(disabled || ctx.disabled);
 
-function handleMouseEnter() {
+function handlePrefetch() {
 	if (!isDisabled) {
 		ctx.onPrefetch?.(value);
 	}
@@ -81,7 +81,8 @@ const iconSize = $derived(iconSizeMap[ctx.size ?? "md"]);
 		className,
 	)}
 	style={colourVars}
-	onmouseenter={handleMouseEnter}
+	onmouseenter={handlePrefetch}
+	onfocus={handlePrefetch}
 	{...restProps}
 >
 	{#if children}

@@ -53,13 +53,13 @@ const ctx = getContext<PopoverContext>(POPOVER_CTX);
 {#if children}
 	<Popover.CloseTrigger aria-label={ariaLabel} {...rest}>
 		{#snippet asChild(props)}
-			{@render children(props)}
+			{@render children(props as unknown as () => Record<string, unknown>)}
 		{/snippet}
 	</Popover.CloseTrigger>
 {:else if buttonText}
 	<Popover.CloseTrigger aria-label={ariaLabel} {...rest}>
 		{#snippet asChild(props)}
-			<Button variant={buttonVariant} size={buttonSize} {...props()}>
+			<Button variant={buttonVariant} size={buttonSize} {...(props() as Record<string, unknown>)}>
 				{buttonText}
 			</Button>
 		{/snippet}

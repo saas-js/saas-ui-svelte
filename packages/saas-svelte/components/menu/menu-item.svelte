@@ -20,7 +20,7 @@ let { children, class: className, value, ...rest }: Props = $props();
 
 const ctx = getContext<MenuContext>(MENU_CTX);
 
-function handleMouseEnter() {
+function handlePrefetch() {
 	if (value && !rest.disabled) {
 		ctx?.onPrefetch?.(value);
 	}
@@ -31,7 +31,8 @@ function handleMouseEnter() {
 	class={twMerge(ctx?.styles?.item() ?? "", className as string)}
 	style={ctx?.colourStyle}
 	value={value}
-	onmouseenter={handleMouseEnter}
+	onmouseenter={handlePrefetch}
+	onfocus={handlePrefetch}
 	{...rest}
 >
 	{@render children()}

@@ -24,7 +24,7 @@ let { children, class: className, colour = "gray", ...rest }: Props = $props();
 const ctx = getContext<CollapsibleContext>(COLLAPSIBLE_CTX);
 const colourVars = $derived(getColourStyle(colour));
 
-function handleMouseEnter() {
+function handlePrefetch() {
 	if (!ctx?.disabled) {
 		ctx?.onPrefetch?.();
 	}
@@ -37,7 +37,8 @@ function handleMouseEnter() {
 			type="button"
 			class={twMerge(button({ variant: "ghost" }), "mb-2", className as string)}
 			style={colourVars}
-			onmouseenter={handleMouseEnter}
+			onmouseenter={handlePrefetch}
+			onfocus={handlePrefetch}
 			{...props()}
 		>
 			{@render children?.()}

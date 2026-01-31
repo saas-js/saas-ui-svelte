@@ -31,7 +31,7 @@ const ctx = getContext<DialogContext>(DIALOG_CTX);
 const colourVars = $derived(getColourStyle(colour));
 const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 
-function handleMouseEnter() {
+function handlePrefetch() {
 	ctx?.onPrefetch?.();
 }
 </script>
@@ -40,7 +40,8 @@ function handleMouseEnter() {
 	class={button({ variant, size, className })}
 	style={finalStyle}
 	asChild={asChild ? children : undefined}
-	onmouseenter={handleMouseEnter}
+	onmouseenter={handlePrefetch}
+	onfocus={handlePrefetch}
 	{...rest}
 >
 	{#if !asChild}

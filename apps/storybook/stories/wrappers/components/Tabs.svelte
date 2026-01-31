@@ -26,10 +26,29 @@
 			| "colours"
 			| "disabled"
 			| "manualActivation"
-			| "dynamic";
+			| "dynamic"
+			| "prefetch";
 	}
 
 	let { story }: Props = $props();
+
+	// Prefetch demo state
+	let heavyComponentLoaded = $state(false);
+	let HeavyComponent: any = $state(null);
+	let prefetchStatus = $state<Record<string, string>>({});
+
+	async function handlePrefetch(value: string) {
+		if (value === "heavy" && !heavyComponentLoaded) {
+			prefetchStatus = { ...prefetchStatus, [value]: "loading..." };
+			// Simulate loading a heavy component
+			await new Promise((r) => setTimeout(r, 500));
+			HeavyComponent = { loaded: true };
+			heavyComponentLoaded = true;
+			prefetchStatus = { ...prefetchStatus, [value]: "loaded!" };
+		} else if (!prefetchStatus[value]) {
+			prefetchStatus = { ...prefetchStatus, [value]: "prefetched" };
+		}
+	}
 
 	let dynamicTabs = $state([
 		{ id: "1", title: "Tab", content: "Tab Content" },
@@ -301,4 +320,36 @@
 			{/each}
 		</Tabs.ContentGroup>
 	</Tabs.Root>
+{:else if story === "prefetch"}
+	<VStack gap={4}>
+		<Text size="sm" class="text-fg-muted">
+			Hover over tabs to prefetch content. The "Heavy" tab simulates lazy-loading a component.
+		</Text>
+		<Tabs.Root defaultValue="light" onPrefetch={handlePrefetch}>
+			<Tabs.List>
+				<Tabs.Trigger value="light">Light</Tabs.Trigger>
+				<Tabs.Trigger value="medium">Medium</Tabs.Trigger>
+				<Tabs.Trigger value="heavy">Heavy (Lazy)</Tabs.Trigger>
+			</Tabs.List>
+			<Tabs.Content value="light">
+				<Text>This content is always available.</Text>
+			</Tabs.Content>
+			<Tabs.Content value="medium">
+				<Text>This content is also lightweight.</Text>
+			</Tabs.Content>
+			<Tabs.Content value="heavy">
+				{#if HeavyComponent}
+					<Text>Heavy component loaded! This could be a chart, dashboard, or any large module.</Text>
+				{:else}
+					<Text class="text-fg-muted">Loading heavy component...</Text>
+				{/if}
+			</Tabs.Content>
+		</Tabs.Root>
+		<VStack gap={1} class="text-xs text-fg-muted">
+			<Text size="xs" weight="medium">Prefetch status:</Text>
+			{#each Object.entries(prefetchStatus) as [tab, status]}
+				<Text size="xs">{tab}: {status}</Text>
+			{/each}
+		</VStack>
+	</VStack>
 {/if}

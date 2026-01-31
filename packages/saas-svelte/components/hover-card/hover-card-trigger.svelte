@@ -24,7 +24,7 @@ let { children, class: className, style, ...rest }: Props = $props();
 
 const ctx = getContext<HoverCardContext>(HOVER_CARD_CTX);
 
-function handleMouseEnter() {
+function handlePrefetch() {
 	ctx?.onPrefetch?.();
 }
 </script>
@@ -34,7 +34,8 @@ function handleMouseEnter() {
 		<span
 			class={twMerge("inline rounded outline-none", className as string)}
 			{style}
-			onmouseenter={handleMouseEnter}
+			onmouseenter={handlePrefetch}
+			onfocus={handlePrefetch}
 			{...props()}
 		>
 			{@render children()}
