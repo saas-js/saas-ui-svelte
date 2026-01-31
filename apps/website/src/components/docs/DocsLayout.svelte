@@ -34,7 +34,7 @@ let mobileNavOpen = $derived(getSideMenuOpen());
 		<Box
 			as="aside"
 			aria-label="Documentation navigation"
-			class="bg-bg-default border-border-default sticky top-14 hidden h-[calc(100vh-3.5rem)] w-56 shrink-0 overflow-y-auto border-r lg:block"
+			class="bg-bg-default border-border-default sticky top-14.25 hidden h-[calc(100vh-3.5625rem)] w-56 shrink-0 overflow-y-auto border-r lg:block"
 		>
 			<DocsSidebar groups={navGroups} currentPath={currentPath} />
 		</Box>

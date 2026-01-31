@@ -9,7 +9,7 @@ export type TooltipVariants = {
 <script lang="ts">
 // Import from the main package to ensure Context compatibility
 import { Tooltip as ArkTooltip } from "@ark-ui/svelte";
-import { Portal } from "@ark-ui/svelte/portal";
+import { Portal } from "$saas/components/portal";
 import type { TooltipRootProps } from "@ark-ui/svelte/tooltip";
 import type { Snippet } from "svelte";
 
@@ -124,20 +124,22 @@ const styles = $derived(
 			</span>
 		{/snippet}
 	</ArkTooltip.Trigger>
-	<Portal>
-		<ArkTooltip.Positioner class={styles.positioner()}>
-			<ArkTooltip.Content class={styles.content()}>
-				{#if showArrow}
-					<ArkTooltip.Arrow class={styles.arrow()}>
-						<ArkTooltip.ArrowTip class={styles.arrowTip()} />
-					</ArkTooltip.Arrow>
-				{/if}
-				{#if typeof effectiveContent === "string"}
-					{effectiveContent}
-				{:else if effectiveContent}
-					{@render effectiveContent()}
-				{/if}
-			</ArkTooltip.Content>
-		</ArkTooltip.Positioner>
-	</Portal>
+	{#if mounted}
+		<Portal>
+			<ArkTooltip.Positioner class={styles.positioner()}>
+				<ArkTooltip.Content class={styles.content()}>
+					{#if showArrow}
+						<ArkTooltip.Arrow class={styles.arrow()}>
+							<ArkTooltip.ArrowTip class={styles.arrowTip()} />
+						</ArkTooltip.Arrow>
+					{/if}
+					{#if typeof effectiveContent === "string"}
+						{effectiveContent}
+					{:else if effectiveContent}
+						{@render effectiveContent()}
+					{/if}
+				</ArkTooltip.Content>
+			</ArkTooltip.Positioner>
+		</Portal>
+	{/if}
 </ArkTooltip.Root>

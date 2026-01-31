@@ -22,17 +22,18 @@ interface Props {
 
 let { disabled = false, container, children }: Props = $props();
 
-// Track if we're on the client side
-let isClient = $state(false);
+// Track if we're mounted on the client to avoid SSR hydration issues
+// Portal content is not rendered during SSR to prevent mismatch
+let mounted = $state(false);
 
 onMount(() => {
-	isClient = true;
+	mounted = true;
 });
 </script>
 
-{#if disabled || !isClient}
+{#if disabled}
 	{@render children()}
-{:else}
+{:else if mounted}
 	<ArkPortal container={container ?? undefined}>
 		{@render children()}
 	</ArkPortal>

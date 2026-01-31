@@ -15,9 +15,16 @@ import { Popover as ArkPopover } from "@ark-ui/svelte";
 import { Portal } from "@ark-ui/svelte/portal";
 import type { PopoverRootProps } from "@ark-ui/svelte/popover";
 import type { Snippet, Component } from "svelte";
+import { onMount } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { Button } from "$saas/components/button";
 import { Icon } from "$saas/components/icon";
+
+// Track if we're mounted on the client to avoid SSR hydration issues with Portal
+let mounted = $state(false);
+onMount(() => {
+	mounted = true;
+});
 
 interface Props extends Omit<PopoverRootProps, "id" | "children"> {
 	/**
@@ -202,17 +209,19 @@ const sizeClass = $derived(sizeClasses[size || "md"]);
 			{/if}
 		{/snippet}
 	</ArkPopover.Trigger>
-	<Portal>
-		<ArkPopover.Positioner class={styles.positioner()}>
-			<ArkPopover.Content
-				class={twMerge(styles.content(), sizeClass, className as string)}
-			>
-				{#if typeof effectiveContent === "string"}
-					{effectiveContent}
-				{:else if effectiveContent}
-					{@render effectiveContent()}
-				{/if}
-			</ArkPopover.Content>
-		</ArkPopover.Positioner>
-	</Portal>
+	{#if mounted}
+		<Portal>
+			<ArkPopover.Positioner class={styles.positioner()}>
+				<ArkPopover.Content
+					class={twMerge(styles.content(), sizeClass, className as string)}
+				>
+					{#if typeof effectiveContent === "string"}
+						{effectiveContent}
+					{:else if effectiveContent}
+						{@render effectiveContent()}
+					{/if}
+				</ArkPopover.Content>
+			</ArkPopover.Positioner>
+		</Portal>
+	{/if}
 </ArkPopover.Root>
