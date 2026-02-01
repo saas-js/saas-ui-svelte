@@ -1,3 +1,22 @@
+<script module lang="ts">
+import { tv, type VariantProps } from "tailwind-variants";
+
+export const grid = tv({
+	base: "",
+	variants: {
+		inline: {
+			true: "inline-grid",
+			false: "grid",
+		},
+	},
+	defaultVariants: {
+		inline: false,
+	},
+});
+
+export type GridVariants = VariantProps<typeof grid>;
+</script>
+
 <script lang="ts">
 import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
@@ -75,7 +94,7 @@ const rowGap = $derived((gapY ?? gap) * 0.25);
 </script>
 
 <div
-	class={twMerge(inline ? "inline-grid" : "grid", className)}
+	class={twMerge(grid({ inline }), className)}
 	style:grid-template-columns={templateColumns}
 	style:grid-template-rows={templateRows}
 	style:column-gap="{columnGap}rem"

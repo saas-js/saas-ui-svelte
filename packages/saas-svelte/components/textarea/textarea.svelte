@@ -61,6 +61,12 @@ export const textarea = tv({
 				"enabled:hover:border-border-emphasized",
 			],
 		},
+		resize: {
+			none: "resize-none",
+			vertical: "resize-y",
+			horizontal: "resize-x",
+			both: "resize",
+		},
 	},
 	defaultVariants: {
 		variant: "outline",
@@ -146,11 +152,11 @@ const classes = $derived(
 		variant,
 		size,
 		invalid: isInvalid,
+		resize,
 		class: className,
-	}) as string,
+	}),
 );
 
-const resizeClass = $derived(resize ? `resize-${resize}` : "");
 const styles = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>
 
@@ -159,7 +165,7 @@ const styles = $derived([colourVars, style].filter(Boolean).join("; "));
 	disabled={isDisabled}
 	required={isRequired}
 	readonly={isReadOnly}
-	class={twMerge(classes, resizeClass)}
+	class={classes}
 	style={styles}
 	bind:value={value}
 	{...restProps}

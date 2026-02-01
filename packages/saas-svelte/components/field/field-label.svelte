@@ -1,3 +1,22 @@
+<script module lang="ts">
+import { tv, type VariantProps } from "tailwind-variants";
+
+export const fieldLabel = tv({
+	base: "select-none inline-flex items-center gap-1 text-sm font-medium leading-sm antialiased",
+	variants: {
+		disabled: {
+			true: "text-fg-muted",
+			false: "",
+		},
+	},
+	defaultVariants: {
+		disabled: false,
+	},
+});
+
+export type FieldLabelVariants = VariantProps<typeof fieldLabel>;
+</script>
+
 <script lang="ts">
 import type { HTMLLabelAttributes } from "svelte/elements";
 import { getContext } from "svelte";
@@ -25,14 +44,11 @@ let {
 const fieldContext = getContext<FieldContext>(FIELD_CTX);
 const fieldId = $derived(htmlFor || $fieldContext.id);
 const isDisabled = $derived($fieldContext.disabled);
-
-const baseStyles = "select-none inline-flex items-center gap-1 text-sm font-medium leading-sm antialiased";
-const disabledStyles = $derived(isDisabled ? "text-fg-muted" : "");
 </script>
 
 <label
 	for={fieldId}
-	class={twMerge(baseStyles, disabledStyles, className)}
+	class={twMerge(fieldLabel({ disabled: isDisabled }), className)}
 	{...restProps}
 >
 	{@render children?.()}

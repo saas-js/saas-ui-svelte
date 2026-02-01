@@ -47,10 +47,17 @@ const status = tv({
 				indicator: ["bg-status-success"],
 			},
 		},
+		coloured: {
+			true: {
+				indicator: ["bg-(--c-solid)"],
+			},
+			false: {},
+		},
 	},
 	defaultVariants: {
 		size: "md",
 		value: "info",
+		coloured: false,
 	},
 });
 
@@ -91,14 +98,14 @@ let {
 	...restProps
 }: Props = $props();
 
-const styles = $derived(status({ size, value: colour ? undefined : value }));
+const styles = $derived(status({ size, value: colour ? undefined : value, coloured: !!colour }));
 const colourStyle = $derived(colour ? getColourStyle(colour) : undefined);
 </script>
 
 <Box as="span" class={twMerge(styles.root(), className)} {...restProps}>
 	<Box
 		as="span"
-		class={twMerge(styles.indicator(), colour && "bg-(--c-solid)")}
+		class={styles.indicator()}
 		style={colourStyle}
 		aria-hidden="true"
 	/>

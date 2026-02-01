@@ -6,7 +6,7 @@ import { tv, type VariantProps } from "tailwind-variants";
  * Used to render a placeholder while content is loading.
  */
 export const skeleton = tv({
-	base: ["rounded-md", "shrink-0", "before:invisible", "after:invisible"],
+	base: "rounded-md shrink-0 before:invisible after:invisible",
 	variants: {
 		/**
 		 * The animation variant.
@@ -28,8 +28,8 @@ export const skeleton = tv({
 		 * @default true
 		 */
 		loading: {
-			true: ["cursor-default", "pointer-events-none", "select-none"],
-			false: "",
+			true: "cursor-default pointer-events-none select-none",
+			false: "animate-[fade-in_0.2s_ease-out]",
 		},
 	},
 	defaultVariants: {
@@ -87,11 +87,8 @@ let {
 	...restProps
 }: Props = $props();
 
-// Only apply skeleton styles when loading, otherwise just the fade-in
 const classes = $derived(
-	loading
-		? twMerge(skeleton({ variant, loading: true }), className)
-		: twMerge("animate-[fade-in_0.2s_ease-out]", className),
+	twMerge(skeleton({ variant: loading ? variant : "none", loading }), className),
 );
 
 // Shine gradient needs inline style as tailwind-merge strips the gradient class

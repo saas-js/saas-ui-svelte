@@ -1,7 +1,43 @@
+<script module lang="ts">
+import { tv, type VariantProps } from "tailwind-variants";
+
+export const timelineContent = tv({
+	base: "flex flex-col gap-2",
+	variants: {
+		width: {
+			auto: "",
+			full: "w-full pb-6",
+		},
+		flex: {
+			true: "flex-1 pb-6",
+			false: "",
+		},
+		alignItems: {
+			"flex-start": "",
+			"flex-end": "items-end text-right",
+			center: "items-center text-center",
+		},
+	},
+	compoundVariants: [
+		{
+			width: "auto",
+			flex: true,
+			class: "pb-0",
+		},
+	],
+	defaultVariants: {
+		width: "full",
+		flex: false,
+		alignItems: "flex-start",
+	},
+});
+
+export type TimelineContentVariants = VariantProps<typeof timelineContent>;
+</script>
+
 <script lang="ts">
-import { getContext, type Snippet } from "svelte";
+import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
-import { TIMELINE_CTX, type TimelineContext } from "./timeline-root.svelte";
 import { VStack } from "$saas/layout/stack";
 
 interface Props {
@@ -20,11 +56,11 @@ interface Props {
 	/**
 	 * Alignment of items within the content.
 	 */
-	alignItems?: "flex-start" | "flex-end" | "center";
+	alignItems?: TimelineContentVariants["alignItems"];
 	/**
 	 * Width of the content area.
 	 */
-	width?: "auto" | "full";
+	width?: TimelineContentVariants["width"];
 	[key: string]: any;
 }
 
@@ -37,29 +73,18 @@ let {
 	...restProps
 }: Props = $props();
 
-const ctx = getContext<TimelineContext>(TIMELINE_CTX);
-
 const hasFlex = $derived(flex === 1 || flex === "1");
-const baseClass = $derived(
-	width === "auto"
-		? "flex-col gap-2 flex"
-		: hasFlex
-			? "flex-col gap-2 flex pb-6"
-			: (ctx?.styles.content() ?? "flex-col gap-2 w-full flex pb-6"),
-);
-const flexClass = $derived(hasFlex ? "flex-1" : "");
-const alignClass = $derived(
-	alignItems === "flex-end"
-		? "items-end text-right"
-		: alignItems === "center"
-			? "items-center text-center"
-			: "",
+const classes = $derived(
+	twMerge(
+		timelineContent({ width, flex: hasFlex, alignItems }),
+		className,
+	),
 );
 </script>
 
 <VStack
 	gap={2}
-	class={twMerge(baseClass, flexClass, alignClass, className)}
+	class={classes}
 	{...restProps}
 >
 	{@render children?.()}
