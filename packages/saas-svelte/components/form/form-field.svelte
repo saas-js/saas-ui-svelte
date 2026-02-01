@@ -18,6 +18,7 @@ import { Switch } from "../switch";
 import { Slider } from "../slider";
 import { PinInput } from "../pin-input";
 import { Text } from "$saas/typography/text";
+import type { ColourName } from "$saas/utils/colours";
 import type { FormApi } from "./use-form.svelte";
 import type { FieldType, FieldOption } from "./types";
 import { FORM_CTX } from "./types";
@@ -36,6 +37,8 @@ interface Props {
 	step?: number;
 	/** Number of inputs for pin-input type @default 4 */
 	count?: number;
+	/** Colour for slider type */
+	colour?: ColourName;
 	class?: string;
 	children?: Snippet<
 		[
@@ -62,6 +65,7 @@ let {
 	max,
 	step,
 	count = 4,
+	colour,
 	class: className,
 	children,
 }: Props = $props();
@@ -192,8 +196,10 @@ const onInput = (e: Event) =>
 			min={min}
 			max={max}
 			step={step}
+			colour={colour}
 			aria-label={label}
 			onValueChange={(details) => onChange(details.value.length === 1 ? details.value[0] : details.value)}
+			class="w-full"
 		>
 			<Slider.Control>
 				<Slider.Track>

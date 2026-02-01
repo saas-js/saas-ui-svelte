@@ -155,6 +155,7 @@
 				min={0}
 				max={100}
 				step={1}
+				colour="indigo"
 			/>
 			<FormField
 				name="pinInput"
@@ -179,7 +180,7 @@
 		<VStack gap={4}>
 			<FormField name="name" label="Name" required />
 			<FormField name="showAge" type="checkbox" label="Show age field" />
-			<DisplayIf name="showAge" condition={(v) => v === true}>
+			<DisplayIf name="showAge" condition={(v: unknown) => v === true}>
 				<FormField name="age" type="number" label="Age" />
 			</DisplayIf>
 			<SubmitButton>Submit</SubmitButton>
