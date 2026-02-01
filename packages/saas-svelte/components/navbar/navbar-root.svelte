@@ -169,7 +169,6 @@ setContext<NavbarContext>(NAVBAR_CTX, {
 	},
 });
 
-// Scroll detection using runed's reactive approach
 $effect(() => {
 	if (!shouldHideOnScroll || typeof window === "undefined") return;
 

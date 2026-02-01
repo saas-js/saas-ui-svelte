@@ -113,7 +113,6 @@ export default defineConfig({
 				"tailwind-variants",
 				"tailwind-merge",
 				"chart.js",
-				"phosphor-svelte",
 				"@tanstack/svelte-virtual",
 				"clsx",
 			],
