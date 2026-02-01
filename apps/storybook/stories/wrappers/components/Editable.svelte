@@ -17,7 +17,7 @@
 		story:
 			| "basic"
 			| "controlled"
-			| "doubleClick"
+			| "withDoubleClick"
 			| "disabled"
 			| "invalid"
 			| "textarea"
@@ -47,7 +47,7 @@
 			<Editable.Input />
 		</Editable.Area>
 	</Editable.Root>
-{:else if story === "doubleClick"}
+{:else if story === "withDoubleClick"}
 	<Editable.Root defaultValue="Double click to edit" activationMode="dblclick">
 		<Editable.Area>
 			<Editable.Preview />

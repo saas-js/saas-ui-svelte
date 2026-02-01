@@ -462,6 +462,6 @@ export const WithLink: Story = {
 	render: () =>
 		({
 			Component: CheckboxWrapper,
-			props: { story: "link" },
+			props: { story: "withLink" },
 		}) as any,
 };

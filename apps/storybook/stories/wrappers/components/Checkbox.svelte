@@ -24,7 +24,6 @@
 			| "customIcon"
 			| "indeterminate"
 			| "description"
-			| "link"
 			| "withLink";
 	}
 

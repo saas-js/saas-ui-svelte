@@ -476,7 +476,7 @@ export const WithDoubleClick: Story = {
 	render: () =>
 		({
 			Component: EditableWrapper,
-			props: { story: "doubleClick" },
+			props: { story: "withDoubleClick" },
 		}) as any,
 };
 
