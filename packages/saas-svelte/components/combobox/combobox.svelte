@@ -356,7 +356,7 @@ function getItemProps(item: CollectionItem) {
 		{/if}
 		<Combobox.Input
 			placeholder={placeholder}
-			class="{ctx.styles.input()} {startIcon || startElement ? 'pl-8' : ''}"
+			class={twMerge(ctx.styles.input(), (startIcon || startElement) && "pl-8")}
 			style={ctx.colourStyle}
 		/>
 		<Flex class={ctx.styles.indicatorGroup()}>

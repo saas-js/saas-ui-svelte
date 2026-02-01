@@ -1,3 +1,11 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const gridItem = tv({
+	base: "block min-w-0",
+});
+</script>
+
 <script lang="ts">
 import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
@@ -73,7 +81,7 @@ const gridRow = $derived(
 </script>
 
 <div
-	class={twMerge(className)}
+	class={twMerge(gridItem(), className)}
 	style:grid-column={gridColumn}
 	style:grid-row={gridRow}
 	{...restProps}

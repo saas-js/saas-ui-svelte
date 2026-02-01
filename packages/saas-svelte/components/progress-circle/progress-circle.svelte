@@ -194,7 +194,7 @@ const ariaLabel = $derived(
 	{...restProps}
 >
 	<svg
-		class="{styles.circle()} {isIndeterminate ? 'animate-spin' : ''}"
+		class={twMerge(styles.circle(), isIndeterminate && "animate-spin")}
 		viewBox="0 0 {currentSize.size} {currentSize.size}"
 		style="shape-rendering: geometricPrecision;"
 	>

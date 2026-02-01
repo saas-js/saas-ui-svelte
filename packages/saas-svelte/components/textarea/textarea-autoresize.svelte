@@ -75,7 +75,7 @@ export type TextareaAutoresizeVariants = VariantProps<
 
 <script lang="ts">
 import type { HTMLTextareaAttributes } from "svelte/elements";
-import type { ClassNameValue } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 import { Box } from "$saas/layout/box";
 
 interface Props extends Omit<HTMLTextareaAttributes, "class"> {
@@ -147,13 +147,13 @@ const styles = $derived([colourVars, style].filter(Boolean).join("; "));
 <Box class="relative grid" style={styles}>
 	<pre
 		aria-hidden="true"
-		class={`${classes} invisible overflow-hidden wrap-break-word whitespace-pre-wrap [grid-area:1/1/2/2]`}
+		class={twMerge(classes, "invisible overflow-hidden wrap-break-word whitespace-pre-wrap [grid-area:1/1/2/2]")}
 		style="min-height: {minHeight}; max-height: {maxHeight}">{value +
 			"\n"}</pre>
 
 	<textarea
 		bind:value={value}
-		class={`${classes} resize-none overflow-hidden [grid-area:1/1/2/2]`}
+		class={twMerge(classes, "resize-none overflow-hidden [grid-area:1/1/2/2]")}
 		{...restProps}
 	></textarea>
 </Box>

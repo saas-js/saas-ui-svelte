@@ -217,7 +217,7 @@ const finalClass = $derived(
 		variant,
 		size,
 		icon,
-		class: `${className || ""}${variant === "glass" ? " group" : ""}`,
+		class: twMerge(className, variant === "glass" && "group"),
 	}),
 );
 

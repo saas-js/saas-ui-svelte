@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import {
 	BREADCRUMB_CTX,
 	type BreadcrumbContext,
@@ -25,9 +26,7 @@ const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
 const styles = $derived(context?.styles);
 
 // Current link is always default color (stands out from muted links)
-const currentClasses = $derived(
-	className ? `text-fg-default ${className}` : "text-fg-default",
-);
+const currentClasses = $derived(twMerge("text-fg-default", className));
 </script>
 
 <li class={styles?.item()}>

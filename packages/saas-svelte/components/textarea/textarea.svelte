@@ -73,7 +73,7 @@ export type TextareaVariants = VariantProps<typeof textarea>;
 
 <script lang="ts">
 import type { HTMLTextareaAttributes } from "svelte/elements";
-import type { ClassNameValue } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 import { getContext } from "svelte";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
 
@@ -159,7 +159,7 @@ const styles = $derived([colourVars, style].filter(Boolean).join("; "));
 	disabled={isDisabled}
 	required={isRequired}
 	readonly={isReadOnly}
-	class={`${classes} ${resizeClass}`}
+	class={twMerge(classes, resizeClass)}
 	style={styles}
 	bind:value={value}
 	{...restProps}

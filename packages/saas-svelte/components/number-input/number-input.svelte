@@ -117,6 +117,7 @@ export const numberInputTrigger = tv({
 	},
 	defaultVariants: {
 		size: "md",
+		position: "increment",
 	},
 });
 

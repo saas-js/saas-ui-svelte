@@ -77,6 +77,7 @@ export const avatar = tv({
 			true: {
 				root: "outline-2 outline-offset-2 outline-(--c-solid)",
 			},
+			false: {},
 		},
 	},
 	defaultVariants: {

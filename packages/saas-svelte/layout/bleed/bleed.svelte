@@ -1,3 +1,11 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const bleed = tv({
+	base: "block",
+});
+</script>
+
 <script lang="ts">
 import type { Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
@@ -69,7 +77,7 @@ const marginBlockEnd = $derived(toRem(blockEnd ?? block));
 </script>
 
 <div
-	class={twMerge(className)}
+	class={twMerge(bleed(), className)}
 	style:margin-inline-start={marginInlineStart}
 	style:margin-inline-end={marginInlineEnd}
 	style:margin-block-start={marginBlockStart}
