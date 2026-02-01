@@ -6,10 +6,10 @@ export const timelineContent = tv({
 	variants: {
 		width: {
 			auto: "",
-			full: "w-full pb-6",
+			full: "w-full pb-4",
 		},
 		flex: {
-			true: "flex-1 pb-6",
+			true: "flex-1 pb-4",
 			false: "",
 		},
 		alignItems: {

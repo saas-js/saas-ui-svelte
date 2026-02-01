@@ -21,7 +21,7 @@ export const skeleton = tv({
 				"bg-clip-padding",
 				"animate-[skeleton-shine_5s_ease-in-out_infinite]",
 			],
-			none: "bg-bg-emphasized",
+			none: "",
 		},
 		/**
 		 * Whether the skeleton is in loading state.

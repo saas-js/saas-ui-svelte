@@ -46,16 +46,16 @@ export const timeline = tv({
 		},
 		variant: {
 			subtle: {
-				connector: "text-fg-muted",
+				connector: "text-(--c-fg)/60",
 			},
 			solid: {
-				connector: "text-fg-default",
+				connector: "text-(--c-fg)",
 			},
 			outline: {
-				connector: "text-fg-muted",
+				connector: "text-(--c-fg)/60",
 			},
 			plain: {
-				connector: "text-fg-default",
+				connector: "text-(--c-fg)",
 			},
 		},
 	},

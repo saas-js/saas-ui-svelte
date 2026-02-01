@@ -4,11 +4,14 @@
  */
 
 /**
- * Converts PascalCase or camelCase to kebab-case.
- * e.g., "WithIcon" -> "with-icon", "MultipleActions" -> "multiple-actions"
+ * Converts PascalCase, camelCase, or spaced strings to kebab-case.
+ * e.g., "WithIcon" -> "with-icon", "Progress Circle" -> "progress-circle"
  */
 export function toKebabCase(str: string): string {
-	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+	return str
+		.replace(/([a-z])([A-Z])/g, "$1-$2")
+		.replace(/\s+/g, "-")
+		.toLowerCase();
 }
 
 export interface StoryMeta {
