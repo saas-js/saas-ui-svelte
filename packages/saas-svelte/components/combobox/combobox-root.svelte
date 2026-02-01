@@ -194,9 +194,9 @@ export const combobox = tv({
 		invalid: {
 			true: {
 				input: [
-					"border-border-error!",
-					"focus-visible:border-border-error!",
-					"focus-visible:outline-border-error!",
+					"border-border-error",
+					"focus-visible:border-border-error",
+					"focus-visible:outline-border-error",
 				],
 			},
 		},

@@ -19,7 +19,7 @@
 			| "basic"
 			| "sizes"
 			| "variants"
-			| "icons"
+			| "withIcon"
 			| "colours"
 			| "loading"
 			| "group";
@@ -48,7 +48,7 @@
 			</VStack>
 		{/each}
 	</HStack>
-{:else if story === "icons"}
+{:else if story === "withIcon"}
 	<HStack gap={4} class="flex-wrap">
 		<Button colour="teal" variant="solid">
 			<Icon as={Envelope} size="sm" />

@@ -46,9 +46,9 @@ export const numberInputInput = tv({
 		},
 		invalid: {
 			true: [
-				"border-border-error!",
-				"focus-visible:border-border-error!",
-				"focus-visible:outline-border-error!",
+				"border-border-error",
+				"focus-visible:border-border-error",
+				"focus-visible:outline-border-error",
 			],
 		},
 	},

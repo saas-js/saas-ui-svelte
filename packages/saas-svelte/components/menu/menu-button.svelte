@@ -72,7 +72,7 @@ const buttonSize = $derived(
 	isBreadcrumb ? (breadcrumbContext?.size ?? "sm") : (size ?? "md"),
 );
 const breadcrumbClasses =
-	"h-auto min-h-0 text-fg-muted hover:text-fg-default hover:bg-transparent gap-2! px-0 cursor-default font-normal transition-none [&]:focus-visible:outline-neutral-focus-ring [&_svg]:size-[1em]!";
+	"h-auto min-h-0 text-fg-muted hover:text-fg-default hover:bg-transparent gap-2 px-0 cursor-default font-normal transition-none [&]:focus-visible:outline-neutral-focus-ring [&_svg]:size-[1em]";
 
 // Don't apply colour variables for breadcrumb variant - it inherits from parent
 const colourVars = $derived(isBreadcrumb ? undefined : getColourStyle(colour));

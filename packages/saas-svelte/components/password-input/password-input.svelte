@@ -107,9 +107,9 @@ export const passwordInput = tv({
 		invalid: {
 			true: {
 				input: [
-					"border-border-error!",
-					"focus-visible:border-border-error!",
-					"focus-visible:outline-border-error!",
+					"border-border-error",
+					"focus-visible:border-border-error",
+					"focus-visible:outline-border-error",
 				],
 			},
 		},

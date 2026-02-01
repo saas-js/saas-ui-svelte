@@ -48,16 +48,67 @@ export const radioGroup = tv({
 			},
 		},
 		invalid: {
-			true: {
-				control:
-					"border-border-error! focus-visible:outline-border-error!",
-			},
+			true: {},
+			false: {},
 		},
 	},
+	compoundVariants: [
+		// Valid states - colour-based focus ring
+		{
+			variant: "solid",
+			invalid: false,
+			class: {
+				control:
+					"text-white border-border-emphasized focus:outline-1 focus:outline-offset-2 focus:outline-(--c-focus-ring) focus:outline-solid data-[state=checked]:bg-(--c-solid) data-[state=checked]:border-(--c-solid)",
+			},
+		},
+		{
+			variant: "subtle",
+			invalid: false,
+			class: {
+				control:
+					"text-transparent border-border-emphasized focus:outline-1 focus:outline-offset-2 focus:outline-(--c-focus-ring) focus:outline-solid data-[state=checked]:bg-(--c-subtle) data-[state=checked]:border-(--c-subtle) data-[state=checked]:text-(--c-fg)",
+			},
+		},
+		{
+			variant: "outline",
+			invalid: false,
+			class: {
+				control:
+					"text-white border-border-emphasized focus:outline-1 focus:outline-offset-2 focus:outline-(--c-focus-ring) focus:outline-solid data-[state=checked]:border-(--c-solid) data-[state=checked]:text-(--c-fg)",
+			},
+		},
+		// Invalid states - error focus ring
+		{
+			variant: "solid",
+			invalid: true,
+			class: {
+				control:
+					"text-white border-border-error focus:outline-1 focus:outline-offset-2 focus:outline-border-error focus:outline-solid data-[state=checked]:bg-border-error data-[state=checked]:border-border-error",
+			},
+		},
+		{
+			variant: "subtle",
+			invalid: true,
+			class: {
+				control:
+					"text-transparent border-border-error focus:outline-1 focus:outline-offset-2 focus:outline-border-error focus:outline-solid data-[state=checked]:bg-border-error data-[state=checked]:border-border-error data-[state=checked]:text-fg-inverted",
+			},
+		},
+		{
+			variant: "outline",
+			invalid: true,
+			class: {
+				control:
+					"text-white border-border-error focus:outline-1 focus:outline-offset-2 focus:outline-border-error focus:outline-solid data-[state=checked]:border-border-error data-[state=checked]:text-border-error",
+			},
+		},
+	],
 	defaultVariants: {
 		size: "md",
 		variant: "solid",
 		orientation: "vertical",
+		invalid: false,
 	},
 });
 

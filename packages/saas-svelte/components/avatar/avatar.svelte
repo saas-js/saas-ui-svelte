@@ -220,7 +220,7 @@ const {
 			{@render children?.()}
 		{:else}
 			<UserIcon
-				class="h-[70%]! w-[70%]!"
+				class="h-[70%] w-[70%]"
 				weight="regular"
 				aria-hidden="true"
 			/>

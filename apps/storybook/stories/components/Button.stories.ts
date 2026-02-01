@@ -157,7 +157,7 @@ export const WithIcon: Story = {
 	render: () =>
 		({
 			Component: ButtonWrapper,
-			props: { story: "icons" },
+			props: { story: "withIcon" },
 		}) as any,
 };
 

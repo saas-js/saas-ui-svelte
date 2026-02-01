@@ -223,12 +223,12 @@ const finalClass = $derived(
 
 // Original spinner sizes: xs=size-2.5, sm=size-3, md=size-3.5, lg=size-4, xl=size-5
 const spinnerClassMap: Record<NonNullable<ButtonVariants["size"]>, string> = {
-	"2xs": "size-2!",
-	xs: "size-2.5!",
-	sm: "size-3!",
-	md: "size-3.5!",
-	lg: "size-4!",
-	xl: "size-5!",
+	"2xs": "size-2",
+	xs: "size-2.5",
+	sm: "size-3",
+	md: "size-3.5",
+	lg: "size-4",
+	xl: "size-5",
 };
 
 const spinnerClass = $derived(spinnerClassMap[size]);

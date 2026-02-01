@@ -54,40 +54,6 @@ const colourVars = $derived(getColourStyle(ctx.colour));
 const isDisabled = $derived(disabled || ctx.disabled);
 
 /**
- * Returns the control styling classes based on variant.
- * Checked state is handled via data-state attribute.
- */
-function getControlClasses() {
-	const base = styles.control();
-
-	if (variant === "solid") {
-		return twMerge(
-			base,
-			"text-white border-border-emphasized",
-			"data-[state=checked]:bg-(--c-solid) data-[state=checked]:border-(--c-solid)",
-		);
-	}
-
-	if (variant === "subtle") {
-		return twMerge(
-			base,
-			"text-transparent border-border-emphasized",
-			"data-[state=checked]:bg-(--c-subtle) data-[state=checked]:border-(--c-subtle) data-[state=checked]:text-(--c-fg)",
-		);
-	}
-
-	if (variant === "outline") {
-		return twMerge(
-			base,
-			"text-white border-border-emphasized",
-			"data-[state=checked]:border-(--c-solid) data-[state=checked]:text-(--c-fg)",
-		);
-	}
-
-	return base;
-}
-
-/**
  * Returns the indicator scale class based on variant.
  * Outline uses larger scale (0.6), others use 0.4.
  */
@@ -110,9 +76,7 @@ function getIndicatorScale() {
 	{#if children}
 		{@render children()}
 	{:else}
-		<RadioGroup.ItemControl
-			class="group/control {getControlClasses()} focus:outline-1 focus:outline-offset-2 focus:outline-(--c-focus-ring) focus:outline-solid"
-		>
+		<RadioGroup.ItemControl class="group/control {styles.control()}">
 			<Box
 				as="span"
 				class={twMerge(

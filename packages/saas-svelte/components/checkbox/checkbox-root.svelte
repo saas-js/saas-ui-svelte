@@ -15,7 +15,6 @@ export const checkbox = tv({
 			"rounded",
 			"border",
 			"text-white",
-			"border-border-emphasized",
 		],
 		label: "select-none font-medium leading-5",
 		indicator: "flex items-center justify-center",
@@ -39,18 +38,9 @@ export const checkbox = tv({
 			},
 		},
 		variant: {
-			solid: {
-				control:
-					"data-[state=checked]:text-white data-[state=checked]:bg-(--c-solid) data-[state=checked]:border-(--c-solid) data-[state=indeterminate]:text-white data-[state=indeterminate]:bg-(--c-solid) data-[state=indeterminate]:border-(--c-solid)",
-			},
-			subtle: {
-				control:
-					"data-[state=checked]:bg-(--c-subtle) data-[state=checked]:border-(--c-muted) data-[state=checked]:text-(--c-fg) data-[state=indeterminate]:bg-(--c-subtle) data-[state=indeterminate]:border-(--c-muted) data-[state=indeterminate]:text-(--c-fg)",
-			},
-			outline: {
-				control:
-					"data-[state=checked]:border-(--c-solid) data-[state=checked]:text-(--c-fg) data-[state=indeterminate]:border-(--c-solid) data-[state=indeterminate]:text-(--c-fg)",
-			},
+			solid: {},
+			subtle: {},
+			outline: {},
 		},
 		disabled: {
 			true: {
@@ -58,15 +48,66 @@ export const checkbox = tv({
 			},
 		},
 		invalid: {
-			true: {
-				control:
-					"border-border-error! focus-visible:outline-border-error! data-[state=checked]:bg-border-error! data-[state=checked]:border-border-error! data-[state=checked]:text-fg-inverted! data-[state=indeterminate]:bg-border-error! data-[state=indeterminate]:border-border-error! data-[state=indeterminate]:text-fg-inverted!",
-			},
+			true: {},
+			false: {},
 		},
 	},
+	compoundVariants: [
+		// Valid states (invalid: false) - use colour-based styles with colour focus ring
+		{
+			variant: "solid",
+			invalid: false,
+			class: {
+				control:
+					"border-border-emphasized group-has-data-focus:outline-1 group-has-data-focus:outline-offset-2 group-has-data-focus:outline-(--c-focus-ring) group-has-data-focus:outline-solid data-[state=checked]:text-white data-[state=checked]:bg-(--c-solid) data-[state=checked]:border-(--c-solid) data-[state=indeterminate]:text-white data-[state=indeterminate]:bg-(--c-solid) data-[state=indeterminate]:border-(--c-solid)",
+			},
+		},
+		{
+			variant: "subtle",
+			invalid: false,
+			class: {
+				control:
+					"border-border-emphasized group-has-data-focus:outline-1 group-has-data-focus:outline-offset-2 group-has-data-focus:outline-(--c-focus-ring) group-has-data-focus:outline-solid data-[state=checked]:bg-(--c-subtle) data-[state=checked]:border-(--c-muted) data-[state=checked]:text-(--c-fg) data-[state=indeterminate]:bg-(--c-subtle) data-[state=indeterminate]:border-(--c-muted) data-[state=indeterminate]:text-(--c-fg)",
+			},
+		},
+		{
+			variant: "outline",
+			invalid: false,
+			class: {
+				control:
+					"border-border-emphasized group-has-data-focus:outline-1 group-has-data-focus:outline-offset-2 group-has-data-focus:outline-(--c-focus-ring) group-has-data-focus:outline-solid data-[state=checked]:border-(--c-solid) data-[state=checked]:text-(--c-fg) data-[state=indeterminate]:border-(--c-solid) data-[state=indeterminate]:text-(--c-fg)",
+			},
+		},
+		// Invalid states (invalid: true) - use error styles with error focus ring
+		{
+			variant: "solid",
+			invalid: true,
+			class: {
+				control:
+					"border-border-error group-has-data-focus:outline-1 group-has-data-focus:outline-offset-2 group-has-data-focus:outline-border-error group-has-data-focus:outline-solid data-[state=checked]:bg-border-error data-[state=checked]:border-border-error data-[state=checked]:text-fg-inverted data-[state=indeterminate]:bg-border-error data-[state=indeterminate]:border-border-error data-[state=indeterminate]:text-fg-inverted",
+			},
+		},
+		{
+			variant: "subtle",
+			invalid: true,
+			class: {
+				control:
+					"border-border-error group-has-data-focus:outline-1 group-has-data-focus:outline-offset-2 group-has-data-focus:outline-border-error group-has-data-focus:outline-solid data-[state=checked]:bg-border-error data-[state=checked]:border-border-error data-[state=checked]:text-fg-inverted data-[state=indeterminate]:bg-border-error data-[state=indeterminate]:border-border-error data-[state=indeterminate]:text-fg-inverted",
+			},
+		},
+		{
+			variant: "outline",
+			invalid: true,
+			class: {
+				control:
+					"border-border-error group-has-data-focus:outline-1 group-has-data-focus:outline-offset-2 group-has-data-focus:outline-border-error group-has-data-focus:outline-solid data-[state=checked]:bg-border-error data-[state=checked]:border-border-error data-[state=checked]:text-fg-inverted data-[state=indeterminate]:bg-border-error data-[state=indeterminate]:border-border-error data-[state=indeterminate]:text-fg-inverted",
+			},
+		},
+	],
 	defaultVariants: {
 		size: "md",
 		variant: "solid",
+		invalid: false,
 	},
 });
 
@@ -219,9 +260,7 @@ const checkedProps = $derived(checked !== undefined ? { checked } : {});
 	{#if children}
 		{@render children()}
 	{:else}
-		<Checkbox.Control
-			class="{classes.control()} group-has-data-focus:outline-1 group-has-data-focus:outline-offset-2 group-has-data-focus:outline-(--c-focus-ring) group-has-data-focus:outline-solid"
-		>
+		<Checkbox.Control class={classes.control()}>
 			<Checkbox.Indicator class={classes.indicator()}>
 				{#if icon}
 					{@const Icon = icon}

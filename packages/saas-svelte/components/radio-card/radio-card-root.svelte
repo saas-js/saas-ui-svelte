@@ -86,7 +86,7 @@ export const radioCard = tv({
 		},
 		invalid: {
 			true: {
-				item: "shadow-[inset_0_0_0_1px_var(--color-border-error)]!",
+				item: "shadow-[inset_0_0_0_1px_var(--color-border-error)]",
 			},
 		},
 	},

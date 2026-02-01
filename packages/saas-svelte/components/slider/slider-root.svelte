@@ -34,7 +34,7 @@ export const slider = tv({
 		label: "font-medium select-none",
 		valueText: "text-fg-muted tabular-nums",
 		markerGroup:
-			"z-1 [position:absolute!important] overflow-visible select-none pointer-events-none h-0",
+			"z-1 absolute overflow-visible select-none pointer-events-none h-0",
 		marker: "flex-col items-center gap-1.5 text-xs flex pointer-events-none absolute [translate:-50%_0%]",
 		markerDot: "rounded-full",
 	},
