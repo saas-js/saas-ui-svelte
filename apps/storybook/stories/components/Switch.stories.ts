@@ -157,7 +157,7 @@ export const ThumbLabel: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `thumbLabel` prop to add icons to the thumb.",
+				story: "Use the `thumbLabel` prop to display icons or text on the switch thumb (the moving toggle).",
 			},
 		},
 	},
@@ -172,7 +172,7 @@ export const TrackLabel: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `trackLabel` prop to add icons to the track.",
+				story: "Use the `trackLabel` prop to display icons or text on the switch track (the background container).",
 			},
 		},
 	},

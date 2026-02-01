@@ -93,7 +93,7 @@ export const Sizes: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `size` prop to change the size of the data list component.",
+				story: "Use the `size` prop on `DataList.Root` to change the size. Available sizes: `sm`, `md`, `lg`.",
 			},
 		},
 	},

@@ -307,7 +307,7 @@ export const RangeColours: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `colour` prop dynamically to indicate value ranges.",
+				story: "Use the `colour` prop dynamically based on `value` to indicate different progress ranges (e.g., red for low, green for high).",
 			},
 		},
 	},

@@ -506,11 +506,11 @@ export const DisabledItem: Story = {
 		}) as any,
 };
 
-export const InputGroup: Story = {
+export const StartIcon: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Combobox with a start icon.",
+				story: "Use the `startIcon` prop to display an icon at the start of the input.",
 			},
 		},
 	},
@@ -525,7 +525,7 @@ export const Invalid: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Combobox in an invalid state.",
+				story: "Use the `invalid` prop to display validation error styling.",
 			},
 		},
 	},

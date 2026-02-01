@@ -98,7 +98,7 @@ export const Variants: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `variant` prop to change the visual style of the input.",
+				story: "Use the `variant` prop to change the visual style of the input. Available variants: `outline`, `subtle`, `flushed`.",
 			},
 		},
 	},
@@ -113,7 +113,7 @@ export const Sizes: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `size` prop to change the size of the input.",
+				story: "Use the `size` prop to change the size of the input. Available sizes: `xs`, `sm`, `md`, `lg`.",
 			},
 		},
 	},

@@ -97,7 +97,7 @@ export const ErrorText: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Field in an `invalid` state with error text.",
+				story: "Use the `Field.ErrorText` component with the `invalid` prop on `Field.Root` to display validation errors.",
 			},
 		},
 	},
@@ -112,7 +112,7 @@ export const Disabled: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Field in a `disabled` state.",
+				story: "Use the `disabled` prop on `Field.Root` to disable all contained inputs.",
 			},
 		},
 	},

@@ -291,7 +291,7 @@ export const Stacking: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Control the stacking order of avatars in a group with `first-on-top` or `last-on-top` arrangements.",
+				story: "Use the `stacking` prop with `first-on-top` or `last-on-top` to control avatar stacking order.",
 			},
 		},
 	},

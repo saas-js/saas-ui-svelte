@@ -169,7 +169,7 @@ export const Weights: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `weight` prop to change the icon weight (`Phosphor` icons).",
+				story: "Use the `weight` prop to change the icon weight (Phosphor icons). Available weights: `thin`, `light`, `regular`, `bold`, `fill`, `duotone`.",
 			},
 		},
 	},

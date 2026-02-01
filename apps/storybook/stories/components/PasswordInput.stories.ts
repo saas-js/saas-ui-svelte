@@ -168,7 +168,7 @@ export const Invalid: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Invalid password input state for displaying validation errors.",
+				story: "Use the `invalid` prop to display validation error styling.",
 			},
 		},
 	},

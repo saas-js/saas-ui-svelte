@@ -129,7 +129,7 @@ export const TrackColour: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `trackColour` prop to set a different track colour.",
+				story: "Use the `trackColour` prop to change the colour of the spinner track (the non-spinning background).",
 			},
 		},
 	},
@@ -140,11 +140,11 @@ export const TrackColour: Story = {
 		}) as any,
 };
 
-export const CustomSpeed: Story = {
+export const AnimationDuration: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `animationDuration` prop to change the speed.",
+				story: "Use the `animationDuration` prop to control the rotation speed of the spinner animation.",
 			},
 		},
 	},
@@ -155,11 +155,11 @@ export const CustomSpeed: Story = {
 		}) as any,
 };
 
-export const Thickness: Story = {
+export const BorderWidth: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Use the `borderWidth` prop to change the thickness.",
+				story: "Use the `borderWidth` prop to adjust the stroke width of the spinner ring.",
 			},
 		},
 	},

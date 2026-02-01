@@ -169,7 +169,7 @@ export const CircleSizes: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "`SkeletonCircle` supports various sizes.",
+				story: "Use the `size` prop on `SkeletonCircle` to control the circle dimensions.",
 			},
 		},
 	},
@@ -184,7 +184,7 @@ export const TextLines: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "`SkeletonText` supports configurable number of lines.",
+				story: "Use the `lines` prop on `SkeletonText` to control the number of text lines.",
 			},
 		},
 	},

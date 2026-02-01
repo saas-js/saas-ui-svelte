@@ -391,7 +391,7 @@ export const Label: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Add a label to the slider.",
+				story: "Use the `Slider.Label` component to add a label to the slider.",
 			},
 		},
 	},
@@ -436,7 +436,7 @@ export const Marks: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Add markers to indicate specific values.",
+				story: "Use the `Slider.MarkerGroup` and `Slider.Marker` components to display value markers.",
 			},
 		},
 	},
