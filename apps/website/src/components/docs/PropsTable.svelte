@@ -39,37 +39,39 @@ function getDefault(propDef: PropDef): string | null {
 }
 </script>
 
-<Table.Root size="sm">
-	<Table.Header>
-		<Table.Row>
-			<Table.ColumnHeader>Prop</Table.ColumnHeader>
-			<Table.ColumnHeader>Type</Table.ColumnHeader>
-			<Table.ColumnHeader>Default</Table.ColumnHeader>
-			<Table.ColumnHeader>Description</Table.ColumnHeader>
-		</Table.Row>
-	</Table.Header>
-	<Table.Body>
-		{#each Object.entries(props) as [prop, propDef]}
+<Table.ScrollArea>
+	<Table.Root size="sm">
+		<Table.Header>
 			<Table.Row>
-				<Table.Cell>
-					<Code size="xs" colour="indigo">{prop}</Code>
-				</Table.Cell>
-				<Table.Cell>
-					<Code size="xs" colour="gray">{getType(propDef)}</Code>
-				</Table.Cell>
-				<Table.Cell>
-					{#if getDefault(propDef)}
-						<Code size="xs" colour="gray"
-							>{getDefault(propDef)}</Code
-						>
-					{:else}
-						-
-					{/if}
-				</Table.Cell>
-				<Table.Cell class="text-fg-muted">
-					{propDef.description || "-"}
-				</Table.Cell>
+				<Table.ColumnHeader>Prop</Table.ColumnHeader>
+				<Table.ColumnHeader>Type</Table.ColumnHeader>
+				<Table.ColumnHeader>Default</Table.ColumnHeader>
+				<Table.ColumnHeader>Description</Table.ColumnHeader>
 			</Table.Row>
-		{/each}
-	</Table.Body>
-</Table.Root>
+		</Table.Header>
+		<Table.Body>
+			{#each Object.entries(props) as [prop, propDef]}
+				<Table.Row>
+					<Table.Cell>
+						<Code size="xs" colour="indigo">{prop}</Code>
+					</Table.Cell>
+					<Table.Cell>
+						<Code size="xs" colour="gray">{getType(propDef)}</Code>
+					</Table.Cell>
+					<Table.Cell>
+						{#if getDefault(propDef)}
+							<Code size="xs" colour="gray"
+								>{getDefault(propDef)}</Code
+							>
+						{:else}
+							-
+						{/if}
+					</Table.Cell>
+					<Table.Cell class="text-fg-muted">
+						{propDef.description || "-"}
+					</Table.Cell>
+				</Table.Row>
+			{/each}
+		</Table.Body>
+	</Table.Root>
+</Table.ScrollArea>
