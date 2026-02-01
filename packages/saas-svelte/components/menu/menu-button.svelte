@@ -6,6 +6,7 @@ import type { Snippet } from "svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import type { BreadcrumbVariants } from "../breadcrumb/breadcrumb-root.svelte";
 
 interface BreadcrumbContext {
@@ -78,9 +79,7 @@ const breadcrumbClasses =
 const colourVars = $derived(isBreadcrumb ? undefined : getColourStyle(colour));
 const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 const finalClassName = $derived(
-	isBreadcrumb
-		? [breadcrumbClasses, className].filter(Boolean).join(" ")
-		: className,
+	twMerge(isBreadcrumb ? breadcrumbClasses : undefined, className),
 );
 </script>
 
@@ -90,11 +89,13 @@ const finalClassName = $derived(
 	</Menu.Trigger>
 {:else}
 	<Menu.Trigger
-		class={button({
-			variant: buttonVariant,
-			size: buttonSize,
-			class: finalClassName,
-		})}
+		class={twMerge(
+			button({
+				variant: buttonVariant,
+				size: buttonSize,
+			}),
+			finalClassName,
+		)}
 		style={finalStyle}
 		{...rest}
 	>

@@ -31,6 +31,7 @@ export type CircleVariants = VariantProps<typeof circle>;
 
 <script lang="ts">
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 type Props = HTMLAttributes<HTMLElement> & {
 	/**
@@ -62,9 +63,7 @@ let {
 }: Props = $props();
 
 const colourVars = $derived(getColourStyle(colour));
-const finalClass = $derived(
-	circle({ size, variant, class: className as string }),
-);
+const finalClass = $derived(twMerge(circle({ size, variant }), className as string));
 const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>
 

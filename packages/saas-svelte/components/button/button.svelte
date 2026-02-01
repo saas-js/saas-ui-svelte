@@ -107,6 +107,23 @@ export const button = tv({
 });
 
 export type ButtonVariants = VariantProps<typeof button>;
+
+export const buttonSpinner = tv({
+	base: "",
+	variants: {
+		size: {
+			"2xs": "size-2",
+			xs: "size-2.5",
+			sm: "size-3",
+			md: "size-3.5",
+			lg: "size-4",
+			xl: "size-5",
+		},
+	},
+	defaultVariants: {
+		size: "md",
+	},
+});
 </script>
 
 <script lang="ts">
@@ -217,21 +234,11 @@ const finalClass = $derived(
 		variant,
 		size,
 		icon,
-		class: twMerge(className, variant === "glass" && "group"),
+		class: twMerge(variant === "glass" && "group", className),
 	}),
 );
 
-// Original spinner sizes: xs=size-2.5, sm=size-3, md=size-3.5, lg=size-4, xl=size-5
-const spinnerClassMap: Record<NonNullable<ButtonVariants["size"]>, string> = {
-	"2xs": "size-2",
-	xs: "size-2.5",
-	sm: "size-3",
-	md: "size-3.5",
-	lg: "size-4",
-	xl: "size-5",
-};
-
-const spinnerClass = $derived(spinnerClassMap[size]);
+const spinnerClass = $derived(buttonSpinner({ size }));
 </script>
 
 {#snippet buttonContent()}

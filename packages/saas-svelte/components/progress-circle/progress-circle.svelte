@@ -58,9 +58,20 @@ export const progressCircle = tv({
 				valueText: "text-sm",
 			},
 		},
+		/**
+		 * Whether the progress is in indeterminate state.
+		 * @default false
+		 */
+		indeterminate: {
+			true: {
+				circle: "animate-spin",
+			},
+			false: {},
+		},
 	},
 	defaultVariants: {
 		size: "md",
+		indeterminate: false,
 	},
 });
 
@@ -142,8 +153,6 @@ let {
 const colourStyle = $derived(getColourStyle(colour));
 const finalStyle = $derived([colourStyle, style].filter(Boolean).join("; "));
 
-const styles = $derived(progressCircle({ size }));
-
 // Size mappings for SVG calculations
 const sizeMap = {
 	xs: { size: 16, strokeWidth: 3 },
@@ -163,6 +172,7 @@ const center = $derived(currentSize.size / 2);
 
 // Calculate the dash offset based on value
 const isIndeterminate = $derived(value === null);
+const styles = $derived(progressCircle({ size, indeterminate: isIndeterminate }));
 const normalizedValue = $derived(
 	value === null ? 0 : Math.min(Math.max((value - min) / (max - min), 0), 1),
 );
@@ -194,7 +204,7 @@ const ariaLabel = $derived(
 	{...restProps}
 >
 	<svg
-		class={twMerge(styles.circle(), isIndeterminate && "animate-spin")}
+		class={styles.circle()}
 		viewBox="0 0 {currentSize.size} {currentSize.size}"
 		style="shape-rendering: geometricPrecision;"
 	>

@@ -34,6 +34,7 @@ export type FloatVariants = VariantProps<typeof float>;
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	/**
@@ -123,7 +124,7 @@ const offsetStyles = $derived.by(() => {
 		.join(" ");
 });
 
-const finalClass = $derived(float({ placement, class: className as string }));
+const finalClass = $derived(twMerge(float({ placement }), className as string));
 
 // Merge the calculated offset styles with any user-provided styles
 const finalStyle = $derived.by(() => {

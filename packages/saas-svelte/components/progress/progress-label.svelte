@@ -1,3 +1,20 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const progressLabel = tv({
+	base: "",
+	variants: {
+		hasInfo: {
+			true: "items-center gap-1",
+			false: "",
+		},
+	},
+	defaultVariants: {
+		hasInfo: false,
+	},
+});
+</script>
+
 <script lang="ts">
 import { Progress } from "@ark-ui/svelte/progress";
 import { getContext, type Snippet } from "svelte";
@@ -30,7 +47,7 @@ const styles = $derived(ctx.styles);
 </script>
 
 <Progress.Label
-	class={twMerge(styles.label(), info && "items-center gap-1", className)}
+	class={twMerge(styles.label(), progressLabel({ hasInfo: !!info }), className)}
 	{...restProps}
 >
 	{@render children?.()}

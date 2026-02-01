@@ -43,6 +43,7 @@ export type BadgeVariants = VariantProps<typeof badge>;
 import type { Snippet } from "svelte";
 import { getColourStyle } from "$saas/utils/colours";
 import { Box } from "$saas/layout/box";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
 	/**
@@ -83,7 +84,7 @@ let {
 const colourStyle = $derived(getColourStyle(colour));
 const finalStyle = $derived([colourStyle, style].filter(Boolean).join("; "));
 
-const finalClass = $derived(badge({ variant, size, class: className }));
+const finalClass = $derived(twMerge(badge({ variant, size }), className));
 </script>
 
 <Box as="span" class={finalClass} style={finalStyle} {...restProps}>

@@ -42,6 +42,8 @@ export type LinkVariants = VariantProps<typeof link>;
 </script>
 
 <script lang="ts">
+import { twMerge } from "tailwind-merge";
+
 interface Props extends HTMLAnchorAttributes {
 	/**
 	 * The visual style of the link.
@@ -70,7 +72,7 @@ let {
 
 const colourVars = $derived(getColourStyle(colour));
 
-const finalClass = $derived(link({ variant, class: className as string }));
+const finalClass = $derived(twMerge(link({ variant }), className as string));
 
 const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>

@@ -40,6 +40,7 @@ export type HeadingVariants = VariantProps<typeof heading>;
 
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends Omit<HTMLAttributes<HTMLElement>, "class"> {
 	/**
@@ -82,11 +83,7 @@ const finalWeight = $derived(fontWeight || weight);
 
 <svelte:element
 	this={as}
-	class={heading({
-		size,
-		weight: finalWeight,
-		class: className,
-	})}
+	class={twMerge(heading({ size, weight: finalWeight }), className)}
 	{...rest}
 >
 	{@render children?.()}

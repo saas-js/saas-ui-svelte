@@ -180,7 +180,7 @@ const ctx: ComboboxContext = {
 		return variant ?? "outline";
 	},
 	get styles() {
-		return combobox({ size, variant, invalid });
+		return combobox({ size, variant, invalid, hasStartElement: !!(startIcon || startElement) });
 	},
 	get colourStyle() {
 		return getColourStyle(colour);
@@ -356,7 +356,7 @@ function getItemProps(item: CollectionItem) {
 		{/if}
 		<Combobox.Input
 			placeholder={placeholder}
-			class={twMerge(ctx.styles.input(), (startIcon || startElement) && "pl-8")}
+			class={ctx.styles.input()}
 			style={ctx.colourStyle}
 		/>
 		<Flex class={ctx.styles.indicatorGroup()}>

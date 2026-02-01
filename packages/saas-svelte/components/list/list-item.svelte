@@ -35,6 +35,7 @@ export type ListItemVariants = VariantProps<typeof listItem>;
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import { LIST_CTX, type ListContext } from "./list-root.svelte";
 
 interface Props extends HTMLAttributes<HTMLLIElement> {
@@ -55,6 +56,6 @@ const variant = $derived(ctx?.variant ?? "marker");
 const align = $derived(ctx?.align ?? "start");
 </script>
 
-<li class={listItem({ variant, align, class: className })} {...restProps}>
+<li class={twMerge(listItem({ variant, align }), className)} {...restProps}>
 	{@render children?.()}
 </li>

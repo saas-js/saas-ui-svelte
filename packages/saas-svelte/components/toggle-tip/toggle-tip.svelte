@@ -1,13 +1,26 @@
 <script module lang="ts">
-import { type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 import {
 	popoverContentStyles,
 	type PopoverContentVariants,
 } from "$saas/components/shared/popover-content.svelte";
 
-export type ToggleTipVariants = {
-	size?: "xs" | "sm" | "md" | "lg";
-};
+export const toggleTipContent = tv({
+	base: "",
+	variants: {
+		size: {
+			xs: "text-2xs leading-2xs px-1.5 py-0.5",
+			sm: "text-xs leading-xs px-2 py-1",
+			md: "text-sm leading-sm px-2.5 py-1",
+			lg: "text-md leading-md px-3 py-1.5",
+		},
+	},
+	defaultVariants: {
+		size: "md",
+	},
+});
+
+export type ToggleTipVariants = VariantProps<typeof toggleTipContent>;
 </script>
 
 <script lang="ts">
@@ -157,14 +170,7 @@ const styles = $derived(
 	}),
 );
 
-const sizeClasses = {
-	xs: "text-2xs leading-2xs px-1.5 py-0.5",
-	sm: "text-xs leading-xs px-2 py-1",
-	md: "text-sm leading-sm px-2.5 py-1",
-	lg: "text-md leading-md px-3 py-1.5",
-} as const;
-
-const sizeClass = $derived(sizeClasses[size || "md"]);
+const sizeClass = $derived(toggleTipContent({ size }));
 </script>
 
 <ArkPopover.Root

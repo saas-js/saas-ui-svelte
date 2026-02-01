@@ -75,6 +75,7 @@ import type { Snippet } from "svelte";
 import type { ColourName } from "$saas/utils/colours";
 import { getColourStyle } from "$saas/utils/colours";
 import { Box } from "$saas/layout/box";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	/**
@@ -127,13 +128,7 @@ let {
 const colourStyle = $derived(getColourStyle(colour));
 const finalStyle = $derived([colourStyle, style].filter(Boolean).join("; "));
 
-const finalClass = $derived(
-	kbd({
-		variant,
-		size,
-		class: className,
-	}),
-);
+const finalClass = $derived(twMerge(kbd({ variant, size }), className));
 
 const keyElements = $derived(
 	keys.map((key) => keySymbols[key.toLowerCase()] || key),

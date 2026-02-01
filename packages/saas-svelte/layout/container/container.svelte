@@ -39,6 +39,7 @@ export type ContainerVariants = VariantProps<typeof container>;
 
 <script lang="ts">
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
 	/**
@@ -81,12 +82,14 @@ let {
 
 // When fluid is true, maxW is ignored (fluid takes precedence)
 const finalClass = $derived(
-	container({
-		maxW: fluid ? undefined : maxW,
-		fluid,
-		centerContent,
-		class: className,
-	}),
+	twMerge(
+		container({
+			maxW: fluid ? undefined : maxW,
+			fluid,
+			centerContent,
+		}),
+		className,
+	),
 );
 </script>
 

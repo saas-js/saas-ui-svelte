@@ -200,10 +200,17 @@ export const combobox = tv({
 				],
 			},
 		},
+		hasStartElement: {
+			true: {
+				input: "pl-8",
+			},
+			false: {},
+		},
 	},
 	defaultVariants: {
 		size: "md",
 		variant: "outline",
+		hasStartElement: false,
 	},
 });
 

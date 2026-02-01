@@ -31,6 +31,7 @@ export type BlockquoteVariants = VariantProps<typeof blockquote>;
 import type { Snippet, Component } from "svelte";
 import { Icon } from "$saas/components/icon";
 import { Centre } from "$saas/layout/centre";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends Omit<HTMLAttributes<HTMLElement>, "class"> {
 	/**
@@ -93,7 +94,7 @@ let {
 }: Props = $props();
 
 const colourVars = $derived(getColourStyle(colour));
-const finalClass = $derived(blockquote({ variant, justify, class: className }));
+const finalClass = $derived(twMerge(blockquote({ variant, justify }), className));
 const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
 </script>
 

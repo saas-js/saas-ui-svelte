@@ -1,3 +1,20 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const radioCardItem = tv({
+	base: "group data-[state=checked]:z-1 data-[state=checked]:shadow-[inset_0_0_0_2px_var(--c-solid)]",
+	variants: {
+		disabled: {
+			true: "cursor-not-allowed",
+			false: "",
+		},
+	},
+	defaultVariants: {
+		disabled: false,
+	},
+});
+</script>
+
 <script lang="ts">
 import { RadioGroup } from "@ark-ui/svelte/radio-group";
 import { getContext, type Snippet, type Component } from "svelte";
@@ -92,10 +109,8 @@ function getControlClasses() {
 	value={value}
 	disabled={isDisabled}
 	class={twMerge(
-		"group",
 		styles.item(),
-		"data-[state=checked]:z-1 data-[state=checked]:shadow-[inset_0_0_0_2px_var(--c-solid)]",
-		isDisabled && "cursor-not-allowed",
+		radioCardItem({ disabled: isDisabled }),
 		className,
 	)}
 	style={colourVars}

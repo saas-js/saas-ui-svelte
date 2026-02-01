@@ -41,6 +41,7 @@ export type SpinnerVariants = VariantProps<typeof spinner>;
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
 	/**
@@ -101,7 +102,7 @@ const trackBorderStyle = $derived(
 <span
 	role="status"
 	aria-label={label}
-	class={spinner({ size, class: className })}
+	class={twMerge(spinner({ size }), className)}
 	style="{colourStyle}; color: var(--c-fg); animation-duration: {animationDuration}; border-width: {borderWidth}; {trackBorderStyle}"
 	{...restProps}
 ></span>

@@ -19,6 +19,7 @@ export type CentreVariants = VariantProps<typeof centre>;
 
 <script lang="ts">
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
 	/**
@@ -48,6 +49,6 @@ let {
 }: Props = $props();
 </script>
 
-<div class={centre({ inline, class: className })} {...restProps}>
+<div class={twMerge(centre({ inline }), className)} {...restProps}>
 	{@render children?.()}
 </div>

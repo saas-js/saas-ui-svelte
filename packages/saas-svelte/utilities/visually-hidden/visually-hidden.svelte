@@ -1,5 +1,14 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const visuallyHidden = tv({
+	base: "sr-only",
+});
+</script>
+
 <script lang="ts">
 import { Box } from "$saas/layout/box";
+import { twMerge } from "tailwind-merge";
 import type { Snippet } from "svelte";
 
 interface Props {
@@ -16,6 +25,6 @@ interface Props {
 let { children, class: className }: Props = $props();
 </script>
 
-<Box as="span" class={className ? `sr-only ${className}` : "sr-only"}>
+<Box as="span" class={twMerge(visuallyHidden(), className)}>
 	{@render children?.()}
 </Box>

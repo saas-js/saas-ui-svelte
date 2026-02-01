@@ -84,6 +84,23 @@ export const closeButton = tv({
 });
 
 export type CloseButtonVariants = VariantProps<typeof closeButton>;
+
+export const closeButtonIcon = tv({
+	base: "text-current inline-block shrink-0",
+	variants: {
+		size: {
+			"2xs": "size-3",
+			xs: "size-3.5",
+			sm: "size-4",
+			md: "size-4",
+			lg: "size-4",
+			xl: "size-5",
+		},
+	},
+	defaultVariants: {
+		size: "md",
+	},
+});
 </script>
 
 <script lang="ts">
@@ -141,18 +158,7 @@ const finalClass = $derived(
 	),
 );
 
-const iconSizeClass = {
-	"2xs": "size-3",
-	xs: "size-3.5",
-	sm: "size-4",
-	md: "size-4",
-	lg: "size-4",
-	xl: "size-5",
-} as const;
-
-const iconClass = $derived(
-	`text-current inline-block shrink-0 ${iconSizeClass[size || "md"]}`,
-);
+const iconClass = $derived(closeButtonIcon({ size }));
 </script>
 
 <button

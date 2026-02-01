@@ -1,6 +1,7 @@
 <script lang="ts">
 import { tv, type VariantProps } from "tailwind-variants";
 import type { HTMLAttributes } from "svelte/elements";
+import { twMerge } from "tailwind-merge";
 
 const divider = tv({
 	base: "shrink-0 self-stretch border-border-default",
@@ -40,6 +41,6 @@ let {
 <div
 	role="separator"
 	aria-orientation={orientation}
-	class={divider({ orientation, class: className })}
+	class={twMerge(divider({ orientation }), className)}
 	{...restProps}
 ></div>

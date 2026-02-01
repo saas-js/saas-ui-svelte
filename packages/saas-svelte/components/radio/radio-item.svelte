@@ -1,3 +1,20 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const radioItem = tv({
+	base: "",
+	variants: {
+		disabled: {
+			true: "cursor-not-allowed",
+			false: "",
+		},
+	},
+	defaultVariants: {
+		disabled: false,
+	},
+});
+</script>
+
 <script lang="ts">
 import { RadioGroup } from "@ark-ui/svelte/radio-group";
 import { getContext, type Snippet } from "svelte";
@@ -67,7 +84,7 @@ function getIndicatorScale() {
 	disabled={isDisabled}
 	class={twMerge(
 		styles.item(),
-		isDisabled && "cursor-not-allowed",
+		radioItem({ disabled: isDisabled }),
 		className,
 	)}
 	style={colourVars}

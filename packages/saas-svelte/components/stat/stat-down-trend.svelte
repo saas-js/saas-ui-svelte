@@ -5,6 +5,7 @@ import { STAT_CTX, type StatContext } from "./stat-root.svelte";
 import { getColourStyle, type ColourName } from "$saas/utils/colours";
 import { ArrowDownIcon } from "phosphor-svelte";
 import { Text } from "$saas/typography/text";
+import { statTrend } from "./stat-up-trend.svelte";
 
 interface Props {
 	/**
@@ -39,17 +40,11 @@ let {
 const ctx = getContext<StatContext>(STAT_CTX);
 const styles = $derived(ctx.styles);
 const colourStyle = $derived(getColourStyle(colour));
-
-const variantClasses = $derived(
-	variant === "subtle"
-		? "bg-(--c-muted) text-(--c-fg) px-1.5"
-		: "text-(--c-fg) px-0",
-);
 </script>
 
 <div
 	role="definition"
-	class={twMerge(styles.trend(), variantClasses, className)}
+	class={twMerge(styles.trend(), statTrend({ variant }), className)}
 	style={colourStyle}
 	{...restProps}
 >

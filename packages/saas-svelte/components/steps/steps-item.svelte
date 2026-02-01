@@ -1,3 +1,54 @@
+<script module lang="ts">
+import { tv, type VariantProps } from "tailwind-variants";
+
+export const stepIndicator = tv({
+	base: "",
+	variants: {
+		variant: {
+			subtle: "bg-bg-muted text-fg-muted border-0",
+			solid: "border-border-default bg-bg-default text-fg-muted border-2",
+		},
+		state: {
+			incomplete: "",
+			current: "",
+			completed: "",
+		},
+	},
+	compoundVariants: [
+		// Subtle + current
+		{
+			variant: "subtle",
+			state: "current",
+			class: "text-fg-default",
+		},
+		// Subtle + completed
+		{
+			variant: "subtle",
+			state: "completed",
+			class: "bg-bg-emphasized text-fg-default",
+		},
+		// Solid + current
+		{
+			variant: "solid",
+			state: "current",
+			class: "bg-bg-muted text-fg-default border-(--c-solid)",
+		},
+		// Solid + completed
+		{
+			variant: "solid",
+			state: "completed",
+			class: "border-0 bg-(--c-solid) text-(--c-contrast)",
+		},
+	],
+	defaultVariants: {
+		variant: "solid",
+		state: "incomplete",
+	},
+});
+
+export type StepIndicatorVariants = VariantProps<typeof stepIndicator>;
+</script>
+
 <script lang="ts">
 import { Steps } from "@ark-ui/svelte/steps";
 import { getContext, type Snippet, type Component } from "svelte";
@@ -64,26 +115,15 @@ function handlePrefetch() {
 		<Steps.ItemContext>
 			{#snippet render(itemCtx)}
 				{@const state = itemCtx()}
-				{@const isSubtle = ctx?.variant === "subtle"}
+				{@const indicatorState = state.completed ? "completed" : state.current ? "current" : "incomplete"}
 				<StepsTrigger index={index} aria-label={ariaLabel ?? title}>
 					<Steps.Indicator
 						class={twMerge(
 							ctx?.styles?.indicator(),
-							// Subtle variant base: no border, muted bg
-							isSubtle && "bg-bg-muted text-fg-muted border-0",
-							isSubtle && state.current && "text-fg-default",
-							isSubtle &&
-								state.completed &&
-								"bg-bg-emphasized text-fg-default",
-							// Solid variant base: has border
-							!isSubtle &&
-								"border-border-default bg-bg-default text-fg-muted border-2",
-							!isSubtle &&
-								state.current &&
-								"bg-bg-muted text-fg-default border-(--c-solid)",
-							!isSubtle &&
-								state.completed &&
-								"border-0 bg-(--c-solid) text-(--c-contrast)",
+							stepIndicator({
+								variant: ctx?.variant === "subtle" ? "subtle" : "solid",
+								state: indicatorState,
+							}),
 						)}
 					>
 						{#if state.completed}

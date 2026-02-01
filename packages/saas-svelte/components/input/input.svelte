@@ -60,7 +60,7 @@ export type InputVariants = VariantProps<typeof input>;
 
 <script lang="ts">
 import type { HTMLInputAttributes } from "svelte/elements";
-import type { ClassNameValue } from "tailwind-merge";
+import { twMerge, type ClassNameValue } from "tailwind-merge";
 import { getContext } from "svelte";
 import { FIELD_CTX, type FieldContext } from "$saas/components/field/types";
 
@@ -129,12 +129,14 @@ const isReadOnly = $derived(restProps.readonly || fieldState.readOnly || false);
 const id = $derived(restProps.id || fieldState.id);
 
 const classes = $derived(
-	input({
-		variant,
-		size,
-		invalid: isInvalid,
-		class: className,
-	}) as string,
+	twMerge(
+		input({
+			variant,
+			size,
+			invalid: isInvalid,
+		}),
+		className,
+	),
 );
 
 const styles = $derived([colourVars, style].filter(Boolean).join("; "));

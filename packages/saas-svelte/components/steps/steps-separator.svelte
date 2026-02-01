@@ -1,3 +1,42 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const stepsSeparator = tv({
+	base: "bg-border-default",
+	variants: {
+		variant: {
+			subtle: "",
+			solid: "",
+		},
+		completed: {
+			true: "",
+			false: "",
+		},
+		last: {
+			true: "hidden",
+			false: "",
+		},
+	},
+	compoundVariants: [
+		{
+			variant: "subtle",
+			completed: true,
+			class: "bg-bg-emphasized",
+		},
+		{
+			variant: "solid",
+			completed: true,
+			class: "bg-(--c-solid)",
+		},
+	],
+	defaultVariants: {
+		variant: "solid",
+		completed: false,
+		last: false,
+	},
+});
+</script>
+
 <script lang="ts">
 import { Steps } from "@ark-ui/svelte/steps";
 import { getContext } from "svelte";
@@ -34,19 +73,14 @@ let {
 
 const ctx = getContext<StepsContext>(STEPS_CTX);
 const baseClass = $derived(ctx?.styles?.separator());
-const isSubtle = $derived(ctx?.variant === "subtle");
+const variant = $derived(ctx?.variant === "subtle" ? "subtle" : "solid");
 </script>
 
 <Steps.Separator
 	class={twMerge(
 		baseClass,
-		"bg-border-default",
-		// Subtle variant: completed separator gets emphasized bg
-		isSubtle && completed && "bg-bg-emphasized",
-		// Solid variant: completed separator gets accent solid color
-		!isSubtle && completed && "bg-(--c-solid)",
-		last && "hidden",
-		className as string,
+		stepsSeparator({ variant, completed, last }),
+		className,
 	)}
 	{...restProps}
 />

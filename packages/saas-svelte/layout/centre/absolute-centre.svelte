@@ -20,6 +20,7 @@ export type AbsoluteCentreVariants = VariantProps<typeof absoluteCentre>;
 
 <script lang="ts">
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
 	/**
@@ -52,6 +53,6 @@ let {
 }: Props = $props();
 </script>
 
-<div class={absoluteCentre({ axis, class: className })} {...restProps}>
+<div class={twMerge(absoluteCentre({ axis }), className)} {...restProps}>
 	{@render children?.()}
 </div>

@@ -1,3 +1,20 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const statTrend = tv({
+	base: "",
+	variants: {
+		variant: {
+			subtle: "bg-(--c-muted) text-(--c-fg) px-1.5",
+			plain: "text-(--c-fg) px-0",
+		},
+	},
+	defaultVariants: {
+		variant: "subtle",
+	},
+});
+</script>
+
 <script lang="ts">
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
@@ -40,16 +57,11 @@ const ctx = getContext<StatContext>(STAT_CTX);
 const styles = $derived(ctx.styles);
 const colourStyle = $derived(getColourStyle(colour));
 
-const variantClasses = $derived(
-	variant === "subtle"
-		? "bg-(--c-muted) text-(--c-fg) px-1.5"
-		: "text-(--c-fg) px-0",
-);
 </script>
 
 <div
 	role="definition"
-	class={twMerge(styles.trend(), variantClasses, className)}
+	class={twMerge(styles.trend(), statTrend({ variant }), className)}
 	style={colourStyle}
 	{...restProps}
 >

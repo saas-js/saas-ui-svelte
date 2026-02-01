@@ -1,3 +1,20 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const segmentGroupItem = tv({
+	base: "data-[state=checked]:before:opacity-0 [&+[data-state=checked]]:before:opacity-0",
+	variants: {
+		disabled: {
+			true: "cursor-not-allowed",
+			false: "",
+		},
+	},
+	defaultVariants: {
+		disabled: false,
+	},
+});
+</script>
+
 <script lang="ts">
 import { SegmentGroup } from "@ark-ui/svelte/segment-group";
 import { getContext, type Snippet, type Component } from "svelte";
@@ -75,9 +92,7 @@ const iconSize = $derived(iconSizeMap[ctx.size ?? "md"]);
 	disabled={isDisabled}
 	class={twMerge(
 		styles.item(),
-		"data-[state=checked]:before:opacity-0",
-		"[&+[data-state=checked]]:before:opacity-0",
-		isDisabled && "cursor-not-allowed",
+		segmentGroupItem({ disabled: isDisabled }),
 		className,
 	)}
 	style={colourVars}

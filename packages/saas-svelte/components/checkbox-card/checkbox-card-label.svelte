@@ -1,3 +1,20 @@
+<script module lang="ts">
+import { tv } from "tailwind-variants";
+
+export const checkboxCardLabel = tv({
+	base: "font-medium",
+	variants: {
+		disabled: {
+			true: "opacity-50",
+			false: "",
+		},
+	},
+	defaultVariants: {
+		disabled: false,
+	},
+});
+</script>
+
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
 import type { Snippet } from "svelte";
@@ -28,7 +45,7 @@ const ctx = getContext<{
 }>(CHECKBOX_CARD_CTX);
 const disabled = $derived(ctx?.disabled ?? false);
 
-const finalClass = $derived(twMerge("font-medium disabled:opacity-50", disabled && "opacity-50", className as string));
+const finalClass = $derived(twMerge(checkboxCardLabel({ disabled }), className));
 </script>
 
 <HStack as="span" gap={2} class={finalClass} {...restProps}>

@@ -28,6 +28,7 @@ import type { Component, Snippet } from "svelte";
 import type { SVGAttributes } from "svelte/elements";
 import { type ColourName } from "$saas/utils/colours";
 import tailwindColors from "tailwindcss/colors";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends SVGAttributes<SVGElement> {
 	/**
@@ -96,7 +97,7 @@ const finalStyle = $derived(
 		.filter(Boolean)
 		.join("; "),
 );
-const computedClasses = $derived(icon({ size, class: className as string }));
+const computedClasses = $derived(twMerge(icon({ size }), className as string));
 </script>
 
 {#if IconComponent}

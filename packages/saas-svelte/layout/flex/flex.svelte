@@ -45,6 +45,7 @@ export type FlexVariants = VariantProps<typeof flex>;
 
 <script lang="ts">
 import type { Snippet } from "svelte";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
 	/**
@@ -122,14 +123,17 @@ const gapClass = $derived.by(() => {
 });
 
 const finalClass = $derived(
-	flex({
-		inline,
-		direction,
-		align,
-		justify,
-		wrap,
-		class: [gapClass, className].filter(Boolean).join(" "),
-	}),
+	twMerge(
+		flex({
+			inline,
+			direction,
+			align,
+			justify,
+			wrap,
+		}),
+		gapClass,
+		className,
+	),
 );
 
 // Build style string for properties that need exact values

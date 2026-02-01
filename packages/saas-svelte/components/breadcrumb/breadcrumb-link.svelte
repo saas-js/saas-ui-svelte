@@ -44,6 +44,7 @@ import type {
 } from "svelte/elements";
 import type { Snippet } from "svelte";
 import { getContext } from "svelte";
+import { twMerge } from "tailwind-merge";
 import {
 	BREADCRUMB_CTX,
 	type BreadcrumbContext,
@@ -84,7 +85,7 @@ const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
 const styles = $derived(context?.styles);
 const variant = $derived(context?.variant ?? "plain");
 
-const linkClasses = $derived(breadcrumbLink({ variant, class: className }));
+const linkClasses = $derived(twMerge(breadcrumbLink({ variant }), className));
 </script>
 
 <li class={styles?.item()}>

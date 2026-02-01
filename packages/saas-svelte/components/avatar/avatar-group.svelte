@@ -14,6 +14,7 @@ export interface AvatarGroupContext {
 <script lang="ts">
 import { setContext, type Snippet } from "svelte";
 import { Flex } from "$saas/layout/flex";
+import { twMerge } from "tailwind-merge";
 
 const avatarGroup = tv({
 	base: "flex items-center justify-start",
@@ -102,7 +103,7 @@ setContext<AvatarGroupContext>(AVATAR_GROUP_CTX, {
 });
 
 const finalClass = $derived(
-	avatarGroup({ size, stacking, spaceX, class: className }),
+	twMerge(avatarGroup({ size, stacking, spaceX }), className),
 );
 </script>
 
