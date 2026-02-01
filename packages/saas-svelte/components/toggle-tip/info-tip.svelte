@@ -3,7 +3,7 @@ import ToggleTip from "./toggle-tip.svelte";
 import type { ToggleTipVariants } from "./toggle-tip.svelte";
 import type { PopoverRootProps } from "@ark-ui/svelte/popover";
 import { Icon } from "$saas/components/icon";
-import { InfoIcon } from "phosphor-svelte";
+import InfoIcon from "phosphor-svelte/lib/InfoIcon";
 import type { Snippet } from "svelte";
 
 interface Props extends Omit<PopoverRootProps, "id" | "children"> {

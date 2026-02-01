@@ -20,7 +20,7 @@ import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { STAT_CTX, type StatContext } from "./stat-root.svelte";
 import { getColourStyle, type ColourName } from "$saas/utils/colours";
-import { ArrowUpIcon } from "phosphor-svelte";
+import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
 import { Text } from "$saas/typography/text";
 
 interface Props {

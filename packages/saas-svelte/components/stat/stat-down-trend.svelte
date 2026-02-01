@@ -3,7 +3,7 @@ import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { STAT_CTX, type StatContext } from "./stat-root.svelte";
 import { getColourStyle, type ColourName } from "$saas/utils/colours";
-import { ArrowDownIcon } from "phosphor-svelte";
+import ArrowDownIcon from "phosphor-svelte/lib/ArrowDownIcon";
 import { Text } from "$saas/typography/text";
 import { statTrend } from "./stat-up-trend.svelte";
 
