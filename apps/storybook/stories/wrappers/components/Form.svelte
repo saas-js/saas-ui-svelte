@@ -27,7 +27,7 @@
 	];
 
 	interface Props {
-		story: "basic" | "validation" | "fieldTypes" | "conditional" | "submitOptions";
+		story: "basic" | "withValidation" | "fieldTypes" | "conditionalFields" | "submitOptions";
 	}
 
 	let { story }: Props = $props();
@@ -44,7 +44,7 @@
 			<SubmitButton>Submit</SubmitButton>
 		</VStack>
 	</Form>
-{:else if story === "validation"}
+{:else if story === "withValidation"}
 	{@const validationForm = useForm({
 		schema: z.object({
 			name: z.string().min(1, "Name is required"),
@@ -162,7 +162,7 @@
 			<SubmitButton>Submit</SubmitButton>
 		</VStack>
 	</Form>
-{:else if story === "conditional"}
+{:else if story === "conditionalFields"}
 	{@const conditionalForm = useForm({
 		schema: z.object({
 			name: z.string().min(1, "Required"),

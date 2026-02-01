@@ -67,7 +67,7 @@ export const WithValidation: Story = {
 	render: () =>
 		({
 			Component: FormWrapper,
-			props: { story: "validation" },
+			props: { story: "withValidation" },
 		}) as any,
 };
 
@@ -97,7 +97,7 @@ export const ConditionalFields: Story = {
 	render: () =>
 		({
 			Component: FormWrapper,
-			props: { story: "conditional" },
+			props: { story: "conditionalFields" },
 		}) as any,
 };
 
