@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Tabs } from "@ark-ui/svelte";
+import { Tabs } from "@ark-ui/svelte/tabs";
 import { getContext } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { TABS_CTX, type TabsContext } from "./tabs-root.svelte";

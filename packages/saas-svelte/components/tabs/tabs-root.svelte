@@ -132,7 +132,7 @@ export interface TabsContext {
 </script>
 
 <script lang="ts">
-import { Tabs } from "@ark-ui/svelte";
+import { Tabs } from "@ark-ui/svelte/tabs";
 import { setContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { getColourStyle } from "$saas/utils/colours";

@@ -1,5 +1,6 @@
 <script lang="ts">
-import { Dialog, Portal } from "@ark-ui/svelte";
+import { Dialog } from "@ark-ui/svelte/dialog";
+import { Portal } from "@ark-ui/svelte/portal";
 import { tv } from "tailwind-variants";
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";

@@ -24,7 +24,7 @@ export type ToggleTipVariants = VariantProps<typeof toggleTipContent>;
 </script>
 
 <script lang="ts">
-import { Popover as ArkPopover } from "@ark-ui/svelte";
+import { Popover as ArkPopover } from "@ark-ui/svelte/popover";
 import { Portal } from "$saas/components/portal";
 import type { PopoverRootProps } from "@ark-ui/svelte/popover";
 import type { Snippet, Component } from "svelte";

@@ -110,7 +110,6 @@ export default defineConfig({
 		},
 		optimizeDeps: {
 			include: [
-				"@ark-ui/svelte",
 				"tailwind-variants",
 				"tailwind-merge",
 				"chart.js",

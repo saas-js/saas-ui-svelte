@@ -7,8 +7,7 @@ export type TooltipVariants = {
 </script>
 
 <script lang="ts">
-// Import from the main package to ensure Context compatibility
-import { Tooltip as ArkTooltip } from "@ark-ui/svelte";
+import { Tooltip as ArkTooltip } from "@ark-ui/svelte/tooltip";
 import { Portal } from "$saas/components/portal";
 import type { TooltipRootProps } from "@ark-ui/svelte/tooltip";
 import type { Snippet } from "svelte";

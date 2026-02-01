@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Dialog } from "@ark-ui/svelte";
+import { Dialog } from "@ark-ui/svelte/dialog";
 import type { Snippet } from "svelte";
 import { tv } from "tailwind-variants";
 import { twMerge } from "tailwind-merge";

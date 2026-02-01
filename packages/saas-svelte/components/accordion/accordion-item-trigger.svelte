@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Accordion } from "@ark-ui/svelte";
+import { Accordion } from "@ark-ui/svelte/accordion";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";

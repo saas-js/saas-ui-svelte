@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Dialog } from "@ark-ui/svelte";
+import { Dialog } from "@ark-ui/svelte/dialog";
 import { button, type ButtonVariants } from "../button/button.svelte";
 import type { Snippet } from "svelte";
 import { type ColourName, getColourStyle } from "$saas/utils/colours";

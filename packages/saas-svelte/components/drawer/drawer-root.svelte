@@ -10,7 +10,7 @@ export interface DrawerContext {
 </script>
 
 <script lang="ts">
-import { Dialog } from "@ark-ui/svelte";
+import { Dialog } from "@ark-ui/svelte/dialog";
 import { setContext, type Snippet } from "svelte";
 
 interface Props {

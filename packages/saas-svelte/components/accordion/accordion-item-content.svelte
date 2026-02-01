@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Accordion } from "@ark-ui/svelte";
+import { Accordion } from "@ark-ui/svelte/accordion";
 import { getContext, type Snippet } from "svelte";
 import { twMerge } from "tailwind-merge";
 import { ACCORDION_CTX, type AccordionContext } from "./accordion-root.svelte";
