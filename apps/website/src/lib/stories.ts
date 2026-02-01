@@ -217,6 +217,25 @@ export function createStaticPathsFromModules(
 }
 
 /**
+ * Cleans extracted code by removing wrapper-specific props that shouldn't be shown.
+ * Strips class={className}, {...args}, {...rest}, {...restProps}, etc.
+ */
+function cleanExtractedCode(code: string): string {
+	return (
+		code
+			// Remove class={className} (with optional whitespace before)
+			.replace(/\s*class=\{className\}/g, "")
+			// Remove spread props like {...args}, {...rest}, {...restProps}
+			.replace(/\s*\{\.\.\.(?:args|rest|restProps)\}/g, "")
+			// Clean up any resulting double spaces or trailing whitespace on lines
+			.replace(/  +/g, " ")
+			.replace(/ +$/gm, "")
+			// Clean up empty attribute areas (e.g., "< >" becomes "<>")
+			.replace(/(\w)\s+>/g, "$1>")
+	);
+}
+
+/**
  * Extracts code for a specific story from a wrapper component source.
  * Parses the wrapper file to find the {#if story === "storyName"} block.
  */
@@ -267,10 +286,15 @@ export function extractStoryCode(
 				}, Infinity);
 
 			// Remove the common indentation from all lines
+			let result: string;
 			if (minIndent > 0 && minIndent !== Infinity) {
-				return rawLines.map((line) => line.slice(minIndent)).join("\n");
+				result = rawLines.map((line) => line.slice(minIndent)).join("\n");
+			} else {
+				result = rawLines.join("\n");
 			}
-			return rawLines.join("\n");
+
+			// Clean up wrapper-specific props
+			return cleanExtractedCode(result);
 		}
 	}
 
