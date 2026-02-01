@@ -145,6 +145,6 @@ export const WithDivider: Story = {
 	render: () =>
 		({
 			Component: DataListWrapper,
-			props: { story: "divider" },
+			props: { story: "withDivider" },
 		}) as any,
 };

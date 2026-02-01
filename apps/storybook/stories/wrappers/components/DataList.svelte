@@ -25,7 +25,7 @@
 	];
 
 	interface Props {
-		story: "basic" | "sizes" | "orientation" | "vertical" | "divider";
+		story: "basic" | "sizes" | "orientation" | "vertical" | "withDivider";
 	}
 
 	let { story }: Props = $props();
@@ -72,7 +72,7 @@
 			</DataList.Item>
 		{/each}
 	</DataList.Root>
-{:else if story === "divider"}
+{:else if story === "withDivider"}
 	<DataList.Root orientation="horizontal" divider class="max-w-md">
 		{#each items as item (item.label)}
 			<DataList.Item>

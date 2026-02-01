@@ -77,6 +77,24 @@ body {
 	}
 }
 
+@keyframes slide-from-bottom {
+	from {
+		transform: translateY(50%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-to-bottom {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(50%);
+	}
+}
+
 @theme {
 	--text-2xs: var(--font-sizes-2xs);
 	--text-xs: var(--font-sizes-xs);
