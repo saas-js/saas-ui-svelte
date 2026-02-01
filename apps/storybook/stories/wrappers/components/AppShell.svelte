@@ -134,7 +134,7 @@
 						{#each ["Home", "About", "Pricing"] as item}
 							<Link
 								href="#"
-								class="justify-start w-full px-4 py-2"
+								class="w-full justify-start px-4 py-2"
 							>
 								{item}
 							</Link>
@@ -169,12 +169,20 @@
 						<Sidebar.GroupContent>
 							<Sidebar.NavItem>
 								<Sidebar.NavButton active>
-									<Icon as={House} size="sm" weight="regular" /> Home
+									<Icon
+										as={House}
+										size="sm"
+										weight="regular"
+									/> Home
 								</Sidebar.NavButton>
 							</Sidebar.NavItem>
 							<Sidebar.NavItem>
 								<Sidebar.NavButton>
-									<Icon as={Users} size="sm" weight="regular" /> Contacts
+									<Icon
+										as={Users}
+										size="sm"
+										weight="regular"
+									/> Contacts
 								</Sidebar.NavButton>
 							</Sidebar.NavItem>
 						</Sidebar.GroupContent>
@@ -182,8 +190,8 @@
 				</Sidebar.Body>
 			</Sidebar.Root>
 		{/snippet}
-		<Box class="flex flex-col flex-1">
-			<Box class="px-3 py-2 border-b shrink-0 border-border-default">
+		<Box class="flex flex-1 flex-col">
+			<Box class="border-border-default shrink-0 border-b px-3 py-2">
 				<Heading size="sm">Users</Heading>
 			</Box>
 			<Box class="flex-1 p-4">

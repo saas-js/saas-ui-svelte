@@ -362,7 +362,8 @@
 			<Button size="sm" onclick={() => (isOpen = !isOpen)}
 				>{isOpen ? "Close" : "Open"} Combobox</Button
 			>
-			<Text as="span" size="sm" class="text-fg-muted">Open: {isOpen}</Text>
+			<Text as="span" size="sm" class="text-fg-muted">Open: {isOpen}</Text
+			>
 		</HStack>
 		<Combobox
 			items={frameworks}
@@ -451,7 +452,7 @@
 			itemDescriptionKey="email"
 			onInputValueChange={(e) => (customFilterInput = e.inputValue)}
 		/>
-		<p class="text-xs text-fg-muted">
+		<p class="text-fg-muted text-xs">
 			Try searching "developer" or "example.com"
 		</p>
 	</VStack>

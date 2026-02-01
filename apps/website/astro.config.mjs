@@ -22,7 +22,9 @@ function stripSvelteComments() {
 
 				// Recursively find all HTML files
 				function findHtmlFiles(directory) {
-					const entries = fs.readdirSync(directory, { withFileTypes: true });
+					const entries = fs.readdirSync(directory, {
+						withFileTypes: true,
+					});
 					for (const entry of entries) {
 						const fullPath = path.join(directory, entry.name);
 						if (entry.isDirectory()) {
@@ -44,7 +46,9 @@ function stripSvelteComments() {
 					}
 				}
 
-				console.log(`Stripped Svelte comments from ${htmlFiles.length} HTML files`);
+				console.log(
+					`Stripped Svelte comments from ${htmlFiles.length} HTML files`,
+				);
 			},
 		},
 	};
@@ -76,8 +80,14 @@ export default defineConfig({
 			sveltePhosphorOptimize(),
 			tailwindcss(),
 			FontaineTransform.vite({
-				fallbacks: ["Arial", "Helvetica Neue", "Helvetica", "sans-serif"],
-				resolvePath: (id) => new URL(`./node_modules/${id}`, import.meta.url),
+				fallbacks: [
+					"Arial",
+					"Helvetica Neue",
+					"Helvetica",
+					"sans-serif",
+				],
+				resolvePath: (id) =>
+					new URL(`./node_modules/${id}`, import.meta.url),
 			}),
 			VitePWA({
 				registerType: "autoUpdate",
@@ -85,7 +95,8 @@ export default defineConfig({
 					globPatterns: ["**/*.{js,css,html,ico,svg,woff2}"],
 					runtimeCaching: [
 						{
-							urlPattern: ({ request }) => request.destination === "image",
+							urlPattern: ({ request }) =>
+								request.destination === "image",
 							handler: "CacheFirst",
 							options: {
 								cacheName: "images",
@@ -128,8 +139,12 @@ export default defineConfig({
 						// Vendor chunks
 						if (id.includes("node_modules")) {
 							// phosphor-svelte icons are tree-shaken by sveltePhosphorOptimize plugin
-							if (id.includes("phosphor-svelte")) return undefined;
-							if (id.includes("@ark-ui") || id.includes("@zag-js"))
+							if (id.includes("phosphor-svelte"))
+								return undefined;
+							if (
+								id.includes("@ark-ui") ||
+								id.includes("@zag-js")
+							)
 								return "ark-vendor";
 							if (id.includes("svelte")) return "svelte-vendor";
 							// Group other common dependencies

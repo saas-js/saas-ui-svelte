@@ -1,86 +1,89 @@
 <script module lang="ts">
-import { tv } from "tailwind-variants";
+	import { tv } from "tailwind-variants";
 
-export const radioItem = tv({
-	base: "",
-	variants: {
-		disabled: {
-			true: "cursor-not-allowed",
-			false: "",
+	export const radioItem = tv({
+		base: "",
+		variants: {
+			disabled: {
+				true: "cursor-not-allowed",
+				false: "",
+			},
 		},
-	},
-	defaultVariants: {
-		disabled: false,
-	},
-});
+		defaultVariants: {
+			disabled: false,
+		},
+	});
 </script>
 
 <script lang="ts">
-import { RadioGroup } from "@ark-ui/svelte/radio-group";
-import { getContext, type Snippet } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { RADIO_GROUP_CTX, type RadioGroupContext } from "./radio-group.svelte";
-import { getColourStyle } from "$saas/utils/colours";
-import { Box } from "$saas/layout/box";
+	import { RadioGroup } from "@ark-ui/svelte/radio-group";
+	import { getContext, type Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import {
+		RADIO_GROUP_CTX,
+		type RadioGroupContext,
+	} from "./radio-group.svelte";
+	import { getColourStyle } from "$saas/utils/colours";
+	import { Box } from "$saas/layout/box";
 
-interface Props {
-	/**
-	 * Content to render inside the radio item (composition API).
-	 */
-	children?: Snippet;
-	/**
-	 * The label text displayed next to the radio.
-	 */
-	label?: string;
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	/**
-	 * The value of this radio item.
-	 */
-	value: string;
-	/**
-	 * Whether this radio item is disabled.
-	 * @default false
-	 */
-	disabled?: boolean;
-	/**
-	 * Whether this radio item is invalid.
-	 * @default false
-	 */
-	invalid?: boolean;
-	[key: string]: any;
-}
+	interface Props {
+		/**
+		 * Content to render inside the radio item (composition API).
+		 */
+		children?: Snippet;
+		/**
+		 * The label text displayed next to the radio.
+		 */
+		label?: string;
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		/**
+		 * The value of this radio item.
+		 */
+		value: string;
+		/**
+		 * Whether this radio item is disabled.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Whether this radio item is invalid.
+		 * @default false
+		 */
+		invalid?: boolean;
+		[key: string]: any;
+	}
 
-let {
-	children,
-	label,
-	class: className,
-	value,
-	disabled = false,
-	invalid = false,
-	...restProps
-}: Props = $props();
+	let {
+		children,
+		label,
+		class: className,
+		value,
+		disabled = false,
+		invalid = false,
+		...restProps
+	}: Props = $props();
 
-const ctx = getContext<RadioGroupContext>(RADIO_GROUP_CTX);
-const styles = $derived(ctx.styles);
-const variant = $derived(ctx.variant);
-const colourVars = $derived(getColourStyle(ctx.colour));
+	const ctx = getContext<RadioGroupContext>(RADIO_GROUP_CTX);
+	const styles = $derived(ctx.styles);
+	const variant = $derived(ctx.variant);
+	const colourVars = $derived(getColourStyle(ctx.colour));
 
-const isDisabled = $derived(disabled || ctx.disabled);
+	const isDisabled = $derived(disabled || ctx.disabled);
 
-/**
- * Returns the indicator scale class based on variant.
- * Outline uses larger scale (0.6), others use 0.4.
- */
-function getIndicatorScale() {
-	return variant === "outline" ? "scale-[0.6]" : "scale-[0.4]";
-}
+	/**
+	 * Returns the indicator scale class based on variant.
+	 * Outline uses larger scale (0.6), others use 0.4.
+	 */
+	function getIndicatorScale() {
+		return variant === "outline" ? "scale-[0.6]" : "scale-[0.4]";
+	}
 </script>
 
 <RadioGroup.Item
-	value={value}
+	{value}
 	disabled={isDisabled}
 	class={twMerge(
 		styles.item(),

@@ -47,7 +47,7 @@
 	</Group>
 {:else if story === "feed"}
 	<Stack gap={6} class="max-w-xs">
-		<Group gap={2} class="items-center w-full">
+		<Group gap={2} class="w-full items-center">
 			<SkeletonCircle size="10" />
 			<SkeletonText noOfLines={2} class="w-full" />
 		</Group>

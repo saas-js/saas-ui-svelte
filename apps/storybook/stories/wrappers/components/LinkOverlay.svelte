@@ -32,7 +32,7 @@
 {:else if story === "article"}
 	<LinkBox
 		as="article"
-		class="max-w-sm p-5 border border-border-default rounded-md"
+		class="border-border-default max-w-sm rounded-md border p-5"
 	>
 		<Text as="span" size="sm" class="text-fg-muted">
 			<time datetime="2021-01-15">13 days ago</time>
@@ -40,7 +40,7 @@
 		<Heading size="lg" class="my-2">
 			<LinkOverlay href="#">Svelte 5 Workshop</LinkOverlay>
 		</Heading>
-		<Text class="mb-3 text-fg-muted">
+		<Text class="text-fg-muted mb-3">
 			Catch up on what's been cooking at Svelte and explore some of the
 			popular community resources.
 		</Text>
@@ -55,12 +55,12 @@
 	</LinkBox>
 {:else if story === "card"}
 	<LinkBox
-		class="max-w-sm p-6 border rounded-lg border-border-default bg-bg-subtle"
+		class="border-border-default bg-bg-subtle max-w-sm rounded-lg border p-6"
 	>
 		<VStack gap={3} class="items-start">
 			<Text
 				size="xs"
-				class="font-medium tracking-wide uppercase text-fg-muted"
+				class="text-fg-muted font-medium tracking-wide uppercase"
 			>
 				Tutorial
 			</Text>

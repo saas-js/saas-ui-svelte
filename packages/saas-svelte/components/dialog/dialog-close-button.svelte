@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Dialog } from "@ark-ui/svelte/dialog";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { twMerge } from "tailwind-merge";
+	import { Dialog } from "@ark-ui/svelte/dialog";
+	import XIcon from "phosphor-svelte/lib/XIcon";
+	import { twMerge } from "tailwind-merge";
 
-interface Props {
-	class?: string;
-	[key: string]: any;
-}
+	interface Props {
+		class?: string;
+		[key: string]: any;
+	}
 
-let { class: className, ...rest }: Props = $props();
+	let { class: className, ...rest }: Props = $props();
 </script>
 
 <Dialog.CloseTrigger

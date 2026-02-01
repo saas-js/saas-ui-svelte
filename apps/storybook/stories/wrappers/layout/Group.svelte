@@ -41,7 +41,7 @@
 		</VStack>
 	</div>
 {:else if story === "grow"}
-	<div class="flex justify-center w-full">
+	<div class="flex w-full justify-center">
 		<div class="w-full max-w-(--sizes-md)">
 			<Group grow>
 				<Button variant="outline">First</Button>

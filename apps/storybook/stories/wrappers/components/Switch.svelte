@@ -41,7 +41,7 @@
 {/snippet}
 
 {#snippet moonIcon()}
-	<Icon as={Moon} weight="fill" class="h-3.5 text-fg-muted" />
+	<Icon as={Moon} weight="fill" class="text-fg-muted h-3.5" />
 {/snippet}
 
 {#if story === "basic"}

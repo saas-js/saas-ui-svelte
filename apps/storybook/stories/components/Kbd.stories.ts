@@ -170,8 +170,7 @@ export const Colours: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story:
-					"Use the `colour` prop to change the colour of the `Kbd` component. Supports all standard colour palettes.",
+				story: "Use the `colour` prop to change the colour of the `Kbd` component. Supports all standard colour palettes.",
 			},
 		},
 	},
@@ -186,8 +185,7 @@ export const ModifierKeys: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story:
-					"Use the `keys` prop to display modifier key symbols. Supports command (⌘), option (⌥), shift (⇧), control (⌃), and more.",
+				story: "Use the `keys` prop to display modifier key symbols. Supports command (⌘), option (⌥), shift (⇧), control (⌃), and more.",
 			},
 		},
 	},

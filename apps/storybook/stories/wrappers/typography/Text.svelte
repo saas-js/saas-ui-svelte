@@ -20,7 +20,13 @@
 		"6xl",
 		"7xl",
 	] as const;
-	const textWeights = ["light", "normal", "medium", "semibold", "bold"] as const;
+	const textWeights = [
+		"light",
+		"normal",
+		"medium",
+		"semibold",
+		"bold",
+	] as const;
 
 	interface Props {
 		story: "basic" | "sizes" | "weights" | "truncation" | "lineClamp";
@@ -48,7 +54,8 @@
 			<DataList.Item>
 				<DataList.ItemLabel>{w}</DataList.ItemLabel>
 				<DataList.ItemValue>
-					<Text weight={w}>Sphinx of black quartz, judge my vow.</Text>
+					<Text weight={w}>Sphinx of black quartz, judge my vow.</Text
+					>
 				</DataList.ItemValue>
 			</DataList.Item>
 		{/each}

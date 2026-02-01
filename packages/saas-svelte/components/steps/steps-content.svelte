@@ -1,33 +1,33 @@
 <script lang="ts">
-import { Steps } from "@ark-ui/svelte/steps";
-import { getContext, type Snippet } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { STEPS_CTX, type StepsContext } from "./steps-root.svelte";
+	import { Steps } from "@ark-ui/svelte/steps";
+	import { getContext, type Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { STEPS_CTX, type StepsContext } from "./steps-root.svelte";
 
-interface Props {
-	/**
-	 * The index of the step this content belongs to.
-	 */
-	index: number;
-	/**
-	 * The content to render.
-	 */
-	children?: Snippet;
-	/**
-	 * Additional CSS classes.
-	 */
-	class?: string;
-	[key: string]: any;
-}
+	interface Props {
+		/**
+		 * The index of the step this content belongs to.
+		 */
+		index: number;
+		/**
+		 * The content to render.
+		 */
+		children?: Snippet;
+		/**
+		 * Additional CSS classes.
+		 */
+		class?: string;
+		[key: string]: any;
+	}
 
-let { index, children, class: className, ...restProps }: Props = $props();
+	let { index, children, class: className, ...restProps }: Props = $props();
 
-const ctx = getContext<StepsContext>(STEPS_CTX);
-const finalClass = $derived(
-	twMerge(ctx?.styles?.content(), className as string),
-);
+	const ctx = getContext<StepsContext>(STEPS_CTX);
+	const finalClass = $derived(
+		twMerge(ctx?.styles?.content(), className as string),
+	);
 </script>
 
-<Steps.Content index={index} class={finalClass} {...restProps}>
+<Steps.Content {index} class={finalClass} {...restProps}>
 	{@render children?.()}
 </Steps.Content>

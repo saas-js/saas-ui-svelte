@@ -1,44 +1,44 @@
 <script lang="ts">
-import { Steps } from "@ark-ui/svelte/steps";
-import { getContext, type Snippet } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { STEPS_CTX, type StepsContext } from "./steps-root.svelte";
+	import { Steps } from "@ark-ui/svelte/steps";
+	import { getContext, type Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { STEPS_CTX, type StepsContext } from "./steps-root.svelte";
 
-interface Props {
-	/**
-	 * The index of this step.
-	 */
-	index: number;
-	/**
-	 * Whether this step is the current step.
-	 */
-	current?: boolean;
-	/**
-	 * Whether this step is completed.
-	 */
-	completed?: boolean;
-	/**
-	 * Content to render inside the indicator (defaults to step number).
-	 */
-	children?: Snippet;
-	/**
-	 * Additional CSS classes.
-	 */
-	class?: string;
-	[key: string]: any;
-}
+	interface Props {
+		/**
+		 * The index of this step.
+		 */
+		index: number;
+		/**
+		 * Whether this step is the current step.
+		 */
+		current?: boolean;
+		/**
+		 * Whether this step is completed.
+		 */
+		completed?: boolean;
+		/**
+		 * Content to render inside the indicator (defaults to step number).
+		 */
+		children?: Snippet;
+		/**
+		 * Additional CSS classes.
+		 */
+		class?: string;
+		[key: string]: any;
+	}
 
-let {
-	index,
-	current = false,
-	completed = false,
-	children,
-	class: className,
-	...restProps
-}: Props = $props();
+	let {
+		index,
+		current = false,
+		completed = false,
+		children,
+		class: className,
+		...restProps
+	}: Props = $props();
 
-const ctx = getContext<StepsContext>(STEPS_CTX);
-const baseClass = $derived(ctx?.styles?.indicator());
+	const ctx = getContext<StepsContext>(STEPS_CTX);
+	const baseClass = $derived(ctx?.styles?.indicator());
 </script>
 
 <Steps.Indicator

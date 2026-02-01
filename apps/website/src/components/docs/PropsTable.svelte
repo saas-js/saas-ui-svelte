@@ -1,45 +1,45 @@
 <script lang="ts">
-import { Table } from "@saas-ui/svelte/components/table";
-import { Code } from "@saas-ui/svelte/typography/code";
+	import { Table } from "@saas-ui/svelte/components/table";
+	import { Code } from "@saas-ui/svelte/typography/code";
 
-interface PropDef {
-	type?: string;
-	default?: string;
-	description?: string;
-	options?: string[];
-	control?: string;
-	table?: {
-		defaultValue?: { summary: string };
-		type?: { summary: string };
-	};
-}
-
-interface Props {
-	props: Record<string, PropDef>;
-	/** Whether this is from argTypes (storybook meta) or subComponent props */
-	isArgTypes?: boolean;
-}
-
-let { props, isArgTypes = false }: Props = $props();
-
-function getType(propDef: PropDef): string {
-	if (isArgTypes) {
-		return propDef.options
-			? propDef.options.join(" | ")
-			: propDef.control || "any";
+	interface PropDef {
+		type?: string;
+		default?: string;
+		description?: string;
+		options?: string[];
+		control?: string;
+		table?: {
+			defaultValue?: { summary: string };
+			type?: { summary: string };
+		};
 	}
-	return propDef.type || "any";
-}
 
-function getDefault(propDef: PropDef): string | null {
-	if (isArgTypes) {
-		return propDef.table?.defaultValue?.summary || null;
+	interface Props {
+		props: Record<string, PropDef>;
+		/** Whether this is from argTypes (storybook meta) or subComponent props */
+		isArgTypes?: boolean;
 	}
-	return propDef.default || null;
-}
+
+	let { props, isArgTypes = false }: Props = $props();
+
+	function getType(propDef: PropDef): string {
+		if (isArgTypes) {
+			return propDef.options
+				? propDef.options.join(" | ")
+				: propDef.control || "any";
+		}
+		return propDef.type || "any";
+	}
+
+	function getDefault(propDef: PropDef): string | null {
+		if (isArgTypes) {
+			return propDef.table?.defaultValue?.summary || null;
+		}
+		return propDef.default || null;
+	}
 </script>
 
-<Table.ScrollArea class="border border-border-default rounded-md">
+<Table.ScrollArea class="border-border-default rounded-md border">
 	<Table.Root size="sm" variant="outline" showOuterBorder={false}>
 		<Table.Header>
 			<Table.Row>

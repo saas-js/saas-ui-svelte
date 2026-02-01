@@ -77,14 +77,14 @@
 	</Text>
 </VStack>
 
-<VStack gap={0} class="text-sm items-start">
-	<Text class="text-fg-muted leading-relaxed mb-3.5">
+<VStack gap={0} class="items-start text-sm">
+	<Text class="text-fg-muted mb-3.5 leading-relaxed">
 		Inspired by macOS and premium tools like Linear, Attio, and Superhuman,
 		it provides intuitive primitives that empower developers to create
 		beautiful, user-friendly interfaces without sacrificing development
 		velocity.
 	</Text>
-	<Text class="text-fg-muted leading-relaxed mb-3.5">
+	<Text class="text-fg-muted mb-3.5 leading-relaxed">
 		Whether you're building a simple dashboard or a complex enterprise
 		application, SaaS UI Svelte helps you deliver polished experiences that
 		users love.
@@ -95,13 +95,13 @@
 		id="features"
 		size="lg"
 		weight="semibold"
-		class="tracking-tight mt-7 mb-3.5 scroll-mt-20"
+		class="mt-7 mb-3.5 scroll-mt-20 tracking-tight"
 	>
 		<Link href="#features" variant="underline">Features</Link>
 	</Heading>
-	<List.Root class="mt-3.5 mb-7 pl-5 list-disc">
+	<List.Root class="mt-3.5 mb-7 list-disc pl-5">
 		{#each features as feature}
-			<List.Item class="my-3 pl-1.5 text-fg-muted">
+			<List.Item class="text-fg-muted my-3 pl-1.5">
 				<Text as="strong" class="text-fg-default">{feature.title}</Text>
 				{" "}- {feature.description}
 			</List.Item>
@@ -113,11 +113,11 @@
 		id="sponsors"
 		size="lg"
 		weight="semibold"
-		class="tracking-tight mt-7 mb-3.5 scroll-mt-20"
+		class="mt-7 mb-3.5 scroll-mt-20 tracking-tight"
 	>
 		<Link href="#sponsors" variant="underline">Sponsors</Link>
 	</Heading>
-	<List.Root class="mt-3.5 mb-7 pl-5 list-disc">
+	<List.Root class="mt-3.5 mb-7 list-disc pl-5">
 		{#each sponsors as sponsor}
 			<List.Item class="my-3 pl-1.5">
 				<Link href={sponsor.href} variant="underline"
@@ -132,19 +132,19 @@
 		id="acknowledgements"
 		size="lg"
 		weight="semibold"
-		class="tracking-tight mt-7 mb-3.5 scroll-mt-20"
+		class="mt-7 mb-3.5 scroll-mt-20 tracking-tight"
 	>
 		<Link href="#acknowledgements" variant="underline"
 			>Acknowledgements</Link
 		>
 	</Heading>
-	<Text class="leading-relaxed text-fg-muted">
+	<Text class="text-fg-muted leading-relaxed">
 		SaaS UI Svelte is built with the help of many amazing libraries and
 		their authors, without them this wouldn't be possible.
 	</Text>
-	<List.Root class="mt-3.5 mb-7 pl-5 list-disc">
+	<List.Root class="mt-3.5 mb-7 list-disc pl-5">
 		{#each acknowledgements as item}
-			<List.Item class="my-3 pl-1.5 text-fg-muted">
+			<List.Item class="text-fg-muted my-3 pl-1.5">
 				<Link
 					href={item.href}
 					variant="underline"

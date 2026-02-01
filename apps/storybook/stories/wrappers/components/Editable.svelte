@@ -48,7 +48,10 @@
 		</Editable.Area>
 	</Editable.Root>
 {:else if story === "withDoubleClick"}
-	<Editable.Root defaultValue="Double click to edit" activationMode="dblclick">
+	<Editable.Root
+		defaultValue="Double click to edit"
+		activationMode="dblclick"
+	>
 		<Editable.Area>
 			<Editable.Preview />
 			<Editable.Input />
@@ -71,7 +74,7 @@
 {:else if story === "textarea"}
 	<Editable.Root defaultValue="Click to edit" autoResize class="w-full">
 		<Editable.Area>
-			<Editable.Preview class="items-start min-h-14" />
+			<Editable.Preview class="min-h-14 items-start" />
 			<Editable.Textarea class="min-h-14" />
 		</Editable.Area>
 	</Editable.Root>
@@ -98,7 +101,11 @@
 		{#each colours as colour}
 			<HStack gap={4} align="center">
 				<Text size="xs" class="w-16">{colour}</Text>
-				<Editable.Root defaultValue="Click to edit" {colour} class="w-full">
+				<Editable.Root
+					defaultValue="Click to edit"
+					{colour}
+					class="w-full"
+				>
 					<Editable.Area>
 						<Editable.Preview />
 						<Editable.Input />

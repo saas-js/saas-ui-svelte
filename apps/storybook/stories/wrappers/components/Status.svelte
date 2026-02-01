@@ -10,12 +10,7 @@
 	import { colours, statusSizes } from "../../utils";
 
 	interface Props {
-		story:
-			| "basic"
-			| "values"
-			| "label"
-			| "sizes"
-			| "colours";
+		story: "basic" | "values" | "label" | "sizes" | "colours";
 	}
 
 	let { story }: Props = $props();

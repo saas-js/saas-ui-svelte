@@ -1,23 +1,23 @@
 <script lang="ts">
-import CRMSidebar from "./CRMSidebar.svelte";
-import CRMHeader from "./CRMHeader.svelte";
-import RevenueCard from "./RevenueCard.svelte";
-import CustomerMetricsCard from "./CustomerMetricsCard.svelte";
-import { Flex } from "@saas-ui/svelte/layout/flex";
-import { Box } from "@saas-ui/svelte/layout/box";
-import { Grid } from "@saas-ui/svelte/layout/grid";
+	import CRMSidebar from "./CRMSidebar.svelte";
+	import CRMHeader from "./CRMHeader.svelte";
+	import RevenueCard from "./RevenueCard.svelte";
+	import CustomerMetricsCard from "./CustomerMetricsCard.svelte";
+	import { Flex } from "@saas-ui/svelte/layout/flex";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { Grid } from "@saas-ui/svelte/layout/grid";
 
-let timeRange = $state("year");
-let sidebarOpen = $state(true);
+	let timeRange = $state("year");
+	let sidebarOpen = $state(true);
 
-// Refs to chart components for prefetching
-let revenueCard: ReturnType<typeof RevenueCard>;
-let customerMetricsCard: ReturnType<typeof CustomerMetricsCard>;
+	// Refs to chart components for prefetching
+	let revenueCard: ReturnType<typeof RevenueCard>;
+	let customerMetricsCard: ReturnType<typeof CustomerMetricsCard>;
 
-function handlePrefetch(value: string) {
-	revenueCard?.prefetch?.(value);
-	customerMetricsCard?.prefetch?.(value);
-}
+	function handlePrefetch(value: string) {
+		revenueCard?.prefetch?.(value);
+		customerMetricsCard?.prefetch?.(value);
+	}
 </script>
 
 <Flex
@@ -30,9 +30,9 @@ function handlePrefetch(value: string) {
 
 	<Flex direction="column" class="flex-1 overflow-hidden">
 		<CRMHeader
-			timeRange={timeRange}
+			{timeRange}
 			onTimeRangeChange={(value) => (timeRange = value)}
-			sidebarOpen={sidebarOpen}
+			{sidebarOpen}
 			onToggleSidebar={() => (sidebarOpen = !sidebarOpen)}
 			onPrefetch={handlePrefetch}
 		/>
@@ -42,8 +42,11 @@ function handlePrefetch(value: string) {
 			class="flex-1 overflow-auto bg-gray-50/50 p-4 dark:bg-gray-900/50"
 		>
 			<Grid gap={4} class="xl:grid-cols-3">
-				<RevenueCard bind:this={revenueCard} timeRange={timeRange} />
-				<CustomerMetricsCard bind:this={customerMetricsCard} timeRange={timeRange} />
+				<RevenueCard bind:this={revenueCard} {timeRange} />
+				<CustomerMetricsCard
+					bind:this={customerMetricsCard}
+					{timeRange}
+				/>
 			</Grid>
 		</Box>
 	</Flex>

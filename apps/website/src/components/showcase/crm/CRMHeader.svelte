@@ -13,17 +13,22 @@
 		onPrefetch?: (value: string) => void;
 	}
 
-	let { timeRange, onTimeRangeChange, sidebarOpen, onToggleSidebar, onPrefetch }: Props =
-		$props();
+	let {
+		timeRange,
+		onTimeRangeChange,
+		sidebarOpen,
+		onToggleSidebar,
+		onPrefetch,
+	}: Props = $props();
 </script>
 
 <header
-	class="bg-gray-50/50 dark:bg-gray-900/50 border-border-default grid shrink-0 grid-cols-[auto_max-content_1fr] items-center gap-x-2 border-b px-3 [grid-template-areas:'nav_heading_actions'] grid-rows-[minmax(40px,auto)]"
+	class="border-border-default grid shrink-0 grid-cols-[auto_max-content_1fr] grid-rows-[minmax(40px,auto)] items-center gap-x-2 border-b bg-gray-50/50 px-3 [grid-template-areas:'nav_heading_actions'] dark:bg-gray-900/50"
 >
 	{#if !sidebarOpen}
 		<button
 			type="button"
-			class="hover:bg-bg-emphasized inline-flex h-8 min-w-8 shrink-0 cursor-pointer items-center justify-center rounded transition-colors duration-150 [grid-area:nav] focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
+			class="hover:bg-bg-emphasized focus-visible:outline-fg-muted inline-flex h-8 min-w-8 shrink-0 cursor-pointer items-center justify-center rounded transition-colors duration-150 [grid-area:nav] focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-solid"
 			aria-label="Open sidebar"
 			onclick={onToggleSidebar}
 		>
@@ -51,12 +56,12 @@
 		inline
 		align="center"
 		gap={2}
-		class="isolate relative [grid-area:actions] [justify-content:end]"
+		class="relative isolate [justify-content:end] [grid-area:actions]"
 	>
 		<SegmentGroup.Root
 			value={timeRange}
 			onValueChange={(e) => onTimeRangeChange(e.value ?? "year")}
-			onPrefetch={onPrefetch}
+			{onPrefetch}
 			size="xs"
 		>
 			<SegmentGroup.Item value="year">Last year</SegmentGroup.Item>

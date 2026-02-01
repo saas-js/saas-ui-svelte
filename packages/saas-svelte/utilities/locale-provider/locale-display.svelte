@@ -1,23 +1,23 @@
 <script lang="ts">
-import { getLocaleContext } from "$saas/utilities/locale-provider";
-import { VStack } from "$saas/layout/stack";
-import { Box } from "$saas/layout/box";
-import type { Snippet } from "svelte";
+	import { getLocaleContext } from "$saas/utilities/locale-provider";
+	import { VStack } from "$saas/layout/stack";
+	import { Box } from "$saas/layout/box";
+	import type { Snippet } from "svelte";
 
-interface Props {
-	/**
-	 * Additional content to render below the locale display.
-	 */
-	children?: Snippet;
-}
+	interface Props {
+		/**
+		 * Additional content to render below the locale display.
+		 */
+		children?: Snippet;
+	}
 
-let { children }: Props = $props();
+	let { children }: Props = $props();
 
-const context = getLocaleContext();
-const displayData = $derived({
-	locale: context?.locale || "en-US",
-	dir: context?.dir || "ltr",
-});
+	const context = getLocaleContext();
+	const displayData = $derived({
+		locale: context?.locale || "en-US",
+		dir: context?.dir || "ltr",
+	});
 </script>
 
 <VStack gap={2}>

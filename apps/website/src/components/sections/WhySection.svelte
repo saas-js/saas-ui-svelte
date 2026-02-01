@@ -1,30 +1,30 @@
 <script lang="ts">
-import { Container } from "@saas-ui/svelte/layout/container";
-import { Grid } from "@saas-ui/svelte/layout/grid";
-import { Box } from "@saas-ui/svelte/layout/box";
-import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
-import { Icon } from "@saas-ui/svelte/components/icon";
-import { Text } from "@saas-ui/svelte/typography/text";
-import { Heading } from "@saas-ui/svelte/typography/heading";
-import Check from "phosphor-svelte/lib/Check";
+	import { Container } from "@saas-ui/svelte/layout/container";
+	import { Grid } from "@saas-ui/svelte/layout/grid";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
+	import { Icon } from "@saas-ui/svelte/components/icon";
+	import { Text } from "@saas-ui/svelte/typography/text";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
+	import Check from "phosphor-svelte/lib/Check";
 
-const features = [
-	[
-		"Faster UI development",
-		"Skip the boilerplate, focus on features",
-		"Pre-built patterns for common SaaS interfaces",
-	],
-	[
-		"Battle-tested components used in production",
-		"Built-in accessibility (WCAG compliance)",
-		"Consistent design language across your product",
-	],
-	[
-		"Fully customisable styling",
-		"Composable component architecture",
-		"No vendor lock-in, it's open source",
-	],
-];
+	const features = [
+		[
+			"Faster UI development",
+			"Skip the boilerplate, focus on features",
+			"Pre-built patterns for common SaaS interfaces",
+		],
+		[
+			"Battle-tested components used in production",
+			"Built-in accessibility (WCAG compliance)",
+			"Consistent design language across your product",
+		],
+		[
+			"Fully customisable styling",
+			"Composable component architecture",
+			"No vendor lock-in, it's open source",
+		],
+	];
 </script>
 
 <section class="border-border-default border-y border-dashed py-16">

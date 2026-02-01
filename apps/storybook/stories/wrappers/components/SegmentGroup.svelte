@@ -83,7 +83,7 @@
 	<VStack gap={4}>
 		{#each colours as colour}
 			<HStack gap={4} align="center">
-				<Text size="xs" class="w-16 text-fg-muted">{colour}</Text>
+				<Text size="xs" class="text-fg-muted w-16">{colour}</Text>
 				<SegmentGroup.Root {colour} defaultValue="React">
 					<SegmentGroup.Indicator />
 					{#each items as item}
@@ -162,7 +162,7 @@
 				</SegmentGroup.Root>
 			</Field.Root>
 		</Card.Body>
-		<Card.Footer class="justify-between mt-3">
+		<Card.Footer class="mt-3 justify-between">
 			<Button variant="outline">Reset</Button>
 			<Button>
 				<Icon as={MagnifyingGlass} size="sm" />

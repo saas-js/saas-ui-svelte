@@ -44,7 +44,7 @@
 					do eiusmod tempor incididunt ut labore et dolore magna
 					aliqua.
 				</p>
-				<p class="mt-4 text-fg-muted">
+				<p class="text-fg-muted mt-4">
 					Press the <Kbd>esc</Kbd> key to close the drawer.
 				</p>
 			</Drawer.Body>

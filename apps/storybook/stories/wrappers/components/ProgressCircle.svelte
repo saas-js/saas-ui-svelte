@@ -4,7 +4,10 @@
 </script>
 
 <script lang="ts">
-	import { ProgressCircle, type ProgressCircleVariants } from "$saas/components/progress-circle";
+	import {
+		ProgressCircle,
+		type ProgressCircleVariants,
+	} from "$saas/components/progress-circle";
 	import { Text } from "$saas/typography/text";
 	import { HStack, VStack } from "$saas/layout/stack";
 	import { colours, sizes } from "../../utils";
@@ -39,7 +42,12 @@
 		{#each sizes as size (size)}
 			<VStack gap={2} class="items-center">
 				<Text size="xs">{size}</Text>
-				<ProgressCircle size={size as Size} value={30} colour="indigo" rounded />
+				<ProgressCircle
+					size={size as Size}
+					value={30}
+					colour="indigo"
+					rounded
+				/>
 			</VStack>
 		{/each}
 	</HStack>
@@ -57,7 +65,12 @@
 {:else if story === "withValueText"}
 	<HStack gap={8} class="items-center">
 		{#each ["md", "lg", "xl"] as size (size)}
-			<ProgressCircle size={size as Size} value={65} colour="teal" showValue />
+			<ProgressCircle
+				size={size as Size}
+				value={65}
+				colour="teal"
+				showValue
+			/>
 		{/each}
 	</HStack>
 {:else if story === "customThickness"}
@@ -76,7 +89,13 @@
 	<HStack gap={6} class="flex-wrap items-center">
 		{#each [0, 25, 50, 75, 100] as value}
 			<VStack gap={2} class="items-center">
-				<ProgressCircle {value} colour="emerald" showValue size="lg" rounded />
+				<ProgressCircle
+					{value}
+					colour="emerald"
+					showValue
+					size="lg"
+					rounded
+				/>
 			</VStack>
 		{/each}
 	</HStack>

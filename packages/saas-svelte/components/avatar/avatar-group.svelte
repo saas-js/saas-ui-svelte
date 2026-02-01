@@ -1,112 +1,112 @@
 <script module lang="ts">
-import { tv, type VariantProps } from "tailwind-variants";
-import type { HTMLAttributes } from "svelte/elements";
-import type { AvatarVariants } from "./avatar.svelte";
+	import { tv, type VariantProps } from "tailwind-variants";
+	import type { HTMLAttributes } from "svelte/elements";
+	import type { AvatarVariants } from "./avatar.svelte";
 
-export const AVATAR_GROUP_CTX = Symbol("AVATAR_GROUP_CTX");
+	export const AVATAR_GROUP_CTX = Symbol("AVATAR_GROUP_CTX");
 
-export interface AvatarGroupContext {
-	size?: AvatarVariants["size"];
-	borderless?: boolean;
-}
+	export interface AvatarGroupContext {
+		size?: AvatarVariants["size"];
+		borderless?: boolean;
+	}
 </script>
 
 <script lang="ts">
-import { setContext, type Snippet } from "svelte";
-import { Flex } from "$saas/layout/flex";
-import { twMerge } from "tailwind-merge";
+	import { setContext, type Snippet } from "svelte";
+	import { Flex } from "$saas/layout/flex";
+	import { twMerge } from "tailwind-merge";
 
-const avatarGroup = tv({
-	base: "flex items-center justify-start",
-	variants: {
-		size: {
-			"2xs": "-space-x-1.5",
-			xs: "-space-x-2",
-			sm: "-space-x-2.5",
-			md: "-space-x-3",
-			lg: "-space-x-4",
-			xl: "-space-x-5",
-			"2xl": "-space-x-6",
-			full: "-space-x-6",
+	const avatarGroup = tv({
+		base: "flex items-center justify-start",
+		variants: {
+			size: {
+				"2xs": "-space-x-1.5",
+				xs: "-space-x-2",
+				sm: "-space-x-2.5",
+				md: "-space-x-3",
+				lg: "-space-x-4",
+				xl: "-space-x-5",
+				"2xl": "-space-x-6",
+				full: "-space-x-6",
+			},
+			spaceX: {
+				"1": "space-x-1",
+				"2": "space-x-2",
+				"3": "space-x-3",
+				"4": "space-x-4",
+			},
+			stacking: {
+				"first-on-top": "flex-row-reverse space-x-reverse justify-end",
+				"last-on-top": "",
+			},
 		},
-		spaceX: {
-			"1": "space-x-1",
-			"2": "space-x-2",
-			"3": "space-x-3",
-			"4": "space-x-4",
+		defaultVariants: {
+			size: "md",
+			stacking: "last-on-top",
 		},
-		stacking: {
-			"first-on-top": "flex-row-reverse space-x-reverse justify-end",
-			"last-on-top": "",
+	});
+
+	type GroupVariants = VariantProps<typeof avatarGroup>;
+
+	interface Props extends HTMLAttributes<HTMLDivElement> {
+		/**
+		 * The size of the avatars in the group.
+		 * @default "md"
+		 */
+		size?: AvatarVariants["size"];
+		/**
+		 * The stacking order of the avatars.
+		 * @default "last-on-top"
+		 */
+		stacking?: GroupVariants["stacking"];
+		/**
+		 * The spacing between avatars.
+		 */
+		spaceX?: GroupVariants["spaceX"];
+		/**
+		 * Whether the avatars should have a border.
+		 * @default false
+		 */
+		borderless?: boolean;
+		/**
+		 * Additional CSS classes.
+		 */
+		class?: string;
+		/**
+		 * Inline styles.
+		 */
+		style?: string;
+		/**
+		 * The avatars to render in the group.
+		 */
+		children: Snippet;
+	}
+
+	let {
+		size = "md",
+		stacking = "last-on-top",
+		spaceX,
+		borderless = false,
+		class: className,
+		style,
+		children,
+		...restProps
+	}: Props = $props();
+
+	setContext<AvatarGroupContext>(AVATAR_GROUP_CTX, {
+		get size() {
+			return size;
 		},
-	},
-	defaultVariants: {
-		size: "md",
-		stacking: "last-on-top",
-	},
-});
+		get borderless() {
+			return borderless;
+		},
+	});
 
-type GroupVariants = VariantProps<typeof avatarGroup>;
-
-interface Props extends HTMLAttributes<HTMLDivElement> {
-	/**
-	 * The size of the avatars in the group.
-	 * @default "md"
-	 */
-	size?: AvatarVariants["size"];
-	/**
-	 * The stacking order of the avatars.
-	 * @default "last-on-top"
-	 */
-	stacking?: GroupVariants["stacking"];
-	/**
-	 * The spacing between avatars.
-	 */
-	spaceX?: GroupVariants["spaceX"];
-	/**
-	 * Whether the avatars should have a border.
-	 * @default false
-	 */
-	borderless?: boolean;
-	/**
-	 * Additional CSS classes.
-	 */
-	class?: string;
-	/**
-	 * Inline styles.
-	 */
-	style?: string;
-	/**
-	 * The avatars to render in the group.
-	 */
-	children: Snippet;
-}
-
-let {
-	size = "md",
-	stacking = "last-on-top",
-	spaceX,
-	borderless = false,
-	class: className,
-	style,
-	children,
-	...restProps
-}: Props = $props();
-
-setContext<AvatarGroupContext>(AVATAR_GROUP_CTX, {
-	get size() {
-		return size;
-	},
-	get borderless() {
-		return borderless;
-	},
-});
-
-const finalClass = $derived(
-	twMerge(avatarGroup({ size, stacking, spaceX }), className),
-);
+	const finalClass = $derived(
+		twMerge(avatarGroup({ size, stacking, spaceX }), className),
+	);
 </script>
 
-<Flex align="center" justify="start" class={finalClass} style={style} {...restProps}>
+<Flex align="center" justify="start" class={finalClass} {style} {...restProps}>
 	{@render children()}
 </Flex>

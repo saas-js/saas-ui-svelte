@@ -12,10 +12,7 @@
 	import House from "phosphor-svelte/lib/House";
 	import TShirt from "phosphor-svelte/lib/TShirt";
 	import CaretRight from "phosphor-svelte/lib/CaretRight";
-	import {
-		breadcrumbSizes,
-		breadcrumbVariants,
-	} from "../../utils";
+	import { breadcrumbSizes, breadcrumbVariants } from "../../utils";
 
 	interface Props {
 		story:

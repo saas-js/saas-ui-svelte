@@ -1,13 +1,13 @@
 <script lang="ts">
-interface Props {
-	class?: string;
-}
+	interface Props {
+		class?: string;
+	}
 
-// Normalize base URL - remove trailing slash, then add it back for root link
-const rawBase = import.meta.env.BASE_URL || "";
-const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
+	// Normalize base URL - remove trailing slash, then add it back for root link
+	const rawBase = import.meta.env.BASE_URL || "";
+	const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 
-let { class: className = "" }: Props = $props();
+	let { class: className = "" }: Props = $props();
 </script>
 
 <a

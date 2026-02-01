@@ -1,19 +1,19 @@
 <script lang="ts">
-import type { Snippet } from "svelte";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import { twMerge } from "tailwind-merge";
-import { actionBar } from "./action-bar.svelte";
+	import type { Snippet } from "svelte";
+	import type { HTMLButtonAttributes } from "svelte/elements";
+	import { twMerge } from "tailwind-merge";
+	import { actionBar } from "./action-bar.svelte";
 
-interface Props extends HTMLButtonAttributes {
-	/**
-	 * Content to render inside the selection trigger (typically "X selected").
-	 */
-	children?: Snippet;
-}
+	interface Props extends HTMLButtonAttributes {
+		/**
+		 * Content to render inside the selection trigger (typically "X selected").
+		 */
+		children?: Snippet;
+	}
 
-let { children, class: className, ...restProps }: Props = $props();
+	let { children, class: className, ...restProps }: Props = $props();
 
-const styles = actionBar();
+	const styles = actionBar();
 </script>
 
 <button

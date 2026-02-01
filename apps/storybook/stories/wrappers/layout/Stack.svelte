@@ -8,7 +8,13 @@
 	} from "$saas/layout/stack";
 
 	interface Props {
-		story: "basic" | "horizontal" | "withHStack" | "withVStack" | "withSeparator" | "responsive";
+		story:
+			| "basic"
+			| "horizontal"
+			| "withHStack"
+			| "withVStack"
+			| "withSeparator"
+			| "responsive";
 		args?: any;
 	}
 
@@ -39,9 +45,9 @@
 	</div>
 {:else if story === "withVStack"}
 	<VStack>
-		<DecorativeBox class="w-1/2 h-20" />
-		<DecorativeBox class="w-1/4 h-20" />
-		<DecorativeBox class="w-full h-20" />
+		<DecorativeBox class="h-20 w-1/2" />
+		<DecorativeBox class="h-20 w-1/4" />
+		<DecorativeBox class="h-20 w-full" />
 	</VStack>
 {:else if story === "withSeparator"}
 	<Stack>

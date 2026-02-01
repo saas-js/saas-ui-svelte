@@ -1,47 +1,47 @@
 <script lang="ts">
-import { Collapsible } from "@saas-ui/svelte/components/collapsible";
-import { Icon } from "@saas-ui/svelte/components/icon";
-import { Link } from "@saas-ui/svelte/components/link";
-import { Box } from "@saas-ui/svelte/layout/box";
-import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
-import { Heading } from "@saas-ui/svelte/typography/heading";
-import CaretRight from "phosphor-svelte/lib/CaretRightIcon";
+	import { Collapsible } from "@saas-ui/svelte/components/collapsible";
+	import { Icon } from "@saas-ui/svelte/components/icon";
+	import { Link } from "@saas-ui/svelte/components/link";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
+	import CaretRight from "phosphor-svelte/lib/CaretRightIcon";
 
-interface NavItem {
-	label: string;
-	href?: string;
-	children?: NavItem[];
-}
+	interface NavItem {
+		label: string;
+		href?: string;
+		children?: NavItem[];
+	}
 
-interface NavGroup {
-	title: string;
-	items: NavItem[];
-}
+	interface NavGroup {
+		title: string;
+		items: NavItem[];
+	}
 
-interface Props {
-	groups: NavGroup[];
-	currentPath?: string;
-}
+	interface Props {
+		groups: NavGroup[];
+		currentPath?: string;
+	}
 
-let { groups, currentPath = "" }: Props = $props();
+	let { groups, currentPath = "" }: Props = $props();
 
-function isActive(href: string | undefined): boolean {
-	if (!href) return false;
-	return currentPath === href;
-}
+	function isActive(href: string | undefined): boolean {
+		if (!href) return false;
+		return currentPath === href;
+	}
 
-function hasActiveChild(items: NavItem[]): boolean {
-	return items.some(
-		(item) =>
-			isActive(item.href) ||
-			(item.children && hasActiveChild(item.children)),
-	);
-}
+	function hasActiveChild(items: NavItem[]): boolean {
+		return items.some(
+			(item) =>
+				isActive(item.href) ||
+				(item.children && hasActiveChild(item.children)),
+		);
+	}
 
-// Helper to insert spaces before capital letters (e.g. "ActionLabel" -> "Action Label")
-function formatLabel(label: string): string {
-	return label.replace(/([a-z])([A-Z])/g, "$1 $2");
-}
+	// Helper to insert spaces before capital letters (e.g. "ActionLabel" -> "Action Label")
+	function formatLabel(label: string): string {
+		return label.replace(/([a-z])([A-Z])/g, "$1 $2");
+	}
 </script>
 
 <Box

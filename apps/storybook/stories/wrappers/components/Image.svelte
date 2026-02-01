@@ -8,11 +8,32 @@
 	import { Stack, VStack } from "$saas/layout/stack";
 	import { Text } from "$saas/typography/text";
 
-	const imageRoundedOptions = ["none", "sm", "md", "lg", "xl", "2xl", "3xl", "full"] as const;
-	const imageFitOptions = ["contain", "cover", "fill", "none", "scale-down"] as const;
+	const imageRoundedOptions = [
+		"none",
+		"sm",
+		"md",
+		"lg",
+		"xl",
+		"2xl",
+		"3xl",
+		"full",
+	] as const;
+	const imageFitOptions = [
+		"contain",
+		"cover",
+		"fill",
+		"none",
+		"scale-down",
+	] as const;
 
 	interface Props {
-		story: "basic" | "height" | "circular" | "aspectRatio" | "objectFit" | "rounded";
+		story:
+			| "basic"
+			| "height"
+			| "circular"
+			| "aspectRatio"
+			| "objectFit"
+			| "rounded";
 	}
 
 	let { story }: Props = $props();
@@ -61,7 +82,7 @@
 					width={200}
 					height={150}
 					rounded="md"
-					class="border border-border-subtle"
+					class="border-border-subtle border"
 				/>
 			</VStack>
 		{/each}

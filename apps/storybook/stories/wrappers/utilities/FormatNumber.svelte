@@ -10,7 +10,13 @@
 	import { Stack, HStack } from "$saas/layout/stack";
 
 	interface Props {
-		story: "basic" | "percentage" | "currency" | "locale" | "unit" | "compactNotation";
+		story:
+			| "basic"
+			| "percentage"
+			| "currency"
+			| "locale"
+			| "unit"
+			| "compactNotation";
 		value?: number;
 		style?: "decimal" | "currency" | "percent" | "unit";
 		currency?: string;
@@ -89,6 +95,10 @@
 	</Text>
 {:else if story === "compactNotation"}
 	<Text size="lg">
-		<FormatNumber value={1500000} notation="compact" compactDisplay="short" />
+		<FormatNumber
+			value={1500000}
+			notation="compact"
+			compactDisplay="short"
+		/>
 	</Text>
 {/if}

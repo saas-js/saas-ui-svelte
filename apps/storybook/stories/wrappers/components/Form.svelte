@@ -27,7 +27,12 @@
 	];
 
 	interface Props {
-		story: "basic" | "withValidation" | "fieldTypes" | "conditionalFields" | "submitOptions";
+		story:
+			| "basic"
+			| "withValidation"
+			| "fieldTypes"
+			| "conditionalFields"
+			| "submitOptions";
 	}
 
 	let { story }: Props = $props();

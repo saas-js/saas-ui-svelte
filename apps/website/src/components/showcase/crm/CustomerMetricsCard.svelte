@@ -1,11 +1,6 @@
 <script lang="ts">
 	import { onMount, untrack } from "svelte";
-	import {
-		Chart,
-		ArcElement,
-		DoughnutController,
-		Tooltip,
-	} from "chart.js";
+	import { Chart, ArcElement, DoughnutController, Tooltip } from "chart.js";
 	import { Card } from "@saas-ui/svelte/components/card";
 	import { DataList } from "@saas-ui/svelte/components/data-list";
 	import { Box } from "@saas-ui/svelte/layout/box";
@@ -123,7 +118,11 @@
 			const tooltip = currentChart.options.plugins?.tooltip;
 			if (tooltip && tooltip.callbacks) {
 				tooltip.callbacks.label = (context) => {
-					const percentages = [data.churnByTier.starter, data.churnByTier.pro, data.churnByTier.enterprise];
+					const percentages = [
+						data.churnByTier.starter,
+						data.churnByTier.pro,
+						data.churnByTier.enterprise,
+					];
 					return `${context.label}: ${percentages[context.dataIndex]}%`;
 				};
 			}
@@ -176,7 +175,11 @@
 								padding: 10,
 								callbacks: {
 									label: (context) => {
-										const percentages = [data.churnByTier.starter, data.churnByTier.pro, data.churnByTier.enterprise];
+										const percentages = [
+											data.churnByTier.starter,
+											data.churnByTier.pro,
+											data.churnByTier.enterprise,
+										];
 										return `${context.label}: ${percentages[context.dataIndex]}%`;
 									},
 								},
@@ -217,7 +220,9 @@
 
 <Card.Root class="bg-bg-default min-w-0 overflow-hidden p-4 xl:col-span-1">
 	<Card.Header class="gap-0 p-0 pb-2">
-		<Card.Title as="h2" class="text-fg-muted text-[.8125rem] font-medium leading-4"
+		<Card.Title
+			as="h2"
+			class="text-fg-muted text-[.8125rem] leading-4 font-medium"
 			>Customer metrics</Card.Title
 		>
 	</Card.Header>
@@ -235,45 +240,61 @@
 				>
 			</DataList.Item>
 			<DataList.Item class="min-w-0 gap-1 text-xs leading-[1.1375rem]">
-				<DataList.ItemLabel class="truncate">Lifetime value</DataList.ItemLabel>
+				<DataList.ItemLabel class="truncate"
+					>Lifetime value</DataList.ItemLabel
+				>
 				<DataList.ItemValue class="text-base font-medium"
 					>{metrics.lifetimeValue}</DataList.ItemValue
 				>
 			</DataList.Item>
 			<DataList.Item class="min-w-0 gap-1 text-xs leading-[1.1375rem]">
-				<DataList.ItemLabel class="truncate">Churn rate</DataList.ItemLabel>
+				<DataList.ItemLabel class="truncate"
+					>Churn rate</DataList.ItemLabel
+				>
 				<DataList.ItemValue class="text-base font-medium"
 					>{metrics.churnRate}</DataList.ItemValue
 				>
 			</DataList.Item>
 			<DataList.Item class="min-w-0 gap-1 text-xs leading-[1.1375rem]">
-				<DataList.ItemLabel class="truncate">Retention rate</DataList.ItemLabel>
+				<DataList.ItemLabel class="truncate"
+					>Retention rate</DataList.ItemLabel
+				>
 				<DataList.ItemValue class="text-base font-medium"
 					>{metrics.retentionRate}</DataList.ItemValue
 				>
 			</DataList.Item>
 			<DataList.Item class="col-span-2 gap-1 text-xs leading-[1.1375rem]">
 				<DataList.ItemLabel>Churn by tier</DataList.ItemLabel>
-				<DataList.ItemValue class="flex min-w-0 items-center gap-4 overflow-hidden">
+				<DataList.ItemValue
+					class="flex min-w-0 items-center gap-4 overflow-hidden"
+				>
 					<Box class="h-25 w-25 shrink-0">
 						<canvas bind:this={canvas}></canvas>
 					</Box>
-					<List.Root class="flex min-w-0 flex-col overflow-hidden text-xs">
-						<List.Item class="flex items-center gap-2 whitespace-nowrap">
+					<List.Root
+						class="flex min-w-0 flex-col overflow-hidden text-xs"
+					>
+						<List.Item
+							class="flex items-center gap-2 whitespace-nowrap"
+						>
 							<Text
 								as="span"
 								class="inline-block h-2 w-2 shrink-0 rounded-full bg-indigo-600"
 							></Text>
 							Starter: {metrics.churnByTier.starter}%
 						</List.Item>
-						<List.Item class="flex items-center gap-2 whitespace-nowrap">
+						<List.Item
+							class="flex items-center gap-2 whitespace-nowrap"
+						>
 							<Text
 								as="span"
 								class="inline-block h-2 w-2 shrink-0 rounded-full bg-pink-600"
 							></Text>
 							Pro: {metrics.churnByTier.pro}%
 						</List.Item>
-						<List.Item class="flex items-center gap-2 whitespace-nowrap">
+						<List.Item
+							class="flex items-center gap-2 whitespace-nowrap"
+						>
 							<Text
 								as="span"
 								class="inline-block h-2 w-2 shrink-0 rounded-full bg-gray-900 dark:bg-gray-100"

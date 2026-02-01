@@ -101,7 +101,11 @@
 			<Tooltip content="Instant tooltip" openDelay={0} showArrow>
 				<Button variant="ghost">Instant</Button>
 			</Tooltip>
-			<Tooltip content="Delayed tooltip (700ms)" openDelay={700} showArrow>
+			<Tooltip
+				content="Delayed tooltip (700ms)"
+				openDelay={700}
+				showArrow
+			>
 				<Button variant="ghost">Delayed</Button>
 			</Tooltip>
 		</HStack>
@@ -114,7 +118,9 @@
 			{/snippet}
 			<VStack gap={1}>
 				<Text as="span" class="font-semibold">Interactive tooltip</Text>
-				<Text as="span" size="xs" class="opacity-80">You can hover over me!</Text>
+				<Text as="span" size="xs" class="opacity-80"
+					>You can hover over me!</Text
+				>
 			</VStack>
 		</Tooltip>
 	</Centre>

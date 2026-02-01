@@ -12,7 +12,9 @@ import http from "node:http";
 
 const IS_DEV = process.argv.includes("--dev");
 const STATIC_PORT = 6007;
-const BASE_URL = IS_DEV ? "http://localhost:6006" : `http://localhost:${STATIC_PORT}`;
+const BASE_URL = IS_DEV
+	? "http://localhost:6006"
+	: `http://localhost:${STATIC_PORT}`;
 const IFRAME_URL = `${BASE_URL}/iframe.html`;
 const CONCURRENCY = 4;
 
@@ -32,7 +34,10 @@ function createStaticServer(dir: string, port: number): Promise<http.Server> {
 		};
 
 		const server = http.createServer((req, res) => {
-			let filePath = path.join(dir, req.url === "/" ? "index.html" : req.url || "");
+			let filePath = path.join(
+				dir,
+				req.url === "/" ? "index.html" : req.url || "",
+			);
 			// Remove query string
 			filePath = filePath.split("?")[0];
 
@@ -86,26 +91,30 @@ async function main() {
 	if (!IS_DEV) {
 		const staticDir = path.resolve("storybook-static");
 		if (!fs.existsSync(staticDir)) {
-			console.error("storybook-static directory not found. Run build first.");
+			console.error(
+				"storybook-static directory not found. Run build first.",
+			);
 			process.exit(1);
 		}
 		server = await createStaticServer(staticDir, STATIC_PORT);
 	}
 
 	console.log(
-		`Testing ${IS_DEV ? "dev server" : "static build"} at ${BASE_URL}`
+		`Testing ${IS_DEV ? "dev server" : "static build"} at ${BASE_URL}`,
 	);
 
 	// Load stories
 	let stories: Story[];
 	try {
-		const content = await fetch(`${BASE_URL}/index.json`).then((r) => r.json());
+		const content = await fetch(`${BASE_URL}/index.json`).then((r) =>
+			r.json(),
+		);
 		stories = Object.values(
-			content.entries as Record<string, Story>
+			content.entries as Record<string, Story>,
 		).filter((s) => s.type === "story");
 	} catch {
 		console.error(
-			"Could not load index.json. Ensure Storybook is built or running."
+			"Could not load index.json. Ensure Storybook is built or running.",
 		);
 		server?.close();
 		process.exit(1);
@@ -116,11 +125,13 @@ async function main() {
 	const browser = await chromium.launch({ headless: true });
 	const context = await browser.newContext();
 	const limit = pLimit(CONCURRENCY);
-	const report: { generatedAt: string; stories: Record<string, StoryResult> } =
-		{
-			generatedAt: new Date().toISOString(),
-			stories: {},
-		};
+	const report: {
+		generatedAt: string;
+		stories: Record<string, StoryResult>;
+	} = {
+		generatedAt: new Date().toISOString(),
+		stories: {},
+	};
 
 	let completed = 0;
 	let passed = 0;
@@ -194,7 +205,9 @@ async function main() {
 								...(pageError ? [pageError] : []),
 								...jsErrors,
 								...(hasA11yViolations
-									? [`${results.violations.length} a11y violations`]
+									? [
+											`${results.violations.length} a11y violations`,
+										]
 									: []),
 							],
 						});
@@ -240,8 +253,8 @@ async function main() {
 					completed++;
 					process.stdout.write(`\rProgress: ${completed}/${total}`);
 				}
-			})
-		)
+			}),
+		),
 	);
 
 	const duration = ((Date.now() - start) / 1000).toFixed(1);
@@ -250,7 +263,10 @@ async function main() {
 	await browser.close();
 
 	// Write reports
-	const outputPaths = ["a11y-report.json", "../website/public/a11y-report.json"];
+	const outputPaths = [
+		"a11y-report.json",
+		"../website/public/a11y-report.json",
+	];
 	for (const p of outputPaths) {
 		const fullPath = path.resolve(p);
 		fs.mkdirSync(path.dirname(fullPath), { recursive: true });
@@ -259,7 +275,7 @@ async function main() {
 	}
 
 	console.log(
-		`\nPassed: ${passed} | Failed: ${failed} | Warnings: ${warnings} | Total: ${total}`
+		`\nPassed: ${passed} | Failed: ${failed} | Warnings: ${warnings} | Total: ${total}`,
 	);
 
 	// Print failed stories summary

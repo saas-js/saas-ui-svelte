@@ -140,13 +140,16 @@ export const emails: Email[] = [
 
 // Convert email record to lookup by ID
 export const emailsById: Record<string, Email> = Object.fromEntries(
-	emails.map((email) => [email.id, email])
+	emails.map((email) => [email.id, email]),
 );
 
 // Generate preview from HTML content
 export function getPreview(content: string, maxLength = 150): string {
 	// Strip HTML tags and get plain text
-	const text = content.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+	const text = content
+		.replace(/<[^>]*>/g, " ")
+		.replace(/\s+/g, " ")
+		.trim();
 	if (text.length <= maxLength) return text;
 	return text.slice(0, maxLength).trim() + "...";
 }

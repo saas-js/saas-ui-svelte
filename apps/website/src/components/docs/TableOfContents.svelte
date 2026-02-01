@@ -1,87 +1,89 @@
 <script lang="ts">
-import { Icon } from "@saas-ui/svelte/components/icon";
-import { Link } from "@saas-ui/svelte/components/link";
-import { Button } from "@saas-ui/svelte/components/button";
-import { Box } from "@saas-ui/svelte/layout/box";
-import { VStack } from "@saas-ui/svelte/layout/stack";
-import { Text } from "@saas-ui/svelte/typography/text";
-import GithubLogo from "phosphor-svelte/lib/GithubLogoIcon";
-import ArrowLineUp from "phosphor-svelte/lib/ArrowLineUpIcon";
-import ArrowSquareOut from "phosphor-svelte/lib/ArrowSquareOutIcon";
+	import { Icon } from "@saas-ui/svelte/components/icon";
+	import { Link } from "@saas-ui/svelte/components/link";
+	import { Button } from "@saas-ui/svelte/components/button";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { VStack } from "@saas-ui/svelte/layout/stack";
+	import { Text } from "@saas-ui/svelte/typography/text";
+	import GithubLogo from "phosphor-svelte/lib/GithubLogoIcon";
+	import ArrowLineUp from "phosphor-svelte/lib/ArrowLineUpIcon";
+	import ArrowSquareOut from "phosphor-svelte/lib/ArrowSquareOutIcon";
 
-interface TocItem {
-	label: string;
-	href: string;
-	level?: number;
-	children?: TocItem[];
-}
-
-interface Props {
-	items: TocItem[];
-	githubUrl?: string;
-}
-
-let { items, githubUrl }: Props = $props();
-
-let activeId = $state<string>("");
-
-function flattenItems(items: TocItem[]): TocItem[] {
-	const result: TocItem[] = [];
-	for (const item of items) {
-		result.push(item);
-		if (item.children) {
-			result.push(...flattenItems(item.children));
-		}
+	interface TocItem {
+		label: string;
+		href: string;
+		level?: number;
+		children?: TocItem[];
 	}
-	return result;
-}
 
-$effect(() => {
-	if (typeof window === "undefined") return;
+	interface Props {
+		items: TocItem[];
+		githubUrl?: string;
+	}
 
-	const ids = flattenItems(items).map((item) => item.href.replace("#", ""));
-	const visibleSections = new Set<string>();
+	let { items, githubUrl }: Props = $props();
 
-	const observer = new IntersectionObserver(
-		(entries) => {
-			for (const entry of entries) {
-				if (entry.isIntersecting) {
-					visibleSections.add(entry.target.id);
-				} else {
-					visibleSections.delete(entry.target.id);
-				}
+	let activeId = $state<string>("");
+
+	function flattenItems(items: TocItem[]): TocItem[] {
+		const result: TocItem[] = [];
+		for (const item of items) {
+			result.push(item);
+			if (item.children) {
+				result.push(...flattenItems(item.children));
 			}
-
-			// Use first visible section, or first section above viewport
-			activeId =
-				ids.find((id) => visibleSections.has(id)) ||
-				ids.findLast((id) => {
-					const el = document.getElementById(id);
-					return el && el.getBoundingClientRect().top < 100;
-				}) ||
-				ids[0] ||
-				"";
-		},
-		{ rootMargin: "-80px 0px -70% 0px" },
-	);
-
-	for (const id of ids) {
-		const el = document.getElementById(id);
-		if (el) observer.observe(el);
+		}
+		return result;
 	}
 
-	return () => observer.disconnect();
-});
+	$effect(() => {
+		if (typeof window === "undefined") return;
 
-function scrollToTop() {
-	window.scrollTo({ top: 0, behavior: "smooth" });
-}
+		const ids = flattenItems(items).map((item) =>
+			item.href.replace("#", ""),
+		);
+		const visibleSections = new Set<string>();
 
-function getIndentClass(level: number = 1): string {
-	if (level === 1) return "";
-	if (level === 2) return "ml-4";
-	return "ml-8";
-}
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						visibleSections.add(entry.target.id);
+					} else {
+						visibleSections.delete(entry.target.id);
+					}
+				}
+
+				// Use first visible section, or first section above viewport
+				activeId =
+					ids.find((id) => visibleSections.has(id)) ||
+					ids.findLast((id) => {
+						const el = document.getElementById(id);
+						return el && el.getBoundingClientRect().top < 100;
+					}) ||
+					ids[0] ||
+					"";
+			},
+			{ rootMargin: "-80px 0px -70% 0px" },
+		);
+
+		for (const id of ids) {
+			const el = document.getElementById(id);
+			if (el) observer.observe(el);
+		}
+
+		return () => observer.disconnect();
+	});
+
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	}
+
+	function getIndentClass(level: number = 1): string {
+		if (level === 1) return "";
+		if (level === 2) return "ml-4";
+		return "ml-8";
+	}
 </script>
 
 <Box
@@ -99,7 +101,9 @@ function getIndentClass(level: number = 1): string {
 					{@const isActive = activeId === item.href.replace("#", "")}
 					<Link
 						href={item.href}
-						class="text-sm transition-colors {getIndentClass(item.level)} {isActive
+						class="text-sm transition-colors {getIndentClass(
+							item.level,
+						)} {isActive
 							? 'text-fg-default font-medium'
 							: 'text-fg-muted hover:text-fg-default'}"
 					>
@@ -107,7 +111,8 @@ function getIndentClass(level: number = 1): string {
 					</Link>
 					{#if item.children}
 						{#each item.children as child}
-							{@const isChildActive = activeId === child.href.replace("#", "")}
+							{@const isChildActive =
+								activeId === child.href.replace("#", "")}
 							<Link
 								href={child.href}
 								class="ml-4 text-sm transition-colors {isChildActive

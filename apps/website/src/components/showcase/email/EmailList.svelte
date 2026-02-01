@@ -19,15 +19,16 @@
 		onToggleSidebar: () => void;
 	}
 
-	let { selectedId, onSelect, sidebarOpen, onToggleSidebar }: Props = $props();
+	let { selectedId, onSelect, sidebarOpen, onToggleSidebar }: Props =
+		$props();
 </script>
 
-<Flex direction="column" class="flex-1 bg-bg-default">
+<Flex direction="column" class="bg-bg-default flex-1">
 	<!-- Header -->
 	<Flex
 		align="center"
 		gap={2}
-		class="z-10 bg-bg-default shrink-0 h-12 sticky border-b border-border-default top-0 px-3"
+		class="bg-bg-default border-border-default sticky top-0 z-10 h-12 shrink-0 border-b px-3"
 	>
 		<!-- Search input -->
 		<Flex align="center" class="relative flex-1">
@@ -40,7 +41,7 @@
 			</Flex>
 			<input
 				placeholder="Search inbox"
-				class="border-border-default bg-bg-default hover:border-border-emphasized h-7 w-full min-w-7 appearance-none rounded border pl-7 pr-10 text-[.8125rem] leading-[1.1375rem] outline-0 focus-visible:border-indigo-600 focus-visible:outline-indigo-600 focus-visible:outline-solid hover:focus-visible:border-indigo-600 disabled:cursor-not-allowed disabled:opacity-50"
+				class="border-border-default bg-bg-default hover:border-border-emphasized h-7 w-full min-w-7 appearance-none rounded border pr-10 pl-7 text-[.8125rem] leading-[1.1375rem] outline-0 focus-visible:border-indigo-600 focus-visible:outline-indigo-600 focus-visible:outline-solid hover:focus-visible:border-indigo-600 disabled:cursor-not-allowed disabled:opacity-50"
 			/>
 			<Flex
 				align="center"
@@ -51,12 +52,24 @@
 			</Flex>
 		</Flex>
 		<Tooltip content="Refresh">
-			<Button variant="ghost" size="sm" icon colour="gray" aria-label="Refresh">
+			<Button
+				variant="ghost"
+				size="sm"
+				icon
+				colour="gray"
+				aria-label="Refresh"
+			>
 				<Icon as={ArrowsClockwiseIcon} size="sm" />
 			</Button>
 		</Tooltip>
 		<Tooltip content="Filter">
-			<Button variant="ghost" size="sm" icon colour="gray" aria-label="Filter">
+			<Button
+				variant="ghost"
+				size="sm"
+				icon
+				colour="gray"
+				aria-label="Filter"
+			>
 				<Icon as={FunnelIcon} size="sm" />
 			</Button>
 		</Tooltip>
@@ -67,7 +80,7 @@
 		{#each emails as email}
 			<button
 				type="button"
-				class="appearance-none cursor-pointer w-full text-left mb-1 px-2.5 py-1.5 rounded transition-colors duration-150 hover:bg-bg-subtle focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-indigo-600 {selectedId ===
+				class="hover:bg-bg-subtle mb-1 w-full cursor-pointer appearance-none rounded px-2.5 py-1.5 text-left transition-colors duration-150 focus-visible:outline-1 focus-visible:outline-indigo-600 focus-visible:outline-solid {selectedId ===
 				email.id
 					? 'bg-bg-subtle'
 					: ''}"
@@ -82,9 +95,15 @@
 					>
 						{email.from}
 					</Heading>
-					<Text size="xs" class="text-[.675rem] text-fg-muted shrink-0">{email.date}</Text>
+					<Text
+						size="xs"
+						class="text-fg-muted shrink-0 text-[.675rem]"
+						>{email.date}</Text
+					>
 				</Flex>
-				<Text size="xs" class="text-fg-emphasized mt-0.5">{email.subject}</Text>
+				<Text size="xs" class="text-fg-emphasized mt-0.5"
+					>{email.subject}</Text
+				>
 				<Text
 					size="xs"
 					class="text-fg-muted mt-0.5 overflow-hidden"

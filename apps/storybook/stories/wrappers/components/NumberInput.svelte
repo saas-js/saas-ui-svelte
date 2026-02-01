@@ -39,7 +39,12 @@
 		{#each numberInputSizes as size}
 			<HStack align="center" gap={4}>
 				<Text size="xs" class="min-w-[3ch]">{size}</Text>
-				<NumberInput {size} defaultValue="10" aria-label="Number {size}" class="flex-1" />
+				<NumberInput
+					{size}
+					defaultValue="10"
+					aria-label="Number {size}"
+					class="flex-1"
+				/>
 			</HStack>
 		{/each}
 	</Stack>
@@ -112,7 +117,12 @@
 		{#each colours as colour}
 			<HStack align="center" gap={4}>
 				<Text size="xs" class="w-16">{colour}</Text>
-				<NumberInput {colour} defaultValue="10" aria-label="Number {colour}" class="flex-1" />
+				<NumberInput
+					{colour}
+					defaultValue="10"
+					aria-label="Number {colour}"
+					class="flex-1"
+				/>
 			</HStack>
 		{/each}
 	</Stack>

@@ -40,14 +40,27 @@
 		{#each passwordInputSizes as size}
 			<HStack align="center" gap={4}>
 				<Text size="xs" class="min-w-[3ch]">{size}</Text>
-				<PasswordInput {size} placeholder={size} aria-label="Password {size}" class="flex-1" />
+				<PasswordInput
+					{size}
+					placeholder={size}
+					aria-label="Password {size}"
+					class="flex-1"
+				/>
 			</HStack>
 		{/each}
 	</Stack>
 {:else if story === "controlled"}
 	<Stack gap={4} class="max-w-72">
-		<PasswordInput bind:value={controlledValue} placeholder="Enter password" aria-label="Password" />
-		<Text size="sm">Value: {controlledValue ? "".repeat(controlledValue.length) : "(empty)"}</Text>
+		<PasswordInput
+			bind:value={controlledValue}
+			placeholder="Enter password"
+			aria-label="Password"
+		/>
+		<Text size="sm"
+			>Value: {controlledValue
+				? "".repeat(controlledValue.length)
+				: "(empty)"}</Text
+		>
 	</Stack>
 {:else if story === "controlledVisibility"}
 	<Stack gap={4} class="max-w-72">
@@ -57,7 +70,9 @@
 			onVisibleChange={(v) => (controlledVisible = v)}
 			aria-label="Password"
 		/>
-		<Text size="sm">Password is {controlledVisible ? "visible" : "hidden"}</Text>
+		<Text size="sm"
+			>Password is {controlledVisible ? "visible" : "hidden"}</Text
+		>
 	</Stack>
 {:else if story === "withField"}
 	<form
@@ -83,13 +98,18 @@
 	</form>
 {:else if story === "disabled"}
 	<Box class="w-72">
-		<PasswordInput disabled placeholder="Disabled password" aria-label="Password" />
+		<PasswordInput
+			disabled
+			placeholder="Disabled password"
+			aria-label="Password"
+		/>
 	</Box>
 {:else if story === "invalid"}
 	<Field.Root invalid class="w-72">
 		<Field.Label>Password</Field.Label>
 		<PasswordInput placeholder="Enter password" />
-		<Field.ErrorText>Password must be at least 8 characters</Field.ErrorText>
+		<Field.ErrorText>Password must be at least 8 characters</Field.ErrorText
+		>
 	</Field.Root>
 {:else if story === "colours"}
 	<Stack gap={4} class="max-w-md">

@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Button } from "@saas-ui/svelte/components/button";
-import { Container } from "@saas-ui/svelte/layout/container";
-import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
-import { Heading } from "@saas-ui/svelte/typography/heading";
-import { Text } from "@saas-ui/svelte/typography/text";
-import ClipboardButton from "./ClipboardButton.svelte";
+	import { Button } from "@saas-ui/svelte/components/button";
+	import { Container } from "@saas-ui/svelte/layout/container";
+	import { VStack, HStack } from "@saas-ui/svelte/layout/stack";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
+	import { Text } from "@saas-ui/svelte/typography/text";
+	import ClipboardButton from "./ClipboardButton.svelte";
 
-// Normalize base URL - remove trailing slash to avoid double slashes
-const rawBase = import.meta.env.BASE_URL || "";
-const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
+	// Normalize base URL - remove trailing slash to avoid double slashes
+	const rawBase = import.meta.env.BASE_URL || "";
+	const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 </script>
 
 <section class="relative overflow-hidden pt-32 pb-20">

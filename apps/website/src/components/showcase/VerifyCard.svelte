@@ -20,15 +20,22 @@
 		</Heading>
 		<VStack as="form" gap={4} class="items-center">
 			<PinInput count={6} placeholder="0" size="md" colour="indigo" />
-			<Button variant="glass" colour="indigo" class="w-full" onclick={(e: Event) => e.preventDefault()}>
+			<Button
+				variant="glass"
+				colour="indigo"
+				class="w-full"
+				onclick={(e: Event) => e.preventDefault()}
+			>
 				Confirm
 			</Button>
 		</VStack>
 	</Card.Body>
-	<Card.Footer class="justify-center py-3 bg-bg-subtle">
+	<Card.Footer class="bg-bg-subtle justify-center py-3">
 		<Text size="sm" class="text-fg-muted">
 			Didn't receive a code?
-			<Link href="#" onclick={(e: Event) => e.preventDefault()}>Resend</Link>.
+			<Link href="#" onclick={(e: Event) => e.preventDefault()}
+				>Resend</Link
+			>.
 		</Text>
 	</Card.Footer>
 </Card.Root>

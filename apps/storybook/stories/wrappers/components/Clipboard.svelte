@@ -36,11 +36,11 @@
 		value="https://saas-ui.dev/docs/components/clipboard"
 		class="max-w-xs"
 	>
-		<ClipboardPrimitive.Control class="relative flex items-center w-full">
+		<ClipboardPrimitive.Control class="relative flex w-full items-center">
 			<ClipboardInput class="pr-10" />
 			<Centre class="absolute right-1">
 				<ClipboardIconButton
-					class="-mr-2 bg-transparent border-none shadow-none hover:bg-bg-subtle"
+					class="hover:bg-bg-subtle -mr-2 border-none bg-transparent shadow-none"
 				/>
 			</Centre>
 		</ClipboardPrimitive.Control>

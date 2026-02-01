@@ -1,32 +1,32 @@
 <script lang="ts">
-import type { HTMLAttributes } from "svelte/elements";
-import type { Snippet } from "svelte";
-import { getContext } from "svelte";
-import { twMerge } from "tailwind-merge";
-import {
-	BREADCRUMB_CTX,
-	type BreadcrumbContext,
-} from "./breadcrumb-root.svelte";
-import { Box } from "$saas/layout/box";
+	import type { HTMLAttributes } from "svelte/elements";
+	import type { Snippet } from "svelte";
+	import { getContext } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import {
+		BREADCRUMB_CTX,
+		type BreadcrumbContext,
+	} from "./breadcrumb-root.svelte";
+	import { Box } from "$saas/layout/box";
 
-interface Props extends HTMLAttributes<HTMLSpanElement> {
-	/**
-	 * The current page content.
-	 */
-	children: Snippet;
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-}
+	interface Props extends HTMLAttributes<HTMLSpanElement> {
+		/**
+		 * The current page content.
+		 */
+		children: Snippet;
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+	}
 
-let { children, class: className, ...restProps }: Props = $props();
+	let { children, class: className, ...restProps }: Props = $props();
 
-const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
-const styles = $derived(context?.styles);
+	const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
+	const styles = $derived(context?.styles);
 
-// Current link is always default color (stands out from muted links)
-const currentClasses = $derived(twMerge("text-fg-default", className));
+	// Current link is always default color (stands out from muted links)
+	const currentClasses = $derived(twMerge("text-fg-default", className));
 </script>
 
 <li class={styles?.item()}>

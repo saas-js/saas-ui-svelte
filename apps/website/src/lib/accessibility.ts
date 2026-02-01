@@ -49,7 +49,7 @@ export async function loadAccessibilityReport(): Promise<AccessibilityReport | n
 export function getStoryId(
 	category: ComponentCategory,
 	componentName: string,
-	storyName: string
+	storyName: string,
 ): string {
 	// Convert PascalCase to kebab-case
 	const toKebab = (str: string) =>
@@ -69,7 +69,7 @@ export function getStoryAccessibility(
 	report: AccessibilityReport | null,
 	category: ComponentCategory,
 	componentName: string,
-	storyName: string
+	storyName: string,
 ): StoryAccessibility | null {
 	if (!report) {
 		return null;

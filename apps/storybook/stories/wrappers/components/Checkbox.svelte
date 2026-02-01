@@ -62,7 +62,7 @@
 {:else if story === "variants"}
 	<HStack align="start" gap={10}>
 		{#each checkboxVariants as variant}
-			<VStack gap={2} class="items-center flex-1">
+			<VStack gap={2} class="flex-1 items-center">
 				<Text size="xs">
 					{variant}
 				</Text>
@@ -135,7 +135,7 @@
 	<Checkbox.Root class="items-start">
 		<Checkbox.Control>
 			<Checkbox.Indicator>
-				<Icon as={Check} class="w-full h-full" weight="bold" />
+				<Icon as={Check} class="h-full w-full" weight="bold" />
 			</Checkbox.Indicator>
 		</Checkbox.Control>
 		<Checkbox.Label>
@@ -143,7 +143,7 @@
 				<Text as="span" class="text-fg-default">
 					I agree to the terms and conditions
 				</Text>
-				<Text as="span" class="mt-1 font-normal text-fg-muted">
+				<Text as="span" class="text-fg-muted mt-1 font-normal">
 					By clicking this, you agree to our Terms and Privacy Policy.
 				</Text>
 			</VStack>
@@ -154,7 +154,7 @@
 	<Checkbox.Root>
 		<Checkbox.Control>
 			<Checkbox.Indicator>
-				<Icon as={Check} class="w-full h-full" weight="bold" />
+				<Icon as={Check} class="h-full w-full" weight="bold" />
 			</Checkbox.Indicator>
 		</Checkbox.Control>
 		<Checkbox.Label>

@@ -1,91 +1,97 @@
 <script module lang="ts">
-import { tv, type VariantProps } from "tailwind-variants";
+	import { tv, type VariantProps } from "tailwind-variants";
 
-export const breadcrumbLink = tv({
-	base: [
-		"outline-0",
-		"items-center",
-		"gap-2",
-		"inline-flex",
-		"rounded",
-		"font-normal",
-		"transition-none",
-		"focus:outline-offset-2",
-		"focus:outline-1",
-		"focus:outline-solid",
-		"focus:outline-fg-muted",
-	],
-	variants: {
-		variant: {
-			// Plain variant: muted (gray-500) text, no underline, hover to default
-			plain: ["text-fg-muted", "no-underline", "hover:text-fg-default"],
-			// Underline variant: default text with underline, hover increases contrast
-			underline: [
-				"underline",
-				"text-fg-default",
-				"underline-offset-[0.2em]",
-				"decoration-fg-default/20",
-				"hover:decoration-fg-default",
-			],
+	export const breadcrumbLink = tv({
+		base: [
+			"outline-0",
+			"items-center",
+			"gap-2",
+			"inline-flex",
+			"rounded",
+			"font-normal",
+			"transition-none",
+			"focus:outline-offset-2",
+			"focus:outline-1",
+			"focus:outline-solid",
+			"focus:outline-fg-muted",
+		],
+		variants: {
+			variant: {
+				// Plain variant: muted (gray-500) text, no underline, hover to default
+				plain: [
+					"text-fg-muted",
+					"no-underline",
+					"hover:text-fg-default",
+				],
+				// Underline variant: default text with underline, hover increases contrast
+				underline: [
+					"underline",
+					"text-fg-default",
+					"underline-offset-[0.2em]",
+					"decoration-fg-default/20",
+					"hover:decoration-fg-default",
+				],
+			},
 		},
-	},
-	defaultVariants: {
-		variant: "plain",
-	},
-});
+		defaultVariants: {
+			variant: "plain",
+		},
+	});
 
-export type BreadcrumbLinkVariants = VariantProps<typeof breadcrumbLink>;
+	export type BreadcrumbLinkVariants = VariantProps<typeof breadcrumbLink>;
 </script>
 
 <script lang="ts">
-import type {
-	HTMLAnchorAttributes,
-	HTMLButtonAttributes,
-} from "svelte/elements";
-import type { Snippet } from "svelte";
-import { getContext } from "svelte";
-import { twMerge } from "tailwind-merge";
-import {
-	BREADCRUMB_CTX,
-	type BreadcrumbContext,
-} from "./breadcrumb-root.svelte";
+	import type {
+		HTMLAnchorAttributes,
+		HTMLButtonAttributes,
+	} from "svelte/elements";
+	import type { Snippet } from "svelte";
+	import { getContext } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import {
+		BREADCRUMB_CTX,
+		type BreadcrumbContext,
+	} from "./breadcrumb-root.svelte";
 
-type BaseProps = {
-	/**
-	 * The link content.
-	 */
-	children: Snippet;
-	/**
-	 * Whether to show the separator after this link.
-	 * @default true
-	 */
-	showSeparator?: boolean;
-	/**
-	 * Render as a button instead of an anchor.
-	 * @default "a"
-	 */
-	as?: "a" | "button";
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-};
+	type BaseProps = {
+		/**
+		 * The link content.
+		 */
+		children: Snippet;
+		/**
+		 * Whether to show the separator after this link.
+		 * @default true
+		 */
+		showSeparator?: boolean;
+		/**
+		 * Render as a button instead of an anchor.
+		 * @default "a"
+		 */
+		as?: "a" | "button";
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+	};
 
-type Props = BaseProps & HTMLAnchorAttributes & HTMLButtonAttributes;
+	type Props = BaseProps & HTMLAnchorAttributes & HTMLButtonAttributes;
 
-let {
-	children,
-	showSeparator = true,
-	as = "a",
-	class: className,
-	...restProps
-}: Props = $props();
+	let {
+		children,
+		showSeparator = true,
+		as = "a",
+		class: className,
+		...restProps
+	}: Props = $props();
 
-const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
-const styles = $derived(context?.styles);
-const variant = $derived(context?.variant ?? "plain");
+	const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
+	const styles = $derived(context?.styles);
+	const variant = $derived(context?.variant ?? "plain");
 
-const linkClasses = $derived(twMerge(breadcrumbLink({ variant }), className));
+	const linkClasses = $derived(
+		twMerge(breadcrumbLink({ variant }), className),
+	);
 </script>
 
 <li class={styles?.item()}>

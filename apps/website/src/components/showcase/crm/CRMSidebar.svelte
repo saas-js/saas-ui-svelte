@@ -32,13 +32,13 @@
 </script>
 
 <Sidebar.Root
-	class="group/sidebar bg-bg-muted relative hidden h-auto w-72 min-w-56 border-r border-border-default py-2 transition-all duration-300 ease-(--easings-bounce-out) md:flex {open
+	class="group/sidebar bg-bg-muted border-border-default relative hidden h-auto w-72 min-w-56 border-r py-2 transition-all duration-300 ease-(--easings-bounce-out) md:flex {open
 		? 'translate-x-0'
-		: '-translate-x-full w-0 min-w-0 overflow-hidden border-r-0'}"
+		: 'w-0 min-w-0 -translate-x-full overflow-hidden border-r-0'}"
 >
 	<Sidebar.Header class="flex shrink-0 items-center px-3 py-2">
 		<Sidebar.NavItem>
-			<Sidebar.NavButton class="gap-2 hover:bg-sidebar-accent-bg">
+			<Sidebar.NavButton class="hover:bg-sidebar-accent-bg gap-2">
 				<Flex
 					align="center"
 					justify="center"
@@ -50,12 +50,16 @@
 			</Sidebar.NavButton>
 		</Sidebar.NavItem>
 		<Box class="flex-1"></Box>
-		<Button variant="ghost" size="sm" class="h-8 w-8 min-w-8 shrink-0 [&_svg]:size-4">
+		<Button
+			variant="ghost"
+			size="sm"
+			class="h-8 w-8 min-w-8 shrink-0 [&_svg]:size-4"
+		>
 			<Icon as={MagnifyingGlassIcon} size="sm" class="shrink-0" />
 		</Button>
 		<button
 			type="button"
-			class="hover:bg-sidebar-accent-bg inline-flex h-8 w-8 min-w-8 shrink-0 cursor-pointer items-center justify-center rounded transition-colors duration-150 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
+			class="hover:bg-sidebar-accent-bg focus-visible:outline-fg-muted inline-flex h-8 w-8 min-w-8 shrink-0 cursor-pointer items-center justify-center rounded transition-colors duration-150 focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-solid"
 			aria-label="Close sidebar"
 			onclick={onToggle}
 		>
@@ -103,10 +107,10 @@
 			<Flex
 				align="center"
 				gap={1}
-				class="group/fav h-6 cursor-pointer select-none rounded-md text-xs transition-all duration-150 hover:bg-sidebar-accent-bg"
+				class="group/fav hover:bg-sidebar-accent-bg h-6 cursor-pointer rounded-md text-xs transition-all duration-150 select-none"
 			>
 				<Collapsible.Trigger
-					class="mb-0 h-auto min-h-0 min-w-0 w-auto bg-transparent hover:bg-transparent px-2 py-0 shadow-none rounded-none text-xs leading-normal gap-0 justify-start flex flex-1 items-center font-medium [&_svg]:size-2.5"
+					class="mb-0 flex h-auto min-h-0 w-auto min-w-0 flex-1 items-center justify-start gap-0 rounded-none bg-transparent px-2 py-0 text-xs leading-normal font-medium shadow-none hover:bg-transparent [&_svg]:size-2.5"
 				>
 					Favourites
 					<Collapsible.Indicator
@@ -118,7 +122,7 @@
 				<Box class="pr-1">
 					<button
 						type="button"
-						class="inline-flex h-6 w-6 min-w-6 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium opacity-0 transition-all duration-200 group-hover/fav:opacity-60 group-hover/fav:hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
+						class="focus-visible:outline-fg-muted inline-flex h-6 w-6 min-w-6 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium opacity-0 transition-all duration-200 group-hover/fav:opacity-60 group-hover/fav:hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-solid"
 						aria-label="Add to favourites"
 					>
 						<Icon as={PlusIcon} size="xs" />
@@ -128,7 +132,9 @@
 			<Collapsible.Content>
 				<VStack gap={0} class="pt-1">
 					<Sidebar.NavItem>
-						<Sidebar.NavButton class="group/item h-7 gap-2 pl-2.5 pr-1">
+						<Sidebar.NavButton
+							class="group/item h-7 gap-2 pr-1 pl-2.5"
+						>
 							<Text as="span">🌟</Text>
 							Leads
 							<Box class="flex-1"></Box>
@@ -137,7 +143,7 @@
 							>
 								<button
 									type="button"
-									class="inline-flex h-6 w-6 min-w-6 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
+									class="focus-visible:outline-fg-muted inline-flex h-6 w-6 min-w-6 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-solid"
 									aria-label="Remove from favourites"
 									title="Remove from favourites"
 								>
@@ -147,7 +153,9 @@
 						</Sidebar.NavButton>
 					</Sidebar.NavItem>
 					<Sidebar.NavItem>
-						<Sidebar.NavButton class="group/item h-7 gap-2 pl-2.5 pr-1">
+						<Sidebar.NavButton
+							class="group/item h-7 gap-2 pr-1 pl-2.5"
+						>
 							<Text as="span">🤝</Text>
 							Closed
 							<Box class="flex-1"></Box>
@@ -156,7 +164,7 @@
 							>
 								<button
 									type="button"
-									class="inline-flex h-6 w-6 min-w-6 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg-muted"
+									class="focus-visible:outline-fg-muted inline-flex h-6 w-6 min-w-6 cursor-pointer items-center justify-center gap-1 rounded-sm text-xs font-medium focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-solid"
 									aria-label="Remove from favourites"
 								>
 									<Icon as={XIcon} size="xs" />
@@ -173,10 +181,10 @@
 			<Flex
 				align="center"
 				gap={1}
-				class="h-6 cursor-pointer select-none rounded-md text-xs transition-all duration-150 hover:bg-sidebar-accent-bg"
+				class="hover:bg-sidebar-accent-bg h-6 cursor-pointer rounded-md text-xs transition-all duration-150 select-none"
 			>
 				<Collapsible.Trigger
-					class="mb-0 h-auto min-h-0 min-w-0 w-auto bg-transparent hover:bg-transparent px-2 py-0 shadow-none rounded-none text-xs leading-normal gap-0 justify-start flex flex-1 items-center font-medium [&_svg]:size-2.5"
+					class="mb-0 flex h-auto min-h-0 w-auto min-w-0 flex-1 items-center justify-start gap-0 rounded-none bg-transparent px-2 py-0 text-xs leading-normal font-medium shadow-none hover:bg-transparent [&_svg]:size-2.5"
 				>
 					Workspace
 					<Collapsible.Indicator
@@ -221,6 +229,6 @@
 
 	<!-- Resize handle -->
 	<Box
-		class="after:bg-accent/20 absolute -right-1 inset-y-0 flex w-1.75 cursor-pointer justify-center after:pointer-events-none after:block after:h-full after:w-0.5 after:opacity-0 after:transition-opacity after:delay-200 after:duration-150 hover:after:opacity-100"
+		class="after:bg-accent/20 absolute inset-y-0 -right-1 flex w-1.75 cursor-pointer justify-center after:pointer-events-none after:block after:h-full after:w-0.5 after:opacity-0 after:transition-opacity after:delay-200 after:duration-150 hover:after:opacity-100"
 	></Box>
 </Sidebar.Root>

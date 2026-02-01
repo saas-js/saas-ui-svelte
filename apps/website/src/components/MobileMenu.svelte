@@ -1,51 +1,51 @@
 <script lang="ts">
-import { fade } from "svelte/transition";
-import { Box } from "@saas-ui/svelte/layout/box";
-import { VStack } from "@saas-ui/svelte/layout/stack";
-import { Button } from "@saas-ui/svelte/components/button";
-import { Heading } from "@saas-ui/svelte/typography/heading";
-import DocsSidebar from "./docs/DocsSidebar.svelte";
-import { getDocsNavigation } from "../lib/docs-navigation";
-import {
-	getSideMenuOpen,
-	setSideMenuOpen,
-	closeMobileMenu,
-} from "../lib/mobile-nav.svelte";
+	import { fade } from "svelte/transition";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { VStack } from "@saas-ui/svelte/layout/stack";
+	import { Button } from "@saas-ui/svelte/components/button";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
+	import DocsSidebar from "./docs/DocsSidebar.svelte";
+	import { getDocsNavigation } from "../lib/docs-navigation";
+	import {
+		getSideMenuOpen,
+		setSideMenuOpen,
+		closeMobileMenu,
+	} from "../lib/mobile-nav.svelte";
 
-interface Props {
-	currentPath?: string;
-}
+	interface Props {
+		currentPath?: string;
+	}
 
-let { currentPath = "" }: Props = $props();
+	let { currentPath = "" }: Props = $props();
 
-// Normalize base URL - remove trailing slash to avoid double slashes
-const rawBase = import.meta.env.BASE_URL || "";
-const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
+	// Normalize base URL - remove trailing slash to avoid double slashes
+	const rawBase = import.meta.env.BASE_URL || "";
+	const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 
-const navLinks = [
-	{ href: `${base}/docs`, label: "Docs" },
-	{ href: `${base}/storybook`, label: "Storybook" },
-];
+	const navLinks = [
+		{ href: `${base}/docs`, label: "Docs" },
+		{ href: `${base}/storybook`, label: "Storybook" },
+	];
 
-const navGroups = getDocsNavigation(base);
+	const navGroups = getDocsNavigation(base);
 
-let mobileNavOpen = $derived(getSideMenuOpen());
+	let mobileNavOpen = $derived(getSideMenuOpen());
 
-let isDocsPage = $state(false);
+	let isDocsPage = $state(false);
 
-$effect(() => {
-	if (typeof window === "undefined") return;
-	isDocsPage = window.location.pathname.includes("/docs");
-});
+	$effect(() => {
+		if (typeof window === "undefined") return;
+		isDocsPage = window.location.pathname.includes("/docs");
+	});
 
-$effect(() => {
-	if (typeof window === "undefined") return;
-	const mq = matchMedia("(min-width: 1024px)");
-	const close = () => mq.matches && closeMobileMenu();
-	close();
-	mq.addEventListener("change", close);
-	return () => mq.removeEventListener("change", close);
-});
+	$effect(() => {
+		if (typeof window === "undefined") return;
+		const mq = matchMedia("(min-width: 1024px)");
+		const close = () => mq.matches && closeMobileMenu();
+		close();
+		mq.addEventListener("change", close);
+		return () => mq.removeEventListener("change", close);
+	});
 </script>
 
 {#if mobileNavOpen}
@@ -69,12 +69,14 @@ $effect(() => {
 		{:else}
 			<nav class="flex flex-col gap-6 p-8">
 				<Box>
-					<Heading as="h5" size="xs" class="mb-2 px-2 text-fg-default">Resources</Heading>
+					<Heading as="h5" size="xs" class="text-fg-default mb-2 px-2"
+						>Resources</Heading
+					>
 					<VStack gap={1} class="w-full">
 						{#each navLinks as { href, label }}
 							<Button
 								as="a"
-								href={href}
+								{href}
 								variant="ghost"
 								class="w-full justify-start"
 								onclick={() => setSideMenuOpen(false)}
@@ -85,7 +87,9 @@ $effect(() => {
 					</VStack>
 				</Box>
 				<Box>
-					<Heading as="h5" size="xs" class="mb-2 px-2 text-fg-default">Legal</Heading>
+					<Heading as="h5" size="xs" class="text-fg-default mb-2 px-2"
+						>Legal</Heading
+					>
 					<VStack gap={1} class="w-full">
 						<Button
 							as="a"

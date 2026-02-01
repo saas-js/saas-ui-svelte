@@ -13,10 +13,7 @@
 	import User from "phosphor-svelte/lib/User";
 	import Globe from "phosphor-svelte/lib/Globe";
 	import Lock from "phosphor-svelte/lib/Lock";
-	import {
-		checkboxCardVariants,
-		checkboxCardSizes,
-	} from "../../utils";
+	import { checkboxCardVariants, checkboxCardSizes } from "../../utils";
 
 	interface Props {
 		story:

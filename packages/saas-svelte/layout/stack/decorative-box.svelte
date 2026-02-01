@@ -1,20 +1,20 @@
 <script lang="ts">
-import { twMerge } from "tailwind-merge";
-import type { HTMLAttributes } from "svelte/elements";
-import type { Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import type { HTMLAttributes } from "svelte/elements";
+	import type { Snippet } from "svelte";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	/**
-	 * The content to render inside the decorative box.
-	 */
-	children?: Snippet;
-}
+	interface Props extends HTMLAttributes<HTMLDivElement> {
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		/**
+		 * The content to render inside the decorative box.
+		 */
+		children?: Snippet;
+	}
 
-let { class: className, children, ...restProps }: Props = $props();
+	let { class: className, children, ...restProps }: Props = $props();
 </script>
 
 <div

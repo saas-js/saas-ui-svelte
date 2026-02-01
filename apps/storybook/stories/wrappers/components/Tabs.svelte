@@ -103,7 +103,8 @@
 	<VStack gap={10} class="w-full">
 		{#each tabsVariants as variant}
 			<VStack gap={2}>
-				<Text size="xs" class="capitalize text-fg-muted">{variant}</Text>
+				<Text size="xs" class="text-fg-muted capitalize">{variant}</Text
+				>
 				<Tabs.Root {variant} defaultValue="members">
 					<Tabs.List>
 						<Tabs.Trigger value="members">
@@ -122,9 +123,15 @@
 							<Tabs.Indicator />
 						{/if}
 					</Tabs.List>
-					<Tabs.Content value="members">Manage your team members</Tabs.Content>
-					<Tabs.Content value="projects">Manage your projects</Tabs.Content>
-					<Tabs.Content value="settings">Manage your settings</Tabs.Content>
+					<Tabs.Content value="members"
+						>Manage your team members</Tabs.Content
+					>
+					<Tabs.Content value="projects"
+						>Manage your projects</Tabs.Content
+					>
+					<Tabs.Content value="settings"
+						>Manage your settings</Tabs.Content
+					>
 				</Tabs.Root>
 			</VStack>
 		{/each}
@@ -133,16 +140,22 @@
 	<VStack gap={10} class="w-full">
 		{#each tabsSizes as size}
 			<VStack gap={2}>
-				<Text size="xs" class="capitalize text-fg-muted">{size}</Text>
+				<Text size="xs" class="text-fg-muted capitalize">{size}</Text>
 				<Tabs.Root {size} defaultValue="members">
 					<Tabs.List>
 						<Tabs.Trigger value="members">Members</Tabs.Trigger>
 						<Tabs.Trigger value="projects">Projects</Tabs.Trigger>
 						<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
 					</Tabs.List>
-					<Tabs.Content value="members">Manage your team members</Tabs.Content>
-					<Tabs.Content value="projects">Manage your projects</Tabs.Content>
-					<Tabs.Content value="settings">Manage your settings</Tabs.Content>
+					<Tabs.Content value="members"
+						>Manage your team members</Tabs.Content
+					>
+					<Tabs.Content value="projects"
+						>Manage your projects</Tabs.Content
+					>
+					<Tabs.Content value="settings"
+						>Manage your settings</Tabs.Content
+					>
 				</Tabs.Root>
 			</VStack>
 		{/each}
@@ -150,9 +163,15 @@
 {:else if story === "fitted"}
 	<Tabs.Root variant="outline" fitted defaultValue="tab-1" class="max-w-md">
 		<Tabs.List>
-			<Tabs.Trigger value="tab-1" class="whitespace-nowrap">Tab 1</Tabs.Trigger>
-			<Tabs.Trigger value="tab-2" class="whitespace-nowrap">Tab 2</Tabs.Trigger>
-			<Tabs.Trigger value="tab-3" class="whitespace-nowrap">Tab 3</Tabs.Trigger>
+			<Tabs.Trigger value="tab-1" class="whitespace-nowrap"
+				>Tab 1</Tabs.Trigger
+			>
+			<Tabs.Trigger value="tab-2" class="whitespace-nowrap"
+				>Tab 2</Tabs.Trigger
+			>
+			<Tabs.Trigger value="tab-3" class="whitespace-nowrap"
+				>Tab 3</Tabs.Trigger
+			>
 			<Tabs.Indicator />
 		</Tabs.List>
 		<Tabs.Content value="tab-1">Tab 1 content</Tabs.Content>
@@ -172,7 +191,7 @@
 	</Tabs.Root>
 {:else if story === "withIndicator"}
 	<Tabs.Root defaultValue="members" variant="plain">
-		<Tabs.List class="p-1 rounded-lg bg-bg-muted">
+		<Tabs.List class="bg-bg-muted rounded-lg p-1">
 			<Tabs.Trigger value="members">
 				<Icon as={User} size="xs" />
 				Members
@@ -185,7 +204,7 @@
 				<Icon as={CheckSquare} size="xs" />
 				Settings
 			</Tabs.Trigger>
-			<Tabs.Indicator class="shadow bg-bg-default rounded-md" />
+			<Tabs.Indicator class="bg-bg-default rounded-md shadow" />
 		</Tabs.List>
 		<Tabs.Content value="members">Manage your team members</Tabs.Content>
 		<Tabs.Content value="projects">Manage your projects</Tabs.Content>
@@ -198,42 +217,75 @@
 				<Text size="xs" class="w-16 pt-2 capitalize">{colour}</Text>
 				<VStack gap={2}>
 					<Text size="xs" class="text-fg-muted">line</Text>
-					<Tabs.Root defaultValue="tab-1" variant="line" {colour} size="sm">
+					<Tabs.Root
+						defaultValue="tab-1"
+						variant="line"
+						{colour}
+						size="sm"
+					>
 						<Tabs.List>
 							<Tabs.Trigger value="tab-1">Tab 1</Tabs.Trigger>
 							<Tabs.Trigger value="tab-2">Tab 2</Tabs.Trigger>
 							<Tabs.Trigger value="tab-3">Tab 3</Tabs.Trigger>
 						</Tabs.List>
-						<Tabs.Content value="tab-1" class="sr-only">Tab 1</Tabs.Content>
-						<Tabs.Content value="tab-2" class="sr-only">Tab 2</Tabs.Content>
-						<Tabs.Content value="tab-3" class="sr-only">Tab 3</Tabs.Content>
+						<Tabs.Content value="tab-1" class="sr-only"
+							>Tab 1</Tabs.Content
+						>
+						<Tabs.Content value="tab-2" class="sr-only"
+							>Tab 2</Tabs.Content
+						>
+						<Tabs.Content value="tab-3" class="sr-only"
+							>Tab 3</Tabs.Content
+						>
 					</Tabs.Root>
 				</VStack>
 				<VStack gap={2}>
 					<Text size="xs" class="text-fg-muted">subtle</Text>
-					<Tabs.Root defaultValue="tab-1" variant="subtle" {colour} size="sm">
+					<Tabs.Root
+						defaultValue="tab-1"
+						variant="subtle"
+						{colour}
+						size="sm"
+					>
 						<Tabs.List>
 							<Tabs.Trigger value="tab-1">Tab 1</Tabs.Trigger>
 							<Tabs.Trigger value="tab-2">Tab 2</Tabs.Trigger>
 							<Tabs.Trigger value="tab-3">Tab 3</Tabs.Trigger>
 						</Tabs.List>
-						<Tabs.Content value="tab-1" class="sr-only">Tab 1</Tabs.Content>
-						<Tabs.Content value="tab-2" class="sr-only">Tab 2</Tabs.Content>
-						<Tabs.Content value="tab-3" class="sr-only">Tab 3</Tabs.Content>
+						<Tabs.Content value="tab-1" class="sr-only"
+							>Tab 1</Tabs.Content
+						>
+						<Tabs.Content value="tab-2" class="sr-only"
+							>Tab 2</Tabs.Content
+						>
+						<Tabs.Content value="tab-3" class="sr-only"
+							>Tab 3</Tabs.Content
+						>
 					</Tabs.Root>
 				</VStack>
 				<VStack gap={2}>
 					<Text size="xs" class="text-fg-muted">outline</Text>
-					<Tabs.Root defaultValue="tab-1" variant="outline" {colour} size="sm">
+					<Tabs.Root
+						defaultValue="tab-1"
+						variant="outline"
+						{colour}
+						size="sm"
+					>
 						<Tabs.List>
 							<Tabs.Trigger value="tab-1">Tab 1</Tabs.Trigger>
 							<Tabs.Trigger value="tab-2">Tab 2</Tabs.Trigger>
 							<Tabs.Trigger value="tab-3">Tab 3</Tabs.Trigger>
 							<Tabs.Indicator />
 						</Tabs.List>
-						<Tabs.Content value="tab-1" class="sr-only">Tab 1</Tabs.Content>
-						<Tabs.Content value="tab-2" class="sr-only">Tab 2</Tabs.Content>
-						<Tabs.Content value="tab-3" class="sr-only">Tab 3</Tabs.Content>
+						<Tabs.Content value="tab-1" class="sr-only"
+							>Tab 1</Tabs.Content
+						>
+						<Tabs.Content value="tab-2" class="sr-only"
+							>Tab 2</Tabs.Content
+						>
+						<Tabs.Content value="tab-3" class="sr-only"
+							>Tab 3</Tabs.Content
+						>
 					</Tabs.Root>
 				</VStack>
 			</HStack>
@@ -324,7 +376,8 @@
 {:else if story === "prefetch"}
 	<VStack gap={4}>
 		<Text size="sm" class="text-fg-muted">
-			Hover over tabs to prefetch content. The "Heavy" tab simulates lazy-loading a component.
+			Hover over tabs to prefetch content. The "Heavy" tab simulates
+			lazy-loading a component.
 		</Text>
 		<Tabs.Root defaultValue="light" onPrefetch={handlePrefetch}>
 			<Tabs.List>
@@ -340,13 +393,17 @@
 			</Tabs.Content>
 			<Tabs.Content value="heavy">
 				{#if HeavyComponent}
-					<Text>Heavy component loaded! This could be a chart, dashboard, or any large module.</Text>
+					<Text
+						>Heavy component loaded! This could be a chart,
+						dashboard, or any large module.</Text
+					>
 				{:else}
-					<Text class="text-fg-muted">Loading heavy component...</Text>
+					<Text class="text-fg-muted">Loading heavy component...</Text
+					>
 				{/if}
 			</Tabs.Content>
 		</Tabs.Root>
-		<VStack gap={1} class="text-xs text-fg-muted">
+		<VStack gap={1} class="text-fg-muted text-xs">
 			<Text size="xs" weight="medium">Prefetch status:</Text>
 			{#each Object.entries(prefetchStatus) as [tab, status]}
 				<Text size="xs">{tab}: {status}</Text>

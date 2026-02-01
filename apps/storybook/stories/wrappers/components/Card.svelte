@@ -129,7 +129,7 @@
 		<img
 			src="https://picsum.photos/seed/sofa/800/600"
 			alt="Green double couch with wooden legs"
-			class="object-cover w-full rounded-lg"
+			class="w-full rounded-lg object-cover"
 		/>
 		<Card.Body class="gap-2">
 			<Card.Title>Living room Sofa</Card.Title>
@@ -145,11 +145,11 @@
 		</Card.Footer>
 	</Card.Root>
 {:else if story === "horizontal"}
-	<Card.Root class="flex-row max-w-xl overflow-hidden">
+	<Card.Root class="max-w-xl flex-row overflow-hidden">
 		<img
 			src="https://picsum.photos/seed/latte/800/600"
 			alt="Caffe Latte"
-			class="object-cover rounded-lg max-w-52"
+			class="max-w-52 rounded-lg object-cover"
 		/>
 		<Box>
 			<Card.Body>
@@ -182,7 +182,7 @@
 				</VStack>
 			</HStack>
 			<Card.Description>
-				<strong class="font-semibold text-fg-default">Nate Foss</strong>
+				<strong class="text-fg-default font-semibold">Nate Foss</strong>
 				{" "}has requested to join your team. You can approve or decline
 				their request.
 			</Card.Description>

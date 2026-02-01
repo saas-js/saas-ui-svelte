@@ -34,7 +34,7 @@
 				/>
 				<VStack gap={0}>
 					<Text size="sm" class="font-semibold">Saas UI</Text>
-					<Text size="xs" class="mb-2 text-fg-muted">@saas_js</Text>
+					<Text size="xs" class="text-fg-muted mb-2">@saas_js</Text>
 					<Text size="sm" class="text-fg-muted">
 						Design system and React components for startups.
 					</Text>
@@ -58,7 +58,7 @@
 				/>
 				<VStack gap={0}>
 					<Text size="sm" class="font-semibold">Saas UI</Text>
-					<Text size="xs" class="mb-2 text-fg-muted">@saas_js</Text>
+					<Text size="xs" class="text-fg-muted mb-2">@saas_js</Text>
 					<Text size="sm" class="text-fg-muted">
 						Design system and React components for startups.
 					</Text>
@@ -82,7 +82,7 @@
 				/>
 				<VStack gap={0}>
 					<Text size="sm" class="font-semibold">Saas UI</Text>
-					<Text size="xs" class="mb-2 text-fg-muted">@saas_js</Text>
+					<Text size="xs" class="text-fg-muted mb-2">@saas_js</Text>
 					<Text size="sm" class="text-fg-muted">
 						Design system and React components for startups.
 					</Text>
@@ -106,7 +106,7 @@
 				/>
 				<VStack gap={0}>
 					<Text size="sm" class="font-semibold">Saas UI</Text>
-					<Text size="xs" class="mb-2 text-fg-muted">@saas_js</Text>
+					<Text size="xs" class="text-fg-muted mb-2">@saas_js</Text>
 					<Text size="sm" class="text-fg-muted">
 						Design system and React components for startups.
 					</Text>

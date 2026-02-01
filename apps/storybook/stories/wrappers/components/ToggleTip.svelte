@@ -11,12 +11,7 @@
 	import Info from "phosphor-svelte/lib/Info";
 
 	interface Props {
-		story:
-			| "basic"
-			| "infoTip"
-			| "sizes"
-			| "positioning"
-			| "customContent";
+		story: "basic" | "infoTip" | "sizes" | "positioning" | "customContent";
 	}
 
 	let { story }: Props = $props();
@@ -102,7 +97,8 @@
 			<VStack gap={1}>
 				<Text size="xs" weight="semibold">Custom Content</Text>
 				<Text size="xs">
-					This toggle tip has custom HTML content with multiple elements.
+					This toggle tip has custom HTML content with multiple
+					elements.
 				</Text>
 			</VStack>
 		</ToggleTip>

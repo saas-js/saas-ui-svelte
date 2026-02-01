@@ -1,39 +1,39 @@
 <script lang="ts">
-import { Clipboard as ArkClipboard } from "@ark-ui/svelte/clipboard";
-import type { Snippet } from "svelte";
-import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-import CopySimpleIcon from "phosphor-svelte/lib/CopySimpleIcon";
-import { twMerge } from "tailwind-merge";
-import { clipboardButton } from "./clipboard.svelte";
-import { Text } from "$saas/typography/text";
+	import { Clipboard as ArkClipboard } from "@ark-ui/svelte/clipboard";
+	import type { Snippet } from "svelte";
+	import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+	import CopySimpleIcon from "phosphor-svelte/lib/CopySimpleIcon";
+	import { twMerge } from "tailwind-merge";
+	import { clipboardButton } from "./clipboard.svelte";
+	import { Text } from "$saas/typography/text";
 
-interface Props {
-	/**
-	 * Custom label text.
-	 * @default "Copy"
-	 */
-	label?: string;
-	/**
-	 * Custom label text when copied.
-	 * @default "Copied"
-	 */
-	copiedLabel?: string;
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	/**
-	 * Custom content for the button.
-	 */
-	children?: Snippet;
-}
+	interface Props {
+		/**
+		 * Custom label text.
+		 * @default "Copy"
+		 */
+		label?: string;
+		/**
+		 * Custom label text when copied.
+		 * @default "Copied"
+		 */
+		copiedLabel?: string;
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		/**
+		 * Custom content for the button.
+		 */
+		children?: Snippet;
+	}
 
-let {
-	label = "Copy",
-	copiedLabel = "Copied",
-	class: className,
-	children,
-}: Props = $props();
+	let {
+		label = "Copy",
+		copiedLabel = "Copied",
+		class: className,
+		children,
+	}: Props = $props();
 </script>
 
 <ArkClipboard.Trigger

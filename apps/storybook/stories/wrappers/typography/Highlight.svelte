@@ -10,7 +10,12 @@
 	import { Stack } from "$saas/layout/stack";
 
 	interface Props {
-		story: "basic" | "multiple" | "customStyle" | "searchQuery" | "markClass";
+		story:
+			| "basic"
+			| "multiple"
+			| "customStyle"
+			| "searchQuery"
+			| "markClass";
 	}
 
 	let { story }: Props = $props();

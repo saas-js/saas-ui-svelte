@@ -35,7 +35,8 @@
 }
 
 html {
-	font-family: "Inter Variable", "Inter Variable fallback", system-ui, sans-serif;
+	font-family:
+		"Inter Variable", "Inter Variable fallback", system-ui, sans-serif;
 }
 
 html.light {

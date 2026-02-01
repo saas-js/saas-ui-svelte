@@ -1,40 +1,40 @@
 <script lang="ts">
-import { Menu } from "@ark-ui/svelte/menu";
-import type { MenuCheckboxItemProps } from "@ark-ui/svelte/menu";
-import { getContext, type Snippet } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
-import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-import { Centre } from "$saas/layout/centre";
+	import { Menu } from "@ark-ui/svelte/menu";
+	import type { MenuCheckboxItemProps } from "@ark-ui/svelte/menu";
+	import { getContext, type Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
+	import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+	import { Centre } from "$saas/layout/centre";
 
-interface Props extends MenuCheckboxItemProps {
-	/**
-	 * The checkbox item content.
-	 */
-	children: Snippet;
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	/**
-	 * Whether to show the checkbox indicator. @default true
-	 */
-	showIndicator?: boolean;
-	/**
-	 * Element to render at the start of the item (for custom content, overrides showIndicator).
-	 */
-	startElement?: Snippet;
-}
+	interface Props extends MenuCheckboxItemProps {
+		/**
+		 * The checkbox item content.
+		 */
+		children: Snippet;
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		/**
+		 * Whether to show the checkbox indicator. @default true
+		 */
+		showIndicator?: boolean;
+		/**
+		 * Element to render at the start of the item (for custom content, overrides showIndicator).
+		 */
+		startElement?: Snippet;
+	}
 
-let {
-	children,
-	class: className,
-	showIndicator = true,
-	startElement,
-	...rest
-}: Props = $props();
+	let {
+		children,
+		class: className,
+		showIndicator = true,
+		startElement,
+		...rest
+	}: Props = $props();
 
-const ctx = getContext<MenuContext>(MENU_CTX);
+	const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
 <Menu.CheckboxItem

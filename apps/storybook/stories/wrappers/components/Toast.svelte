@@ -91,7 +91,8 @@
 				colour="gray"
 				onclick={() =>
 					toaster.create({
-						description: "Please wait while we process your request.",
+						description:
+							"Please wait while we process your request.",
 						type: "loading",
 					})}
 			>

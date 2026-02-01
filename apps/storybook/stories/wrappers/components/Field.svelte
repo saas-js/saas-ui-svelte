@@ -10,7 +10,13 @@
 	import { NativeSelect } from "$saas/components/native-select";
 
 	interface Props {
-		story: "basic" | "helperText" | "errorText" | "disabled" | "textarea" | "nativeSelect";
+		story:
+			| "basic"
+			| "helperText"
+			| "errorText"
+			| "disabled"
+			| "textarea"
+			| "nativeSelect";
 	}
 
 	let { story }: Props = $props();

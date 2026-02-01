@@ -58,7 +58,9 @@
 				<Steps.Content index={0}>Step 1 content</Steps.Content>
 				<Steps.Content index={1}>Step 2 content</Steps.Content>
 				<Steps.Content index={2}>Step 3 content</Steps.Content>
-				<Steps.CompletedContent>All steps are complete!</Steps.CompletedContent>
+				<Steps.CompletedContent
+					>All steps are complete!</Steps.CompletedContent
+				>
 
 				<Group>
 					<Steps.PrevTrigger>Prev</Steps.PrevTrigger>
@@ -84,7 +86,9 @@
 				<Steps.Content index={0}>Step 1</Steps.Content>
 				<Steps.Content index={1}>Step 2</Steps.Content>
 				<Steps.Content index={2}>Step 3</Steps.Content>
-				<Steps.CompletedContent>All steps are complete!</Steps.CompletedContent>
+				<Steps.CompletedContent
+					>All steps are complete!</Steps.CompletedContent
+				>
 
 				<Group>
 					<Steps.PrevTrigger>Prev</Steps.PrevTrigger>
@@ -125,7 +129,9 @@
 			<Steps.Content index={0}>Step 1 content</Steps.Content>
 			<Steps.Content index={1}>Step 2 content</Steps.Content>
 			<Steps.Content index={2}>Step 3 content</Steps.Content>
-			<Steps.CompletedContent>All steps are complete!</Steps.CompletedContent>
+			<Steps.CompletedContent
+				>All steps are complete!</Steps.CompletedContent
+			>
 
 			<Group>
 				<Steps.PrevTrigger>Prev</Steps.PrevTrigger>
@@ -138,7 +144,11 @@
 		<Steps.List>
 			<Steps.Item index={0} icon={User} aria-label="Contact Details" />
 			<Steps.Item index={1} icon={Wallet} aria-label="Payment" />
-			<Steps.Item index={2} icon={CalendarBlank} aria-label="Appointment" />
+			<Steps.Item
+				index={2}
+				icon={CalendarBlank}
+				aria-label="Appointment"
+			/>
 		</Steps.List>
 
 		<Steps.Content index={0}>Contact Details</Steps.Content>

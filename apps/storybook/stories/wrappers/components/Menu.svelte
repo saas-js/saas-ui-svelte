@@ -66,7 +66,8 @@
 							<Menu.Item value="new-txt">New Text File</Menu.Item>
 							<Menu.Item value="new-file">New File...</Menu.Item>
 							<Menu.Item value="new-win">New Window</Menu.Item>
-							<Menu.Item value="open-file">Open File...</Menu.Item>
+							<Menu.Item value="open-file">Open File...</Menu.Item
+							>
 							<Menu.Item value="export">Export</Menu.Item>
 						</Menu.Content>
 					</Menu.Root>
@@ -86,7 +87,9 @@
 					New File... <Menu.ItemCommand>&#8984;N</Menu.ItemCommand>
 				</Menu.Item>
 				<Menu.Item value="new-win">
-					New Window <Menu.ItemCommand>&#8984;&#8679;N</Menu.ItemCommand>
+					New Window <Menu.ItemCommand
+						>&#8984;&#8679;N</Menu.ItemCommand
+					>
 				</Menu.Item>
 				<Menu.Item value="open-file">
 					Open File... <Menu.ItemCommand>&#8984;O</Menu.ItemCommand>
@@ -102,7 +105,7 @@
 		<Menu.Root>
 			<Menu.ContextTrigger>
 				<Centre
-					class="w-64 h-32 border-2 border-dashed border-border-default rounded-(--radii-l2) text-fg-muted select-none"
+					class="border-border-default text-fg-muted h-32 w-64 rounded-(--radii-l2) border-2 border-dashed select-none"
 				>
 					Right click here
 				</Centre>
@@ -141,8 +144,12 @@
 			<Menu.Content>
 				<Menu.Item value="new-txt">New Text File</Menu.Item>
 				<Menu.Item value="new-file">New File...</Menu.Item>
-				<Menu.Root positioning={{ placement: "right-start", gutter: -4 }}>
-					<Menu.TriggerItem value="open-recent">Open Recent</Menu.TriggerItem>
+				<Menu.Root
+					positioning={{ placement: "right-start", gutter: -4 }}
+				>
+					<Menu.TriggerItem value="open-recent"
+						>Open Recent</Menu.TriggerItem
+					>
 					<Menu.Content>
 						<Menu.Item value="panda">Panda</Menu.Item>
 						<Menu.Item value="ark">Ark UI</Menu.Item>
@@ -207,8 +214,12 @@
 				<Icon as={Funnel} size="sm" /> Status
 			</Menu.Button>
 			<Menu.Content>
-				<Menu.CheckboxItem checked={false} value="open">Open</Menu.CheckboxItem>
-				<Menu.CheckboxItem checked={true} value="closed">Closed</Menu.CheckboxItem>
+				<Menu.CheckboxItem checked={false} value="open"
+					>Open</Menu.CheckboxItem
+				>
+				<Menu.CheckboxItem checked={true} value="closed"
+					>Closed</Menu.CheckboxItem
+				>
 			</Menu.Content>
 		</Menu.Root>
 	</Box>
@@ -254,15 +265,24 @@
 			<Menu.Button>Open</Menu.Button>
 			<Menu.Content>
 				<Flex class="grow gap-0">
-					<Menu.Item value="cut" class="flex-col justify-center w-14 gap-1">
+					<Menu.Item
+						value="cut"
+						class="w-14 flex-col justify-center gap-1"
+					>
 						<Icon as={Scissors} size="xs" />
 						Cut
 					</Menu.Item>
-					<Menu.Item value="copy" class="flex-col justify-center w-14 gap-1">
+					<Menu.Item
+						value="copy"
+						class="w-14 flex-col justify-center gap-1"
+					>
 						<Icon as={Copy} size="xs" />
 						Copy
 					</Menu.Item>
-					<Menu.Item value="paste" class="flex-col justify-center w-14 gap-1">
+					<Menu.Item
+						value="paste"
+						class="w-14 flex-col justify-center gap-1"
+					>
 						<Icon as={ClipboardText} size="xs" />
 						Paste
 					</Menu.Item>

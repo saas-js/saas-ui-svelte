@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Checkbox } from "@ark-ui/svelte/checkbox";
+	import { Checkbox } from "@ark-ui/svelte/checkbox";
 
-interface Props {
-	[key: string]: any;
-}
+	interface Props {
+		[key: string]: any;
+	}
 
-let { ...restProps }: Props = $props();
+	let { ...restProps }: Props = $props();
 </script>
 
 <Checkbox.HiddenInput {...restProps} />

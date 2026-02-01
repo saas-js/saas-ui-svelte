@@ -81,7 +81,8 @@
 	<Stack gap={4}>
 		<PinInput
 			bind:value={controlledValue}
-			onValueComplete={(details) => console.log("Complete:", details.valueAsString)}
+			onValueComplete={(details) =>
+				console.log("Complete:", details.valueAsString)}
 		/>
 		<Text size="sm">Value: {controlledValue.join("") || "(empty)"}</Text>
 	</Stack>

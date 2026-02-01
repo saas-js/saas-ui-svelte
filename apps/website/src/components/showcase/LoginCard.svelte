@@ -23,12 +23,16 @@
 			Log in to your account
 		</Heading>
 		<VStack gap={2}>
-			<Button variant="outline" class="w-full" onclick={(e: Event) => e.preventDefault()}>
+			<Button
+				variant="outline"
+				class="w-full"
+				onclick={(e: Event) => e.preventDefault()}
+			>
 				<Icon as={GoogleLogo} size="sm" weight="bold" />
 				Continue with Google
 			</Button>
 		</VStack>
-		<HStack gap={2} class="items-center my-4">
+		<HStack gap={2} class="my-4 items-center">
 			<Separator class="flex-1" />
 			<Text size="sm" class="text-fg-muted">or continue with</Text>
 			<Separator class="flex-1" />
@@ -36,17 +40,30 @@
 		<form class="flex flex-col gap-4">
 			<Field.Root id="login-email">
 				<Field.Label for="login-email">Email</Field.Label>
-				<Input id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+				<Input
+					id="login-email"
+					name="email"
+					type="email"
+					autocomplete="email"
+					placeholder="you@example.com"
+				/>
 			</Field.Root>
-			<Button variant="glass" colour="indigo" class="w-full" onclick={(e: Event) => e.preventDefault()}>
+			<Button
+				variant="glass"
+				colour="indigo"
+				class="w-full"
+				onclick={(e: Event) => e.preventDefault()}
+			>
 				Log in
 			</Button>
 		</form>
 	</Card.Body>
-	<Card.Footer class="justify-center py-3 bg-bg-subtle">
+	<Card.Footer class="bg-bg-subtle justify-center py-3">
 		<Text size="sm" class="text-fg-muted">
 			Don't have an account yet?
-			<Link href="#" onclick={(e: Event) => e.preventDefault()}>Sign up</Link>.
+			<Link href="#" onclick={(e: Event) => e.preventDefault()}
+				>Sign up</Link
+			>.
 		</Text>
 	</Card.Footer>
 </Card.Root>

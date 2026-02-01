@@ -269,7 +269,10 @@ export function extractStoryCode(
 			while (rawLines.length > 0 && rawLines[0].trim() === "") {
 				rawLines.shift();
 			}
-			while (rawLines.length > 0 && rawLines[rawLines.length - 1].trim() === "") {
+			while (
+				rawLines.length > 0 &&
+				rawLines[rawLines.length - 1].trim() === ""
+			) {
 				rawLines.pop();
 			}
 
@@ -288,7 +291,9 @@ export function extractStoryCode(
 			// Remove the common indentation from all lines
 			let result: string;
 			if (minIndent > 0 && minIndent !== Infinity) {
-				result = rawLines.map((line) => line.slice(minIndent)).join("\n");
+				result = rawLines
+					.map((line) => line.slice(minIndent))
+					.join("\n");
 			} else {
 				result = rawLines.join("\n");
 			}

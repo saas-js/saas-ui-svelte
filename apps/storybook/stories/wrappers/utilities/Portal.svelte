@@ -14,25 +14,32 @@
 
 {#if story === "basic"}
 	<div>
-		<p class="mb-4 text-fg-muted">
-			The content below is rendered at the end of document.body via portal.
+		<p class="text-fg-muted mb-4">
+			The content below is rendered at the end of document.body via
+			portal.
 		</p>
 		<Portal>
-			<div class="fixed z-50 p-4 border rounded-lg shadow-lg bottom-4 left-4 bg-bg-subtle border-border-default">
-				<p class="text-sm">This is portal content (rendered at document.body)</p>
+			<div
+				class="bg-bg-subtle border-border-default fixed bottom-4 left-4 z-50 rounded-lg border p-4 shadow-lg"
+			>
+				<p class="text-sm">
+					This is portal content (rendered at document.body)
+				</p>
 			</div>
 		</Portal>
 		<Button variant="outline">Regular button (for comparison)</Button>
 	</div>
 {:else if story === "disabled"}
 	<div>
-		<p class="mb-4 text-fg-muted">
+		<p class="text-fg-muted mb-4">
 			When disabled, content renders in place instead of via portal.
 		</p>
-		<div class="p-4 border border-dashed rounded border-border-default">
+		<div class="border-border-default rounded border border-dashed p-4">
 			<p class="mb-2 text-sm">Parent container:</p>
 			<Portal disabled>
-				<div class="p-4 border rounded bg-bg-subtle border-border-default">
+				<div
+					class="bg-bg-subtle border-border-default rounded border p-4"
+				>
 					This content is rendered in place (portal disabled)
 				</div>
 			</Portal>
@@ -40,19 +47,21 @@
 	</div>
 {:else if story === "customContainer"}
 	<div>
-		<p class="mb-4 text-fg-muted">
+		<p class="text-fg-muted mb-4">
 			Portal content rendered into a custom container element.
 		</p>
 		<Portal container={containerRef}>
-			<div class="p-4 rounded bg-bg-emphasized">
+			<div class="bg-bg-emphasized rounded p-4">
 				This content is rendered into the container below
 			</div>
 		</Portal>
 		<div
 			bind:this={containerRef}
-			class="p-4 mt-4 border-2 border-blue-500 border-dashed rounded min-h-20"
+			class="mt-4 min-h-20 rounded border-2 border-dashed border-blue-500 p-4"
 		>
-			<p class="text-sm text-fg-muted">Custom container (portal target)</p>
+			<p class="text-fg-muted text-sm">
+				Custom container (portal target)
+			</p>
 		</div>
 	</div>
 {/if}

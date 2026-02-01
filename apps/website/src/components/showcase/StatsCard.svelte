@@ -90,7 +90,8 @@
 							callbacks: {
 								title: () => "Revenue",
 								label: (context) => {
-									const value = (context.parsed.y ?? 0) * 1000;
+									const value =
+										(context.parsed.y ?? 0) * 1000;
 									return `${value.toLocaleString()} · ${context.label}`;
 								},
 							},
@@ -148,7 +149,7 @@
 			</Stat.HelpText>
 		</Stat.Root>
 	</Card.Body>
-	<Box class="w-full h-24">
+	<Box class="h-24 w-full">
 		<canvas bind:this={chartCanvas}></canvas>
 	</Box>
 </Card.Root>

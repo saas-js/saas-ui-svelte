@@ -44,7 +44,8 @@
 			<Popover.Body>
 				<Popover.Title>Naruto Form</Popover.Title>
 				<Text size="sm" class="my-4">
-					Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto.
+					Naruto is a Japanese manga series written and illustrated by
+					Masashi Kishimoto.
 				</Text>
 				<Input placeholder="Your fav. character" size="sm" />
 			</Popover.Body>
@@ -67,13 +68,17 @@
 	<HStack gap={10} align="center">
 		{#each popoverSizes as size}
 			<Popover.Root {size}>
-				<Popover.Trigger triggerText="Size: {size}" triggerSize={size} />
+				<Popover.Trigger
+					triggerText="Size: {size}"
+					triggerSize={size}
+				/>
 				<Popover.Content>
 					<Popover.Arrow />
 					<Popover.Body>
 						<Popover.Title>Naruto Form</Popover.Title>
 						<Text size="sm" class="my-4">
-							Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto.
+							Naruto is a Japanese manga series written and
+							illustrated by Masashi Kishimoto.
 						</Text>
 						<Input placeholder="Your fav. character" {size} />
 					</Popover.Body>
@@ -89,7 +94,8 @@
 			<Popover.Body>
 				<Popover.Title>Lazy Mounted</Popover.Title>
 				<Text size="sm" class="my-4">
-					This popover content is lazily mounted and unmounts when closed.
+					This popover content is lazily mounted and unmounts when
+					closed.
 				</Text>
 			</Popover.Body>
 		</Popover.Content>
@@ -130,11 +136,18 @@
 			<Popover.Arrow />
 			<Popover.Body>
 				<Text size="sm" class="mb-4">
-					Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto.
+					Naruto is a Japanese manga series written and illustrated by
+					Masashi Kishimoto.
 				</Text>
 
-				<Popover.Root portalled={false} positioning={{ placement: "bottom" }}>
-					<Popover.Trigger triggerText="Open Nested Popover" triggerSize="xs" />
+				<Popover.Root
+					portalled={false}
+					positioning={{ placement: "bottom" }}
+				>
+					<Popover.Trigger
+						triggerText="Open Nested Popover"
+						triggerSize="xs"
+					/>
 					<Popover.Content>
 						<Popover.Arrow />
 						<Popover.Body>Some nested popover content</Popover.Body>
@@ -155,7 +168,11 @@
 				<Text size="sm" class="mb-4">
 					The input below will be focused when the popover opens.
 				</Text>
-				<Input bind:ref={inputRef} placeholder="I get focused" size="sm" />
+				<Input
+					bind:ref={inputRef}
+					placeholder="I get focused"
+					size="sm"
+				/>
 			</Popover.Body>
 			<Popover.Footer>
 				<Box class="flex-1 text-sm">Step 2 of 4</Box>
@@ -201,7 +218,8 @@
 			<Popover.Arrow />
 			<Popover.Body>
 				<Text size="sm">
-					Are you sure you want to delete this item? This action cannot be undone.
+					Are you sure you want to delete this item? This action
+					cannot be undone.
 				</Text>
 			</Popover.Body>
 			<Popover.Footer>

@@ -36,7 +36,10 @@ export type OverlayType = keyof typeof registries;
  * @param close - Callback to close this overlay
  * @returns The unique ID for this overlay instance
  */
-export function registerOverlay(type: OverlayType, close: CloseCallback): symbol {
+export function registerOverlay(
+	type: OverlayType,
+	close: CloseCallback,
+): symbol {
 	const id = Symbol();
 
 	// Close any existing overlay of the same type

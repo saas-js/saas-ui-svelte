@@ -1,55 +1,60 @@
 <script lang="ts">
-import { tv, type VariantProps } from "tailwind-variants";
-import type { HTMLAttributes } from "svelte/elements";
-import type { Snippet } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { Flex } from "$saas/layout/flex";
+	import { tv, type VariantProps } from "tailwind-variants";
+	import type { HTMLAttributes } from "svelte/elements";
+	import type { Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { Flex } from "$saas/layout/flex";
 
-const addon = tv({
-	base: [
-		"flex-none",
-		"whitespace-nowrap",
-		"border",
-		"border-solid",
-		"rounded",
-		"bg-bg-subtle",
-		"border-border-default",
-		"text-fg-default",
-		"antialiased",
-		"focus-visible:z-1",
-	],
-	variants: {
-		size: {
-			xs: "h-6 px-2 text-xs leading-4",
-			sm: "h-7 px-2.5 text-sm leading-5",
-			md: "h-8 px-3 text-sm leading-5",
-			lg: "h-10 px-4 text-sm leading-5",
+	const addon = tv({
+		base: [
+			"flex-none",
+			"whitespace-nowrap",
+			"border",
+			"border-solid",
+			"rounded",
+			"bg-bg-subtle",
+			"border-border-default",
+			"text-fg-default",
+			"antialiased",
+			"focus-visible:z-1",
+		],
+		variants: {
+			size: {
+				xs: "h-6 px-2 text-xs leading-4",
+				sm: "h-7 px-2.5 text-sm leading-5",
+				md: "h-8 px-3 text-sm leading-5",
+				lg: "h-10 px-4 text-sm leading-5",
+			},
 		},
-	},
-	defaultVariants: {
-		size: "md",
-	},
-});
+		defaultVariants: {
+			size: "md",
+		},
+	});
 
-interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	/**
-	 * The size of the addon.
-	 */
-	size?: VariantProps<typeof addon>["size"];
-	/**
-	 * The content to be rendered inside the component.
-	 */
-	children?: Snippet;
-}
+	interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "class"> {
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		/**
+		 * The size of the addon.
+		 */
+		size?: VariantProps<typeof addon>["size"];
+		/**
+		 * The content to be rendered inside the component.
+		 */
+		children?: Snippet;
+	}
 
-let { children, class: className, size = "md", ...restProps }: Props = $props();
+	let {
+		children,
+		class: className,
+		size = "md",
+		...restProps
+	}: Props = $props();
 
-const baseClasses = $derived(addon({ size }));
-const classes = $derived(twMerge(baseClasses, className));
+	const baseClasses = $derived(addon({ size }));
+	const classes = $derived(twMerge(baseClasses, className));
 </script>
 
 <Flex align="center" class={classes} {...restProps}>

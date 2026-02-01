@@ -13,7 +13,12 @@
 
 	const inputVariants = ["outline", "subtle", "flushed"] as const;
 	const textareaSizes = ["xs", "sm", "md", "lg", "xl"] as const;
-	const textareaResizeOptions = ["none", "vertical", "horizontal", "both"] as const;
+	const textareaResizeOptions = [
+		"none",
+		"vertical",
+		"horizontal",
+		"both",
+	] as const;
 
 	interface Props {
 		story:
@@ -89,12 +94,16 @@
 			<Field.Root required>
 				<Field.Label>Username</Field.Label>
 				<Input placeholder="@username" name="username" />
-				<Field.HelperText>This is your public display name.</Field.HelperText>
+				<Field.HelperText
+					>This is your public display name.</Field.HelperText
+				>
 			</Field.Root>
 			<Field.Root required>
 				<Field.Label>Profile bio</Field.Label>
 				<Textarea placeholder="I am ..." name="bio" />
-				<Field.HelperText>A short description of yourself</Field.HelperText>
+				<Field.HelperText
+					>A short description of yourself</Field.HelperText
+				>
 			</Field.Root>
 			<Button type="submit">Submit</Button>
 		</VStack>

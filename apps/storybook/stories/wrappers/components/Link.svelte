@@ -27,8 +27,10 @@
 	</VStack>
 {:else if story === "withinText"}
 	<Text>
-		Visit the <Link href="https://chakra-ui.com" colour="teal" variant="underline"
-			>Chakra UI</Link
+		Visit the <Link
+			href="https://chakra-ui.com"
+			colour="teal"
+			variant="underline">Chakra UI</Link
 		> website
 	</Text>
 {:else if story === "external"}
@@ -40,8 +42,12 @@
 	<VStack gap={4}>
 		{#each colours as colour}
 			<HStack align="center" gap={4}>
-				<Text as="span" size="xs" class="w-16 text-fg-muted">{colour}</Text>
-				<Link href="#" variant="underline" {colour}>Link ({colour})</Link>
+				<Text as="span" size="xs" class="text-fg-muted w-16"
+					>{colour}</Text
+				>
+				<Link href="#" variant="underline" {colour}
+					>Link ({colour})</Link
+				>
 				<Link href="#" variant="plain" {colour}>Plain</Link>
 			</HStack>
 		{/each}

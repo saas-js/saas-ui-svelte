@@ -1,62 +1,61 @@
 <script module lang="ts">
-import { tv } from "tailwind-variants";
+	import { tv } from "tailwind-variants";
 
-export const statTrend = tv({
-	base: "",
-	variants: {
-		variant: {
-			subtle: "bg-(--c-muted) text-(--c-fg) px-1.5",
-			plain: "text-(--c-fg) px-0",
+	export const statTrend = tv({
+		base: "",
+		variants: {
+			variant: {
+				subtle: "bg-(--c-muted) text-(--c-fg) px-1.5",
+				plain: "text-(--c-fg) px-0",
+			},
 		},
-	},
-	defaultVariants: {
-		variant: "subtle",
-	},
-});
+		defaultVariants: {
+			variant: "subtle",
+		},
+	});
 </script>
 
 <script lang="ts">
-import { getContext, type Snippet } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { STAT_CTX, type StatContext } from "./stat-root.svelte";
-import { getColourStyle, type ColourName } from "$saas/utils/colours";
-import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
-import { Text } from "$saas/typography/text";
+	import { getContext, type Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { STAT_CTX, type StatContext } from "./stat-root.svelte";
+	import { getColourStyle, type ColourName } from "$saas/utils/colours";
+	import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
+	import { Text } from "$saas/typography/text";
 
-interface Props {
-	/**
-	 * The trend value content.
-	 */
-	children: Snippet;
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	/**
-	 * The visual variant of the trend indicator.
-	 * @default "subtle"
-	 */
-	variant?: "subtle" | "plain";
-	/**
-	 * The colour palette.
-	 * @default "green"
-	 */
-	colour?: ColourName;
-	[key: string]: any;
-}
+	interface Props {
+		/**
+		 * The trend value content.
+		 */
+		children: Snippet;
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		/**
+		 * The visual variant of the trend indicator.
+		 * @default "subtle"
+		 */
+		variant?: "subtle" | "plain";
+		/**
+		 * The colour palette.
+		 * @default "green"
+		 */
+		colour?: ColourName;
+		[key: string]: any;
+	}
 
-let {
-	children,
-	class: className,
-	variant = "subtle",
-	colour = "green",
-	...restProps
-}: Props = $props();
+	let {
+		children,
+		class: className,
+		variant = "subtle",
+		colour = "green",
+		...restProps
+	}: Props = $props();
 
-const ctx = getContext<StatContext>(STAT_CTX);
-const styles = $derived(ctx.styles);
-const colourStyle = $derived(getColourStyle(colour));
-
+	const ctx = getContext<StatContext>(STAT_CTX);
+	const styles = $derived(ctx.styles);
+	const colourStyle = $derived(getColourStyle(colour));
 </script>
 
 <div

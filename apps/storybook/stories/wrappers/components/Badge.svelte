@@ -9,11 +9,7 @@
 	import CheckCircle from "phosphor-svelte/lib/CheckCircle";
 	import { VStack, HStack } from "$saas/layout/stack";
 	import { Badge } from "$saas/components/badge";
-	import {
-		colours,
-		badgeVariants,
-		badgeSizes,
-	} from "../../utils";
+	import { colours, badgeVariants, badgeSizes } from "../../utils";
 
 	interface Props {
 		story: "basic" | "withIcon" | "variants" | "sizes" | "colours";

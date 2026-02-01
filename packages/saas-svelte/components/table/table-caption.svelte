@@ -1,27 +1,27 @@
 <script lang="ts">
-import type { Snippet } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { getTableContext } from "./table.svelte";
+	import type { Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { getTableContext } from "./table.svelte";
 
-interface Props {
-	/**
-	 * Placement of the caption.
-	 * @default "bottom"
-	 */
-	placement?: "top" | "bottom";
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	/**
-	 * Caption content.
-	 */
-	children?: Snippet;
-}
+	interface Props {
+		/**
+		 * Placement of the caption.
+		 * @default "bottom"
+		 */
+		placement?: "top" | "bottom";
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		/**
+		 * Caption content.
+		 */
+		children?: Snippet;
+	}
 
-let { placement = "bottom", class: className, children }: Props = $props();
+	let { placement = "bottom", class: className, children }: Props = $props();
 
-const ctx = getTableContext();
+	const ctx = getTableContext();
 </script>
 
 <caption

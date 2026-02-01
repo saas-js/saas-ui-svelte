@@ -73,14 +73,16 @@
 						<Button size="sm" variant="ghost">Login</Button>
 					</Navbar.Item>
 					<Navbar.Item>
-						<Button size="sm" variant="glass" colour="accent">Sign up</Button>
+						<Button size="sm" variant="glass" colour="accent"
+							>Sign up</Button
+						>
 					</Navbar.Item>
 				</Navbar.ItemGroup>
 			</Navbar.Content>
 		</Navbar.Root>
 	</Box>
 {:else if story === "bordered"}
-	<Box class="overflow-auto h-80 rounded-l2">
+	<Box class="rounded-l2 h-80 overflow-auto">
 		<Navbar.Root position="sticky" bordered>
 			<Navbar.Content maxW="max-w-4xl">
 				<Navbar.Brand>
@@ -102,22 +104,26 @@
 						<Button size="sm" variant="outline">Login</Button>
 					</Navbar.Item>
 					<Navbar.Item>
-						<Button size="sm" variant="solid" colour="accent">Sign up</Button>
+						<Button size="sm" variant="solid" colour="accent"
+							>Sign up</Button
+						>
 					</Navbar.Item>
 				</Navbar.ItemGroup>
 			</Navbar.Content>
 		</Navbar.Root>
 		<Box class="p-6">
 			<VStack gap={4}>
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
 			</VStack>
 		</Box>
 	</Box>
 {:else if story === "glassVariant"}
-	<Box class="overflow-auto h-80 rounded-l2 bg-linear-to-br from-accent-muted to-pink-muted">
+	<Box
+		class="rounded-l2 from-accent-muted to-pink-muted h-80 overflow-auto bg-linear-to-br"
+	>
 		<Navbar.Root variant="glass" position="sticky">
 			<Navbar.Content maxW="max-w-4xl">
 				<Navbar.Brand>
@@ -139,22 +145,24 @@
 						<Button size="sm" variant="ghost">Login</Button>
 					</Navbar.Item>
 					<Navbar.Item>
-						<Button size="sm" variant="glass" colour="accent">Sign up</Button>
+						<Button size="sm" variant="glass" colour="accent"
+							>Sign up</Button
+						>
 					</Navbar.Item>
 				</Navbar.ItemGroup>
 			</Navbar.Content>
 		</Navbar.Root>
 		<Box class="p-6">
 			<VStack gap={4}>
-				<Box class="w-full h-24 bg-white/50 rounded-l1" />
-				<Box class="w-full h-24 bg-white/50 rounded-l1" />
-				<Box class="w-full h-24 bg-white/50 rounded-l1" />
-				<Box class="w-full h-24 bg-white/50 rounded-l1" />
+				<Box class="rounded-l1 h-24 w-full bg-white/50" />
+				<Box class="rounded-l1 h-24 w-full bg-white/50" />
+				<Box class="rounded-l1 h-24 w-full bg-white/50" />
+				<Box class="rounded-l1 h-24 w-full bg-white/50" />
 			</VStack>
 		</Box>
 	</Box>
 {:else if story === "solidVariant"}
-	<Box class="overflow-auto h-80 rounded-l2">
+	<Box class="rounded-l2 h-80 overflow-auto">
 		<Navbar.Root variant="solid" colour="accent" position="sticky">
 			<Navbar.Content maxW="max-w-4xl">
 				<Navbar.Brand>
@@ -183,10 +191,10 @@
 		</Navbar.Root>
 		<Box class="p-6">
 			<VStack gap={4}>
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
 			</VStack>
 		</Box>
 	</Box>
@@ -194,20 +202,28 @@
 	<VStack gap={4} class="w-full">
 		{#each navbarVariants as variant}
 			<Box class="w-full">
-				<Text size="sm" class="mb-2 text-fg-muted">{variant}</Text>
+				<Text size="sm" class="text-fg-muted mb-2">{variant}</Text>
 				<Box
 					class={variant === "solid"
 						? "bg-accent-solid rounded-l2"
 						: "bg-bg-subtle rounded-l2"}
 				>
-					<Navbar.Root {variant} colour="accent" aria-label="{variant} variant navigation">
+					<Navbar.Root
+						{variant}
+						colour="accent"
+						aria-label="{variant} variant navigation"
+					>
 						<Navbar.Content maxW="max-w-4xl">
 							<Navbar.Brand>
-								{@render logoSvg(variant === "solid" ? "white" : undefined)}
+								{@render logoSvg(
+									variant === "solid" ? "white" : undefined,
+								)}
 							</Navbar.Brand>
 							<Navbar.ItemGroup>
 								<Navbar.Item>
-									<Navbar.Link href="#" active>Home</Navbar.Link>
+									<Navbar.Link href="#" active
+										>Home</Navbar.Link
+									>
 								</Navbar.Item>
 								<Navbar.Item>
 									<Navbar.Link href="#">About</Navbar.Link>
@@ -216,14 +232,21 @@
 							<Navbar.ItemGroup justify="end" gap={2}>
 								{#if variant === "solid"}
 									<Navbar.Item>
-										<Navbar.Link href="#">Login</Navbar.Link>
+										<Navbar.Link href="#">Login</Navbar.Link
+										>
 									</Navbar.Item>
 								{:else}
 									<Navbar.Item>
-										<Button size="sm" variant="ghost">Login</Button>
+										<Button size="sm" variant="ghost"
+											>Login</Button
+										>
 									</Navbar.Item>
 									<Navbar.Item>
-										<Button size="sm" variant="glass" colour="accent">Sign up</Button>
+										<Button
+											size="sm"
+											variant="glass"
+											colour="accent">Sign up</Button
+										>
 									</Navbar.Item>
 								{/if}
 							</Navbar.ItemGroup>
@@ -234,7 +257,7 @@
 		{/each}
 	</VStack>
 {:else if story === "sticky"}
-	<Box class="h-64 overflow-auto bg-bg-subtle rounded-l2">
+	<Box class="bg-bg-subtle rounded-l2 h-64 overflow-auto">
 		<Navbar.Root position="sticky" bordered>
 			<Navbar.Content maxW="max-w-4xl">
 				<Navbar.Brand>
@@ -256,22 +279,24 @@
 						<Button size="sm" variant="outline">Login</Button>
 					</Navbar.Item>
 					<Navbar.Item>
-						<Button size="sm" variant="solid" colour="accent">Sign up</Button>
+						<Button size="sm" variant="solid" colour="accent"
+							>Sign up</Button
+						>
 					</Navbar.Item>
 				</Navbar.ItemGroup>
 			</Navbar.Content>
 		</Navbar.Root>
 		<Box class="p-6">
 			<VStack gap={4}>
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
 			</VStack>
 		</Box>
 	</Box>
 {:else if story === "hideOnScroll"}
-	<Box class="overflow-auto h-80 bg-bg-subtle rounded-l2">
+	<Box class="bg-bg-subtle rounded-l2 h-80 overflow-auto">
 		<Navbar.Root position="sticky" bordered shouldHideOnScroll>
 			<Navbar.Content maxW="max-w-4xl">
 				<Navbar.Brand>
@@ -293,27 +318,33 @@
 						<Button size="sm" variant="outline">Login</Button>
 					</Navbar.Item>
 					<Navbar.Item>
-						<Button size="sm" variant="solid" colour="accent">Sign up</Button>
+						<Button size="sm" variant="solid" colour="accent"
+							>Sign up</Button
+						>
 					</Navbar.Item>
 				</Navbar.ItemGroup>
 			</Navbar.Content>
 		</Navbar.Root>
 		<Box class="p-6">
 			<VStack gap={4}>
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
 			</VStack>
 		</Box>
 	</Box>
 {:else if story === "colours"}
 	<VStack gap={4} class="w-full">
 		{#each colours as colour}
-			<Box class="w-full overflow-hidden rounded-l2">
-				<Navbar.Root variant="solid" {colour} aria-label="{colour} colour navigation">
+			<Box class="rounded-l2 w-full overflow-hidden">
+				<Navbar.Root
+					variant="solid"
+					{colour}
+					aria-label="{colour} colour navigation"
+				>
 					<Navbar.Content maxW="max-w-4xl">
 						<Navbar.Brand>
 							{@render logoSvg("white")}
@@ -328,7 +359,9 @@
 						</Navbar.ItemGroup>
 						<Navbar.ItemGroup justify="end">
 							<Navbar.Item>
-								<Text size="xs" class="text-(--c-contrast)">{colour}</Text>
+								<Text size="xs" class="text-(--c-contrast)"
+									>{colour}</Text
+								>
 							</Navbar.Item>
 						</Navbar.ItemGroup>
 					</Navbar.Content>
@@ -338,7 +371,7 @@
 	</VStack>
 {:else if story === "mobileNavigation"}
 	{@const mobileNav = createMobileNav()}
-	<Box class="overflow-auto h-80 bg-bg-subtle rounded-l2">
+	<Box class="bg-bg-subtle rounded-l2 h-80 overflow-auto">
 		<Navbar.Root position="sticky" bordered>
 			<Navbar.Content maxW="max-w-4xl">
 				<Navbar.Brand>
@@ -363,13 +396,17 @@
 						<Navbar.Link href="#">Login</Navbar.Link>
 					</Navbar.Item>
 					<Navbar.Item class="hidden md:flex">
-						<Button size="sm" variant="glass" colour="accent">Sign Up</Button>
+						<Button size="sm" variant="glass" colour="accent"
+							>Sign Up</Button
+						>
 					</Navbar.Item>
 					<Navbar.Item class="flex md:hidden">
 						<Button
 							size="sm"
 							variant="ghost"
-							aria-label={mobileNav.open ? "Close menu" : "Open menu"}
+							aria-label={mobileNav.open
+								? "Close menu"
+								: "Open menu"}
 							onclick={() => mobileNav.toggle()}
 						>
 							{#if mobileNav.open}
@@ -390,7 +427,10 @@
 				<Drawer.Body>
 					<VStack gap={2} class="w-full">
 						{#each ["Features", "Customers", "Integrations", "Pricing"] as item}
-							<Link href="#" class="justify-start w-full px-4 py-2">
+							<Link
+								href="#"
+								class="w-full justify-start px-4 py-2"
+							>
 								{item}
 							</Link>
 						{/each}
@@ -400,10 +440,10 @@
 		</Drawer.Root>
 		<Box class="p-6">
 			<VStack gap={4}>
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
-				<Box class="w-full h-24 bg-bg-muted rounded-l1" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
+				<Box class="bg-bg-muted rounded-l1 h-24 w-full" />
 			</VStack>
 		</Box>
 	</Box>

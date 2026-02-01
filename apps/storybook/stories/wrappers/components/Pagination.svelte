@@ -89,11 +89,29 @@
 {:else if story === "compact"}
 	<Pagination count={20} pageSize={2} defaultPage={1} compact />
 {:else if story === "attached"}
-	<Pagination count={10} pageSize={2} defaultPage={1} variant="solid" attached />
+	<Pagination
+		count={10}
+		pageSize={2}
+		defaultPage={1}
+		variant="solid"
+		attached
+	/>
 {:else if story === "countText"}
-	<Pagination count={50} pageSize={5} defaultPage={1} pageTextFormat="long" class="max-w-60" />
+	<Pagination
+		count={50}
+		pageSize={5}
+		defaultPage={1}
+		pageTextFormat="long"
+		class="max-w-60"
+	/>
 {:else if story === "asLink"}
-	<Pagination count={20} pageSize={2} defaultPage={1} type="link" getHref={(page) => `?page=${page}`} />
+	<Pagination
+		count={20}
+		pageSize={2}
+		defaultPage={1}
+		type="link"
+		getHref={(page) => `?page=${page}`}
+	/>
 {:else if story === "dataDriven"}
 	<Stack gap={4}>
 		<Stack gap={2}>

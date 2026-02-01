@@ -8,7 +8,12 @@
 	import { Stack } from "$saas/layout/stack";
 	import { Group } from "$saas/layout/group";
 	import { Text } from "$saas/typography/text";
-	import { colours, progressSizes, progressVariants, progressShapes } from "../../utils";
+	import {
+		colours,
+		progressSizes,
+		progressVariants,
+		progressShapes,
+	} from "../../utils";
 
 	interface Props {
 		story:
@@ -80,12 +85,22 @@
 		{#each colours as colour}
 			<Group gap={10} class="items-center px-4">
 				<Text class="min-w-[8ch]">{colour}</Text>
-				<Progress.Root class="w-32" value={40} {colour} variant="outline">
+				<Progress.Root
+					class="w-32"
+					value={40}
+					{colour}
+					variant="outline"
+				>
 					<Progress.Track>
 						<Progress.Range />
 					</Progress.Track>
 				</Progress.Root>
-				<Progress.Root class="w-32" value={40} {colour} variant="subtle">
+				<Progress.Root
+					class="w-32"
+					value={40}
+					{colour}
+					variant="subtle"
+				>
 					<Progress.Track>
 						<Progress.Range />
 					</Progress.Track>

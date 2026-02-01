@@ -20,9 +20,27 @@
 		icon: Component;
 		colour: string;
 	}[] = [
-		{ name: "Pitch deck.pptx", size: "2.3 MB", date: "2 days ago", icon: FilePpt, colour: "yellow" },
-		{ name: "Blogpost.docx", size: "1 MB", date: "a week ago", icon: FileDoc, colour: "blue" },
-		{ name: "Flyer.pdf", size: "76 KB", date: "12 days ago", icon: FilePdf, colour: "red" },
+		{
+			name: "Pitch deck.pptx",
+			size: "2.3 MB",
+			date: "2 days ago",
+			icon: FilePpt,
+			colour: "yellow",
+		},
+		{
+			name: "Blogpost.docx",
+			size: "1 MB",
+			date: "a week ago",
+			icon: FileDoc,
+			colour: "blue",
+		},
+		{
+			name: "Flyer.pdf",
+			size: "76 KB",
+			date: "12 days ago",
+			icon: FilePdf,
+			colour: "red",
+		},
 	];
 </script>
 
@@ -34,17 +52,35 @@
 		</Card.Title>
 	</Card.Header>
 	<Card.Body class="p-0">
-		<List.Root class="text-sm divide-y divide-border-default">
+		<List.Root class="divide-border-default divide-y text-sm">
 			{#each files as file, i}
-				<List.Item class="flex items-center justify-between px-4 py-3 gap-3">
-					<Square size={8} class="border rounded border-border-default">
-						<Icon as={file.icon} size="sm" weight="fill" colour={file.colour} />
+				<List.Item
+					class="flex items-center justify-between gap-3 px-4 py-3"
+				>
+					<Square
+						size={8}
+						class="border-border-default rounded border"
+					>
+						<Icon
+							as={file.icon}
+							size="sm"
+							weight="fill"
+							colour={file.colour}
+						/>
 					</Square>
-					<VStack gap={0} class="flex-1 min-w-0">
-						<Text weight="medium" class="truncate">{file.name}</Text>
-						<Text class="truncate text-fg-muted">{file.size} • {file.date}</Text>
+					<VStack gap={0} class="min-w-0 flex-1">
+						<Text weight="medium" class="truncate">{file.name}</Text
+						>
+						<Text class="text-fg-muted truncate"
+							>{file.size} • {file.date}</Text
+						>
 					</VStack>
-					<Button variant="ghost" size="md" aria-label="Download" onclick={(e: Event) => e.preventDefault()}>
+					<Button
+						variant="ghost"
+						size="md"
+						aria-label="Download"
+						onclick={(e: Event) => e.preventDefault()}
+					>
 						<Icon as={DownloadSimple} size="md" weight="bold" />
 					</Button>
 				</List.Item>

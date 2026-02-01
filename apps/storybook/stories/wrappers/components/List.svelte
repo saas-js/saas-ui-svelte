@@ -21,35 +21,56 @@
 
 {#if story === "basic"}
 	<List.Root>
-		<List.Item>Lorem ipsum dolor sit amet, consectetur adipisicing elit</List.Item>
-		<List.Item>Assumenda, quia temporibus eveniet a libero incidunt suscipit</List.Item>
-		<List.Item>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</List.Item>
+		<List.Item
+			>Lorem ipsum dolor sit amet, consectetur adipisicing elit</List.Item
+		>
+		<List.Item
+			>Assumenda, quia temporibus eveniet a libero incidunt suscipit</List.Item
+		>
+		<List.Item
+			>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</List.Item
+		>
 	</List.Root>
 {:else if story === "ordered"}
 	<List.Root as="ol">
-		<List.Item>Lorem ipsum dolor sit amet, consectetur adipisicing elit</List.Item>
-		<List.Item>Assumenda, quia temporibus eveniet a libero incidunt suscipit</List.Item>
-		<List.Item>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</List.Item>
+		<List.Item
+			>Lorem ipsum dolor sit amet, consectetur adipisicing elit</List.Item
+		>
+		<List.Item
+			>Assumenda, quia temporibus eveniet a libero incidunt suscipit</List.Item
+		>
+		<List.Item
+			>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</List.Item
+		>
 	</List.Root>
 {:else if story === "withIcon"}
 	<List.Root variant="plain" align="start">
 		<List.Item>
 			<List.Indicator colour="green">
-				<Icon as={CheckCircle} class="w-full h-full" />
+				<Icon as={CheckCircle} class="h-full w-full" />
 			</List.Indicator>
-			<Text as="span">Lorem ipsum dolor sit amet, consectetur adipisicing elit. This is a longer text that wraps to multiple lines to demonstrate alignment.</Text>
+			<Text as="span"
+				>Lorem ipsum dolor sit amet, consectetur adipisicing elit. This
+				is a longer text that wraps to multiple lines to demonstrate
+				alignment.</Text
+			>
 		</List.Item>
 		<List.Item>
 			<List.Indicator colour="green">
-				<Icon as={CheckCircle} class="w-full h-full" />
+				<Icon as={CheckCircle} class="h-full w-full" />
 			</List.Indicator>
-			<Text as="span">Assumenda, quia temporibus eveniet a libero incidunt suscipit. Another multi-line example to show how icons align.</Text>
+			<Text as="span"
+				>Assumenda, quia temporibus eveniet a libero incidunt suscipit.
+				Another multi-line example to show how icons align.</Text
+			>
 		</List.Item>
 		<List.Item>
 			<List.Indicator colour="green">
-				<Icon as={CircleDashed} class="w-full h-full" />
+				<Icon as={CircleDashed} class="h-full w-full" />
 			</List.Indicator>
-			<Text as="span">Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</Text>
+			<Text as="span"
+				>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</Text
+			>
 		</List.Item>
 	</List.Root>
 {:else if story === "nested"}

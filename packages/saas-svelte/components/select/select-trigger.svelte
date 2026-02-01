@@ -1,37 +1,37 @@
 <script lang="ts">
-import { Select } from "@ark-ui/svelte/select";
-import type { SelectTriggerProps } from "@ark-ui/svelte/select";
-import { getContext, type Snippet } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
-import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { Flex } from "$saas/layout/flex";
+	import { Select } from "@ark-ui/svelte/select";
+	import type { SelectTriggerProps } from "@ark-ui/svelte/select";
+	import { getContext, type Snippet } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { SELECT_CTX, type SelectContext } from "./select-root.svelte";
+	import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
+	import XIcon from "phosphor-svelte/lib/XIcon";
+	import { Flex } from "$saas/layout/flex";
 
-interface Props extends SelectTriggerProps {
-	/**
-	 * The trigger content. If not provided, renders value and indicator.
-	 */
-	children?: Snippet;
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	/**
-	 * Whether to show a clear button when a value is selected.
-	 * @default false
-	 */
-	clearable?: boolean;
-}
+	interface Props extends SelectTriggerProps {
+		/**
+		 * The trigger content. If not provided, renders value and indicator.
+		 */
+		children?: Snippet;
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		/**
+		 * Whether to show a clear button when a value is selected.
+		 * @default false
+		 */
+		clearable?: boolean;
+	}
 
-let {
-	children,
-	class: className,
-	clearable = false,
-	...rest
-}: Props = $props();
+	let {
+		children,
+		class: className,
+		clearable = false,
+		...rest
+	}: Props = $props();
 
-const ctx = getContext<SelectContext>(SELECT_CTX);
+	const ctx = getContext<SelectContext>(SELECT_CTX);
 </script>
 
 <Select.Control class={ctx?.styles?.control() ?? ""}>
@@ -52,9 +52,7 @@ const ctx = getContext<SelectContext>(SELECT_CTX);
 	<Flex
 		align="center"
 		gap={1}
-		class={twMerge(
-			"pointer-events-none absolute inset-y-0 right-0 px-2.5",
-		)}
+		class={twMerge("pointer-events-none absolute inset-y-0 right-0 px-2.5")}
 	>
 		{#if clearable}
 			<Select.ClearTrigger class={ctx?.styles?.clearTrigger() ?? ""}>

@@ -17,7 +17,13 @@
 		locale?: string;
 	}
 
-	let { story, value = 1450.45, unit = "byte", unitDisplay = "short", locale }: Props = $props();
+	let {
+		story,
+		value = 1450.45,
+		unit = "byte",
+		unitDisplay = "short",
+		locale,
+	}: Props = $props();
 </script>
 
 {#if story === "basic"}

@@ -45,10 +45,17 @@
 		{#each colours as colour}
 			<HStack align="center" gap={10} class="w-full px-4">
 				<Text size="sm" class="min-w-[8ch]">{colour}</Text>
-				<Code variant="solid" colour={colour as any}>console.log()</Code>
-				<Code variant="outline" colour={colour as any}>console.log()</Code>
-				<Code variant="subtle" colour={colour as any}>console.log()</Code>
-				<Code variant="surface" colour={colour as any}>console.log()</Code>
+				<Code variant="solid" colour={colour as any}>console.log()</Code
+				>
+				<Code variant="outline" colour={colour as any}
+					>console.log()</Code
+				>
+				<Code variant="subtle" colour={colour as any}
+					>console.log()</Code
+				>
+				<Code variant="surface" colour={colour as any}
+					>console.log()</Code
+				>
 			</HStack>
 		{/each}
 	</VStack>

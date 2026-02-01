@@ -1,28 +1,28 @@
 <script lang="ts">
-import { Button } from "@saas-ui/svelte/components/button";
-import { Avatar } from "@saas-ui/svelte/components/avatar";
-import { Icon } from "@saas-ui/svelte/components/icon";
-import { Tooltip } from "@saas-ui/svelte/components/tooltip";
-import { Box } from "@saas-ui/svelte/layout/box";
-import { Flex } from "@saas-ui/svelte/layout/flex";
-import { VStack } from "@saas-ui/svelte/layout/stack";
-import { Centre } from "@saas-ui/svelte/layout/centre";
-import { Heading } from "@saas-ui/svelte/typography/heading";
-import { Text } from "@saas-ui/svelte/typography/text";
-import ArrowLeftIcon from "phosphor-svelte/lib/ArrowLeftIcon";
-import ArrowBendUpLeftIcon from "phosphor-svelte/lib/ArrowBendUpLeftIcon";
-import ArrowBendDoubleUpLeftIcon from "phosphor-svelte/lib/ArrowBendDoubleUpLeftIcon";
-import ArrowBendUpRightIcon from "phosphor-svelte/lib/ArrowBendUpRightIcon";
-import { emailsById } from "./emails";
+	import { Button } from "@saas-ui/svelte/components/button";
+	import { Avatar } from "@saas-ui/svelte/components/avatar";
+	import { Icon } from "@saas-ui/svelte/components/icon";
+	import { Tooltip } from "@saas-ui/svelte/components/tooltip";
+	import { Box } from "@saas-ui/svelte/layout/box";
+	import { Flex } from "@saas-ui/svelte/layout/flex";
+	import { VStack } from "@saas-ui/svelte/layout/stack";
+	import { Centre } from "@saas-ui/svelte/layout/centre";
+	import { Heading } from "@saas-ui/svelte/typography/heading";
+	import { Text } from "@saas-ui/svelte/typography/text";
+	import ArrowLeftIcon from "phosphor-svelte/lib/ArrowLeftIcon";
+	import ArrowBendUpLeftIcon from "phosphor-svelte/lib/ArrowBendUpLeftIcon";
+	import ArrowBendDoubleUpLeftIcon from "phosphor-svelte/lib/ArrowBendDoubleUpLeftIcon";
+	import ArrowBendUpRightIcon from "phosphor-svelte/lib/ArrowBendUpRightIcon";
+	import { emailsById } from "./emails";
 
-interface Props {
-	emailId: string | null;
-	onBack?: () => void;
-}
+	interface Props {
+		emailId: string | null;
+		onBack?: () => void;
+	}
 
-let { emailId, onBack }: Props = $props();
+	let { emailId, onBack }: Props = $props();
 
-let email = $derived(emailId ? emailsById[emailId] : null);
+	let email = $derived(emailId ? emailsById[emailId] : null);
 </script>
 
 <Flex direction="column" gap={2} class="bg-bg-default flex-1 overflow-auto">
@@ -92,11 +92,17 @@ let email = $derived(emailId ? emailsById[emailId] : null);
 			>
 				<Avatar name={email.from} size="lg" colour="indigo" />
 				<VStack gap={0}>
-					<Heading as="h2" size="sm" weight="medium">{email.from}</Heading>
-					<Text class="text-fg-muted text-[.8125rem]">{email.subject}</Text>
+					<Heading as="h2" size="sm" weight="medium"
+						>{email.from}</Heading
+					>
+					<Text class="text-fg-muted text-[.8125rem]"
+						>{email.subject}</Text
+					>
 				</VStack>
 				<Box class="flex-1"></Box>
-				<Text size="xs" class="text-fg-muted self-start">{email.date}</Text>
+				<Text size="xs" class="text-fg-muted self-start"
+					>{email.date}</Text
+				>
 			</Flex>
 
 			<!-- Email body -->
@@ -109,9 +115,7 @@ let email = $derived(emailId ? emailsById[emailId] : null);
 			</Box>
 		</Box>
 	{:else}
-		<Centre
-			class="text-fg-muted flex-1 text-sm"
-		>
+		<Centre class="text-fg-muted flex-1 text-sm">
 			Select an email to view
 		</Centre>
 	{/if}

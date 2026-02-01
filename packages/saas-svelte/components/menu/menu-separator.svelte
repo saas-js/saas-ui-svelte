@@ -1,20 +1,20 @@
 <script lang="ts">
-import { Menu } from "@ark-ui/svelte/menu";
-import { getContext } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
+	import { Menu } from "@ark-ui/svelte/menu";
+	import { getContext } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { MENU_CTX, type MenuContext } from "./menu-root.svelte";
 
-interface Props {
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	[key: string]: any;
-}
+	interface Props {
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		[key: string]: any;
+	}
 
-let { class: className, ...rest }: Props = $props();
+	let { class: className, ...rest }: Props = $props();
 
-const ctx = getContext<MenuContext>(MENU_CTX);
+	const ctx = getContext<MenuContext>(MENU_CTX);
 </script>
 
 <Menu.Separator

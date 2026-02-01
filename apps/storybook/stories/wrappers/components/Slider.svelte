@@ -117,7 +117,11 @@
 		</Slider.Control>
 	</Slider.Root>
 {:else if story === "range"}
-	<Slider.Root defaultValue={[30, 60]} class="w-[200px]" aria-label="Range slider">
+	<Slider.Root
+		defaultValue={[30, 60]}
+		class="w-[200px]"
+		aria-label="Range slider"
+	>
 		<Slider.Control>
 			<Slider.Track>
 				<Slider.Range />
@@ -127,7 +131,12 @@
 		</Slider.Control>
 	</Slider.Root>
 {:else if story === "disabled"}
-	<Slider.Root defaultValue={[40]} disabled class="w-[200px]" aria-label="Disabled slider">
+	<Slider.Root
+		defaultValue={[40]}
+		disabled
+		class="w-[200px]"
+		aria-label="Disabled slider"
+	>
 		<Slider.Control>
 			<Slider.Track>
 				<Slider.Range />
@@ -163,7 +172,12 @@
 		{/each}
 	</Stack>
 {:else if story === "vertical"}
-	<Slider.Root defaultValue={[40]} orientation="vertical" class="h-[200px]" aria-label="Vertical slider">
+	<Slider.Root
+		defaultValue={[40]}
+		orientation="vertical"
+		class="h-[200px]"
+		aria-label="Vertical slider"
+	>
 		<Slider.Control>
 			<Slider.Track>
 				<Slider.Range />

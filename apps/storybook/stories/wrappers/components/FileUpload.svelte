@@ -62,7 +62,7 @@
 		<FileUpload.List showSize clearable />
 	</FileUpload.Root>
 {:else if story === "dropzone"}
-	<FileUpload.Root maxFiles={10} class="items-stretch max-w-xl">
+	<FileUpload.Root maxFiles={10} class="max-w-xl items-stretch">
 		<FileUpload.Dropzone>
 			<Icon as={UploadSimple} size="xl" class="text-fg-muted" />
 			<Heading size="sm">Drag and drop here to upload</Heading>
@@ -71,12 +71,12 @@
 		<FileUpload.List showSize clearable />
 	</FileUpload.Root>
 {:else if story === "input"}
-	<FileUpload.Root class="gap-1 max-w-72">
+	<FileUpload.Root class="max-w-72 gap-1">
 		<FileUpload.Label>Upload file</FileUpload.Label>
 		<FileUpload.Input />
 	</FileUpload.Root>
 {:else if story === "clearable"}
-	<FileUpload.Root class="gap-1 max-w-72">
+	<FileUpload.Root class="max-w-72 gap-1">
 		<FileUpload.Label>Upload file</FileUpload.Label>
 		<Input.Group>
 			<Input.Element placement="left">

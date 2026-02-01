@@ -23,7 +23,9 @@
 	<VStack gap={4}>
 		{#each sampleSizes as size}
 			<div>
-				<Text weight="medium" class="block mb-1 text-center">{size}</Text>
+				<Text weight="medium" class="mb-1 block text-center"
+					>{size}</Text
+				>
 				<Container maxW={size}>
 					<DecorativeBox class="px-2">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.

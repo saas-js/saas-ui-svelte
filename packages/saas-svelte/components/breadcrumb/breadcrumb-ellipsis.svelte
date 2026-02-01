@@ -1,29 +1,33 @@
 <script lang="ts">
-import type { HTMLAttributes } from "svelte/elements";
-import { getContext } from "svelte";
-import { twMerge } from "tailwind-merge";
-import {
-	BREADCRUMB_CTX,
-	type BreadcrumbContext,
-} from "./breadcrumb-root.svelte";
-import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
+	import type { HTMLAttributes } from "svelte/elements";
+	import { getContext } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import {
+		BREADCRUMB_CTX,
+		type BreadcrumbContext,
+	} from "./breadcrumb-root.svelte";
+	import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
 
-interface Props extends HTMLAttributes<HTMLLIElement> {
-	/**
-	 * Whether to show the separator after the ellipsis.
-	 * @default true
-	 */
-	showSeparator?: boolean;
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-}
+	interface Props extends HTMLAttributes<HTMLLIElement> {
+		/**
+		 * Whether to show the separator after the ellipsis.
+		 * @default true
+		 */
+		showSeparator?: boolean;
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+	}
 
-let { showSeparator = true, class: className, ...restProps }: Props = $props();
+	let {
+		showSeparator = true,
+		class: className,
+		...restProps
+	}: Props = $props();
 
-const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
-const styles = $derived(context?.styles);
+	const context = getContext<BreadcrumbContext>(BREADCRUMB_CTX);
+	const styles = $derived(context?.styles);
 </script>
 
 <li

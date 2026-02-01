@@ -146,7 +146,11 @@
 					<Radio.ItemText>
 						<VStack gap={0}>
 							<Text as="span" class="text-fg-default">React</Text>
-							<Text as="span" size="xs" class="font-normal text-fg-muted">
+							<Text
+								as="span"
+								size="xs"
+								class="text-fg-muted font-normal"
+							>
 								A JavaScript library for building user
 								interfaces
 							</Text>
@@ -162,8 +166,13 @@
 					</Radio.ItemControl>
 					<Radio.ItemText>
 						<VStack gap={0}>
-							<Text as="span" class="text-fg-default">Svelte</Text>
-							<Text as="span" size="xs" class="font-normal text-fg-muted">
+							<Text as="span" class="text-fg-default">Svelte</Text
+							>
+							<Text
+								as="span"
+								size="xs"
+								class="text-fg-muted font-normal"
+							>
 								Cybernetically enhanced web apps
 							</Text>
 						</VStack>

@@ -14,10 +14,20 @@
 	import MagnifyingGlass from "phosphor-svelte/lib/MagnifyingGlass";
 	import File from "phosphor-svelte/lib/File";
 	import Users from "phosphor-svelte/lib/Users";
-	import { colours, emptyStateSizes, emptyStateAlignOptions } from "../../utils";
+	import {
+		colours,
+		emptyStateSizes,
+		emptyStateAlignOptions,
+	} from "../../utils";
 
 	interface Props {
-		story: "basic" | "withAction" | "withList" | "sizes" | "alignment" | "colours";
+		story:
+			| "basic"
+			| "withAction"
+			| "withList"
+			| "sizes"
+			| "alignment"
+			| "colours";
 	}
 
 	let { story }: Props = $props();
@@ -55,7 +65,7 @@
 {:else if story === "sizes"}
 	<Stack gap={8} class="w-full">
 		{#each emptyStateSizes as size}
-			<Box class="border border-border-default rounded-md">
+			<Box class="border-border-default rounded-md border">
 				<EmptyState
 					icon={File}
 					title="No documents"
@@ -69,7 +79,7 @@
 {:else if story === "alignment"}
 	<Stack gap={4} class="w-full">
 		{#each emptyStateAlignOptions as align}
-			<Box class="border border-border-default rounded-md">
+			<Box class="border-border-default rounded-md border">
 				<EmptyState
 					icon={Users}
 					title="No team members"
@@ -85,7 +95,7 @@
 {:else if story === "colours"}
 	<Stack gap={4} class="w-full">
 		{#each colours as colour}
-			<Box class="border border-border-default rounded-md">
+			<Box class="border-border-default rounded-md border">
 				<EmptyState
 					icon={ShoppingCart}
 					title="Empty state with {colour}"

@@ -10,7 +10,13 @@
 	import { colours } from "../../utils";
 
 	interface Props {
-		story: "basic" | "description" | "status" | "variants" | "customIcon" | "colours";
+		story:
+			| "basic"
+			| "description"
+			| "status"
+			| "variants"
+			| "customIcon"
+			| "colours";
 	}
 
 	let { story }: Props = $props();
@@ -72,7 +78,12 @@
 		{#each colours as colour}
 			<HStack gap={4} class="w-full items-center">
 				<Text size="xs" class="w-16">{colour}</Text>
-				<Alert {colour} variant="subtle" title="Alert with {colour} colour" class="flex-1" />
+				<Alert
+					{colour}
+					variant="subtle"
+					title="Alert with {colour} colour"
+					class="flex-1"
+				/>
 			</HStack>
 		{/each}
 	</VStack>

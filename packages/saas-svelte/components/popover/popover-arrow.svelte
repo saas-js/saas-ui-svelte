@@ -1,22 +1,25 @@
 <script lang="ts">
-import { Popover } from "@ark-ui/svelte/popover";
-import { getContext } from "svelte";
-import { twMerge } from "tailwind-merge";
-import { POPOVER_CTX, type PopoverContext } from "./popover-root.svelte";
+	import { Popover } from "@ark-ui/svelte/popover";
+	import { getContext } from "svelte";
+	import { twMerge } from "tailwind-merge";
+	import { POPOVER_CTX, type PopoverContext } from "./popover-root.svelte";
 
-interface Props {
-	/**
-	 * Additional CSS classes to apply.
-	 */
-	class?: string;
-	[key: string]: unknown;
-}
+	interface Props {
+		/**
+		 * Additional CSS classes to apply.
+		 */
+		class?: string;
+		[key: string]: unknown;
+	}
 
-let { class: className, ...rest }: Props = $props();
+	let { class: className, ...rest }: Props = $props();
 
-const ctx = getContext<PopoverContext>(POPOVER_CTX);
+	const ctx = getContext<PopoverContext>(POPOVER_CTX);
 </script>
 
-<Popover.Arrow class={twMerge(ctx?.styles?.arrow() ?? "", className as string)} {...rest}>
+<Popover.Arrow
+	class={twMerge(ctx?.styles?.arrow() ?? "", className as string)}
+	{...rest}
+>
 	<Popover.ArrowTip class={ctx?.styles?.arrowTip()} />
 </Popover.Arrow>

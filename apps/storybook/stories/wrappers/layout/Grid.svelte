@@ -19,16 +19,16 @@
 {:else if story === "spanning"}
 	<Grid rows={2} columns={5} gap={4} class="h-[200px]">
 		<GridItem rowSpan={2} colSpan={1}>
-			<DecorativeBox class="w-full h-full">rowSpan=2</DecorativeBox>
+			<DecorativeBox class="h-full w-full">rowSpan=2</DecorativeBox>
 		</GridItem>
 		<GridItem colSpan={2}>
-			<DecorativeBox class="w-full h-full">colSpan=2</DecorativeBox>
+			<DecorativeBox class="h-full w-full">colSpan=2</DecorativeBox>
 		</GridItem>
 		<GridItem colSpan={2}>
-			<DecorativeBox class="w-full h-full">colSpan=2</DecorativeBox>
+			<DecorativeBox class="h-full w-full">colSpan=2</DecorativeBox>
 		</GridItem>
 		<GridItem colSpan={4}>
-			<DecorativeBox class="w-full h-full">colSpan=4</DecorativeBox>
+			<DecorativeBox class="h-full w-full">colSpan=4</DecorativeBox>
 		</GridItem>
 	</Grid>
 {:else if story === "customGap"}

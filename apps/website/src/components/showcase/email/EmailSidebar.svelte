@@ -24,15 +24,15 @@
 
 <Flex
 	direction="column"
-	class="bg-gray-100 dark:bg-gray-900 min-w-56 h-auto transition-all border-r border-border-default duration-200 ease-[cubic-bezier(.34,1.24,0.64,1)] w-64 {open
+	class="border-border-default h-auto w-64 min-w-56 border-r bg-gray-100 transition-all duration-200 ease-[cubic-bezier(.34,1.24,0.64,1)] dark:bg-gray-900 {open
 		? 'translate-x-0'
-		: '-translate-x-full w-0 min-w-0 overflow-hidden border-r-0'}"
+		: 'w-0 min-w-0 -translate-x-full overflow-hidden border-r-0'}"
 >
-	<header class="flex px-3 py-2 justify-between">
+	<header class="flex justify-between px-3 py-2">
 		<button
 			type="button"
 			aria-label="User menu"
-			class="appearance-none cursor-pointer shrink-0 justify-center items-center min-w-7 h-7 transition-all duration-200 inline-flex rounded focus-visible:outline-offset-2 focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-fg-muted hover:bg-black/5 dark:hover:bg-white/10"
+			class="focus-visible:outline-fg-muted inline-flex h-7 min-w-7 shrink-0 cursor-pointer appearance-none items-center justify-center rounded transition-all duration-200 hover:bg-black/5 focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-solid dark:hover:bg-white/10"
 		>
 			<Avatar name="John Doe" size="sm" />
 		</button>
@@ -50,8 +50,13 @@
 
 	<VStack gap={4} class="flex-1 overflow-y-auto p-3">
 		<Box role="group" class="relative">
-			<Flex align="center" gap={1} class="h-6 text-xs rounded-md">
-				<Heading as="h5" size="xs" weight="medium" class="flex-1 items-center flex px-2 text-fg-default">
+			<Flex align="center" gap={1} class="h-6 rounded-md text-xs">
+				<Heading
+					as="h5"
+					size="xs"
+					weight="medium"
+					class="text-fg-default flex flex-1 items-center px-2"
+				>
 					Favourites
 				</Heading>
 			</Flex>

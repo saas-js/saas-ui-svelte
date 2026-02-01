@@ -16,7 +16,7 @@
 		BarElement,
 		LinearScale,
 		CategoryScale,
-		Tooltip
+		Tooltip,
 	);
 
 	interface Props {
@@ -43,7 +43,10 @@
 		}
 	}
 
-	function getOrGenerateData(range: string): { labels: string[]; data: number[] } {
+	function getOrGenerateData(range: string): {
+		labels: string[];
+		data: number[];
+	} {
 		if (dataCache.has(range)) {
 			return dataCache.get(range)!;
 		}
@@ -61,7 +64,18 @@
 
 		if (range === "year") {
 			return {
-				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+				labels: [
+					"Jan",
+					"Feb",
+					"Mar",
+					"Apr",
+					"May",
+					"Jun",
+					"Jul",
+					"Aug",
+					"Sep",
+					"Oct",
+				],
 				data: Array.from({ length: 10 }, (_, i) => {
 					const base = 10000 + i * 1200;
 					return base + random(-2000, 3000, i);
@@ -235,7 +249,7 @@
 
 <Card.Root class="bg-bg-default min-w-0 overflow-hidden p-4 xl:col-span-2">
 	<Card.Header class="gap-0 p-0 pb-2">
-		<Card.Title as="h2" class="text-fg-muted text-sm font-medium leading-4"
+		<Card.Title as="h2" class="text-fg-muted text-sm leading-4 font-medium"
 			>Revenue</Card.Title
 		>
 		<Text weight="medium" class="text-base">{totalRevenue}</Text>

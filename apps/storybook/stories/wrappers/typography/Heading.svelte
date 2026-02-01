@@ -28,7 +28,14 @@
 	const headingWeights = ["normal", "medium", "semibold", "bold"] as const;
 
 	interface Props {
-		story: "basic" | "sizes" | "multiline" | "weights" | "asElement" | "highlight" | "composition";
+		story:
+			| "basic"
+			| "sizes"
+			| "multiline"
+			| "weights"
+			| "asElement"
+			| "highlight"
+			| "composition";
 	}
 
 	let { story }: Props = $props();
@@ -39,7 +46,8 @@
 {:else if story === "sizes"}
 	<Stack>
 		{#each textSizes as size}
-			<Heading {size}>The quick brown fox jumps over the lazy dog</Heading>
+			<Heading {size}>The quick brown fox jumps over the lazy dog</Heading
+			>
 		{/each}
 	</Stack>
 {:else if story === "multiline"}
@@ -80,7 +88,7 @@
 {:else if story === "composition"}
 	<Stack align="start">
 		<Heading size="2xl">Modern payments for Stores</Heading>
-		<Text class="mb-3 text-fg-muted">
+		<Text class="text-fg-muted mb-3">
 			PayMe helps startups get paid by anyone, anywhere in the world
 		</Text>
 		<Button>
