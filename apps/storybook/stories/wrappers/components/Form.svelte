@@ -47,7 +47,10 @@
 {:else if story === "withValidation"}
 	{@const validationForm = useForm({
 		schema: z.object({
-			name: z.string().min(1, "Name is required"),
+			name: z
+				.string()
+				.min(1, "Name is required")
+				.regex(/^[\p{L}\s]+$/u, "Name must contain only letters"),
 			email: z.string().email("Invalid email"),
 		}),
 		defaultValues: { name: "", email: "" },
