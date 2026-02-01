@@ -7,12 +7,22 @@
 	import { Blockquote } from "$saas/typography/blockquote";
 	import { Text } from "$saas/typography/text";
 	import { HStack, VStack } from "$saas/layout/stack";
-	import Quotes from "phosphor-svelte/lib/Quotes";
+	import { Box } from "$saas/layout/box";
+	import { Float } from "$saas/layout/float";
+	import { Circle } from "$saas/layout/circle";
+	import { Icon } from "$saas/components/icon";
+	import QuotesIcon from "phosphor-svelte/lib/QuotesIcon";
 	import type { ColourName } from "$saas/utils/colours";
 	import { colours, blockquoteVariants } from "../../utils";
 
 	interface Props {
-		story: "basic" | "withCite" | "colours" | "variants" | "icon" | "customIcon";
+		story:
+			| "basic"
+			| "withCite"
+			| "colours"
+			| "variants"
+			| "icon"
+			| "customIcon";
 	}
 
 	let { story }: Props = $props();
@@ -93,11 +103,18 @@
 		</Text>
 	</Blockquote>
 {:else if story === "customIcon"}
-	<Blockquote cite="Uzumaki Naruto" colour="blue" icon={Quotes}>
-		<Text>
-			If anyone thinks he is something when he is nothing, he deceives
-			himself. Each one should test his own actions. Then he can take
-			pride in himself, without comparing himself to anyone else.
-		</Text>
-	</Blockquote>
+	<Box class="relative">
+		<Float placement="middle-start" class="z-10">
+			<Circle size="sm" class="bg-blue-600 text-white">
+				<Icon as={QuotesIcon} />
+			</Circle>
+		</Float>
+		<Blockquote cite="Uzumaki Naruto" colour="blue" class="ps-8">
+			<Text>
+				If anyone thinks he is something when he is nothing, he deceives
+				himself. Each one should test his own actions. Then he can take
+				pride in himself, without comparing himself to anyone else.
+			</Text>
+		</Blockquote>
+	</Box>
 {/if}
