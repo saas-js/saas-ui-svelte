@@ -39,8 +39,8 @@ function getDefault(propDef: PropDef): string | null {
 }
 </script>
 
-<Table.ScrollArea>
-	<Table.Root size="sm">
+<Table.ScrollArea class="border border-border-default rounded-md">
+	<Table.Root size="sm" variant="outline" showOuterBorder={false}>
 		<Table.Header>
 			<Table.Row>
 				<Table.ColumnHeader>Prop</Table.ColumnHeader>
