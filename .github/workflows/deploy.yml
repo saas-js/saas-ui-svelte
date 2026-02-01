@@ -34,7 +34,9 @@ jobs:
 
             - name: Get installed Playwright version
               id: playwright-version
-              run: echo "version=$(npm ls playwright | grep playwright | sed 's/.*@//' | awk '{print $1}')" >> $GITHUB_OUTPUT
+              run: |
+                  VERSION=$(npm ls playwright | grep playwright | head -1 | sed 's/.*@//' | awk '{print $1}' | tr -d '\n')
+                  echo "version=$VERSION" >> $GITHUB_OUTPUT
 
             - name: Cache Playwright binaries
               uses: actions/cache@v4
