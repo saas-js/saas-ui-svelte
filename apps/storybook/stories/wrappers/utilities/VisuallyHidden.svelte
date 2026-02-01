@@ -11,16 +11,15 @@
 
 	interface Props {
 		story: "basic";
-		class?: string;
 	}
 
-	let { story, class: className }: Props = $props();
+	let { story }: Props = $props();
 </script>
 
 {#if story === "basic"}
 	<Button>
 		<Icon as={Bell} size="sm" />
 		3
-		<VisuallyHidden class={className}>Notifications</VisuallyHidden>
+		<VisuallyHidden>Notifications</VisuallyHidden>
 	</Button>
 {/if}
