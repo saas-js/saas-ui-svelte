@@ -47,7 +47,7 @@ function formatLabel(label: string): string {
 <Box
 	as="nav"
 	aria-label="Documentation sections"
-	class="flex flex-1 flex-col gap-0 overflow-y-auto px-5 py-8 text-sm"
+	class="flex flex-1 flex-col gap-0 px-5 py-8 text-sm"
 >
 	{#each groups as group}
 		<VStack gap={0} class="relative my-3">
