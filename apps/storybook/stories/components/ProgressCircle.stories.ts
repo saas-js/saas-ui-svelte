@@ -167,7 +167,7 @@ export const WithValueText: Story = {
 	render: () =>
 		({
 			Component: ProgressCircleWrapper,
-			props: { story: "valueText" },
+			props: { story: "withValueText" },
 		}) as any,
 };
 
@@ -182,7 +182,7 @@ export const CustomThickness: Story = {
 	render: () =>
 		({
 			Component: ProgressCircleWrapper,
-			props: { story: "thickness" },
+			props: { story: "customThickness" },
 		}) as any,
 };
 
@@ -227,6 +227,6 @@ export const RangeColors: Story = {
 	render: () =>
 		({
 			Component: ProgressCircleWrapper,
-			props: { story: "rangeColor" },
+			props: { story: "rangeColors" },
 		}) as any,
 };

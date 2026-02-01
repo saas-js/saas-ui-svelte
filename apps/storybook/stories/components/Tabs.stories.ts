@@ -383,7 +383,7 @@ export const LazyMounted: Story = {
 	render: () =>
 		({
 			Component: TabsWrapper,
-			props: { story: "lazyMount" },
+			props: { story: "lazyMounted" },
 		}) as any,
 };
 
@@ -398,7 +398,7 @@ export const WithIndicator: Story = {
 	render: () =>
 		({
 			Component: TabsWrapper,
-			props: { story: "indicator" },
+			props: { story: "withIndicator" },
 		}) as any,
 };
 
@@ -428,7 +428,7 @@ export const DisabledTab: Story = {
 	render: () =>
 		({
 			Component: TabsWrapper,
-			props: { story: "disabled" },
+			props: { story: "disabledTab" },
 		}) as any,
 };
 

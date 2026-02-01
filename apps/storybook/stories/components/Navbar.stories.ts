@@ -139,7 +139,7 @@ export const GlassVariant: Story = {
 	render: () =>
 		({
 			Component: NavbarWrapper,
-			props: { story: "glass" },
+			props: { story: "glassVariant" },
 		}) as any,
 };
 
@@ -154,7 +154,7 @@ export const SolidVariant: Story = {
 	render: () =>
 		({
 			Component: NavbarWrapper,
-			props: { story: "solid" },
+			props: { story: "solidVariant" },
 		}) as any,
 };
 
@@ -229,6 +229,6 @@ export const MobileNavigation: Story = {
 	render: () =>
 		({
 			Component: NavbarWrapper,
-			props: { story: "mobileNav" },
+			props: { story: "mobileNavigation" },
 		}) as any,
 };

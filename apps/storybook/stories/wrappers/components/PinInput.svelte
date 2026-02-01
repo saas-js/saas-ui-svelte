@@ -16,7 +16,7 @@
 			| "basic"
 			| "sizes"
 			| "variants"
-			| "otp"
+			| "oneTimeCode"
 			| "mask"
 			| "placeholder"
 			| "withField"
@@ -54,7 +54,7 @@
 			</HStack>
 		{/each}
 	</Stack>
-{:else if story === "otp"}
+{:else if story === "oneTimeCode"}
 	<PinInput otp />
 {:else if story === "mask"}
 	<PinInput mask />

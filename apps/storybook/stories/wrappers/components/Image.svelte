@@ -12,7 +12,7 @@
 	const imageFitOptions = ["contain", "cover", "fill", "none", "scale-down"] as const;
 
 	interface Props {
-		story: "basic" | "height" | "circular" | "aspectRatio" | "fit" | "rounded";
+		story: "basic" | "height" | "circular" | "aspectRatio" | "objectFit" | "rounded";
 	}
 
 	let { story }: Props = $props();
@@ -49,7 +49,7 @@
 		width="300px"
 		rounded="md"
 	/>
-{:else if story === "fit"}
+{:else if story === "objectFit"}
 	<Stack gap={6} class="flex-row flex-wrap items-start">
 		{#each imageFitOptions as fit}
 			<VStack gap={2} class="items-center">

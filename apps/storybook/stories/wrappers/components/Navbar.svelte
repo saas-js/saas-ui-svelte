@@ -21,13 +21,13 @@
 		story:
 			| "basic"
 			| "bordered"
-			| "glass"
-			| "solid"
+			| "glassVariant"
+			| "solidVariant"
 			| "variants"
 			| "sticky"
 			| "hideOnScroll"
 			| "colours"
-			| "mobileNav";
+			| "mobileNavigation";
 	}
 
 	let { story }: Props = $props();
@@ -116,7 +116,7 @@
 			</VStack>
 		</Box>
 	</Box>
-{:else if story === "glass"}
+{:else if story === "glassVariant"}
 	<Box class="overflow-auto h-80 rounded-l2 bg-linear-to-br from-accent-muted to-pink-muted">
 		<Navbar.Root variant="glass" position="sticky">
 			<Navbar.Content maxW="max-w-4xl">
@@ -153,7 +153,7 @@
 			</VStack>
 		</Box>
 	</Box>
-{:else if story === "solid"}
+{:else if story === "solidVariant"}
 	<Box class="overflow-auto h-80 rounded-l2">
 		<Navbar.Root variant="solid" colour="accent" position="sticky">
 			<Navbar.Content maxW="max-w-4xl">
@@ -336,7 +336,7 @@
 			</Box>
 		{/each}
 	</VStack>
-{:else if story === "mobileNav"}
+{:else if story === "mobileNavigation"}
 	{@const mobileNav = createMobileNav()}
 	<Box class="overflow-auto h-80 bg-bg-subtle rounded-l2">
 		<Navbar.Root position="sticky" bordered>

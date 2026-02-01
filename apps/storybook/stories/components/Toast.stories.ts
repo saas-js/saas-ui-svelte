@@ -226,7 +226,7 @@ export const WithAction: Story = {
 	render: () =>
 		({
 			Component: ToastWrapper,
-			props: { story: "action" },
+			props: { story: "withAction" },
 		}) as any,
 };
 

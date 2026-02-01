@@ -283,7 +283,7 @@ export const MinAndMax: Story = {
 	render: () =>
 		({
 			Component: NumberInputWrapper,
-			props: { story: "minMax" },
+			props: { story: "minAndMax" },
 		}) as any,
 };
 

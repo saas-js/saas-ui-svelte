@@ -314,7 +314,7 @@ export const OneTimeCode: Story = {
 	render: () =>
 		({
 			Component: PinInputWrapper,
-			props: { story: "otp" },
+			props: { story: "oneTimeCode" },
 		}) as any,
 };
 

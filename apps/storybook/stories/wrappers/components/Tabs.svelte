@@ -22,10 +22,10 @@
 			| "variants"
 			| "sizes"
 			| "fitted"
-			| "lazyMount"
-			| "indicator"
+			| "lazyMounted"
+			| "withIndicator"
 			| "colours"
-			| "disabled"
+			| "disabledTab"
 			| "manualActivation"
 			| "dynamic"
 			| "prefetch";
@@ -159,7 +159,7 @@
 		<Tabs.Content value="tab-2">Tab 2 content</Tabs.Content>
 		<Tabs.Content value="tab-3">Tab 3 content</Tabs.Content>
 	</Tabs.Root>
-{:else if story === "lazyMount"}
+{:else if story === "lazyMounted"}
 	<Tabs.Root lazyMount unmountOnExit defaultValue="tab-1">
 		<Tabs.List>
 			<Tabs.Trigger value="tab-1">Tab 1</Tabs.Trigger>
@@ -170,7 +170,7 @@
 		<Tabs.Content value="tab-2">Tab 2: Content (lazy mounted)</Tabs.Content>
 		<Tabs.Content value="tab-3">Tab 3: Content (lazy mounted)</Tabs.Content>
 	</Tabs.Root>
-{:else if story === "indicator"}
+{:else if story === "withIndicator"}
 	<Tabs.Root defaultValue="members" variant="plain">
 		<Tabs.List class="p-1 rounded-lg bg-bg-muted">
 			<Tabs.Trigger value="members">
@@ -239,7 +239,7 @@
 			</HStack>
 		{/each}
 	</VStack>
-{:else if story === "disabled"}
+{:else if story === "disabledTab"}
 	<Tabs.Root defaultValue="members">
 		<Tabs.List>
 			<Tabs.Trigger value="members">

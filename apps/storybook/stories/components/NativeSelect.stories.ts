@@ -121,6 +121,6 @@ export const WithValidation: Story = {
 	render: () =>
 		({
 			Component: NativeSelectWrapper,
-			props: { story: "hookForm" },
+			props: { story: "withValidation" },
 		}) as any,
 };

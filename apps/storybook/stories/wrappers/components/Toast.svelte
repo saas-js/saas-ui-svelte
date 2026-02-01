@@ -16,7 +16,7 @@
 			| "default"
 			| "basic"
 			| "status"
-			| "action"
+			| "withAction"
 			| "duration"
 			| "stacking";
 	}
@@ -99,7 +99,7 @@
 			</Button>
 		</HStack>
 	</ToastStoryWrapper>
-{:else if story === "action"}
+{:else if story === "withAction"}
 	<ToastStoryWrapper>
 		<Button
 			onclick={() =>

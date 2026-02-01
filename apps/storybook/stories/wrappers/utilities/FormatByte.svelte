@@ -10,7 +10,7 @@
 	import { Stack, HStack } from "$saas/layout/stack";
 
 	interface Props {
-		story: "basic" | "sizes" | "bits" | "locale" | "unitDisplay";
+		story: "basic" | "sizes" | "formatBits" | "locale" | "unitDisplay";
 		value?: number;
 		unit?: "byte" | "bit";
 		unitDisplay?: "long" | "short" | "narrow";
@@ -39,7 +39,7 @@
 			<FormatByte value={5000000000} />
 		</Text>
 	</Stack>
-{:else if story === "bits"}
+{:else if story === "formatBits"}
 	<Text size="lg">
 		File size: <FormatByte value={1450.45} unit="bit" />
 	</Text>

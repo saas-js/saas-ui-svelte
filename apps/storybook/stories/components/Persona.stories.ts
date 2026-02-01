@@ -181,7 +181,7 @@ export const WithRing: Story = {
 	render: () =>
 		({
 			Component: PersonaWrapper,
-			props: { story: "ring" },
+			props: { story: "withRing" },
 		}) as any,
 };
 

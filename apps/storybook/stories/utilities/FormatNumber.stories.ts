@@ -184,6 +184,6 @@ export const CompactNotation: Story = {
 	render: () =>
 		({
 			Component: FormatNumberWrapper,
-			props: { story: "compact" },
+			props: { story: "compactNotation" },
 		}) as any,
 };

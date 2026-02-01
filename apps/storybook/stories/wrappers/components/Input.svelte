@@ -24,7 +24,7 @@
 			| "withAddons"
 			| "disabled"
 			| "colours"
-			| "placeholderStyle";
+			| "inputWithPlaceholderStyle";
 	}
 
 	let { story }: Props = $props();
@@ -110,7 +110,7 @@
 			</HStack>
 		{/each}
 	</Stack>
-{:else if story === "placeholderStyle"}
+{:else if story === "inputWithPlaceholderStyle"}
 	<Stack class="max-w-sm">
 		<Input
 			colour="teal"

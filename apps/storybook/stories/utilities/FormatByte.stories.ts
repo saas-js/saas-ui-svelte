@@ -108,7 +108,7 @@ export const FormatBits: Story = {
 	render: () =>
 		({
 			Component: FormatByteWrapper,
-			props: { story: "bits" },
+			props: { story: "formatBits" },
 		}) as any,
 };
 

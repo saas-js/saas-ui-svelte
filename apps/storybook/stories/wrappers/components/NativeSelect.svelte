@@ -14,7 +14,7 @@
 	const nativeSelectVariants = ["outline", "subtle", "plain"] as const;
 
 	interface Props {
-		story: "basic" | "sizes" | "variants" | "hookForm";
+		story: "basic" | "sizes" | "variants" | "withValidation";
 	}
 
 	let { story }: Props = $props();
@@ -62,7 +62,7 @@
 			</VStack>
 		{/each}
 	</VStack>
-{:else if story === "hookForm"}
+{:else if story === "withValidation"}
 	<form
 		onsubmit={(e) => {
 			e.preventDefault();

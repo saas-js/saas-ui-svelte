@@ -191,6 +191,6 @@ export const CustomSVG: Story = {
 	render: () =>
 		({
 			Component: IconWrapper,
-			props: { story: "customSvg" },
+			props: { story: "customSVG" },
 		}) as any,
 };

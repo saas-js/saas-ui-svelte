@@ -35,7 +35,7 @@ jobs:
             - name: Get installed Playwright version
               id: playwright-version
               run: |
-                  VERSION=$(node -e "console.log(require('@playwright/test/package.json').version)")
+                  VERSION=$(node -p "require('./node_modules/@playwright/test/package.json').version")
                   echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
             - name: Cache Playwright binaries

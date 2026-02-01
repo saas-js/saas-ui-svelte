@@ -13,7 +13,7 @@
 	import { colours, sizes, iconWeights } from "../../utils";
 
 	interface Props {
-		story: "basic" | "colours" | "sizes" | "weights" | "customSvg";
+		story: "basic" | "colours" | "sizes" | "weights" | "customSVG";
 	}
 
 	let { story }: Props = $props();
@@ -50,7 +50,7 @@
 			</DataList.Item>
 		{/each}
 	</DataList.Root>
-{:else if story === "customSvg"}
+{:else if story === "customSVG"}
 	<Icon size="xl" colour="blue" viewBox="0 0 32 32">
 		<path
 			fill="currentColor"

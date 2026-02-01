@@ -210,6 +210,6 @@ export const InputWithPlaceholderStyle: Story = {
 	render: () =>
 		({
 			Component: InputWrapper,
-			props: { story: "placeholderStyle" },
+			props: { story: "inputWithPlaceholderStyle" },
 		}) as any,
 };

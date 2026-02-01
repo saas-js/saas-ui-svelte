@@ -105,7 +105,7 @@ export const WithHStack: Story = {
 		},
 	},
 	render: () =>
-		({ Component: StackWrapper, props: { story: "hStack" } }) as any,
+		({ Component: StackWrapper, props: { story: "withHStack" } }) as any,
 };
 
 export const WithVStack: Story = {
@@ -117,7 +117,7 @@ export const WithVStack: Story = {
 		},
 	},
 	render: () =>
-		({ Component: StackWrapper, props: { story: "vStack" } }) as any,
+		({ Component: StackWrapper, props: { story: "withVStack" } }) as any,
 };
 
 export const WithSeparator: Story = {
@@ -129,7 +129,7 @@ export const WithSeparator: Story = {
 		},
 	},
 	render: () =>
-		({ Component: StackWrapper, props: { story: "separator" } }) as any,
+		({ Component: StackWrapper, props: { story: "withSeparator" } }) as any,
 };
 
 export const Responsive: Story = {

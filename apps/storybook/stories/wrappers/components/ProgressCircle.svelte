@@ -17,11 +17,11 @@
 			| "rounded"
 			| "sizes"
 			| "colours"
-			| "valueText"
-			| "thickness"
+			| "withValueText"
+			| "customThickness"
 			| "indeterminate"
 			| "values"
-			| "rangeColor";
+			| "rangeColors";
 	}
 
 	let { story }: Props = $props();
@@ -54,13 +54,13 @@
 			</HStack>
 		{/each}
 	</VStack>
-{:else if story === "valueText"}
+{:else if story === "withValueText"}
 	<HStack gap={8} class="items-center">
 		{#each ["md", "lg", "xl"] as size (size)}
 			<ProgressCircle size={size as Size} value={65} colour="teal" showValue />
 		{/each}
 	</HStack>
-{:else if story === "thickness"}
+{:else if story === "customThickness"}
 	<HStack gap={8} class="items-center">
 		<ProgressCircle value={75} colour="purple" thickness="2px" />
 		<ProgressCircle value={75} colour="purple" />
@@ -80,7 +80,7 @@
 			</VStack>
 		{/each}
 	</HStack>
-{:else if story === "rangeColor"}
+{:else if story === "rangeColors"}
 	<HStack gap={8}>
 		<ProgressCircle value={75} colour="orange" />
 		<ProgressCircle value={75} colour="rose" />

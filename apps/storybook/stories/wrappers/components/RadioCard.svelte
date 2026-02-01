@@ -35,7 +35,7 @@
 			| "withIcon"
 			| "centered"
 			| "withAddon"
-			| "vertical"
+			| "verticalLayout"
 			| "disabled";
 	}
 
@@ -169,7 +169,7 @@
 			</HStack>
 		</RadioCard.Root>
 	</Box>
-{:else if story === "vertical"}
+{:else if story === "verticalLayout"}
 	<Box class="w-64">
 		<RadioCard.Root orientation="vertical" defaultValue="next">
 			<RadioCard.Label>Select framework</RadioCard.Label>

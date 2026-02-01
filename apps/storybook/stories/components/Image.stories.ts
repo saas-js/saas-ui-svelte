@@ -161,7 +161,7 @@ export const ObjectFit: Story = {
 	render: () =>
 		({
 			Component: ImageWrapper,
-			props: { story: "fit" },
+			props: { story: "objectFit" },
 		}) as any,
 };
 

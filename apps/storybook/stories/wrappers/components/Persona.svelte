@@ -19,7 +19,7 @@
 			| "presence"
 			| "outOfOffice"
 			| "presenceRing"
-			| "ring"
+			| "withRing"
 			| "avatarOnly";
 	}
 
@@ -116,7 +116,7 @@
 			</Persona.Root>
 		{/each}
 	</Stack>
-{:else if story === "ring"}
+{:else if story === "withRing"}
 	<Stack gap={4}>
 		<Persona.Root size="lg">
 			<Persona.Avatar

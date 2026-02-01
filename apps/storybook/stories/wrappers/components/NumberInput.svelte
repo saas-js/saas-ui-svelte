@@ -15,7 +15,7 @@
 		story:
 			| "basic"
 			| "sizes"
-			| "minMax"
+			| "minAndMax"
 			| "step"
 			| "mouseWheel"
 			| "disabled"
@@ -43,7 +43,7 @@
 			</HStack>
 		{/each}
 	</Stack>
-{:else if story === "minMax"}
+{:else if story === "minAndMax"}
 	<Box class="w-52">
 		<NumberInput defaultValue="10" min={5} max={50} aria-label="Number" />
 	</Box>

@@ -213,7 +213,7 @@ export const VerticalLayout: Story = {
 	render: () =>
 		({
 			Component: RadioCardWrapper,
-			props: { story: "vertical" },
+			props: { story: "verticalLayout" },
 		}) as any,
 };
 
