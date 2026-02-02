@@ -146,5 +146,13 @@ export function getDocsNavigation(base: string = ""): NavGroup[] {
 				"Visually Hidden",
 			]),
 		},
+		{
+			title: "Legal",
+			items: [
+				{ label: "License", href: `${b}/license` },
+				{ label: "Privacy", href: `${b}/privacy` },
+				{ label: "Terms", href: `${b}/terms` },
+			],
+		},
 	];
 }
