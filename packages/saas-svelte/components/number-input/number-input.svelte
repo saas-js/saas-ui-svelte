@@ -28,6 +28,8 @@
 			"rounded",
 			"border",
 			"antialiased",
+			"placeholder:text-fg-muted",
+			"placeholder:select-none",
 			"border-border-default",
 			"hover:border-border-emphasized",
 			"hover:focus-visible:border-(--c-focus-ring)",

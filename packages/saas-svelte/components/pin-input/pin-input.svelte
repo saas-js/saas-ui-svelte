@@ -34,7 +34,7 @@
 			"relative",
 			"antialiased",
 			"text-fg-default",
-			"placeholder:text-fg-subtle",
+			"placeholder:text-fg-muted",
 			"placeholder:text-[0.6em]",
 			"disabled:opacity-50",
 			"disabled:cursor-not-allowed",

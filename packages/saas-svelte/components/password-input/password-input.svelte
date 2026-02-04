@@ -22,6 +22,8 @@
 				"rounded",
 				"border",
 				"antialiased",
+				"placeholder:text-fg-muted",
+				"placeholder:select-none",
 				"disabled:opacity-50",
 				"disabled:cursor-not-allowed",
 				"focus-visible:outline-solid",
