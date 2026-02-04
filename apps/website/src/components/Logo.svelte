@@ -12,7 +12,7 @@
 
 <a
 	href="{base}/"
-	class="flex items-end gap-0.5 rounded outline-none focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-indigo-600 focus-visible:outline-solid {className}"
+	class="flex items-center gap-0.5 rounded outline-none focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-indigo-600 focus-visible:outline-solid {className}"
 	aria-label="Saas UI Svelte, Back to homepage"
 >
 	<svg
@@ -53,7 +53,8 @@
 			class="fill-current"
 		></path>
 	</svg>
-	<span class="text-2xs text-indigo-fg mb-2.5 ml-0.5 font-medium antialiased"
+	<span
+		class="text-2xs -mt-0.5 ml-1 font-medium text-[#ff3e00] uppercase antialiased"
 		>Svelte</span
 	>
 </a>

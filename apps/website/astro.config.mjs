@@ -81,9 +81,8 @@ export default defineConfig({
 			tailwindcss(),
 			FontaineTransform.vite({
 				fallbacks: [
-					"Arial",
-					"Helvetica Neue",
-					"Helvetica",
+					"ui-sans-serif",
+					"system-ui",
 					"sans-serif",
 				],
 				resolvePath: (id) =>
