@@ -21,13 +21,13 @@
 				glass: [
 					"overflow-x-clip overflow-y-clip",
 					"text-(--c-contrast) bg-(--c-solid)",
-					"shadow-[inset_0_1px_0_#fff3,0_2px_4px_#0000004d,inset_0_0_1px_var(--colors-gray-300)/5%]",
-					"[text-shadow:0_1px_2px_rgba(0,0,0,0.1)]",
+					"shadow-[inset_0_0_0_1px_rgba(0,0,0,0.25),inset_0_2px_0_0_rgba(255,255,255,0.2),0_2px_4px_rgba(0,0,0,0.05),0_0_2px_rgba(0,0,0,0.05)]",
+					"[text-shadow:0_1px_2px_rgba(0,0,0,0.3)]",
 					// Gradient overlay pseudo-element
 					"after:content-[''] after:absolute after:inset-0 after:opacity-20 after:pointer-events-none",
-					"after:bg-[linear-gradient(#fff_40%,#0003)]",
+					"after:bg-[linear-gradient(rgb(255,255,255)_40%,rgba(0,0,0,0.2))]",
 					"after:transition-opacity after:duration-200",
-					"hover:after:bg-[linear-gradient(#fffc_40%,#0009)]",
+					"hover:after:opacity-30",
 				],
 
 				// SOLID: Contrast text with solid background

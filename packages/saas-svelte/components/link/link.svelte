@@ -25,6 +25,7 @@
 					"underline",
 					"underline-offset-[3px]",
 					"decoration-[color-mix(in_srgb,currentColor_20%,transparent)]",
+					"hover:decoration-[color-mix(in_srgb,currentColor_20%,transparent)]",
 				],
 				plain: [
 					"hover:underline-offset-[3px]",
