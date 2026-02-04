@@ -25,10 +25,17 @@
 					href="{base}/docs"
 					variant="glass"
 					colour="indigo"
+					class="text-md"
 				>
 					Browse all components
 				</Button>
-				<Button disabled as="a" href="{base}/blocks" variant="outline">
+				<Button
+					disabled
+					as="a"
+					href="{base}/blocks"
+					variant="outline"
+					class="text-md"
+				>
 					View blocks
 				</Button>
 			</HStack>

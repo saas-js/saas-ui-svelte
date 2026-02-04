@@ -37,7 +37,7 @@
 					variant="glass"
 					colour="indigo"
 					size="lg"
-					class="min-w-44"
+					class="min-w-44 text-md"
 				>
 					View all components
 				</Button>

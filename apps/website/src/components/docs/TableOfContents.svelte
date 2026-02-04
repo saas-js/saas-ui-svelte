@@ -92,8 +92,8 @@
 	class="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 overflow-y-auto overscroll-contain px-2 py-8 xl:block"
 >
 	<VStack gap={4} class="items-start">
-		<Box as="nav" aria-label="Page sections" class="w-full text-sm">
-			<Text size="sm" weight="semibold" class="text-fg-default mb-3"
+		<Box as="nav" aria-label="Page sections" class="w-full text-md">
+			<Text size="md" weight="semibold" class="text-fg-default mb-3"
 				>On this page</Text
 			>
 			<VStack gap={2} class="items-start">
@@ -101,7 +101,7 @@
 					{@const isActive = activeId === item.href.replace("#", "")}
 					<Link
 						href={item.href}
-						class="text-sm transition-colors {getIndentClass(
+						class="text-md transition-colors {getIndentClass(
 							item.level,
 						)} {isActive
 							? 'text-fg-default font-medium'
@@ -115,7 +115,7 @@
 								activeId === child.href.replace("#", "")}
 							<Link
 								href={child.href}
-								class="ml-4 text-sm transition-colors {isChildActive
+								class="ml-4 text-md transition-colors {isChildActive
 									? 'text-fg-default font-medium'
 									: 'text-fg-muted hover:text-fg-default'}"
 							>

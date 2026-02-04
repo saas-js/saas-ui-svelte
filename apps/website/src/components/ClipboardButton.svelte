@@ -8,7 +8,7 @@
 
 <Clipboard.Root value="npm i @saas-ui/svelte">
 	<Clipboard.Trigger
-		class="border-border-default bg-bg-default text-fg-default transition-colours hover:bg-bg-subtle hover:border-border-emphasized inline-flex h-10 cursor-pointer items-center gap-3 rounded-md border px-5 text-sm font-medium whitespace-nowrap outline-0 select-none focus-visible:border-(--c-focus-ring) focus-visible:outline-(--c-focus-ring) focus-visible:outline-solid"
+		class="border-border-default bg-bg-default text-fg-default transition-colours hover:bg-bg-subtle hover:border-border-emphasized inline-flex h-10 cursor-pointer items-center gap-3 rounded-md border px-5 text-md font-medium whitespace-nowrap outline-0 select-none focus-visible:border-(--c-focus-ring) focus-visible:outline-(--c-focus-ring) focus-visible:outline-solid"
 		style="--c-focus-ring: var(--colors-gray-focus-ring)"
 		aria-label="Copy npm install command to clipboard"
 	>

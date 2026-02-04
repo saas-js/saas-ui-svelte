@@ -90,6 +90,7 @@
 				colour="indigo"
 				as="a"
 				href="https://beta.saas-ui.dev/pricing"
+				class="text-md"
 			>
 				Get Pro
 			</Button>

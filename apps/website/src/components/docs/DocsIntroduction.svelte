@@ -77,7 +77,7 @@
 	</Text>
 </VStack>
 
-<VStack gap={0} class="items-start text-sm">
+<VStack gap={0} class="items-start text-md">
 	<Text class="text-fg-muted mb-3.5 leading-relaxed">
 		Inspired by macOS and premium tools like Linear, Attio, and Superhuman,
 		it provides intuitive primitives that empower developers to create

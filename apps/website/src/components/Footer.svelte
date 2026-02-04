@@ -24,7 +24,7 @@
 			gap={6}
 			class="flex-col items-center justify-between gap-4 sm:flex-row"
 		>
-			<Text size="sm" class="text-fg-muted">
+			<Text size="md" class="text-fg-muted">
 				© {currentYear} Jacob Weinbren
 			</Text>
 
@@ -32,7 +32,7 @@
 				{#each links as link}
 					<Link
 						href={link.href}
-						class="text-fg-muted hover:text-fg-default text-sm transition-colors"
+						class="text-fg-muted hover:text-fg-default text-md transition-colors"
 					>
 						{link.label}
 					</Link>
