@@ -53,7 +53,7 @@
 						"hover:text-fg-default",
 						"data-selected:text-(--c-fg)",
 						"relative",
-						"before:content-[''] before:absolute before:-bottom-px before:inset-x-3 before:h-0.5 before:rounded-t",
+						"before:content-[''] before:absolute before:-bottom-px before:inset-x-3 before:h-0.75 before:rounded-t-[3px]",
 						"data-selected:before:bg-(--c-solid)",
 					],
 				},

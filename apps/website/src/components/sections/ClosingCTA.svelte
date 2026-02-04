@@ -9,7 +9,7 @@
 	const base = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
 </script>
 
-<section class="border-border-default border-y border-dashed">
+<section class="border-border-default border-t border-dashed">
 	<Container maxW="7xl">
 		<HStack
 			gap={6}

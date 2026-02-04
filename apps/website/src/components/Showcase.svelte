@@ -49,7 +49,7 @@
 </script>
 
 <Container maxW="7xl" class="overflow-hidden pb-20">
-	<Tabs.Root defaultValue="components" onPrefetch={handlePrefetch}>
+	<Tabs.Root defaultValue="components" colour="indigo" onPrefetch={handlePrefetch}>
 		<Tabs.List class="border-border-default mb-4 border-b pt-1">
 			<Tabs.Trigger value="components">Components</Tabs.Trigger>
 			<Tabs.Trigger value="crm">CRM</Tabs.Trigger>

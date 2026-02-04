@@ -27,7 +27,7 @@
 	];
 </script>
 
-<section class="border-border-default border-y border-dashed py-16">
+<section class="border-border-default border-t border-dashed py-16">
 	<Container maxW="7xl">
 		<HStack
 			gap={4}

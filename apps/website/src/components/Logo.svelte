@@ -54,7 +54,7 @@
 		></path>
 	</svg>
 	<span
-		class="text-2xs -mt-0.5 ml-1 font-medium text-[#ff3e00] uppercase antialiased"
+		class="text-2xs -mt-1.5 ml-1 font-medium text-[#ff3e00] uppercase antialiased"
 		>Svelte</span
 	>
 </a>
