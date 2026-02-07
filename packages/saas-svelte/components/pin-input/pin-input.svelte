@@ -35,7 +35,7 @@
 			"antialiased",
 			"text-fg-default",
 			"placeholder:text-fg-muted",
-			"placeholder:text-[0.6em]",
+			"placeholder:text-[1em]",
 			"disabled:opacity-50",
 			"disabled:cursor-not-allowed",
 			"focus-visible:outline-solid",
