@@ -78,8 +78,13 @@
 	);
 
 	const finalStyle = $derived([colourVars, style].filter(Boolean).join("; "));
+
+	const finalRel = $derived(
+		rest.rel ??
+			(rest.target === "_blank" ? "noopener noreferrer" : undefined),
+	);
 </script>
 
-<a class={finalClass} style={finalStyle} {...rest}>
+<a class={finalClass} style={finalStyle} rel={finalRel} {...rest}>
 	{@render children?.()}
 </a>

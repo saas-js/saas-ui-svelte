@@ -244,6 +244,10 @@
 	);
 
 	const spinnerClass = $derived(buttonSpinner({ size }));
+
+	const finalRel = $derived(
+		rel ?? (target === "_blank" ? "noopener noreferrer" : undefined),
+	);
 </script>
 
 {#snippet buttonContent()}
@@ -271,9 +275,10 @@
 		class={finalClass}
 		style={finalStyle}
 		aria-disabled={disabled || loading || undefined}
+		aria-busy={loading || undefined}
 		{href}
 		{target}
-		{rel}
+		rel={finalRel}
 		{...restProps}
 	>
 		{@render buttonContent()}
@@ -283,6 +288,7 @@
 		class={finalClass}
 		style={finalStyle}
 		disabled={disabled || loading}
+		aria-busy={loading || undefined}
 		{type}
 		{...restProps}
 	>

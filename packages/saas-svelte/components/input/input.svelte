@@ -133,6 +133,16 @@
 		restProps.readonly || fieldState.readOnly || false,
 	);
 	const id = $derived(restProps.id || fieldState.id);
+	const ariaDescribedBy = $derived(
+		fieldState.id
+			? [
+					`${fieldState.id}-helper-text`,
+					isInvalid ? `${fieldState.id}-error-text` : null,
+				]
+					.filter(Boolean)
+					.join(" ")
+			: undefined,
+	);
 
 	const classes = $derived(
 		twMerge(
@@ -154,6 +164,8 @@
 	disabled={isDisabled}
 	required={isRequired}
 	readonly={isReadOnly}
+	aria-invalid={isInvalid || undefined}
+	aria-describedby={ariaDescribedBy}
 	class={classes}
 	style={styles}
 	bind:value

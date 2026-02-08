@@ -203,14 +203,16 @@
 	);
 
 	const styles = $derived(toast({ status }));
+
+	const isUrgent = $derived(status === "error" || status === "warning");
 </script>
 
 <Flex
 	align="start"
 	gap={2}
 	class={twMerge(styles.root(), className as string)}
-	role="status"
-	aria-live="polite"
+	role={isUrgent ? "alert" : "status"}
+	aria-live={isUrgent ? "assertive" : "polite"}
 >
 	{#if children}
 		{@render children()}

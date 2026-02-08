@@ -107,7 +107,7 @@
 	style="{shineStyle}{loading && height
 		? `height: ${height};`
 		: ''}{loading && width ? `width: ${width};` : ''}"
-	aria-hidden={loading}
+	aria-hidden={loading || undefined}
 	{...restProps}
 >
 	{#if children}
