@@ -10,7 +10,7 @@
 </script>
 
 <section aria-label="Component previews">
-	<HStack gap={2} class="flex-nowrap overflow-x-auto py-4">
+	<HStack gap={2} justify="center" class="flex-nowrap overflow-x-auto py-4">
 		<PreviewCard>
 			<Button variant="solid" colour="indigo">Button</Button>
 		</PreviewCard>
