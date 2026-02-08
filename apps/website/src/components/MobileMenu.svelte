@@ -44,10 +44,11 @@
 	></button>
 
 	<!-- Panel -->
-	<div
+	<nav
+		aria-label="Mobile navigation"
 		class="bg-bg-default border-border-default fixed top-14.25 bottom-0 left-0 z-61 w-56 overflow-y-auto border-r lg:hidden"
 		transition:fade={{ duration: 150 }}
 	>
 		<DocsSidebar groups={navGroups} {currentPath} />
-	</div>
+	</nav>
 {/if}

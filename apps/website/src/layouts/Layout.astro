@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar.svelte";
 import MobileMenu from "../components/MobileMenu.svelte";
 import SearchDialog from "../components/SearchDialog.svelte";
 import Footer from "../components/Footer.svelte";
-import { themeInitScript } from "../lib/theme";
 
 interface Props {
 	title: string;
@@ -42,8 +41,8 @@ const siteUrl = "https://svelte.saas-ui.dev";
 		<meta name="twitter:description" content={description} />
 
 		<title>{title} | SaaS UI Svelte</title>
-		<script is:inline define:vars={{ themeInitScript }}>
-			eval(themeInitScript);
+		<script is:inline>
+			(function(){var d=document.documentElement,t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");d.classList.add(t)})();
 		</script>
 	</head>
 	<body class="bg-bg-default text-fg-default pt-14">

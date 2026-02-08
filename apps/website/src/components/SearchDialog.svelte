@@ -149,6 +149,11 @@
 					bind:value={inputValue}
 					onkeydown={handleInputKeydown}
 					type="text"
+					role="combobox"
+					aria-expanded={filteredItems.length > 0}
+					aria-controls="search-listbox"
+					aria-activedescendant={selectedIndex >= 0 ? `search-option-${selectedIndex}` : undefined}
+					autocomplete="off"
 					placeholder="Search components, tokens..."
 					class="text-fg-default placeholder:text-fg-muted h-10 w-full border-0 bg-transparent pr-16 pl-10 text-sm outline-none"
 				/>
@@ -162,6 +167,7 @@
 			<!-- Results -->
 			<div
 				bind:this={resultsRef}
+				id="search-listbox"
 				class="max-h-80 overflow-y-auto"
 				role="listbox"
 				aria-label="Search results"
@@ -192,6 +198,7 @@
 							{#each group.items.slice(0, 10) as item, i}
 								{@const itemIndex = groupStartIndex + i}
 								<Flex
+									id="search-option-{itemIndex}"
 									role="option"
 									tabindex="-1"
 									aria-selected={itemIndex === selectedIndex}

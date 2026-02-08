@@ -51,6 +51,7 @@
 		</Table.Header>
 		<Table.Body>
 			{#each Object.entries(props) as [prop, propDef]}
+				{@const defaultValue = getDefault(propDef)}
 				<Table.Row>
 					<Table.Cell>
 						<Code size="xs" colour="indigo">{prop}</Code>
@@ -59,9 +60,9 @@
 						<Code size="xs" colour="gray">{getType(propDef)}</Code>
 					</Table.Cell>
 					<Table.Cell>
-						{#if getDefault(propDef)}
+						{#if defaultValue}
 							<Code size="xs" colour="gray"
-								>{getDefault(propDef)}</Code
+								>{defaultValue}</Code
 							>
 						{:else}
 							-

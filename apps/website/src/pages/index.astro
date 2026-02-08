@@ -9,8 +9,8 @@ import Showcase from "../components/Showcase.svelte";
 
 <Layout title="Homepage">
 	<Hero client:load />
-	<Showcase client:load />
-	<ComponentsPreview client:load />
+	<Showcase client:visible />
+	<ComponentsPreview client:visible />
 	<WhySection client:visible />
 	<ClosingCTA client:visible />
 </Layout>
