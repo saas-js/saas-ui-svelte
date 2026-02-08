@@ -9,8 +9,8 @@
 	import PreviewCard from "./PreviewCard.svelte";
 </script>
 
-<section aria-label="Component previews">
-	<HStack gap={2} justify="center" class="flex-nowrap overflow-x-auto py-4">
+<section aria-label="Component previews" class="overflow-x-auto">
+	<HStack gap={2} class="flex-nowrap py-4 w-fit mx-auto">
 		<PreviewCard>
 			<Button variant="solid" colour="indigo">Button</Button>
 		</PreviewCard>
