@@ -85,17 +85,6 @@
 			/>
 
 			<Button
-				variant="glass"
-				size="sm"
-				colour="indigo"
-				as="a"
-				href="https://beta.saas-ui.dev/pricing"
-				class="text-md"
-			>
-				Get Pro
-			</Button>
-
-			<Button
 				variant="ghost"
 				size="sm"
 				icon
